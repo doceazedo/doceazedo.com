@@ -17,6 +17,7 @@ export function get({ params }) {
     
     return {
       body: {
+        params,
         content: md.content,
         metadata: md.data
       }
