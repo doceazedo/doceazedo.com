@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "blog/posts.json": {
-      "includeFiles": "src/posts/**"
-    }
-  }
-}
