@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "routes/api/posts/*.js": {
-      "includeFiles": "src/posts/**"
-    }
-  }
-}
