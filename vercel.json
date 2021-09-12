@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "api/posts/index.js": {
+      "includeFiles": "src/posts/**"
+    },
+    "api/posts/[slug].js": {
+      "includeFiles": "src/posts/**"
+    }
+  }
+}
