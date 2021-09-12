@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/posts/*.js": {
+    "routes/api/posts/*.js": {
       "includeFiles": "src/posts/**"
     }
   }
