@@ -1,9 +1,6 @@
 {
   "functions": {
-    "posts/index.js": {
-      "includeFiles": "src/posts/**"
-    },
-    "posts/[slug].js": {
+    "api/posts/*.js": {
       "includeFiles": "src/posts/**"
     }
   }
