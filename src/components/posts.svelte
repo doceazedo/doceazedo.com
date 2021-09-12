@@ -1,11 +1,13 @@
 <script>
+  import SvelteIcon from '../assets/img/svelte.svg';
+
   export let posts = [];
 </script>
 
 <div>
   {#each posts as post}
     <a sveltekit:prefetch href="/blog/{post.slug}">
-      <figure style="background-image:url('/src/assets/img/{post.icon}.svg')"></figure>
+      <figure style="background-image:url('{SvelteIcon}')"></figure>
       <div>
         <h1>{post.title}</h1>
         <h2>{post.readableDatetime}</h2>

@@ -36,7 +36,7 @@
     </ul>
   </div>
   <div>
-    <img src="/src/assets/img/{post.metadata.icon}.svg" alt="">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg" alt="">
   </div>
 </header>
 
