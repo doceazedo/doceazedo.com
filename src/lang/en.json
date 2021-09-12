@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "home": "Home",
+    "blog": "Blog",
+    "about": "About me",
+    "contact": "Contact"
+  },
+
+  "blurb": {
+    "title": "I'm Lucas Fernandes.",
+    "paragraph": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing",
+      " elit, sed do eiusmod tempor incididunt ut",
+      " labore et dolore magna aliqua. Ut enim ad minim."
+    ],
+    "button": "Something"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "home": "Início",
+    "blog": "Blog",
+    "about": "Sobre mim",
+    "contact": "Contato"
+  },
+
+  "blurb": {
+    "title": "Prazer, Lucas Fernandes.",
+    "paragraph": [
+      "Por outro lado, o comprometimento entre as",
+      "equipes de implantação nos obriga à",
+      "migração das janelas de tempo disponíveis."
+    ],
+    "button": "Alguma coisa"
+  }
+}
