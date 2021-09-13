@@ -1,18 +1,19 @@
 <script context="module">
   export async function load({ page, fetch }) {
-    const res = await fetch(`/api/posts/${page.params.slug}`);
+    const posts = await(await fetch(`/api/posts`)).json();
+    const post = posts.posts.find(x => x.slug == page.params.slug);
 
-    if (res.ok) {
+    if (post) {
       return {
         props: {
-          post: await res.json()
+          post
         }
       };
     }
 
     return {
       status: res.status,
-      error: new Error(`Couldn't load the requested post`)
+      error: new Error(`Couldn't find the requested post`)
     };
   }
 </script>
@@ -22,15 +23,15 @@
 </script>
 
 <svelte:head>
-  <title>{post.metadata.title} - Lucas Fernandes</title>
+  <title>{post.title} - Lucas Fernandes</title>
 </svelte:head>
 
 <header>
   <div>
-    <h1>{post.metadata.title}</h1>
-    <h2>{post.metadata.readableDatetime}</h2>
+    <h1>{post.title}</h1>
+    <h2>{post.readableDatetime}</h2>
     <ul>
-      {#each post.metadata.categories.split(', ') as category}
+      {#each post.categories.split(', ') as category}
         <li>{category}</li>
       {/each}
     </ul>
