@@ -7,14 +7,14 @@ moment.locale('pt-br');
 export async function get({ params }) {
   const { slug } = params;
   const dirList = [];
-  const dir = await fs.promises.opendir('src/posts');
+  const dir = await fs.promises.opendir(`${__dirname}/src/posts`);
 
   for await (const dirent of dir) {
-    dirList.push(`src/posts/${dirent.name}`);
+    dirList.push(`${__dirname}/src/posts/${dirent.name}`);
     if (dirent.name != `${slug}.md`) continue;
 
     const converter = new showdown.Converter();
-    let md = fs.readFileSync(`src/posts/${dirent.name}`);
+    let md = fs.readFileSync(`${__dirname}/src/posts/${dirent.name}`);
     md = matter(md);
     md.content = converter.makeHtml(md.content);
     md.data.readableDatetime = moment(md.data.datetime).calendar();
