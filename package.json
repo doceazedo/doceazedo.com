@@ -25,6 +25,7 @@
   "dependencies": {
     "@fontsource/fira-mono": "^4.2.2",
     "@lukeed/uuid": "^2.0.0",
+    "app-root-path": "^3.0.0",
     "cookie": "^0.4.1",
     "dotenv": "^10.0.0",
     "gray-matter": "^4.0.3",
