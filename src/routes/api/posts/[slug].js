@@ -4,27 +4,32 @@ import matter from 'gray-matter';
 import moment from 'moment';
 moment.locale('pt-br');
 
-export function get({ params }) {
-  try {
-    const { slug } = params;
-  
-    const converter = new showdown.Converter();
+export async function get({ params }) {
+  const { slug } = params;
+  const dirList = [];
+  const dir = await fs.promises.opendir('src/posts');
 
-    let md = fs.readFileSync(`src/posts/${slug}.md`);
+  for await (const dirent of dir) {
+    dirList.push(`src/posts/${dirent.name}`);
+    if (dirent.name != `${slug}.md`) continue;
+
+    const converter = new showdown.Converter();
+    let md = fs.readFileSync(`src/posts/${dirent.name}`);
     md = matter(md);
     md.content = converter.makeHtml(md.content);
     md.data.readableDatetime = moment(md.data.datetime).calendar();
-    
+
     return {
       body: {
         content: md.content,
-        metadata: md.data
+        metadata: md.data,
+        dirList
       }
     }
-  } catch (err) {
-    return {
-      status: 404,
-      body: { err }
-    }
+  }
+
+  return {
+    status: 404,
+    body: { dirList }
   }
 }
