@@ -3,7 +3,7 @@ import matter from 'gray-matter';
 import moment from 'moment';
 moment.locale('pt-br');
 
-export async function get() {
+export async function get(request) {
   const posts = [];
 
   const dir = await fs.promises.opendir('src/posts');
@@ -17,7 +17,8 @@ export async function get() {
 
   return {
     body: {
-      posts
+      posts,
+      request
     }
   }
 }
