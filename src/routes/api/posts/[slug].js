@@ -5,6 +5,13 @@ import moment from 'moment';
 moment.locale('pt-br');
 
 export function get({ params }) {
+  const { slug } = params;
+  return {
+    body: {
+      slug
+    }
+  };
+
   try {
     const { slug } = params;
   
