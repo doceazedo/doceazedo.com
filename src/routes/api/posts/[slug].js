@@ -23,7 +23,8 @@ export function get({ params }) {
     }
   } catch (err) {
     return {
-      status: 404
+      status: 404,
+      err
     }
   }
 }
