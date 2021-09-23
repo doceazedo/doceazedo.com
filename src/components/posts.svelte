@@ -1,5 +1,9 @@
 <script>
-  import SvelteIcon from '../assets/img/svelte.svg';
+  import { lang } from '../stores';
+  import dayjs from 'dayjs';
+  import relativeTime from 'dayjs/plugin/relativeTime';
+  import 'dayjs/locale/pt-br';
+  dayjs.extend(relativeTime);
 
   export let posts = [];
 </script>
@@ -10,10 +14,10 @@
       <figure style="background-image:url('/blog-icons/{post.icon}.svg')"></figure>
       <div>
         <h1>{post.title}</h1>
-        <h2>{post.readableDatetime}</h2>
+        <h2>{$lang.posted} {dayjs(post.createdAt).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow()}</h2>
       </div>
       <ul>
-        {#each post.categories.split(', ') as category}
+        {#each post.categories as category}
           <li>{category}</li>
         {/each}
       </ul>

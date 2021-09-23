@@ -6,7 +6,7 @@
 
     return {
       props: {
-        posts
+        posts: posts.posts
       }
     };
   }
@@ -25,4 +25,4 @@
 <Blurb />
 <Skills />
 <Portfolio />
-<Articles posts={posts.posts.slice(0, 3)} />
+<Articles posts={posts.slice(0, 3)} />

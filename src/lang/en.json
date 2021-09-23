@@ -1,4 +1,6 @@
 {
+  "code": "en",
+
   "navbar": {
     "home": "Início",
     "blog": "Blog",
@@ -60,7 +62,9 @@
   },
 
   "footer": [
-    "Desenvolvido com Svelte & SvelteKit.",
-    "Criado por Lucas Fernandes."
-  ]
+    "Powered by Svelte & SvelteKit",
+    "Desenvolvido por Lucas Fernandes"
+  ],
+
+  "posted": "Published"
 }

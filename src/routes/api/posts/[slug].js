@@ -1,36 +1,26 @@
-import fs from 'fs';
-import showdown from 'showdown';
-import matter from 'gray-matter';
-import moment from 'moment';
-import appRoot from 'app-root-path';
-moment.locale('pt-br');
+import { fetchSinglePost } from '../../../utils/fetch-posts';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { MARKS } from '@contentful/rich-text-types';
 
 export async function get({ params }) {
-  const { slug } = params;
-  const dirList = [];
-  const dir = await fs.promises.opendir(`${appRoot}/src/posts`);
+  const post = await fetchSinglePost(params.slug);
 
-  for await (const dirent of dir) {
-    dirList.push(`${appRoot}/src/posts/${dirent.name}`);
-    if (dirent.name != `${slug}.md`) continue;
-
-    const converter = new showdown.Converter();
-    let md = fs.readFileSync(`${appRoot}/src/posts/${dirent.name}`);
-    md = matter(md);
-    md.content = converter.makeHtml(md.content);
-    md.data.readableDatetime = moment(md.data.datetime).calendar();
-
+  if (!post) {
     return {
-      body: {
-        content: md.content,
-        metadata: md.data,
-        dirList
-      }
+      status: 404,
+      error: new Error(`Could not find post with slug "${params.slug}"`),
     }
   }
 
+  const RichTextOptions = {
+    renderMark: {
+      [MARKS.CODE]: text => text.includes('\n') ? `<pre><code>${text}</code></pre>` : `<code>${text}</code>`
+    }
+  }
+
+  post.content = documentToHtmlString(post.content, RichTextOptions);
+
   return {
-    status: 404,
-    body: { dirList }
+    body: { ...post }
   }
 }

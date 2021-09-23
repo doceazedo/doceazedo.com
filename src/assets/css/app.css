@@ -197,13 +197,14 @@ body::before {
   padding: 1em 1.25em;
   white-space: pre;
   word-wrap: normal;
-  background-color: #16191d;
+  background-color: #2d2d2d;
   font-size: 1rem;
 }
 
 .content code {
-  background-color: #16191d;
-  padding: 0 .25rem;
+  background-color: #2d2d2d;
+  font-size: 1rem;
+  padding: .1rem .25rem;
   margin: 0 .25rem;
 }
 
@@ -256,4 +257,14 @@ body::before {
 
 .content .tabs li + li {
   margin-top: 0;
+}
+
+::-moz-selection {
+  color: #fff !important;
+  background: #6930c3 !important;
+}
+
+::selection {
+  color: #fff !important;
+  background: #6930c3 !important;
 }

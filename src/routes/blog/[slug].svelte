@@ -1,12 +1,11 @@
 <script context="module">
   export async function load({ page, fetch }) {
-    const posts = await(await fetch(`/api/posts`)).json();
-    const post = posts.posts.find(x => x.slug == page.params.slug);
+    const post = await(await fetch(`/api/posts/${page.params.slug}`)).json();
 
     if (post) {
       return {
         props: {
-          post
+          post: post
         }
       };
     }
@@ -19,7 +18,23 @@
 </script>
 
 <script>
+  import { onMount } from 'svelte';
+  import { slide } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
+  import { lang } from '../../stores';
+  import hljs from 'highlight.js';
+  import 'highlight.js/styles/base16/tomorrow-night.css';
+  import dayjs from 'dayjs';
+  import relativeTime from 'dayjs/plugin/relativeTime';
+  import 'dayjs/locale/pt-br';
+  import Button from '../../components/button.svelte';
+  dayjs.extend(relativeTime);
+
   export let post = {};
+
+  onMount(() => {
+    document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
+  })
 </script>
 
 <svelte:head>
@@ -29,9 +44,9 @@
 <header>
   <div>
     <h1>{post.title}</h1>
-    <h2>{post.readableDatetime}</h2>
+    <h2>{$lang.posted} {dayjs(post.createdAt).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow()}</h2>
     <ul>
-      {#each post.categories.split(', ') as category}
+      {#each post.categories as category}
         <li>{category}</li>
       {/each}
     </ul>
@@ -40,6 +55,14 @@
     <img src="/blog-icons/{post.icon}.svg" alt="">
   </div>
 </header>
+
+{#if $lang.code == 'en' && post.devto}
+  <div class="alert" transition:slide={{duration: 200, easing: quintOut }}>
+    <Button href={post.devto} target="_blank">
+      <b>Click here</b> to read this article in English on dev.to
+    </Button>
+  </div>
+{/if}
 
 <article class="content">
   {@html post.content}
@@ -81,6 +104,14 @@
 
     img
       height: 6rem
+
+  .alert
+    display: flex
+    justify-content: center
+    margin-bottom: 4rem
+
+    :global(.button)
+      display: block !important
 
   @media screen and (max-width: 768px)
     header

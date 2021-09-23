@@ -4,7 +4,7 @@
 
     return {
       props: {
-        posts
+        posts: posts.posts
       }
     };
   }
@@ -21,4 +21,4 @@
   title="Blog"
   paragraph="I pretty much rather reading articles than watching tutorials, so, here I gather stuff that I learned and want to share." />
 
-<Posts posts={posts.posts} />
+<Posts posts={posts} />
