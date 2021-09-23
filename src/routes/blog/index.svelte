@@ -11,6 +11,7 @@
 </script>
 
 <script>
+  import { lang } from '../../stores';
   import PageTitle from '../../components/page-title.svelte';
   import Posts from '../../components/posts.svelte';
 
@@ -19,6 +20,6 @@
 
 <PageTitle
   title="Blog"
-  paragraph="I pretty much rather reading articles than watching tutorials, so, here I gather stuff that I learned and want to share." />
+  paragraph={$lang.blog.subtitle} />
 
 <Posts posts={posts} />

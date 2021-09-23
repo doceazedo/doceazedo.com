@@ -1,4 +1,5 @@
 <script>
+  import { lang } from '../stores';
   import PageTitle from '../components/page-title.svelte';
   import Button from '../components/button.svelte';
   import { MailIcon, SendIcon } from 'svelte-feather-icons';
@@ -6,12 +7,12 @@
 
 <div class="contact">
   <PageTitle
-    title="Get in touch"
-    paragraph="If you want to hire me, talk about a project or just chat with no commitment, let's do it!" />
+    title={$lang.contact.title}
+    paragraph={$lang.contact.paragraph} />
 
   <div class="buttons">
-    <Button href="mailto:me@lucasfernandes.com.br" outline><MailIcon size="24" fill="#fff" /> me@lucasfernandes.com.br</Button>
-    <Button href="https://t.me/eightavocados" outline><SendIcon size="24" fill="#fff" /> @eightavocados on Telegram</Button>
+    <Button href="mailto:{$lang.email}" outline><MailIcon size="24" fill="#fff" /> {$lang.email}</Button>
+    <Button href="https://t.me/eightavocados" outline><SendIcon size="24" fill="#fff" /> {$lang.contact.telegramButton}</Button>
   </div>
 </div>
 

@@ -2,69 +2,127 @@
   "code": "en",
 
   "navbar": {
-    "home": "Início",
+    "home": "Home",
     "blog": "Blog",
-    "about": "Sobre mim",
-    "contact": "Contato"
+    "about": "About me",
+    "contact": "Contact"
   },
 
   "blurb": {
-    "title": "Prazer, Lucas Fernandes.",
+    "title": "I'm Lucas Fernandes.",
     "paragraph": [
-      "Eu sou um desenvolvedor fullstack especializado",
-      "em web, criando layouts elegantes e reativos e",
-      "arquitetando APIs e bancos bem estruturados."
+      "I am a fullstack developer, specially for the web,",
+      "building stylish and responsive layouts and",
+      "designing well structured APIs and databases."
     ],
-    "button": "Fale comigo"
+    "button": "Keep in touch"
   },
 
   "skills": {
-    "title": "O que eu consigo fazer",
+    "title": "What I can do",
     "paragraph": [
-      "Eu me interesso tanto pela parte front-end quanto back-end da",
-      "web, e tenho me arriscando na área do mobile também."
+      "I'm interested in both front-end and back-end areas of the web,",
+      "and I've been trying with mobile development scope too."
     ]
   },
 
   "portfolio": {
-    "title": "Meus últimos projetos e trabalhos",
+    "title": "My latest projects and works",
     "projects": [
       {
         "title": "musicwrap.xyz",
-        "description": "Site open-source desenvolvido com React e Fastify que gera colagens das músicas que você mais ouviu na semana, integrado ao last.fm, Spotify e Deezer."
+        "description": "Open-source website developed with React and Fastify that generates collages with your top listened songs of the week, using the last.fm API."
       },
       {
         "title": "convergencia.net.br",
-        "description": "Site institucional desenvolvido com WordPress e ACF para Convergência Digital, empresa de telemarketing e autoridade de registro na Grande BH."
+        "description": "Corporate website developed with WordPress and ACF for Convergência Digital, a telemarketing and RA company from Minas Gerais, Brazil."
       },
       {
         "title": "grupostelegram.com.br",
-        "description": "Desenvolvido em React com Next.js e Chakra UI, hoje eu contribuo para esse que é um dos maiores indexadores de grupos de Telegram no Brasil."
+        "description": "Powered by React with Next.js and Chakra UI, the Grupos Telegram website is one of the biggest Telegram group and channel indexers in Brazil."
       },
       {
         "title": "Overlay + Bot",
-        "description": "Nas minhas lives de programação na Twitch, todo o visual e comandos estão sendo desenvolvidos com Svelte e SvelteKit."
+        "description": "In my livestreams at Twitch, every overlay and chat commands are being developed by myself with Svelte and SvelteKit."
       },
       {
         "title": "doceazedo.com",
-        "description": "Site que reúne informações relacionadas às minhas lives na Twitch, como redes sociais e comandos do chat, também desenvolvido em Svelte e SvelteKit."
+        "description": "A place with my social media, chat commands and everything related to my Twitch livestreams. Also actively developed with Svelte and SvelteKit."
       }
     ]
   },
 
   "articles": {
-    "title": "Últimos artigos",
+    "title": "Latest articles",
     "paragraph": [
-      "No geral eu prefiro ler artigos do que assistir tutoriais, então",
-      "aqui eu reúno coisas que aprendi e quero compartilhar."
+      "I pretty much rather reading articles than watching tutorials, so",
+      "here I gather stuff that I learned and want to share."
     ],
     "more": "Ver todos"
   },
 
   "footer": [
     "Powered by Svelte & SvelteKit",
-    "Desenvolvido por Lucas Fernandes"
+    "Developed by Lucas Fernandes"
   ],
 
+  "blog": {
+    "subtitle": "I pretty much rather reading articles than watching tutorials, so here I gather stuff that I learned and want to share. I hope you find something that grabs your attention."
+  },
+  
+  "about": {
+    "subtitle": "Programador movido a curiosidade e streamer de live coding",
+    "intro": "Oi, eu me chamo Lucas. Eu sou um desenvolvedor fullstack trabalhando em Pedro Leopoldo, na região metropolitana de Belo Horizonte em Minas Gerais. Nesse site eu reúno alguns dos meus trabalhos e pedaços de conhecimento que eu gostaria de compartilhar com o mundo.",
+    "factsIntro": "Se você está nessa página talvez você ache legal algum desses fatos aleatórios sobre mim:",
+    "facts": [
+      "Minha série preferida de todos os tempos é Sense8",
+      "Jogos Vorazes é minha trilogia preferida de livros",
+      "Apesar de novo, eu usei bastante Orkut, MSN, eMule e afins",
+      "Minha mãe diz que eu aprendi a ler no computador pra conseguir usar sozinho",
+      "Na época que eu jogava Habbo, eu participei como locutor e jornalista de múltiplos fã-sites do jogo",
+      "Eu já abri alguns servidores públicos de Minecraft na vida, <a href=\"https://youtube.com/results?q=&quot;servidor+sem+nome&quot;\" target=\"_blank\">o último</a> foi em 2020 e fechou em 2021",
+      "Na escola, eu gostava mais de escrever, desenhar e decorar títulos do que qualquer matéria específica",
+      "Eu gosto muito de tatuagens e tenho três no momento:"
+    ],
+    "tatoosTitle": "Minhas tatuagens",
+    "tatoos": [
+      "A tattoo da primeira imagem foi a primeira que eu fiz, em agosto de 2020. É o homem de lata protagonista do clipe da música <a href=\"https://www.youtube.com/watch?v=DP3j6hgS4VY\" target=\"_blank\">Na Sua Estante</a> da Pitty. É uma música que eu gosto desde pequeno e minha conexão com ela aumenta a cada vez que eu escuto.",
+      "A segunda é uma planta carnívora, em referência à música <a href=\"https://song.link/br/i/1562845907\" target=\"_blank\">Venus Fly Trap</a> (do inglês, \"planta carnívora\"), da Marina. Eu tinha vontade de tatuar algo que fizesse alusão às músicas dela desde que eu ouvi o álbum <a href=\"https://album.link/br/i/612448612\" target=\"_blank\">Electra Heart</a> pela primeira vez. Com o lançamento do impecável <a href=\"https://album.link/br/i/1562845738\" target=\"_blank\">Ancient Dreams in a Modern Land</a> agora em 2021, eu me senti inspirado a finalmente eternizar uma obra de arte dela no meu corpo.",
+      "A minha mais recente, que eu fiz junto da anterior é o Napstablook, personagem do jogo indie Undertale, um dos poucos jogos que cativaram meu interesse. Ele é um fantasma músico e melancólico que, ao julgar pelas minhas outras tatuagens, fica perceptível minha identificação com ele."
+    ],
+    "keepInTouchTitle": "Bora trocar uma ideia?",
+    "socialsIntro": "Eu não sou a pessoa mais conectada nas redes sociais do mundo, mas você pode me encontrar facilmente em uma dessas plataformas (por ordem decrescente de atividade):",
+    "socials": [
+      "DoceAzedo#2202 no <a href=\"https://discord.gg/vEGRe2kq8B\" target=\"blank\">Discord</a>",
+      "@doceazedo911 no <a href=\"https://twitter.com/doceazedo911\" target=\"blank\">Twitter</a>",
+      "@eightavocados no <a href=\"https://t.me/eightavocados\" target=\"blank\">Telegram</a>",
+      "@doceazedo911 no <a href=\"https://instagram.com/doceazedo911\" target=\"blank\">Instagram</a>"
+    ],
+    "livestream": "Eu também estou ao vivo na <a href=\"https://twitch.com/doceazedo911\" target=\"blank\">Twitch</a> de Terça à Sábado à partir das 19h30 programando ao vivo e conversando com as pessoas incríveis que aparecem por lá.",
+    "nickname": "\"Que nome de usuário é esse, <i>doceazedo911</i>?\" — pergunta que você provavelmente não fez. Mas respondendo mesmo assim, esse é o nick que eu uso por aí na internet desde que a Lady Gaga lançou o álbum <a href=\"https://album.link/br/i/1500951604\" target=\"_blank\">Chromatica</a> em maio de 2020 e eu venho juntando as músicas <a href=\"https://song.link/br/i/1500952438\" target=\"_blank\">Sour Candy</a> (do inglês, \"doce azedo\") e <a href=\"https://song.link/br/i/1500952435\" target=\"_blank\">911</a> desde então.",
+    "hardwareTitle": "Meu equipamento",
+    "hardware": [
+      "Processador: <span>AMD Ryzen 3600X</span>",
+      "Placa-mãe: <span>Gigabyte B450M DS3H</span>",
+      "Memória: <span>24GB (3x8) Crucial Ballistix Sport LT 3000MHz</span>",
+      "Placa de vídeo: <span>EVGA GTX 1660</span>",
+      "Armazenamento: <span>480GB SSD Crucial BX500 + 500GB HDD Western Digital</span>",
+      "Gabinete: <span>Corsair Carbide Series SPEC-DELTA RGB</span>",
+      "Monitores: <span>Samsung 24\" 75hz 1ms + AOC 18.5\"</span>",
+      "Teclado: <span>Redragon Kumara</span>",
+      "Mouse: <span>Redragon Cobra</span> <small>(Valorant: sensibilidade 0.45 e 800 DPI)</small>",
+      "Mesa digitalizadora: <span>Wacom CTL472</span> <small>(osu: full area, resolução em 71,15%)</small>",
+      "Headset: <span>Logitech Prodigy G231</span>",
+      "Webcam: <span>Logitech C922 Pro</span>"
+    ]
+  },
+
+  "contact": {
+    "title": "Get in touch",
+    "paragraph": "If you want to hire me, talk about a project or just chat with no commitment, let's do it!",
+    "telegramButton": "@eightavocados on Telegram"
+  },
+
+  "email": "me@lucasfernandes.com.br",
   "posted": "Published"
 }
