@@ -1,4 +1,4 @@
-import * as contentful from 'contentful';
+import * as contentful from 'contentful/dist/contentful.node';
 import dotenv from 'dotenv';
 dotenv.config();
 

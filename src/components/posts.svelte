@@ -1,11 +1,16 @@
 <script>
+  import { browser } from '$app/env';
   import { lang } from '../stores';
-  import dayjs from 'dayjs';
-  import relativeTime from 'dayjs/plugin/relativeTime';
-  import 'dayjs/locale/pt-br';
-  dayjs.extend(relativeTime);
 
   export let posts = [];
+
+  const readableDate = (dateString, lang) => {
+    if (browser) {
+      dayjs.extend(dayjs_plugin_relativeTime);
+      return dayjs(dateString).locale(lang == 'pt' ? 'pt-br' : 'en-us').fromNow();
+    }
+    return '';
+  }
 </script>
 
 <div>
@@ -14,7 +19,7 @@
       <figure style="background-image:url('/blog-icons/{post.icon}.svg')"></figure>
       <div>
         <h1>{post.title}</h1>
-        <h2>{$lang.posted} {dayjs(post.createdAt).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow()}</h2>
+        <h2>{$lang.posted} {readableDate(post.createdAt, $lang.code)}</h2>
       </div>
       <ul>
         {#each post.categories as category}

@@ -18,19 +18,22 @@
 </script>
 
 <script>
+  import { browser } from '$app/env';
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
   import { lang } from '../../stores';
   import hljs from 'highlight.js';
   import 'highlight.js/styles/base16/tomorrow-night.css';
-  import dayjs from 'dayjs';
-  import relativeTime from 'dayjs/plugin/relativeTime';
-  import 'dayjs/locale/pt-br';
   import Button from '../../components/button.svelte';
-  dayjs.extend(relativeTime);
 
   export let post = {};
+
+  let readableDate = '';
+  if (browser) {
+    dayjs.extend(dayjs_plugin_relativeTime);
+    readableDate = dayjs(post.createdAt).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow();
+  }
 
   onMount(() => {
     document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
@@ -44,7 +47,7 @@
 <header>
   <div>
     <h1>{post.title}</h1>
-    <h2>{$lang.posted} {dayjs(post.createdAt).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow()}</h2>
+    <h2>{$lang.posted} {readableDate}</h2>
     <ul>
       {#each post.categories as category}
         <li>{category}</li>
