@@ -7,7 +7,7 @@
 <div>
   {#each posts as post}
     <a sveltekit:prefetch href="/blog/{post.slug}">
-      <figure style="background-image:url('{SvelteIcon}')"></figure>
+      <figure style="background-image:url('/blog-icons/{post.icon}.svg')"></figure>
       <div>
         <h1>{post.title}</h1>
         <h2>{post.readableDatetime}</h2>
@@ -89,4 +89,20 @@
 
           &:not(:last-child)
             margin-right: .5rem
+
+  @media screen and (max-width: 768px)
+    a
+      flex-direction: column
+      text-align: center
+
+      &:hover
+        transform: translateY(-.5rem) !important
+
+      figure
+        height: 3rem
+        width: 3rem
+        margin: 0 auto 1rem !important
+
+      ul
+        margin: 1rem auto 0
 </style>

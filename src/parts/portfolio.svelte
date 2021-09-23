@@ -1,20 +1,58 @@
 <script>
+  import { lang } from '../stores';
   import SectionTitle from '../components/section-title.svelte';
-  import PortfolioPlaceholder from '../assets/img/portfolio-placeholder.jpg'
+  import portfolioMusicwrap from '../assets/img/portfolio-musicwrap.webp';
+  import portfolioConvergencia from '../assets/img/portfolio-convergencia.webp';
+  import portfolioGruposTelegram from '../assets/img/portfolio-grupostelegram.webp';
+  import portfolioOverlay from '../assets/img/portfolio-overlay.webp';
+  import portfolioDoceAzedo from '../assets/img/portfolio-doceazedo.webp';
+
+  const projects = [
+    {
+      image: portfolioMusicwrap,
+      link: 'https://musicwrap.xyz',
+    },
+    {
+      image: portfolioConvergencia,
+      scroll: '1.5s',
+      link: 'https://convergencia.net.br',
+    },
+    {
+      image: portfolioGruposTelegram,
+      scroll: '4s',
+      link: 'https://grupostelegram.com.br',
+    },
+    {
+      image: portfolioOverlay,
+      link: 'https://github.com/doceazedo/overlays',
+    },
+    {
+      image: portfolioDoceAzedo,
+      link: 'https://doceazedo.com',
+    },
+  ];
 </script>
 
 <section>
   <SectionTitle
-    title="A few websites I made" />
+    title={$lang.portfolio.title} />
     <ul>
-      {#each Array(4) as uwu, i}
+      {#each projects as project, i}
         <li>
           <div class="image">
-            <figure style="background-image:url({PortfolioPlaceholder})"></figure>
+            <figure style="background-image:url({project.image}); --speed: {project.scroll || '0s'}" class:scroll={project.scroll}>
+              {#if project.link}
+                <a href={project.link} target="_blank" class="content"> </a>
+              {/if}
+            </figure>
           </div>
-          <div class="content">
-            <h1>sitechique{i + 1}.com</h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda facere aspernatur accusantium exercitationem quis ea excepturi praesentium.</p>
+          
+          <div class="info">
+            {#if project.link}
+              <a href={project.link} target="_blank" class="content"> </a>
+            {/if}
+            <h1>{$lang.portfolio.projects[i].title}</h1>
+            <p>{$lang.portfolio.projects[i].description}</p>
           </div>
         </li>
       {/each}
@@ -66,14 +104,24 @@
           background-color: rgba(255, 255, 255, .05)
           flex-shrink: 0
           overflow: hidden
-          transition: all 1.5s ease, transform .5s ease
-          background-position: top center
+          transition: all var(--speed) ease, transform .5s ease
+          background-position: center center
           background-repeat: no-repeat
           background-size: cover
 
+          a
+            position: absolute
+            height: 100%
+            width: 100%
+
+          &.scroll
+            background-position: top center
+
+            &:hover
+              background-position: bottom center
+
           &:hover
             transform: perspective(1000px) rotateY(0deg) rotateX(0deg) rotate(0deg) scale(1) translateX(0) translateY(0)
-            background-position: bottom center
 
         &::before
           content: ''
@@ -86,10 +134,16 @@
           pointer-events: none
           transform: scaleY(1.1)
 
-      .content
+      .info
+        position: relative
         display: flex
         flex-direction: column
         justify-content: center
+
+        a
+          position: absolute
+          height: 100%
+          width: 100%
 
         h1
           font-size: 2.25rem
@@ -100,4 +154,29 @@
           font-size: 1.25rem
           line-height: 1.25
           color: $whiteish
+
+  @media screen and (max-width: 768px)
+    li
+      flex-direction: column
+
+      figure
+        height: 240px !important
+        width: 100% !important
+
+      .image
+        margin: 0 !important
+        margin-bottom: 2rem !important
+        order: unset !important
+
+      .info
+        h1,
+        p
+          text-align: center !important
+
+        h1
+          font-size: 2rem !important
+
+      &:not(:last-child) .info
+        padding-bottom: 4rem
+        border-bottom: 1px solid rgba(#fff, .1)
 </style>

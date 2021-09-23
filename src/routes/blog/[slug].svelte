@@ -37,7 +37,7 @@
     </ul>
   </div>
   <div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg" alt="">
+    <img src="/blog-icons/{post.icon}.svg" alt="">
   </div>
 </header>
 
@@ -81,4 +81,18 @@
 
     img
       height: 6rem
+
+  @media screen and (max-width: 768px)
+    header
+      flex-direction: column-reverse
+
+      div:first-child h1
+        font-size: 1.5rem
+
+      div:last-child
+        margin: 0
+        margin-bottom: 1rem
+
+        img
+          height: 4rem
 </style>

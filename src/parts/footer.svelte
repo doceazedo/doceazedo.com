@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { browser } from '$app/env';
+  import { lang } from '../stores';
   import { GithubIcon, LinkedinIcon, TwitchIcon, MailIcon } from 'svelte-feather-icons';
   import LastFmIcon from '../components/lastfm-icon.svelte';
   import LiftIcon from '../components/lift-icon.svelte';
@@ -45,6 +46,8 @@
     scrollToTop();
   }
 
+  const fadeInCover = event => event.target.classList.add('show');
+
   onMount(async () => {
 		const res = await fetch('/api/live');
 		liveStats = await res.json();
@@ -53,15 +56,15 @@
 
 <svelte:window bind:scrollY={scroll}/>
 
-<footer>
+<footer class:has-now-playing={liveStats.nowPlaying}>
   <p>
-    Proudly built with Svelte.<br>
-    Designed and coded by Lucas Fernandes.
+    {$lang.footer[0]} <br>
+    {$lang.footer[1]} &copy; {new Date().getFullYear()}
   </p>
   <div>
     {#if liveStats.nowPlaying}
       <a class="now-playing live" href="https://www.last.fm/user/pxlucasf" target="_blank">
-        <img src={liveStats.nowPlaying.cover} alt="">
+        <img on:load={fadeInCover} src={liveStats.nowPlaying.cover} alt="">
         <div>
           <h1>{liveStats.nowPlaying.title}</h1>
           <h2>{liveStats.nowPlaying.artist}</h2>
@@ -142,7 +145,13 @@
 
       .now-playing
         img
+          height: 4rem
+          width: 4rem
           pointer-events: none
+          transition: all .2s ease
+
+          &:not(.show)
+            opacity: 0
 
         div
           display: flex
@@ -194,4 +203,39 @@
     100%
       transform: scale(0.95)
       box-shadow: 0 0 0 0 rgba(255, 0, 0, 0)
+
+  @media screen and (max-width: 768px)
+    footer
+      position: relative
+      flex-direction: column
+
+      &.has-now-playing
+        padding-bottom: 9rem
+
+      p
+        margin-bottom: 2rem
+        text-align: center
+
+      .now-playing
+        position: absolute !important
+        bottom: 4rem
+        width: 19rem
+        margin-right: 0 !important
+
+        h1,
+        h2
+          max-width: 12rem !important
+
+      &:not(.has-now-playing)
+        .social
+          height: 3rem !important
+          width: 3rem !important
+
+          :global(svg)
+            height: 1.25rem
+            width: 1.25rem
+
+    .lift
+      height: 1.5rem
+      width: 1.5rem
 </style>

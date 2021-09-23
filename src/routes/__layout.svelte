@@ -15,3 +15,9 @@
 </main>
 
 <Footer />
+
+<style type="text/sass">
+  @media screen and (max-width: 768px)
+    main
+      padding: 0 1rem
+</style>

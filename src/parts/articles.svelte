@@ -1,4 +1,5 @@
 <script>
+  import { lang } from '../stores';
   import SectionTitle from '../components/section-title.svelte';
   import Posts from '../components/posts.svelte';
   import Button from '../components/button.svelte';
@@ -8,16 +9,13 @@
 
 <section>
   <SectionTitle
-    title="Latest articles"
-    paragraph={[
-      'I pretty much rather reading articles than watching tutorials, so',
-      'here I gather stuff that I learned and want to share.'
-    ]} />
+    title={$lang.articles.title}
+    paragraph={$lang.articles.paragraph} />
   
   <Posts posts={posts}/>
 
   <Button outline center href="/blog">
-    View all
+    {$lang.articles.more}
   </Button>
 </section>
 

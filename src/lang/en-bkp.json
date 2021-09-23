@@ -1,0 +1,25 @@
+{
+  "navbar": {
+    "home": "Home",
+    "blog": "Blog",
+    "about": "About me",
+    "contact": "Contact"
+  },
+
+  "blurb": {
+    "title": "I'm Lucas Fernandes.",
+    "paragraph": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing",
+      " elit, sed do eiusmod tempor incididunt ut",
+      " labore et dolore magna aliqua. Ut enim ad minim."
+    ],
+    "button": "Something"
+  }
+}
+
+Latest articles
+I pretty much rather reading articles than watching tutorials, so
+here I gather stuff that I learned and want to share.
+
+Proudly built with Svelte & SvelteKit.
+Designed and coded by Lucas Fernandes.

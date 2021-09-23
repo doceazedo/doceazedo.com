@@ -13,8 +13,8 @@
       {/each}
     </p>
     <div class="buttons">
-      <Button>{$lang.blurb.button}</Button>
-      <Button outline href="https://github.com/pxlucasf" target="_blank">GitHub</Button>
+      <Button href="/contact">{$lang.blurb.button}</Button>
+      <Button outline href="https://github.com/doceazedo" target="_blank">GitHub</Button>
     </div>
   </div>
   <div>
@@ -84,4 +84,42 @@
         transform: scaleY(1.2) scalex(1.5)
         border-radius: 50%
         filter: blur(1.5rem)
+
+  @media screen and (max-width: 768px)
+    header
+      flex-direction: column-reverse
+      padding: 3rem 0
+
+      >div:first-child
+        width: 100%
+        text-align: center
+
+        h1
+          font-size: 2rem
+
+        p
+          margin-bottom: 3rem
+
+        br
+          display: none
+
+      >div:last-child
+        display: flex
+        justify-content: center
+        width: 100%
+        margin-bottom: 2rem
+
+        figure
+          width: fit-content
+          margin-left: 1rem
+
+          &,
+          &::before,
+          &::after,
+          img
+            height: 300px
+            width: 225px
+
+      .buttons
+        justify-content: center
 </style>

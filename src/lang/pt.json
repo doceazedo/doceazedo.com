@@ -9,10 +9,58 @@
   "blurb": {
     "title": "Prazer, Lucas Fernandes.",
     "paragraph": [
-      "Por outro lado, o comprometimento entre as",
-      "equipes de implantação nos obriga à",
-      "migração das janelas de tempo disponíveis."
+      "Eu sou um desenvolvedor fullstack especializado",
+      "em web, criando layouts elegantes e reativos e",
+      "arquitetando APIs e bancos bem estruturados."
     ],
-    "button": "Alguma coisa"
-  }
+    "button": "Fale comigo"
+  },
+
+  "skills": {
+    "title": "O que eu consigo fazer",
+    "paragraph": [
+      "Eu me interesso tanto pela parte front-end quanto back-end da",
+      "web, e tenho me arriscando na área do mobile também."
+    ]
+  },
+
+  "portfolio": {
+    "title": "Meus últimos projetos e trabalhos",
+    "projects": [
+      {
+        "title": "musicwrap.xyz",
+        "description": "Site open-source desenvolvido com React e Fastify que gera colagens das músicas que você mais ouviu na semana, integrado ao last.fm, Spotify e Deezer."
+      },
+      {
+        "title": "convergencia.net.br",
+        "description": "Site institucional desenvolvido com WordPress e ACF para Convergência Digital, empresa de telemarketing e autoridade de registro na Grande BH."
+      },
+      {
+        "title": "grupostelegram.com.br",
+        "description": "Desenvolvido em React com Next.js e Chakra UI, hoje eu contribuo para esse que é um dos maiores indexadores de grupos de Telegram no Brasil."
+      },
+      {
+        "title": "Overlay + Bot",
+        "description": "Nas minhas lives de programação na Twitch, todo o visual e comandos estão sendo desenvolvidos com Svelte e SvelteKit."
+      },
+      {
+        "title": "doceazedo.com",
+        "description": "Site que reúne informações relacionadas às minhas lives na Twitch, como redes sociais e comandos do chat, também desenvolvido em Svelte e SvelteKit."
+      }
+    ]
+  },
+
+  "articles": {
+    "title": "Últimos artigos",
+    "paragraph": [
+      "No geral eu prefiro ler artigos do que assistir tutoriais, então",
+      "aqui eu reúno coisas que aprendi e quero compartilhar."
+    ],
+    "more": "Ver todos"
+  },
+
+  "footer": [
+    "Powered by Svelte & SvelteKit",
+    "Desenvolvido por Lucas Fernandes"
+  ]
 }

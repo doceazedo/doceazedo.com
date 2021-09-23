@@ -29,4 +29,11 @@
     color: $whiteish
     margin-top: -3rem
     margin-bottom: 4rem
+
+  @media screen and (max-width: 768px)
+    h1
+      font-size: 2rem
+
+    br
+      display: none
 </style>

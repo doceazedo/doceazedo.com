@@ -1,4 +1,5 @@
 <script>
+  import { lang } from '../stores';
   import SectionTitle from '../components/section-title.svelte';
   import SvelteIcon from '../assets/img/svelte.svg';
   import ReactIcon from '../assets/img/react.svg';
@@ -15,11 +16,8 @@
 
 <section>
   <SectionTitle
-    title="What I can do"
-    paragraph={[
-      'I enjoy both front-end and back-end parts of programming,',
-      'and also taking a chance on the mobile area too.'
-    ]} />
+    title={$lang.skills.title}
+    paragraph={$lang.skills.paragraph} />
 
     <ul>
       <li>
@@ -58,12 +56,12 @@
         <p>WordPress</p>
       </li>
       <li>
-        <img src={CapacitorIcon} alt="">
-        <p>Capacitor</p>
+        <img src={MySqlIcon} alt="">
+        <p>MySQL</p>
       </li>
       <li>
-        <img src={CapacitorIcon} alt="">
-        <p>Capacitor</p>
+        <img src={MongoDbIcon} alt="">
+        <p>MongoDB</p>
       </li>
       <li>
         <img src={CapacitorIcon} alt="">
@@ -114,4 +112,16 @@
 
       + ul
         margin-top: 3rem
+
+  @media screen and (max-width: 768px)
+    ul
+      + ul
+        margin-top: 2rem !important
+
+      img
+        height: 2rem !important
+        width: 2rem !important
+
+      p
+        display: none !important
 </style>

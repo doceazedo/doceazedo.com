@@ -13,13 +13,16 @@
 </script>
 
 <script>
-  import { Blurb, Skills, Portfolio, Projects, Experience, Articles } from '../parts';
+  import { Blurb, Skills, Portfolio, Articles } from '../parts';
 
   export let posts = [];
 </script>
 
+<svelte:head>
+  <title>Lucas Fernandes</title>
+</svelte:head>
+
 <Blurb />
 <Skills />
 <Portfolio />
-<Projects />
 <Articles posts={posts.posts.slice(0, 3)} />

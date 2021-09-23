@@ -1,14 +1,30 @@
 <script>
   import { page } from '$app/stores';
   import { browser } from '$app/env';
+  import { fly } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
   import { lang } from '../stores';
+  import { MenuIcon } from 'svelte-feather-icons';
   import logo from '../assets/img/logo.svg';
+  import achievement from '../assets/img/achievement.webp';
 
   let logoEl;
   let spinDegrees = 0;
+  let spinnedTimes = 0;
+  let achievementGet = false;
+  let achievementTimeout;
   const spin = () => {
     spinDegrees += 360;
     logoEl.style.transform = `rotate(${spinDegrees}deg)`;
+
+    spinnedTimes++;
+    clearTimeout(achievementTimeout);
+    if (spinnedTimes == 10) {
+      achievementGet = true;
+      setTimeout(() => achievementGet = false, 8000);
+    } else if (spinnedTimes < 10) {
+      achievementTimeout = setTimeout(() => spinnedTimes = 0, 2500);
+    }
   }
 
   let currentLang = 'en';
@@ -18,21 +34,31 @@
     lang.change(_lang);
     currentLang = _lang;
   };
+
+  let showMobileMenu = false;
 </script>
 
 <navbar>
-  <a sveltekit:prefetch href="/">
+  <a href="/">
     <img src={logo} alt="" bind:this={logoEl} on:click={spin}>
   </a>
 
-  <ul>
-    <li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">{$lang.navbar.home}</a></li>
+  <ul class:show={showMobileMenu} on:click={() => showMobileMenu = false}>
+    <li class:active={$page.path === '/'}><a href="/">{$lang.navbar.home}</a></li>
     <li class:active={$page.path.startsWith('/blog')}><a sveltekit:prefetch href="/blog">{$lang.navbar.blog}</a></li>
-    <li class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">{$lang.navbar.about}</a></li>
-    <li class:active={$page.path === '/contact'}><a sveltekit:prefetch href="/contact">{$lang.navbar.contact}</a></li>
+    <li class:active={$page.path === '/about'}><a href="/about">{$lang.navbar.about}</a></li>
+    <li class:active={$page.path === '/contact'}><a href="/contact">{$lang.navbar.contact}</a></li>
     <li><span on:click={() => changeLang('pt')} class:active={currentLang == 'pt'}>PT-BR</span> / <span on:click={() => changeLang('en')} class:active={currentLang == 'en'}>EN</span></li>
   </ul>
+
+  <div class="mobile-menu" on:click={() => showMobileMenu = true}>
+    <MenuIcon size="24" />
+  </div>
 </navbar>
+
+{#if achievementGet}
+  <img class="achievement" src={achievement} alt="" transition:fly={{delay: 500, duration: 800, y: -80, opacity: 1, easing: quintOut}}>
+{/if}
 
 <style type="text/sass">
   @import '../assets/sass/vars.sass'
@@ -77,6 +103,7 @@
           position: absolute
           bottom: -1px
           left: 0
+          z-index: 1
           width: 100%
           height: 1px
           background-color: $primary
@@ -119,4 +146,50 @@
             &:not(.active)
               color: $whiteish
               cursor: pointer
+
+    .mobile-menu
+      display: none
+
+  .achievement
+    position: fixed
+    top: 1rem
+    right: 1rem
+    z-index: 999
+
+  @media screen and (max-width: 768px)
+    navbar
+      ul
+        position: fixed
+        top: 0
+        left: 0
+        height: 100%
+        width: 100%
+        z-index: 999
+        flex-direction: column
+        background-color: rgba(#000, .5)
+        backdrop-filter: blur(.25rem)
+        transition: all .2s ease
+
+        &:not(.show)
+          pointer-events: none
+          opacity: 0
+
+          li
+            transform: translateY(-4rem)
+
+        li
+          height: 4rem
+          background-color: #11052c
+          transition: all .2s ease
+
+      img
+        height: 3rem !important
+
+      .mobile-menu
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 4rem
+        width: 4rem
+        margin-left: auto
 </style>

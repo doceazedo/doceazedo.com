@@ -21,6 +21,7 @@
     padding: 1rem 2rem
     font-size: 1.25rem
     text-decoration: none
+    color: #fff
     background-color: $primary
     box-shadow: 0 0 .5rem .25rem rgba($primary, .25)
     cursor: pointer
@@ -36,6 +37,9 @@
 
       &:hover
         // background-color: rgba($primary, .25)
+
+    :global(.feather)
+      margin-right: .5rem
 
     &.center
       margin: auto
