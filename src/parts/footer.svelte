@@ -13,6 +13,10 @@
   let isAtBottom = false;
 
   let song, chime;
+  if (browser) {
+    song = new Audio(Hotel);
+    chime = new Audio(Chime);
+  }
 
   $: {
     isAtBottom = false;
@@ -36,13 +40,9 @@
   };
 
   const callLift = () => {
-    song = new Audio(Hotel);
     song.play();
-
-    chime = new Audio(Chime);
     chime.currentTime = 0;
     chime.volume = .5;
-
     scrollToTop();
   }
 
@@ -51,6 +51,16 @@
   onMount(async () => {
 		const res = await fetch('/api/live');
 		liveStats = await res.json();
+
+    // Preload lift audios
+    // song = new Audio(Hotel);
+    // song.volume = 0;
+    // song.play();
+    // setTimeout(() => {
+    //   chime = new Audio(Chime);
+    //   chime.volume = 0;
+    //   chime.play();
+    // }, 2000);
 	});
 </script>
 
