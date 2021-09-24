@@ -86,7 +86,7 @@
         <LastFmIcon/>
       </a>
     {/if}
-    <a class="social" href="mailto:me@lucasfernandes.com.br" target="_blank">
+    <a class="social" href="mailto:{$lang.email}" target="_blank">
       <MailIcon size="24" />
     </a>
   </div>
