@@ -35,8 +35,11 @@
     readableDate = dayjs(post.createdAt).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow();
   }
 
+  let hasMounted = false;
+
   onMount(() => {
     document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
+    hasMounted = true;
   })
 </script>
 
@@ -70,6 +73,22 @@
 <article class="content">
   {@html post.content}
 </article>
+
+<div class="giscus"></div>
+{#if hasMounted}
+  <script src="https://giscus.app/client.js"
+          data-repo="doceazedo/lucasfernandes.com.br"
+          data-repo-id="MDEwOlJlcG9zaXRvcnk0MDU3NzE4NDk="
+          data-category="Comments"
+          data-category-id="DIC_kwDOGC-WSc4B_Ku7"
+          data-mapping="pathname"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-theme="dark"
+          crossorigin="anonymous"
+          async>
+  </script>
+{/if}
 
 <style type="text/sass">
   @import '../../assets/sass/vars.sass'
