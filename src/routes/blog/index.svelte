@@ -14,9 +14,14 @@
   import { lang } from '../../stores';
   import PageTitle from '../../components/page-title.svelte';
   import Posts from '../../components/posts.svelte';
+  import SEO from '../../components/seo.svelte';
 
   export let posts = [];
 </script>
+
+<svelte:head>
+  <SEO path="/blog" />
+</svelte:head>
 
 <PageTitle
   title="Blog"

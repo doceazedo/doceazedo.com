@@ -1,6 +1,7 @@
 <script>
   import { lang } from '../stores';
   import PageTitle from '../components/page-title.svelte';
+  import SEO from '../components/seo.svelte';
   import meAtBeach from '../assets/img/me-beach.webp';
   import tattoo1 from '../assets/img/tattoo-1.webp';
   import tattoo2 from '../assets/img/tattoo-2.webp';
@@ -8,7 +9,7 @@
 </script>
 
 <svelte:head>
-  <title>Lucas Fernandes</title>
+  <SEO path="/about" />
 </svelte:head>
 
 <PageTitle

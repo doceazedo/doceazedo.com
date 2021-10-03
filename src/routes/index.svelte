@@ -14,12 +14,13 @@
 
 <script>
   import { Blurb, Skills, Portfolio, Articles } from '../parts';
+  import SEO from '../components/seo.svelte';
 
   export let posts = [];
 </script>
 
 <svelte:head>
-  <title>Lucas Fernandes</title>
+  <SEO />
 </svelte:head>
 
 <Blurb />

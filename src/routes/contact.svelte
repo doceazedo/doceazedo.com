@@ -2,8 +2,13 @@
   import { lang } from '../stores';
   import PageTitle from '../components/page-title.svelte';
   import Button from '../components/button.svelte';
+  import SEO from '../components/seo.svelte';
   import { MailIcon, SendIcon } from 'svelte-feather-icons';
 </script>
+
+<svelte:head>
+  <SEO path="/contact" />
+</svelte:head>
 
 <div class="contact">
   <PageTitle
@@ -15,10 +20,6 @@
     <Button href="https://t.me/eightavocados" outline><SendIcon size="24" fill="#fff" /> {$lang.contact.telegramButton}</Button>
   </div>
 </div>
-
-<svelte:head>
-  <title>Lucas Fernandes</title>
-</svelte:head>
 
 <style type="text/sass">
   .contact

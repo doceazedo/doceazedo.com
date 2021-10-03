@@ -23,9 +23,9 @@
   import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
   import { lang } from '../../stores';
+  import SEO from '../../components/seo.svelte';
   import hljs from 'highlight.js';
   import 'highlight.js/styles/base16/tomorrow-night.css';
-  import Button from '../../components/button.svelte';
 
   export let post = {};
 
@@ -51,7 +51,7 @@
 </script>
 
 <svelte:head>
-  <title>{post.title} - Lucas Fernandes</title>
+  <SEO path="/blog/{post.slug}" title="{post.title} - Lucas Fernandes" />
 </svelte:head>
 
 <header>
