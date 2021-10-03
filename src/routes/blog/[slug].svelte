@@ -39,6 +39,9 @@
 
   onMount(() => {
     document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
+    document.querySelectorAll('p + pre').forEach(el => {
+      if (el.previousElementSibling.innerHTML.length) el.previousElementSibling.classList.add('file-title')
+    });
     hasMounted = true;
   })
 </script>

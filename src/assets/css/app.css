@@ -259,6 +259,13 @@ body::before {
   margin-top: 0;
 }
 
+.content .file-title {
+  margin-bottom: 0 !important;
+  padding: .75em 1.25em;
+  font-size: 1rem;
+  background-color: #222;
+}
+
 ::-moz-selection {
   color: #fff !important;
   background: #6930c3 !important;
