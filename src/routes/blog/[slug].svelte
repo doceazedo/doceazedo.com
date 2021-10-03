@@ -43,7 +43,11 @@
       if (el.previousElementSibling.innerHTML.length) el.previousElementSibling.classList.add('file-title')
     });
     hasMounted = true;
-  })
+  });
+
+  $: {
+    if (browser) readableDate = dayjs(post.createdAt).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow();
+  }
 </script>
 
 <svelte:head>
