@@ -69,11 +69,9 @@
   </div>
 </header>
 
-{#if $lang.code == 'en' && post.devto}
+{#if $lang.code == 'en'}
   <div class="alert" transition:slide={{duration: 200, easing: quintOut }}>
-    <Button href={post.devto} target="_blank">
-      <b>Click here</b> to read this article in English on dev.to
-    </Button>
+    This blog articles are only available in Portuguese for now. English translations for every post are yet to come.
   </div>
 {/if}
 
@@ -135,9 +133,10 @@
       height: 6rem
 
   .alert
-    display: flex
-    justify-content: center
+    text-align: center
+    font-style: italic
     margin-bottom: 4rem
+    color: $whiteish
 
     :global(.button)
       display: block !important
@@ -155,4 +154,7 @@
 
         img
           height: 4rem
+
+    .alert
+      text-align: left
 </style>
