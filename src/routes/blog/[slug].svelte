@@ -25,6 +25,7 @@
   import { lang } from '../../stores';
   import SEO from '../../components/seo.svelte';
   import hljs from 'highlight.js';
+  import hljs_svelte from 'highlightjs-svelte';
   import 'highlight.js/styles/base16/tomorrow-night.css';
 
   export let post = {};
@@ -38,10 +39,18 @@
   let hasMounted = false;
 
   onMount(() => {
-    document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
     document.querySelectorAll('p + pre').forEach(el => {
-      if (el.previousElementSibling.innerHTML.length) el.previousElementSibling.classList.add('file-title')
+      const lastEl = el.previousElementSibling;
+      
+      if (lastEl.innerHTML.length) {
+        lastEl.classList.add('file-title');
+        const lang = lastEl.innerText.split('.');
+        if (lastEl.innerText.charAt(0) != '.') el.querySelector('code').classList.add(`language-${lang[lang.length - 1]}`);
+      }
     });
+
+    hljs_svelte(hljs);
+    document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
     hasMounted = true;
   });
 

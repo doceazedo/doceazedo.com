@@ -29,6 +29,7 @@
     "contentful": "^9.0.0",
     "cookie": "^0.4.1",
     "dotenv": "^10.0.0",
-    "highlight.js": "^11.2.0"
+    "highlight.js": "^11.2.0",
+    "highlightjs-svelte": "^1.0.6"
   }
 }
