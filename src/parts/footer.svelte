@@ -8,7 +8,7 @@
   import Hotel from '../assets/audio/Toby Fox - Hotel.mp3';
   import Chime from '../assets/audio/chime.mp3';
 
-  let liveStats = {};
+  let liveStats = null;
   let scroll = 0;
   let isAtBottom = false;
 
@@ -48,32 +48,24 @@
 
   const fadeInCover = event => event.target.classList.add('show');
 
-  onMount(async () => {
-		const res = await fetch('/api/live');
-		liveStats = await res.json();
+  const updateLiveStats = async () => liveStats = await(await fetch('/api/live')).json();
 
-    // Preload lift audios
-    // song = new Audio(Hotel);
-    // song.volume = 0;
-    // song.play();
-    // setTimeout(() => {
-    //   chime = new Audio(Chime);
-    //   chime.volume = 0;
-    //   chime.play();
-    // }, 2000);
-	});
+  onMount(async () => {
+    updateLiveStats();
+    setInterval(updateLiveStats, 10000);
+  });
 </script>
 
 <svelte:window bind:scrollY={scroll}/>
 
-<footer class:has-now-playing={liveStats.nowPlaying}>
+<footer class:has-now-playing={liveStats?.nowPlaying}>
   <p>
     {$lang.footer[0]} <br>
     {$lang.footer[1]} &copy; {new Date().getFullYear()}
   </p>
   <div>
-    {#if liveStats.nowPlaying}
-      <a class="now-playing live" href="https://www.last.fm/user/pxlucasf" target="_blank">
+    {#if liveStats?.nowPlaying}
+      <a class="now-playing live" href="https://www.last.fm/user/doceazedo911" target="_blank">
         <img on:load={fadeInCover} src={liveStats.nowPlaying.cover} alt="">
         <div>
           <h1>{liveStats.nowPlaying.title}</h1>
@@ -88,11 +80,11 @@
     <a class="social" href="https://linkedin.com/in/imlucas" target="_blank">
       <LinkedinIcon size="24" />
     </a>
-    <a class="social" class:live={liveStats.isLive} href="https://twitch.tv/doceazedo911" target="_blank">
+    <a class="social" class:live={liveStats?.isLive} href="https://twitch.tv/doceazedo911" target="_blank">
       <TwitchIcon size="24" />
     </a>
-    {#if !liveStats.nowPlaying}
-      <a class="social" href="https://www.last.fm/user/pxlucasf" target="_blank">
+    {#if !liveStats?.nowPlaying}
+      <a class="social" href="https://www.last.fm/user/doceazedo911" target="_blank">
         <LastFmIcon/>
       </a>
     {/if}
