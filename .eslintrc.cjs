@@ -1,6 +1,6 @@
 module.exports = {
 	root: true,
-	extends: ['eslint:recommended', 'prettier'],
+	extends: ['airbnb-base', 'prettier'],
 	plugins: ['svelte3'],
 	overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
 	parserOptions: {
