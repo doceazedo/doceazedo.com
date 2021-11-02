@@ -24,7 +24,7 @@
     },
     {
       image: portfolioOverlay,
-      link: 'https://github.com/doceazedo/overlays',
+      link: 'https://github.com/doceazedo/overlay',
     },
     {
       image: portfolioDoceAzedo,
