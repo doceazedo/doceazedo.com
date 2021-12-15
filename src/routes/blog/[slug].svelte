@@ -1,17 +1,17 @@
 <script context="module">
   export async function load({ page, fetch }) {
-    const post = await(await fetch(`/api/posts/${page.params.slug}`)).json();
+    const posts = await(await fetch(`https://wp.lucasfernandes.com.br/wp-json/wp/v2/posts?slug=${page.params.slug}`)).json();
 
-    if (post) {
+    if (posts.length) {
       return {
         props: {
-          post: post
+          post: posts[0]
         }
       };
     }
 
     return {
-      status: res.status,
+      status: 404,
       error: new Error(`Couldn't find the requested post`)
     };
   }
@@ -43,9 +43,12 @@
       const lastEl = el.previousElementSibling;
       
       if (lastEl.innerHTML.length) {
+        if (lastEl.innerHTML.includes('&nbsp;'))
+          return lastEl.innerHTML = '';
+
         lastEl.classList.add('file-title');
         const lang = lastEl.innerText.split('.');
-        if (lastEl.innerText.charAt(0) != '.') el.querySelector('code').classList.add(`language-${lang[lang.length - 1]}`);
+        if (lastEl.innerText.trim().charAt(0) != '.') el.querySelector('code').classList.add(`language-${lang[lang.length - 1]}`);
       }
     });
 
@@ -55,26 +58,26 @@
   });
 
   $: {
-    if (browser) readableDate = dayjs(post.createdAt).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow();
+    if (browser) readableDate = dayjs(post.date).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow();
   }
 </script>
 
 <svelte:head>
-  <SEO path="/blog/{post.slug}" title="{post.title} - Lucas Fernandes" />
+  <SEO path="/blog/{post.slug}" title="{post.title.rendered} - Lucas Fernandes" />
 </svelte:head>
 
 <header>
   <div>
-    <h1>{post.title}</h1>
+    <h1>{post.title.rendered}</h1>
     <h2>{$lang.posted} {readableDate}</h2>
     <ul>
-      {#each post.categories as category}
-        <li>{category}</li>
+      {#each post?.acf?.categories?.split(',') || Array() as category}
+        <li><span>#</span>{category}</li>
       {/each}
     </ul>
   </div>
   <div>
-    <img src="/blog-icons/{post.icon}.svg" alt="">
+    <img src="{post?.acf?.icon}" alt="">
   </div>
 </header>
 
@@ -85,7 +88,7 @@
 {/if}
 
 <article class="content">
-  {@html post.content}
+  {@html post.content.rendered}
 </article>
 
 <div class="giscus"></div>
@@ -137,6 +140,9 @@
 
         &:not(:last-child)
           margin-right: .5rem
+
+        span
+          opacity: .75
 
     img
       height: 6rem
