@@ -16,14 +16,14 @@
 <div>
   {#each posts as post}
     <a sveltekit:prefetch href="/blog/{post.slug}">
-      <figure style="background-image:url('/blog-icons/{post.icon}.svg')"></figure>
+      <figure style="background-image:url({post?.acf?.icon})"></figure>
       <div>
-        <h1>{post.title}</h1>
-        <h2>{$lang.posted} {readableDate(post.createdAt, $lang.code)}</h2>
+        <h1>{post.title.rendered}</h1>
+        <h2>{$lang.posted} {readableDate(post.date, $lang.code)}</h2>
       </div>
       <ul>
-        {#each post.categories as category}
-          <li>{category}</li>
+        {#each post?.acf?.categories?.split(',') || Array() as category}
+          <li><span>#</span>{category}</li>
         {/each}
       </ul>
     </a>
@@ -95,6 +95,9 @@
         li
           padding: .25rem .75rem
           background-color: $primary
+
+          span
+            opacity: .75
 
           &:not(:last-child)
             margin-right: .5rem
