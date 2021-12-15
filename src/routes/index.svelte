@@ -2,11 +2,11 @@
   export const prerender = true;
 
   export async function load({ page, fetch }) {
-    const posts = await (await fetch(`/api/posts`)).json();
+    const posts = await (await fetch('https://wp.lucasfernandes.com.br/wp-json/wp/v2/posts?per_page=3')).json();
 
     return {
       props: {
-        posts: posts.posts
+        posts
       }
     };
   }
@@ -26,4 +26,4 @@
 <Blurb />
 <Skills />
 <Portfolio />
-<Articles posts={posts.slice(0, 3)} />
+<Articles {posts} />
