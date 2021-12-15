@@ -266,6 +266,11 @@ body::before {
   background-color: #222;
 }
 
+.content img.inline {
+  margin-bottom: 0;
+  vertical-align: bottom;
+}
+
 ::-moz-selection {
   color: #fff !important;
   background: #6930c3 !important;
