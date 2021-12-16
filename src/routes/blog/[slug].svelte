@@ -3,9 +3,17 @@
     const posts = await(await fetch(`https://wp.lucasfernandes.com.br/wp-json/wp/v2/posts?slug=${page.params.slug}`)).json();
 
     if (posts.length) {
+      const featuredMedias = posts[0]['_links']['wp:featuredmedia'];
+      let thumbnail = 'https://lucasfernandes.com.br/thumbnail.jpg';
+      if (featuredMedias) {
+        const media = await(await fetch(featuredMedias[0].href)).json();
+        thumbnail = media.guid.rendered;
+      }
+
       return {
         props: {
-          post: posts[0]
+          post: posts[0],
+          thumbnail
         }
       };
     }
@@ -28,7 +36,7 @@
   import hljs_svelte from 'highlightjs-svelte';
   import 'highlight.js/styles/base16/tomorrow-night.css';
 
-  export let post = {};
+  export let post = null, thumbnail = '';
 
   let readableDate = '';
   if (browser) {
@@ -63,7 +71,7 @@
 </script>
 
 <svelte:head>
-  <SEO path="/blog/{post.slug}" title="{post.title.rendered} - Lucas Fernandes" />
+  <SEO path="/blog/{post.slug}" title="{post.title.rendered} - Lucas Fernandes" {thumbnail} />
 </svelte:head>
 
 <header>
