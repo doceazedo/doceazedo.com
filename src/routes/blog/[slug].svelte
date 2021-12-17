@@ -39,9 +39,13 @@
   export let post = null, thumbnail = '';
 
   let readableDate = '';
+  let fullDate = '';
   if (browser) {
     dayjs.extend(dayjs_plugin_relativeTime);
-    readableDate = dayjs(post.createdAt).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow();
+    readableDate = dayjs(post.date).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow();
+    fullDate = dayjs(post.date).format('DD/MM/YYYY à[s] HH:mm');
+    console.log(fullDate); 
+    console.log(post); 
   }
 
   let hasMounted = false;
@@ -77,7 +81,7 @@
 <header>
   <div>
     <h1>{post.title.rendered}</h1>
-    <h2>{$lang.posted} {readableDate}</h2>
+    <h2 title={fullDate}>{$lang.posted} {readableDate}</h2>
     <ul>
       {#each post?.acf?.categories?.split(',') || Array() as category}
         <li><span>#</span>{category}</li>
