@@ -1,7 +1,7 @@
 <script context="module">
   export const prerender = true;
 
-  export async function load({ page, fetch }) {
+  export async function load({ fetch }) {
     const posts = await (await fetch('https://wp.lucasfernandes.com.br/wp-json/wp/v2/posts?per_page=3')).json();
 
     return {

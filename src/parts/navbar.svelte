@@ -44,10 +44,10 @@
   </a>
 
   <ul class:show={showMobileMenu} on:click={() => showMobileMenu = false}>
-    <li class:active={$page.path === '/'}><a href="/">{$lang.navbar.home}</a></li>
-    <li class:active={$page.path.startsWith('/blog')}><a sveltekit:prefetch href="/blog">{$lang.navbar.blog}</a></li>
-    <li class:active={$page.path === '/about'}><a href="/about">{$lang.navbar.about}</a></li>
-    <li class:active={$page.path === '/contact'}><a href="/contact">{$lang.navbar.contact}</a></li>
+    <li class:active={$page.url.pathname === '/'}><a href="/">{$lang.navbar.home}</a></li>
+    <li class:active={$page.url.pathname.startsWith('/blog')}><a sveltekit:prefetch href="/blog">{$lang.navbar.blog}</a></li>
+    <li class:active={$page.url.pathname === '/about'}><a href="/about">{$lang.navbar.about}</a></li>
+    <li class:active={$page.url.pathname === '/contact'}><a href="/contact">{$lang.navbar.contact}</a></li>
     <li><span on:click={() => changeLang('pt')} class:active={currentLang == 'pt'}>PT-BR</span> / <span on:click={() => changeLang('en')} class:active={currentLang == 'en'}>EN</span></li>
   </ul>
 

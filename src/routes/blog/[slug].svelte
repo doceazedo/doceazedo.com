@@ -1,6 +1,6 @@
 <script context="module">
-  export async function load({ page, fetch }) {
-    const posts = await(await fetch(`https://wp.lucasfernandes.com.br/wp-json/wp/v2/posts?slug=${page.params.slug}`)).json();
+  export async function load({ params, fetch }) {
+    const posts = await(await fetch(`https://wp.lucasfernandes.com.br/wp-json/wp/v2/posts?slug=${params.slug}`)).json();
 
     if (posts.length) {
       const featuredMedias = posts[0]['_links']['wp:featuredmedia'];
