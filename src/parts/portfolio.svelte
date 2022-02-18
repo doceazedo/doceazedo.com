@@ -1,7 +1,7 @@
 <script>
   import { lang } from '../stores';
   import SectionTitle from '../components/section-title.svelte';
-  import portfolioMusicwrap from '../assets/img/portfolio-musicwrap.webp';
+  import portfolioSemaninha from '../assets/img/portfolio-semaninha.webp';
   import portfolioConvergencia from '../assets/img/portfolio-convergencia.webp';
   import portfolioGruposTelegram from '../assets/img/portfolio-grupostelegram.webp';
   import portfolioOverlay from '../assets/img/portfolio-overlay.webp';
@@ -9,8 +9,8 @@
 
   const projects = [
     {
-      image: portfolioMusicwrap,
-      link: 'https://musicwrap.xyz',
+      image: portfolioSemaninha,
+      link: 'https://semaninha.com',
     },
     {
       image: portfolioConvergencia,

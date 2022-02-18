@@ -30,8 +30,8 @@
     "title": "My latest projects and works",
     "projects": [
       {
-        "title": "musicwrap.xyz",
-        "description": "Open-source website developed with React and Fastify that generates collages with your top listened songs of the week, using the last.fm API."
+        "title": "Semaninha",
+        "description": "Open-source website developed with SvelteKit and Puppeteer that allows you to generate collages with your top listened songs, using the last.fm API."
       },
       {
         "title": "convergencia.net.br",
@@ -43,7 +43,7 @@
       },
       {
         "title": "Overlay + Bot",
-        "description": "In my livestreams at Twitch, every overlay and chat commands are being developed by myself with Svelte and SvelteKit."
+        "description": "In my live coding streams on Twitch, every overlay visuals and chat commands are being developed with Svelte and SvelteKit."
       },
       {
         "title": "doceazedo.com",

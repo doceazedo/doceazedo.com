@@ -30,8 +30,8 @@
     "title": "Meus últimos projetos e trabalhos",
     "projects": [
       {
-        "title": "musicwrap.xyz",
-        "description": "Site open-source desenvolvido com React e Fastify que gera colagens das músicas que você mais ouviu na semana, integrado ao last.fm, Spotify e Deezer."
+        "title": "Semaninha",
+        "description": "Site open-source desenvolvido com SvelteKit que permite gerar colagens das músicas que você mais ouviu, integrando as APIs do last.fm e Spotify."
       },
       {
         "title": "convergencia.net.br",
