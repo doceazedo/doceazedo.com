@@ -30,7 +30,7 @@
       </li>
       <li>
         <img src={ReactIcon} alt="">
-        <p>React & Next.js</p>
+        <p>React</p>
       </li>
       <li>
         <img src={NextjsIcon} alt="">
