@@ -1,7 +1,28 @@
 <script>
+  import { browser } from '$app/env';
   import { lang } from '../stores';
   import Button from '../components/button.svelte';
   import selfie from '../assets/img/selfie.webp';
+  import customCursorImage from '../assets/img/pat.gif';
+
+  let customCursor;
+  const cursorSize = 112 / 2;
+
+  const positionCursor = (event) => {
+    var mouse;
+    mouse = {
+      x: event.clientX,
+      y: event.clientY
+    };
+    customCursor.style.top = mouse.y - cursorSize + 'px';
+    return customCursor.style.left = mouse.x - cursorSize + 'px';
+  };
+
+  if (browser) {
+    window.addEventListener('mousemove', (event) => {
+      positionCursor(event);
+    });
+  }
 </script>
 
 <header>
@@ -19,7 +40,9 @@
   </div>
   <div>
     <figure>
-      <img src={selfie} alt="">
+      <img class="selfie" src={selfie} alt="">
+      <div class="pat-area"></div>
+      <img src={customCursorImage} alt="Patting hand" class="pat-cursor" bind:this={customCursor} />
     </figure>
   </div>
 </header>
@@ -51,14 +74,14 @@
       margin-bottom: 1rem
 
       &:hover
-        img
+        .selfie
           filter: grayscale(1)
 
         &::before
           left: -.75rem
           bottom: -.75rem
 
-      img
+      .selfie
         height: 400px
         width: 300px
         pointer-events: none
@@ -84,6 +107,23 @@
         transform: scaleY(1.2) scalex(1.5)
         border-radius: 50%
         filter: blur(1.5rem)
+
+      .pat-area
+        position: absolute
+        top: 0
+        left: 120px
+        width: 130px
+        height: 90px
+        cursor: none
+        z-index: 10
+
+        &:not(:hover) + .pat-cursor
+          display: none
+
+      .pat-cursor
+        position: fixed
+        pointer-events: none
+        z-index: 10
 
   @media screen and (max-width: 768px)
     header
