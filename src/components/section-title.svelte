@@ -1,9 +1,9 @@
-<script>
-  export let title, paragraph;
+<script lang="ts">
+  export let title: string, paragraph: string[] = [];
 </script>
 
 <h1>{title}</h1>
-{#if paragraph}
+{#if paragraph.length}
   <p>
     {#each paragraph as line}
       {line} <br>
@@ -11,7 +11,7 @@
   </p>
 {/if}
 
-<style type="text/sass">
+<style lang="sass">
   @import '../assets/sass/vars.sass'
 
   h1,

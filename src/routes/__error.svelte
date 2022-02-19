@@ -4,16 +4,14 @@
       props: {
         error: status,
         message: error.message,
-        details: error
       }
     };
   }
 </script>
 
-<script>
-  export let error, message, details;
+<script lang="ts">
+  export let error: number, message: string;
   console.error(`Error ${error}: ${message}`);
-  console.error(details);
 </script>
 
 <h1>{error}</h1>
@@ -25,7 +23,7 @@
   {/if}
 </h2>
 
-<style type="text/sass">
+<style lang="sass">
   @import '../assets/sass/vars.sass'
   
   h1

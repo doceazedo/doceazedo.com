@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { page } from '$app/stores';
   import { browser } from '$app/env';
   import { fly } from 'svelte/transition';
@@ -60,7 +60,7 @@
   <img class="achievement" src={achievement} alt="" transition:fly={{delay: 500, duration: 800, y: -80, opacity: 1, easing: quintOut}}>
 {/if}
 
-<style type="text/sass">
+<style lang="sass">
   @import '../assets/sass/vars.sass'
 
   navbar

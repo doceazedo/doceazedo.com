@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { lang } from '../stores';
   import PageTitle from '../components/page-title.svelte';
   import Button from '../components/button.svelte';
@@ -16,12 +16,12 @@
     paragraph={$lang.contact.paragraph} />
 
   <div class="buttons">
-    <Button href="mailto:{$lang.email}" outline><MailIcon size="24" fill="#fff" /> {$lang.email}</Button>
-    <Button href="https://t.me/eightavocados" outline><SendIcon size="24" fill="#fff" /> {$lang.contact.telegramButton}</Button>
+    <Button href="mailto:{$lang.email}" outline><MailIcon size="24" /> {$lang.email}</Button>
+    <Button href="https://t.me/eightavocados" outline><SendIcon size="24" /> {$lang.contact.telegramButton}</Button>
   </div>
 </div>
 
-<style type="text/sass">
+<style lang="sass">
   .contact
     display: flex
     flex-direction: column

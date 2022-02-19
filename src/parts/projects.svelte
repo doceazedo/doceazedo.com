@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import SectionTitle from '../components/section-title.svelte';
   import MusicwrapLogo from '../assets/img/musicwrap-logo.svg';
 </script>
@@ -17,7 +17,7 @@
   </ul>
 </section>
 
-<style type="text/sass">
+<style lang="sass">
   @import '../assets/sass/vars.sass'
 
   section

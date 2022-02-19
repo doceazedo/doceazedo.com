@@ -1,11 +1,11 @@
-<script>
-  export let title, paragraph;
+<script lang="ts">
+  export let title: string, paragraph = '';
 </script>
 
 <h1>{title}</h1>
 <p>{paragraph}</p>
 
-<style type="text/sass">
+<style lang="sass">
   @import '../assets/sass/vars.sass'
 
   h1

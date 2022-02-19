@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from 'svelte';
   import { browser } from '$app/env';
   import { lang } from '../stores';
@@ -98,7 +98,7 @@
   <LiftIcon/>
 </div>
 
-<style type="text/sass">
+<style lang="sass">
   @import '../assets/sass/vars.sass'
 
   footer

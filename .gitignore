@@ -1,9 +1,11 @@
-.env
 .DS_Store
-/.svelte-kit
-/.vercel_build_output
-/node_modules
+node_modules
 /build
+/.svelte-kit
 /package
+.env
+.env.*
+!.env.example
+/.vercel_build_output
 /yarn.lock
 /package-lock.json

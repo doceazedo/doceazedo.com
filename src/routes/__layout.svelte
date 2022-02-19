@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { Navbar, Footer } from '../parts';
   import '../assets/css/minireset.min.css';
   import '../assets/css/app.css';
@@ -12,7 +12,7 @@
 
 <Footer />
 
-<style type="text/sass">
+<style lang="sass">
   @media screen and (max-width: 768px)
     main
       padding: 0 1rem

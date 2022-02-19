@@ -3,7 +3,7 @@
   <p>this page isnt ready u dum-dum</p>
 </div>
 
-<style type="text/sass">
+<style lang="sass">
   div
     padding: 6rem 0
     text-align: center

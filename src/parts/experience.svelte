@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import SectionTitle from '../components/section-title.svelte';
 </script>
 
@@ -9,7 +9,7 @@
   </p>
 </section>
 
-<style type="text/sass">
+<style lang="sass">
   @import '../assets/sass/vars.sass'
 
   section

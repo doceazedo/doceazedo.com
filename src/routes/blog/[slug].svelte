@@ -1,4 +1,4 @@
-<script context="module">
+<script lang="ts" context="module">
   export async function load({ params, fetch }) {
     const posts = await(await fetch(`https://wp.lucasfernandes.com.br/wp-json/wp/v2/posts?slug=${params.slug}`)).json();
 
@@ -25,7 +25,7 @@
   }
 </script>
 
-<script>
+<script lang="ts">
   import { browser } from '$app/env';
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
@@ -52,7 +52,7 @@
 
   onMount(() => {
     document.querySelectorAll('p + pre').forEach(el => {
-      const lastEl = el.previousElementSibling;
+      const lastEl = el.previousElementSibling as HTMLElement;
       
       if (lastEl.innerHTML.length) {
         if (lastEl.innerHTML.includes('&nbsp;'))
@@ -65,7 +65,7 @@
     });
 
     hljs_svelte(hljs);
-    document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
+    document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el as HTMLElement));
     hasMounted = true;
   });
 
@@ -119,7 +119,7 @@
   </script>
 {/if}
 
-<style type="text/sass">
+<style lang="sass">
   @import '../../assets/sass/vars.sass'
 
   header

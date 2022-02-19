@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { browser } from '$app/env';
   import { lang } from '../stores';
   import Button from '../components/button.svelte';
@@ -8,9 +8,8 @@
   let customCursor;
   const cursorSize = 112 / 2;
 
-  const positionCursor = (event) => {
-    var mouse;
-    mouse = {
+  const positionCursor = (event: MouseEvent) => {
+    let mouse = {
       x: event.clientX,
       y: event.clientY
     };
@@ -47,7 +46,7 @@
   </div>
 </header>
 
-<style type="text/sass">
+<style lang="sass">
   @import '../assets/sass/vars.sass'
 
   header
@@ -117,11 +116,9 @@
         cursor: none
         z-index: 10
 
-        &:not(:hover) + .pat-cursor
-          display: none
-
       .pat-cursor
         position: fixed
+        display: none
         pointer-events: none
         z-index: 10
 
@@ -162,4 +159,8 @@
 
       .buttons
         justify-content: center
+
+  @media screen and (min-width: 769px)
+    .pat-area:hover + .pat-cursor
+      display: block
 </style>

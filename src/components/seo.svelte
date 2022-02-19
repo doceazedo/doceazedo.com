@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   export let path = '/', title = 'Lucas Fernandes', thumbnail = 'https://lucasfernandes.com.br/thumbnail.jpg';
 </script>
 

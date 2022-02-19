@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { lang } from '../stores';
   import SectionTitle from '../components/section-title.svelte';
   import Posts from '../components/posts.svelte';
@@ -12,14 +12,14 @@
     title={$lang.articles.title}
     paragraph={$lang.articles.paragraph} />
   
-  <Posts posts={posts}/>
+  <Posts {posts} />
 
   <Button outline center href="/blog">
     {$lang.articles.more}
   </Button>
 </section>
 
-<style type="text/sass">
+<style lang="sass">
   @import '../assets/sass/vars.sass'
 
   section

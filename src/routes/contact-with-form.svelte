@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import PageTitle from '../components/page-title.svelte';
   import Button from '../components/button.svelte';
   import { MailIcon, SendIcon } from 'svelte-feather-icons';
@@ -9,15 +9,15 @@
     <PageTitle
       title="Get in touch"
       paragraph="If you want to hire me, talk about a project or just chat with no commitment, let's do it!" />
-    <Button href="mailto:me@lucasfernandes.com.br" outline><MailIcon size="24" fill="#fff" /> me@lucasfernandes.com.br</Button>
-    <Button href="https://t.me/eightavocados" outline><SendIcon size="24" fill="#fff" /> @eightavocados on Telegram</Button>
+    <Button href="mailto:me@lucasfernandes.com.br" outline><MailIcon size="24" /> me@lucasfernandes.com.br</Button>
+    <Button href="https://t.me/eightavocados" outline><SendIcon size="24" /> @eightavocados on Telegram</Button>
   </div>
   <div>
     cool form!
   </div>
 </div>
 
-<style type="text/sass">
+<style lang="sass">
   .contact
     display: flex
     margin-top: 4rem

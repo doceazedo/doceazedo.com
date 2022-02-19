@@ -3,9 +3,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const fetchNowPlaying = async () => {
-  const refreshToken = process.env['SPOTIFY_REFRESH_TOKEN'];
-  const clientId = process.env['SPOTIFY_CLIENT_ID'];
-  const clientSecret = process.env['SPOTIFY_CLIENT_SECRET'];
+  const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
+  const clientId = process.env.SPOTIFY_CLIENT_ID;
+  const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 
   const spotifyApi = new SpotifyWebApi();
   spotifyApi.setCredentials({
@@ -35,10 +35,10 @@ const fetchNowPlaying = async () => {
 }
 
 const fetchIsLive = async () => {
-  const twitch = await(await fetch(`https://api.twitch.tv/helix/streams?user_login=${process.env['TWITCH_CHANNEL']}`, {
+  const twitch = await(await fetch(`https://api.twitch.tv/helix/streams?user_login=${process.env.TWITCH_CHANNEL}`, {
     headers: {
-      'Authorization': `Bearer ${process.env['TWITCH_OAUTH_TOKEN']}`,
-      'Client-Id': process.env['TWITCH_CLIENT_ID']
+      'Authorization': `Bearer ${process.env.TWITCH_OAUTH_TOKEN}`,
+      'Client-Id': process.env.TWITCH_CLIENT_ID
     }
   })).json();
 

@@ -1,5 +1,5 @@
-<script>
-  export let outline, href, target, center;
+<script lang="ts">
+  export let outline = false, href = '', target = '', center = false;
 </script>
 
 {#if href}
@@ -7,12 +7,12 @@
     <slot />
   </a>
 {:else}
-  <button class="button" class:outline class:center>
+  <button class="button" on:click class:outline class:center>
     <slot />
   </button>
 {/if}
 
-<style type="text/sass">
+<style lang="sass">
   @import '../assets/sass/vars.sass'
 
   .button

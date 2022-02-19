@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { browser } from '$app/env';
   import { lang } from '../stores';
 
@@ -30,7 +30,7 @@
   {/each}
 </div>
 
-<style type="text/sass">
+<style lang="sass">
   @import '../assets/sass/vars.sass'
   
   div

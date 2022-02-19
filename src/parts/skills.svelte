@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { lang } from '../stores';
   import SectionTitle from '../components/section-title.svelte';
   import TypescriptIcon from '../assets/img/typescript.svg';
@@ -70,7 +70,7 @@
     </ul>
 </section>
 
-<style type="text/sass">
+<style lang="sass">
   @import '../assets/sass/vars.sass'
 
   section

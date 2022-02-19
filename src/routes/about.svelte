@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { lang } from '../stores';
   import PageTitle from '../components/page-title.svelte';
   import SEO from '../components/seo.svelte';
@@ -51,7 +51,7 @@
   </ul>
 </div>
 
-<style type="text/sass">
+<style lang="sass">
   .tattoos
     display: grid
     grid-template-columns: repeat(3, 1fr)
