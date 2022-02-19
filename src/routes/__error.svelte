@@ -1,9 +1,9 @@
 <script context="module">
-	export function load({ error, status }) {
+  export function load({ error, status }) {
     return {
       props: {
         error: status,
-        message: error.message,
+        message: error.message
       }
     };
   }
@@ -19,7 +19,10 @@
   {#if error == 404}
     This was probably a mistake.
   {:else}
-    Something went wrong. <a href="https://github.com/doceazedo/lucasfernandes.com.br/issues" target="_blank">Open an issue?</a>
+    Something went wrong. <a
+      href="https://github.com/doceazedo/lucasfernandes.com.br/issues"
+      target="_blank">Open an issue?</a
+    >
   {/if}
 </h2>
 

@@ -5,7 +5,9 @@
 <section>
   <SectionTitle title="Experience / Education" />
   <p>
-    experiência e educação vão ficar aqui. e pq já não foi feito? pq apesar de 3 anos de experiência, eu só trabalhei em uma empresa na área. e eu não tenho nada pra colocar em "educação". o que eu deveria fazer aqui então? 🤨🤨🤨🤨
+    experiência e educação vão ficar aqui. e pq já não foi feito? pq apesar de 3 anos de
+    experiência, eu só trabalhei em uma empresa na área. e eu não tenho nada pra colocar em
+    "educação". o que eu deveria fazer aqui então? 🤨🤨🤨🤨
   </p>
 </section>
 

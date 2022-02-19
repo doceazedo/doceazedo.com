@@ -8,10 +8,8 @@
 </script>
 
 <section>
-  <SectionTitle
-    title={$lang.articles.title}
-    paragraph={$lang.articles.paragraph} />
-  
+  <SectionTitle title={$lang.articles.title} paragraph={$lang.articles.paragraph} />
+
   <Posts {posts} />
 
   <Button outline center href="/blog">

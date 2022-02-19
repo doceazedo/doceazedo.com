@@ -12,13 +12,11 @@
   <SEO path="/about" />
 </svelte:head>
 
-<PageTitle
-  title={$lang.navbar.about}
-  paragraph={$lang.about.subtitle} />
+<PageTitle title={$lang.navbar.about} paragraph={$lang.about.subtitle} />
 
 <div class="content">
   <p>{@html $lang.about.intro}</p>
-  <img src={meAtBeach} alt="">
+  <img src={meAtBeach} alt="" />
   <p>{@html $lang.about.factsIntro}</p>
   <ul>
     {#each $lang.about.facts as fact}
@@ -27,9 +25,9 @@
   </ul>
   <h4>{@html $lang.about.tattoosTitle}</h4>
   <div class="tattoos">
-    <img src={tattoo1} alt="">
-    <img src={tattoo2} alt="">
-    <img src={tattoo3} alt="">
+    <img src={tattoo1} alt="" />
+    <img src={tattoo2} alt="" />
+    <img src={tattoo3} alt="" />
   </div>
   {#each $lang.about.tattoos as tattoo}
     <p>{@html tattoo}</p>

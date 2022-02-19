@@ -2,7 +2,7 @@
   import { page } from '$app/stores';
   import { browser } from '$app/env';
   import { fly } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
+  import { quintOut } from 'svelte/easing';
   import { lang } from '../stores';
   import { MenuIcon } from 'svelte-feather-icons';
   import logo from '../assets/img/logo.svg';
@@ -21,16 +21,16 @@
     clearTimeout(achievementTimeout);
     if (spinnedTimes == 10) {
       achievementGet = true;
-      setTimeout(() => achievementGet = false, 8000);
+      setTimeout(() => (achievementGet = false), 8000);
     } else if (spinnedTimes < 10) {
-      achievementTimeout = setTimeout(() => spinnedTimes = 0, 2500);
+      achievementTimeout = setTimeout(() => (spinnedTimes = 0), 2500);
     }
-  }
+  };
 
   let currentLang = 'en';
   if (browser && navigator.language.startsWith('pt')) currentLang = 'pt';
 
-  const changeLang = _lang => {
+  const changeLang = (_lang) => {
     lang.change(_lang);
     currentLang = _lang;
   };
@@ -40,24 +40,38 @@
 
 <navbar>
   <a href="/">
-    <img src={logo} alt="" bind:this={logoEl} on:click={spin}>
+    <img src={logo} alt="" bind:this={logoEl} on:click={spin} />
   </a>
 
-  <ul class:show={showMobileMenu} on:click={() => showMobileMenu = false}>
+  <ul class:show={showMobileMenu} on:click={() => (showMobileMenu = false)}>
     <li class:active={$page.url.pathname === '/'}><a href="/">{$lang.navbar.home}</a></li>
-    <li class:active={$page.url.pathname.startsWith('/blog')}><a sveltekit:prefetch href="/blog">{$lang.navbar.blog}</a></li>
-    <li class:active={$page.url.pathname === '/about'}><a href="/about">{$lang.navbar.about}</a></li>
-    <li class:active={$page.url.pathname === '/contact'}><a href="/contact">{$lang.navbar.contact}</a></li>
-    <li><span on:click={() => changeLang('pt')} class:active={currentLang == 'pt'}>PT-BR</span> / <span on:click={() => changeLang('en')} class:active={currentLang == 'en'}>EN</span></li>
+    <li class:active={$page.url.pathname.startsWith('/blog')}>
+      <a sveltekit:prefetch href="/blog">{$lang.navbar.blog}</a>
+    </li>
+    <li class:active={$page.url.pathname === '/about'}>
+      <a href="/about">{$lang.navbar.about}</a>
+    </li>
+    <li class:active={$page.url.pathname === '/contact'}>
+      <a href="/contact">{$lang.navbar.contact}</a>
+    </li>
+    <li>
+      <span on:click={() => changeLang('pt')} class:active={currentLang == 'pt'}>PT-BR</span> /
+      <span on:click={() => changeLang('en')} class:active={currentLang == 'en'}>EN</span>
+    </li>
   </ul>
 
-  <div class="mobile-menu" on:click={() => showMobileMenu = true}>
+  <div class="mobile-menu" on:click={() => (showMobileMenu = true)}>
     <MenuIcon size="24" />
   </div>
 </navbar>
 
 {#if achievementGet}
-  <img class="achievement" src={achievement} alt="" transition:fly={{delay: 500, duration: 800, y: -80, opacity: 1, easing: quintOut}}>
+  <img
+    class="achievement"
+    src={achievement}
+    alt=""
+    transition:fly={{ delay: 500, duration: 800, y: -80, opacity: 1, easing: quintOut }}
+  />
 {/if}
 
 <style lang="sass">

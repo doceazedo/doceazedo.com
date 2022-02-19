@@ -1,5 +1,5 @@
 <div>
-  <img src="https://c.tenor.com/EYXkbfzq9w8AAAAi/wwqa-floppa.gif" alt="floppa cube uwu">
+  <img src="https://c.tenor.com/EYXkbfzq9w8AAAAi/wwqa-floppa.gif" alt="floppa cube uwu" />
   <p>this page isnt ready u dum-dum</p>
 </div>
 

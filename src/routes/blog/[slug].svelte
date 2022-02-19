@@ -1,12 +1,14 @@
 <script lang="ts" context="module">
   export async function load({ params, fetch }) {
-    const posts = await(await fetch(`https://wp.lucasfernandes.com.br/wp-json/wp/v2/posts?slug=${params.slug}`)).json();
+    const posts = await (
+      await fetch(`https://wp.lucasfernandes.com.br/wp-json/wp/v2/posts?slug=${params.slug}`)
+    ).json();
 
     if (posts.length) {
       const featuredMedias = posts[0]['_links']['wp:featuredmedia'];
       let thumbnail = 'https://lucasfernandes.com.br/thumbnail.jpg';
       if (featuredMedias) {
-        const media = await(await fetch(featuredMedias[0].href)).json();
+        const media = await (await fetch(featuredMedias[0].href)).json();
         thumbnail = media.guid.rendered;
       }
 
@@ -32,48 +34,54 @@
   import { browser } from '$app/env';
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
+  import { quintOut } from 'svelte/easing';
   import { lang } from '../../stores';
   import SEO from '../../components/seo.svelte';
   import hljs from 'highlight.js';
   import hljs_svelte from 'highlightjs-svelte';
   import 'highlight.js/styles/base16/tomorrow-night.css';
 
-  export let post = null, thumbnail = '';
+  export let post = null,
+    thumbnail = '';
 
   let readableDate = '';
   let fullDate = '';
   if (browser) {
     dayjs.extend(relativeTime);
-    readableDate = dayjs(post.date).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow();
+    readableDate = dayjs(post.date)
+      .locale($lang.code == 'pt' ? 'pt-br' : 'en-us')
+      .fromNow();
     fullDate = dayjs(post.date).format('DD/MM/YYYY à[s] HH:mm');
-    console.log(fullDate); 
-    console.log(post); 
+    console.log(fullDate);
+    console.log(post);
   }
 
   let hasMounted = false;
 
   onMount(() => {
-    document.querySelectorAll('p + pre').forEach(el => {
+    document.querySelectorAll('p + pre').forEach((el) => {
       const lastEl = el.previousElementSibling as HTMLElement;
-      
+
       if (lastEl.innerHTML.length) {
-        if (lastEl.innerHTML.includes('&nbsp;'))
-          return lastEl.innerHTML = '';
+        if (lastEl.innerHTML.includes('&nbsp;')) return (lastEl.innerHTML = '');
 
         lastEl.classList.add('file-title');
         const lang = lastEl.innerText.split('.');
-        if (lastEl.innerText.trim().charAt(0) != '.') el.querySelector('code').classList.add(`language-${lang[lang.length - 1]}`);
+        if (lastEl.innerText.trim().charAt(0) != '.')
+          el.querySelector('code').classList.add(`language-${lang[lang.length - 1]}`);
       }
     });
 
     hljs_svelte(hljs);
-    document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el as HTMLElement));
+    document.querySelectorAll('pre code').forEach((el) => hljs.highlightElement(el as HTMLElement));
     hasMounted = true;
   });
 
   $: {
-    if (browser) readableDate = dayjs(post.date).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow();
+    if (browser)
+      readableDate = dayjs(post.date)
+        .locale($lang.code == 'pt' ? 'pt-br' : 'en-us')
+        .fromNow();
   }
 </script>
 
@@ -86,19 +94,20 @@
     <h1>{post.title.rendered}</h1>
     <h2 title={fullDate}>{$lang.posted} {readableDate}</h2>
     <ul>
-      {#each post?.acf?.categories?.split(',') || Array() as category}
+      {#each post?.acf?.categories?.split(',') || [] as category}
         <li><span>#</span>{category}</li>
       {/each}
     </ul>
   </div>
   <div>
-    <img src="{post?.acf?.icon}" alt="">
+    <img src={post?.acf?.icon} alt="" />
   </div>
 </header>
 
 {#if $lang.code == 'en'}
-  <div class="alert" transition:slide={{duration: 200, easing: quintOut }}>
-    This blog articles are only available in Portuguese for now. English translations for every post are yet to come.
+  <div class="alert" transition:slide={{ duration: 200, easing: quintOut }}>
+    This blog articles are only available in Portuguese for now. English translations for every post
+    are yet to come.
   </div>
 {/if}
 
@@ -106,19 +115,20 @@
   {@html post.content.rendered}
 </article>
 
-<div class="giscus"></div>
+<div class="giscus" />
 {#if hasMounted}
-  <script src="https://giscus.app/client.js"
-          data-repo="doceazedo/lucasfernandes.com.br"
-          data-repo-id="MDEwOlJlcG9zaXRvcnk0MDU3NzE4NDk="
-          data-category="Comments"
-          data-category-id="DIC_kwDOGC-WSc4B_Ku7"
-          data-mapping="pathname"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-theme="dark"
-          crossorigin="anonymous"
-          async>
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="doceazedo/lucasfernandes.com.br"
+    data-repo-id="MDEwOlJlcG9zaXRvcnk0MDU3NzE4NDk="
+    data-category="Comments"
+    data-category-id="DIC_kwDOGC-WSc4B_Ku7"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-theme="dark"
+    crossorigin="anonymous"
+    async>
   </script>
 {/if}
 

@@ -6,12 +6,12 @@ import pt from './lang/pt.json';
 export const initializeLang = () => {
   let defaultLang = en;
   if (browser && navigator.language.startsWith('pt')) defaultLang = pt;
-	const { subscribe, set } = writable(defaultLang);
+  const { subscribe, set } = writable(defaultLang);
 
-	return {
-		subscribe,
-		change: lang => set(lang == 'pt' ? pt : en),
-	};
-}
+  return {
+    subscribe,
+    change: (lang) => set(lang == 'pt' ? pt : en)
+  };
+};
 
 export const lang = initializeLang();

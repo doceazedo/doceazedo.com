@@ -10,53 +10,55 @@
   const projects = [
     {
       image: portfolioSemaninha,
-      link: 'https://semaninha.com',
+      link: 'https://semaninha.com'
     },
     {
       image: portfolioConvergencia,
       scroll: '1.5s',
-      link: 'https://convergencia.net.br',
+      link: 'https://convergencia.net.br'
     },
     {
       image: portfolioGruposTelegram,
       scroll: '4s',
-      link: 'https://grupostelegram.com.br',
+      link: 'https://grupostelegram.com.br'
     },
     {
       image: portfolioOverlay,
-      link: 'https://github.com/doceazedo/overlay',
+      link: 'https://github.com/doceazedo/overlay'
     },
     {
       image: portfolioDoceAzedo,
-      link: 'https://doceazedo.com',
-    },
+      link: 'https://doceazedo.com'
+    }
   ];
 </script>
 
 <section>
-  <SectionTitle
-    title={$lang.portfolio.title} />
-    <ul>
-      {#each projects as project, i}
-        <li>
-          <div class="image">
-            <figure style="background-image:url({project.image}); --speed: {project.scroll || '0s'}" class:scroll={project.scroll}>
-              {#if project.link}
-                <a href={project.link} target="_blank" class="content"> </a>
-              {/if}
-            </figure>
-          </div>
-          
-          <div class="info">
+  <SectionTitle title={$lang.portfolio.title} />
+  <ul>
+    {#each projects as project, i}
+      <li>
+        <div class="image">
+          <figure
+            style="background-image:url({project.image}); --speed: {project.scroll || '0s'}"
+            class:scroll={project.scroll}
+          >
             {#if project.link}
-              <a href={project.link} target="_blank" class="content"> </a>
+              <a href={project.link} target="_blank" class="content" />
             {/if}
-            <h1>{$lang.portfolio.projects[i].title}</h1>
-            <p>{$lang.portfolio.projects[i].description}</p>
-          </div>
-        </li>
-      {/each}
-    </ul>
+          </figure>
+        </div>
+
+        <div class="info">
+          {#if project.link}
+            <a href={project.link} target="_blank" class="content" />
+          {/if}
+          <h1>{$lang.portfolio.projects[i].title}</h1>
+          <p>{$lang.portfolio.projects[i].description}</p>
+        </div>
+      </li>
+    {/each}
+  </ul>
 </section>
 
 <style lang="sass">

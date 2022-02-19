@@ -11,13 +11,13 @@
 </svelte:head>
 
 <div class="contact">
-  <PageTitle
-    title={$lang.contact.title}
-    paragraph={$lang.contact.paragraph} />
+  <PageTitle title={$lang.contact.title} paragraph={$lang.contact.paragraph} />
 
   <div class="buttons">
     <Button href="mailto:{$lang.email}" outline><MailIcon size="24" /> {$lang.email}</Button>
-    <Button href="https://t.me/eightavocados" outline><SendIcon size="24" /> {$lang.contact.telegramButton}</Button>
+    <Button href="https://t.me/eightavocados" outline
+      ><SendIcon size="24" /> {$lang.contact.telegramButton}</Button
+    >
   </div>
 </div>
 

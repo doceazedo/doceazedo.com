@@ -11,7 +11,7 @@ const fetchNowPlaying = async () => {
   spotifyApi.setCredentials({
     refreshToken,
     clientId,
-    clientSecret,
+    clientSecret
   });
 
   // TODO: Cachear access token
@@ -19,7 +19,7 @@ const fetchNowPlaying = async () => {
   spotifyApi.setAccessToken(spotifyTokens.body.access_token);
 
   const currentlyPlaying = await spotifyApi.getMyCurrentPlayingTrack();
-  
+
   let nowPlaying = null;
   if (currentlyPlaying.body?.item) {
     const item = currentlyPlaying.body.item;
@@ -27,23 +27,25 @@ const fetchNowPlaying = async () => {
     nowPlaying = {
       title: item.name,
       artist: item.artists[0].name,
-      cover: item.album.images[1].url,
+      cover: item.album.images[1].url
     };
   }
 
   return nowPlaying;
-}
+};
 
 const fetchIsLive = async () => {
-  const twitch = await(await fetch(`https://api.twitch.tv/helix/streams?user_login=${process.env.TWITCH_CHANNEL}`, {
-    headers: {
-      'Authorization': `Bearer ${process.env.TWITCH_OAUTH_TOKEN}`,
-      'Client-Id': process.env.TWITCH_CLIENT_ID
-    }
-  })).json();
+  const twitch = await (
+    await fetch(`https://api.twitch.tv/helix/streams?user_login=${process.env.TWITCH_CHANNEL}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.TWITCH_OAUTH_TOKEN}`,
+        'Client-Id': process.env.TWITCH_CLIENT_ID
+      }
+    })
+  ).json();
 
   return twitch.data?.length ? true : false;
-}
+};
 
 export async function get() {
   const [nowPlaying, isLive] = await Promise.all([fetchNowPlaying(), fetchIsLive()]);
@@ -51,7 +53,7 @@ export async function get() {
   return {
     body: {
       nowPlaying,
-      isLive,
+      isLive
     }
-  }
+  };
 }

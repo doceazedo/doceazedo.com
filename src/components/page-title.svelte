@@ -1,5 +1,6 @@
 <script lang="ts">
-  export let title: string, paragraph = '';
+  export let title: string,
+    paragraph = '';
 </script>
 
 <h1>{title}</h1>

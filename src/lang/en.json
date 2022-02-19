@@ -61,15 +61,12 @@
     "more": "View all"
   },
 
-  "footer": [
-    "Powered by Svelte & SvelteKit",
-    "Developed by Lucas Fernandes"
-  ],
+  "footer": ["Powered by Svelte & SvelteKit", "Developed by Lucas Fernandes"],
 
   "blog": {
     "subtitle": "I pretty much rather reading articles than watching tutorials, so here I gather stuff that I learned and want to share. I hope you find something that grabs your attention."
   },
-  
+
   "about": {
     "subtitle": "Curiosity-driven developer and live coding streamer",
     "intro": "Hi, my name is Lucas. I am a fullstack developer working in Minas Gerais, Brazil. Here on this site I gather some of my work and pieces of knowledge that I would like to share with the world.",

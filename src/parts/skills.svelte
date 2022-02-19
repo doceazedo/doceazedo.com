@@ -15,59 +15,57 @@
 </script>
 
 <section>
-  <SectionTitle
-    title={$lang.skills.title}
-    paragraph={$lang.skills.paragraph} />
+  <SectionTitle title={$lang.skills.title} paragraph={$lang.skills.paragraph} />
 
-    <ul>
-      <li>
-        <img src={TypescriptIcon} alt="">
-        <p>TypeScript</p>
-      </li>
-      <li>
-        <img src={SvelteIcon} alt="">
-        <p>Svelte & SvelteKit</p>
-      </li>
-      <li>
-        <img src={ReactIcon} alt="">
-        <p>React</p>
-      </li>
-      <li>
-        <img src={NextjsIcon} alt="">
-        <p>Next.js</p>
-      </li>
-      <li>
-        <img src={SassIcon} alt="">
-        <p>Sass</p>
-      </li>
-      <li>
-        <img src={NodejsIcon} alt="">
-        <p>Node.js</p>
-      </li>
-    </ul>
+  <ul>
+    <li>
+      <img src={TypescriptIcon} alt="" />
+      <p>TypeScript</p>
+    </li>
+    <li>
+      <img src={SvelteIcon} alt="" />
+      <p>Svelte & SvelteKit</p>
+    </li>
+    <li>
+      <img src={ReactIcon} alt="" />
+      <p>React</p>
+    </li>
+    <li>
+      <img src={NextjsIcon} alt="" />
+      <p>Next.js</p>
+    </li>
+    <li>
+      <img src={SassIcon} alt="" />
+      <p>Sass</p>
+    </li>
+    <li>
+      <img src={NodejsIcon} alt="" />
+      <p>Node.js</p>
+    </li>
+  </ul>
 
-    <ul>
-      <li>
-        <img src={KotlinIcon} alt="">
-        <p>Kotlin <small>(Spigot API)</small></p>
-      </li>
-      <li>
-        <img src={UnityIcon} alt="">
-        <p>Unity <small>(C#)</small></p>
-      </li>
-      <li>
-        <img src={MySqlIcon} alt="">
-        <p><small>(My/Postgre)</small>SQL<small>(ite)</small></p>
-      </li>
-      <li>
-        <img src={MongoDbIcon} alt="">
-        <p>MongoDB</p>
-      </li>
-      <li>
-        <img src={CapacitorIcon} alt="">
-        <p>Capacitor</p>
-      </li>
-    </ul>
+  <ul>
+    <li>
+      <img src={KotlinIcon} alt="" />
+      <p>Kotlin <small>(Spigot API)</small></p>
+    </li>
+    <li>
+      <img src={UnityIcon} alt="" />
+      <p>Unity <small>(C#)</small></p>
+    </li>
+    <li>
+      <img src={MySqlIcon} alt="" />
+      <p><small>(My/Postgre)</small>SQL<small>(ite)</small></p>
+    </li>
+    <li>
+      <img src={MongoDbIcon} alt="" />
+      <p>MongoDB</p>
+    </li>
+    <li>
+      <img src={CapacitorIcon} alt="" />
+      <p>Capacitor</p>
+    </li>
+  </ul>
 </section>
 
 <style lang="sass">

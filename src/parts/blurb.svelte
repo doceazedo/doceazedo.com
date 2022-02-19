@@ -12,7 +12,7 @@
     let mouse = {
       x: event.clientX,
       y: event.clientY
-    }
+    };
     if (customCursor == null) return;
     customCursor.style.top = mouse.y - cursorSize + 'px';
     customCursor.style.left = mouse.x - cursorSize + 'px';
@@ -30,7 +30,7 @@
     <h1>{$lang.blurb.title}</h1>
     <p>
       {#each $lang.blurb.paragraph as line}
-        {line} <br>
+        {line} <br />
       {/each}
     </p>
     <div class="buttons">
@@ -40,8 +40,8 @@
   </div>
   <div>
     <figure>
-      <img class="selfie" src={selfie} alt="">
-      <div class="pat-area"></div>
+      <img class="selfie" src={selfie} alt="" />
+      <div class="pat-area" />
       <img src={customCursorImage} alt="Patting hand" class="pat-cursor" bind:this={customCursor} />
     </figure>
   </div>

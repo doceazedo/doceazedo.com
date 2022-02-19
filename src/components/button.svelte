@@ -1,5 +1,8 @@
 <script lang="ts">
-  export let outline = false, href = '', target = '', center = false;
+  export let outline = false,
+    href = '',
+    target = '',
+    center = false;
 </script>
 
 {#if href}

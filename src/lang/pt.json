@@ -61,15 +61,12 @@
     "more": "Ver todos"
   },
 
-  "footer": [
-    "Powered by Svelte & SvelteKit",
-    "Desenvolvido por Lucas Fernandes"
-  ],
+  "footer": ["Powered by Svelte & SvelteKit", "Desenvolvido por Lucas Fernandes"],
 
   "blog": {
     "subtitle": "No geral eu prefiro ler artigos do que assistir tutoriais, então aqui eu reúno coisas que aprendi e quero compartilhar. Espero que você encontre algo que te interesse por aqui."
   },
-  
+
   "about": {
     "subtitle": "Programador movido a curiosidade e streamer de live coding",
     "intro": "Oi, eu me chamo Lucas. Eu sou um desenvolvedor fullstack trabalhando em Pedro Leopoldo, na região metropolitana de Belo Horizonte em Minas Gerais. Nesse site eu reúno alguns dos meus trabalhos e pedaços de conhecimento que eu gostaria de compartilhar com o mundo.",

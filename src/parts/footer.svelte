@@ -42,13 +42,13 @@
   const callLift = () => {
     song.play();
     chime.currentTime = 0;
-    chime.volume = .5;
+    chime.volume = 0.5;
     scrollToTop();
-  }
+  };
 
-  const fadeInCover = event => event.target.classList.add('show');
+  const fadeInCover = (event) => event.target.classList.add('show');
 
-  const updateLiveStats = async () => liveStats = await(await fetch('/api/live')).json();
+  const updateLiveStats = async () => (liveStats = await (await fetch('/api/live')).json());
 
   onMount(async () => {
     updateLiveStats();
@@ -56,17 +56,17 @@
   });
 </script>
 
-<svelte:window bind:scrollY={scroll}/>
+<svelte:window bind:scrollY={scroll} />
 
 <footer class:has-now-playing={liveStats?.nowPlaying}>
   <p>
-    {$lang.footer[0]} <br>
+    {$lang.footer[0]} <br />
     {$lang.footer[1]} &copy; {new Date().getFullYear()}
   </p>
   <div>
     {#if liveStats?.nowPlaying}
       <a class="now-playing live" href="https://www.last.fm/user/doceazedo911" target="_blank">
-        <img on:load={fadeInCover} src={liveStats.nowPlaying.cover} alt="">
+        <img on:load={fadeInCover} src={liveStats.nowPlaying.cover} alt="" />
         <div>
           <h1>{liveStats.nowPlaying.title}</h1>
           <h2>{liveStats.nowPlaying.artist}</h2>
@@ -80,12 +80,17 @@
     <a class="social" href="https://linkedin.com/in/imlucas" target="_blank">
       <LinkedinIcon size="24" />
     </a>
-    <a class="social" class:live={liveStats?.isLive} href="https://twitch.tv/doceazedo911" target="_blank">
+    <a
+      class="social"
+      class:live={liveStats?.isLive}
+      href="https://twitch.tv/doceazedo911"
+      target="_blank"
+    >
       <TwitchIcon size="24" />
     </a>
     {#if !liveStats?.nowPlaying}
       <a class="social" href="https://www.last.fm/user/doceazedo911" target="_blank">
-        <LastFmIcon/>
+        <LastFmIcon />
       </a>
     {/if}
     <a class="social" href="mailto:{$lang.email}" target="_blank">
@@ -95,7 +100,7 @@
 </footer>
 
 <div class="lift" class:active={isAtBottom} on:click={callLift}>
-  <LiftIcon/>
+  <LiftIcon />
 </div>
 
 <style lang="sass">

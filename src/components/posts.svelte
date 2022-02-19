@@ -10,22 +10,24 @@
   const readableDate = (dateString, lang) => {
     if (browser) {
       dayjs.extend(relativeTime);
-      return dayjs(dateString).locale(lang == 'pt' ? 'pt-br' : 'en-us').fromNow();
+      return dayjs(dateString)
+        .locale(lang == 'pt' ? 'pt-br' : 'en-us')
+        .fromNow();
     }
     return '';
-  }
+  };
 </script>
 
 <div>
   {#each posts as post}
     <a sveltekit:prefetch href="/blog/{post.slug}">
-      <figure style="background-image:url({post?.acf?.icon})"></figure>
+      <figure style="background-image:url({post?.acf?.icon})" />
       <div>
         <h1>{post.title.rendered}</h1>
         <h2>{$lang.posted} {readableDate(post.date, $lang.code)}</h2>
       </div>
       <ul>
-        {#each post?.acf?.categories?.split(',') || Array() as category}
+        {#each post?.acf?.categories?.split(',') || [] as category}
           <li><span>#</span>{category}</li>
         {/each}
       </ul>

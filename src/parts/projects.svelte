@@ -9,9 +9,12 @@
     {#each Array(3) as uwu}
       <li>
         <a href="https://musicwrap.xyz" target="_blank">
-          <img src={MusicwrapLogo} alt="">
+          <img src={MusicwrapLogo} alt="" />
         </a>
-        <p>Um site open-source que gera imagens com as músicas que você mais ouviu na semana. Ele foi desenvolvido com React e Fastify e integra as APIs do last.fm e Deezer.</p>
+        <p>
+          Um site open-source que gera imagens com as músicas que você mais ouviu na semana. Ele foi
+          desenvolvido com React e Fastify e integra as APIs do last.fm e Deezer.
+        </p>
       </li>
     {/each}
   </ul>

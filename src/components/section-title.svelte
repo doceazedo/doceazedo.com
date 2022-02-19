@@ -1,12 +1,13 @@
 <script lang="ts">
-  export let title: string, paragraph: string[] = [];
+  export let title: string,
+    paragraph: string[] = [];
 </script>
 
 <h1>{title}</h1>
 {#if paragraph.length}
   <p>
     {#each paragraph as line}
-      {line} <br>
+      {line} <br />
     {/each}
   </p>
 {/if}
