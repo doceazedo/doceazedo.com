@@ -1,7 +1,7 @@
 <script lang="ts">
   import dayjs from 'dayjs';
-  import relativeTime from 'dayjs/plugin/relativeTime';
-  import 'dayjs/locale/pt-br';
+  import relativeTime from 'dayjs/plugin/relativeTime.js';
+  import 'dayjs/locale/pt-br.js';
   import { browser } from '$app/env';
   import { lang } from '../stores';
 
