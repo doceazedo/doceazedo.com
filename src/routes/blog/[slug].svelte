@@ -26,6 +26,9 @@
 </script>
 
 <script lang="ts">
+  import dayjs from 'dayjs';
+  import relativeTime from 'dayjs/plugin/relativeTime';
+  import 'dayjs/locale/pt-br';
   import { browser } from '$app/env';
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
@@ -41,7 +44,7 @@
   let readableDate = '';
   let fullDate = '';
   if (browser) {
-    dayjs.extend(dayjs_plugin_relativeTime);
+    dayjs.extend(relativeTime);
     readableDate = dayjs(post.date).locale($lang.code == 'pt' ? 'pt-br' : 'en-us').fromNow();
     fullDate = dayjs(post.date).format('DD/MM/YYYY à[s] HH:mm');
     console.log(fullDate); 

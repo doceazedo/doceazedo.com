@@ -1,4 +1,7 @@
 <script lang="ts">
+  import dayjs from 'dayjs';
+  import relativeTime from 'dayjs/plugin/relativeTime';
+  import 'dayjs/locale/pt-br';
   import { browser } from '$app/env';
   import { lang } from '../stores';
 
@@ -6,7 +9,7 @@
 
   const readableDate = (dateString, lang) => {
     if (browser) {
-      dayjs.extend(dayjs_plugin_relativeTime);
+      dayjs.extend(relativeTime);
       return dayjs(dateString).locale(lang == 'pt' ? 'pt-br' : 'en-us').fromNow();
     }
     return '';
