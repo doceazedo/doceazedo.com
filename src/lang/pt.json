@@ -19,10 +19,10 @@
   },
 
   "skills": {
-    "title": "O que eu consigo fazer",
+    "title": "O que eu gosto de fazer",
     "paragraph": [
-      "Eu me interesso tanto pela parte front-end quanto back-end da",
-      "web, e tenho me arriscado na área do mobile também."
+      "Eu deveria mudar essa seção pra uma lista dos motivos que me fazem gostar",
+      "tanto de Svelte. Mas por enquanto, vou deixar essas outras techs que eu curto:"
     ]
   },
 
@@ -68,8 +68,8 @@
   },
 
   "about": {
-    "subtitle": "Programador movido a curiosidade e streamer de live coding",
-    "intro": "Oi, eu me chamo Lucas. Eu sou um desenvolvedor fullstack trabalhando em Pedro Leopoldo, na região metropolitana de Belo Horizonte em Minas Gerais. Nesse site eu reúno alguns dos meus trabalhos e pedaços de conhecimento que eu gostaria de compartilhar com o mundo.",
+    "subtitle": "Dev movido a curiosidade, evangelista de Svelte e streamer de live coding",
+    "intro": "Oi, eu me chamo Lucas. Eu sou um desenvolvedor frontend morando em Pedro Leopoldo, na região metropolitana de Belo Horizonte em Minas Gerais. Nesse site eu reúno alguns dos meus trabalhos e pedaços de conhecimento que eu gostaria de compartilhar com o mundo.",
     "factsIntro": "Se você está nessa página talvez você ache legal algum desses fatos aleatórios sobre mim:",
     "facts": [
       "Minha série preferida de todos os tempos é Sense8",

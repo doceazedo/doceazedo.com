@@ -19,10 +19,10 @@
   },
 
   "skills": {
-    "title": "What I can do",
+    "title": "What I like to do",
     "paragraph": [
-      "I'm interested in both front-end and back-end areas of the web,",
-      "and I've been trying with mobile development scope too."
+      "I should probably change this section to a list of reasons that makes me",
+      "love Svelte so much. For now, I'll just leave these other tech I like:"
     ]
   },
 
@@ -69,7 +69,7 @@
 
   "about": {
     "subtitle": "Curiosity-driven developer and live coding streamer",
-    "intro": "Hi, my name is Lucas. I am a fullstack developer working in Minas Gerais, Brazil. Here on this site I gather some of my work and pieces of knowledge that I would like to share with the world.",
+    "intro": "Hi, my name is Lucas. I am a frontend developer based in Minas Gerais, Brazil. Here on this site I gather some of my work and pieces of knowledge that I would like to share with the world.",
     "factsIntro": "If you're on this page maybe you'll find some of these random facts about me fun (or something...):",
     "facts": [
       "My favorite Netflix series of all time is Sense8",
