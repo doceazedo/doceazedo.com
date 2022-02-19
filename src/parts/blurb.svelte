@@ -5,16 +5,17 @@
   import selfie from '../assets/img/selfie.webp';
   import customCursorImage from '../assets/img/pat.gif';
 
-  let customCursor;
+  let customCursor: HTMLImageElement;
   const cursorSize = 112 / 2;
 
   const positionCursor = (event: MouseEvent) => {
     let mouse = {
       x: event.clientX,
       y: event.clientY
-    };
+    }
+    if (customCursor == null) return;
     customCursor.style.top = mouse.y - cursorSize + 'px';
-    return customCursor.style.left = mouse.x - cursorSize + 'px';
+    customCursor.style.left = mouse.x - cursorSize + 'px';
   };
 
   if (browser) {
