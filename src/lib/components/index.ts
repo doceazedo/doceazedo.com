@@ -4,5 +4,6 @@ export * from './button';
 export * from './icons';
 export * from './layout';
 export * from './navbar';
+export * from './portfolio';
 export * from './skills';
 export * from './text';
