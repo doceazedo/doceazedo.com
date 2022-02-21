@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { Navbar, Footer } from '../parts';
-  import '../assets/css/minireset.min.css';
-  import '../assets/css/app.css';
+  import { Navbar } from '$lib/modules';
+  import { Footer } from '../parts';
+  import '../assets/sass/minireset.sass';
+  import '../assets/sass/global.sass';
 </script>
 
 <Navbar />
