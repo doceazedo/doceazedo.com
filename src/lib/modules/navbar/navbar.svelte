@@ -2,6 +2,7 @@
   import { page } from '$app/stores';
   import { NavbarAchievement, NavbarItem, NavbarLang, NavbarMenu, Navbar } from '$lib/components';
   import { lang } from '$lib/stores';
+  import { lang as __oldLangPlsDeleteMeAfterFinishingRefactor } from '../../../stores';
 
   const navbarPageSlugs = ['', 'blog', 'about', 'contact'];
   const languages = [
@@ -15,6 +16,7 @@
 
   const changeLanguage = (code: string) => {
     lang.change(code);
+    __oldLangPlsDeleteMeAfterFinishingRefactor.change(code);
     activeLanguage = code;
   };
 
