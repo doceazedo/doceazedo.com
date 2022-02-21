@@ -1,56 +1,43 @@
 <script lang="ts">
-  import { browser } from '$app/env';
-  import { lang } from '../stores';
-  import Button from '../components/button.svelte';
-  import selfie from '../assets/img/selfie.webp';
-  import customCursorImage from '../assets/img/pat.gif';
+  import { Buttons } from '$lib/components';
 
-  let customCursor: HTMLImageElement;
-  const cursorSize = 112 / 2;
-
-  const positionCursor = (event: MouseEvent) => {
-    let mouse = {
-      x: event.clientX,
-      y: event.clientY
-    };
-    if (customCursor == null) return;
-    customCursor.style.top = mouse.y - cursorSize + 'px';
-    customCursor.style.left = mouse.x - cursorSize + 'px';
-  };
-
-  if (browser) {
-    window.addEventListener('mousemove', (event) => {
-      positionCursor(event);
-    });
-  }
+  export let title: string,
+    paragraph: string[],
+    image: string,
+    customCursorEl: HTMLImageElement = null,
+    customCursorImage: string = null;
 </script>
 
-<header>
-  <div>
-    <h1>{$lang.blurb.title}</h1>
+<header class="blurb">
+  <div class="blurb-info">
+    <h1>{title}</h1>
     <p>
-      {#each $lang.blurb.paragraph as line}
+      {#each paragraph as line}
         {line} <br />
       {/each}
     </p>
-    <div class="buttons">
-      <Button href="/contact">{$lang.blurb.button}</Button>
-      <Button outline href="https://github.com/doceazedo" target="_blank">GitHub</Button>
-    </div>
+    <Buttons>
+      <slot />
+    </Buttons>
   </div>
-  <div>
+  <div class="blurb-selfie">
     <figure>
-      <img class="selfie" src={selfie} alt="" />
-      <div class="pat-area" />
-      <img src={customCursorImage} alt="Patting hand" class="pat-cursor" bind:this={customCursor} />
+      <img class="selfie" src={image} alt="" />
+      <div class="pat-area" class:is-active={customCursorImage} />
+      <img
+        src={customCursorImage}
+        alt="Patting hand"
+        class="pat-cursor"
+        bind:this={customCursorEl}
+      />
     </figure>
   </div>
 </header>
 
 <style lang="sass">
-  @import '../assets/sass/vars.sass'
+  @import '../../../assets/sass/vars.sass'
 
-  header
+  .blurb
     display: flex
     justify-content: space-between
     align-items: center
@@ -114,8 +101,10 @@
         left: 120px
         width: 130px
         height: 90px
-        cursor: none
         z-index: 10
+
+        &.is-active
+          cursor: none
 
       .pat-cursor
         position: fixed
@@ -124,11 +113,11 @@
         z-index: 10
 
   @media screen and (max-width: 768px)
-    header
+    .blurb
       flex-direction: column-reverse
       padding: 3rem 0
 
-      >div:first-child
+      &-info
         width: 100%
         text-align: center
 
@@ -141,7 +130,7 @@
         br
           display: none
 
-      >div:last-child
+      &-selfie
         display: flex
         justify-content: center
         width: 100%
@@ -155,13 +144,10 @@
           &::before,
           &::after,
           img
-            height: 300px
-            width: 225px
-
-      .buttons
-        justify-content: center
+            height: 300px !important
+            width: 225px !important
 
   @media screen and (min-width: 769px)
-    .pat-area:hover + .pat-cursor
+    .pat-area.is-active:hover + .pat-cursor
       display: block
 </style>

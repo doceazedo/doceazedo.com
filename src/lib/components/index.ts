@@ -1,3 +1,4 @@
+export * from './blurb';
 export * from './brand';
 export * from './button';
 export * from './icons';
