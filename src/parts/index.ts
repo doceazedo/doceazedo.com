@@ -1,4 +1,3 @@
-export { default as Skills } from './skills.svelte';
 export { default as Portfolio } from './portfolio.svelte';
 export { default as Footer } from './footer.svelte';
 export { default as Projects } from './projects.svelte';

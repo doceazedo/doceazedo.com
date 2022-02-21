@@ -15,9 +15,9 @@
 </script>
 
 <script lang="ts">
-  import { Skills, Portfolio, Articles } from '../parts';
+  import { Portfolio, Articles } from '../parts';
   import SEO from '../components/seo.svelte';
-  import { Blurb } from '$lib/modules';
+  import { Blurb, Skills } from '$lib/modules';
 
   export let posts = [];
 </script>

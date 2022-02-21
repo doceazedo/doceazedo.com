@@ -1,4 +1,15 @@
 export { default as AchievementIcon } from './achievement-icon.svelte';
-export { default as LastfmIcon } from './lastfm-icon.svelte';
-export { default as HamburgerIcon } from './hamburger-icon.svelte';
+export { default as CapacitorIcon } from './capacitor-icon.svelte';
 export { default as ElevatorIcon } from './elevator-icon.svelte';
+export { default as HamburgerIcon } from './hamburger-icon.svelte';
+export { default as KotlinIcon } from './kotlin-icon.svelte';
+export { default as LastfmIcon } from './lastfm-icon.svelte';
+export { default as MongoDbIcon } from './mongodb-icon.svelte';
+export { default as MySqlIcon } from './mysql-icon.svelte';
+export { default as NextjsIcon } from './nextjs-icon.svelte';
+export { default as NodejsIcon } from './nodejs-icon.svelte';
+export { default as ReactIcon } from './react-icon.svelte';
+export { default as SassIcon } from './sass-icon.svelte';
+export { default as SvelteIcon } from './svelte-icon.svelte';
+export { default as TypescriptIcon } from './typescript-icon.svelte';
+export { default as UnityIcon } from './unity-icon.svelte';
