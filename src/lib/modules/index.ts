@@ -3,4 +3,5 @@ export * from './blurb';
 export * from './footer';
 export * from './navbar';
 export * from './portfolio';
+export * from './seo';
 export * from './skills';

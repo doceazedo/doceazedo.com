@@ -13,6 +13,7 @@ export { default as NextjsIcon } from './nextjs-icon.svelte';
 export { default as NodejsIcon } from './nodejs-icon.svelte';
 export { default as ReactIcon } from './react-icon.svelte';
 export { default as SassIcon } from './sass-icon.svelte';
+export { default as SendIcon } from './send-icon.svelte';
 export { default as SvelteIcon } from './svelte-icon.svelte';
 export { default as TwitchIcon } from './twitch-icon.svelte';
 export { default as TypescriptIcon } from './typescript-icon.svelte';

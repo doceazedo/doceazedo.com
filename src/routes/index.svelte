@@ -13,8 +13,7 @@
 </script>
 
 <script lang="ts">
-  import SEO from '../components/seo.svelte';
-  import { Articles, Blurb, Portfolio, Skills } from '$lib/modules';
+  import { Articles, Blurb, Portfolio, SEO, Skills } from '$lib/modules';
   import { POSTS } from '$lib/stores';
 
   export let posts = [];

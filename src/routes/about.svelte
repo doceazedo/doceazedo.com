@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { lang } from '../stores';
-  import PageTitle from '../components/page-title.svelte';
-  import SEO from '../components/seo.svelte';
+  import { LANG } from '$lib/stores';
+  import { PageTitle } from '$lib/components';
+  import { SEO } from '$lib/modules';
   import meAtBeach from '../assets/img/me-beach.webp';
   import tattoo1 from '../assets/img/tattoo-1.webp';
   import tattoo2 from '../assets/img/tattoo-2.webp';
@@ -12,38 +12,38 @@
   <SEO path="/about" />
 </svelte:head>
 
-<PageTitle title={$lang.navbar.about} paragraph={$lang.about.subtitle} />
+<PageTitle title={$LANG.navbar.about} paragraph={$LANG.about.subtitle} />
 
 <div class="content">
-  <p>{@html $lang.about.intro}</p>
+  <p>{@html $LANG.about.intro}</p>
   <img src={meAtBeach} alt="" />
-  <p>{@html $lang.about.factsIntro}</p>
+  <p>{@html $LANG.about.factsIntro}</p>
   <ul>
-    {#each $lang.about.facts as fact}
+    {#each $LANG.about.facts as fact}
       <li>{@html fact}</li>
     {/each}
   </ul>
-  <h4>{@html $lang.about.tattoosTitle}</h4>
+  <h4>{@html $LANG.about.tattoosTitle}</h4>
   <div class="tattoos">
     <img src={tattoo1} alt="" />
     <img src={tattoo2} alt="" />
     <img src={tattoo3} alt="" />
   </div>
-  {#each $lang.about.tattoos as tattoo}
+  {#each $LANG.about.tattoos as tattoo}
     <p>{@html tattoo}</p>
   {/each}
-  <h4>{@html $lang.about.keepInTouchTitle}</h4>
-  <p>{@html $lang.about.socialsIntro}</p>
+  <h4>{@html $LANG.about.keepInTouchTitle}</h4>
+  <p>{@html $LANG.about.socialsIntro}</p>
   <ul>
-    {#each $lang.about.socials as social}
+    {#each $LANG.about.socials as social}
       <li>{@html social}</li>
     {/each}
   </ul>
-  <p>{@html $lang.about.livestream}</p>
-  <p>{@html $lang.about.nickname}</p>
-  <h4>{@html $lang.about.hardwareTitle}</h4>
+  <p>{@html $LANG.about.livestream}</p>
+  <p>{@html $LANG.about.nickname}</p>
+  <h4>{@html $LANG.about.hardwareTitle}</h4>
   <ul>
-    {#each $lang.about.hardware as hardware}
+    {#each $LANG.about.hardware as hardware}
       <li>{@html hardware}</li>
     {/each}
   </ul>

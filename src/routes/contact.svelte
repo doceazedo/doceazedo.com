@@ -1,9 +1,7 @@
 <script lang="ts">
-  import { lang } from '../stores';
-  import PageTitle from '../components/page-title.svelte';
-  import Button from '../components/button.svelte';
-  import SEO from '../components/seo.svelte';
-  import { MailIcon, SendIcon } from 'svelte-feather-icons';
+  import { LANG } from '$lib/stores';
+  import { Buttons, Button, MailIcon, PageTitle, SendIcon } from '$lib/components';
+  import { SEO } from '$lib/modules';
 </script>
 
 <svelte:head>
@@ -11,14 +9,18 @@
 </svelte:head>
 
 <div class="contact">
-  <PageTitle title={$lang.contact.title} paragraph={$lang.contact.paragraph} />
+  <PageTitle title={$LANG.contact.title} paragraph={$LANG.contact.paragraph} />
 
-  <div class="buttons">
-    <Button href="mailto:{$lang.email}" outline><MailIcon size="24" /> {$lang.email}</Button>
-    <Button href="https://t.me/eightavocados" outline
-      ><SendIcon size="24" /> {$lang.contact.telegramButton}</Button
-    >
-  </div>
+  <Buttons>
+    <Button href="mailto:{$LANG.email}" outline>
+      <MailIcon />
+      {$LANG.email}
+    </Button>
+    <Button href="https://t.me/eightavocados" outline>
+      <SendIcon />
+      {$LANG.contact.telegramButton}
+    </Button>
+  </Buttons>
 </div>
 
 <style lang="sass">
@@ -32,12 +34,4 @@
     .contact
       text-align: center
       margin: 0 0 4rem
-
-    .buttons
-      flex-direction: column
-      align-items: center
-
-      :global(.button:not(:last-child))
-        margin-right: 0
-        margin-bottom: 1rem
 </style>
