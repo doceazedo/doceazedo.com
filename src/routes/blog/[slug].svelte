@@ -31,12 +31,12 @@
   import dayjs from 'dayjs';
   import relativeTime from 'dayjs/plugin/relativeTime.js';
   import 'dayjs/locale/pt-br.js';
-  import { browser } from '$app/env';
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
-  import { lang } from '../../stores';
-  import SEO from '../../components/seo.svelte';
+  import { browser } from '$app/env';
+  import { LANG } from '$lib/stores';
+  import { SEO } from '$lib/modules';
   import hljs from 'highlight.js';
   import hljs_svelte from 'highlightjs-svelte';
   import 'highlight.js/styles/base16/tomorrow-night.css';
@@ -49,7 +49,7 @@
   if (browser) {
     dayjs.extend(relativeTime);
     readableDate = dayjs(post.date)
-      .locale($lang.code == 'pt' ? 'pt-br' : 'en-us')
+      .locale($LANG.code == 'pt' ? 'pt-br' : 'en-us')
       .fromNow();
     fullDate = dayjs(post.date).format('DD/MM/YYYY à[s] HH:mm');
     console.log(fullDate);
@@ -80,7 +80,7 @@
   $: {
     if (browser)
       readableDate = dayjs(post.date)
-        .locale($lang.code == 'pt' ? 'pt-br' : 'en-us')
+        .locale($LANG.code == 'pt' ? 'pt-br' : 'en-us')
         .fromNow();
   }
 </script>
@@ -92,7 +92,7 @@
 <header>
   <div>
     <h1>{post.title.rendered}</h1>
-    <h2 title={fullDate}>{$lang.posted} {readableDate}</h2>
+    <h2 title={fullDate}>{$LANG.posted} {readableDate}</h2>
     <ul>
       {#each post?.acf?.categories?.split(',') || [] as category}
         <li><span>#</span>{category}</li>
@@ -104,7 +104,7 @@
   </div>
 </header>
 
-{#if $lang.code == 'en'}
+{#if $LANG.code == 'en'}
   <div class="alert" transition:slide={{ duration: 200, easing: quintOut }}>
     This blog articles are only available in Portuguese for now. English translations for every post
     are yet to come.

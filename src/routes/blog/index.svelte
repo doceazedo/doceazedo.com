@@ -13,9 +13,9 @@
 </script>
 
 <script>
-  import { ArticlesList, PageTitle } from '$lib/components';
   import { LANG } from '$lib/stores';
-  import SEO from '../../components/seo.svelte';
+  import { ArticlesList, PageTitle } from '$lib/components';
+  import { SEO } from '$lib/modules';
 
   export let posts = [];
 </script>
