@@ -1,6 +1,5 @@
 <script lang="ts">
-  import SectionTitle from '../components/section-title.svelte';
-  import MusicwrapLogo from '../assets/img/musicwrap-logo.svg';
+  import { SectionTitle } from '$lib/components';
 </script>
 
 <section>
@@ -9,7 +8,10 @@
     {#each Array(3) as uwu}
       <li>
         <a href="https://musicwrap.xyz" target="_blank">
-          <img src={MusicwrapLogo} alt="" />
+          <img
+            src="https://raw.githubusercontent.com/doceazedo/semaninha/main/static/img/logo.svg"
+            alt=""
+          />
         </a>
         <p>
           Um site open-source que gera imagens com as músicas que você mais ouviu na semana. Ele foi
@@ -21,7 +23,7 @@
 </section>
 
 <style lang="sass">
-  @import '../assets/sass/vars.sass'
+  @import '../../../assets/sass/vars.sass'
 
   section
     padding: 4rem 0
