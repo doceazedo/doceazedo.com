@@ -1,20 +1,14 @@
 <script lang="ts">
-  import { Navbar } from '$lib/modules';
-  import { Footer } from '../parts';
+  import { Container } from '$lib/components';
+  import { Navbar, Footer } from '$lib/modules';
   import '../assets/sass/minireset.sass';
   import '../assets/sass/global.sass';
 </script>
 
 <Navbar />
 
-<main>
+<Container>
   <slot />
-</main>
+</Container>
 
 <Footer />
-
-<style lang="sass">
-  @media screen and (max-width: 768px)
-    main
-      padding: 0 1rem
-</style>

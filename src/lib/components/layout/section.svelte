@@ -1,11 +1,11 @@
-<section class="section">
+<section>
   <slot />
 </section>
 
 <style lang="sass">
   @import '../../../assets/sass/vars.sass'
 
-  .section
+  section
     padding: 4rem 0
     border-bottom: $hr
 </style>
