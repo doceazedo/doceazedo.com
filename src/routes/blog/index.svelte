@@ -13,9 +13,8 @@
 </script>
 
 <script>
-  import { lang } from '../../stores';
-  import PageTitle from '../../components/page-title.svelte';
-  import Posts from '../../components/posts.svelte';
+  import { ArticlesList, PageTitle } from '$lib/components';
+  import { LANG } from '$lib/stores';
   import SEO from '../../components/seo.svelte';
 
   export let posts = [];
@@ -25,6 +24,5 @@
   <SEO path="/blog" />
 </svelte:head>
 
-<PageTitle title="Blog" paragraph={$lang.blog.subtitle} />
-
-<Posts {posts} />
+<PageTitle title="Blog" paragraph={$LANG.blog.subtitle} />
+<ArticlesList {posts} />

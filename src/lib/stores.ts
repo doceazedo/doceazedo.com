@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 import { browser } from '$app/env';
 import en from '../lang/en.json';
 import pt from '../lang/pt.json';
+import type { WordPressApiResponse } from '$lib/modules';
 
 export const initializeLang = () => {
   let defaultLang = en;
@@ -14,4 +15,6 @@ export const initializeLang = () => {
   };
 };
 
-export const lang = initializeLang();
+export const LANG = initializeLang();
+
+export const POSTS = writable<WordPressApiResponse[]>([]);

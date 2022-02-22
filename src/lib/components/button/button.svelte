@@ -6,7 +6,7 @@
 </script>
 
 {#if href}
-  <a sveltekit:prefetch {href} {target} class="button" class:outline class:center>
+  <a {href} {target} class="button" class:outline class:center>
     <slot />
   </a>
 {:else}

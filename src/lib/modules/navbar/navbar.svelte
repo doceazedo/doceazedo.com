@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import { NavbarAchievement, NavbarItem, NavbarLang, NavbarMenu, Navbar } from '$lib/components';
-  import { lang } from '$lib/stores';
+  import { LANG } from '$lib/stores';
   import { lang as __oldLangPlsDeleteMeAfterFinishingRefactor } from '../../../stores';
 
   const navbarPageSlugs = ['', 'blog', 'about', 'contact'];
@@ -15,12 +15,12 @@
   let achievementGet = false;
 
   const changeLanguage = (code: string) => {
-    lang.change(code);
+    LANG.change(code);
     __oldLangPlsDeleteMeAfterFinishingRefactor.change(code);
     activeLanguage = code;
   };
 
-  lang.subscribe((x) => (activeLanguage = x.code));
+  LANG.subscribe((x) => (activeLanguage = x.code));
 
   const toggleMobileMenu = () => (showMobileMenu = !showMobileMenu);
 
@@ -43,7 +43,7 @@
         href="/{slug}"
         active={slug ? $page.url.pathname.startsWith(`/${slug}`) : $page.url.pathname == '/'}
       >
-        {$lang.navbar[slug || 'home']}
+        {$LANG.navbar[slug || 'home']}
       </NavbarItem>
     {/each}
   </NavbarMenu>

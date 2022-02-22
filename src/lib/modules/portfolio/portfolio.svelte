@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { lang } from '$lib/stores';
+  import { LANG } from '$lib/stores';
   import { Portfolio } from '$lib/components';
   import semaninhaImage from '../../../assets/img/portfolio-semaninha.webp';
   import convergenciaImage from '../../../assets/img/portfolio-convergencia.webp';
@@ -33,4 +33,4 @@
   ];
 </script>
 
-<Portfolio {items} title={$lang.portfolio.title} />
+<Portfolio {items} title={$LANG.portfolio.title} />

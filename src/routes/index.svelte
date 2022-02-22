@@ -1,6 +1,4 @@
 <script lang="ts" context="module">
-  export const prerender = true;
-
   export async function load({ fetch }) {
     const posts = await (
       await fetch('https://wp.lucasfernandes.com.br/wp-json/wp/v2/posts?per_page=3')
@@ -15,11 +13,13 @@
 </script>
 
 <script lang="ts">
-  import { Articles } from '../parts';
   import SEO from '../components/seo.svelte';
-  import { Blurb, Portfolio, Skills } from '$lib/modules';
+  import { Articles, Blurb, Portfolio, Skills } from '$lib/modules';
+  import { POSTS } from '$lib/stores';
 
   export let posts = [];
+
+  $POSTS = posts;
 </script>
 
 <svelte:head>
@@ -29,4 +29,4 @@
 <Blurb />
 <Skills />
 <Portfolio />
-<Articles {posts} />
+<Articles />

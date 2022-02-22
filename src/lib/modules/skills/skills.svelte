@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { lang } from '$lib/stores';
+  import { LANG } from '$lib/stores';
   import {
     Skills,
     CapacitorIcon,
@@ -67,4 +67,4 @@
   ];
 </script>
 
-<Skills {skills} title={$lang.skills.title} paragraph={$lang.skills.paragraph} />
+<Skills {skills} title={$LANG.skills.title} paragraph={$LANG.skills.paragraph} />

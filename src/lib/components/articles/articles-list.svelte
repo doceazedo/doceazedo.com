@@ -1,21 +1,9 @@
 <script lang="ts">
-  import dayjs from 'dayjs';
-  import relativeTime from 'dayjs/plugin/relativeTime.js';
-  import 'dayjs/locale/pt-br.js';
-  import { browser } from '$app/env';
-  import { lang } from '../stores';
+  import { LANG } from '$lib/stores';
+  import { readableDate } from '$lib/utils';
+  import type { WordPressApiResponse } from '$lib/modules';
 
-  export let posts = [];
-
-  const readableDate = (dateString, lang) => {
-    if (browser) {
-      dayjs.extend(relativeTime);
-      return dayjs(dateString)
-        .locale(lang == 'pt' ? 'pt-br' : 'en-us')
-        .fromNow();
-    }
-    return '';
-  };
+  export let posts: WordPressApiResponse[] = [];
 </script>
 
 <div>
@@ -24,7 +12,7 @@
       <figure style="background-image:url({post?.acf?.icon})" />
       <div>
         <h1>{post.title.rendered}</h1>
-        <h2>{$lang.posted} {readableDate(post.date, $lang.code)}</h2>
+        <h2>{$LANG.posted} {readableDate(post.date, $LANG.code)}</h2>
       </div>
       <ul>
         {#each post?.acf?.categories?.split(',') || [] as category}
@@ -36,7 +24,7 @@
 </div>
 
 <style lang="sass">
-  @import '../assets/sass/vars.sass'
+  @import '../../../assets/sass/vars.sass'
   
   div
     display: flex

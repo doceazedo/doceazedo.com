@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { lang } from '$lib/stores';
+  import { LANG } from '$lib/stores';
   import { SectionTitle, Section } from '$lib/components';
 
   type PortfolioItem = {
@@ -25,8 +25,8 @@
           </div>
 
           <div class="info">
-            <h1>{$lang.portfolio.projects[i].title}</h1>
-            <p>{$lang.portfolio.projects[i].description}</p>
+            <h1>{$LANG.portfolio.projects[i].title}</h1>
+            <p>{$LANG.portfolio.projects[i].description}</p>
           </div>
         </a>
       </li>

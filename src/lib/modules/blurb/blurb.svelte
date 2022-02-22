@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser } from '$app/env';
   import { Blurb, Button } from '$lib/components';
-  import { lang } from '$lib/stores';
+  import { LANG } from '$lib/stores';
   import image from '../../../assets/img/selfie.webp';
   import customCursorImage from '../../../assets/img/pat.gif';
 
@@ -18,12 +18,12 @@
 </script>
 
 <Blurb
-  title={$lang.blurb.title}
-  paragraph={$lang.blurb.paragraph}
+  title={$LANG.blurb.title}
+  paragraph={$LANG.blurb.paragraph}
   {image}
   bind:customCursorEl
   {customCursorImage}
 >
-  <Button href="/contact">{$lang.blurb.button}</Button>
+  <Button href="/contact">{$LANG.blurb.button}</Button>
   <Button outline href="https://github.com/doceazedo" target="_blank">GitHub</Button>
 </Blurb>
