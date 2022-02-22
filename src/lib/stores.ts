@@ -1,7 +1,6 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/env';
-import en from '../lang/en.json';
-import pt from '../lang/pt.json';
+import { en, pt } from '../lang';
 import type { WordPressApiResponse } from '$lib/modules';
 
 export const initializeLang = () => {
