@@ -21,6 +21,7 @@
 
   if (browser) {
     song = new Audio(ElevatorAudio);
+    song.loop = true;
     chime = new Audio(ChimeAudio);
   }
 
