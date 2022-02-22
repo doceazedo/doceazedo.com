@@ -26,7 +26,12 @@
 
 <footer class:has-now-playing={liveStats?.nowPlaying}>
   <p>
-    <slot />
+    {$LANG.footer[0]} <br />
+    {$LANG.footer[1]}
+    <a href="https://gnu.org/licenses/copyleft.html" target="_blank">
+      <span class="copyleft">&copy;</span>
+      {new Date().getFullYear()}
+    </a>
   </p>
   <div class="socials">
     {#if liveStats?.nowPlaying}
@@ -76,6 +81,10 @@
     justify-content: space-between
     align-items: center
     padding: 4rem 0
+
+    .copyleft
+      display: inline-block
+      transform: scaleX(-1)
 
     .socials
       display: flex

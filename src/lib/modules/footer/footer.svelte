@@ -58,7 +58,4 @@
 
 <svelte:window bind:scrollY />
 
-<Footer {liveStats} {socials} {showElevator} {callElevator}>
-  {$LANG.footer[0]} <br />
-  {$LANG.footer[1]} &copy; {new Date().getFullYear()}
-</Footer>
+<Footer {liveStats} {socials} {showElevator} {callElevator} />
