@@ -64,7 +64,7 @@
       color: #fff
     
     :global(small)
-      font-size: .8rem
+      font-size: .9rem
 
   @media screen and (max-width: 768px)
     .tattoos

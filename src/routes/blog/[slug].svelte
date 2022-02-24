@@ -104,6 +104,8 @@
   </div>
 </header>
 
+<hr />
+
 {#if $LANG.code == 'en'}
   <div class="alert" transition:slide={{ duration: 200, easing: quintOut }}>
     This blog articles are only available in Portuguese for now. English translations for every post
@@ -135,12 +137,15 @@
 <style lang="sass">
   @import '../../assets/sass/vars.sass'
 
+  header,
+  .content
+    max-width: 900px
+    margin: 0 auto
+
   header
     display: flex
     justify-content: space-between
     padding: 4rem 0
-    margin-bottom: 4rem
-    border-bottom: $hr
 
     >div:last-child
       flex-shrink: 0
@@ -149,6 +154,7 @@
     h1
       font-size: 2rem
       font-weight: 700
+      margin-bottom: .5rem
 
     h2
       font-size: 1.25rem
@@ -171,6 +177,11 @@
 
     img
       height: 6rem
+
+  hr
+    border: none
+    border-bottom: $hr
+    margin-bottom: 4rem
 
   .alert
     text-align: center
