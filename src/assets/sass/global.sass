@@ -1,6 +1,8 @@
+@import './vars.sass'
+  
 body
   max-width: 1080px
-  background-color: #11052c
+  background-color: $background
   margin: auto
   overflow-y: scroll
   overflow-x: hidden
@@ -31,7 +33,7 @@ a
 
 .content
   font-size: 1.25rem
-  color: rgba(255, 255, 255, 0.75)
+  color: $whiteish
 
   li + li
     margin-top: 0.25em
@@ -78,9 +80,13 @@ a
     margin-bottom: 1em
 
   a
-    color: #6930c3
-    text-shadow: 0 0 0.25rem #6930c3
+    color: #fff
+    text-shadow: 0 0 0.25rem #fff
     text-decoration: none
+    border-bottom: 2px solid $primary
+
+    &:hover
+      background-color: $primary
 
   blockquote
     background-color: whitesmoke

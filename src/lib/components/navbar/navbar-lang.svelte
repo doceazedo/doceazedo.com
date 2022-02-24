@@ -37,8 +37,8 @@
       transition: all .2s ease
 
       &.active
-        color: $primary
-        text-shadow: 0 0 .25rem $primary
+        color: $primary-light
+        text-shadow: 0 0 .25rem $primary-light
         cursor: default
 
       &:not(:last-child)::after
