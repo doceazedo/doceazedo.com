@@ -92,7 +92,7 @@
 <header>
   <div>
     <h1>{post.title.rendered}</h1>
-    <h2 title={fullDate}>{$LANG.posted} {readableDate}</h2>
+    <p title={fullDate}>{$LANG.posted} {readableDate}</p>
     <ul>
       {#each post?.acf?.categories?.split(',') || [] as category}
         <li><span>#</span>{category}</li>
@@ -156,8 +156,9 @@
       font-weight: 700
       margin-bottom: .5rem
 
-    h2
+    p
       font-size: 1.25rem
+      font-weight: 400
       color: $whiteish
 
     ul

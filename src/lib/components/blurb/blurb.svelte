@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { LANG } from '$lib/stores';
   import { Buttons } from '$lib/components';
 
   export let title: string,
@@ -22,14 +23,9 @@
   </div>
   <div class="blurb-selfie">
     <figure>
-      <img class="selfie" src={image} alt="" />
+      <img class="selfie" src={image} alt={$LANG.alt.selfie} />
       <div class="pat-area" class:is-active={customCursorImage} />
-      <img
-        src={customCursorImage}
-        alt="Patting hand"
-        class="pat-cursor"
-        bind:this={customCursorEl}
-      />
+      <img src={customCursorImage} alt="" class="pat-cursor" bind:this={customCursorEl} />
     </figure>
   </div>
 </header>

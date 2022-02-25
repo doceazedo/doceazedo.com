@@ -8,7 +8,14 @@
 
 <div>
   {#each posts as post}
-    <a sveltekit:prefetch href="/blog/{post.slug}">
+    <a
+      sveltekit:prefetch
+      href="/blog/{post.slug}"
+      aria-label="{post.title.rendered}. {$LANG.posted} {readableDate(
+        post.date,
+        $LANG.code
+      )}. Tags: {post?.acf?.categories}"
+    >
       <figure style="background-image:url({post?.acf?.icon})" />
       <div>
         <h1>{post.title.rendered}</h1>

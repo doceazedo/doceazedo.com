@@ -1,9 +1,10 @@
 <script lang="ts">
   export let href: string,
+    ariaLabel: string,
     isLive = false;
 </script>
 
-<a {href} target="_blank" class="social" class:is-live={isLive}>
+<a {href} target="_blank" class="social" class:is-live={isLive} aria-label={ariaLabel}>
   <slot />
 </a>
 

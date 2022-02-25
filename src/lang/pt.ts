@@ -138,5 +138,16 @@ export const pt: Language = {
   },
 
   email: 'eu@lucasfernandes.com.br',
-  posted: 'Publicado'
+  posted: 'Publicado',
+
+  alt: {
+    logo: 'Monograma com as iniciais de Lucas Fernandes em roxo, contidas num formato de losango.',
+    selfie:
+      'Selfie de mim, pessoa branca de cabelos longos com as pontas descoloridas, usando óculos redondos e vestindo uma blusa de moletom verde escuro.',
+    copyleft: 'Aprenda o que é Copyleft',
+    listeningTo: 'Ouvindo',
+    lastfm: 'Abrir meu perfil do Last.fm.',
+    imageBeach:
+      'Foto de mim, pessoa branca de cabelos castanhos na altura dos ombros, usando óculos escuros e um chapéu de pescador azul em uma praia.'
+  }
 };

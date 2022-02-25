@@ -63,6 +63,15 @@ export type Language = {
 
   email: string;
   posted: string;
+
+  alt: {
+    logo: string;
+    selfie: string;
+    copyleft: string;
+    listeningTo: string;
+    lastfm: string;
+    imageBeach: string;
+  };
 };
 
 export * from './en';

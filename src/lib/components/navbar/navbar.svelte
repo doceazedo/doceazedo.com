@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { LANG } from '$lib/stores';
   import { BrandLogo, HamburgerIcon } from '$lib/components';
 
   export let toggleMobileMenu: () => void, onClickBrand: (e: Event) => void;
@@ -9,7 +10,7 @@
     <HamburgerIcon />
   </div>
 
-  <a class="navbar-brand" href="/" on:click={onClickBrand}>
+  <a class="navbar-brand" href="/" on:click={onClickBrand} aria-label={$LANG.navbar.home}>
     <BrandLogo />
   </a>
 
