@@ -5,7 +5,7 @@
   export let toggleMobileMenu: () => void, onClickBrand: (e: Event) => void;
 </script>
 
-<navbar class="navbar">
+<nav class="navbar">
   <div class="navbar-hamburger" on:click={toggleMobileMenu}>
     <HamburgerIcon />
   </div>
@@ -15,7 +15,7 @@
   </a>
 
   <slot />
-</navbar>
+</nav>
 
 <style lang="sass">
   @import '../../../assets/sass/vars.sass'
