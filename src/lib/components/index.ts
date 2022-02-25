@@ -8,4 +8,5 @@ export * from './layout';
 export * from './navbar';
 export * from './portfolio';
 export * from './skills';
+export * from './skip-to-content';
 export * from './text';

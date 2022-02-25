@@ -1,9 +1,9 @@
-<main>
+<main id="main">
   <slot />
 </main>
 
 <style lang="sass">
   @media screen and (max-width: 768px)
-    main
+    #main
       padding: 0 1rem
 </style>

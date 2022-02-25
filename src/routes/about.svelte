@@ -23,7 +23,7 @@
       <li>{@html fact}</li>
     {/each}
   </ul>
-  <h4>{@html $LANG.about.tattoosTitle}</h4>
+  <h2>{@html $LANG.about.tattoosTitle}</h2>
   <div class="tattoos">
     <img src={tattoo1} alt="" />
     <img src={tattoo2} alt="" />
@@ -32,7 +32,7 @@
   {#each $LANG.about.tattoos as tattoo}
     <p>{@html tattoo}</p>
   {/each}
-  <h4>{@html $LANG.about.keepInTouchTitle}</h4>
+  <h2>{@html $LANG.about.keepInTouchTitle}</h2>
   <p>{@html $LANG.about.socialsIntro}</p>
   <ul>
     {#each $LANG.about.socials as social}
@@ -41,7 +41,7 @@
   </ul>
   <p>{@html $LANG.about.livestream}</p>
   <p>{@html $LANG.about.nickname}</p>
-  <h4>{@html $LANG.about.hardwareTitle}</h4>
+  <h2>{@html $LANG.about.hardwareTitle}</h2>
   <ul>
     {#each $LANG.about.hardware as hardware}
       <li>{@html hardware}</li>
@@ -64,7 +64,7 @@
       color: #fff
     
     :global(small)
-      font-size: .8rem
+      font-size: .9rem
 
   @media screen and (max-width: 768px)
     .tattoos

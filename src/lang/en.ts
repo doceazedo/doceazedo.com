@@ -137,5 +137,21 @@ export const en: Language = {
   },
 
   email: 'me@lucasfernandes.com.br',
-  posted: 'Published'
+  posted: 'Published',
+  skipToContent: 'Skip to content',
+
+  alt: {
+    logo: 'Monogram with the initials of Lucas Fernandes in purple, contained in a diamond shape.',
+    selfie:
+      'Selfie of myself, a white person with long hair with bleached ends, wearing round glasses and a dark green sweatshirt.',
+    copyleft: 'Learn what is Copyleft',
+    listeningTo: 'Listening to',
+    lastfm: 'Open my Last.fm profile.',
+    imageBeach:
+      'Photo of me, a white person with shoulder-length brown hair, wearing sunglasses and a blue bucket hat on a beach.',
+    changeLanguage: 'Change language to',
+    langEn: 'English',
+    langPt: 'Portuguese',
+    nowLive: 'Now live.'
+  }
 };

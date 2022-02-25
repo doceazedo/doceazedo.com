@@ -25,6 +25,7 @@
     margin-bottom: 4rem
 
   p
+    font-family: $font-secondary
     font-size: 1.25rem
     line-height: 1.25
     color: $whiteish

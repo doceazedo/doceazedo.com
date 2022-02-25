@@ -28,14 +28,23 @@
   <p>
     {$LANG.footer[0]} <br />
     {$LANG.footer[1]}
-    <a href="https://gnu.org/licenses/copyleft.html" target="_blank">
+    <a
+      href="https://gnu.org/licenses/copyleft.html"
+      target="_blank"
+      aria-label={$LANG.alt.copyleft}
+    >
       <span class="copyleft">&copy;</span>
       {new Date().getFullYear()}
     </a>
   </p>
   <div class="socials">
     {#if liveStats?.nowPlaying}
-      <a class="now-playing is-live" href={socials.lastfm} target="_blank">
+      <a
+        class="now-playing is-live"
+        href={socials.lastfm}
+        target="_blank"
+        aria-label={`${$LANG.alt.listeningTo} ${liveStats.nowPlaying.artist} - ${liveStats.nowPlaying.title}. ${$LANG.alt.lastfm}`}
+      >
         <img src={liveStats.nowPlaying.cover} alt="" />
         <div>
           <h1>{liveStats.nowPlaying.title}</h1>
@@ -44,25 +53,29 @@
       </a>
     {/if}
 
-    <FooterSocialButton href={socials.github}>
+    <FooterSocialButton href={socials.github} ariaLabel="Github">
       <GitHubIcon />
     </FooterSocialButton>
 
-    <FooterSocialButton href={socials.linkedin}>
+    <FooterSocialButton href={socials.linkedin} ariaLabel="LinkedIn">
       <LinkedInIcon />
     </FooterSocialButton>
 
-    <FooterSocialButton href={socials.twitch} isLive={liveStats?.isLive}>
+    <FooterSocialButton
+      href={socials.twitch}
+      isLive={liveStats?.isLive}
+      ariaLabel="Twitch. {liveStats?.isLive ? $LANG.alt.nowLive : ''}"
+    >
       <TwitchIcon />
     </FooterSocialButton>
 
     {#if !liveStats?.nowPlaying}
-      <FooterSocialButton href={socials.lastfm}>
+      <FooterSocialButton href={socials.lastfm} ariaLabel="Last.fm">
         <LastfmIcon />
       </FooterSocialButton>
     {/if}
 
-    <FooterSocialButton href="mailto:{$LANG.email}">
+    <FooterSocialButton href="mailto:{$LANG.email}" ariaLabel="Email">
       <MailIcon />
     </FooterSocialButton>
   </div>

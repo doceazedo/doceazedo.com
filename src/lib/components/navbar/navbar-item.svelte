@@ -37,8 +37,8 @@
 
     &:hover,
     &.active
-      color: $primary
-      text-shadow: 0 0 .25rem $primary
+      color: $primary-light
+      text-shadow: 0 0 .25rem $primary-light
 
     &.active::before
       opacity: 1

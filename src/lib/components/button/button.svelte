@@ -34,8 +34,8 @@
       transform: translateY(-.25rem)
 
     &.outline
-      color: $primary
-      background-color: rgba($primary, .1)
+      color: $primary-light
+      background-color: rgba($primary-light, .1)
       box-shadow: 0 0 .5rem .25rem rgba($primary, .25), inset 0 0 0 1px $primary
 
     :global(.feather)

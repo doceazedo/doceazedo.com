@@ -1,6 +1,8 @@
+@import './vars.sass'
+  
 body
   max-width: 1080px
-  background-color: #11052c
+  background-color: $background
   margin: auto
   overflow-y: scroll
   overflow-x: hidden
@@ -8,7 +10,7 @@ body
 
 body,
 button
-  font-family: 'Rubik', sans-serif
+  font-family: $font-primary
   font-weight: 300
   font-size: 1rem
   color: #fff
@@ -30,8 +32,10 @@ a
   text-decoration: none
 
 .content
-  font-size: 1.25rem
-  color: rgba(255, 255, 255, 0.75)
+  font-family: $font-secondary
+  font-size: 1.2rem
+  line-height: 1.4
+  color: #ccc
 
   li + li
     margin-top: 0.25em
@@ -40,7 +44,8 @@ a
     margin-bottom: 2em
 
   h1, h2, h3, h4, h5, h6
-    color: #fff
+    font-family: $font-primary
+    color: $primary-light
     font-weight: 600
     line-height: 1.125
 
@@ -52,15 +57,15 @@ a
       margin-top: 1em
 
   h2
-    font-size: 1.75em
-    margin-bottom: 0.5714em
+    font-size: 1.25em
+    margin-bottom: 0.8em
 
     &:not(:first-child)
-      margin-top: 1.1428em
+      margin-top: 3rem
 
   h3
-    font-size: 1.5em
-    margin-bottom: 0.6666em
+    font-size: 1.25em
+    margin-bottom: 0.8em
 
     &:not(:first-child)
       margin-top: 1.3333em
@@ -78,9 +83,25 @@ a
     margin-bottom: 1em
 
   a
-    color: #6930c3
-    text-shadow: 0 0 0.25rem #6930c3
+    position: relative
+    display: inline-block
+    color: #fff
+    text-shadow: 0 0 0.25rem #fff
     text-decoration: none
+
+    &::before
+      content: ''
+      position: absolute
+      left: 0
+      bottom: 0
+      width: 100%
+      height: 2px
+      background-color: $primary
+      transition: all .2s ease
+      z-index: -1
+
+    &:hover::before
+      height: 100%
 
   blockquote
     background-color: whitesmoke
@@ -213,3 +234,12 @@ a
 \::-moz-selection, ::selection
   color: #fff !important
   background: #6930c3 !important
+
+@media screen and (max-width: 768px)
+  .content a
+    display: unset
+    border-bottom: 2px solid $primary
+
+    &::before
+      content: unset
+      display: none

@@ -1,20 +1,21 @@
 <script lang="ts">
+  import { LANG } from '$lib/stores';
   import { BrandLogo, HamburgerIcon } from '$lib/components';
 
   export let toggleMobileMenu: () => void, onClickBrand: (e: Event) => void;
 </script>
 
-<navbar class="navbar">
+<nav class="navbar">
   <div class="navbar-hamburger" on:click={toggleMobileMenu}>
     <HamburgerIcon />
   </div>
 
-  <a class="navbar-brand" href="/" on:click={onClickBrand}>
+  <a class="navbar-brand" href="/" on:click={onClickBrand} aria-label={$LANG.navbar.home}>
     <BrandLogo />
   </a>
 
   <slot />
-</navbar>
+</nav>
 
 <style lang="sass">
   @import '../../../assets/sass/vars.sass'
