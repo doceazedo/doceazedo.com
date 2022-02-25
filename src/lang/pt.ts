@@ -149,6 +149,10 @@ export const pt: Language = {
     listeningTo: 'Ouvindo',
     lastfm: 'Abrir meu perfil do Last.fm.',
     imageBeach:
-      'Foto de mim, pessoa branca de cabelos castanhos na altura dos ombros, usando óculos escuros e um chapéu de pescador azul em uma praia.'
+      'Foto de mim, pessoa branca de cabelos castanhos na altura dos ombros, usando óculos escuros e um chapéu de pescador azul em uma praia.',
+    changeLanguage: 'Alterar idioma para',
+    langEn: 'Inglês',
+    langPt: 'Português',
+    nowLive: 'Ao vivo agora.'
   }
 };

@@ -148,6 +148,10 @@ export const en: Language = {
     listeningTo: 'Listening to',
     lastfm: 'Open my Last.fm profile.',
     imageBeach:
-      'Photo of me, a white person with shoulder-length brown hair, wearing sunglasses and a blue bucket hat on a beach.'
+      'Photo of me, a white person with shoulder-length brown hair, wearing sunglasses and a blue bucket hat on a beach.',
+    changeLanguage: 'Change language to',
+    langEn: 'English',
+    langPt: 'Portuguese',
+    nowLive: 'Now live.'
   }
 };

@@ -61,7 +61,11 @@
       <LinkedInIcon />
     </FooterSocialButton>
 
-    <FooterSocialButton href={socials.twitch} isLive={liveStats?.isLive} ariaLabel="Twitch">
+    <FooterSocialButton
+      href={socials.twitch}
+      isLive={liveStats?.isLive}
+      ariaLabel="Twitch. {liveStats?.isLive ? $LANG.alt.nowLive : ''}"
+    >
       <TwitchIcon />
     </FooterSocialButton>
 

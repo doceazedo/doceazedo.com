@@ -72,6 +72,10 @@ export type Language = {
     listeningTo: string;
     lastfm: string;
     imageBeach: string;
+    changeLanguage: string;
+    langEn: string;
+    langPt: string;
+    nowLive: string;
   };
 };
 

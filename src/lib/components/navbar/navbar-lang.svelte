@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { LANG } from '$lib/stores';
+
   type Languages = {
     code: string;
     title: string;
@@ -9,7 +11,11 @@
 
 <div class="navbar-lang">
   {#each languages as lang}
-    <button on:click={() => changeLanguage(lang.code)} class:active={activeLanguage == lang.code}>
+    <button
+      on:click={() => changeLanguage(lang.code)}
+      class:active={activeLanguage == lang.code}
+      alt="{$LANG.alt.changeLanguage} {lang.code == 'pt' ? $LANG.alt.langPt : $LANG.alt.langEn}"
+    >
       {lang.title}
     </button>
   {/each}
