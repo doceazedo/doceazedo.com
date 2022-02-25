@@ -138,6 +138,7 @@ export const en: Language = {
 
   email: 'me@lucasfernandes.com.br',
   posted: 'Published',
+  skipToContent: 'Skip to content',
 
   alt: {
     logo: 'Monogram with the initials of Lucas Fernandes in purple, contained in a diamond shape.',

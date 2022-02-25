@@ -63,6 +63,7 @@ export type Language = {
 
   email: string;
   posted: string;
+  skipToContent: string;
 
   alt: {
     logo: string;

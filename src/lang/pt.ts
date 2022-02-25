@@ -139,6 +139,7 @@ export const pt: Language = {
 
   email: 'eu@lucasfernandes.com.br',
   posted: 'Publicado',
+  skipToContent: 'Ir para o conteúdo',
 
   alt: {
     logo: 'Monograma com as iniciais de Lucas Fernandes em roxo, contidas num formato de losango.',
