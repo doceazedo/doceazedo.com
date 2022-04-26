@@ -116,4 +116,5 @@ type Cury = {
   templated: boolean;
 };
 
+export * from './articles.client';
 export { default as Articles } from './articles.svelte';

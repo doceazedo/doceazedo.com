@@ -1,8 +1,8 @@
 <script lang="ts" context="module">
+  import { getArticleBySlug } from '$lib/modules/articles';
+
   export async function load({ params, fetch }) {
-    const posts = await (
-      await fetch(`https://wp.lucasfernandes.com.br/wp-json/wp/v2/posts?slug=${params.slug}`)
-    ).json();
+    const posts = await getArticleBySlug(params.slug);
 
     if (posts.length) {
       const featuredMedias = posts[0]['_links']['wp:featuredmedia'];
@@ -52,8 +52,6 @@
       .locale($LANG.code == 'pt' ? 'pt-br' : 'en-us')
       .fromNow();
     fullDate = dayjs(post.date).format('DD/MM/YYYY à[s] HH:mm');
-    console.log(fullDate);
-    console.log(post);
   }
 
   let hasMounted = false;

@@ -1,8 +1,8 @@
 <script lang="ts" context="module">
+  import { getArticles } from '$lib/modules/articles';
+
   export async function load({ fetch }) {
-    const posts = await (
-      await fetch('https://wp.lucasfernandes.com.br/wp-json/wp/v2/posts?per_page=3')
-    ).json();
+    const posts = await getArticles(3);
 
     return {
       props: {
