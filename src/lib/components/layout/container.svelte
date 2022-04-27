@@ -1,6 +1,19 @@
-<main id="main">
-  <slot />
-</main>
+<script lang="ts">
+  import { fly } from 'svelte/transition';
+  import { quintOut } from 'svelte/easing';
+
+  export let url = '';
+</script>
+
+{#key url}
+  <main
+    id="main"
+    in:fly={{ duration: 300, y: 32, opacity: 0, easing: quintOut, delay: 500 }}
+    out:fly={{ duration: 300, y: 32, opacity: 0, easing: quintOut }}
+  >
+    <slot />
+  </main>
+{/key}
 
 <style lang="sass">
   @media screen and (max-width: 768px)
