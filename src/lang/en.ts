@@ -11,11 +11,11 @@ export const en: Language = {
   },
 
   blurb: {
-    title: "I'm Lucas Fernandes.",
+    title: 'You can call me Doce.',
     paragraph: [
-      'I am a frontend developer, specially for the web,',
-      'building stylish and responsive layouts yet',
-      'designing well structured APIs and databases.'
+      "I'm Lucas, a frontend web developer that enjoys",
+      'building stylish and reactive layouts yet also',
+      'designing well-structured APIs and databases.'
     ],
     button: 'Keep in touch'
   },
@@ -141,7 +141,7 @@ export const en: Language = {
   skipToContent: 'Skip to content',
 
   alt: {
-    logo: 'Monogram with the initials of Lucas Fernandes in purple, contained in a diamond shape.',
+    logo: 'DoceAzedo logo',
     selfie:
       'Selfie of myself, a white person with long hair with bleached ends, wearing round glasses and a dark green sweatshirt.',
     copyleft: 'Learn what is Copyleft',
@@ -152,6 +152,7 @@ export const en: Language = {
     changeLanguage: 'Change language to',
     langEn: 'English',
     langPt: 'Portuguese',
-    nowLive: 'Now live.'
+    nowLive: 'Now live.',
+    audioButton: 'Listen to pronunciation'
   }
 };

@@ -1,17 +1,26 @@
 <script lang="ts">
   import { LANG } from '$lib/stores';
-  import { Buttons } from '$lib/components';
+  import { AudioIcon, Buttons } from '$lib/components';
 
   export let title: string,
     paragraph: string[],
     image: string,
     customCursorEl: HTMLImageElement = null,
-    customCursorImage: string = null;
+    customCursorImage: string = null,
+    showAudioButton = false,
+    onClickAudioButton: () => void = null;
 </script>
 
 <header class="blurb">
   <div class="blurb-info">
-    <h1>{title}</h1>
+    <h1>
+      {title}
+      {#if showAudioButton}
+        <button class="audio" on:click={onClickAudioButton} aria-label={$LANG.alt.audioButton}>
+          <AudioIcon />
+        </button>
+      {/if}
+    </h1>
     <p>
       {#each paragraph as line}
         {line} <br />
@@ -41,9 +50,26 @@
     border-bottom: $hr
 
     h1
+      position: relative
       font-size: 3rem
       font-weight: 700
       margin-bottom: 1rem
+
+      .audio
+        position: absolute
+        top: -.5rem
+        right: -.5rem
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 1.5rem
+        height: 1.5rem
+        padding: 0
+        color: $primary-light
+        background-color: rgba($primary, .3)
+        border: none
+        border-radius: 50%
+        cursor: pointer
 
     p
       font-family: $font-secondary

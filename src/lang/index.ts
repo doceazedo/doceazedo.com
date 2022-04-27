@@ -76,6 +76,7 @@ export type Language = {
     langEn: string;
     langPt: string;
     nowLive: string;
+    audioButton: string;
   };
 };
 

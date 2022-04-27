@@ -4,6 +4,7 @@
   import { LANG } from '$lib/stores';
   import image from '../../../assets/img/selfie.webp';
   import customCursorImage from '../../../assets/img/pat.gif';
+  import doceAudio from '../../../assets/audio/doce.mp3';
 
   let customCursorEl: HTMLImageElement;
   const customCursorHalfSize = 112 / 2;
@@ -14,6 +15,9 @@
     customCursorEl.style.left = event.clientX - customCursorHalfSize + 'px';
   };
 
+  const audio = browser && new Audio(doceAudio);
+  const onClickAudioButton = () => audio.play();
+
   if (browser) window.addEventListener('mousemove', (event) => positionCursor(event));
 </script>
 
@@ -23,6 +27,8 @@
   {image}
   bind:customCursorEl
   {customCursorImage}
+  showAudioButton={$LANG.code == 'en'}
+  {onClickAudioButton}
 >
   <Button href="/contact">{$LANG.blurb.button}</Button>
   <Button outline href="https://github.com/doceazedo" target="_blank">GitHub</Button>

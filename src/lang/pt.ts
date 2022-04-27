@@ -11,11 +11,11 @@ export const pt: Language = {
   },
 
   blurb: {
-    title: 'Prazer, Lucas Fernandes.',
+    title: 'Pode me chamar de Doce.',
     paragraph: [
-      'Eu sou um desenvolvedor frontend especializado em',
-      'web, criando layouts elegantes e reativos mas também',
-      'arquitetando APIs e bancos bem estruturados.'
+      'Meu nome é Lucas, eu sou webdev frontend e gosto de',
+      'criar layouts elegantes e reativos, mas também posso',
+      'arquitetar APIs e bancos bem estruturados.'
     ],
     button: 'Fale comigo'
   },
@@ -142,7 +142,7 @@ export const pt: Language = {
   skipToContent: 'Ir para o conteúdo',
 
   alt: {
-    logo: 'Monograma com as iniciais de Lucas Fernandes em roxo, contidas num formato de losango.',
+    logo: 'Logotipo Doce Azedo',
     selfie:
       'Selfie de mim, pessoa branca de cabelos longos com as pontas descoloridas, usando óculos redondos e vestindo uma blusa de moletom verde escuro.',
     copyleft: 'Aprenda o que é Copyleft',
@@ -153,6 +153,7 @@ export const pt: Language = {
     changeLanguage: 'Alterar idioma para',
     langEn: 'Inglês',
     langPt: 'Português',
-    nowLive: 'Ao vivo agora.'
+    nowLive: 'Ao vivo agora.',
+    audioButton: 'Ouvir pronúncia'
   }
 };

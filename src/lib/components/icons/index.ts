@@ -1,4 +1,5 @@
 export { default as AchievementIcon } from './achievement-icon.svelte';
+export { default as AudioIcon } from './audio-icon.svelte';
 export { default as CapacitorIcon } from './capacitor-icon.svelte';
 export { default as ElevatorIcon } from './elevator-icon.svelte';
 export { default as GitHubIcon } from './github-icon.svelte';
