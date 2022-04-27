@@ -2,6 +2,7 @@
   import { page } from '$app/stores';
   import { NavbarAchievement, NavbarItem, NavbarLang, NavbarMenu, Navbar } from '$lib/components';
   import { LANG } from '$lib/stores';
+  import { sleep } from '$lib/utils';
 
   const navbarPageSlugs = ['', 'blog', 'about', 'contact'];
   const languages = [
@@ -10,7 +11,8 @@
   ];
   let activeLanguage = 'en';
   let showMobileMenu = false;
-  let brandSpinDegrees = 0;
+  let brandClicks = 0;
+  let brandAnimating = false;
   let achievementGet = false;
 
   const changeLanguage = (code: string) => {
@@ -22,15 +24,25 @@
 
   const toggleMobileMenu = () => (showMobileMenu = !showMobileMenu);
 
-  const onClickBrand = (event: Event) => {
-    brandSpinDegrees += 360;
-    const brand = event.target as HTMLElement;
-    brand.style.transform = `rotate(${brandSpinDegrees}deg)`;
+  const onClickBrand = async (event: Event) => {
+    if (brandAnimating) return;
+    brandAnimating = true;
 
-    if (brandSpinDegrees / 360 >= 10) {
-      achievementGet = true;
-      console.log('achievementGet');
-    }
+    brandClicks++;
+    if (brandClicks >= 5) achievementGet = true;
+
+    const brand = event.target as HTMLElement;
+    const brandParts = brand.getElementsByTagName('path');
+
+    brandParts[0].classList.add('hide');
+    await sleep(100);
+    brandParts[1].classList.add('hide');
+    await sleep(500);
+    brandParts[0].classList.remove('hide');
+    await sleep(100);
+    brandParts[1].classList.remove('hide');
+
+    brandAnimating = false;
   };
 </script>
 

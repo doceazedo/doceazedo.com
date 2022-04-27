@@ -1,1 +1,2 @@
-export { default as BrandLogo } from './brand-logo.svelte';
+export { default as BrandDoceAzedo } from './brand-doceazedo.svelte';
+export { default as BrandLF } from './brand-lf.svelte';
