@@ -24,6 +24,8 @@
     position: relative
     display: flex
     align-items: center
+    max-width: 900px
+    margin: 0 auto
     border-bottom: $hr
 
     &-brand

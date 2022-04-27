@@ -10,3 +10,4 @@ export * from './portfolio';
 export * from './skills';
 export * from './skip-to-content';
 export * from './text';
+export * from './topbar';

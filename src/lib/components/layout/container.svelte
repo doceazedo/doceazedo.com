@@ -16,6 +16,10 @@
 {/key}
 
 <style lang="sass">
+  #main
+    max-width: 900px
+    margin: auto
+    
   @media screen and (max-width: 768px)
     #main
       padding: 0 1rem

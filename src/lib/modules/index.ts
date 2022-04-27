@@ -5,3 +5,4 @@ export * from './navbar';
 export * from './portfolio';
 export * from './seo';
 export * from './skills';
+export * from './topbar';
