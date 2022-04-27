@@ -4,10 +4,11 @@ export const en: Language = {
   code: 'en',
 
   navbar: {
-    home: 'Home',
     blog: 'Blog',
-    about: 'About me',
-    contact: 'Contact'
+    talks: 'Talks',
+    streams: 'Streams',
+    projects: 'Projects',
+    me: 'About me'
   },
 
   blurb: {
@@ -153,6 +154,7 @@ export const en: Language = {
     langEn: 'English',
     langPt: 'Portuguese',
     nowLive: 'Now live.',
-    audioButton: 'Listen to pronunciation'
+    audioButton: 'Listen to pronunciation',
+    home: 'Home'
   }
 };

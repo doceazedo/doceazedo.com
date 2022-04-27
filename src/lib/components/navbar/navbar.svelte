@@ -10,7 +10,7 @@
     <HamburgerIcon />
   </div>
 
-  <a class="navbar-brand" href="/" on:click={onClickBrand} aria-label={$LANG.navbar.home}>
+  <a class="navbar-brand" href="/" on:click={onClickBrand} aria-label={$LANG.alt.home}>
     <BrandDoceAzedo />
   </a>
 
@@ -32,7 +32,7 @@
       transition: all .8s ease
 
       :global(svg)
-        height: 3.5rem
+        height: 3rem
         pointer-events: none
         user-select: none
 

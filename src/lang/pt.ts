@@ -4,10 +4,11 @@ export const pt: Language = {
   code: 'pt',
 
   navbar: {
-    home: 'Início',
     blog: 'Blog',
-    about: 'Sobre mim',
-    contact: 'Contato'
+    talks: 'Talks',
+    streams: 'Streams',
+    projects: 'Projetos',
+    me: 'Sobre mim'
   },
 
   blurb: {
@@ -154,6 +155,7 @@ export const pt: Language = {
     langEn: 'Inglês',
     langPt: 'Português',
     nowLive: 'Ao vivo agora.',
-    audioButton: 'Ouvir pronúncia'
+    audioButton: 'Ouvir pronúncia',
+    home: 'Início'
   }
 };

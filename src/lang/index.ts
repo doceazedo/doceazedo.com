@@ -2,10 +2,11 @@ export type Language = {
   code: string;
 
   navbar: {
-    home: string;
     blog: string;
-    about: string;
-    contact: string;
+    talks: string;
+    streams: string;
+    projects: string;
+    me: string;
   };
 
   blurb: {
@@ -77,6 +78,7 @@ export type Language = {
     langPt: string;
     nowLive: string;
     audioButton: string;
+    home: string;
   };
 };
 

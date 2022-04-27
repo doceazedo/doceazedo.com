@@ -15,9 +15,8 @@
     display: flex
     justify-content: center
     align-items: center
-    height: 6rem
-    padding: 0 1.5rem
-    font-size: 1.25rem
+    height: 5rem
+    padding: 0 1rem
     text-decoration: none
     color: $whiteish
     transition: all .2s ease

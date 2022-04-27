@@ -32,6 +32,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@iconify/svelte": "^2.2.1",
     "dayjs": "^1.10.7",
     "dotenv": "^16.0.0",
     "highlight.js": "^11.4.0",
