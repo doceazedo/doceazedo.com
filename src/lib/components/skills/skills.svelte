@@ -4,6 +4,7 @@
   type Skills = {
     icon: any;
     name: string;
+    isHorizontal?: boolean;
   };
 
   export let skills: Skills[][], title: string, paragraph: string[];
@@ -15,7 +16,7 @@
   {#each skills as row}
     <ul>
       {#each row as skill}
-        <li>
+        <li class:is-horizontal={skill.isHorizontal}>
           <svelte:component this={skill.icon} />
           <p>{@html skill.name}</p>
         </li>
@@ -49,6 +50,9 @@
         opacity: .5
         pointer-events: none
 
+      &.is-horizontal :global(svg)
+        width: 5rem
+
       p
         opacity: 0
 
@@ -74,6 +78,9 @@
       :global(svg)
         height: 2rem !important
         width: 2rem !important
+
+      .is-horizontal :global(svg)
+        width: 2.5rem !important
 
       p
         display: none !important

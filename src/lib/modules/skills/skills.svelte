@@ -31,7 +31,8 @@
       },
       {
         icon: NextjsIcon,
-        name: 'Next.js'
+        name: 'Next.js',
+        isHorizontal: true
       },
       {
         icon: SassIcon,
