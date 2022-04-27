@@ -93,6 +93,8 @@
     display: flex
     justify-content: space-between
     align-items: center
+    max-width: 900px
+    margin: 0 auto
     padding: 4rem 0
 
     .copyleft
@@ -132,7 +134,7 @@
 
           h1,
           h2
-            max-width: 300px
+            max-width: 150px
             white-space: nowrap
             overflow: hidden
             text-overflow: ellipsis
