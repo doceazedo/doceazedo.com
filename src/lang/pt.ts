@@ -18,7 +18,7 @@ export const pt: Language = {
       'criar layouts elegantes e reativos, mas também posso',
       'arquitetar APIs e bancos bem estruturados.'
     ],
-    button: 'Fale comigo'
+    button: 'Bora conversar'
   },
 
   skills: {

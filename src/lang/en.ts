@@ -18,7 +18,7 @@ export const en: Language = {
       'building stylish and reactive layouts yet also',
       'designing well-structured APIs and databases.'
     ],
-    button: 'Keep in touch'
+    button: "Let's chat"
   },
 
   skills: {

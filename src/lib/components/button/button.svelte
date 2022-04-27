@@ -27,6 +27,7 @@
     color: #fff
     background-color: $primary
     box-shadow: 0 0 .5rem .25rem rgba($primary, .25)
+    border-radius: .5rem
     cursor: pointer
     transition: all .2s ease
 

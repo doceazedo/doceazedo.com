@@ -46,12 +46,12 @@
     display: flex
     justify-content: space-between
     align-items: center
-    padding: 6rem 0
+    padding: 3rem 0
     border-bottom: $hr
 
     h1
       position: relative
-      font-size: 3rem
+      font-size: 2.75rem
       font-weight: 700
       margin-bottom: 1rem
 
@@ -94,6 +94,7 @@
       .selfie
         height: 400px
         width: 300px
+        border-radius: 1rem
         pointer-events: none
         user-select: none
         z-index: 10
@@ -110,6 +111,7 @@
         left: -1rem
         bottom: -1rem
         border: 2px solid $primary
+        border-radius: 1rem
         transition: .5s ease
 
       &::after
