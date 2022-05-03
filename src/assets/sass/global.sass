@@ -161,24 +161,12 @@ a
     figcaption
       font-style: italic
 
-  pre
-    -webkit-overflow-scrolling: touch
-    overflow-x: auto
-    padding: 1em 1.25em
-    white-space: pre
-    word-wrap: normal
-    background-color: #2d2d2d
+  code:not([class])
     font-size: 1rem
-
-  code
-    background-color: #2d2d2d
-    font-size: 1rem
-    padding: 0.1rem 0.25rem
-    margin: 0 0.25rem
-
-  pre code
-    padding: 0
-    margin: 0
+    background-color: rgba(#fff, .1)
+    padding: 0 .25rem
+    border-radius: .25rem
+    color: $primary-light
 
   sup, sub
     font-size: 75%
@@ -229,9 +217,9 @@ a
     margin-bottom: 0
     vertical-align: bottom
 
-\::-moz-selection, ::selection
-  color: #fff !important
-  background: #6930c3 !important
+::selection
+  color: #fff
+  background: $primary-light
 
 @media screen and (max-width: 768px)
   .content a

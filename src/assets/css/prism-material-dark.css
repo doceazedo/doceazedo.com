@@ -6,7 +6,7 @@ pre[class*="language-"] {
   word-break: normal;
   word-wrap: normal;
   color: #eee;
-  background: #2f2f2f;
+  font-size: 1rem;
   font-family: Roboto Mono, monospace;
   line-height: 1.25em;
 
@@ -20,18 +20,9 @@ pre[class*="language-"] {
   hyphens: none;
 }
 
-code[class*="language-"]::-moz-selection,
-pre[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection,
-pre[class*="language-"] ::-moz-selection {
-  background: #363636;
-}
-
-code[class*="language-"]::selection,
-pre[class*="language-"]::selection,
-code[class*="language-"] ::selection,
-pre[class*="language-"] ::selection {
-  background: #363636;
+pre[class*="language-"] {
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 1rem;
 }
 
 :not(pre) > code[class*="language-"] {
