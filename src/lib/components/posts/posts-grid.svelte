@@ -4,13 +4,14 @@
   import { readableDate } from '$lib/utils';
   import type { Post } from '$lib/modules/posts';
 
-  export let posts: Post[] = [];
+  export let posts: Post[] = [],
+    regular = false;
 
   const background = (slug: string) =>
     `linear-gradient(to bottom, rgba(7, 2, 18, 0), rgba(7, 2, 18, .75)), url('/img/thumbnails/${slug}.jpg')`;
 </script>
 
-<div class="articles">
+<div class="articles" class:regular>
   {#each posts as post}
     <a href="/blog/{post.slug}" class="article" style="background-image:{background(post.slug)}">
       <h1 class="title">{post.title}</h1>
@@ -39,6 +40,13 @@
     grid-column-gap: 1.75rem
     grid-row-gap: 1.75rem
     width: 100%
+
+    &.regular
+      grid-auto-rows: 24rem
+      grid-template-rows: none
+
+      .article:first-child
+        grid-area: unset
 
     .article
       display: flex

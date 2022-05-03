@@ -12,4 +12,4 @@
 </script>
 
 <PageTitle title={$LANG.navbar.blog} paragraph={$LANG.blog.subtitle} />
-<PostsGrid {posts} />
+<PostsGrid {posts} regular={true} />
