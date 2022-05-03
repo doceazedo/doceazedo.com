@@ -8,7 +8,6 @@
   import { browser } from '$app/env';
   import { LANG } from '$lib/stores';
   import { SEO } from '$lib/modules';
-  import 'highlight.js/styles/base16/tomorrow-night.css';
 
   export let title: string,
     slug: string,
