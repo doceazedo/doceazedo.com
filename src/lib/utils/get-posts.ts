@@ -1,12 +1,9 @@
 /* eslint-disable no-useless-escape */
 
 export const getPosts = async (qty?: number) => {
-  console.log('getPosts utils');
   const files = import.meta.glob('../../routes/blog/*.md');
   const posts = Object.entries(files);
   const size = qty || posts.length;
-
-  console.log(posts);
 
   const allPosts = await Promise.all(
     posts.slice(0, size).map(async ([path, resolver]) => {
@@ -22,7 +19,7 @@ export const getPosts = async (qty?: number) => {
   );
 
   const sortedPosts = allPosts.sort(
-    (a, b) => new Date(b?.meta?.date).getTime() - new Date(a?.meta?.date).getTime()
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
   return {

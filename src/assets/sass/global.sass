@@ -209,13 +209,25 @@ a
 
   .file-title
     margin-bottom: 0 !important
-    padding: 0.75em 1.25em
+    padding: .5rem 1rem
     font-size: 1rem
-    background-color: #222
+    font-weight: 600
+    background-color: rgba(#fff, .15)
+    border-top-left-radius: 1rem
+    border-top-right-radius: 1rem
 
-  img.inline
-    margin-bottom: 0
-    vertical-align: bottom
+    + pre
+      margin-top: 0
+      border-top-left-radius: 0
+      border-top-right-radius: 0
+
+  img
+    border-radius: 1rem
+
+    &.inline
+      margin-bottom: 0
+      vertical-align: bottom
+      border-radius: .25rem
 
 ::selection
   color: #fff
