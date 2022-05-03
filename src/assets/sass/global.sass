@@ -102,8 +102,9 @@ a
       height: 100%
 
   blockquote
-    background-color: whitesmoke
-    border-left: 5px solid #dbdbdb
+    background-color: rgba(#fff, .1)
+    border-left: 5px solid $primary
+    border-radius: .25rem
     padding: 1.25em 1.5em
 
   ol
@@ -161,24 +162,12 @@ a
     figcaption
       font-style: italic
 
-  pre
-    -webkit-overflow-scrolling: touch
-    overflow-x: auto
-    padding: 1em 1.25em
-    white-space: pre
-    word-wrap: normal
-    background-color: #2d2d2d
+  code:not([class])
     font-size: 1rem
-
-  code
-    background-color: #2d2d2d
-    font-size: 1rem
-    padding: 0.1rem 0.25rem
-    margin: 0 0.25rem
-
-  pre code
-    padding: 0
-    margin: 0
+    background-color: rgba(#fff, .1)
+    padding: 0 .25rem
+    border-radius: .25rem
+    color: $primary-light
 
   sup, sub
     font-size: 75%
@@ -221,17 +210,29 @@ a
 
   .file-title
     margin-bottom: 0 !important
-    padding: 0.75em 1.25em
+    padding: .5rem 1rem
     font-size: 1rem
-    background-color: #222
+    font-weight: 600
+    background-color: rgba(#fff, .15)
+    border-top-left-radius: 1rem
+    border-top-right-radius: 1rem
 
-  img.inline
-    margin-bottom: 0
-    vertical-align: bottom
+    + pre
+      margin-top: 0
+      border-top-left-radius: 0
+      border-top-right-radius: 0
 
-\::-moz-selection, ::selection
-  color: #fff !important
-  background: #6930c3 !important
+  img
+    border-radius: 1rem
+
+    &.inline
+      margin-bottom: 0
+      vertical-align: bottom
+      border-radius: .25rem
+
+::selection
+  color: #fff
+  background: $primary-light
 
 @media screen and (max-width: 768px)
   .content a

@@ -1,28 +1,15 @@
 <script lang="ts" context="module">
-  import { getArticles } from '$lib/modules/articles';
-
-  export async function load({ fetch }) {
-    const posts = await getArticles();
-
-    return {
-      props: {
-        posts
-      }
-    };
-  }
+  export const prerender = true;
 </script>
 
-<script>
+<script lang="ts">
+  import { PostsGrid } from '$lib/modules/posts';
+  import { PageTitle } from '$lib/components';
   import { LANG } from '$lib/stores';
-  import { ArticlesList, PageTitle } from '$lib/components';
-  import { SEO } from '$lib/modules';
+  import type { Post } from '$lib/modules/posts';
 
-  export let posts = [];
+  export let posts: Post[] = [];
 </script>
 
-<svelte:head>
-  <SEO path="/blog" />
-</svelte:head>
-
-<PageTitle title="Blog" paragraph={$LANG.blog.subtitle} />
-<ArticlesList {posts} />
+<PageTitle title={$LANG.navbar.blog} paragraph={$LANG.blog.subtitle} />
+<PostsGrid {posts} regular={true} />

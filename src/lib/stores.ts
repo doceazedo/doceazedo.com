@@ -1,7 +1,6 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/env';
 import { en, pt } from '../lang';
-import type { WordPressApiResponse } from '$lib/modules';
 
 const updateAria = (code: string) => browser && document.documentElement.setAttribute('lang', code);
 
@@ -21,5 +20,3 @@ export const initializeLang = () => {
 };
 
 export const LANG = initializeLang();
-
-export const POSTS = writable<WordPressApiResponse[]>([]);

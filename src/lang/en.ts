@@ -60,21 +60,14 @@ export const en: Language = {
     ]
   },
 
-  articles: {
-    title: 'Latest articles',
-    paragraph: [
-      'I pretty much rather reading articles than watching tutorials, so',
-      'here I gather stuff that I learned and want to share.'
-    ],
+  blog: {
+    title: "See what I've written lately",
+    subtitle:
+      'A bunch of texts about technology and programming, mixed with me talking about music, personal experiences and other nerdy nonsense. Basically my Twitter but, in fact, mine and without the "micro" part of the microblog.',
     more: 'View all'
   },
 
   footer: ['Powered by Svelte & SvelteKit', 'Developed by Lucas Fernandes'],
-
-  blog: {
-    subtitle:
-      'I pretty much rather reading articles than watching tutorials, so here I gather stuff that I learned and want to share. I hope you find something that grabs your attention.'
-  },
 
   about: {
     subtitle: 'Curiosity-driven developer, Svelte evangelist and live coding streamer',
