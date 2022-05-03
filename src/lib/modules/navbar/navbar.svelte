@@ -24,18 +24,6 @@
     {
       icon: 'ri:rss-line',
       href: '/blog/feed.xml'
-    },
-    {
-      icon: 'ri:github-line',
-      href: 'https://github.com/doceazedo'
-    },
-    {
-      icon: 'ri:twitter-line',
-      href: 'https://twitter.com/doceazedo911'
-    },
-    {
-      icon: 'ri:twitch-line',
-      href: 'https://twitch.tv/doceazedo911'
     }
   ];
   let activeLanguage = 'en';

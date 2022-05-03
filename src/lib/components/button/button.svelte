@@ -20,8 +20,9 @@
 
   .button
     display: flex
+    gap: .5rem
     border: none
-    padding: 1rem 2rem
+    padding: 1rem 1.75rem
     font-size: 1.25rem
     text-decoration: none
     color: #fff
@@ -39,8 +40,9 @@
       background-color: rgba($primary-light, .1)
       box-shadow: 0 0 .5rem .25rem rgba($primary, .25), inset 0 0 0 1px $primary
 
-    :global(.feather)
-      margin-right: .5rem
+    :global(svg)
+      height: 1.5rem
+      width: 1.5rem
 
     &.center
       margin: auto

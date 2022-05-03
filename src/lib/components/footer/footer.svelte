@@ -1,25 +1,11 @@
 <script lang="ts">
   import { LANG } from '$lib/stores';
-  import {
-    ElevatorIcon,
-    FooterSocialButton,
-    GitHubIcon,
-    LastfmIcon,
-    LinkedInIcon,
-    MailIcon,
-    TwitchIcon
-  } from '$lib/components';
+  import { ElevatorIcon } from '$lib/components';
   import type { LiveStatsApiResponse } from '$lib/modules';
 
-  type Socials = {
-    github: string;
-    lastfm: string;
-    linkedin: string;
-    twitch: string;
-  };
+  const lastfmUrl = 'https://last.fm/user/doceazedo911';
 
   export let liveStats: LiveStatsApiResponse = null,
-    socials: Socials,
     showElevator = false,
     callElevator: () => void;
 </script>
@@ -41,7 +27,7 @@
     {#if liveStats?.nowPlaying}
       <a
         class="now-playing is-live"
-        href={socials.lastfm}
+        href={lastfmUrl}
         target="_blank"
         aria-label={`${$LANG.alt.listeningTo} ${liveStats.nowPlaying.artist} - ${liveStats.nowPlaying.title}. ${$LANG.alt.lastfm}`}
       >
@@ -52,32 +38,6 @@
         </div>
       </a>
     {/if}
-
-    <FooterSocialButton href={socials.github} ariaLabel="Github">
-      <GitHubIcon />
-    </FooterSocialButton>
-
-    <FooterSocialButton href={socials.linkedin} ariaLabel="LinkedIn">
-      <LinkedInIcon />
-    </FooterSocialButton>
-
-    <FooterSocialButton
-      href={socials.twitch}
-      isLive={liveStats?.isLive}
-      ariaLabel="Twitch. {liveStats?.isLive ? $LANG.alt.nowLive : ''}"
-    >
-      <TwitchIcon />
-    </FooterSocialButton>
-
-    {#if !liveStats?.nowPlaying}
-      <FooterSocialButton href={socials.lastfm} ariaLabel="Last.fm">
-        <LastfmIcon />
-      </FooterSocialButton>
-    {/if}
-
-    <FooterSocialButton href="mailto:{$LANG.email}" ariaLabel="Email">
-      <MailIcon />
-    </FooterSocialButton>
   </div>
 </footer>
 

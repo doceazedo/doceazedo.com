@@ -1,18 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { browser } from '$app/env';
-  import { LANG } from '$lib/stores';
   import { Footer } from '$lib/components';
   import ElevatorAudio from '../../../assets/audio/Toby Fox - Hotel.mp3';
   import ChimeAudio from '../../../assets/audio/chime.mp3';
   import type { LiveStatsApiResponse } from '$lib/modules';
 
-  const socials = {
-    github: 'https://github.com/doceazedo',
-    lastfm: 'https://last.fm/user/doceazedo911',
-    linkedin: 'https://linkedin.com/in/imlucas',
-    twitch: 'https://twitch.tv/doceazedo911'
-  };
   let scrollY = 0;
   let showElevator = false;
   let liveStats: LiveStatsApiResponse = null;
@@ -59,4 +52,4 @@
 
 <svelte:window bind:scrollY />
 
-<Footer {liveStats} {socials} {showElevator} {callElevator} />
+<Footer {liveStats} {showElevator} {callElevator} />
