@@ -1,5 +1,5 @@
 ---
-title: 'Como implementar autenticação baseada em cookies com SvelteKit e MongoDB'
+title: 'Como fazer autenticação com cookies usando SvelteKit e MongoDB'
 date: '2021-10-03 19:14 GMT-3'
 tags: ['sveltekit', 'mongodb']
 icon: 'svelte'
