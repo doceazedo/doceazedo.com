@@ -47,7 +47,6 @@
     justify-content: space-between
     align-items: center
     padding: 3rem 0
-    border-bottom: $hr
 
     h1
       position: relative

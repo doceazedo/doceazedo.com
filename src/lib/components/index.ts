@@ -1,4 +1,3 @@
-export * from './articles';
 export * from './blurb';
 export * from './brand';
 export * from './button';
@@ -7,6 +6,7 @@ export * from './icons';
 export * from './layout';
 export * from './navbar';
 export * from './portfolio';
+export * from './posts';
 export * from './skills';
 export * from './skip-to-content';
 export * from './text';

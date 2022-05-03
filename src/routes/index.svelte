@@ -1,24 +1,14 @@
 <script lang="ts" context="module">
-  import { getArticles } from '$lib/modules/articles';
-
-  export async function load({ fetch }) {
-    const posts = await getArticles(3);
-
-    return {
-      props: {
-        posts
-      }
-    };
-  }
+  export const prerender = true;
 </script>
 
 <script lang="ts">
-  import { Articles, Blurb, Portfolio, SEO, Skills } from '$lib/modules';
-  import { POSTS } from '$lib/stores';
+  import { PostsGrid, Blurb, Portfolio, SEO, Skills } from '$lib/modules';
+  import { SectionTitle } from '$lib/components';
+  import { LANG } from '$lib/stores';
+  import type { Post } from '$lib/modules/posts';
 
-  export let posts = [];
-
-  $POSTS = posts;
+  export let posts: Post[] = [];
 </script>
 
 <svelte:head>
@@ -26,6 +16,9 @@
 </svelte:head>
 
 <Blurb />
+
+<SectionTitle title={$LANG.blog.title} actionLabel={$LANG.blog.more} actionHref="/blog" />
+<PostsGrid {posts} />
+
 <Skills />
 <Portfolio />
-<Articles />

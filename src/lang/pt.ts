@@ -60,20 +60,13 @@ export const pt: Language = {
     ]
   },
 
-  articles: {
-    title: 'Últimos artigos',
-    paragraph: [
-      'No geral eu prefiro ler artigos do que assistir tutoriais, então',
-      'aqui eu reúno coisas que aprendi e quero compartilhar.'
-    ],
-    more: 'Ver todos'
-  },
-
   footer: ['Powered by Svelte & SvelteKit', 'Desenvolvido por Lucas Fernandes'],
 
   blog: {
+    title: 'As últimas coisas que eu escrevi',
     subtitle:
-      'No geral eu prefiro ler artigos do que assistir tutoriais, então aqui eu reúno coisas que aprendi e quero compartilhar. Espero que você encontre algo que te interesse por aqui.'
+      'Um amontoado de textos sobre tecnologia e programação, misturados com conversa fiada sobre música, vivências pessoais e outras besteiras. Basicamente meu Twitter só que, de fato, meu e sem a parte "micro" do microblog.',
+    more: 'Ver mais'
   },
 
   about: {

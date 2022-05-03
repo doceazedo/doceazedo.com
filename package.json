@@ -20,6 +20,7 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-svelte3": "^3.2.1",
+    "mdsvex": "^0.10.5",
     "prettier": "^2.5.1",
     "prettier-plugin-svelte": "^2.5.0",
     "sass": "^1.49.8",
@@ -35,8 +36,7 @@
     "@iconify/svelte": "^2.2.1",
     "dayjs": "^1.10.7",
     "dotenv": "^16.0.0",
-    "highlight.js": "^11.4.0",
-    "highlightjs-svelte": "^1.0.6",
+    "front-matter": "^4.0.2",
     "spotify-web-api-node": "^5.0.2"
   }
 }

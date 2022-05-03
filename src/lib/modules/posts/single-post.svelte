@@ -1,32 +1,3 @@
-<script lang="ts" context="module">
-  import { getArticleBySlug } from '$lib/modules/articles';
-
-  export async function load({ params, fetch }) {
-    const posts = await getArticleBySlug(params.slug);
-
-    if (posts.length) {
-      const featuredMedias = posts[0]['_links']['wp:featuredmedia'];
-      let thumbnail = 'https://lucasfernandes.com.br/thumbnail.jpg';
-      if (featuredMedias) {
-        const media = await (await fetch(featuredMedias[0].href)).json();
-        thumbnail = media.guid.rendered;
-      }
-
-      return {
-        props: {
-          post: posts[0],
-          thumbnail
-        }
-      };
-    }
-
-    return {
-      status: 404,
-      error: new Error(`Couldn't find the requested post`)
-    };
-  }
-</script>
-
 <script lang="ts">
   import dayjs from 'dayjs';
   import relativeTime from 'dayjs/plugin/relativeTime.js';
@@ -37,68 +8,55 @@
   import { browser } from '$app/env';
   import { LANG } from '$lib/stores';
   import { SEO } from '$lib/modules';
-  import hljs from 'highlight.js';
-  import hljs_svelte from 'highlightjs-svelte';
   import 'highlight.js/styles/base16/tomorrow-night.css';
 
-  export let post = null,
-    thumbnail = '';
+  export let title: string,
+    slug: string,
+    date: string,
+    tags: string[] = [],
+    icon: string;
+
+  const thumbnail = `/img/thumbnails/${slug}.jpg`;
+  const iconSrc = `/img/icons/${icon}.svg`;
 
   let readableDate = '';
   let fullDate = '';
+  let showComments = false;
+
   if (browser) {
     dayjs.extend(relativeTime);
-    readableDate = dayjs(post.date)
+    readableDate = dayjs(date)
       .locale($LANG.code == 'pt' ? 'pt-br' : 'en-us')
       .fromNow();
-    fullDate = dayjs(post.date).format('DD/MM/YYYY à[s] HH:mm');
+    fullDate = dayjs(date).format('DD/MM/YYYY à[s] HH:mm');
   }
 
-  let hasMounted = false;
-
-  onMount(() => {
-    document.querySelectorAll('p + pre').forEach((el) => {
-      const lastEl = el.previousElementSibling as HTMLElement;
-
-      if (lastEl.innerHTML.length) {
-        if (lastEl.innerHTML.includes('&nbsp;')) return (lastEl.innerHTML = '');
-
-        lastEl.classList.add('file-title');
-        const lang = lastEl.innerText.split('.');
-        if (lastEl.innerText.trim().charAt(0) != '.')
-          el.querySelector('code').classList.add(`language-${lang[lang.length - 1]}`);
-      }
-    });
-
-    hljs_svelte(hljs);
-    document.querySelectorAll('pre code').forEach((el) => hljs.highlightElement(el as HTMLElement));
-    hasMounted = true;
-  });
+  onMount(() => (showComments = true));
 
   $: {
     if (browser)
-      readableDate = dayjs(post.date)
+      readableDate = dayjs(date)
         .locale($LANG.code == 'pt' ? 'pt-br' : 'en-us')
         .fromNow();
   }
 </script>
 
 <svelte:head>
-  <SEO path="/blog/{post.slug}" title="{post.title.rendered} - Lucas Fernandes" {thumbnail} />
+  <SEO path="/blog/{slug}" title="{title} - Lucas Fernandes" {thumbnail} />
 </svelte:head>
 
 <header>
   <div>
-    <h1>{post.title.rendered}</h1>
+    <h1>{title}</h1>
     <p title={fullDate}>{$LANG.posted} {readableDate}</p>
     <ul>
-      {#each post?.acf?.categories?.split(',') || [] as category}
-        <li><span>#</span>{category}</li>
+      {#each tags as tag}
+        <li><span>#</span>{tag}</li>
       {/each}
     </ul>
   </div>
   <div>
-    <img src={post?.acf?.icon} alt="" />
+    <img src={iconSrc} alt="" />
   </div>
 </header>
 
@@ -112,11 +70,11 @@
 {/if}
 
 <article class="content">
-  {@html post.content.rendered}
+  <slot />
 </article>
 
 <div class="giscus" />
-{#if hasMounted}
+{#if showComments}
   <script
     src="https://giscus.app/client.js"
     data-repo="doceazedo/lucasfernandes.com.br"
@@ -133,12 +91,15 @@
 {/if}
 
 <style lang="sass">
-  @import '../../assets/sass/vars.sass'
+  @import '../../../assets/sass/vars.sass'
 
   header,
   .content
     max-width: 900px
     margin: 0 auto
+
+  .content
+    margin-bottom: 4rem
 
   header
     display: flex
@@ -164,7 +125,8 @@
       margin-top: 1rem
 
       li
-        padding: .5rem .75rem
+        padding: .375rem .5rem
+        border-radius: .25rem
         background-color: $primary
         box-shadow: 0 0 .5rem .25rem rgba($primary, .25)
 

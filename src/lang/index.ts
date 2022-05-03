@@ -28,17 +28,13 @@ export type Language = {
     }[];
   };
 
-  articles: {
+  blog: {
     title: string;
-    paragraph: string[];
+    subtitle: string;
     more: string;
   };
 
   footer: string[];
-
-  blog: {
-    subtitle: string;
-  };
 
   about: {
     subtitle: string;
