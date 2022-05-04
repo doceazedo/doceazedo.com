@@ -57,6 +57,17 @@ export type Language = {
     paragraph: string;
   };
 
+  bookmarks: {
+    title: string;
+    paragraph: string;
+    devUtils: string;
+    design: string;
+    resources: string;
+    subreddits: string;
+    english: string;
+    miscellaneous: string;
+  };
+
   email: string;
   posted: string;
   skipToContent: string;

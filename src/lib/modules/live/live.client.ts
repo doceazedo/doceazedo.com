@@ -4,7 +4,6 @@ import type { LiveResponse } from './live.types';
 const baseUrl = '/api/live';
 
 export const getLiveData = async () => {
-  console.log('getLiveData');
   try {
     const resp = await fetch(baseUrl);
     const data: LiveResponse = await resp.json();

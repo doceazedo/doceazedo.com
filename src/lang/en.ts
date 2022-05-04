@@ -129,6 +129,17 @@ export const en: Language = {
       "I haven't done any talks just yet, but I have a few prepared. If you'd like to have me talking at your event, please send me an email at me@doceazedo.com"
   },
 
+  bookmarks: {
+    title: 'Bookmarks',
+    paragraph: 'Some of my favorite websites/tools that I highly recommend',
+    devUtils: '👨‍💻 Dev utils',
+    design: '🎨 Design',
+    resources: '📦 Resources',
+    subreddits: '👽 Subreddits',
+    english: '📚 English',
+    miscellaneous: '👌 Miscellaneous'
+  },
+
   email: 'me@lucasfernandes.com.br',
   posted: 'Published',
   skipToContent: 'Skip to content',

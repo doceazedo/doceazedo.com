@@ -130,6 +130,17 @@ export const pt: Language = {
       'Eu ainda não dei nenhuma palestra, mas tenho algumas preparadas. Se você quiser que eu me apresente em seu evento, envie um e-mail para me@doceazedo.com'
   },
 
+  bookmarks: {
+    title: 'Favoritos',
+    paragraph: 'Alguns dos meus sites/ferramentas preferidos que eu recomendo',
+    devUtils: '👨‍💻 Dev utils',
+    design: '🎨 Design',
+    resources: '📦 Materiais',
+    subreddits: '👽 Subreddits',
+    english: '📚 Inglês',
+    miscellaneous: '👌 Miscelânea'
+  },
+
   email: 'eu@lucasfernandes.com.br',
   posted: 'Publicado',
   skipToContent: 'Ir para o conteúdo',
