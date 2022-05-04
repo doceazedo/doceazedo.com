@@ -15,7 +15,7 @@
   {#each posts as post}
     <a href="/blog/{post.slug}" class="article" style="background-image:{background(post.slug)}">
       <h1 class="title">{post.title}</h1>
-      <div class="date">Publicado {readableDate(post.date, $LANG.code)}</div>
+      <div class="date">{$LANG.posted} {readableDate(post.date, $LANG.code)}</div>
       <div class="tags">
         {#if post.pinned}
           <div class="pin">
