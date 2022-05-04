@@ -24,7 +24,8 @@
     },
     {
       icon: 'ri:rss-line',
-      href: '/blog/feed.xml'
+      href: '/feed.xml',
+      target: '_blank'
     }
   ];
   let activeLanguage = 'en';

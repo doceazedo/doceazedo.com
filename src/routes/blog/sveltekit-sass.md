@@ -1,5 +1,6 @@
 ---
 title: 'Como usar Sass (ou SCSS) no seu projeto SvelteKit'
+description: 'Spoiler: é só instalar o pacote "sass" no seu projeto'
 date: '2021-08-28 00:22 GMT-3'
 tags: ['sveltekit', 'sass']
 icon: 'svelte'

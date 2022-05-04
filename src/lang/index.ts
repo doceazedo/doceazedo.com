@@ -65,7 +65,18 @@ export type Language = {
     resources: string;
     subreddits: string;
     english: string;
+    extensions: string;
+    accessibility: string;
     miscellaneous: string;
+  };
+
+  newsletter: {
+    title: string;
+    paragraph: string;
+    subscribeRSS: string;
+    subscribeNewsletter: string;
+    subscribeButton: string;
+    soon: string;
   };
 
   email: string;

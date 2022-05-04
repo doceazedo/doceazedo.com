@@ -137,7 +137,19 @@ export const en: Language = {
     resources: '📦 Resources',
     subreddits: '👽 Subreddits',
     english: '📚 English',
+    extensions: '🌎 Extensions',
+    accessibility: '🧏‍♀️ Accessibility',
     miscellaneous: '👌 Miscellaneous'
+  },
+
+  newsletter: {
+    title: 'Ring the bell',
+    paragraph:
+      "There's no bell to ring and get new post notifications, but I can email them to you as soon as they come out, with no set schedule. You can unsubscribe at any time.",
+    subscribeRSS: 'Follow RSS feed',
+    subscribeNewsletter: 'or subscribe to the newsletter:',
+    subscribeButton: 'Subscribe',
+    soon: 'Coming soon™'
   },
 
   email: 'me@lucasfernandes.com.br',

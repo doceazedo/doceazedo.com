@@ -1,5 +1,6 @@
 ---
 title: 'Photopea me fez largar o Photoshop de vez'
+description: 'Esse editor de fotos online e gratuito é simplesmente superior ao Photoshop e eu vou te mostrar o porquê'
 date: '2022-05-03 17:21 GMT-3'
 tags: ['design', 'software']
 icon: 'artist-emoji'

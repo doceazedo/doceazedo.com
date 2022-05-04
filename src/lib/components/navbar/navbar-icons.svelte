@@ -4,6 +4,7 @@
   type NavbarIcon = {
     icon: string;
     href: string;
+    target?: string;
   };
 
   export let icons: NavbarIcon[];
@@ -12,7 +13,7 @@
 <div class="navbar-icons">
   {#each icons as icon}
     <!-- FIXME: add alt text -->
-    <a href={icon.href} alt="">
+    <a href={icon.href} target={icon.target} alt="">
       <Icon icon={icon.icon} />
     </a>
   {/each}

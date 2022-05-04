@@ -3,9 +3,8 @@
 </script>
 
 <script lang="ts">
-  import { PostsGrid, Blurb, Portfolio, SEO, Skills } from '$lib/modules';
-  import { SectionTitle } from '$lib/components';
-  import { LANG } from '$lib/stores';
+  import { PostsLatest, Blurb, SEO } from '$lib/modules';
+  import { Newsletter } from '$lib/components';
   import type { Post } from '$lib/modules/posts';
 
   export let posts: Post[] = [];
@@ -16,5 +15,5 @@
 </svelte:head>
 
 <Blurb />
-<SectionTitle title={$LANG.blog.title} actionLabel={$LANG.blog.more} actionHref="/blog" />
-<PostsGrid {posts} />
+<PostsLatest {posts} />
+<Newsletter />

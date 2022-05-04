@@ -36,6 +36,7 @@
     "@iconify/svelte": "^2.2.1",
     "dayjs": "^1.10.7",
     "dotenv": "^16.0.0",
+    "fast-xml-parser": "^4.0.7",
     "front-matter": "^4.0.2",
     "spotify-web-api-node": "^5.0.2"
   }

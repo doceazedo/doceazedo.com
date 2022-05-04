@@ -138,7 +138,19 @@ export const pt: Language = {
     resources: '📦 Materiais',
     subreddits: '👽 Subreddits',
     english: '📚 Inglês',
-    miscellaneous: '👌 Miscelânea'
+    extensions: '🌎 Extensões',
+    accessibility: '🧏‍♀️ Acessibilidade',
+    miscellaneous: '👌 Miscellaneous'
+  },
+
+  newsletter: {
+    title: 'Ative o sininho',
+    paragraph:
+      'Não tem sininho para ativar e receber notificações de novos posts, o jeito é eu te mandar por e-mail assim que sair, sem cronograma definido. Você pode se desinscrever quando quiser.',
+    subscribeRSS: 'Assinar feed RSS',
+    subscribeNewsletter: 'ou inscreva-se na newsletter',
+    subscribeButton: 'Inscrever',
+    soon: 'Em breve™'
   },
 
   email: 'eu@lucasfernandes.com.br',

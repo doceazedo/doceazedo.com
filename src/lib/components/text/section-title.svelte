@@ -57,7 +57,7 @@
     line-height: 1.25
     color: $whiteish
     margin-top: -1rem
-    margin-bottom: 4rem
+    margin-bottom: 3rem
 
   @media screen and (max-width: 768px)
     h1
