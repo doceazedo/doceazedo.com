@@ -14,11 +14,10 @@ export const en: Language = {
   blurb: {
     title: 'You can call me Doce.',
     paragraph: [
-      "I'm Lucas, a frontend web developer that enjoys",
-      'building stylish and reactive layouts yet also',
-      'designing well-structured APIs and databases.'
-    ],
-    button: "Let's chat"
+      "I'm Lucas, a 19 years old curiosity-driven developer,",
+      'Svelte evangelist, arch-enemy of the zeros and ones',
+      '(he/they) and live coder.'
+    ]
   },
 
   skills: {

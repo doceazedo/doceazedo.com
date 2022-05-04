@@ -12,7 +12,6 @@ export type Language = {
   blurb: {
     title: string;
     paragraph: string[];
-    button: string;
   };
 
   skills: {
