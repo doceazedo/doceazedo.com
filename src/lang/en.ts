@@ -123,11 +123,10 @@ export const en: Language = {
     ]
   },
 
-  contact: {
-    title: 'Get in touch',
+  talks: {
+    title: 'Talks',
     paragraph:
-      "If you want to hire me, talk about a project or just chat with no commitment, let's do it!",
-    telegramButton: '@eightavocados on Telegram'
+      "I haven't done any talks just yet, but I have a few prepared. If you'd like to have me talking at your event, please send me an email at me@doceazedo.com"
   },
 
   email: 'me@lucasfernandes.com.br',

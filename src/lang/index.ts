@@ -52,10 +52,9 @@ export type Language = {
     hardware: string[];
   };
 
-  contact: {
+  talks: {
     title: string;
     paragraph: string;
-    telegramButton: string;
   };
 
   email: string;

@@ -124,11 +124,10 @@ export const pt: Language = {
     ]
   },
 
-  contact: {
-    title: 'Fale comigo',
+  talks: {
+    title: 'Palestras',
     paragraph:
-      'Se você quer me contratar, conversar sobre um projeto ou só conversar sem compromisso, vamo nessa!',
-    telegramButton: '@eightavocados no Telegram'
+      'Eu ainda não dei nenhuma palestra, mas tenho algumas preparadas. Se você quiser que eu me apresente em seu evento, envie um e-mail para me@doceazedo.com'
   },
 
   email: 'eu@lucasfernandes.com.br',
