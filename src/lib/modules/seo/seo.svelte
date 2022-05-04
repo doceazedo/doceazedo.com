@@ -1,7 +1,7 @@
 <script lang="ts">
   export let path = '/',
-    title = 'Lucas Fernandes',
-    thumbnail = 'https://lucasfernandes.com.br/thumbnail.jpg';
+    title = 'DoceAzedo',
+    thumbnail = 'https://lucasfernandes.com.br/img/thumbnail.jpg';
 </script>
 
 <title>{title}</title>
