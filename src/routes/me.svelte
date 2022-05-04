@@ -12,7 +12,7 @@
   <SEO path="/about" />
 </svelte:head>
 
-<PageTitle title={$LANG.navbar.about} paragraph={$LANG.about.subtitle} />
+<PageTitle title={$LANG.navbar.me} paragraph={$LANG.about.subtitle} />
 
 <div class="content">
   <p>{@html $LANG.about.intro}</p>
