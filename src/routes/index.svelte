@@ -16,9 +16,5 @@
 </svelte:head>
 
 <Blurb />
-
 <SectionTitle title={$LANG.blog.title} actionLabel={$LANG.blog.more} actionHref="/blog" />
 <PostsGrid {posts} />
-
-<Skills />
-<Portfolio />
