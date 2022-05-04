@@ -8,6 +8,7 @@
     NavbarMenu,
     Navbar
   } from '$lib/components';
+  import { LIVE_DATA } from '$lib/modules/live';
   import { LANG } from '$lib/stores';
   import { sleep } from '$lib/utils';
 
@@ -66,7 +67,11 @@
 <Navbar {toggleMobileMenu} {onClickBrand}>
   <NavbarMenu {toggleMobileMenu} {showMobileMenu}>
     {#each navbarPageSlugs as slug}
-      <NavbarItem href="/{slug}" active={$page.url.pathname.startsWith(`/${slug}`)}>
+      <NavbarItem
+        href="/{slug}"
+        active={$page.url.pathname.startsWith(`/${slug}`)}
+        live={slug == 'streams' && $LIVE_DATA?.isLive}
+      >
         {$LANG.navbar[slug]}
       </NavbarItem>
     {/each}
