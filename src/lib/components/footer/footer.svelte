@@ -31,10 +31,15 @@
         target="_blank"
         aria-label={`${$LANG.alt.listeningTo} ${liveStats.nowPlaying.artist} - ${liveStats.nowPlaying.title}. ${$LANG.alt.lastfm}`}
       >
-        <img src={liveStats.nowPlaying.cover} alt="" />
-        <div>
-          <h1>{liveStats.nowPlaying.title}</h1>
-          <h2>{liveStats.nowPlaying.artist}</h2>
+        <div class="song-cover">
+          <img src={liveStats.nowPlaying.cover} alt="" />
+        </div>
+        <div class="song-info">
+          <img src={liveStats.nowPlaying.cover} alt="" />
+          <div>
+            <h1>{liveStats.nowPlaying.title}</h1>
+            <h2>{liveStats.nowPlaying.artist}</h2>
+          </div>
         </div>
       </a>
     {/if}
@@ -55,7 +60,8 @@
     align-items: center
     max-width: 900px
     margin: 0 auto
-    padding: 4rem 0
+    padding: 3rem 0
+    border-top: $hr
 
     .copyleft
       display: inline-block
@@ -68,9 +74,10 @@
       .now-playing      
         position: relative
         display: flex
-        height: 4rem
+        height: 5rem
         background-color: rgba(255, 255, 255, .05)
         color: $whiteish
+        border-radius: 1rem
         text-decoration: none
         transition: all .2s ease
 
@@ -80,30 +87,51 @@
         &.is-live::before
           @include live-badge
 
-        img
-          height: 4rem
-          width: 4rem
-          pointer-events: none
-          transition: all .2s ease
-
-        div
+        .song-cover
+          position: absolute
           display: flex
-          flex-direction: column
-          justify-content: center
-          padding: 0 1rem
+          align-items: center
+          width: 100%
+          height: 5rem
+          border-radius: 1rem
+          opacity: .1
+          overflow: hidden
 
-          h1,
-          h2
-            max-width: 150px
-            white-space: nowrap
-            overflow: hidden
-            text-overflow: ellipsis
+          img
+            width: 100%
+            filter: blur(.25rem)
 
-          h1
-            font-weight: 700
+        .song-info
+          display: flex
+          padding: .5rem
+          z-index: 1
 
-          h2
-            font-weight: 300
+          img
+            height: 4rem
+            width: 4rem
+            border-radius: 1rem
+            pointer-events: none
+            transition: all .2s ease
+          
+          div
+            display: flex
+            flex-direction: column
+            justify-content: center
+            padding: 0 .75rem
+
+            h1,
+            h2
+              max-width: 16rem
+              white-space: nowrap
+              overflow: hidden
+              text-overflow: ellipsis
+
+            h1
+              font-size: 1.25rem
+              font-weight: 700
+
+            h2
+              font-weight: 300
 
   .elevator
     position: fixed
