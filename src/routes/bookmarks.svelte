@@ -71,6 +71,48 @@
       ]
     },
     {
+      title: 'extensions',
+      items: [
+        {
+          title: 'JSON Viewer',
+          href: 'https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh'
+        },
+        {
+          title: 'Clear Cache',
+          href: 'https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn'
+        },
+        {
+          title: 'RSS Feed Reader',
+          href: 'https://chrome.google.com/webstore/detail/pnjaodmkngahhkoihejjehlcdlnohgmp'
+        },
+        {
+          title: 'Return YouTube Dislike',
+          href: 'https://chrome.google.com/webstore/detail/return-youtube-dislike/gebbhagfogifgggkldgodflihgfeippi'
+        },
+        {
+          title: 'Auto Quality for YouTube',
+          href: 'https://chrome.google.com/webstore/detail/iaddfgegjgjelgkanamleadckkpnjpjc'
+        },
+        {
+          title: 'WA Web Plus for WhatsApp',
+          href: 'https://chrome.google.com/webstore/detail/wa-web-plus-for-whatsapp/ekcgkejcjdcmonfpmnljobemcbpnkamh'
+        }
+      ]
+    },
+    {
+      title: 'accessibility',
+      items: [
+        {
+          title: 'WAVE - Web Accessibility Evaluation Tool',
+          href: 'https://wave.webaim.org'
+        },
+        {
+          title: 'tota11y - An accessibility visualization toolkit',
+          href: 'https://khan.github.io/tota11y'
+        }
+      ]
+    },
+    {
       title: 'miscellaneous',
       items: [
         {
