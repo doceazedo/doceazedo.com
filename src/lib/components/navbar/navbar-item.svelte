@@ -45,12 +45,12 @@
       opacity: 1
 
     &.live
-      margin-right: .5rem
+      padding-right: 1.5rem
 
       &::after
         @include live-badge
         top: calc(50% - 3px)
-        right: 0
+        right: .5rem
         height: .5rem
         width: .5rem
         border: none
