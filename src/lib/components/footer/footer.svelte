@@ -59,7 +59,7 @@
     justify-content: space-between
     align-items: center
     max-width: 900px
-    margin: 3rem auto 0
+    margin: 4rem auto 0
     padding: 3rem 0
     border-top: $hr
 
