@@ -1,7 +1,9 @@
 <script lang="ts">
+  const baseUrl = 'https://pbe.doceazedo.com';
+
   export let path = '/',
     title = 'DoceAzedo',
-    thumbnail = 'https://lucasfernandes.com.br/img/thumbnail.jpg';
+    thumbnail = '/img/thumbnail.jpg';
 </script>
 
 <title>{title}</title>
@@ -23,7 +25,7 @@
   property="og:description"
   content="I am a fullstack developer, specially for the web, building stylish and responsive layouts and designing well structured APIs and databases."
 />
-<meta prefix="og: http://ogp.me/ns#" property="og:image" content={thumbnail} />
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="{baseUrl}{thumbnail}" />
 
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content="https://lucasfernandes.com.br{path}" />
@@ -32,4 +34,4 @@
   property="twitter:description"
   content="I am a fullstack developer, specially for the web, building stylish and responsive layouts and designing well structured APIs and databases."
 />
-<meta property="twitter:image" content={thumbnail} />
+<meta property="twitter:image" content="{baseUrl}{thumbnail}" />
