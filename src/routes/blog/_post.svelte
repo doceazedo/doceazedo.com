@@ -3,12 +3,11 @@
   import { SinglePost } from '$lib/modules';
 
   export let title,
-    slug,
     date,
     tags = [],
     icon;
 </script>
 
-<SinglePost {title} {slug} {date} {tags} {icon}>
+<SinglePost {title} {date} {tags} {icon}>
   <slot />
 </SinglePost>

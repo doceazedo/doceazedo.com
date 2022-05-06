@@ -6,15 +6,16 @@
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import { browser } from '$app/env';
+  import { page } from '$app/stores';
   import { LANG } from '$lib/stores';
   import { SEO } from '$lib/modules';
 
   export let title: string,
-    slug: string,
     date: string,
     tags: string[] = [],
     icon: string;
 
+  const slug = $page.url.pathname.split('/')[2];
   const thumbnail = `/img/thumbnails/${slug}.jpg`;
   const iconSrc = `/img/icons/${icon}.svg`;
 
