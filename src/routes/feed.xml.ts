@@ -2,6 +2,8 @@ import { XMLBuilder } from 'fast-xml-parser';
 import { getPosts } from '$lib/utils';
 import type { Post } from '$lib/modules/posts';
 
+const baseUrl = 'https://pbe.doceazedo.com';
+
 const builder = new XMLBuilder({
   ignoreAttributes: false,
   format: true,
@@ -12,11 +14,11 @@ export const get = async () => {
   const data = await getPosts(5);
   const posts = data.body.posts.map((post: Post) => ({
     title: post.title,
-    link: `https://doceazedo.com/blog/${post.slug}`,
+    link: `${baseUrl}/blog/${post.slug}`,
     pubDate: new Date(post.date).toUTCString(),
-    guid: `https://doceazedo.com/blog/${post.slug}`,
+    guid: post.slug,
     description: {
-      cdata: `<img src="https://doceazedo.com/img/thumbnails/${post.slug}.jpg" /> ${post?.description}`
+      cdata: `<img src="${baseUrl}/img/thumbnails/${post.slug}.jpg" /> ${post?.description}`
     }
   }));
 
@@ -26,7 +28,7 @@ export const get = async () => {
       '@_version': '2.0',
       channel: {
         title: 'DoceAzedo',
-        link: 'https://doceazedo.com',
+        link: baseUrl,
         description:
           'Um amontoado de textos sobre tecnologia e programação, misturados com conversa fiada sobre música, vivências pessoais e outras besteiras.',
         language: 'pt',
