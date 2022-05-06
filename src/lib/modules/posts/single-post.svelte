@@ -42,7 +42,7 @@
 </script>
 
 <svelte:head>
-  <SEO path="/blog/{slug}" title="{title} - Lucas Fernandes" {thumbnail} />
+  <SEO path="/blog/{slug}" title="{title} - DoceAzedo" {thumbnail} />
 </svelte:head>
 
 <header>
