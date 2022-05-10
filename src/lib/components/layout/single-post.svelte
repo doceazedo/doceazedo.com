@@ -1,5 +1,5 @@
 <script>
-  import '../../assets/css/prism-material-dark.css';
+  import '../../../assets/css/prism-material-dark.css';
   import { SinglePost } from '$lib/modules';
 
   export let title,
