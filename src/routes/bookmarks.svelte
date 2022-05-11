@@ -41,6 +41,10 @@
         {
           title: 'Iconês',
           href: 'https://icones.js.org'
+        },
+        {
+          title: 'Ninite',
+          href: 'https://ninite.com'
         }
       ]
     },
