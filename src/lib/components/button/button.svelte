@@ -5,15 +5,17 @@
     center = false;
 </script>
 
-{#if href}
-  <a {href} {target} class="button" class:outline class:center>
-    <slot />
-  </a>
-{:else}
-  <button class="button" on:click class:outline class:center>
-    <slot />
-  </button>
-{/if}
+<svelte:element
+  this={href ? 'a' : 'button'}
+  {href}
+  {target}
+  class="button"
+  class:is-link={!!href}
+  class:outline
+  class:center
+>
+  <slot />
+</svelte:element>
 
 <style lang="sass">
   @import '../../../assets/sass/vars'
@@ -48,6 +50,6 @@
       margin: auto
       margin-top: 4rem
 
-  a
-    width: fit-content
+    &.is-link
+      width: fit-content
 </style>
