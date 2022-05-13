@@ -28,37 +28,6 @@ export const pt: Language = {
     ]
   },
 
-  portfolio: {
-    title: 'Meus últimos projetos e trabalhos',
-    projects: [
-      {
-        title: 'Semaninha',
-        description:
-          'Site open-source desenvolvido com SvelteKit que permite gerar colagens das músicas que você mais ouviu, integrando as APIs do last.fm e Spotify.'
-      },
-      {
-        title: 'convergencia.net.br',
-        description:
-          'Site institucional desenvolvido com WordPress e ACF para Convergência Digital, empresa de telemarketing e autoridade de registro na Grande BH.'
-      },
-      {
-        title: 'grupostelegram.com.br',
-        description:
-          'Desenvolvido em React com Next.js e Chakra UI, hoje eu contribuo para esse que é um dos maiores indexadores de grupos de Telegram no Brasil.'
-      },
-      {
-        title: 'Overlay + Bot',
-        description:
-          'Nas minhas lives de programação na Twitch, todo o visual e comandos estão sendo desenvolvidos com Svelte e SvelteKit.'
-      },
-      {
-        title: 'doceazedo.com',
-        description:
-          'Site que reúne informações relacionadas às minhas lives na Twitch, como redes sociais e comandos do chat, também desenvolvido em Svelte e SvelteKit.'
-      }
-    ]
-  },
-
   footer: ['Powered by Svelte & SvelteKit', 'Desenvolvido por Lucas Fernandes'],
 
   blog: {
@@ -150,6 +119,28 @@ export const pt: Language = {
     subscribeNewsletter: 'ou inscreva-se na newsletter',
     subscribeButton: 'Inscrever',
     soon: 'Em breve™'
+  },
+
+  projects: {
+    subtitle: 'Alguns destaques dos meus projetos open-source. Veja todos',
+    subtitleGitHub: 'no GitHub',
+    url: 'Visitar',
+    writeup: 'Notas',
+    source: 'Código',
+    demo: 'Demo',
+    details: {
+      semaninha:
+        'Gerador de colagens com as músicas que você mais ouviu na semana no Last.fm, desenvolvido com SvelteKit e Puppeteer.',
+      'svelte-flow':
+        'Biblioteca que permite criar diagramas, inspirado no React Flow e ainda no início do desenvolvimento.',
+      overlay:
+        'Um conjunto de visuais e comandos interativos para animar as minhas livestreams de programação.',
+      emotettv: 'Biblioteca para fazer parse dos emotes da Twitch, sem esforço',
+      powerchat: 'Projeto (inativo) que visa deixar o chat da Twitch mais moderno',
+      'quarto-101': 'Projeto com o objetivo de recriar os sistemas da casa do BBB',
+      autoparkour: 'Plugin Spigot que gera trilhas de parkour programaticamente',
+      bitterctf: 'Plugin Spigot de um minigame de rouba-bandeira independente'
+    }
   },
 
   email: 'eu@lucasfernandes.com.br',

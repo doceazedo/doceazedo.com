@@ -2,7 +2,8 @@
   export let outline = false,
     href: string = null,
     target: string = null,
-    center = false;
+    center = false,
+    small = false;
 </script>
 
 <svelte:element
@@ -13,6 +14,8 @@
   class:is-link={!!href}
   class:outline
   class:center
+  class:small
+  on:click
 >
   <slot />
 </svelte:element>
@@ -52,4 +55,11 @@
 
     &.is-link
       width: fit-content
+
+    &.small
+      font-size: 1rem
+      padding: 0.5rem 1rem
+
+      &:hover
+        transform: translateY(-2px)
 </style>

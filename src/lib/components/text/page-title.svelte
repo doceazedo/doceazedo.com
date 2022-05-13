@@ -4,7 +4,7 @@
 </script>
 
 <h1>{title}</h1>
-<p>{paragraph}</p>
+<p><slot />{paragraph}</p>
 
 <style lang="sass">
   @import '../../../assets/sass/vars.sass'

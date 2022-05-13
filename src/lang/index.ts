@@ -19,14 +19,6 @@ export type Language = {
     paragraph: string[];
   };
 
-  portfolio: {
-    title: string;
-    projects: {
-      title: string;
-      description: string;
-    }[];
-  };
-
   blog: {
     title: string;
     subtitle: string;
@@ -76,6 +68,18 @@ export type Language = {
     subscribeNewsletter: string;
     subscribeButton: string;
     soon: string;
+  };
+
+  projects: {
+    subtitle: string;
+    subtitleGitHub: string;
+    url: string;
+    writeup: string;
+    source: string;
+    demo: string;
+    details: {
+      [id: string]: string;
+    };
   };
 
   email: string;

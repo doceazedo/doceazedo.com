@@ -28,37 +28,6 @@ export const en: Language = {
     ]
   },
 
-  portfolio: {
-    title: 'My latest projects and works',
-    projects: [
-      {
-        title: 'Semaninha',
-        description:
-          'Open-source website developed with SvelteKit and Puppeteer that allows you to generate collages with your top listened songs, using the last.fm API.'
-      },
-      {
-        title: 'convergencia.net.br',
-        description:
-          'Corporate website developed with WordPress and ACF for Convergência Digital, a telemarketing and RA company from Minas Gerais, Brazil.'
-      },
-      {
-        title: 'grupostelegram.com.br',
-        description:
-          'Powered by React with Next.js and Chakra UI, the Grupos Telegram website is one of the biggest Telegram group and channel indexers in Brazil.'
-      },
-      {
-        title: 'Overlay + Bot',
-        description:
-          'In my live coding streams on Twitch, every overlay visuals and chat commands are being developed with Svelte and SvelteKit.'
-      },
-      {
-        title: 'doceazedo.com',
-        description:
-          'A place with my social media, chat commands and everything related to my Twitch livestreams. Also actively developed with Svelte and SvelteKit.'
-      }
-    ]
-  },
-
   blog: {
     title: "See what I've written lately",
     subtitle:
@@ -149,6 +118,25 @@ export const en: Language = {
     subscribeNewsletter: 'or subscribe to the newsletter:',
     subscribeButton: 'Subscribe',
     soon: 'Coming soon™'
+  },
+
+  projects: {
+    subtitle: 'A few highlights of my open-source projects. View them all',
+    subtitleGitHub: 'on GitHub',
+    url: 'Visitar',
+    writeup: 'Write-up',
+    source: 'Source',
+    demo: 'Demo',
+    details: {
+      semaninha: '',
+      'svelte-flow': '',
+      overlay: '',
+      emotettv: '',
+      powerchat: '',
+      'quarto-101': '',
+      autoparkour: '',
+      bitterctf: ''
+    }
   },
 
   email: 'me@lucasfernandes.com.br',

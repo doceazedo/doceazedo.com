@@ -6,7 +6,7 @@ export * from './icons';
 export * from './layout';
 export * from './navbar';
 export * from './newsletter';
-export * from './portfolio';
+export * from './projects';
 export * from './posts';
 export * from './skills';
 export * from './skip-to-content';
