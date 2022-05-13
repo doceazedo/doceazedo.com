@@ -3,7 +3,7 @@
   import { AudioIcon, Buttons } from '$lib/components';
 
   export let title: string,
-    paragraph: string[],
+    paragraph: string,
     image: string,
     customCursorEl: HTMLImageElement = null,
     customCursorImage: string = null,
@@ -21,11 +21,7 @@
         </button>
       {/if}
     </h1>
-    <p>
-      {#each paragraph as line}
-        {line} <br />
-      {/each}
-    </p>
+    <p>{paragraph}</p>
     <Buttons>
       <slot />
     </Buttons>
@@ -50,6 +46,7 @@
 
     h1
       position: relative
+      width: fit-content
       font-size: 2.75rem
       font-weight: 700
       margin-bottom: 1rem
@@ -71,11 +68,12 @@
         cursor: pointer
 
     p
+      max-width: 31rem
+      margin-bottom: 4rem
       font-family: $font-secondary
       font-size: 1.25rem
       line-height: 1.25
       color: $whiteish
-      margin-bottom: 4rem
 
     figure
       position: relative
@@ -150,9 +148,6 @@
 
         p
           margin-bottom: 3rem
-
-        br
-          display: none
 
       &-selfie
         display: flex

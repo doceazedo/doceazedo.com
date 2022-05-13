@@ -13,11 +13,8 @@ export const en: Language = {
 
   blurb: {
     title: 'You can call me Doce.',
-    paragraph: [
-      "I'm Lucas, a 19 years old curiosity-driven developer,",
-      'Svelte evangelist, arch-enemy of the zeros and ones',
-      '(he/they) and live coder.'
-    ]
+    paragraph:
+      "I'm DoceAzedo, a 19 years old curiosity-driven developer, Svelte evangelist, arch-enemy of the zeros and ones (he/they) and live coder."
   },
 
   skills: {
@@ -148,8 +145,7 @@ export const en: Language = {
 
   alt: {
     logo: 'DoceAzedo logo',
-    selfie:
-      'Selfie of myself, a white person with long hair with bleached ends, wearing round glasses and a dark green sweatshirt.',
+    selfie: 'Photo of me',
     copyleft: 'Learn what is Copyleft',
     listeningTo: 'Listening to',
     lastfm: 'Open my Last.fm profile.',

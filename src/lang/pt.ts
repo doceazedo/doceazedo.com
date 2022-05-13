@@ -13,11 +13,8 @@ export const pt: Language = {
 
   blurb: {
     title: 'Pode me chamar de Doce.',
-    paragraph: [
-      'Eu sou o Lucas, tenho 19 anos e sou um desenvolvedor',
-      'movido à curiosidade, evangelista de Svelte, arqui-',
-      'inimigo dos zeros e uns (ele/delu) e live coder.'
-    ]
+    paragraph:
+      'Eu sou o Doce, tenho 19 anos e sou um desenvolvedor movido à curiosidade, evangelista de Svelte, arqui-inimigo dos zeros e uns (ele/delu) e live coder.'
   },
 
   skills: {
@@ -149,8 +146,7 @@ export const pt: Language = {
 
   alt: {
     logo: 'Logotipo Doce Azedo',
-    selfie:
-      'Selfie de mim, pessoa branca de cabelos longos com as pontas descoloridas, usando óculos redondos e vestindo uma blusa de moletom verde escuro.',
+    selfie: 'Fotografia de mim',
     copyleft: 'Aprenda o que é Copyleft',
     listeningTo: 'Ouvindo',
     lastfm: 'Abrir meu perfil do Last.fm.',
