@@ -12,7 +12,6 @@
     {
       id: 'svelte-flow',
       title: 'Svelte Flow',
-      writeup: '/blog/photopea-vs-photoshop',
       source: 'https://github.com/doceazedo/semaninha',
       demo: '#'
     },
