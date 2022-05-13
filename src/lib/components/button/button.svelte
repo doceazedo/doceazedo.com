@@ -6,8 +6,7 @@
     small = false;
 </script>
 
-<svelte:element
-  this={href ? 'a' : 'button'}
+<a
   {href}
   {target}
   class="button"
@@ -18,7 +17,7 @@
   on:click
 >
   <slot />
-</svelte:element>
+</a>
 
 <style lang="sass">
   @import '../../../assets/sass/vars'
