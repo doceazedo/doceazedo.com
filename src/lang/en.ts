@@ -123,7 +123,7 @@ export const en: Language = {
   projects: {
     subtitle: 'A few highlights of my open-source projects. View them all',
     subtitleGitHub: 'on GitHub',
-    url: 'Visitar',
+    url: 'Visit',
     writeup: 'Write-up',
     source: 'Source',
     demo: 'Demo',
