@@ -128,14 +128,17 @@ export const en: Language = {
     source: 'Source',
     demo: 'Demo',
     details: {
-      semaninha: '',
-      'svelte-flow': '',
-      overlay: '',
-      emotettv: '',
-      powerchat: '',
-      'quarto-101': '',
-      autoparkour: '',
-      bitterctf: ''
+      semaninha:
+        "Last.fm collage generator, featuring the songs you've listened to the most, powered by SvelteKit and Puppeteer.",
+      'svelte-flow':
+        'Library for creating diagrams, inspired by React Flow and still at the early stages of development.',
+      overlay:
+        'A set of visual scenes and interactive commands to spice up my live coding streams on Twitch.',
+      emotettv: 'A dead simple library to parse Twitch emotes with ease',
+      powerchat: 'Inactive project that aims to make the Twitch chat more modern',
+      'quarto-101': 'Project with the aim of recreating all the BBB (reality show) systems',
+      autoparkour: 'Spigot plugin that generates parkour tracks programmatically',
+      bitterctf: 'Spigot plugin for a standalone capture the flag minigame server'
     }
   },
 
