@@ -9,7 +9,7 @@
 
   let fade = true;
   const handleScroll = (e) =>
-    (fade = browser && e.target.scrollLeft + document.body.offsetWidth < e.target.scrollWidth);
+    (fade = browser && e.target.scrollLeft + document.body.offsetWidth < e.target.scrollWidth - 16);
 </script>
 
 <div class="projects-wrapper">
@@ -59,12 +59,14 @@
   @media screen and (max-width: 768px)
     .projects-wrapper
       position: relative
+      margin-left: -1rem
+      width: calc(100% + 2rem)
 
     .projects
       display: flex
       gap: 1rem
       width: 100%
-      padding-bottom: 1rem
+      padding: 0 1rem
       overflow-x: scroll
 
       &::before
@@ -73,7 +75,7 @@
         right: 0
         content: ''
         width: 5rem
-        height: calc(100% - 1rem)
+        height: 100%
         background-image: linear-gradient(to right, rgba($background, 0) , $background)
         transition: all .2s ease
         pointer-events: none
@@ -82,15 +84,7 @@
         opacity: 0
 
       &::-webkit-scrollbar
-        height: .5rem
-
-      &::-webkit-scrollbar-track,
-      &::-webkit-scrollbar-thumb
-        background-color: rgba(255, 255, 255, .1)
-        border-radius: 25px
-
-      &::-webkit-scrollbar-thumb:hover
-        background-color: rgba(255, 255, 255, .2)
+        height: 0
 
       .item
         width: 17.5rem
