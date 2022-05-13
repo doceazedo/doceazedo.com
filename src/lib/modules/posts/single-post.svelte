@@ -8,9 +8,10 @@
   import { browser } from '$app/env';
   import { page } from '$app/stores';
   import { LANG } from '$lib/stores';
-  import { SEO } from '$lib/modules';
+  import { Metadata } from '$lib/components';
 
   export let title: string,
+    description: string,
     date: string,
     tags: string[] = [],
     icon: string;
@@ -41,9 +42,7 @@
   }
 </script>
 
-<svelte:head>
-  <SEO path="/blog/{slug}" title="{title} - DoceAzedo" {thumbnail} />
-</svelte:head>
+<Metadata {title} {description} {thumbnail} />
 
 <header>
   <div>

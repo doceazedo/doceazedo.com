@@ -1,17 +1,13 @@
 <script lang="ts">
   import { LANG } from '$lib/stores';
-  import { PageTitle } from '$lib/components';
-  import { SEO } from '$lib/modules';
+  import { Metadata, PageTitle } from '$lib/components';
   import meAtBeach from '../assets/img/me-beach.webp';
   import tattoo1 from '../assets/img/tattoo-1.webp';
   import tattoo2 from '../assets/img/tattoo-2.webp';
   import tattoo3 from '../assets/img/tattoo-3.webp';
 </script>
 
-<svelte:head>
-  <SEO path="/about" />
-</svelte:head>
-
+<Metadata title={$LANG.navbar.me} />
 <PageTitle title={$LANG.navbar.me} paragraph={$LANG.about.subtitle} />
 
 <div class="content">

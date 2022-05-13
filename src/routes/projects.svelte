@@ -1,8 +1,10 @@
 <script lang="ts">
   import { LANG } from '$lib/stores';
-  import { PageTitle } from '$lib/components';
+  import { Metadata, PageTitle } from '$lib/components';
   import { ProjectsXL, ProjectsSM } from '$lib/modules/projects';
 </script>
+
+<Metadata title={$LANG.navbar.projects} />
 
 <PageTitle title={$LANG.navbar.projects}>
   <div class="content">
