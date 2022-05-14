@@ -4,6 +4,7 @@ export const en: Language = {
   code: 'en',
 
   navbar: {
+    home: 'Home',
     blog: 'Blog',
     talks: 'Talks',
     streams: 'Streams',

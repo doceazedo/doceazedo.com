@@ -44,4 +44,8 @@
       &:hover :global(svg)
         color: $primary-light
         text-shadow: 0 0 .25rem $primary-light
+
+  @media screen and (max-width: 768px)
+    .navbar-icons
+      margin-left: auto
 </style>

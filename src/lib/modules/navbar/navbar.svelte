@@ -5,14 +5,37 @@
     NavbarIcons,
     NavbarItem,
     NavbarLang,
+    NavbarMenuMobile,
     NavbarMenu,
     Navbar
   } from '$lib/components';
   import { LIVE_DATA } from '$lib/modules/live';
   import { LANG } from '$lib/stores';
   import { sleep } from '$lib/utils';
+  import type { NavbarLink } from '$lib/components/navbar';
 
-  const navbarPageSlugs = ['blog', 'talks', 'streams', 'projects', 'me'];
+  const navbarItems: NavbarLink[] = [
+    {
+      slug: 'blog',
+      icon: 'ri:newspaper-line'
+    },
+    {
+      slug: 'talks',
+      icon: 'ri:slideshow-2-line'
+    },
+    {
+      slug: 'streams',
+      icon: 'ri:live-line'
+    },
+    {
+      slug: 'projects',
+      icon: 'ri:code-s-slash-line'
+    },
+    {
+      slug: 'me',
+      icon: 'ri:user-line'
+    }
+  ];
   const languages = {
     pt: { code: 'pt', title: 'PT-BR', icon: 'circle-flags:br' },
     en: { code: 'en', title: 'EN', icon: 'circle-flags:gb' }
@@ -66,14 +89,14 @@
 </script>
 
 <Navbar {toggleMobileMenu} {onClickBrand}>
-  <NavbarMenu {toggleMobileMenu} {showMobileMenu}>
-    {#each navbarPageSlugs as slug}
+  <NavbarMenu>
+    {#each navbarItems as item}
       <NavbarItem
-        href="/{slug}"
-        active={$page.url.pathname.startsWith(`/${slug}`)}
-        live={slug == 'streams' && $LIVE_DATA?.isLive}
+        href="/{item.slug}"
+        active={$page.url.pathname.startsWith(`/${item.slug}`)}
+        live={item.slug == 'streams' && $LIVE_DATA?.isLive}
       >
-        {$LANG.navbar[slug]}
+        {$LANG.navbar[item.slug]}
       </NavbarItem>
     {/each}
   </NavbarMenu>
@@ -86,3 +109,7 @@
     <NavbarAchievement />
   {/if}
 </Navbar>
+
+{#if showMobileMenu}
+  <NavbarMenuMobile items={navbarItems} {toggleMobileMenu} />
+{/if}

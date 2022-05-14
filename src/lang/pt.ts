@@ -4,6 +4,7 @@ export const pt: Language = {
   code: 'pt',
 
   navbar: {
+    home: 'Início',
     blog: 'Blog',
     talks: 'Talks',
     streams: 'Streams',

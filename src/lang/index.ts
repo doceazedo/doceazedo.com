@@ -2,6 +2,7 @@ export type Language = {
   code: string;
 
   navbar: {
+    home: string;
     blog: string;
     talks: string;
     streams: string;

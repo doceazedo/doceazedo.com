@@ -27,4 +27,12 @@
     :global(svg)
       width: 1.5rem
       height: 1.5rem
+
+  @media screen and (max-width: 768px)
+    .navbar-lang
+      margin: 0 1.5rem 0 .75rem
+
+      :global(svg)
+        width: 1.75rem
+        height: 1.75rem
 </style>
