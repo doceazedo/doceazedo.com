@@ -2,12 +2,15 @@
   import { LANG } from '$lib/stores';
   import { BrandDoceAzedo, HamburgerIcon } from '$lib/components';
 
-  export let toggleMobileMenu: () => void, onClickBrand: (e: Event) => void;
+  export let toggleMobileMenu: () => void,
+    onClickBrand: (e: Event) => void,
+    hamburgerEl: HTMLElement,
+    isMobileMenusOpen = false;
 </script>
 
 <nav class="navbar">
-  <div class="navbar-hamburger" on:click={toggleMobileMenu}>
-    <HamburgerIcon />
+  <div class="navbar-hamburger" on:click={toggleMobileMenu} bind:this={hamburgerEl}>
+    <HamburgerIcon isCross={isMobileMenusOpen} />
   </div>
 
   <a class="navbar-brand" href="/" on:click={onClickBrand} aria-label={$LANG.alt.home}>
@@ -52,9 +55,18 @@
 
     &-hamburger
       display: none
+      color: $whiteish
 
   @media screen and (max-width: 768px)
     .navbar
+      position: fixed
+      top: 0
+      left: 0
+      width: 100%
+      background-color: rgba($background, .75)
+      backdrop-filter: blur(.5rem)
+      z-index: 20
+
       &-brand :global(svg),
       &-brand::before
         height: 2.5rem

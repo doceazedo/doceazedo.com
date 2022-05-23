@@ -56,6 +56,7 @@
   let brandClicks = 0;
   let brandAnimating = false;
   let achievementGet = false;
+  let hamburgerEl: HTMLElement;
 
   const changeLanguage = (code: string) => {
     LANG.change(code);
@@ -88,7 +89,7 @@
   };
 </script>
 
-<Navbar {toggleMobileMenu} {onClickBrand}>
+<Navbar {toggleMobileMenu} {onClickBrand} isMobileMenusOpen={showMobileMenu} bind:hamburgerEl>
   <NavbarMenu>
     {#each navbarItems as item}
       <NavbarItem
@@ -111,5 +112,5 @@
 </Navbar>
 
 {#if showMobileMenu}
-  <NavbarMenuMobile items={navbarItems} {toggleMobileMenu} />
+  <NavbarMenuMobile items={navbarItems} {toggleMobileMenu} {hamburgerEl} />
 {/if}

@@ -22,5 +22,5 @@
     
   @media screen and (max-width: 768px)
     #main
-      padding: 0 1rem
+      padding: 77px 1rem 0
 </style>
