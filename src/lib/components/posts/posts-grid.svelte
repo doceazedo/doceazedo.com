@@ -1,6 +1,7 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
   import { LANG } from '$lib/stores';
+  import { PushpinIcon } from '$lib/components/icons';
   import { readableDate } from '$lib/utils';
   import type { Post } from '$lib/modules/posts';
 
@@ -19,7 +20,7 @@
       <div class="tags">
         {#if post.pinned}
           <div class="pin">
-            <Icon icon="ri:pushpin-fill" />
+            <PushpinIcon />
           </div>
         {/if}
         {#each post.tags as tag}

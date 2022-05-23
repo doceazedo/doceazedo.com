@@ -1,7 +1,13 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
   import { browser } from '$app/env';
   import { Blurb, Button, ButtonIcon } from '$lib/components';
+  import {
+    GithubIcon,
+    InstagramIcon,
+    LastfmIcon,
+    TwitchIcon,
+    TwitterIcon
+  } from '$lib/components/icons';
   import { LANG } from '$lib/stores';
   import image from '../../../assets/img/selfie.webp';
   import customCursorImage from '../../../assets/img/pat.gif';
@@ -10,19 +16,19 @@
   const githubUrl = 'https://github.com/doceazedo';
   const socials = [
     {
-      icon: 'ri:twitter-line',
+      icon: TwitterIcon,
       href: 'https://twitter.com/doceazedo911'
     },
     {
-      icon: 'ri:instagram-line',
+      icon: InstagramIcon,
       href: 'https://instagram.com/doceazedo911/'
     },
     {
-      icon: 'ri:twitch-line',
+      icon: TwitchIcon,
       href: 'https://twitch.tv/doceazedo911'
     },
     {
-      icon: 'mdi:lastfm',
+      icon: LastfmIcon,
       href: 'https://last.fm/user/doceazedo911',
       isLarge: true
     }
@@ -53,10 +59,12 @@
   {onClickAudioButton}
 >
   <Button href={githubUrl} target="_blank">
-    <Icon icon="ri:github-line" />
+    <GithubIcon />
     GitHub
   </Button>
   {#each socials as social}
-    <ButtonIcon href={social.href} icon={social.icon} isLarge={social?.isLarge} />
+    <ButtonIcon href={social.href} isLarge={social?.isLarge}>
+      <svelte:component this={social.icon} />
+    </ButtonIcon>
   {/each}
 </Blurb>

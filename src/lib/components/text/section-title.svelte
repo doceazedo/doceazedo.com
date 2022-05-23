@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
+  import { ArrowRightIcon } from '$lib/components/icons';
 
   export let title: string,
     paragraph: string[] = null,
@@ -10,7 +10,7 @@
 <h1>
   {title}
   {#if actionLabel && actionHref}
-    <a href={actionHref}>{actionLabel} <Icon icon="ri:arrow-right-line" /></a>
+    <a href={actionHref}>{actionLabel} <ArrowRightIcon /></a>
   {/if}
 </h1>
 

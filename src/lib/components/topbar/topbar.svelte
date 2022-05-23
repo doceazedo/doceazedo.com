@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
   import { slide, scale } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
+  import { CloseIcon } from '$lib/components/icons';
 
   let show = true;
 </script>
@@ -16,7 +16,7 @@
       on:click={() => (show = false)}
       out:scale={{ duration: 200, opacity: 0, start: 0.25, easing: quintOut }}
     >
-      <Icon icon="ri:close-line" />
+      <CloseIcon />
     </button>
   </div>
 {/if}
@@ -59,4 +59,8 @@
       border: none
       border-radius: 50%
       cursor: pointer
+
+      :global(svg)
+        height: 1rem
+        width: 1rem
 </style>

@@ -1,11 +1,11 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
+  import type { SvelteComponent } from 'svelte';
 
   type Languages = {
     [code: string]: {
       code: string;
       title: string;
-      icon: string;
+      icon: typeof SvelteComponent;
     };
   };
 
@@ -15,7 +15,7 @@
 </script>
 
 <div on:click={() => changeLanguage(otherCode)} class="navbar-lang">
-  <Icon icon={languages[activeLanguage].icon} />
+  <svelte:component this={languages[activeLanguage].icon} />
 </div>
 
 <style lang="sass">

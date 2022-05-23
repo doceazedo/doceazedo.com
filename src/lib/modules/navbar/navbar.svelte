@@ -9,6 +9,17 @@
     NavbarMenu,
     Navbar
   } from '$lib/components';
+  import {
+    BookmarkIcon,
+    CodeIcon,
+    FlagBrazilIcon,
+    FlagUnitedKingdomIcon,
+    LiveIcon,
+    NewspaperIcon,
+    RssIcon,
+    SlideshowIcon,
+    UserIcon
+  } from '$lib/components/icons';
   import { LIVE_DATA } from '$lib/modules/live';
   import { LANG } from '$lib/stores';
   import { sleep } from '$lib/utils';
@@ -17,36 +28,36 @@
   const navbarItems: NavbarLink[] = [
     {
       slug: 'blog',
-      icon: 'ri:newspaper-line'
+      icon: NewspaperIcon
     },
     {
       slug: 'talks',
-      icon: 'ri:slideshow-2-line'
+      icon: SlideshowIcon
     },
     {
       slug: 'streams',
-      icon: 'ri:live-line'
+      icon: LiveIcon
     },
     {
       slug: 'projects',
-      icon: 'ri:code-s-slash-line'
+      icon: CodeIcon
     },
     {
       slug: 'me',
-      icon: 'ri:user-line'
+      icon: UserIcon
     }
   ];
   const languages = {
-    pt: { code: 'pt', title: 'PT-BR', icon: 'circle-flags:br' },
-    en: { code: 'en', title: 'EN', icon: 'circle-flags:gb' }
+    pt: { code: 'pt', title: 'PT-BR', icon: FlagBrazilIcon },
+    en: { code: 'en', title: 'EN', icon: FlagUnitedKingdomIcon }
   };
   const icons = [
     {
-      icon: 'ri:bookmark-line',
+      icon: BookmarkIcon,
       href: '/bookmarks'
     },
     {
-      icon: 'ri:rss-line',
+      icon: RssIcon,
       href: '/feed.xml',
       target: '_blank'
     }

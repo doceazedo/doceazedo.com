@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
   import { LANG } from '$lib/stores';
   import { SectionTitle, Button } from '$lib/components';
+  import { RssIcon } from '$lib/components/icons';
 </script>
 
 <section>
@@ -9,7 +9,7 @@
 
   <form class="form" on:submit|preventDefault>
     <Button href="/feed.xml" target="_blank" outline>
-      <Icon icon="ri:rss-line" />
+      <RssIcon />
       {$LANG.newsletter.subscribeRSS}
     </Button>
     <span>{$LANG.newsletter.subscribeNewsletter}</span>

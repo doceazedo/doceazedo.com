@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
+  import type { SvelteComponent } from 'svelte';
 
   type NavbarIcon = {
-    icon: string;
+    icon: typeof SvelteComponent;
     href: string;
     target?: string;
   };
@@ -13,8 +13,8 @@
 <div class="navbar-icons">
   {#each icons as icon}
     <!-- FIXME: add alt text -->
-    <a href={icon.href} target={icon.target} alt="">
-      <Icon icon={icon.icon} />
+    <a href={icon.href} target={icon.target} class="icon" alt="">
+      <svelte:component this={icon.icon} />
     </a>
   {/each}
 </div>
@@ -25,7 +25,7 @@
   .navbar-icons
     display: flex
     
-    a
+    .icon
       position: relative
       display: flex
       justify-content: center
@@ -39,6 +39,8 @@
       transition: all .2s ease
 
       :global(svg)
+        width: 1.25rem
+        height: 1.25rem
         transition: all .2s ease
 
       &:hover :global(svg)

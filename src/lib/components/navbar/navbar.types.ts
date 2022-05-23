@@ -1,4 +1,6 @@
+import type { SvelteComponent } from 'svelte';
+
 export type NavbarLink = {
   slug: string;
-  icon: string;
+  icon: typeof SvelteComponent;
 };

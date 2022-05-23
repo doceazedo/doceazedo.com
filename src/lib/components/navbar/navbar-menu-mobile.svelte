@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
   import { fade, fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import { LANG } from '$lib/stores';
+  import { HomeIcon } from '$lib/components/icons';
   import { LIVE_DATA } from '$lib/modules/live';
   import type { NavbarLink } from './navbar.types';
 
@@ -33,13 +33,13 @@
 >
   <div class="mobile-menu" transition:fly={{ duration: 300, y: 64, opacity: 0, easing: quintOut }}>
     <a href="/" class="mobile-menu-item">
-      <Icon icon="ri:home-2-line" />
+      <HomeIcon />
       {$LANG.navbar.home}
     </a>
 
     {#each items as item}
       <a href="/{item.slug}" class="mobile-menu-item">
-        <Icon icon={item.icon} />
+        <svelte:component this={item.icon} />
         <span class:live={item.slug == 'streams' && $LIVE_DATA?.isLive}>
           {$LANG.navbar[item.slug]}
         </span>

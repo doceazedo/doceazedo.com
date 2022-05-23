@@ -1,13 +1,10 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
-
   export let href: string,
-    icon: string,
     isLarge = false;
 </script>
 
 <a {href} target="_blank" class="button-icon" class:xl={isLarge}>
-  <Icon {icon} />
+  <slot />
 </a>
 
 <style lang="sass">
