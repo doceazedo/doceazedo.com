@@ -25,6 +25,7 @@
   @import '../../../assets/sass/vars.sass'
 
   .topbar
+    position: relative
     display: flex
     width: 100%
     margin-bottom: .5rem
@@ -63,4 +64,16 @@
       :global(svg)
         height: 1rem
         width: 1rem
+
+  @media screen and (max-width: 768px)
+    .topbar
+      margin-top: 77px
+      margin-bottom: -77px
+
+      &-content
+        padding: 1rem
+
+      &-close
+        top: .25rem
+        right: .25rem
 </style>
