@@ -6,7 +6,6 @@
   import ChimeAudio from '../../../assets/audio/chime.mp3';
 
   let scrollY = 0;
-  let showElevator = false;
   let song: HTMLAudioElement;
   let chime: HTMLAudioElement;
 
@@ -15,11 +14,6 @@
     song.loop = true;
     chime = new Audio(ChimeAudio);
   }
-
-  $: scrollY, handleScrollY();
-
-  const handleScrollY = () =>
-    (showElevator = browser && window.innerHeight + scrollY >= document.body.offsetHeight);
 
   const scrollToTop = () => {
     const c = document.documentElement.scrollTop || document.body.scrollTop;
@@ -43,4 +37,4 @@
 
 <svelte:window bind:scrollY />
 
-<Footer liveStats={$LIVE_DATA} {showElevator} {callElevator} />
+<Footer liveStats={$LIVE_DATA} {callElevator} />
