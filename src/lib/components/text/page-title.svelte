@@ -25,4 +25,8 @@
   @media screen and (max-width: 768px)
     h1
       font-size: 2rem
+      margin-top: 2.5rem
+
+    p
+      margin-bottom: 2.5rem
 </style>

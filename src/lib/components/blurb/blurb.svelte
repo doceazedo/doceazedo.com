@@ -148,7 +148,7 @@
         h1
           display: inline-flex
           width: unset
-          font-size: 1.75rem
+          font-size: 2rem
 
           .audio
             position: unset

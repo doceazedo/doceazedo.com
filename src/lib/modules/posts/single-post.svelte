@@ -155,6 +155,7 @@
   @media screen and (max-width: 768px)
     header
       flex-direction: column-reverse
+      padding: 2.5rem 0
 
       div:first-child h1
         font-size: 1.5rem
@@ -165,6 +166,10 @@
 
         img
           height: 4rem
+
+    hr,
+    .content
+      margin-bottom: 2.5rem
 
     .alert
       text-align: left
