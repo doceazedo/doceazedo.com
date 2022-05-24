@@ -103,4 +103,17 @@
           :global(svg)
             height: 1.5rem
             width: 1.5rem
+
+  @media screen and (max-width: 768px)
+    .articles
+      display: flex
+      flex-direction: column
+
+      .article
+        gap: .5rem
+        min-height: 14rem
+        padding: 1rem
+
+        .title
+          font-size: 1.3rem
 </style>

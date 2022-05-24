@@ -137,34 +137,43 @@
   @media screen and (max-width: 768px)
     .blurb
       flex-direction: column-reverse
+      gap: 2rem
       padding: 3rem 0
 
-      &-info
+      &-info,
+      &-selfie
         width: 100%
-        text-align: center
 
+      &-info
         h1
-          font-size: 2rem
+          display: inline-flex
+          width: unset
+          font-size: 1.75rem
+
+          .audio
+            position: unset
+            display: inline-flex
+            margin-left: .25rem
+            width: 1.25rem
+            height: 1.25rem
+
+            :global(svg)
+              height: .9rem
+              width: .9rem
 
         p
           margin-bottom: 3rem
 
-      &-selfie
-        display: flex
-        justify-content: center
-        width: 100%
-        margin-bottom: 2rem
+      &-selfie figure
+        width: fit-content
+        margin-left: 1rem
 
-        figure
-          width: fit-content
-          margin-left: 1rem
-
-          &,
-          &::before,
-          &::after,
-          img
-            height: 300px !important
-            width: 225px !important
+        &,
+        &::before,
+        &::after,
+        img
+          height: 300px !important
+          width: 225px !important
 
   @media screen and (min-width: 769px)
     .pat-area.is-active:hover + .pat-cursor

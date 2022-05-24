@@ -14,8 +14,4 @@
 
     &.small
       gap: .5rem
-
-  @media screen and (max-width: 768px)
-    .buttons
-      justify-content: center
 </style>

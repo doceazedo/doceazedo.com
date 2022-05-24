@@ -79,4 +79,20 @@
           border-top-left-radius: 0
           border-bottom-left-radius: 0
           transform: none
+
+  @media screen and (max-width: 768px)
+    form
+      flex-direction: column
+      align-items: flex-start
+      gap: 1.75rem
+
+      span
+        margin: 0
+        font-size: 1.25rem
+
+        &::after
+          content: ':'
+
+      .newsletter
+        width: 100%
 </style>

@@ -61,5 +61,9 @@
 
   @media screen and (max-width: 768px)
     h1
-      font-size: 2rem
+      font-size: 1.5rem
+      gap: 1rem
+
+      a
+        flex-shrink: 0
 </style>
