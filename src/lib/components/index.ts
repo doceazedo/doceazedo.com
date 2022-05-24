@@ -9,7 +9,6 @@ export * from './navbar';
 export * from './newsletter';
 export * from './projects';
 export * from './posts';
-export * from './skills';
 export * from './skip-to-content';
 export * from './text';
 export * from './topbar';
