@@ -44,7 +44,7 @@
   <div class="info">
     <h1>{error}</h1>
     <h2 class="content">
-      {#if error == 4044}
+      {#if error == 404}
         This was probably a mistake.
       {:else}
         Something went wrong.
