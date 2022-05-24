@@ -13,7 +13,7 @@ export const en: Language = {
   },
 
   blurb: {
-    title: 'You can call me Doce.',
+    title: "Howdy, I'm Doce!",
     paragraph:
       "I'm DoceAzedo, a 19 years old curiosity-driven developer, Svelte evangelist, arch-enemy of the zeros and ones (he/they) and live coder."
   },

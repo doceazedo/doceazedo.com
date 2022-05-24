@@ -13,9 +13,9 @@ export const pt: Language = {
   },
 
   blurb: {
-    title: 'Pode me chamar de Doce.',
+    title: 'Oiee, eu sou o Doce!',
     paragraph:
-      'Eu sou o Doce, tenho 19 anos e sou um desenvolvedor movido à curiosidade, evangelista de Svelte, arqui-inimigo dos zeros e uns (ele/delu) e live coder.'
+      'Eu sou o DoceAzedo, tenho 19 anos e sou um dev movido à curiosidade, evangelista de Svelte, arqui-inimigo dos zeros e uns (ele/delu) e live coder.'
   },
 
   skills: {

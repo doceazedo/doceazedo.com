@@ -54,7 +54,7 @@
       .audio
         position: absolute
         top: -.5rem
-        right: -.5rem
+        right: -1.75rem
         display: flex
         justify-content: center
         align-items: center
@@ -142,18 +142,18 @@
 
       &-info,
       &-selfie
+        display: flex
+        flex-direction: column
+        align-items: center
+        text-align: center
         width: 100%
 
       &-info
         h1
-          display: inline-flex
-          width: unset
           font-size: 2rem
 
           .audio
-            position: unset
-            display: inline-flex
-            margin-left: .25rem
+            right: -1.5rem
             width: 1.25rem
             height: 1.25rem
 
