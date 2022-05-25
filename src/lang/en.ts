@@ -148,7 +148,7 @@ export const en: Language = {
       title: 'Subscribe',
       paragraph: "By subscribing, you'll not only be supporting my streams but also:",
       benefits: [
-        'Watch without ads',
+        'Be able to watch without ads',
         'Get exclusive badge and emotes',
         'Get exclusive Discord role and emotes'
       ],
