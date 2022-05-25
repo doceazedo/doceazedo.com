@@ -3,7 +3,8 @@
     href: string = null,
     target: string = null,
     center = false,
-    small = false;
+    small = false,
+    medium = false;
 </script>
 
 <a
@@ -14,6 +15,7 @@
   class:outline
   class:center
   class:small
+  class:medium
   on:click
 >
   <slot />
@@ -61,4 +63,8 @@
 
       &:hover
         transform: translateY(-2px)
+
+    &.medium
+      font-size: 1.1rem
+      padding: 1rem 1.6rem
 </style>

@@ -142,7 +142,23 @@ export const en: Language = {
 
   streams: {
     titleOnline: 'Live now!',
-    titleOffline: 'Last livestream'
+    titleOffline: 'Last livestream',
+    supportMe: 'Support my content',
+    subscribe: {
+      title: 'Subscribe',
+      paragraph: "By subscribing, you'll not only be supporting my streams but also:",
+      benefits: [
+        'Watch without ads',
+        'Get exclusive badge and emotes',
+        'Get exclusive Discord role and emotes'
+      ],
+      prime: 'Free sub with Prime',
+      sub: 'Subscribe for $4.99'
+    },
+    donate: {
+      title: 'Donate via PicPay',
+      paragraph: 'Feeling like giving me money? Click here, type the value and a message.'
+    }
   },
 
   email: 'me@lucasfernandes.com.br',

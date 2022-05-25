@@ -143,7 +143,23 @@ export const pt: Language = {
 
   streams: {
     titleOnline: 'Ao vivo agora!',
-    titleOffline: 'Última transmissão'
+    titleOffline: 'Última transmissão',
+    supportMe: 'Apoie o meu conteúdo',
+    subscribe: {
+      title: 'Inscreva-se',
+      paragraph: 'Se inscrevendo no canal, além de apoiar minhas lives você:',
+      benefits: [
+        'Pode assistir sem anúncios',
+        'Ganha um emblema e emotes exclusivos',
+        'Ganha cargo e emotes exclusivos no Discord'
+      ],
+      prime: 'Seja sub Prime',
+      sub: 'Inscreva-se por R$ 7,90'
+    },
+    donate: {
+      title: 'Doação via PicPay',
+      paragraph: 'Quer me mandar uns trocados? Clique aqui, digite o valor e uma mensagem.'
+    }
   },
 
   email: 'eu@lucasfernandes.com.br',

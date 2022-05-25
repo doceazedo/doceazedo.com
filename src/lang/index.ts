@@ -86,6 +86,18 @@ export type Language = {
   streams: {
     titleOnline: string;
     titleOffline: string;
+    supportMe: string;
+    subscribe: {
+      title: string;
+      paragraph: string;
+      benefits: string[];
+      prime: string;
+      sub: string;
+    };
+    donate: {
+      title: string;
+      paragraph: string;
+    };
   };
 
   email: string;

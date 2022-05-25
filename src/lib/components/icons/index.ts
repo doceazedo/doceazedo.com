@@ -14,6 +14,7 @@ export { default as InstagramIcon } from './instagram-icon.svelte';
 export { default as LastfmIcon } from './lastfm-icon.svelte';
 export { default as LiveIcon } from './live-icon.svelte';
 export { default as NewspaperIcon } from './newspaper-icon.svelte';
+export { default as PicPayIcon } from './picpay-icon.svelte';
 export { default as PushpinIcon } from './pushpin-icon.svelte';
 export { default as RssIcon } from './rss-icon.svelte';
 export { default as SlideshowIcon } from './slideshow-icon.svelte';
