@@ -12,3 +12,4 @@ export * from './posts';
 export * from './skip-to-content';
 export * from './text';
 export * from './topbar';
+export * from './twitch-player';

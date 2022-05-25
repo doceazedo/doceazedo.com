@@ -7,7 +7,7 @@ export const en: Language = {
     home: 'Home',
     blog: 'Blog',
     talks: 'Talks',
-    streams: 'Streams',
+    live: 'Streams',
     projects: 'Projects',
     me: 'About me'
   },
@@ -138,6 +138,11 @@ export const en: Language = {
       autoparkour: 'Spigot plugin that generates parkour tracks programmatically',
       bitterctf: 'Spigot plugin for a standalone capture the flag minigame server'
     }
+  },
+
+  streams: {
+    titleOnline: 'Live now!',
+    titleOffline: 'Last livestream'
   },
 
   email: 'me@lucasfernandes.com.br',

@@ -7,7 +7,7 @@ export const pt: Language = {
     home: 'Início',
     blog: 'Blog',
     talks: 'Talks',
-    streams: 'Streams',
+    live: 'Lives',
     projects: 'Projetos',
     me: 'Sobre mim'
   },
@@ -139,6 +139,11 @@ export const pt: Language = {
       autoparkour: 'Plugin Spigot que gera trilhas de parkour programaticamente',
       bitterctf: 'Plugin Spigot de um minigame de rouba-bandeira independente'
     }
+  },
+
+  streams: {
+    titleOnline: 'Ao vivo agora!',
+    titleOffline: 'Última transmissão'
   },
 
   email: 'eu@lucasfernandes.com.br',

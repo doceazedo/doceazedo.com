@@ -35,7 +35,7 @@
       icon: SlideshowIcon
     },
     {
-      slug: 'streams',
+      slug: 'live',
       icon: LiveIcon
     },
     {
@@ -106,7 +106,7 @@
       <NavbarItem
         href="/{item.slug}"
         active={$page.url.pathname.startsWith(`/${item.slug}`)}
-        live={item.slug == 'streams' && $LIVE_DATA?.isLive}
+        live={item.slug == 'live' && $LIVE_DATA?.isLive}
       >
         {$LANG.navbar[item.slug]}
       </NavbarItem>

@@ -5,7 +5,7 @@ export type Language = {
     home: string;
     blog: string;
     talks: string;
-    streams: string;
+    live: string;
     projects: string;
     me: string;
   };
@@ -81,6 +81,11 @@ export type Language = {
     details: {
       [id: string]: string;
     };
+  };
+
+  streams: {
+    titleOnline: string;
+    titleOffline: string;
   };
 
   email: string;
