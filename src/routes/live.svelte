@@ -13,7 +13,7 @@
 </h1>
 <TwitchPlayer />
 
-<h1 class="title">Apoie o meu conteúdo</h1>
+<h1 class="title">{$LANG.streams.supportMe}</h1>
 <SupportCTA />
 
 <style lang="sass">

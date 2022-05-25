@@ -10,13 +10,13 @@
     chatboxUrl: string,
     vods: VOD[] = [];
 
-  const getDate = (date: Date) => {
+  const getDate = (date: Date, code: string) => {
     if (!browser) return;
     dayjs.extend(relativeTime);
     const readableDate = dayjs(date)
-      .locale($LANG.code == 'pt' ? 'pt-br' : 'en-us')
+      .locale(code == 'pt' ? 'pt-br' : 'en-us')
       .fromNow();
-    const dayMonth = dayjs(date).format('DD/MM');
+    const dayMonth = dayjs(date).format(code == 'pt' ? 'DD/MM' : 'MM/DD');
     return `${readableDate}, ${dayMonth}`;
   };
 </script>
@@ -35,7 +35,7 @@
           class="vod"
           style="background-image:url({vod.thumbnail_url})"
         >
-          <span class="date">{getDate(vod.created_at)}</span>
+          <span class="date">{getDate(vod.created_at, $LANG.code)}</span>
         </a>
       {/each}
     </div>
