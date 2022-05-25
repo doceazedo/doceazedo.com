@@ -60,9 +60,6 @@
 <style lang="sass">
   @import '../assets/sass/vars.sass'
 
-  :global(html, body)
-    height: 100%
-
   .container
     display: flex
     justify-content: space-between
