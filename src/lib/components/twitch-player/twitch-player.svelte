@@ -112,4 +112,15 @@
         background-color: rgba(#000, .5)
         padding: .25rem .5rem
         border-radius: .5rem
+
+  @media screen and (max-width: 768px)
+    .twitch-player
+      flex-direction: column
+
+      &-embed
+        height: auto
+
+      &-vods .vod:last-child,
+      &-chat
+        display: none
 </style>
