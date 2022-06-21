@@ -12,7 +12,7 @@
     {
       id: 'svelte-flow',
       title: 'Svelte Flow',
-      source: 'https://github.com/doceazedo/semaninha',
+      source: 'https://github.com/doceazedo/svelte-flow',
       demo: '#'
     },
     {
