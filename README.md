@@ -1,7 +1,7 @@
 <h1 align="center">lucasfernandes.com.br</h1>
 
 <p align="center">
-  This is my personal website and blog proudly made with <a href="https://svelte.dev" target="_blank">Svelte</a> and <a href="https://kit.svelte.dev" target="_blank">SvelteKit</a>, consuming posts from a <a href="https://lucasfernandes.com.br/blog/wordpress-headless-cms" target="_blank">headless WordPress</a> API and running on <a href="https://vercel.com" target="_blank">Vercel</a>.
+  This is my personal website and blog proudly made with <a href="https://svelte.dev" target="_blank">Svelte</a> and <a href="https://kit.svelte.dev" target="_blank">SvelteKit</a>, consuming posts from plain Markdown files and running on <a href="https://vercel.com" target="_blank">Vercel</a>.
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://lucasfernandes.com.br">
-    <img src="./static/thumbnail.jpg">
+    <img src="static/img/thumbnail.jpg">
   </a>
 </p>
 

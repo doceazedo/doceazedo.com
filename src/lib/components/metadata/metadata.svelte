@@ -5,6 +5,7 @@
     description = "I'm DoceAzedo, a curiosity-driven developer, Svelte evangelist and live coder.",
     thumbnail = '/img/thumbnail.jpg';
 
+  const baseURL = 'https://doceazedo.com';
   const pageTitle = !!title ? `${title} » DoceAzedo` : 'DoceAzedo';
 </script>
 
@@ -14,18 +15,14 @@
   <meta name="description" content={description} />
 
   <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
-  <meta prefix="og: http://ogp.me/ns#" property="og:url" content={$page.url.href} />
+  <meta prefix="og: http://ogp.me/ns#" property="og:url" content="{baseURL}{$page.url.pathname}" />
   <meta prefix="og: http://ogp.me/ns#" property="og:title" content={pageTitle} />
   <meta prefix="og: http://ogp.me/ns#" property="og:description" content={description} />
-  <meta
-    prefix="og: http://ogp.me/ns#"
-    property="og:image"
-    content="{$page.url.origin}{thumbnail}"
-  />
+  <meta prefix="og: http://ogp.me/ns#" property="og:image" content="{baseURL}{thumbnail}" />
 
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content={$page.url.href} />
+  <meta property="twitter:url" content="{baseURL}{$page.url.pathname}" />
   <meta property="twitter:title" content={pageTitle} />
   <meta property="twitter:description" content={description} />
-  <meta property="twitter:image" content="{$page.url.origin}{thumbnail}" />
+  <meta property="twitter:image" content="{baseURL}{thumbnail}" />
 </svelte:head>
