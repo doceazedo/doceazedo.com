@@ -1,23 +1,24 @@
 <script lang="ts">
   export let href: string,
-    active = false;
+    active = false,
+    live = false;
 </script>
 
-<a {href} class="navbar-item" class:active>
+<a {href} class="navbar-item" class:active class:live>
   <slot />
 </a>
 
 <style lang="sass">
-  @import '../../../assets/sass/vars.sass'
+  @import '../../../assets/sass/vars'
+  @import '../../../assets/sass/mixins'
 
   .navbar-item
     position: relative
     display: flex
     justify-content: center
     align-items: center
-    height: 6rem
-    padding: 0 1.5rem
-    font-size: 1.25rem
+    height: 5rem
+    padding: 0 1rem
     text-decoration: none
     color: $whiteish
     transition: all .2s ease
@@ -42,6 +43,17 @@
 
     &.active::before
       opacity: 1
+
+    &.live
+      padding-right: 1.5rem
+
+      &::after
+        @include live-badge
+        top: calc(50% - 3px)
+        right: .5rem
+        height: .5rem
+        width: .5rem
+        border: none
 
   @media screen and (max-width: 768px)
     .navbar-item

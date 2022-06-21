@@ -1,31 +1,16 @@
 <script lang="ts" context="module">
-  import { getArticles } from '$lib/modules/articles';
-
-  export async function load({ fetch }) {
-    const posts = await getArticles(3);
-
-    return {
-      props: {
-        posts
-      }
-    };
-  }
+  export const prerender = true;
 </script>
 
 <script lang="ts">
-  import { Articles, Blurb, Portfolio, SEO, Skills } from '$lib/modules';
-  import { POSTS } from '$lib/stores';
+  import { PostsLatest, Blurb } from '$lib/modules';
+  import { Metadata, Newsletter } from '$lib/components';
+  import type { Post } from '$lib/modules/posts';
 
-  export let posts = [];
-
-  $POSTS = posts;
+  export let posts: Post[] = [];
 </script>
 
-<svelte:head>
-  <SEO />
-</svelte:head>
-
+<Metadata />
 <Blurb />
-<Skills />
-<Portfolio />
-<Articles />
+<PostsLatest {posts} />
+<Newsletter />

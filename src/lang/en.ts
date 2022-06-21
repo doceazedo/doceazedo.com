@@ -6,18 +6,16 @@ export const en: Language = {
   navbar: {
     home: 'Home',
     blog: 'Blog',
-    about: 'About me',
-    contact: 'Contact'
+    talks: 'Talks',
+    live: 'Streams',
+    projects: 'Projects',
+    me: 'About me'
   },
 
   blurb: {
-    title: "I'm Lucas Fernandes.",
-    paragraph: [
-      'I am a frontend developer, specially for the web,',
-      'building stylish and responsive layouts yet',
-      'designing well structured APIs and databases.'
-    ],
-    button: 'Keep in touch'
+    title: "Howdy, I'm Doce!",
+    paragraph:
+      "I'm DoceAzedo, a 19 years old curiosity-driven developer, Svelte evangelist, arch-enemy of the zeros and ones (he/they) and live coder."
   },
 
   skills: {
@@ -28,52 +26,14 @@ export const en: Language = {
     ]
   },
 
-  portfolio: {
-    title: 'My latest projects and works',
-    projects: [
-      {
-        title: 'Semaninha',
-        description:
-          'Open-source website developed with SvelteKit and Puppeteer that allows you to generate collages with your top listened songs, using the last.fm API.'
-      },
-      {
-        title: 'convergencia.net.br',
-        description:
-          'Corporate website developed with WordPress and ACF for Convergência Digital, a telemarketing and RA company from Minas Gerais, Brazil.'
-      },
-      {
-        title: 'grupostelegram.com.br',
-        description:
-          'Powered by React with Next.js and Chakra UI, the Grupos Telegram website is one of the biggest Telegram group and channel indexers in Brazil.'
-      },
-      {
-        title: 'Overlay + Bot',
-        description:
-          'In my live coding streams on Twitch, every overlay visuals and chat commands are being developed with Svelte and SvelteKit.'
-      },
-      {
-        title: 'doceazedo.com',
-        description:
-          'A place with my social media, chat commands and everything related to my Twitch livestreams. Also actively developed with Svelte and SvelteKit.'
-      }
-    ]
-  },
-
-  articles: {
-    title: 'Latest articles',
-    paragraph: [
-      'I pretty much rather reading articles than watching tutorials, so',
-      'here I gather stuff that I learned and want to share.'
-    ],
+  blog: {
+    title: "See what I've written lately",
+    subtitle:
+      'A bunch of texts about technology and programming, mixed with me talking about music, personal experiences and other nerdy nonsense. Basically my Twitter but, in fact, mine and without the "micro" part of the microblog.',
     more: 'View all'
   },
 
   footer: ['Powered by Svelte & SvelteKit', 'Developed by Lucas Fernandes'],
-
-  blog: {
-    subtitle:
-      'I pretty much rather reading articles than watching tutorials, so here I gather stuff that I learned and want to share. I hope you find something that grabs your attention.'
-  },
 
   about: {
     subtitle: 'Curiosity-driven developer, Svelte evangelist and live coding streamer',
@@ -129,11 +89,76 @@ export const en: Language = {
     ]
   },
 
-  contact: {
-    title: 'Get in touch',
+  talks: {
+    title: 'Talks',
     paragraph:
-      "If you want to hire me, talk about a project or just chat with no commitment, let's do it!",
-    telegramButton: '@eightavocados on Telegram'
+      "I haven't done any talks just yet, but I have a few prepared. If you'd like to have me talking at your event, please send me an email at me@doceazedo.com"
+  },
+
+  bookmarks: {
+    title: 'Bookmarks',
+    paragraph: 'Some of my favorite websites/tools that I highly recommend',
+    devUtils: '👨‍💻 Dev utils',
+    design: '🎨 Design',
+    resources: '📦 Resources',
+    subreddits: '👽 Subreddits',
+    english: '📚 English',
+    extensions: '🌎 Extensions',
+    accessibility: '🧏‍♀️ Accessibility',
+    miscellaneous: '👌 Miscellaneous'
+  },
+
+  newsletter: {
+    title: 'Ring the bell',
+    paragraph:
+      "There's no bell to ring and get new post notifications, but I can email them to you as soon as they come out, with no set schedule. You can unsubscribe at any time.",
+    subscribeRSS: 'Follow RSS feed',
+    subscribeNewsletter: 'or subscribe to the newsletter:',
+    subscribeButton: 'Subscribe',
+    soon: 'Coming soon™'
+  },
+
+  projects: {
+    subtitle: 'A few highlights of my open-source projects. View them all',
+    subtitleGitHub: 'on GitHub',
+    url: 'Visit',
+    writeup: 'Write-up',
+    source: 'Source',
+    demo: 'Demo',
+    details: {
+      semaninha:
+        "Last.fm collage generator, featuring the songs you've listened to the most, powered by SvelteKit and Puppeteer.",
+      'svelte-flow':
+        'Library for creating diagrams, inspired by React Flow and still at the early stages of development.',
+      overlay:
+        'A set of visual scenes and interactive commands to spice up my live coding streams on Twitch.',
+      emotettv: 'A dead simple library to parse Twitch emotes with ease',
+      powerchat: 'Inactive project that aims to make the Twitch chat more modern',
+      'quarto-101': 'Project with the aim of recreating all the BBB (reality show) systems',
+      autoparkour: 'Spigot plugin that generates parkour tracks programmatically',
+      bitterctf: 'Spigot plugin for a standalone capture the flag minigame server'
+    }
+  },
+
+  streams: {
+    titleOnline: 'Live now!',
+    titleOffline: 'Last livestream',
+    supportMe: 'Support my content',
+    subscribe: {
+      title: 'Subscribe',
+      paragraph: "By subscribing, you'll not only be supporting my streams but also:",
+      benefits: [
+        'Be able to watch without ads',
+        'Get exclusive badge and emotes',
+        'Get exclusive Discord role and emotes'
+      ],
+      prime: 'Free sub with Prime',
+      sub: 'Subscribe for $4.99'
+    },
+    donate: {
+      title: 'Donate via PicPay',
+      paragraph: 'Feeling like giving me money? Click here, type the value and a message.'
+    }
   },
 
   email: 'me@lucasfernandes.com.br',
@@ -141,9 +166,8 @@ export const en: Language = {
   skipToContent: 'Skip to content',
 
   alt: {
-    logo: 'Monogram with the initials of Lucas Fernandes in purple, contained in a diamond shape.',
-    selfie:
-      'Selfie of myself, a white person with long hair with bleached ends, wearing round glasses and a dark green sweatshirt.',
+    logo: 'DoceAzedo logo',
+    selfie: 'Photo of me',
     copyleft: 'Learn what is Copyleft',
     listeningTo: 'Listening to',
     lastfm: 'Open my Last.fm profile.',
@@ -152,6 +176,8 @@ export const en: Language = {
     changeLanguage: 'Change language to',
     langEn: 'English',
     langPt: 'Portuguese',
-    nowLive: 'Now live.'
+    nowLive: 'Now live.',
+    audioButton: 'Listen to pronunciation',
+    home: 'Home'
   }
 };

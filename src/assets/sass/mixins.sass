@@ -1,14 +1,19 @@
+@import './vars'
+  
 @mixin live-badge
   content: ''
   position: absolute
-  top: -.25rem
-  right: -.25rem
+  top: -.5rem
+  right: -.5rem
   height: .75rem
   width: .75rem
+  box-sizing: content-box
   background-color: #ff0000
+  border: .25rem solid $background
   border-radius: 50%
   box-shadow: 0 0 .5rem 0 rgba(255, 0, 0, .75)
   animation: pulse 2s infinite
+  z-index: 5
 
   @keyframes pulse
     0%

@@ -1,17 +1,73 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import { NavbarAchievement, NavbarItem, NavbarLang, NavbarMenu, Navbar } from '$lib/components';
+  import {
+    NavbarAchievement,
+    NavbarIcons,
+    NavbarItem,
+    NavbarLang,
+    NavbarMenuMobile,
+    NavbarMenu,
+    Navbar
+  } from '$lib/components';
+  import {
+    BookmarkIcon,
+    CodeIcon,
+    FlagBrazilIcon,
+    FlagUnitedKingdomIcon,
+    LiveIcon,
+    NewspaperIcon,
+    RssIcon,
+    SlideshowIcon,
+    UserIcon
+  } from '$lib/components/icons';
+  import { LIVE_DATA } from '$lib/modules/live';
   import { LANG } from '$lib/stores';
+  import { sleep } from '$lib/utils';
+  import type { NavbarLink } from '$lib/components/navbar';
 
-  const navbarPageSlugs = ['', 'blog', 'about', 'contact'];
-  const languages = [
-    { code: 'pt', title: 'PT-BR' },
-    { code: 'en', title: 'EN' }
+  const navbarItems: NavbarLink[] = [
+    {
+      slug: 'blog',
+      icon: NewspaperIcon
+    },
+    {
+      slug: 'talks',
+      icon: SlideshowIcon
+    },
+    {
+      slug: 'live',
+      icon: LiveIcon
+    },
+    {
+      slug: 'projects',
+      icon: CodeIcon
+    },
+    {
+      slug: 'me',
+      icon: UserIcon
+    }
+  ];
+  const languages = {
+    pt: { code: 'pt', title: 'PT-BR', icon: FlagBrazilIcon },
+    en: { code: 'en', title: 'EN', icon: FlagUnitedKingdomIcon }
+  };
+  const icons = [
+    {
+      icon: BookmarkIcon,
+      href: '/bookmarks'
+    },
+    {
+      icon: RssIcon,
+      href: '/feed.xml',
+      target: '_blank'
+    }
   ];
   let activeLanguage = 'en';
   let showMobileMenu = false;
-  let brandSpinDegrees = 0;
+  let brandClicks = 0;
+  let brandAnimating = false;
   let achievementGet = false;
+  let hamburgerEl: HTMLElement;
 
   const changeLanguage = (code: string) => {
     LANG.change(code);
@@ -22,29 +78,42 @@
 
   const toggleMobileMenu = () => (showMobileMenu = !showMobileMenu);
 
-  const onClickBrand = (event: Event) => {
-    brandSpinDegrees += 360;
-    const brand = event.target as HTMLElement;
-    brand.style.transform = `rotate(${brandSpinDegrees}deg)`;
+  const onClickBrand = async (event: Event) => {
+    if (brandAnimating) return;
+    brandAnimating = true;
 
-    if (brandSpinDegrees / 360 >= 10) {
-      achievementGet = true;
-      console.log('achievementGet');
-    }
+    brandClicks++;
+    if (brandClicks >= 5) achievementGet = true;
+
+    const brand = event.target as HTMLElement;
+    const brandParts = brand.getElementsByTagName('path');
+
+    brandParts[0].classList.add('hide');
+    await sleep(100);
+    brandParts[1].classList.add('hide');
+    await sleep(500);
+    brandParts[0].classList.remove('hide');
+    await sleep(100);
+    brandParts[1].classList.remove('hide');
+
+    brandAnimating = false;
   };
 </script>
 
-<Navbar {toggleMobileMenu} {onClickBrand}>
-  <NavbarMenu {toggleMobileMenu} {showMobileMenu}>
-    {#each navbarPageSlugs as slug}
+<Navbar {toggleMobileMenu} {onClickBrand} isMobileMenusOpen={showMobileMenu} bind:hamburgerEl>
+  <NavbarMenu>
+    {#each navbarItems as item}
       <NavbarItem
-        href="/{slug}"
-        active={slug ? $page.url.pathname.startsWith(`/${slug}`) : $page.url.pathname == '/'}
+        href="/{item.slug}"
+        active={$page.url.pathname.startsWith(`/${item.slug}`)}
+        live={item.slug == 'live' && $LIVE_DATA?.isLive}
       >
-        {$LANG.navbar[slug || 'home']}
+        {$LANG.navbar[item.slug]}
       </NavbarItem>
     {/each}
   </NavbarMenu>
+
+  <NavbarIcons {icons} />
 
   <NavbarLang {languages} {changeLanguage} {activeLanguage} />
 
@@ -52,3 +121,7 @@
     <NavbarAchievement />
   {/if}
 </Navbar>
+
+{#if showMobileMenu}
+  <NavbarMenuMobile items={navbarItems} {toggleMobileMenu} {hamburgerEl} />
+{/if}

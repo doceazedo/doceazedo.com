@@ -1,13 +1,17 @@
-<div class="buttons">
+<script lang="ts">
+  export let small = false;
+</script>
+
+<div class="buttons" class:small>
   <slot />
 </div>
 
 <style lang="sass">
   .buttons
     display: flex
+    align-items: center
     gap: 1rem
 
-  @media screen and (max-width: 768px)
-    .buttons
-      justify-content: center
+    &.small
+      gap: .5rem
 </style>

@@ -1,62 +1,38 @@
 <script lang="ts">
-  import { LANG } from '$lib/stores';
+  import type { SvelteComponent } from 'svelte';
 
   type Languages = {
-    code: string;
-    title: string;
+    [code: string]: {
+      code: string;
+      title: string;
+      icon: typeof SvelteComponent;
+    };
   };
 
-  export let languages: Languages[], activeLanguage: string, changeLanguage: (code: string) => void;
+  export let languages: Languages, activeLanguage: string, changeLanguage: (code: string) => void;
+
+  $: otherCode = activeLanguage == 'en' ? 'pt' : 'en';
 </script>
 
-<div class="navbar-lang">
-  {#each languages as lang}
-    <button
-      on:click={() => changeLanguage(lang.code)}
-      class:active={activeLanguage == lang.code}
-      alt="{$LANG.alt.changeLanguage} {lang.code == 'pt' ? $LANG.alt.langPt : $LANG.alt.langEn}"
-    >
-      {lang.title}
-    </button>
-  {/each}
+<div on:click={() => changeLanguage(otherCode)} class="navbar-lang">
+  <svelte:component this={languages[activeLanguage].icon} />
 </div>
 
 <style lang="sass">
-  @import '../../../assets/sass/vars.sass'
-
   .navbar-lang
     display: flex
-    padding: 0 1.5rem
-    
-    button
-      position: relative
-      display: flex
-      justify-content: center
-      align-items: center
-      height: 6rem
-      padding: 0
-      color: $whiteish
-      font-size: 1.25rem
-      background: none
-      border: none
-      cursor: pointer
-      transition: all .2s ease
+    cursor: pointer
+    margin-left: 1rem
 
-      &.active
-        color: $primary-light
-        text-shadow: 0 0 .25rem $primary-light
-        cursor: default
-
-      &:not(:last-child)::after
-        content: '/'
-        margin: 0 .5rem
-        color: rgba(#fff, .1)
-        text-shadow: none
+    :global(svg)
+      width: 1.5rem
+      height: 1.5rem
 
   @media screen and (max-width: 768px)
     .navbar-lang
-      margin-left: auto
+      margin: 0 1.5rem 0 .75rem
 
-      button
-        height: 4rem
+      :global(svg)
+        width: 1.75rem
+        height: 1.75rem
 </style>

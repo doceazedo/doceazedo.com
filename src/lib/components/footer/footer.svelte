@@ -1,87 +1,52 @@
 <script lang="ts">
   import { LANG } from '$lib/stores';
-  import {
-    ElevatorIcon,
-    FooterSocialButton,
-    GitHubIcon,
-    LastfmIcon,
-    LinkedInIcon,
-    MailIcon,
-    TwitchIcon
-  } from '$lib/components';
+  import { ElevatorIcon } from '$lib/components';
   import type { LiveStatsApiResponse } from '$lib/modules';
 
-  type Socials = {
-    github: string;
-    lastfm: string;
-    linkedin: string;
-    twitch: string;
-  };
+  const lastfmUrl = 'https://last.fm/user/doceazedo911';
 
   export let liveStats: LiveStatsApiResponse = null,
-    socials: Socials,
-    showElevator = false,
     callElevator: () => void;
 </script>
 
 <footer class:has-now-playing={liveStats?.nowPlaying}>
-  <p>
-    {$LANG.footer[0]} <br />
-    {$LANG.footer[1]}
-    <a
-      href="https://gnu.org/licenses/copyleft.html"
-      target="_blank"
-      aria-label={$LANG.alt.copyleft}
-    >
-      <span class="copyleft">&copy;</span>
-      {new Date().getFullYear()}
-    </a>
-  </p>
-  <div class="socials">
-    {#if liveStats?.nowPlaying}
+  <p class="copyleft">
+    <span>{$LANG.footer[0]}</span>
+    <span>
+      {$LANG.footer[1]}
       <a
-        class="now-playing is-live"
-        href={socials.lastfm}
+        href="https://gnu.org/licenses/copyleft.html"
         target="_blank"
-        aria-label={`${$LANG.alt.listeningTo} ${liveStats.nowPlaying.artist} - ${liveStats.nowPlaying.title}. ${$LANG.alt.lastfm}`}
+        aria-label={$LANG.alt.copyleft}
       >
+        <span class="flip">&copy;</span>
+        {new Date().getFullYear()}
+      </a>
+    </span>
+  </p>
+
+  {#if liveStats?.nowPlaying}
+    <a
+      class="now-playing is-live"
+      href={lastfmUrl}
+      target="_blank"
+      aria-label={`${$LANG.alt.listeningTo} ${liveStats.nowPlaying.artist} - ${liveStats.nowPlaying.title}. ${$LANG.alt.lastfm}`}
+    >
+      <div class="song-cover">
         <img src={liveStats.nowPlaying.cover} alt="" />
-        <div>
+      </div>
+      <div class="song-info">
+        <img src={liveStats.nowPlaying.cover} alt="" />
+        <div class="song-info-meta">
           <h1>{liveStats.nowPlaying.title}</h1>
           <h2>{liveStats.nowPlaying.artist}</h2>
         </div>
-      </a>
-    {/if}
-
-    <FooterSocialButton href={socials.github} ariaLabel="Github">
-      <GitHubIcon />
-    </FooterSocialButton>
-
-    <FooterSocialButton href={socials.linkedin} ariaLabel="LinkedIn">
-      <LinkedInIcon />
-    </FooterSocialButton>
-
-    <FooterSocialButton
-      href={socials.twitch}
-      isLive={liveStats?.isLive}
-      ariaLabel="Twitch. {liveStats?.isLive ? $LANG.alt.nowLive : ''}"
-    >
-      <TwitchIcon />
-    </FooterSocialButton>
-
-    {#if !liveStats?.nowPlaying}
-      <FooterSocialButton href={socials.lastfm} ariaLabel="Last.fm">
-        <LastfmIcon />
-      </FooterSocialButton>
-    {/if}
-
-    <FooterSocialButton href="mailto:{$LANG.email}" ariaLabel="Email">
-      <MailIcon />
-    </FooterSocialButton>
-  </div>
+      </div>
+    </a>
+  {/if}
 </footer>
 
-<div class="elevator" class:active={showElevator} on:click={callElevator}>
+<div class="elevator" on:click={callElevator}>
   <ElevatorIcon />
 </div>
 
@@ -93,73 +58,96 @@
     display: flex
     justify-content: space-between
     align-items: center
-    padding: 4rem 0
+    max-width: 900px
+    margin: 4rem auto 0
+    padding: 3rem 0
+    border-top: $hr
 
     .copyleft
-      display: inline-block
-      transform: scaleX(-1)
-
-    .socials
       display: flex
-      gap: 1rem
+      flex-direction: column
 
-      .now-playing      
-        position: relative
+      .flip
+        display: inline-block
+        transform: scaleX(-1)
+
+    .now-playing
+      position: relative
+      display: flex
+      height: 5rem
+      background-color: rgba(255, 255, 255, .05)
+      color: $whiteish
+      border-radius: 1rem
+      text-decoration: none
+      transition: all .2s ease
+
+      &::before
+        @include live-badge
+
+      &:hover
+        transform: translateY(-.25rem)
+
+      .song-cover
+        position: absolute
         display: flex
-        height: 4rem
-        background-color: rgba(255, 255, 255, .05)
-        color: $whiteish
-        text-decoration: none
-        transition: all .2s ease
+        align-items: center
+        width: 100%
+        height: 5rem
+        border-radius: 1rem
+        opacity: .1
+        overflow: hidden
 
-        &:hover
-          transform: translateY(-.25rem)
+        img
+          width: 100%
+          filter: blur(.25rem)
 
-        &.is-live::before
-          @include live-badge
+      .song-info
+        display: flex
+        padding: .5rem
+        z-index: 1
 
         img
           height: 4rem
           width: 4rem
+          border-radius: 1rem
           pointer-events: none
           transition: all .2s ease
-
-        div
+        
+        &-meta
           display: flex
           flex-direction: column
           justify-content: center
-          padding: 0 1rem
+          padding: 0 .75rem
 
           h1,
           h2
-            max-width: 300px
+            max-width: 16rem
             white-space: nowrap
             overflow: hidden
             text-overflow: ellipsis
 
           h1
+            font-size: 1.25rem
             font-weight: 700
 
           h2
             font-weight: 300
 
   .elevator
-    position: fixed
+    position: absolute
     right: 1rem
     bottom: 1rem
     display: flex
     justify-content: center
     align-items: center
-    height: 3rem
-    width: 3rem
     cursor: pointer
     transition: all .2s ease
 
+    :global(svg)
+      height: 3rem
+
     &:not(:hover)
       opacity: .5
-
-    &:not(.active)
-      bottom: -3rem
 
   @media screen and (max-width: 768px)
     footer
@@ -176,7 +164,7 @@
       .now-playing
         position: absolute !important
         bottom: 4rem
-        width: 19rem
+        width: 18rem
         margin-right: 0 !important
 
         h1,
@@ -190,8 +178,4 @@
         :global(svg)
           height: 1.25rem
           width: 1.25rem
-
-    .elevator
-      height: 1.5rem
-      width: 1.5rem
 </style>

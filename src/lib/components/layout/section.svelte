@@ -7,5 +7,5 @@
 
   section
     padding: 4rem 0
-    border-bottom: $hr
+    // border-bottom: $hr
 </style>

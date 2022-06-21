@@ -1,22 +1,27 @@
 <script lang="ts">
   import { LANG } from '$lib/stores';
-  import { Buttons } from '$lib/components';
+  import { AudioIcon, Buttons } from '$lib/components';
 
   export let title: string,
-    paragraph: string[],
+    paragraph: string,
     image: string,
     customCursorEl: HTMLImageElement = null,
-    customCursorImage: string = null;
+    customCursorImage: string = null,
+    showAudioButton = false,
+    onClickAudioButton: () => void = null;
 </script>
 
 <header class="blurb">
   <div class="blurb-info">
-    <h1>{title}</h1>
-    <p>
-      {#each paragraph as line}
-        {line} <br />
-      {/each}
-    </p>
+    <h1>
+      {title}
+      {#if showAudioButton}
+        <button class="audio" on:click={onClickAudioButton} aria-label={$LANG.alt.audioButton}>
+          <AudioIcon />
+        </button>
+      {/if}
+    </h1>
+    <p>{paragraph}</p>
     <Buttons>
       <slot />
     </Buttons>
@@ -37,20 +42,38 @@
     display: flex
     justify-content: space-between
     align-items: center
-    padding: 6rem 0
-    border-bottom: $hr
+    padding: 4rem 0
 
     h1
-      font-size: 3rem
+      position: relative
+      width: fit-content
+      font-size: 2.75rem
       font-weight: 700
       margin-bottom: 1rem
 
+      .audio
+        position: absolute
+        top: -.5rem
+        right: -1.75rem
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 1.5rem
+        height: 1.5rem
+        padding: 0
+        color: $primary-light
+        background-color: rgba($primary, .3)
+        border: none
+        border-radius: 50%
+        cursor: pointer
+
     p
+      max-width: 31rem
+      margin-bottom: 4rem
       font-family: $font-secondary
       font-size: 1.25rem
       line-height: 1.25
       color: $whiteish
-      margin-bottom: 4rem
 
     figure
       position: relative
@@ -68,6 +91,7 @@
       .selfie
         height: 400px
         width: 300px
+        border-radius: 1rem
         pointer-events: none
         user-select: none
         z-index: 10
@@ -84,6 +108,7 @@
         left: -1rem
         bottom: -1rem
         border: 2px solid $primary
+        border-radius: 1rem
         transition: .5s ease
 
       &::after
@@ -112,37 +137,43 @@
   @media screen and (max-width: 768px)
     .blurb
       flex-direction: column-reverse
+      gap: 2rem
       padding: 3rem 0
 
-      &-info
-        width: 100%
+      &-info,
+      &-selfie
+        display: flex
+        flex-direction: column
+        align-items: center
         text-align: center
+        width: 100%
 
+      &-info
         h1
           font-size: 2rem
+
+          .audio
+            right: -1.5rem
+            width: 1.25rem
+            height: 1.25rem
+
+            :global(svg)
+              height: .9rem
+              width: .9rem
 
         p
           margin-bottom: 3rem
 
-        br
-          display: none
+      &-selfie figure
+        width: fit-content
+        margin-left: 1rem
 
-      &-selfie
-        display: flex
-        justify-content: center
-        width: 100%
-        margin-bottom: 2rem
-
-        figure
-          width: fit-content
-          margin-left: 1rem
-
-          &,
-          &::before,
-          &::after,
-          img
-            height: 300px !important
-            width: 225px !important
+        &,
+        &::before,
+        &::after,
+        img
+          height: 300px !important
+          width: 225px !important
 
   @media screen and (min-width: 769px)
     .pat-area.is-active:hover + .pat-cursor

@@ -6,18 +6,16 @@ export const pt: Language = {
   navbar: {
     home: 'Início',
     blog: 'Blog',
-    about: 'Sobre mim',
-    contact: 'Contato'
+    talks: 'Talks',
+    live: 'Lives',
+    projects: 'Projetos',
+    me: 'Sobre mim'
   },
 
   blurb: {
-    title: 'Prazer, Lucas Fernandes.',
-    paragraph: [
-      'Eu sou um desenvolvedor frontend especializado em',
-      'web, criando layouts elegantes e reativos mas também',
-      'arquitetando APIs e bancos bem estruturados.'
-    ],
-    button: 'Fale comigo'
+    title: 'Oiee, eu sou o Doce!',
+    paragraph:
+      'Eu sou o DoceAzedo, tenho 19 anos e sou um dev movido à curiosidade, evangelista de Svelte, arqui-inimigo dos zeros e uns (ele/delu) e live coder.'
   },
 
   skills: {
@@ -28,51 +26,13 @@ export const pt: Language = {
     ]
   },
 
-  portfolio: {
-    title: 'Meus últimos projetos e trabalhos',
-    projects: [
-      {
-        title: 'Semaninha',
-        description:
-          'Site open-source desenvolvido com SvelteKit que permite gerar colagens das músicas que você mais ouviu, integrando as APIs do last.fm e Spotify.'
-      },
-      {
-        title: 'convergencia.net.br',
-        description:
-          'Site institucional desenvolvido com WordPress e ACF para Convergência Digital, empresa de telemarketing e autoridade de registro na Grande BH.'
-      },
-      {
-        title: 'grupostelegram.com.br',
-        description:
-          'Desenvolvido em React com Next.js e Chakra UI, hoje eu contribuo para esse que é um dos maiores indexadores de grupos de Telegram no Brasil.'
-      },
-      {
-        title: 'Overlay + Bot',
-        description:
-          'Nas minhas lives de programação na Twitch, todo o visual e comandos estão sendo desenvolvidos com Svelte e SvelteKit.'
-      },
-      {
-        title: 'doceazedo.com',
-        description:
-          'Site que reúne informações relacionadas às minhas lives na Twitch, como redes sociais e comandos do chat, também desenvolvido em Svelte e SvelteKit.'
-      }
-    ]
-  },
-
-  articles: {
-    title: 'Últimos artigos',
-    paragraph: [
-      'No geral eu prefiro ler artigos do que assistir tutoriais, então',
-      'aqui eu reúno coisas que aprendi e quero compartilhar.'
-    ],
-    more: 'Ver todos'
-  },
-
   footer: ['Powered by Svelte & SvelteKit', 'Desenvolvido por Lucas Fernandes'],
 
   blog: {
+    title: 'As últimas coisas que eu escrevi',
     subtitle:
-      'No geral eu prefiro ler artigos do que assistir tutoriais, então aqui eu reúno coisas que aprendi e quero compartilhar. Espero que você encontre algo que te interesse por aqui.'
+      'Um amontoado de textos sobre tecnologia e programação, misturados com conversa fiada sobre música, vivências pessoais e outras besteiras. Basicamente meu Twitter só que, de fato, meu e sem a parte "micro" do microblog.',
+    more: 'Ver mais'
   },
 
   about: {
@@ -130,11 +90,76 @@ export const pt: Language = {
     ]
   },
 
-  contact: {
-    title: 'Fale comigo',
+  talks: {
+    title: 'Palestras',
     paragraph:
-      'Se você quer me contratar, conversar sobre um projeto ou só conversar sem compromisso, vamo nessa!',
-    telegramButton: '@eightavocados no Telegram'
+      'Eu ainda não dei nenhuma palestra, mas tenho algumas preparadas. Se você quiser que eu me apresente em seu evento, envie um e-mail para me@doceazedo.com'
+  },
+
+  bookmarks: {
+    title: 'Favoritos',
+    paragraph: 'Alguns dos meus sites/ferramentas preferidos que eu recomendo',
+    devUtils: '👨‍💻 Dev utils',
+    design: '🎨 Design',
+    resources: '📦 Materiais',
+    subreddits: '👽 Subreddits',
+    english: '📚 Inglês',
+    extensions: '🌎 Extensões',
+    accessibility: '🧏‍♀️ Acessibilidade',
+    miscellaneous: '👌 Miscellaneous'
+  },
+
+  newsletter: {
+    title: 'Ative o sininho',
+    paragraph:
+      'Não tem sininho para ativar e receber notificações de novos posts, o jeito é eu te mandar por e-mail assim que sair, sem cronograma definido. Você pode se desinscrever quando quiser.',
+    subscribeRSS: 'Assinar feed RSS',
+    subscribeNewsletter: 'ou inscreva-se na newsletter',
+    subscribeButton: 'Inscrever',
+    soon: 'Em breve™'
+  },
+
+  projects: {
+    subtitle: 'Alguns destaques dos meus projetos open-source. Veja todos',
+    subtitleGitHub: 'no GitHub',
+    url: 'Visitar',
+    writeup: 'Notas',
+    source: 'Código',
+    demo: 'Demo',
+    details: {
+      semaninha:
+        'Gerador de colagens com as músicas que você mais ouviu na semana no Last.fm, desenvolvido com SvelteKit e Puppeteer.',
+      'svelte-flow':
+        'Biblioteca que permite criar diagramas, inspirado no React Flow e ainda no início do desenvolvimento.',
+      overlay:
+        'Um conjunto de visuais e comandos interativos para animar as minhas livestreams de programação.',
+      emotettv: 'Biblioteca para fazer parse dos emotes da Twitch, sem esforço',
+      powerchat: 'Projeto (inativo) que visa deixar o chat da Twitch mais moderno',
+      'quarto-101': 'Projeto com o objetivo de recriar os sistemas da casa do BBB',
+      autoparkour: 'Plugin Spigot que gera trilhas de parkour programaticamente',
+      bitterctf: 'Plugin Spigot de um minigame de rouba-bandeira independente'
+    }
+  },
+
+  streams: {
+    titleOnline: 'Ao vivo agora!',
+    titleOffline: 'Última transmissão',
+    supportMe: 'Apoie o meu conteúdo',
+    subscribe: {
+      title: 'Inscreva-se',
+      paragraph: 'Se inscrevendo no canal, além de apoiar minhas lives você:',
+      benefits: [
+        'Pode assistir sem anúncios',
+        'Ganha um emblema e emotes exclusivos',
+        'Ganha cargo e emotes exclusivos no Discord'
+      ],
+      prime: 'Seja sub Prime',
+      sub: 'Inscreva-se por R$ 7,90'
+    },
+    donate: {
+      title: 'Doação via PicPay',
+      paragraph: 'Quer me mandar uns trocados? Clique aqui, digite o valor e uma mensagem.'
+    }
   },
 
   email: 'eu@lucasfernandes.com.br',
@@ -142,9 +167,8 @@ export const pt: Language = {
   skipToContent: 'Ir para o conteúdo',
 
   alt: {
-    logo: 'Monograma com as iniciais de Lucas Fernandes em roxo, contidas num formato de losango.',
-    selfie:
-      'Selfie de mim, pessoa branca de cabelos longos com as pontas descoloridas, usando óculos redondos e vestindo uma blusa de moletom verde escuro.',
+    logo: 'Logotipo Doce Azedo',
+    selfie: 'Fotografia de mim',
     copyleft: 'Aprenda o que é Copyleft',
     listeningTo: 'Ouvindo',
     lastfm: 'Abrir meu perfil do Last.fm.',
@@ -153,6 +177,8 @@ export const pt: Language = {
     changeLanguage: 'Alterar idioma para',
     langEn: 'Inglês',
     langPt: 'Português',
-    nowLive: 'Ao vivo agora.'
+    nowLive: 'Ao vivo agora.',
+    audioButton: 'Ouvir pronúncia',
+    home: 'Início'
   }
 };

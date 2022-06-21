@@ -4,14 +4,15 @@ export type Language = {
   navbar: {
     home: string;
     blog: string;
-    about: string;
-    contact: string;
+    talks: string;
+    live: string;
+    projects: string;
+    me: string;
   };
 
   blurb: {
     title: string;
-    paragraph: string[];
-    button: string;
+    paragraph: string;
   };
 
   skills: {
@@ -19,25 +20,13 @@ export type Language = {
     paragraph: string[];
   };
 
-  portfolio: {
+  blog: {
     title: string;
-    projects: {
-      title: string;
-      description: string;
-    }[];
-  };
-
-  articles: {
-    title: string;
-    paragraph: string[];
+    subtitle: string;
     more: string;
   };
 
   footer: string[];
-
-  blog: {
-    subtitle: string;
-  };
 
   about: {
     subtitle: string;
@@ -55,10 +44,60 @@ export type Language = {
     hardware: string[];
   };
 
-  contact: {
+  talks: {
     title: string;
     paragraph: string;
-    telegramButton: string;
+  };
+
+  bookmarks: {
+    title: string;
+    paragraph: string;
+    devUtils: string;
+    design: string;
+    resources: string;
+    subreddits: string;
+    english: string;
+    extensions: string;
+    accessibility: string;
+    miscellaneous: string;
+  };
+
+  newsletter: {
+    title: string;
+    paragraph: string;
+    subscribeRSS: string;
+    subscribeNewsletter: string;
+    subscribeButton: string;
+    soon: string;
+  };
+
+  projects: {
+    subtitle: string;
+    subtitleGitHub: string;
+    url: string;
+    writeup: string;
+    source: string;
+    demo: string;
+    details: {
+      [id: string]: string;
+    };
+  };
+
+  streams: {
+    titleOnline: string;
+    titleOffline: string;
+    supportMe: string;
+    subscribe: {
+      title: string;
+      paragraph: string;
+      benefits: string[];
+      prime: string;
+      sub: string;
+    };
+    donate: {
+      title: string;
+      paragraph: string;
+    };
   };
 
   email: string;
@@ -76,6 +115,8 @@ export type Language = {
     langEn: string;
     langPt: string;
     nowLive: string;
+    audioButton: string;
+    home: string;
   };
 };
 

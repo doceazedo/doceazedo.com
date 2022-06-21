@@ -2,31 +2,39 @@
   export let outline = false,
     href: string = null,
     target: string = null,
-    center = false;
+    center = false,
+    small = false,
+    medium = false;
 </script>
 
-{#if href}
-  <a {href} {target} class="button" class:outline class:center>
-    <slot />
-  </a>
-{:else}
-  <button class="button" on:click class:outline class:center>
-    <slot />
-  </button>
-{/if}
+<a
+  {href}
+  {target}
+  class="button"
+  class:is-link={!!href}
+  class:outline
+  class:center
+  class:small
+  class:medium
+  on:click
+>
+  <slot />
+</a>
 
 <style lang="sass">
   @import '../../../assets/sass/vars'
 
   .button
     display: flex
+    gap: .5rem
     border: none
-    padding: 1rem 2rem
+    padding: 1rem 1.75rem
     font-size: 1.25rem
     text-decoration: none
     color: #fff
     background-color: $primary
     box-shadow: 0 0 .5rem .25rem rgba($primary, .25)
+    border-radius: .5rem
     cursor: pointer
     transition: all .2s ease
 
@@ -38,13 +46,25 @@
       background-color: rgba($primary-light, .1)
       box-shadow: 0 0 .5rem .25rem rgba($primary, .25), inset 0 0 0 1px $primary
 
-    :global(.feather)
-      margin-right: .5rem
+    :global(svg)
+      height: 1.5rem
+      width: 1.5rem
 
     &.center
       margin: auto
       margin-top: 4rem
 
-  a
-    width: fit-content
+    &.is-link
+      width: fit-content
+
+    &.small
+      font-size: 1rem
+      padding: 0.5rem 1rem
+
+      &:hover
+        transform: translateY(-2px)
+
+    &.medium
+      font-size: 1.1rem
+      padding: 1rem 1.6rem
 </style>
