@@ -6,6 +6,8 @@ tags: ['sveltekit', 'mongodb']
 icon: 'svelte'
 ---
 
+> Esse guia está desatualizado, algumas pequenas mudanças nas versões mais recentes do SvelteKit certamente quebraram parte do código. Vou atualizar esse post aqui em breve, eu juro 🥰
+
 Chegou o momento que eu precisei desenvolver aquela clássica autenticação com login e senha baseada em cookies. Nesse tutorial eu vou mostrar como eu fiz isso, com endpoints de login e registro e uma página acessível apenas para usuários que fizerem login.
 
 ## Instalar as dependências
