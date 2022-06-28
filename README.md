@@ -1,4 +1,4 @@
-<h1 align="center">lucasfernandes.com.br</h1>
+<h1 align="center">doceazedo.com</h1>
 
 <p align="center">
   This is my personal website and blog proudly made with <a href="https://svelte.dev" target="_blank">Svelte</a> and <a href="https://kit.svelte.dev" target="_blank">SvelteKit</a>, consuming posts from plain Markdown files and running on <a href="https://vercel.com" target="_blank">Vercel</a>.
