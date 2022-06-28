@@ -76,7 +76,7 @@
 {#if showComments}
   <script
     src="https://giscus.app/client.js"
-    data-repo="doceazedo/lucasfernandes.com.br"
+    data-repo="doceazedo/doceazedo.com"
     data-repo-id="MDEwOlJlcG9zaXRvcnk0MDU3NzE4NDk="
     data-category="Comments"
     data-category-id="DIC_kwDOGC-WSc4B_Ku7"
