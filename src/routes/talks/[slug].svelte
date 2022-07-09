@@ -20,9 +20,10 @@
 </script>
 
 <script lang="ts">
-  import { TalkDetails } from '$lib/components';
+  import { Metadata, TalkDetails } from '$lib/components';
 
   export let talk: Talk;
 </script>
 
+<Metadata title={talk.title} />
 <TalkDetails {talk} />
