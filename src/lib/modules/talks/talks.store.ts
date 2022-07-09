@@ -49,6 +49,18 @@ export const TALKS = writable<Talk[]>([
       },
       {
         link: {
+          label: 'Documentação do Spigot',
+          url: 'https://hub.spigotmc.org/javadocs/bukkit/'
+        }
+      },
+      {
+        link: {
+          label: 'Fóruns do Spigot',
+          url: 'https://www.spigotmc.org/forums/spigot-discussion.7/'
+        }
+      },
+      {
+        link: {
           label: 'Arquivos config.yml',
           url: 'https://gist.github.com/doceazedo/1fc20bb7bd63a7d3d217c5a830a55a86'
         }
