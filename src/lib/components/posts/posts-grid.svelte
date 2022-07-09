@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
   import { LANG } from '$lib/stores';
   import { PushpinIcon } from '$lib/components/icons';
   import { readableDate } from '$lib/utils';
