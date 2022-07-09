@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { PageTitle } from '$lib/components';
+  import { Metadata, PageTitle } from '$lib/components';
   import { LANG } from '$lib/stores';
 
   type BookmarkItem = {
@@ -128,6 +128,7 @@
   ];
 </script>
 
+<Metadata title={$LANG.bookmarks.title} />
 <PageTitle title={$LANG.bookmarks.title} paragraph={$LANG.bookmarks.paragraph} />
 
 <div class="content">
