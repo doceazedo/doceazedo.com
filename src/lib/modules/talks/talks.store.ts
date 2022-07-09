@@ -15,7 +15,7 @@ export const TALKS = writable<Talk[]>([
     slug: 'plugin-minecraft-futebol-kotlin',
     date: new Date('09 Jul 2022'),
     promoter: promoters.kotlinautas,
-    replay: 'https://twitch.tv/lissatransborda/videos',
+    replay: 'https://www.twitch.tv/videos/1526981591?t=2h10m11s',
     resources: [
       {
         link: {
@@ -63,6 +63,12 @@ export const TALKS = writable<Talk[]>([
         link: {
           label: 'Arquivos config.yml',
           url: 'https://gist.github.com/doceazedo/1fc20bb7bd63a7d3d217c5a830a55a86'
+        }
+      },
+      {
+        link: {
+          label: 'Arquivo run.bat',
+          url: 'https://gist.github.com/doceazedo/4f1c0e8f9a8b80150df489babd86e281'
         }
       },
       {
