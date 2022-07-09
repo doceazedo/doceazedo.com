@@ -93,7 +93,11 @@ export const pt: Language = {
   talks: {
     title: 'Palestras',
     paragraph:
-      'Eu ainda não dei nenhuma palestra, mas tenho algumas preparadas. Se você quiser que eu me apresente em seu evento, envie um e-mail para me@doceazedo.com'
+      'Essas são as gravações e recursos das palestras que eu apresentei, se você acha que seria legal me ter palestrando em seu evento, manda um e-mail para',
+    at: 'em',
+    watch: 'Assistir gravação',
+    resources: 'Recursos',
+    resourcesPretitle: 'Recursos da talk'
   },
 
   bookmarks: {

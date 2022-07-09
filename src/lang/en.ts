@@ -92,7 +92,11 @@ export const en: Language = {
   talks: {
     title: 'Talks',
     paragraph:
-      "I haven't done any talks just yet, but I have a few prepared. If you'd like to have me talking at your event, please send me an email at me@doceazedo.com"
+      'These are the recordings and resources of the talks I presented, if you think it would be cool to have me speak at your event, shoot me an email:',
+    at: '@',
+    watch: 'Watch recording',
+    resources: 'Resources',
+    resourcesPretitle: 'Talk resources'
   },
 
   bookmarks: {

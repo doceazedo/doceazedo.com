@@ -47,6 +47,10 @@ export type Language = {
   talks: {
     title: string;
     paragraph: string;
+    at: string;
+    watch: string;
+    resources: string;
+    resourcesPretitle: string;
   };
 
   bookmarks: {
