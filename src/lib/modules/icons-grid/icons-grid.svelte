@@ -4,9 +4,11 @@
   import { IconsGrid } from '$lib/components/icons-grid';
   import { Toast } from '$lib/components/toast';
   import { browser } from '$app/env';
+  import type { SimpleIcon } from 'simple-icons';
+  import { onMount } from 'svelte';
 
-  const icons = Object.values(simpleIcons);
-  let filteredIcons = icons;
+  let icons = Object.values(simpleIcons).sort((a, b) => a.slug.localeCompare(b.slug));
+  let filteredIcons: SimpleIcon[] = [];
   let showToast = false;
 
   const searchIcons = (query: string) => {
@@ -24,6 +26,8 @@
     showToast = true;
     setTimeout(() => (showToast = false), 3500);
   };
+
+  onMount(() => (filteredIcons = icons));
 </script>
 
 <IconsGrid icons={filteredIcons} search={searchIcons} copy={copyIcon} />
