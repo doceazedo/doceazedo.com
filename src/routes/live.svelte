@@ -20,7 +20,7 @@
 <h1 class="title">{$LANG.streams.supportMe}</h1>
 <SupportCTA />
 
-<h1 class="title">Ícones</h1>
+<h1 class="title">{$LANG.streams.icons.title}</h1>
 <p class="subtitle">
   {$LANG.streams.icons.subtitle.replace('%s', iconsQty.toString())}
 </p>

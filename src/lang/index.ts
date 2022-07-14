@@ -103,6 +103,7 @@ export type Language = {
       paragraph: string;
     };
     icons: {
+      title: string;
       subtitle: string;
       copied: string;
     };
