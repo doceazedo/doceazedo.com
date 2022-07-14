@@ -163,6 +163,11 @@ export const pt: Language = {
     donate: {
       title: 'Doação via PicPay',
       paragraph: 'Quer me mandar uns trocados? Clique aqui, digite o valor e uma mensagem.'
+    },
+    icons: {
+      subtitle:
+        'Escolha um dos %s ícones abaixo para copiar o comando e cole no chat para participar de um time e mostrar seu orgulho por ele!',
+      copied: 'Comando copiado, agora é só colar no chat!'
     }
   },
 

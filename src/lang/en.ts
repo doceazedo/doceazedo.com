@@ -162,6 +162,11 @@ export const en: Language = {
     donate: {
       title: 'Donate via PicPay',
       paragraph: 'Feeling like giving me money? Click here, type the value and a message.'
+    },
+    icons: {
+      subtitle:
+        'Choose one of the %s icons below to copy the command and paste it into the chat to join a team and show your pride for it!',
+      copied: 'Command copied, now paste it into the chat!'
     }
   },
 

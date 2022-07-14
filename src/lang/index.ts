@@ -102,6 +102,10 @@ export type Language = {
       title: string;
       paragraph: string;
     };
+    icons: {
+      subtitle: string;
+      copied: string;
+    };
   };
 
   email: string;

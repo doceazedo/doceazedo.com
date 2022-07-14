@@ -1,5 +1,6 @@
 export * from './blurb';
 export * from './footer';
+export * from './icons-grid';
 export * from './navbar';
 export * from './projects';
 export * from './talks';
