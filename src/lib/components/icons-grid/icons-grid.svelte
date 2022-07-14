@@ -38,14 +38,16 @@
 
 <ul class="icons-grid" id="icons">
   {#each icons as icon}
-    <li style="--color:#{icon.hex}" on:click={createRipple} on:click={() => copy(icon.slug)}>
-      {#if icon.slug == 'react'}
-        <VomitingEmoji />
-      {:else}
-        {@html icon.svg}
-      {/if}
-      <span>{icon.slug}</span>
-    </li>
+    {#key icon.slug}
+      <li style="--color:#{icon.hex}" on:click={createRipple} on:click={() => copy(icon.slug)}>
+        {#if icon.slug == 'react'}
+          <VomitingEmoji />
+        {:else}
+          {@html icon.svg}
+        {/if}
+        <span>{icon.slug}</span>
+      </li>
+    {/key}
   {/each}
 </ul>
 
