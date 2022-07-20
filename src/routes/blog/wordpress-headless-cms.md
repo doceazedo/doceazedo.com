@@ -51,7 +51,7 @@ define('WP_USE_THEMES', false);
 Aproveitei o arquivo aberto e no final dele eu já adicionei um redirecionamento para o front-end do meu site, caso alguém tente acessar o endereço do WordPress por qualquer que seja o motivo:
 
 ```php
-header('location: https://lucasfernandes.com.br');
+header('location: https://doceazedo.com');
 ```
 
 ## Campos personalizados
@@ -160,4 +160,4 @@ Lembrando que se você quiser puxar um post específico, você pode passar o par
 await (await fetch(`https://example.com/wp-json/wp/v2/posts?slug=${slug}`)).json();
 ```
 
-Por fim, se você quiser um exemplo mais prático, você pode dar uma olhada em [como eu faço isso nesse site](https://github.com/doceazedo/lucasfernandes.com.br/blob/main/src/routes/blog/index.svelte), usando SvelteKit e renderizando tudo no momento de build.
+Por fim, se você quiser um exemplo mais prático, você pode dar uma olhada em [como eu fiz isso nesse site](https://github.com/doceazedo/doceazedo.com/tree/d5e425e606d2c8cbdf2aa59c01c1085c240d9602/src/routes/blog), usando SvelteKit e renderizando tudo no momento de build.

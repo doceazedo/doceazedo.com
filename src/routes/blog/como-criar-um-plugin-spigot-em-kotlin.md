@@ -23,7 +23,7 @@ Quanto ao JDK, essa opção vai depender de qual versão do Java é necessária 
   <img src="/img/spigot-plugin-new-project.png">
 </p>
 
-Com isso, prossiga para próxima etapa. Em **GroupId**, você deve colocar o domínio do seu site ao contrário, no meu caso poderia ser `br.com.lucasfernandes`. Caso você não tenha um, você pode usar o seu nome de usuário do GitHub no formato `com.github.doceazedo`.
+Com isso, prossiga para próxima etapa. Em **GroupId**, você deve colocar o domínio do seu site ao contrário, no meu caso poderia ser `com.doceazedo`. Caso você não tenha um, você pode usar o seu nome de usuário do GitHub no formato `com.github.doceazedo`.
 
 **ArtifactId** é o nome que será mostrado ao gerar a build do arquivo JAR. Esse também será usado por padrão como o nome do seu plugin.
 

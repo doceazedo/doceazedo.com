@@ -33,7 +33,7 @@ export const en: Language = {
     more: 'View all'
   },
 
-  footer: ['Powered by Svelte & SvelteKit', 'Developed by Lucas Fernandes'],
+  footer: ['Powered by Svelte & SvelteKit', 'Developed by DoceAzedo'],
 
   about: {
     subtitle: 'Curiosity-driven developer, Svelte evangelist and live coding streamer',
@@ -171,7 +171,7 @@ export const en: Language = {
     }
   },
 
-  email: 'me@lucasfernandes.com.br',
+  email: 'me@doceazedo.com',
   posted: 'Published',
   skipToContent: 'Skip to content',
 

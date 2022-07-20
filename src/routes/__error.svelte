@@ -48,7 +48,7 @@
         This was probably a mistake.
       {:else}
         Something went wrong.
-        <a href="https://github.com/doceazedo/lucasfernandes.com.br/issues" target="_blank">
+        <a href="https://github.com/doceazedo/doceazedo.com/issues" target="_blank">
           Open an issue?
         </a>
       {/if}

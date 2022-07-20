@@ -1,13 +1,9 @@
 /* eslint-disable no-useless-escape */
+import type { Post } from '$lib/modules/posts';
 
 type BlogPostFile = {
   default: Record<string, unknown>;
-  metadata: {
-    title: string;
-    date: string;
-    tags: string[];
-    icon: string;
-  };
+  metadata: Post;
 };
 
 export const getPosts = async (qty?: number) => {

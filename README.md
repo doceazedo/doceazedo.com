@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/deployments/doceazedo/lucasfernandes.com.br/Production?label=vercel&logo=vercel&style=flat-square" alt="Vercel Status">
+  <img src="https://img.shields.io/github/deployments/doceazedo/doceazedo.com/Production?label=vercel&logo=vercel&style=flat-square" alt="Vercel Status">
 </p>
 
 <p align="center">
-  <a href="https://lucasfernandes.com.br">
+  <a href="https://doceazedo.com">
     <img src="static/img/thumbnail.jpg">
   </a>
 </p>

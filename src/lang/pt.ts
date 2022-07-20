@@ -26,7 +26,7 @@ export const pt: Language = {
     ]
   },
 
-  footer: ['Powered by Svelte & SvelteKit', 'Desenvolvido por Lucas Fernandes'],
+  footer: ['Powered by Svelte & SvelteKit', 'Desenvolvido por DoceAzedo'],
 
   blog: {
     title: 'As últimas coisas que eu escrevi',
@@ -172,7 +172,7 @@ export const pt: Language = {
     }
   },
 
-  email: 'eu@lucasfernandes.com.br',
+  email: 'eu@doceazedo.com',
   posted: 'Publicado',
   skipToContent: 'Ir para o conteúdo',
 
