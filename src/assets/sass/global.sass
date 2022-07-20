@@ -231,6 +231,10 @@ a
       vertical-align: bottom
       border-radius: .25rem
 
+  .showcase
+    display: flex
+    gap: 1rem
+
 ::selection
   color: #fff
   background: $primary-light
@@ -243,3 +247,6 @@ a
     &::before
       content: unset
       display: none
+
+  .content .showcase
+    flex-direction: column
