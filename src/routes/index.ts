@@ -1,3 +1,4 @@
 import { getPosts } from '$lib/utils';
+import type { RequestHandler } from '@sveltejs/kit';
 
-export const get = async () => await getPosts(5);
+export const GET: RequestHandler = async () => await getPosts(5);

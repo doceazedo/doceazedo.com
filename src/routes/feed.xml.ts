@@ -1,5 +1,6 @@
 import { XMLBuilder } from 'fast-xml-parser';
 import { getPosts } from '$lib/utils';
+import type { RequestHandler } from '@sveltejs/kit';
 import type { Post } from '$lib/modules/posts';
 
 const baseUrl = 'https://pbe.doceazedo.com';
@@ -10,7 +11,7 @@ const builder = new XMLBuilder({
   cdataPropName: 'cdata'
 });
 
-export const get = async () => {
+export const GET: RequestHandler = async () => {
   const data = await getPosts(5);
   const posts = data.body.posts.map((post: Post) => ({
     title: post.title,

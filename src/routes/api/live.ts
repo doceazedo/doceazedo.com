@@ -1,6 +1,6 @@
 import SpotifyWebApi from 'spotify-web-api-node';
-import dotenv from 'dotenv';
-dotenv.config();
+import 'dotenv/config';
+import type { RequestHandler } from '@sveltejs/kit';
 
 const fetchNowPlaying = async () => {
   const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
@@ -47,7 +47,7 @@ const fetchIsLive = async () => {
   return twitch.data?.length ? true : false;
 };
 
-export async function get() {
+export const GET: RequestHandler = async () => {
   const [nowPlaying, isLive] = await Promise.all([fetchNowPlaying(), fetchIsLive()]);
 
   return {

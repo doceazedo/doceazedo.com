@@ -1,7 +1,7 @@
-import dotenv from 'dotenv';
-dotenv.config();
+import 'dotenv/config';
+import type { RequestHandler } from '@sveltejs/kit';
 
-export async function get() {
+export const GET: RequestHandler = async () => {
   const twitch = await (
     await fetch(`https://api.twitch.tv/helix/videos?user_id=${process.env.TWITCH_CHANNEL_ID}`, {
       headers: {
@@ -22,4 +22,4 @@ export async function get() {
   return {
     body: vods
   };
-}
+};
