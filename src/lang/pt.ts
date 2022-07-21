@@ -110,7 +110,7 @@ export const pt: Language = {
     english: '📚 Inglês',
     extensions: '🌎 Extensões',
     accessibility: '🧏‍♀️ Acessibilidade',
-    miscellaneous: '👌 Miscellaneous'
+    miscellaneous: '👌 Diversos'
   },
 
   newsletter: {
