@@ -6,7 +6,7 @@
     thumbnail = '/img/thumbnail.jpg';
 
   const baseURL = 'https://doceazedo.com';
-  const pageTitle = !!title ? `${title} » DoceAzedo` : 'DoceAzedo';
+  $: pageTitle = !!title ? `${title} » DoceAzedo` : 'DoceAzedo';
 </script>
 
 <svelte:head>
