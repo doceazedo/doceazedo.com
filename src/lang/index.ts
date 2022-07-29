@@ -107,6 +107,29 @@ export type Language = {
       subtitle: string;
       copied: string;
     };
+    tts: {
+      title: string;
+      subtitle: string;
+      usage: {
+        default: string;
+        polly: string;
+        ssml: string;
+      };
+      placeholder: {
+        message: string;
+        code: string;
+      };
+      ssmlTags: string;
+      table: {
+        lang: string;
+        code: string;
+        type: string;
+        voiceTypes: {
+          f: string;
+          m: string;
+        };
+      };
+    };
   };
 
   email: string;

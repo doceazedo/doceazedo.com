@@ -3,6 +3,7 @@
   import { LANG } from '$lib/stores';
   import { Metadata } from '$lib/components/metadata';
   import { SupportCTA } from '$lib/components/cta';
+  import { TtsUsage, TtsVoicesTable } from '$lib/components/tts';
   import { LIVE_DATA } from '$lib/modules/live';
   import { TwitchPlayer } from '$lib/modules/twitch-player';
   import { IconsGrid } from '$lib/modules/icons-grid';
@@ -25,6 +26,11 @@
   {$LANG.streams.icons.subtitle.replace('%s', iconsQty.toString())}
 </p>
 <IconsGrid />
+
+<h1 class="title">{$LANG.streams.tts.title}</h1>
+<p class="subtitle">{$LANG.streams.tts.subtitle}</p>
+<TtsUsage />
+<TtsVoicesTable />
 
 <style lang="sass">
   @import '../assets/sass/vars'

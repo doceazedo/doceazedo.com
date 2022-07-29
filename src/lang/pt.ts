@@ -169,6 +169,30 @@ export const pt: Language = {
       subtitle:
         'Escolha um dos %s ícones abaixo para copiar o comando e cole no chat para participar de um time e mostrar seu orgulho por ele!',
       copied: 'Comando copiado, agora é só colar no chat!'
+    },
+    tts: {
+      title: 'TTS',
+      subtitle:
+        'O comando TTS pode ser usado para mandar mensagens de voz, simples assim. Se você quiser ir um pouco além, estão disponíveis várias vozes, idiomas e funções diferentes:',
+      usage: {
+        default: 'Use %s para enviar uma mensagem com a voz feminina padrão do Google',
+        polly: 'Use %s para enviar uma mensagem com uma das vozes abaixo',
+        ssml: 'Use %s para enviar uma mensagem com %s'
+      },
+      placeholder: {
+        message: 'mensagem',
+        code: 'código'
+      },
+      ssmlTags: 'tags SSML',
+      table: {
+        lang: 'Idioma',
+        code: 'Nome / Código',
+        type: 'Tipo de voz',
+        voiceTypes: {
+          f: '🎀 Feminina',
+          m: '🧢 Masculina'
+        }
+      }
     }
   },
 

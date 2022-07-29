@@ -17,4 +17,5 @@ export * from './talks';
 export * from './text';
 export * from './toast';
 export * from './topbar';
+export * from './tts';
 export * from './twitch-player';

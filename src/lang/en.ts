@@ -168,6 +168,30 @@ export const en: Language = {
       subtitle:
         'Choose one of the %s icons below to copy the command and paste it into the chat to join a team and show your pride for it!',
       copied: 'Command copied, now paste it into the chat!'
+    },
+    tts: {
+      title: 'TTS',
+      subtitle:
+        'The TTS command can be used to send voice messages, simple as that. If you want to go a step further, several different voices, languages and features are available:',
+      usage: {
+        default: 'Use %s to send a voice message with the Google default Brazilian female voice',
+        polly: 'Use %s to send a voice message with one of the voices below',
+        ssml: 'Use %s to send a voice message with %s'
+      },
+      placeholder: {
+        message: 'message',
+        code: 'code'
+      },
+      ssmlTags: 'SSML tags',
+      table: {
+        lang: 'Language',
+        code: 'Name / Code',
+        type: 'Voice type',
+        voiceTypes: {
+          f: '🎀 Feminine',
+          m: '🧢 Masculine'
+        }
+      }
     }
   },
 
