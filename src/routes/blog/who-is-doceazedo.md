@@ -1,7 +1,8 @@
 ---
-title: 'Afinal, who the f*ck is DoceAzedo? — o marco de uma era agridoce'
+title: 'Afinal, who the f*ck is DoceAzedo?'
+description: 'Um textinho que escrevi sobre minha própria identidade'
 date: '2022-07-19 22:57 GMT-3'
-tags: ['meta', 'pessoal', 'lgbtqia+']
+tags: ['pessoal', 'lgbtqia+']
 icon: 'raising-hand-emoji'
 ---
 
@@ -16,7 +17,7 @@ Eu criei esse apelido, exatos três dias depois do lançamento do álbum "Chroma
 
 O que acontece é que desde então minha presença online passou a representar mais minhas livestreams e meus projetos open-source do que meus antigos projetos de cunho duvidoso, já abandonados a esse ponto. Enquanto isso, o nome "Lucas Fernandes" ficou mais atrelado a minha carreira profissional.
 
-# Identidade além do visual
+## Identidade além do visual
 
 Partindo desse princípio, comecei a reparar que o nome "Doce" passou a retratar muito melhor quem eu sou como pessoa do que "Lucas". Por exemplo, quem me conhece por Doce sabe ao menos que eu sou programador, faço live coding e, não menos importante, sou uma pessoa não-binária. Diferente de quem me conhece por Lucas, que ou só conhece meu currículo, ou só ainda que eu sou o "menino do computador".
 
@@ -28,7 +29,7 @@ Então gradualmente eu fui percebendo e entendendo que a depreciação do nome "
 	<img src="/img/old-taylor.gif">
 </p>
 
-# Um site meu (e só meu)
+## Um site meu (e só meu)
 
 E seguindo essa mesma lógica, meu site deixa de ser o currículo do Lucas para se tornar o espaço pessoal do DoceAzedo na rede mundial de computadores. Esse sentimento de querer possuir um lugar que é verdadeiramente meu, independente de plataformas regidas por grandes corporações, cresce conforme elas se tornam cada vez mais predatórias e as mesmas tentam impor movimentos com falsas promessas de proporcionar aquilo que, ironicamente, a gente já tinha antes delas chegarem e a oprimirem: uma internet livre e independente.
 
@@ -38,7 +39,7 @@ Enquanto a maioria dos sites independentes que se mantém firmes nessa proposta 
 
 Ainda nessa linha de raciocínio, meu objetivo nunca foi ser um criador de conteúdo e muito menos alimentar os algorítimos de redes sociais e motores de busca. Por isso eu reforço que meu blog é um espaço 100% pessoal com conteúdo que pode variar entre rascunhos, artigos super elaborados, projetos, vivências pessoais e o que mais der na telha.
 
-# Olhando daqui pra frente
+## Olhando daqui pra frente
 
 Penso que meu processo pessoal de seguir com apenas um nome aconteceu com muita despretensão. Hoje me apresento apenas como Doce, é o que me aparenta ser mais razoável. Fico muito feliz de ter pessoas ao meu redor que apoiam essa minha identidade que transcendeu o virtual de uma forma muito singela e instintiva para mim.
 
