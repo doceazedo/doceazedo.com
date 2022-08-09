@@ -468,12 +468,14 @@ Alternativamente, você pode usar a mesma página para mostrar diferentes conte�
 
 Há muito o que pode ser melhorado nesse código que foi deixado de lado em prol de simplificar o tutorial, por exemplo, criar controllers para a API e organizar as requisições do frontend em um arquivo separado.
 
-Se você realmente pretende armazenar as senhas dos seus usuários, recomendo usar [password salting](https://websitesecuritystore.com/blog/what-is-password-salting/), uma técnica simples para aumentar a segurança das mesmas.
+Considere que se você realmente pretende fazer o seu próprio sistema de autenticação, existem muitas outras medidas de segurança que você deve tomar como, por exemplo, usar [password salting](https://websitesecuritystore.com/blog/what-is-password-salting) para armazenar senhas, usar [tokens CSRF](https://www.stackhawk.com/blog/node-js-csrf-protection-guide-examples-and-how-to-enable-it) para validar requisições e mitigar ataques à força bruta como [enumeração de usuários](https://www.rapid7.com/blog/post/2017/06/15/about-user-enumeration).
+
+Muitas das vezes, fazer um simples sistema de autenticação se torna tão complexo que é mais rápido, seguro e barato usar uma solução pronta.
 
 Lembre-se sempre que o retorno do `getSession()` no hook é exposto para o cliente, isso significa que você deve ter muito cuidado com os valores retornados por ele. Tenha sempre certeza de que nenhuma informação sensível ou interna está sendo retornada.
 
 Nos endpoints de autenticação, você deve querer realizar verificações contra a requisição antes de cadastrar o usuário no seu banco de dados ou fazer login, para verificar se o e-mail informado é válido, por exemplo. Se estiver atrás de recomendações, eu sugiro usar o [yup](https://npmjs.com/package/yup) para cuidar disso.
 
-No mais, você deve ter percebido como é simples fazer um sistema de login e senha com cookies usando SvelteKit e que o banco de dados / ORM não impacta muito no processo, isso quer dizer que você pode facilmente substituir o Mongoose, por digamos, Prisma.
+No mais, você deve ter percebido que o banco de dados / ORM não impacta muito no desenvolvimento da aplicação, isso quer dizer que você pode facilmente substituir o Mongoose por, digamos, Prisma.
 
 Divirta-se programando!
