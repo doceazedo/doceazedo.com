@@ -29,7 +29,7 @@ yarn add cookie crypto-js uuid mongoose
 
 ## Configurar o MongoDB
 
-Algumas versões do SvelteKit atrás, para usar variáveis de ambiente era necessário passá-las pelo Vite (que só funcionava com variáveis públicas) ou instanciar o dotenv por conta própria. Agora podemos importá-las diretamente do módulo `$env`, que funciona tanto com variáveis públicas, quanto privadas, mas também com valores privados.
+Algumas versões do SvelteKit atrás, para usar variáveis de ambiente era necessário passá-las pelo Vite (que só funcionava com variáveis públicas) ou instanciar o dotenv por conta própria. Agora podemos importá-las diretamente do módulo `$env`, que funciona tanto com variáveis públicas, quanto privadas, mas também com valores dinâmicos.
 
 Nesse caso, podemos definir uma variável **MONGODB_URI** com a URI de conexão com o MongoDB no arquivo **.env** na raíz do projeto, que fica mais ou menos parecido com isso:
 
