@@ -214,5 +214,12 @@ export const pt: Language = {
     nowLive: 'Ao vivo agora.',
     audioButton: 'Ouvir pronúncia',
     home: 'Início'
+  },
+
+  topbar: {
+    content:
+      '"Me desculpe, o antigo Lucas não pode atender o telefone agora. Por quê? Ah, porque ele está %s!" Eu adotei meu apelido DoceAzedo como o nome que melhor representa quem eu sou. E eu escrevi sobre isso.',
+    highlight: 'morto',
+    readMore: 'Saiba mais.'
   }
 };

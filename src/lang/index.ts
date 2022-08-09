@@ -150,6 +150,12 @@ export type Language = {
     audioButton: string;
     home: string;
   };
+
+  topbar: {
+    content: string;
+    highlight: string;
+    readMore: string;
+  };
 };
 
 export * from './en';

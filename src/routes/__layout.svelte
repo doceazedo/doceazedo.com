@@ -10,6 +10,7 @@
 
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { page } from '$app/stores';
   import { browser } from '$app/env';
   import { Container, SkipToContent } from '$lib/components';
   import { Footer, Navbar, TopbarDomainMigration } from '$lib/modules';
@@ -17,12 +18,8 @@
   import '../assets/sass/global.sass';
 
   export let url: string;
-  let ref: string;
 
-  onMount(() => {
-    if (!browser) return;
-    ref = new URL(window.location.href).searchParams.get('ref');
-  });
+  $: ref = browser && $page.url.searchParams.get('ref');
 </script>
 
 <SkipToContent />

@@ -213,5 +213,12 @@ export const en: Language = {
     nowLive: 'Now live.',
     audioButton: 'Listen to pronunciation',
     home: 'Home'
+  },
+
+  topbar: {
+    content:
+      "\"I'm sorry, the old Lucas can't come to the phone right now. Why? Oh 'cause they're %s!\" I've fully embraced my DoceAzedo nickname as the name that better represents who I am. I also wrote something about it.",
+    highlight: 'dead',
+    readMore: 'Learn more about it.'
   }
 };
