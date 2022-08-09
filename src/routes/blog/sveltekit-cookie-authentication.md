@@ -177,6 +177,8 @@ export const getSession = async (event) => ({
 
 Se você estiver usando TypeScript, sua IDE deve estar dizendo que as propriedades que você definiu nos objetos `locals` e `session` não existem. Isso é por que você ainda deve adicionar os tipos de mesmo nome no arquivo **src/app.d.ts**, que nesse caso ficaria parecido com isso:
 
+<p class="file-title">src/app.d.ts</p>
+
 ```ts
 declare namespace App {
   interface Locals {
