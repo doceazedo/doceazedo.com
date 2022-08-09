@@ -13,6 +13,7 @@
   <title>{pageTitle}</title>
   <meta name="title" content={pageTitle} />
   <meta name="description" content={description} />
+  <meta name="theme-color" content="#6930c3" />
 
   <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
   <meta prefix="og: http://ogp.me/ns#" property="og:url" content="{baseURL}{$page.url.pathname}" />
