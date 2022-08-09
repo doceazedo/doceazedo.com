@@ -6,7 +6,7 @@ tags: ['sveltekit', 'mongodb']
 icon: 'svelte'
 ---
 
-> Esse guia está desatualizado, algumas pequenas mudanças nas versões mais recentes do SvelteKit certamente quebraram parte do código. Vou atualizar esse post aqui em breve, eu juro 🥰
+> O código abaixo está atualizado com a versão `1.0.0-next.396` do SvelteKit, que pode quebrar (de novo) a qualquer momento. Se você perceber que algo não está mais funcionando, por favor, não hesite em me avisar.
 
 Chegou o momento que eu precisei desenvolver aquela clássica autenticação com login e senha baseada em cookies. Nesse tutorial eu vou mostrar como eu fiz isso, com endpoints de login e registro e uma página acessível apenas para usuários que fizerem login.
 
@@ -29,28 +29,67 @@ yarn add cookie crypto-js uuid mongoose
 
 ## Configurar o MongoDB
 
-Eu pessoalmente acho que [usar variáveis de ambiente com SvelteKit](https://kit.svelte.dev/faq#env-vars) é no mínimo irritante. Para acessar o banco, você vai precisar adicionar a URI de conexão com o MongoDB numa variável **VITE_MONGODB_URI** no arquivo **.env** na raíz do projeto. Depois será necessário criar uma pasta **utils** dentro de **src**, com dois arquivos.
+Algumas versões do SvelteKit atrás, para usar variáveis de ambiente era necessário passá-las pelo Vite (que só funcionava com variáveis públicas) ou instanciar o dotenv por conta própria. Agora podemos importá-las diretamente do módulo `$env`, que funciona tanto com variáveis públicas, quanto privadas, mas também com valores privados.
 
-O primeiro é o **env.js**, que vai exportar nossas variáveis de ambiente para o resto do projeto. Tome **muito cuidado** aqui, pois citar uma variável com o prefixo "VITE\_" no front-end irá **expor seu valor** para o cliente.
+Nesse caso, podemos definir uma variável **MONGODB_URI** com a URI de conexão com o MongoDB no arquivo **.env** na raíz do projeto, que fica mais ou menos parecido com isso:
 
-<p class="file-title">src/utils/env.js</p>
-
-```js
-export const MONGODB_URI = import.meta.env.VITE_MONGODB_URI;
+```bash
+MONGODB_URI="mongodb://usuario:senha@hostname:porta/?authSource=admin"
 ```
 
-O segundo arquivo a ser criado é o **connect-database.js**, que vai realizar a conexão com o MongoDB ou já usar uma que esteja disponível na memória.
+E sempre que precisarmos dessa variável, podemos importá-la da seguinte maneira:
 
-<p class="file-title">src/utils/connect-database.js</p>
+```js
+import { env } from '$env/dynamic/private';
+
+const mongodbURI = env.MONGODB_URI;
+// ou usando desestruturação
+const { MONGODB_URI } = env;
+```
+
+E como estamos usando o Mongoose, também será necessário criar um schema para nossa coleção de usuários. Para isso, crie um arquivo chamado **user.js** dentro de uma pasta **models**, dentro de **src/lib**:
+
+<p class="file-title">src/lib/models/user.js</p>
 
 ```js
 import mongoose from 'mongoose';
-import { MONGODB_URI } from './env';
+
+const schema = new mongoose.Schema({
+  name: String,
+  email: String,
+  password: String,
+  token: String
+});
+
+export const UserModel = mongoose.models.Users || mongoose.model('Users', schema, 'Users');
+```
+
+Por fim, vamos criar também um arquivo **index.js** para exportar todos os schemas dessa pasta, mesmo que a primeiro momento só exista um:
+
+<p class="file-title">src/lib/models/index.js</p>
+
+```js
+export { UserModel } from './user';
+```
+
+## Funções utilitárias
+
+E já que estamos criando os arquivos iniciais, vamos criar uma pasta **utils** também dentro de **src/lib**. Lá nós podemos guardar nossas funções utilitárias que serão reusadas de modo geral pela nossa aplicação.
+
+Assim sendo, crie um arquivo dentro de **utils** chamado **connect-database.js**, que será responsável por realizar a conexão com o MongoDB (ou usar uma conexão que já esteja disponível na memória):
+
+<p class="file-title">src/lib/utils/connect-database.js</p>
+
+```js
+import mongoose from 'mongoose';
+import { env } from '$env/dynamic/private';
+
+const { MONGODB_URI } = env;
 
 let promise = null;
 let cached = null;
 
-const connectDatabase = async () => {
+export const connectDatabase = async () => {
   if (cached) return cached;
   if (!promise) {
     promise = mongoose.connect(MONGODB_URI, {
@@ -62,72 +101,101 @@ const connectDatabase = async () => {
   cached = { client };
   return cached;
 };
-
-export default connectDatabase;
 ```
 
-E como estamos usando o Mongoose, também será necessário criar um schema para nossa coleção de usuários. Para isso, crie um arquivo chamado **user.js** dentro de uma pasta **models**, dentro de **src**:
+Na mesma pasta, crie um arquivo de nome **set-cookie-headers.js**, que será responsável por definir os cookies de sessão do usuário. Ele retornará o cabeçalho que precisaremos enviar nas respostas dos endpoints de autenticação que ainda vamos implementar na nossa API:
 
-<p class="file-title">src/models/user.js</p>
+<p class="file-title">src/lib/utils/set-cookie-headers.js</p>
 
 ```js
-import mongoose from 'mongoose';
+import * as cookie from 'cookie';
 
-const schema = new mongoose.Schema({
-  email: String,
-  password: String,
-  token: String
+export const setCookieHeaders = (token, days = 90) => ({
+  'Set-Cookie': cookie.serialize('token', token, {
+    httpOnly: true,
+    maxAge: 60 * 60 * 24 * days,
+    sameSite: 'strict',
+    path: '/'
+  })
 });
-
-export default mongoose.models.Users || mongoose.model('Users', schema, 'Users');
 ```
 
-Para facilitar o possível uso de múltiplos models no futuro, eu recomendo também criar um **index.js** para exportar todos eles, dessa forma:
+Por fim, vamos criar também um arquivo **index.js** para exportar todas as funções dessa pasta:
 
-<p class="file-title">src/models/index.js</p>
+<p class="file-title">src/lib/utils/index.js</p>
 
 ```js
-export { default as UserModel } from './user';
+export { connectDatabase } from './connect-database';
+export { setCookieHeaders } from './set-cookie-headers';
 ```
 
 ## Configurar o hook.js
 
-Agora precisamos criar o arquivo **hook.js** dentro de **src**. Esse arquivo nos permite manipular a requisição no servidor antes de renderizar a página ou rodar o endpoint. É aqui que vamos lidar com a definição e leitura das sessões. O arquivo deverá ficar mais ou menos assim:
+Agora precisamos criar o arquivo **hook.js** dentro de **src**. Esse arquivo nos permite manipular a requisição no servidor antes de renderizar a página ou chamar nosso endpoint, e é aqui que vamos verificar o token do usuário e definir novas sessões.
+
+O nosso hook precisará exportar duas funções:
+
+- `handle()`, que recebe um objeto `event` representando a requisição e uma função `resolve` que usa o roteador do SvelteKit para gerar uma resposta, logo deve sempre ser retornada
+- `getSession()`, que recebe o mesmo objeto `event`, porém deve retornar um objeto `session` que será acessível ao cliente, logo não deve nunca conter informações sensíveis
 
 <p class="file-title">src/hooks.js</p>
 
 ```js
 import * as cookie from 'cookie';
-import connectDatabase from './utils/connect-database';
-import { UserModel } from './models';
+import { connectDatabase } from '$lib/utils';
+import { UserModel } from '$lib/models';
 
-export const handle = async ({ request, resolve }) => {
+export const handle = async ({ event, resolve }) => {
+  // Primeiro de tudo, precisamos conectar ao banco de dados
   await connectDatabase();
-  const cookies = cookie.parse(request.headers.cookie || '');
-  request.locals.user = cookies;
 
-  const userSession = await UserModel.findOne({ token: cookies.token });
+  // Depois, fazemos o parse dos cookies que vieram na requisição
+  // Se não tiver um cookie chamado "token", podemos retornar
+  const cookies = cookie.parse(event.request.headers.get('cookie') || '');
+  if (!cookies.token) return await resolve(event);
 
-  if (userSession) {
-    // Definir um objeto "user" com suas informações
-    request.locals.user = {
-      logged: true,
-      email: userSession.email
+  // Agora vamos buscar o usuário pelo token, se encontrar,
+  // vamos salvar os dados que queremos expor PUBLICAMENTE
+  // em event.locals, para serem usados nas nossas páginas
+  const user = await UserModel.findOne({ token: cookies.token });
+  if (user)
+    event.locals.user = {
+      name: user.name,
+      email: user.email
+      // ...
     };
-  }
 
-  const resp = await resolve(request);
-  return resp;
+  // Por fim, retornamos o resolve(event)
+  return await resolve(event);
 };
 
-// Enviar o objeto "user" para o front-end
-export const getSession = async (request) =>
-  request.locals?.user?.logged ? { user: request.locals.user } : {};
+// Aqui precisamos apenas retornar os dados do usuário
+export const getSession = async (event) => ({
+  user: event.locals.user || null
+});
 ```
+
+Se você estiver usando TypeScript, sua IDE deve estar dizendo que as propriedades que você definiu nos objetos `locals` e `session` não existem. Isso é por que você ainda deve adicionar os tipos de mesmo nome no arquivo **src/app.d.ts**, que nesse caso ficaria parecido com isso:
+
+```ts
+declare namespace App {
+  interface Locals {
+    name: string;
+    email: string;
+  }
+
+  interface Session {
+    // Aqui podemos reusar o tipo acima
+    user: Locals;
+  }
+}
+```
+
+Se após atualizar esse arquivo sua IDE ainda não tiver atualizado os tipos, tente fechar e reabrir o programa (ou use `CTRL + R` no VS Code).
 
 ## Criar endpoints de autenticação
 
-Agora é preciso criar dois arquivos, **register.js** e **login.js**, ambos implementarão o método POST e servirão para autenticar o usuário. Eu prefiro criá-los dentro de **src/routes/api/auth** para ter certeza que eles serão tratados como _funções serverlesss_ pela Vercel, mas você pode criar esses arquivos diretamente em **src/routes/auth** ou onde achar melhor.
+Agora é preciso criar dois arquivos, **register.js** e **login.js**, ambos implementarão o método POST e servirão para autenticar o usuário. Eu prefiro criá-los dentro de **src/routes/api/auth**, mas você pode criar esses arquivos diretamente em **src/routes/auth** ou onde achar melhor.
 
 <p class="file-title">src/routes/api/auth/register.js</p>
 
@@ -135,43 +203,42 @@ Agora é preciso criar dois arquivos, **register.js** e **login.js**, ambos impl
 import sha256 from 'crypto-js/sha256.js';
 import * as cookie from 'cookie';
 import { v4 as uuidv4 } from 'uuid';
-import { connectDatabase } from '../../../utils';
-import { UserModel } from '../../../models';
+import { connectDatabase, setCookieHeaders } from '$lib/utils';
+import { UserModel } from '$lib/models';
 
-export const post = async ({ body }) => {
+export const POST = async ({ request }) => {
   await connectDatabase();
 
-  // Verificar se já existe algum registro com o e-mail informado
-  const user = await UserModel.findOne({ email: body.get('email') });
-  if (user) {
+  // Primeiro, fazemos o parse do corpo da requisição
+  const body = await request.json();
+
+  // Agora, buscamos um usuário com o e-mail informado
+  // Se já existir um, retornamos uma mensagem de erro
+  const user = await UserModel.findOne({ email: body.email });
+  if (user)
     return {
       status: 409,
       body: {
-        error: 'Esse e-mail já está cadastrado'
+        message: 'Esse e-mail já está cadastrado'
       }
     };
-  }
 
-  // Cadastrar usuário já com um novo token de sessão
+  // Vamos gerar um novo UUID que servirá de token de sessão
   const token = uuidv4();
+
+  // Agora podemos registrar um novo usuário, já com o token
   await UserModel.create({
-    email: body.get('email'),
-    password: sha256(body.get('password')),
+    name: body.name,
+    email: body.email,
+    password: sha256(body.password).toString(),
     token
   });
 
-  // Definir a sessão
-  const headers = {
-    'Set-Cookie': cookie.serialize('token', token, {
-      httpOnly: true,
-      maxAge: 60 * 60 * 24 * 7,
-      sameSite: 'strict',
-      path: '/'
-    })
-  };
+  // Usamos nossa função utilitária para definir os cookies
+  const headers = setCookieHeaders(token);
 
+  // Por fim, retornamos a sessão e uma mensagem de sucesso
   return {
-    status: 200,
     headers,
     body: {
       message: 'Registrado com sucesso'
@@ -183,44 +250,36 @@ export const post = async ({ body }) => {
 <p class="file-title">src/routes/api/auth/login.js</p>
 
 ```js
-import CryptoJS from 'crypto-js';
 import sha256 from 'crypto-js/sha256.js';
-import * as cookie from 'cookie';
 import { v4 as uuidv4 } from 'uuid';
-import { connectDatabase } from '../../../utils';
-import { UserModel } from '../../../models';
+import { connectDatabase, setCookieHeaders } from '$lib/utils';
+import { UserModel } from '$lib/models';
 
-export const post = async ({ body }) => {
+export const POST = async ({ request }) => {
   await connectDatabase();
+  const body = await request.json();
 
-  // Verificar se o e-mail informado está registrado
-  // Depois, verificar se as senhas conferem
-  const user = await UserModel.findOne({ email: body.get('email') });
-  if (!user || user.password !== sha256(body.get('password')).toString(CryptoJS.enc.Hex)) {
+  // Vamos buscar um usuário com o e-mail informado
+  const user = await UserModel.findOne({ email: body.email });
+
+  // Se não houver ou se a senha for diferente, retornamos
+  // uma mensagem de erro
+  if (!user || user.password !== sha256(body.password).toString()) {
     return {
       status: 400,
       body: {
-        error: 'E-mail e/ou senha inválidos'
+        message: 'E-mail e/ou senha inválidos'
       }
     };
   }
 
-  // Gerar novo token de sessão e guardar
-  const cookieId = uuidv4();
-  await UserModel.updateOne({ email: body.get('email') }, { cookieId });
+  // Vamos gerar um novo token, guardamos e definimos os cookies
+  const token = uuidv4();
+  await UserModel.updateOne({ email: body.email }, { token });
+  const headers = setCookieHeaders(token);
 
-  // Definir a sessão
-  const headers = {
-    'Set-Cookie': cookie.serialize('session_id', cookieId, {
-      httpOnly: true,
-      maxAge: 60 * 60 * 24 * 7,
-      sameSite: 'strict',
-      path: '/'
-    })
-  };
-
+  // Por fim, retornamos tudo com uma mensagem de sucesso
   return {
-    status: 200,
     headers,
     body: {
       message: 'Logado com sucesso'
@@ -231,116 +290,188 @@ export const post = async ({ body }) => {
 
 ## Criar página de login e registro
 
-Agora estamos falando de front-end, ou seja, você é quem deve definir como essa página deve se parecer, como ela se comportará e afins. Para manter esse tutorial simples, vou montar uma página básica que usa **fetch** para fazer as requisições e redirecionar para a página protegida.
+Agora estamos falando de frontend, ou seja, você é quem deve definir como essa página deve se parecer, como ela se comportará e afins. Para manter esse tutorial simples, vou montar uma página de login e outra de registro, ambas bem básicas, usando `fetch` para fazer as requisições e redirecionar para a página protegida.
 
-<p class="file-title">src/routes/index.svelte</p>
+<p class="file-title">src/routes/login.svelte</p>
 
 ```svelte
 <script>
   import { goto } from '$app/navigation';
 
-  let email = '', password = '';
+  let email = '';
+  let password = '';
 
-  const submit = endpoint => {
-    const res = await fetch(`/api/auth/${endpoint}`, {
+  const handleSubmit = async () => {
+    const resp = await fetch(`/api/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         email,
-        password,
+        password
       })
     });
-    const data = await res.json();
-
-    if (data.error)
-      return console.log(data.error);
+    const data = await resp.json();
 
     // Redirecionar para página protegida
-    goto('/perfil');
+    goto('/profile');
   };
 </script>
 
 <h1>Autenticação com cookies 🍪🥛</h1>
+<h2>Faça login:</h2>
 
-<div>
-  <h2>Registrar</h2>
+<form on:submit|preventDefault={handleSubmit}>
   <input type="email" placeholder="E-mail" bind:value={email} />
   <input type="password" placeholder="Senha" bind:value={password} />
-  <button on:click={() => submit('register')}>Registrar</button>
-</div>
+  <button type="submit">Login</button>
+</form>
 
-<div>
-  <h2>Login</h2>
-  <input type="email" placeholder="E-mail" bind:value={email} />
-  <input type="password" placeholder="Senha" bind:value={password} />
-  <button on:click={() => submit('login')}>Login</button>
-</div>
+<p>
+  Não tem uma conta? <a href="/register">Registre-se.</a>
+</p>
 ```
+
+<p class="file-title">src/routes/register.svelte</p>
+
+```svelte
+<script>
+  import { goto } from '$app/navigation';
+
+  let name = '';
+  let email = '';
+  let password = '';
+
+  const handleSubmit = async () => {
+    const resp = await fetch(`/api/auth/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password
+      })
+    });
+    const data = await resp.json();
+
+    // Redirecionar para página protegida
+    goto('/profile');
+  };
+</script>
+
+<h1>Autenticação com cookies 🍪🥛</h1>
+<h2>Registre-se:</h2>
+
+<form on:submit|preventDefault={handleSubmit}>
+  <input type="name" placeholder="Nome" bind:value={name} />
+  <input type="email" placeholder="E-mail" bind:value={email} />
+  <input type="password" placeholder="Senha" bind:value={password} />
+  <button type="submit">Registrar</button>
+</form>
+
+<p>
+  Já possui uma conta? <a href="/login">Faça login.</a>
+</p>
+```
+
+Repare que as duas páginas são praticamente idênticas, com pequenas diferenças nos textos e nos campos. Essa é uma boa oportunidade para criar e reusar componentes, e implementar os [layouts](https://kit.svelte.dev/docs/layouts) do SvelteKit – fica aí a dica.
 
 ## Criar página protegida
 
-Agora que o usuário já pode realizar login e registro, é hora de criar uma página que só aqueles que estiverem logados conseguem ver. Como exemplo, você pode criar uma página **/perfil**:
+Agora que o usuário já pode realizar login e registro, é hora de criar uma página que só aqueles que estiverem logados conseguem ver. Como, por exemplo, você pode criar uma página **/profile** que redireciona quem não tiver uma sessão de volta para a página de login:
 
-<p class="file-title">src/routes/perfil.svelte</p>
-
-```svelte
-<script context="module">
-  export async function load({ session }) {
-    return {
-      props: {
-        session
-      }
-    };
-  }
-</script>
-
-<script>
-  export let session;
-</script>
-
-{#if session?.user?.logged}
-  <h1>✅ Você se conectou como <b>{session.user.email}</b>!</h1>
-{:else}
-  <h1>❌ Você não pode visualizar essa página!</h1>
-  <a href="/">Voltar ao início</a>
-{/if}
-```
-
-Alternativamente, você pode redirecionar quem não estiver logado para uma outra página:
-
-<p class="file-title">src/routes/perfil.svelte</p>
+<p class="file-title">src/routes/profile.svelte</p>
 
 ```svelte
 <script context="module">
-  export async function load({ session }) {
-    if (!session?.user?.logged) {
+  export const load = ({ session }) => {
+    // Se não estiver logado, redirecionar
+    if (!session.user)
       return {
         status: 302,
-        redirect: '/desconectado'
+        redirect: '/login'
       };
-    }
 
+    // Se estiver, repassar sessão como props
     return {
       props: {
         session
       }
     };
-  }
+  };
 </script>
 
 <script>
   export let session;
 </script>
 
-<h1>✅ Você se conectou como <b>{session.user.email}</b>!</h1>
+<h1>Seja bem-vinde, <b>{session.user.name}</b>! 😊👋</h1>
+```
+
+Você pode ainda deixar esse redirecionamento em um arquivo **\_\_layout.svelte** dentro de uma pasta para fazer com que todas as páginas lá dentro sejam protegidas, por exemplo:
+
+<p class="file-title">src/routes/dashboard/__layout.svelte</p>
+
+```svelte
+<script context="module">
+  // A mesma verificação de cima...
+</script>
+
+<slot />
+```
+
+<p class="file-title">src/routes/dashboard/index.svelte</p>
+
+```svelte
+<script>
+  export let session;
+</script>
+
+<h1>Olá, <b>{session.user.name}</b>!</h1>
+<p>Todas as páginas em /dashboard são protegidas, incluindo essa! 🤩🔓</p>
+```
+
+Alternativamente, você pode usar a mesma página para mostrar diferentes conteúdos, dependendo se o usuário estiver logado ou não:
+
+<p class="file-title">src/routes/videos.svelte</p>
+
+```svelte
+<script context="module">
+  export const load = ({ session }) => ({
+    props: {
+      session
+    }
+  });
+</script>
+
+<script>
+  export let session;
+</script>
+
+{#if session?.user}
+  <h1>Seja bem-vinde, <b>{session.user.name}</b>! 😊👋</h1>
+  <p>Esse é um conteúdo feito especialmente para você:</p>
+  <!-- ... -->
+{:else}
+  <h1>Olá, visitante!</h1>
+  <!-- ... -->
+  <p>Já pensou em <a href="/register">criar uma conta</a>?</p>
+{/if}
 ```
 
 ## Considerações finais
 
-Eu gostaria de agradecer imensamente ao Nikolas Blahušiak, que se esforçou para reunir todas essas informações numa [resposta no Stack Overflow](https://stackoverflow.com/questions/69066169/how-to-implement-cookie-authentication-sveltekit-mongodb/). Eu tomei a liberdade de adaptar o conteúdo dele com mudanças que fazem mais sentido numa aplicação real, usando outras bibliotecas e com um código ligeiramente mais simples.
+Há muito o que pode ser melhorado nesse código que foi deixado de lado em prol de simplificar o tutorial, por exemplo, criar controllers para a API e organizar as requisições do frontend em um arquivo separado.
 
-No **hook.js**, eu recomendo que você envie apenas os dados do usuário que você precisa utilizar no front-end para evitar expor dados internos ou sensíveis, como o ID do registro ou sua senha.
+Se você realmente pretende armazenar as senhas dos seus usuários, recomendo usar [password salting](https://websitesecuritystore.com/blog/what-is-password-salting/), uma técnica simples para aumentar a segurança das mesmas.
 
-Nos endpoints de autenticação, você deve querer realizar verificações contra a requisição antes de cadastrar o usuário no seu banco de dados ou fazer login. Se estiver atrás de recomendações, eu sugiro usar o [yup](https://npmjs.com/package/yup) para cuidar disso.
+Lembre-se sempre que o retorno do `getSession()` no hook é exposto para o cliente, isso significa que você deve ter muito cuidado com os valores retornados por ele. Tenha sempre certeza de que nenhuma informação sensível ou interna está sendo retornada.
+
+Nos endpoints de autenticação, você deve querer realizar verificações contra a requisição antes de cadastrar o usuário no seu banco de dados ou fazer login, para verificar se o e-mail informado é válido, por exemplo. Se estiver atrás de recomendações, eu sugiro usar o [yup](https://npmjs.com/package/yup) para cuidar disso.
+
+No mais, você deve ter percebido como é simples fazer um sistema de login e senha com cookies usando SvelteKit e que o banco de dados / ORM não impacta muito no processo, isso quer dizer que você pode facilmente substituir o Mongoose, por digamos, Prisma.
+
+Divirta-se programando!
