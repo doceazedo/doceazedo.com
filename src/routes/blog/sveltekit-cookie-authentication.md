@@ -180,15 +180,18 @@ Se você estiver usando TypeScript, sua IDE deve estar dizendo que as propriedad
 <p class="file-title">src/app.d.ts</p>
 
 ```ts
+interface User {
+  name: string;
+  email: string;
+}
+
 declare namespace App {
   interface Locals {
-    name: string;
-    email: string;
+    user: User;
   }
 
   interface Session {
-    // Aqui podemos reusar o tipo acima
-    user: Locals;
+    user: User;
   }
 }
 ```
