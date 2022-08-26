@@ -1,11 +1,12 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
+  import { navigating } from '$app/stores';
 
-  export let url = '';
+  $: changed = $navigating?.from != $navigating?.to;
 </script>
 
-{#key url}
+{#key changed}
   <main
     id="main"
     in:fly={{ duration: 300, y: 32, opacity: 0, easing: quintOut, delay: 500 }}

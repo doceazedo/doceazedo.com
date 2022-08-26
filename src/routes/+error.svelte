@@ -1,16 +1,6 @@
-<script context="module">
-  export function load({ error, status }) {
-    return {
-      props: {
-        error: status,
-        message: error.message
-      }
-    };
-  }
-</script>
-
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { page } from '$app/stores';
   import { randomInRange } from '$lib/utils';
   import { Metadata } from '$lib/components';
   import PenguinImg from '../assets/img/club-penguin-cleaning.gif';
@@ -19,8 +9,6 @@
   import WalterWhiteImg from '../assets/img/walter-white.gif';
   import PolarBearImg from '../assets/img/polar-bear-cry.gif';
   import GmodErrorImg from '../assets/img/gmod-error.gif';
-
-  export let error: number, message: string;
 
   const images = [
     PenguinImg,
@@ -33,7 +21,7 @@
   let image: string;
 
   onMount(() => {
-    console.error(`Error ${error}: ${message}`);
+    console.error(`Error ${$page.status}: ${$page.error.message}`);
     const n = randomInRange(0, images.length);
     image = images[n];
   });
@@ -42,9 +30,9 @@
 <Metadata />
 <div class="container">
   <div class="info">
-    <h1>{error}</h1>
+    <h1>{$page.status}</h1>
     <h2 class="content">
-      {#if error == 404}
+      {#if $page.status == 404}
         This was probably a mistake.
       {:else}
         Something went wrong.

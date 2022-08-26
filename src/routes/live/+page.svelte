@@ -33,7 +33,7 @@
 <TtsVoicesTable />
 
 <style lang="sass">
-  @import '../assets/sass/vars'
+  @import '../../assets/sass/vars'
 
   .title
     font-size: 1.75rem

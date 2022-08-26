@@ -4,7 +4,7 @@
 
   $: content = $LANG.topbar.content.split('%s');
 
-  export let ref: string;
+  export let ref: string | null;
 </script>
 
 {#if ref == 'lucasfernandes'}

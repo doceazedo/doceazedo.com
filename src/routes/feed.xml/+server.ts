@@ -12,7 +12,7 @@ const builder = new XMLBuilder({
 
 export const GET: RequestHandler = async () => {
   const data = await getPosts(5);
-  const posts = data.body.posts.map((post) => ({
+  const posts = data.posts.map((post) => ({
     title: post.title,
     link: `${baseUrl}/blog/${post.slug}`,
     pubDate: new Date(post.date).toUTCString(),
@@ -40,11 +40,9 @@ export const GET: RequestHandler = async () => {
   };
 
   const xml = builder.build(feed);
-
-  return {
-    body: xml,
+  return new Response(xml, {
     headers: {
       'Content-Type': 'text/xml'
     }
-  };
+  });
 };

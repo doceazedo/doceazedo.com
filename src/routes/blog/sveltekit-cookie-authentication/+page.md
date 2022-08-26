@@ -391,25 +391,9 @@ Agora que o usuário já pode realizar login e registro, é hora de criar uma p�
 <p class="file-title">src/routes/profile.svelte</p>
 
 ```svelte
-<script context="module">
-  export const load = ({ session }) => {
-    // Se não estiver logado, redirecionar
-    if (!session.user)
-      return {
-        status: 302,
-        redirect: '/login'
-      };
-
-    // Se estiver, repassar sessão como props
-    return {
-      props: {
-        session
-      }
-    };
-  };
-</script>
-
 <script>
+  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
   export let session;
 </script>
 
@@ -421,10 +405,6 @@ Você pode ainda deixar esse redirecionamento em um arquivo **\_\_layout.svelte*
 <p class="file-title">src/routes/dashboard/__layout.svelte</p>
 
 ```svelte
-<script context="module">
-  // A mesma verificação de cima...
-</script>
-
 <slot />
 ```
 
@@ -432,6 +412,8 @@ Você pode ainda deixar esse redirecionamento em um arquivo **\_\_layout.svelte*
 
 ```svelte
 <script>
+  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
   export let session;
 </script>
 
@@ -444,15 +426,9 @@ Alternativamente, você pode usar a mesma página para mostrar diferentes conte�
 <p class="file-title">src/routes/videos.svelte</p>
 
 ```svelte
-<script context="module">
-  export const load = ({ session }) => ({
-    props: {
-      session
-    }
-  });
-</script>
-
 <script>
+  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
   export let session;
 </script>
 

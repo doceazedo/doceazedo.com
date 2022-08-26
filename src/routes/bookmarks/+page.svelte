@@ -12,6 +12,9 @@
     items: BookmarkItem[];
   };
 
+  // FIXME: this is so fucking ugly, please revise.
+  const _ = (key: string) => (obj: Record<string, any>) => obj[key];
+
   const bookmarks: BookmarkCategory[] = [
     {
       title: 'devUtils',
@@ -133,7 +136,7 @@
 
 <div class="content">
   {#each bookmarks as category}
-    <h2>{$LANG.bookmarks[category.title]}</h2>
+    <h2>{_(category.title)($LANG.bookmarks)}</h2>
     <ul>
       {#each category.items as item}
         <li>

@@ -1,10 +1,10 @@
 <script lang="ts">
   import { LANG } from '$lib/stores';
   import { Metadata, PageTitle } from '$lib/components';
-  import meAtBeach from '../assets/img/me-beach.webp';
-  import tattoo1 from '../assets/img/tattoo-1.webp';
-  import tattoo2 from '../assets/img/tattoo-2.webp';
-  import tattoo3 from '../assets/img/tattoo-3.webp';
+  import meAtBeach from '../../assets/img/me-beach.webp';
+  import tattoo1 from '../../assets/img/tattoo-1.webp';
+  import tattoo2 from '../../assets/img/tattoo-2.webp';
+  import tattoo3 from '../../assets/img/tattoo-3.webp';
 </script>
 
 <Metadata title={$LANG.navbar.me} />

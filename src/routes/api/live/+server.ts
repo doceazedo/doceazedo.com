@@ -1,3 +1,4 @@
+import { json } from '@sveltejs/kit';
 import SpotifyWebApi from 'spotify-web-api-node';
 import 'dotenv/config';
 import type { RequestHandler } from '@sveltejs/kit';
@@ -20,18 +21,16 @@ const fetchNowPlaying = async () => {
 
   const currentlyPlaying = await spotifyApi.getMyCurrentPlayingTrack();
 
-  let nowPlaying = null;
   if (currentlyPlaying.body?.item) {
     const item = currentlyPlaying.body.item;
+    if (item.type != 'track') return null;
 
-    nowPlaying = {
+    return {
       title: item.name,
-      artist: item.artists[0].name,
+      artist: item.artists?.[0].name,
       cover: item.album.images[1].url
     };
   }
-
-  return nowPlaying;
 };
 
 const fetchIsLive = async () => {
@@ -39,7 +38,7 @@ const fetchIsLive = async () => {
     await fetch(`https://api.twitch.tv/helix/streams?user_login=${process.env.TWITCH_CHANNEL}`, {
       headers: {
         Authorization: `Bearer ${process.env.TWITCH_OAUTH_TOKEN}`,
-        'Client-Id': process.env.TWITCH_CLIENT_ID
+        'Client-Id': `${process.env.TWITCH_CLIENT_ID}`
       }
     })
   ).json();
@@ -50,10 +49,8 @@ const fetchIsLive = async () => {
 export const GET: RequestHandler = async () => {
   const [nowPlaying, isLive] = await Promise.all([fetchNowPlaying(), fetchIsLive()]);
 
-  return {
-    body: {
-      nowPlaying,
-      isLive
-    }
-  };
-}
+  return json({
+    nowPlaying,
+    isLive
+  });
+};
