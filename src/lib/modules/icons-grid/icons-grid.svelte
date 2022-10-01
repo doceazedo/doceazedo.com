@@ -3,7 +3,7 @@
   import { LANG } from '$lib/stores';
   import { IconsGrid } from '$lib/components/icons-grid';
   import { Toast } from '$lib/components/toast';
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import type { SimpleIcon } from 'simple-icons';
   import { onMount } from 'svelte';
 

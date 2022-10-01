@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { Container, SkipToContent } from '$lib/components';
   import { Footer, Navbar, TopbarDomainMigration } from '$lib/modules';
   import '../assets/sass/minireset.sass';

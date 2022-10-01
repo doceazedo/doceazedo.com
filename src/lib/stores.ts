@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { browser } from '$app/env';
+import { browser } from '$app/environment';
 import { en, pt } from '../lang';
 
 const updateAria = (code: string) => browser && document.documentElement.setAttribute('lang', code);

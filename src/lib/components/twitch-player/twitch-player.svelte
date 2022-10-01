@@ -2,7 +2,7 @@
   import dayjs from 'dayjs';
   import relativeTime from 'dayjs/plugin/relativeTime.js';
   import 'dayjs/locale/pt-br.js';
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { LANG } from '$lib/stores';
   import type { VOD } from '$lib/modules/twitch-player';
 

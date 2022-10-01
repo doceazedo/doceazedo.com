@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { Footer } from '$lib/components';
   import { LIVE_DATA } from '$lib/modules/live';
   import ElevatorAudio from '../../../assets/audio/Toby Fox - Hotel.mp3';

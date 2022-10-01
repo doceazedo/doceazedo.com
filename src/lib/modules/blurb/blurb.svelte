@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { Blurb, Button, ButtonIcon } from '$lib/components';
   import {
     GithubIcon,

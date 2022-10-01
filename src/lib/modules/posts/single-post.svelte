@@ -5,7 +5,7 @@
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { page } from '$app/stores';
   import { LANG } from '$lib/stores';
   import { Metadata } from '$lib/components';
