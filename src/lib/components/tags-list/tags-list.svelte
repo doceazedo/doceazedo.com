@@ -10,7 +10,8 @@
 
   const getTagsParams = (selected: string[], tag: string) => {
     const updatedTags = getUpdatedTags(selected, tag);
-    return updatedTags.map((x) => encodeURIComponent(x));
+    const tagsParams = updatedTags.map((x) => encodeURIComponent(x));
+    return tagsParams.length ? `/blog?tags=${tagsParams}` : '/blog';
   };
 </script>
 
@@ -19,7 +20,7 @@
     {#each tags as tag}
       <li>
         <Button
-          href="/blog?tags={getTagsParams(selected, tag)}"
+          href={getTagsParams(selected, tag)}
           outline={!selected.includes(tag)}
           small
         >
