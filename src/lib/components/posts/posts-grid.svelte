@@ -31,7 +31,7 @@
           </div>
         {/if}
         {#each post.tags as tag}
-          <a href="/blog/?category={tag}">#{tag}</a>
+          <a href="/blog?tags={tag}">#{tag}</a>
         {/each}
       </div>
     </a>
