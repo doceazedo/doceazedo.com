@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { flip } from 'svelte/animate';
+  import { fade } from 'svelte/transition';
   import { LANG } from '$lib/stores';
   import { PushpinIcon } from '$lib/components/icons';
   import { readableDate } from '$lib/utils';
@@ -12,8 +14,14 @@
 </script>
 
 <div class="articles" class:regular>
-  {#each posts as post}
-    <a href="/blog/{post.slug}" class="article" style="background-image:{background(post.slug)}">
+  {#each posts as post (post.slug)}
+    <a
+      href="/blog/{post.slug}"
+      class="article"
+      style="background-image:{background(post.slug)}"
+      in:fade
+      animate:flip={{ duration: 300 }}
+    >
       <h1 class="title">{post.title}</h1>
       <div class="date">{$LANG.posted} {readableDate(post.date, $LANG.code)}</div>
       <div class="tags">

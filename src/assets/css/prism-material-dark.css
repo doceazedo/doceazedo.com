@@ -1,5 +1,5 @@
-code[class*="language-"],
-pre[class*="language-"] {
+code[class*='language-'],
+pre[class*='language-'] {
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -20,37 +20,37 @@ pre[class*="language-"] {
   hyphens: none;
 }
 
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*='language-'] {
   white-space: normal;
   border-radius: 0.2em;
   padding: 0.1em;
 }
 
-pre[class*="language-"] {
+pre[class*='language-'] {
   position: relative;
   margin: 0.5em 0;
   padding: 1.25em 1em;
-  background-color: rgba(255, 255, 255, .1);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 1rem;
 }
 
-code[class*="language-"] {
+code[class*='language-'] {
   overflow-x: auto;
   display: block;
 }
 
-code[class*="language-"]::-webkit-scrollbar {
-  height: .5rem;
+code[class*='language-']::-webkit-scrollbar {
+  height: 0.5rem;
 }
 
-code[class*="language-"]::-webkit-scrollbar-track,
-code[class*="language-"]::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, .1);
+code[class*='language-']::-webkit-scrollbar-track,
+code[class*='language-']::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 25px;
 }
 
-code[class*="language-"]::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, .2);
+code[class*='language-']::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .language-css > code,
@@ -59,7 +59,7 @@ code[class*="language-"]::-webkit-scrollbar-thumb:hover {
   color: #fd9170;
 }
 
-[class*="language-"] .namespace {
+[class*='language-'] .namespace {
   opacity: 0.7;
 }
 

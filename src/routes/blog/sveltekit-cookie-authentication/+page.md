@@ -55,10 +55,10 @@ E como estamos usando o Mongoose, também será necessário criar um schema para
 import mongoose from 'mongoose';
 
 const schema = new mongoose.Schema({
-    name: String,
-    email: String,
-    password: String,
-    token: String
+  name: String,
+  email: String,
+  password: String,
+  token: String
 });
 
 export const UserModel = mongoose.models.Users || mongoose.model('Users', schema, 'Users');
@@ -90,16 +90,16 @@ let promise = null;
 let cached = null;
 
 export const connectDatabase = async () => {
-    if (cached) return cached;
-    if (!promise) {
-        promise = mongoose.connect(MONGODB_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-    }
-    const client = await promise;
-    cached = { client };
-    return cached;
+  if (cached) return cached;
+  if (!promise) {
+    promise = mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+  }
+  const client = await promise;
+  cached = { client };
+  return cached;
 };
 ```
 
@@ -111,12 +111,12 @@ Na mesma pasta, crie um arquivo de nome **set-cookie-headers.js**, que será res
 import * as cookie from 'cookie';
 
 export const setCookieHeaders = (token, days = 90) => ({
-    'Set-Cookie': cookie.serialize('token', token, {
-        httpOnly: true,
-        maxAge: 60 * 60 * 24 * days,
-        sameSite: 'strict',
-        path: '/'
-    })
+  'Set-Cookie': cookie.serialize('token', token, {
+    httpOnly: true,
+    maxAge: 60 * 60 * 24 * days,
+    sameSite: 'strict',
+    path: '/'
+  })
 });
 ```
 
@@ -146,32 +146,32 @@ import { connectDatabase } from '$lib/utils';
 import { UserModel } from '$lib/models';
 
 export const handle = async ({ event, resolve }) => {
-    // Primeiro de tudo, precisamos conectar ao banco de dados
-    await connectDatabase();
+  // Primeiro de tudo, precisamos conectar ao banco de dados
+  await connectDatabase();
 
-    // Depois, fazemos o parse dos cookies que vieram na requisição
-    // Se não tiver um cookie chamado "token", podemos retornar
-    const cookies = cookie.parse(event.request.headers.get('cookie') || '');
-    if (!cookies.token) return await resolve(event);
+  // Depois, fazemos o parse dos cookies que vieram na requisição
+  // Se não tiver um cookie chamado "token", podemos retornar
+  const cookies = cookie.parse(event.request.headers.get('cookie') || '');
+  if (!cookies.token) return await resolve(event);
 
-    // Agora vamos buscar o usuário pelo token, se encontrar,
-    // vamos salvar os dados que queremos expor PUBLICAMENTE
-    // em event.locals, para serem usados nas nossas páginas
-    const user = await UserModel.findOne({ token: cookies.token });
-    if (user)
-        event.locals.user = {
-            name: user.name,
-            email: user.email
-            // ...
-        };
+  // Agora vamos buscar o usuário pelo token, se encontrar,
+  // vamos salvar os dados que queremos expor PUBLICAMENTE
+  // em event.locals, para serem usados nas nossas páginas
+  const user = await UserModel.findOne({ token: cookies.token });
+  if (user)
+    event.locals.user = {
+      name: user.name,
+      email: user.email
+      // ...
+    };
 
-    // Por fim, retornamos o resolve(event)
-    return await resolve(event);
+  // Por fim, retornamos o resolve(event)
+  return await resolve(event);
 };
 
 // Aqui precisamos apenas retornar os dados do usuário
 export const getSession = async (event) => ({
-    user: event.locals.user || null
+  user: event.locals.user || null
 });
 ```
 
@@ -181,18 +181,18 @@ Se você estiver usando TypeScript, sua IDE deve estar dizendo que as propriedad
 
 ```ts
 interface User {
-    name: string;
-    email: string;
+  name: string;
+  email: string;
 }
 
 declare namespace App {
-    interface Locals {
-        user: User;
-    }
+  interface Locals {
+    user: User;
+  }
 
-    interface Session {
-        user: User;
-    }
+  interface Session {
+    user: User;
+  }
 }
 ```
 
@@ -212,43 +212,43 @@ import { connectDatabase, setCookieHeaders } from '$lib/utils';
 import { UserModel } from '$lib/models';
 
 export const POST = async ({ request }) => {
-    await connectDatabase();
+  await connectDatabase();
 
-    // Primeiro, fazemos o parse do corpo da requisição
-    const body = await request.json();
+  // Primeiro, fazemos o parse do corpo da requisição
+  const body = await request.json();
 
-    // Agora, buscamos um usuário com o e-mail informado
-    // Se já existir um, retornamos uma mensagem de erro
-    const user = await UserModel.findOne({ email: body.email });
-    if (user)
-        return {
-            status: 409,
-            body: {
-                message: 'Esse e-mail já está cadastrado'
-            }
-        };
-
-    // Vamos gerar um novo UUID que servirá de token de sessão
-    const token = uuidv4();
-
-    // Agora podemos registrar um novo usuário, já com o token
-    await UserModel.create({
-        name: body.name,
-        email: body.email,
-        password: sha256(body.password).toString(),
-        token
-    });
-
-    // Usamos nossa função utilitária para definir os cookies
-    const headers = setCookieHeaders(token);
-
-    // Por fim, retornamos a sessão e uma mensagem de sucesso
+  // Agora, buscamos um usuário com o e-mail informado
+  // Se já existir um, retornamos uma mensagem de erro
+  const user = await UserModel.findOne({ email: body.email });
+  if (user)
     return {
-        headers,
-        body: {
-            message: 'Registrado com sucesso'
-        }
+      status: 409,
+      body: {
+        message: 'Esse e-mail já está cadastrado'
+      }
     };
+
+  // Vamos gerar um novo UUID que servirá de token de sessão
+  const token = uuidv4();
+
+  // Agora podemos registrar um novo usuário, já com o token
+  await UserModel.create({
+    name: body.name,
+    email: body.email,
+    password: sha256(body.password).toString(),
+    token
+  });
+
+  // Usamos nossa função utilitária para definir os cookies
+  const headers = setCookieHeaders(token);
+
+  // Por fim, retornamos a sessão e uma mensagem de sucesso
+  return {
+    headers,
+    body: {
+      message: 'Registrado com sucesso'
+    }
+  };
 };
 ```
 
@@ -261,35 +261,35 @@ import { connectDatabase, setCookieHeaders } from '$lib/utils';
 import { UserModel } from '$lib/models';
 
 export const POST = async ({ request }) => {
-    await connectDatabase();
-    const body = await request.json();
+  await connectDatabase();
+  const body = await request.json();
 
-    // Vamos buscar um usuário com o e-mail informado
-    const user = await UserModel.findOne({ email: body.email });
+  // Vamos buscar um usuário com o e-mail informado
+  const user = await UserModel.findOne({ email: body.email });
 
-    // Se não houver ou se a senha for diferente, retornamos
-    // uma mensagem de erro
-    if (!user || user.password !== sha256(body.password).toString()) {
-        return {
-            status: 400,
-            body: {
-                message: 'E-mail e/ou senha inválidos'
-            }
-        };
-    }
-
-    // Vamos gerar um novo token, guardamos e definimos os cookies
-    const token = uuidv4();
-    await UserModel.updateOne({ email: body.email }, { token });
-    const headers = setCookieHeaders(token);
-
-    // Por fim, retornamos tudo com uma mensagem de sucesso
+  // Se não houver ou se a senha for diferente, retornamos
+  // uma mensagem de erro
+  if (!user || user.password !== sha256(body.password).toString()) {
     return {
-        headers,
-        body: {
-            message: 'Logado com sucesso'
-        }
+      status: 400,
+      body: {
+        message: 'E-mail e/ou senha inválidos'
+      }
     };
+  }
+
+  // Vamos gerar um novo token, guardamos e definimos os cookies
+  const token = uuidv4();
+  await UserModel.updateOne({ email: body.email }, { token });
+  const headers = setCookieHeaders(token);
+
+  // Por fim, retornamos tudo com uma mensagem de sucesso
+  return {
+    headers,
+    body: {
+      message: 'Logado com sucesso'
+    }
+  };
 };
 ```
 

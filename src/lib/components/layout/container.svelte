@@ -3,7 +3,9 @@
   import { quintOut } from 'svelte/easing';
   import { navigating } from '$app/stores';
 
-  $: changed = $navigating?.from != $navigating?.to;
+  $: changed =
+    `${$navigating?.from?.url?.host}${$navigating?.from?.url?.pathname}` !=
+    `${$navigating?.to?.url?.host}${$navigating?.to?.url?.pathname}`;
 </script>
 
 {#key changed}
