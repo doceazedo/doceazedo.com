@@ -1,25 +1,22 @@
 <script lang="ts">
   import { slide, scale } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
+  import { page } from '$app/stores';
   import { CloseIcon } from '$lib/components/icons';
-
-  let show = true;
 </script>
 
-{#if show}
-  <div class="topbar" out:slide={{ duration: 300, easing: quintOut }}>
-    <div class="topbar-content">
-      <slot />
-    </div>
-    <button
-      class="topbar-close"
-      on:click={() => (show = false)}
-      out:scale={{ duration: 200, opacity: 0, start: 0.25, easing: quintOut }}
-    >
-      <CloseIcon />
-    </button>
+<div class="topbar" out:slide={{ duration: 300, easing: quintOut }}>
+  <div class="topbar-content">
+    <slot />
   </div>
-{/if}
+  <a
+    href={$page.url.pathname}
+    class="topbar-close"
+    out:scale={{ duration: 200, opacity: 0, start: 0.25, easing: quintOut }}
+  >
+    <CloseIcon />
+  </a>
+</div>
 
 <style lang="sass">
   @import '../../../assets/sass/vars.sass'
