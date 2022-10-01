@@ -9,11 +9,12 @@
     showTags = false;
 
   $: selectedTags =
-    browser &&
-    $page.url.searchParams
-      ?.get('tags')
-      ?.split(',')
-      ?.filter((x) => !!x) || [];
+    (browser &&
+      $page.url.searchParams
+        ?.get('tags')
+        ?.split(',')
+        ?.filter((x) => !!x)) ||
+    [];
 
   $: tags = [...new Set(posts.map((x) => x.tags).flat())].sort((a, b) => a.localeCompare(b));
 
