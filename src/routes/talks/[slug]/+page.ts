@@ -13,4 +13,4 @@ export const load: PageLoad = ({ params }) => {
   };
 };
 
-export const prerender = true;
+export const prerender = 'auto';

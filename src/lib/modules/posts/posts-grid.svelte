@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import { browser } from '$app/environment';
   import { PostsGrid, TagsList } from '$lib/components';
   import type { Post } from '.';
 
@@ -8,10 +9,11 @@
     showTags = false;
 
   $: selectedTags =
+    browser &&
     $page.url.searchParams
-      .get('tags')
+      ?.get('tags')
       ?.split(',')
-      .filter((x) => !!x) || [];
+      ?.filter((x) => !!x) || [];
 
   $: tags = [...new Set(posts.map((x) => x.tags).flat())].sort((a, b) => a.localeCompare(b));
 
