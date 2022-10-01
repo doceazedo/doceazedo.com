@@ -50,7 +50,11 @@
     <p title={fullDate}>{$LANG.posted} {readableDate}</p>
     <ul>
       {#each tags as tag}
-        <li><span>#</span>{tag}</li>
+        <li>
+          <a href="/blog?tags={encodeURIComponent(tag)}">
+            <span>#</span>{tag}
+          </a>
+        </li>
       {/each}
     </ul>
   </div>
@@ -124,13 +128,16 @@
       margin-top: 1rem
 
       li
-        padding: .375rem .5rem
         border-radius: .25rem
         background-color: $primary
         box-shadow: 0 0 .5rem .25rem rgba($primary, .25)
 
         &:not(:last-child)
           margin-right: .5rem
+
+        a
+          display: flex
+          padding: .375rem .5rem
 
         span
           opacity: .75
