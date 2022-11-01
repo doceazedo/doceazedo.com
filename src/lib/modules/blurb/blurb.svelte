@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from '$app/environment';
+  import { browser, dev } from '$app/environment';
   import { Blurb, Button, ButtonIcon } from '$lib/components';
   import {
     GithubIcon,
@@ -10,6 +10,7 @@
   } from '$lib/components/icons';
   import { LANG } from '$lib/stores';
   import image from '../../../assets/img/selfie.webp';
+  import imageRedacted from '../../../assets/img/selfie-redacted.webp';
   import customCursorImage from '../../../assets/img/pat.gif';
   import doceAudio from '../../../assets/audio/doce.mp3';
 
@@ -52,7 +53,7 @@
 <Blurb
   title={$LANG.blurb.title}
   paragraph={$LANG.blurb.paragraph}
-  {image}
+  image={dev ? imageRedacted : image}
   bind:customCursorEl
   {customCursorImage}
   showAudioButton={$LANG.code == 'en'}
