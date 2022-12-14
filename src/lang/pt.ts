@@ -193,6 +193,36 @@ export const pt: Language = {
           m: '🧢 Masculina'
         }
       }
+    },
+    prime: {
+      title: 'Seja sub Prime',
+      paragraph: 'Como ser sub gratuitamente no meu canal da Twitch com Prime',
+      steps: [
+        {
+          title: 'Assine o teste grátis do Prime',
+          description:
+            '<a href="%prime_link%" target="_blank">Clique aqui</a> para acessar a página do Prime Gaming e clique em "Experimente o Prime".'
+        },
+        {
+          title: 'Acesse sua conta Amazon',
+          description: 'Se já tiver uma conta Amazon, faça login. Caso contrário, crie uma nova.'
+        },
+        {
+          title: 'Clique para se inscrever',
+          description:
+            '<a href="%channel_link%" target="_blank">Acesse o meu canal</a> e clique em "Inscrição".'
+        },
+        {
+          title: 'Inscreva-se gratuitamente',
+          description:
+            'Selecione a opção "Usar inscrição com Prime" e em seguida clique em "Inscreva-se com o Prime".'
+        },
+        {
+          title: 'Junte-se ao Discord',
+          description:
+            'Conecte sua conta da Twitch no Discord e <a href="%discord_link%" target="_blank">faça parte do QG</a> para ganhar um cargo e emotes exclusivos.'
+        }
+      ]
     }
   },
 

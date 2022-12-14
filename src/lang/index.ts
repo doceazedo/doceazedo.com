@@ -130,6 +130,14 @@ export type Language = {
         };
       };
     };
+    prime: {
+      title: string;
+      paragraph: string;
+      steps: {
+        title: string;
+        description: string;
+      }[];
+    };
   };
 
   email: string;

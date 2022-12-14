@@ -19,4 +19,5 @@ export * from './text';
 export * from './toast';
 export * from './topbar';
 export * from './tts';
+export * from './tutorial-steps';
 export * from './twitch-player';

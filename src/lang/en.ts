@@ -192,6 +192,11 @@ export const en: Language = {
           m: '🧢 Masculine'
         }
       }
+    },
+    prime: {
+      title: 'Seja sub Prime',
+      paragraph: 'Como ser sub gratuitamente no meu canal da Twitch com Prime',
+      steps: []
     }
   },
 
