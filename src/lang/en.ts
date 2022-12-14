@@ -194,9 +194,35 @@ export const en: Language = {
       }
     },
     prime: {
-      title: 'Seja sub Prime',
-      paragraph: 'Como ser sub gratuitamente no meu canal da Twitch com Prime',
-      steps: []
+      title: 'Free sub with Prime',
+      paragraph: 'How to get a free subscription on my Twitch channel with Prime',
+      steps: [
+        {
+          title: 'Subscribe for Prime free trial',
+          description:
+            '<a href="%prime_link%" target="_blank">Click here</a> to access the Prime Gaming landing page and click "Try Prime".'
+        },
+        {
+          title: 'Login with your Amazon account',
+          description:
+            'If you already have an Amazon account, sign in. Otherwise, create a new one.'
+        },
+        {
+          title: 'Click the subscribe button',
+          description:
+            '<a href="%channel_link%" target="_blank">Go to my channel</a> and click on "Subscribe".'
+        },
+        {
+          title: 'Subscribe for free',
+          description:
+            'Check the option "Use Prime subscription" and then click on "Subscribe with Prime".'
+        },
+        {
+          title: 'Join our Discord server',
+          description:
+            'Connect your Twitch account with Discord, <a href="%discord_link%" target="_blank">join the HQ</a> and get a exclusive role and emotes.'
+        }
+      ]
     }
   },
 
