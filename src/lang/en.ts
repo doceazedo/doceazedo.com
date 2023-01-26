@@ -15,7 +15,7 @@ export const en: Language = {
   blurb: {
     title: "Howdy, I'm Doce!",
     paragraph:
-      "I'm DoceAzedo, a 19 years old curiosity-driven developer, Svelte evangelist, arch-enemy of the zeros and ones (he/they) and live coder."
+      "I'm DoceAzedo, a %s years old curiosity-driven developer, Svelte evangelist, arch-enemy of the zeros and ones (he/they) and live coder."
   },
 
   skills: {
@@ -29,7 +29,7 @@ export const en: Language = {
   blog: {
     title: "See what I've written lately",
     subtitle:
-      'A bunch of texts about technology and programming, mixed with me talking about music, personal experiences and other nerdy nonsense. Basically my Twitter but, in fact, mine and without the "micro" part of the microblog.',
+      'A bunch of texts about technology and programming, mixed with me talking about music, personal experiences and other nerdy nonsense.',
     more: 'View all'
   },
 

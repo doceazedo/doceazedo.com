@@ -47,12 +47,21 @@
   const audio = browser && new Audio(doceAudio);
   const onClickAudioButton = () => audio.play();
 
+  const getAge = (birthday: Date) => {
+    const today = new Date();
+    const month = today.getMonth() - birthday.getMonth();
+    let age = today.getFullYear() - birthday.getFullYear();
+    if (month < 0 || (month == 0 && today.getDate() < birthday.getDate())) age--;
+    return age;
+  };
+  const age = getAge(new Date('2003-01-21'));
+
   if (browser) window.addEventListener('mousemove', (event) => positionCursor(event));
 </script>
 
 <Blurb
   title={$LANG.blurb.title}
-  paragraph={$LANG.blurb.paragraph}
+  paragraph={$LANG.blurb.paragraph.replace('%s', age.toString())}
   image={dev ? imageRedacted : image}
   bind:customCursorEl
   {customCursorImage}

@@ -15,7 +15,7 @@ export const pt: Language = {
   blurb: {
     title: 'Oiee, eu sou o Doce!',
     paragraph:
-      'Eu sou o DoceAzedo, tenho 19 anos e sou um dev movido à curiosidade, evangelista de Svelte, arqui-inimigo dos zeros e uns (ele/delu) e live coder.'
+      'Eu sou o DoceAzedo, tenho %s anos e sou um dev movido à curiosidade, evangelista de Svelte, arqui-inimigo dos zeros e uns (ele/delu) e live coder.'
   },
 
   skills: {
@@ -31,7 +31,7 @@ export const pt: Language = {
   blog: {
     title: 'As últimas coisas que eu escrevi',
     subtitle:
-      'Um amontoado de textos sobre tecnologia e programação, misturados com conversa fiada sobre música, vivências pessoais e outras besteiras. Basicamente meu Twitter só que, de fato, meu e sem a parte "micro" do microblog.',
+      'Um amontoado de textos sobre tecnologia e programação, misturados com conversa fiada sobre música, vivências pessoais e outras besteiras.',
     more: 'Ver mais'
   },
 
