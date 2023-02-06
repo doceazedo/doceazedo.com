@@ -152,6 +152,10 @@
 </div>
 
 <style lang="sass">
+  ul
+    :global(span)
+      color: #fff
+
   .wrap-up
     display: flex
     flex-direction: column
