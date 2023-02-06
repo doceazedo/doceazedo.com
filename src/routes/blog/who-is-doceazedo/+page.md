@@ -10,9 +10,9 @@ O pseudônimo DoceAzedo foi criado em 1º de junho de 2020 visando separar minha
 
 Eu criei esse apelido, exatos três dias depois do lançamento do álbum "Chromatica", traduzindo o título da faixa "Sour Candy" para "DoceAzedo". Você ainda vai encontrar o sufixo "911", outra faixa desse mesmo álbum, nas redes sociais em que esse nome por si só não estava disponível.
 
-<p class="showcase">
-	<iframe style="border-radius:12px;flex-grow:1" src="https://open.spotify.com/embed/track/6R6ZoHTypt5lt68MWbzZXv?utm_source=generator" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-	<iframe style="border-radius:12px;flex-grow:1" src="https://open.spotify.com/embed/track/6qI0MU175Dk2DeoUjlrOpy?utm_source=generator" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<p class="showcase is-spotify">
+	<iframe src="https://open.spotify.com/embed/track/6R6ZoHTypt5lt68MWbzZXv?utm_source=generator" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+	<iframe src="https://open.spotify.com/embed/track/6qI0MU175Dk2DeoUjlrOpy?utm_source=generator" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 </p>
 
 O que acontece é que desde então minha presença online passou a representar mais minhas livestreams e meus projetos open-source do que meus antigos projetos de cunho duvidoso, já abandonados a esse ponto. Enquanto isso, o nome "Lucas Fernandes" ficou mais atrelado a minha carreira profissional.
