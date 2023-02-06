@@ -9,8 +9,8 @@
     TwitterIcon
   } from '$lib/components/icons';
   import { LANG } from '$lib/stores';
-  import image from '../../../assets/img/selfie.webp';
-  import imageRedacted from '../../../assets/img/selfie-redacted.webp';
+  import image from '../../../assets/img/me-chinese-new-year.webp';
+  import imageRedacted from '../../../assets/img/me-redacted.webp';
   import customCursorImage from '../../../assets/img/pat.gif';
   import doceAudio from '../../../assets/audio/doce.mp3';
 
@@ -36,12 +36,12 @@
   ];
 
   let customCursorEl: HTMLImageElement;
-  const customCursorHalfSize = 112 / 2;
+  const customCursorSize = 24;
 
   const positionCursor = (event: MouseEvent) => {
     if (customCursorEl == null) return;
-    customCursorEl.style.top = event.clientY - customCursorHalfSize + 'px';
-    customCursorEl.style.left = event.clientX - customCursorHalfSize + 'px';
+    customCursorEl.style.top = event.clientY - customCursorSize + 'px';
+    customCursorEl.style.left = event.clientX - customCursorSize + 'px';
   };
 
   const audio = browser && new Audio(doceAudio);

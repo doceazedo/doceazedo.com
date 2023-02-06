@@ -119,10 +119,10 @@
 
       .pat-area
         position: absolute
-        top: 0
-        left: 120px
-        width: 130px
-        height: 90px
+        top: 80px
+        left: 130px
+        width: 40px
+        height: 25px
         z-index: 10
 
         &.is-active
@@ -131,6 +131,8 @@
       .pat-cursor
         position: fixed
         display: none
+        width: 3rem
+        height: 3rem
         pointer-events: none
         z-index: 10
 
