@@ -1,7 +1,7 @@
 ---
 title: 'Old school: usando o WordPress como um headless CMS'
 description: 'Veja como eu usei e aprenda também como usar a API REST do WordPress para criar um blog'
-date: '2022-01-11 18:10 GMT-3'
+date: '2022-01-11 18:10'
 tags: ['wordpress', 'meta']
 icon: 'wordpress'
 ---

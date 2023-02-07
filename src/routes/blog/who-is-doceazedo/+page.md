@@ -1,7 +1,7 @@
 ---
 title: 'Afinal, who the f*ck is DoceAzedo?'
 description: 'Um textinho que escrevi sobre minha própria identidade'
-date: '2022-07-19 22:57 GMT-3'
+date: '2022-07-19 22:57'
 tags: ['pessoal', 'lgbtqia+']
 icon: 'raising-hand-emoji'
 ---

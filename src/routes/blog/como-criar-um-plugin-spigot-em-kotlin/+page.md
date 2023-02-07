@@ -1,7 +1,7 @@
 ---
 title: 'Como criar um plugin Spigot em Kotlin'
 description: 'Aprenda a como criar o projeto de um plugin Spigot usando Kotlin'
-date: '2021-12-15 13:19 GMT-3'
+date: '2021-12-15 13:19'
 tags: ['kotlin', 'minecraft', 'spigot']
 icon: 'kotlin'
 ---
