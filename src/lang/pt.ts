@@ -36,58 +36,158 @@ export const pt: Language = {
   },
 
   about: {
-    subtitle: 'Dev movido a curiosidade, evangelista de Svelte e streamer de live coding',
-    intro:
-      'Oi, eu me chamo Lucas. Eu sou um desenvolvedor frontend morando em Pedro Leopoldo, na região metropolitana de Belo Horizonte em Minas Gerais. Nesse site eu reúno alguns dos meus trabalhos e pedaços de conhecimento que eu gostaria de compartilhar com o mundo.',
-    factsIntro:
-      'Se você está nessa página talvez você ache legal algum desses fatos aleatórios sobre mim:',
-    facts: [
-      'Minha série preferida de todos os tempos é Sense8',
-      'Jogos Vorazes é minha trilogia preferida de livros',
-      'Apesar de novo, eu usei bastante Orkut, MSN, eMule e afins',
-      'Eu fiz meu primeiro endereço de e-mail aos 5 anos de idade',
-      'Minha mãe diz que eu aprendi a ler no computador pra conseguir usar sozinho',
-      'Na época que eu jogava Habbo, eu participei como locutor e jornalista de múltiplos fã-sites do jogo',
-      'Eu já abri alguns servidores públicos de Minecraft na vida, <a href="https://youtube.com/results?q=&quot;servidor+sem+nome&quot;" target="_blank">o último</a> foi em 2020 e fechou em 2021',
-      'Na escola, eu gostava mais de escrever, desenhar e enfeitar títulos do que qualquer matéria específica',
-      'Eu gosto muito de tatuagens e tenho três no momento:'
-    ],
-    tattoosTitle: 'Minhas tatuagens',
-    tattoos: [
-      'A tattoo da primeira imagem foi a primeira que eu fiz, em agosto de 2020. É o Homem de Lata protagonista do clipe da música <a href="https://www.youtube.com/watch?v=DP3j6hgS4VY" target="_blank">Na Sua Estante</a> da Pitty. É uma música que eu gosto desde pequeno e minha conexão com ela aumenta a cada vez que eu escuto.',
-      'A segunda é uma planta carnívora, em referência à música <a href="https://song.link/br/i/1562845907" target="_blank">Venus Fly Trap</a> (do inglês, "planta carnívora"), da MARINA. Eu tinha vontade de tatuar algo que fizesse alusão às músicas dela desde que eu ouvi o álbum <a href="https://album.link/br/i/612448612" target="_blank">Electra Heart</a> pela primeira vez. Com o lançamento do impecável <a href="https://album.link/br/i/1562845738" target="_blank">Ancient Dreams in a Modern Land</a> agora em 2021, eu me senti inspirado a finalmente eternizar uma obra de arte dela no meu corpo.',
-      'A minha mais recente, que eu fiz junto da anterior é o Napstablook, personagem do jogo indie Undertale, um dos poucos jogos que cativaram meu interesse. Ele é um fantasma músico e melancólico que, ao julgar pelas minhas outras tatuagens, fica perceptível minha identificação com ele.'
-    ],
-    keepInTouchTitle: 'Bora trocar uma ideia?',
-    socialsIntro:
-      'Eu não sou a pessoa mais conectada nas redes sociais do mundo, mas você pode me encontrar facilmente em uma dessas plataformas (por ordem decrescente de atividade):',
-    socials: [
-      'DoceAzedo#0911 no <a href="https://discord.com/users/241978119899185165" target="blank">Discord</a>',
-      '@doceazedo911 no <a href="https://twitter.com/doceazedo911" target="blank">Twitter</a>',
-      '@eightavocados no <a href="https://t.me/eightavocados" target="blank">Telegram</a>',
-      '@doceazedo911 no <a href="https://instagram.com/doceazedo911" target="blank">Instagram</a>'
-    ],
-    livestream:
-      'Eu também estou ao vivo na <a href="https://twitch.com/doceazedo911" target="blank">Twitch</a> de Terça à Quinta à partir das 19h30 programando ao vivo e conversando com as pessoas incríveis que aparecem por lá.',
-    nickname:
-      '"Que nome de usuário é esse, <i>doceazedo911</i>?" — pergunta que você provavelmente não fez. Mas respondendo mesmo assim, esse é o nick que eu uso por aí na internet desde que a Lady Gaga lançou o álbum <a href="https://album.link/br/i/1500951604" target="_blank">Chromatica</a> em maio de 2020 e eu venho juntando as músicas <a href="https://song.link/br/i/1500952438" target="_blank">Sour Candy</a> (do inglês, "doce azedo") e <a href="https://song.link/br/i/1500952435" target="_blank">911</a> desde então.',
-    hardwareTitle: 'Meu equipamento',
-    hardware: [
-      'Processador: <span>AMD Ryzen 3600X</span>',
-      'Placa-mãe: <span>Gigabyte B450M DS3H</span>',
-      'Memória: <span>24GB (3x8) Crucial Ballistix Sport LT 3000MHz</span>',
-      'Placa de vídeo: <span>EVGA GTX 1660</span>',
-      'Armazenamento: <span>2TB NVMe (Crucial) + 480GB SATA (Crucial) + 500GB HDD (WD)</span>',
-      'Gabinete: <span>Corsair Carbide Series SPEC-DELTA RGB</span>',
-      'Monitores: <span>Samsung 24" 75hz 1ms + AOC 18.5"</span>',
-      'Teclado: <span>Logitech G512 (GX Brown)</span>',
-      'Mouse: <span>Redragon Cobra</span> <small>(Valorant: sensibilidade 0.45 e 800 DPI)</small>',
-      'Mesa digitalizadora: <span>Wacom CTL472</span> <small>(osu: full area, modo janela 1366x768 em monitor 1920x1080)</small>',
-      'Headset: <span>Logitech Prodigy G733</span>',
-      'Microfone: <span>HyperX QuadCast</span>',
-      'Earbuds: <span>Galaxy Buds+</span>',
-      'Webcam: <span>Logitech C922 Pro</span>'
-    ]
+    tldr: {
+      online: {
+        key: 'Online',
+        value: 'DoceAzedo'
+      },
+      legally: {
+        key: 'Legalmente',
+        value: 'Lucas Fernandes'
+      },
+      physically: {
+        key: 'Fisicamente',
+        value: 'São Paulo, Brasil'
+      },
+      professionally: {
+        key: 'Profisionalmente',
+        value: 'Fullstack Developer @ %s'
+      },
+      casually: {
+        key: 'Casualmente',
+        value: 'Live coding, hyperpop, emojis'
+      },
+      pronouns: {
+        key: 'Pronomes',
+        value: 'ele/dele ou elu/delu'
+      }
+    },
+    contact:
+      'Você pode entrar em contato comigo pelo e-mail %email% ou me mandar uma DM no %twitter% ou no %discord%. Eu adoro conhecer gente nova!',
+    me: {
+      title: 'Oi, muito prazer!',
+      intro:
+        'Pode me chamar de Doce, eu sou um programador fullstack com foco em frontend atualmente morando na cidade de São Paulo, Brasil. Esse site é o lugarzinho em que eu falo sobre mim e sobre as coisas que eu gosto, e espero que você encontre algo legal ou útil por aqui.',
+      interests:
+        'Eu sou uma pessoa não-binária — meus pronomes são <b>ele/dele</b> ou <b>elu/delu</b> — que adora programar (e dou muito valor para um bom DX), gosto de fazer lives na %twitch% enquanto desenvolvo meus projetos pessoais, também gosto de tudo relacionado a emojis e Unicode e não perco a oportunidade de evagelizar a palavra do %svelte%.',
+      music:
+        'Além disso, eu gosto muito de ouvir música. Eu sou o tipo de pessoa que ama parar para ouvir um álbum inteiro sem interrupções. Meus gêneros preferidos são pop, k-pop e hyperpop, especialmente a cena brasileira. Você pode ver mais sobre meus gostos musicais no meu %s.'
+    },
+    trivia: {
+      title: 'Fatos aleatórios',
+      items: [
+        'Meu primeiro contato com programação foi por volta dos 12 anos com Visual Basic',
+        'Eu amo a trilogia de Jogos Vorazes e coleciono os quatro livros da série',
+        'Eu acredito fortemente que existe um limbo entre as gerações de 1998 até 2003',
+        'Na época que eu jogava Habbo, eu participei como locutor e jornalista de vários fã-sites',
+        'Apesar de não me considerar <i>gamer</i>, eu sou fissurado por tudo sobre Portal, Valve e Facepunch',
+        'Além disso eu também jogo Fortnite, Valorant e Beat Saber ocasionalmente',
+        'Eu tenho interesse na cena de cheating em jogos e a eterna luta entre hackers e anticheats'
+      ]
+    },
+    software: {
+      title: 'Meus programas',
+      items: {
+        stack: {
+          key: 'Stack',
+          value: 'Esse site foi feito com %framework% e hospedado na %host%'
+        },
+        ide: {
+          key: 'IDE',
+          value: '%main_ide% com o tema %main_theme% (e %kotlin_ide%)'
+        },
+        terminal: {
+          key: 'Terminal',
+          value: '%s'
+        },
+        notes: {
+          key: 'Anotações',
+          value: '%s'
+        },
+        music: {
+          key: 'Música',
+          value: '%s'
+        }
+      },
+      bookmarks: {
+        paragraph:
+          'Eu também compilei alguns dos meus sites aleatórios e ferramentas preferidas %s.',
+        linkLabel: 'nessa página'
+      }
+    },
+    hardware: {
+      title: 'Meu equipamento',
+      items: {
+        devPc: {
+          key: 'Programação',
+          value: 'M1 MacBook Pro 14" 2021'
+        },
+        gamingPc: {
+          title: 'Jogatina',
+          items: [
+            {
+              key: 'CPU',
+              value: 'AMD Ryzen 3600X'
+            },
+            {
+              key: 'Placa-mãe',
+              value: 'Gigabyte B450M DS3H'
+            },
+            {
+              key: 'RAM',
+              value: '24GB (3x8) Crucial Ballistix 3000MHz'
+            },
+            {
+              key: 'GPU',
+              value: 'EVGA GTX 1660'
+            },
+            {
+              key: 'Fonte',
+              value: 'Corsair CV650'
+            },
+            {
+              key: 'Armazenamento',
+              value: '2TB NVMe + 480GB SATA + 500GB HDD'
+            },
+            {
+              key: 'Gabinete',
+              value: 'Corsair Spec Delta RGB'
+            }
+          ]
+        },
+        peripherals: [
+          {
+            key: 'Monitor',
+            value: 'Samsung UR550 28" 4K'
+          },
+          {
+            key: 'Teclado',
+            value: 'Logitech G512 (GX Brown)'
+          },
+          {
+            key: 'Mouse',
+            value: 'Redragon Cobra'
+          },
+          {
+            key: 'Mesa digitalizadora',
+            value: 'Wacom CTL472'
+          },
+          {
+            key: 'Headset',
+            value: 'AirPods Max'
+          },
+          {
+            key: 'Microfone',
+            value: 'HyperX QuadCast'
+          },
+          {
+            key: 'Webcam',
+            value: 'Logitech C922 Pro (PC) / Built-in (Mac)'
+          }
+        ]
+      }
+    },
+    wrapup: 'Tem alguma dúvida ou quer trocar uma ideia? É só chamar!'
   },
 
   talks: {

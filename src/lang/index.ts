@@ -29,19 +29,51 @@ export type Language = {
   footer: string[];
 
   about: {
-    subtitle: string;
-    intro: string;
-    factsIntro: string;
-    facts: string[];
-    tattoosTitle: string;
-    tattoos: string[];
-    keepInTouchTitle: string;
-    socialsIntro: string;
-    socials: string[];
-    livestream: string;
-    nickname: string;
-    hardwareTitle: string;
-    hardware: string[];
+    tldr: {
+      online: KeyValue;
+      legally: KeyValue;
+      physically: KeyValue;
+      professionally: KeyValue;
+      casually: KeyValue;
+      pronouns: KeyValue;
+    };
+    contact: string;
+    me: {
+      title: string;
+      intro: string;
+      interests: string;
+      music: string;
+    };
+    trivia: {
+      title: string;
+      items: string[];
+    };
+    software: {
+      title: string;
+      items: {
+        stack: KeyValue;
+        ide: KeyValue;
+        terminal: KeyValue;
+        notes: KeyValue;
+        music: KeyValue;
+      };
+      bookmarks: {
+        paragraph: string;
+        linkLabel: string;
+      };
+    };
+    hardware: {
+      title: string;
+      items: {
+        devPc: KeyValue;
+        gamingPc: {
+          title: string;
+          items: KeyValue[];
+        };
+        peripherals: KeyValue[];
+      };
+    };
+    wrapup: string;
   };
 
   talks: {
@@ -164,6 +196,11 @@ export type Language = {
     highlight: string;
     readMore: string;
   };
+};
+
+type KeyValue = {
+  key: string;
+  value: string;
 };
 
 export * from './en';
