@@ -15,7 +15,7 @@ export const TALKS = writable<Talk[]>([
     slug: 'plugin-minecraft-futebol-kotlin',
     date: new Date('09 Jul 2022'),
     promoter: promoters.kotlinautas,
-    replay: 'https://www.twitch.tv/videos/1526981591?t=2h10m11s',
+    replay: 'https://twitch.tv/videos/1537950001',
     resources: [
       {
         link: {

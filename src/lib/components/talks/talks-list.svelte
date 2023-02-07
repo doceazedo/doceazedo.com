@@ -17,7 +17,7 @@
           class="preview"
           style="background-image:url(/img/talks/thumbnails/{talk.slug}.jpg)"
         />
-        <a class="promoter" href={talk.promoter.url} target="_blank">
+        <a class="promoter" href={talk.promoter.url} target="_blank" rel="noreferrer">
           <figure style="background-image:url(/img/talks/promoters/{talk.promoter.slug}.jpg)" />
         </a>
       </div>
@@ -45,14 +45,6 @@
     display: flex
     gap: 1.75rem
     border-radius: .5rem
-    transition: all .2s ease
-
-    &:hover
-      background-color: rgba(#fff, .1)
-      box-shadow: 0 0 0 1rem rgba(#fff, .1)
-
-      .thumbnail .promoter
-        border-color: #201c2a
 
     .thumbnail
       position: relative
