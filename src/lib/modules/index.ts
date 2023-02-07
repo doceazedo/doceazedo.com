@@ -1,4 +1,3 @@
-export * from './blurb';
 export * from './footer';
 export * from './icons-grid';
 export * from './navbar';
