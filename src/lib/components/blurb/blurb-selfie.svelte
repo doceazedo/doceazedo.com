@@ -5,7 +5,7 @@
   import selfieRedacted from '../../../assets/img/me-redacted.webp';
   import customCursorImage from '../../../assets/img/pat.gif';
 
-  const selfieSrc = dev ? selfie : selfieRedacted;
+  const selfieSrc = dev ? selfieRedacted : selfie;
 
   let customCursorEl: HTMLImageElement;
   const customCursorSize = 24;
