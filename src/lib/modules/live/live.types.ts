@@ -1,8 +1,10 @@
 export type LiveResponse = {
-  nowPlaying: {
-    title: string;
-    artist: string;
-    cover: string;
-  };
+  nowPlaying: NowPlaying;
   isLive: boolean;
+};
+
+export type NowPlaying = {
+  title: string;
+  artist: string;
+  cover: string;
 };
