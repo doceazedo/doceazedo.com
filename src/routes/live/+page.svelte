@@ -1,14 +1,13 @@
 <script lang="ts">
-  import * as simpleIcons from 'simple-icons/icons';
   import { LANG } from '$lib/stores';
   import { Metadata } from '$lib/components/metadata';
   import { SupportCTA } from '$lib/components/cta';
   import { TtsUsage, TtsVoicesTable } from '$lib/components/tts';
   import { LIVE_DATA } from '$lib/modules/live';
   import { TwitchPlayer } from '$lib/modules/twitch-player';
-  import { IconsGrid } from '$lib/modules/icons-grid';
+  import { IconsGrid, ICONS } from '$lib/components/icons-grid';
 
-  const iconsQty = Object.keys(simpleIcons).length;
+  $: iconsQty = $ICONS.length;
 </script>
 
 <Metadata title={$LANG.navbar.live} />

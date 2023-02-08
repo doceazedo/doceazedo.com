@@ -37,7 +37,7 @@
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.1",
     "fast-xml-parser": "^4.0.12",
-    "simple-icons": "^8.1.0",
+    "simple-icons": "^8.4.0",
     "spotify-web-api-node": "^5.0.2"
   }
 }
