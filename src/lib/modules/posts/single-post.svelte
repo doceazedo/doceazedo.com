@@ -3,8 +3,6 @@
   import relativeTime from 'dayjs/plugin/relativeTime.js';
   import 'dayjs/locale/pt-br.js';
   import { onMount } from 'svelte';
-  import { slide } from 'svelte/transition';
-  import { quintOut } from 'svelte/easing';
   import { browser } from '$app/environment';
   import { page } from '$app/stores';
   import { LANG } from '$lib/stores';
@@ -65,13 +63,6 @@
 
 <hr />
 
-{#if $LANG.code == 'en'}
-  <div class="alert" transition:slide={{ duration: 200, easing: quintOut }}>
-    This blog articles are only available in Portuguese for now. English translations for every post
-    are yet to come.
-  </div>
-{/if}
-
 <article class="content">
   <slot />
 </article>
@@ -89,7 +80,8 @@
     data-emit-metadata="0"
     data-theme="dark"
     crossorigin="anonymous"
-    async>
+    async
+  >
   </script>
 {/if}
 
@@ -150,15 +142,6 @@
     border-bottom: $hr
     margin-bottom: 4rem
 
-  .alert
-    text-align: center
-    font-style: italic
-    margin-bottom: 4rem
-    color: $whiteish
-
-    :global(.button)
-      display: block !important
-
   @media screen and (max-width: 768px)
     header
       flex-direction: column-reverse
@@ -177,7 +160,4 @@
     hr,
     .content
       margin-bottom: 2.5rem
-
-    .alert
-      text-align: left
 </style>
