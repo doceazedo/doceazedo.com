@@ -3,6 +3,7 @@
   import relativeTime from 'dayjs/plugin/relativeTime.js';
   import 'dayjs/locale/pt-br.js';
   import { onMount } from 'svelte';
+  import Giscus from '@giscus/svelte';
   import { browser } from '$app/environment';
   import { page } from '$app/stores';
   import { LANG } from '$lib/stores';
@@ -67,23 +68,19 @@
   <slot />
 </article>
 
-<div class="giscus" />
-{#if showComments}
-  <script
-    src="https://giscus.app/client.js"
-    data-repo="doceazedo/doceazedo.com"
-    data-repo-id="MDEwOlJlcG9zaXRvcnk0MDU3NzE4NDk="
-    data-category="Comments"
-    data-category-id="DIC_kwDOGC-WSc4B_Ku7"
-    data-mapping="pathname"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-theme="dark"
-    crossorigin="anonymous"
-    async
-  >
-  </script>
-{/if}
+<Giscus
+  id="comments"
+  repo="doceazedo/doceazedo.com"
+  repoId="MDEwOlJlcG9zaXRvcnk0MDU3NzE4NDk="
+  category="Comments"
+  categoryId="DIC_kwDOGC-WSc4B_Ku7"
+  mapping="pathname"
+  reactionsEnabled="1"
+  emitMetadata="0"
+  theme="dark"
+  lang={$LANG.code}
+  loading="lazy"
+/>
 
 <style lang="sass">
   @import '../../../assets/sass/vars.sass'
