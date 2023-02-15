@@ -1,6 +1,7 @@
 import adapter from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import { mdsvex } from 'mdsvex';
+import rehypeSlug from 'rehype-slug';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -11,7 +12,8 @@ const config = {
     preprocess(),
     mdsvex({
       extensions: ['.md'],
-      layout: 'src/lib/components/layout/single-post.svelte'
+      layout: 'src/lib/components/layout/single-post.svelte',
+      rehypePlugins: [rehypeSlug]
     })
   ],
 
