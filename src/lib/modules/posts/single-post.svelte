@@ -2,7 +2,6 @@
   import dayjs from 'dayjs';
   import relativeTime from 'dayjs/plugin/relativeTime.js';
   import 'dayjs/locale/pt-br.js';
-  import { onMount } from 'svelte';
   import Giscus from '@giscus/svelte';
   import { browser } from '$app/environment';
   import { page } from '$app/stores';
@@ -21,7 +20,6 @@
 
   let readableDate = '';
   let fullDate = '';
-  let showComments = false;
 
   if (browser) {
     dayjs.extend(relativeTime);
@@ -30,8 +28,6 @@
       .fromNow();
     fullDate = dayjs(date).format('DD/MM/YYYY à[s] HH:mm');
   }
-
-  onMount(() => (showComments = true));
 
   $: {
     if (browser)
