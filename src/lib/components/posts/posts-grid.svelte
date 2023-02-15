@@ -29,7 +29,9 @@
           </div>
         {/if}
         {#if isNewPost(post.date)}
-          <li class="new">NOVO!</li>
+          <li class="new">
+            {$LANG.blog.new}
+          </li>
         {/if}
       </ul>
       <h1 class="title">{post.title}</h1>
@@ -126,6 +128,7 @@
           
         .new
           font-weight: bold
+          text-transform: uppercase
 
   @media screen and (max-width: 768px)
     .articles

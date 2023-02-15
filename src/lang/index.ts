@@ -24,6 +24,7 @@ export type Language = {
     title: string;
     subtitle: string;
     more: string;
+    new: string;
   };
 
   footer: string[];

@@ -32,7 +32,8 @@ export const pt: Language = {
     title: 'As últimas coisas que eu escrevi',
     subtitle:
       'Um amontoado de textos sobre tecnologia e programação, misturados com conversa fiada sobre música, vivências pessoais e outras besteiras.',
-    more: 'Ver mais'
+    more: 'Ver mais',
+    new: 'Novo!'
   },
 
   about: {

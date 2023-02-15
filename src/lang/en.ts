@@ -30,7 +30,8 @@ export const en: Language = {
     title: "See what I've written lately",
     subtitle:
       'A bunch of texts about technology and programming, mixed with me talking about music, personal experiences and other nerdy nonsense.',
-    more: 'View all'
+    more: 'View all',
+    new: 'New!'
   },
 
   footer: ['Powered by Svelte & SvelteKit', 'Developed by DoceAzedo'],
