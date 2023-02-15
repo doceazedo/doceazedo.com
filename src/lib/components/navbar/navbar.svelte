@@ -65,6 +65,7 @@
       width: 100%
       background-color: rgba($background, .75)
       backdrop-filter: blur(.5rem)
+      -webkit-backdrop-filter: blur(.5rem)
       z-index: 20
 
       &-brand :global(svg),
