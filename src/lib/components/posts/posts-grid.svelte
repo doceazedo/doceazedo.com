@@ -3,7 +3,7 @@
   import { fade } from 'svelte/transition';
   import { LANG } from '$lib/stores';
   import { PushpinIcon } from '$lib/components/icons';
-  import { readableDate } from '$lib/utils';
+  import { isNewPost, readableDate } from '$lib/utils';
   import type { Post } from '$lib/modules/posts';
 
   export let posts: Post[] = [],
@@ -22,14 +22,19 @@
       in:fade
       animate:flip={{ duration: 300 }}
     >
-      <h1 class="title">{post.title}</h1>
-      <div class="date">{$LANG.posted} {readableDate(post.date, $LANG.code)}</div>
-      <div class="tags">
+      <ul class="tags">
         {#if post.pinned}
           <div class="pin">
             <PushpinIcon />
           </div>
         {/if}
+        {#if isNewPost(post.date)}
+          <li class="new">NOVO!</li>
+        {/if}
+      </ul>
+      <h1 class="title">{post.title}</h1>
+      <div class="date">{$LANG.posted} {readableDate(post.date, $LANG.code)}</div>
+      <div class="tags">
         {#each post.tags as tag}
           <a href="/blog?tags={tag}">#{tag}</a>
         {/each}
@@ -86,6 +91,9 @@
         display: flex
         gap: .5rem
 
+        &:first-child
+          margin-bottom: auto
+
         >*
           padding: .375rem
           background-color: rgba(#fff, .1)
@@ -99,17 +107,25 @@
             background-color: $primary
             transform: translateY(-2px)
 
-        .pin
+        .pin,
+        .new
           display: flex
           justify-content: center
           align-items: center
+          background-color: $primary
+          color: #fff
+          box-shadow: rgba(#000, .1) 0 .5rem 1.5rem
+
+        .pin
           width: 2rem
           height: 2rem
-          background-color: $primary
 
           :global(svg)
             height: 1.5rem
             width: 1.5rem
+          
+        .new
+          font-weight: bold
 
   @media screen and (max-width: 768px)
     .articles
