@@ -2,20 +2,20 @@
   import { fade, fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import { LANG } from '$lib/stores';
-  import { HomeIcon } from '$lib/components/icons';
   import { LIVE_DATA } from '$lib/modules/live';
-  import type { NavbarLink } from './navbar.types';
+  import { HomeIcon } from '$lib/components/icons';
+  import { navbarItems } from './navbar-data';
 
-  export let items: NavbarLink[], toggleMobileMenu: () => void, hamburgerEl: HTMLElement;
+  export let toggleMobileMenu: () => void, hamburgerEl: HTMLElement;
 
   let menuWrapperEl: HTMLDivElement;
 
-  const handleClickOutside = (event) => {
+  const handleClickOutside = (event: MouseEvent) => {
     if (
       !menuWrapperEl ||
       !hamburgerEl ||
-      menuWrapperEl.contains(event.target) ||
-      hamburgerEl.contains(event.target) ||
+      menuWrapperEl.contains(event.target as HTMLElement) ||
+      hamburgerEl.contains(event.target as HTMLElement) ||
       event.defaultPrevented
     )
       return;
@@ -28,6 +28,7 @@
 <div
   class="mobile-menu-wrapper"
   on:click={toggleMobileMenu}
+  on:keypress
   transition:fade={{ duration: 300, easing: quintOut }}
   bind:this={menuWrapperEl}
 >
@@ -37,7 +38,7 @@
       {$LANG.navbar.home}
     </a>
 
-    {#each items as item}
+    {#each navbarItems as item}
       <a href="/{item.slug}" class="mobile-menu-item">
         <svelte:component this={item.icon} />
         <span class:live={item.slug == 'streams' && $LIVE_DATA?.isLive}>

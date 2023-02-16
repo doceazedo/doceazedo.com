@@ -1,28 +1,25 @@
 <script lang="ts">
-  import type { SvelteComponent } from 'svelte';
+  import { LANG } from '$lib/stores';
+  import { languages } from './navbar-data';
 
-  type Languages = {
-    [code: string]: {
-      code: string;
-      title: string;
-      icon: typeof SvelteComponent;
-    };
+  const switchLanguage = () => {
+    const code = $LANG.code == 'en' ? 'pt' : 'en';
+    LANG.change(code);
   };
-
-  export let languages: Languages, activeLanguage: string, changeLanguage: (code: string) => void;
-
-  $: otherCode = activeLanguage == 'en' ? 'pt' : 'en';
 </script>
 
-<div on:click={() => changeLanguage(otherCode)} class="navbar-lang">
-  <svelte:component this={languages[activeLanguage].icon} />
-</div>
+<button on:click={switchLanguage} class="navbar-lang">
+  <svelte:component this={languages[$LANG.code].icon} />
+</button>
 
 <style lang="sass">
   .navbar-lang
     display: flex
-    cursor: pointer
+    padding: 0
     margin-left: 1rem
+    background: none
+    border: none
+    cursor: pointer
 
     :global(svg)
       width: 1.5rem

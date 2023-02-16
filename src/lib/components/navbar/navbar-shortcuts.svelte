@@ -1,20 +1,12 @@
 <script lang="ts">
-  import type { SvelteComponent } from 'svelte';
-
-  type NavbarIcon = {
-    icon: typeof SvelteComponent;
-    href: string;
-    target?: string;
-  };
-
-  export let icons: NavbarIcon[];
+  import { shortcuts } from './navbar-data';
 </script>
 
-<div class="navbar-icons">
-  {#each icons as icon}
-    <!-- FIXME: add alt text -->
-    <a href={icon.href} target={icon.target} class="icon" alt="">
-      <svelte:component this={icon.icon} />
+<div class="navbar-shortcuts">
+  {#each shortcuts as shortcut}
+    <!-- TODO: add alt text to icons (<a title="">) -->
+    <a href={shortcut.href} target={shortcut.target} class="icon">
+      <svelte:component this={shortcut.icon} />
     </a>
   {/each}
 </div>
@@ -22,7 +14,7 @@
 <style lang="sass">
   @import '../../../assets/sass/vars.sass'
 
-  .navbar-icons
+  .navbar-shortcuts
     display: flex
     
     .icon
@@ -48,6 +40,6 @@
         text-shadow: 0 0 .25rem $primary-light
 
   @media screen and (max-width: 768px)
-    .navbar-icons
+    .navbar-shortcuts
       margin-left: auto
 </style>

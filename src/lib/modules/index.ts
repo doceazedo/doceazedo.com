@@ -1,4 +1,3 @@
-export * from './navbar';
 export * from './projects';
 export * from './talks';
 export * from './posts';

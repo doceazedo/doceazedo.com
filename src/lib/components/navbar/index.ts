@@ -1,8 +1,10 @@
-export * from './navbar.types';
 export { default as NavbarAchievement } from './navbar-achievement.svelte';
-export { default as NavbarIcons } from './navbar-icons.svelte';
+export { default as NavbarBrand } from './navbar-brand.svelte';
+export { default as NavbarHamburger } from './navbar-hamburger.svelte';
+export { default as NavbarShortcuts } from './navbar-shortcuts.svelte';
 export { default as NavbarItem } from './navbar-item.svelte';
+export { default as NavbarItems } from './navbar-items.svelte';
 export { default as NavbarLang } from './navbar-lang.svelte';
-export { default as NavbarMenuMobile } from './navbar-menu-mobile.svelte';
-export { default as NavbarMenu } from './navbar-menu.svelte';
+export { default as NavbarMobile } from './navbar-mobile.svelte';
+export { default as NavbarWrapper } from './navbar-wrapper.svelte';
 export { default as Navbar } from './navbar.svelte';
