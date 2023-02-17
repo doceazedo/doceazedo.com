@@ -3,6 +3,13 @@ import { error, json } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import type { RequestHandler } from '@sveltejs/kit';
 
+const LANGUAGES = ['pt', 'en'];
+
+const LANGUAGE_GROUPS = new Map([
+  ['pt', '80386612044760880'],
+  ['en', '80392877986809440']
+]);
+
 const createSubscriber = async (email: string, groups: string[] = []) => {
   const resp = await fetch('https://connect.mailerlite.com/api/subscribers', {
     method: 'POST',
@@ -27,6 +34,7 @@ export const POST: RequestHandler = async ({ request }) => {
   const body = await request.json();
   if (!body.email) throw error(400, 'Informe um e-mail válido');
   if (!body.language) throw error(400, 'Informe o idioma da newsletter');
+  if (!LANGUAGES.includes(body.language)) throw error(400, 'Informe um idioma válido');
 
   const emailValidation = await validate({
     email: body.email,
@@ -36,9 +44,11 @@ export const POST: RequestHandler = async ({ request }) => {
   if (!emailValidation.valid) throw error(400, emailValidation.reason);
 
   // TODO: rate limit
-  // TODO: add subscriber to according group
 
-  const subscriber = await createSubscriber(body.email, []);
+  const languageGroup = LANGUAGE_GROUPS.get(body.language);
+  const groups = languageGroup ? [languageGroup] : [];
+
+  const subscriber = await createSubscriber(body.email, groups);
   if (!subscriber) throw error(500, 'Não foi possível cadastrar na newsletter');
 
   return json(null);
