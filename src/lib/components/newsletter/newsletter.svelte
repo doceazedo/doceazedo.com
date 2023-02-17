@@ -1,98 +1,129 @@
 <script lang="ts">
+  import { slide } from 'svelte/transition';
+  import { quintOut } from 'svelte/easing';
   import { LANG } from '$lib/stores';
-  import { SectionTitle, Button } from '$lib/components';
-  import { RssIcon } from '$lib/components/icons';
+  import { Button } from '$lib/components';
+  import { subscribeToNewsletter } from '$lib/modules/newsletter';
+
+  let email = '';
+  let loading = false;
+  let success = false;
+  let showMessage = false;
+
+  const handleSubmit = async () => {
+    if (loading) return;
+
+    loading = true;
+    showMessage = false;
+
+    try {
+      await subscribeToNewsletter(email, $LANG.code);
+      success = true;
+    } catch (error) {
+      success = false;
+    }
+
+    loading = false;
+    showMessage = true;
+  };
 </script>
 
-<section>
-  <SectionTitle title={$LANG.newsletter.title} paragraph={[`${$LANG.newsletter.paragraph}`]} />
-
-  <form class="form" on:submit|preventDefault>
-    <Button href="/feed.xml" target="_blank" outline>
-      <RssIcon />
-      {$LANG.newsletter.subscribeRSS}
-    </Button>
-    <span>{$LANG.newsletter.subscribeNewsletter}</span>
-    <div class="newsletter" style="--soon:'{$LANG.newsletter.soon}'">
-      <input disabled type="text" placeholder="youremail@example.com" />
-      <Button>{$LANG.newsletter.subscribeButton}</Button>
-    </div>
-  </form>
+<section class="newsletter">
+  <div class="newsletter-content">
+    <h1 class="title">{$LANG.newsletter.title}</h1>
+    <p class="subtitle">{$LANG.newsletter.paragraph}</p>
+    <form class="form" on:submit|preventDefault={handleSubmit}>
+      <input type="email" bind:value={email} placeholder={$LANG.newsletter.placeholder} />
+      <Button>{$LANG.newsletter.subscribe}</Button>
+    </form>
+    {#if showMessage}
+      <p
+        class="message"
+        class:success
+        class:error={!success}
+        transition:slide={{ duration: 200, easing: quintOut }}
+      >
+        {#if success}
+          {$LANG.newsletter.messages.success}
+        {:else}
+          {@html $LANG.newsletter.messages.error.replace(
+            '%s',
+            `<a href="https://github.com/doceazedo/doceazedo.com/issues" target="_blank">${$LANG.newsletter.messages.openIssue}</a>`
+          )}
+        {/if}
+      </p>
+    {/if}
+  </div>
 </section>
 
 <style lang="sass">
   @import '../../../assets/sass/vars'
 
-  form
+  .newsletter
     display: flex
-    align-items: center
-    
-    span
-      margin: 0 1rem
+    justify-content: center
+    text-align: center
+    padding: 3rem
+    background-color: rgba($primary, .1)
+    border: 1px solid $primary
+    border-radius: 1rem
+
+    &-content
+      display: flex
+      flex-direction: column
+      align-items: center
+      width: 100%
+      max-width: 600px
+      font-family: $font-secondary
+      font-size: 1.25rem
+      line-height: 1.25
       color: $whiteish
 
-    .newsletter
-      position: relative
-      display: flex
-      flex-grow: 1
-      cursor: not-allowed
-
-      &::before
-        content: var(--soon)
-        position: absolute
-        display: flex
-        justify-content: center
-        align-items: center
-        width: 100%
-        height: 100%
-        font-size: 1.25rem
+      .title
+        font-family: $font-primary
+        font-size: 1.75rem
         font-weight: 600
-        border-radius: .5rem
-        opacity: 0
-        transition: all .2s ease
+        color: #fff
+        margin-bottom: .75rem
 
-      &:hover
-        &::before
-          opacity: 1
+      .subtitle
+        margin-bottom: 2rem
 
-        input,
-        input + :global(.button)
-          opacity: .25
+      .message 
+        margin-top: 1rem
+        font-size: 1rem
 
-      input,
-      input + :global(.button)
-        cursor: not-allowed
-        transition: all .2s ease
+        &.success
+          color: #4ade80
 
-      input
-        width: 100%
-        height: 3.5rem
-        padding: 0 1rem
-        background-color: rgba(#fff, .1)
-        border: 1px solid $primary
-        border-right: none
-        border-top-left-radius: .5rem
-        border-bottom-left-radius: .5rem
-        outline: none
+        &.error
+          color: #ef4444
 
-        + :global(.button)
-          border-top-left-radius: 0
-          border-bottom-left-radius: 0
-          transform: none
+        :global(a)
+          text-decoration: underline
+
+  form
+    display: flex
+    gap: 1rem
+    width: 100%
+    max-width: 450px
+    
+    input
+      flex-grow: 1
+      height: 3.5rem
+      padding: 0 1rem
+      background-color: rgba(#fff, .1)
+      border-radius: .5rem
+      border: none
+      outline: none
+      transition: all .2s ease
+
+      &::placeholder
+        color: rgba(#fff, .5)
+
+      &:focus
+        background-color: rgba(#fff, .08)
+        box-shadow: 0 0 0 1px $primary, 0 0 0 .25rem rgba($primary, .25)
 
   @media screen and (max-width: 768px)
-    form
-      flex-direction: column
-      align-items: flex-start
-      gap: 1.75rem
-
-      span
-        margin: 0
-        font-size: 1.25rem
-
-        &::after
-          content: ':'
-
-      .newsletter
-        width: 100%
 </style>

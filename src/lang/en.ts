@@ -214,13 +214,16 @@ export const en: Language = {
   },
 
   newsletter: {
-    title: 'Ring the bell',
+    title: 'Ring the bell 🔔',
     paragraph:
-      "There's no bell to ring and get new post notifications, but I can email them to you as soon as they come out, with no set schedule. You can unsubscribe at any time.",
-    subscribeRSS: 'Follow RSS feed',
-    subscribeNewsletter: 'or subscribe to the newsletter:',
-    subscribeButton: 'Subscribe',
-    soon: 'Coming soon™'
+      'I will email all the new posts to you as soon as they come out, with no set schedule. You can unsubscribe at any time.',
+    placeholder: 'youremail@example.com',
+    subscribe: 'Subscribe',
+    messages: {
+      success: 'Nice! You will now get notified about new posts. ✨',
+      error: 'Something went wrong! Please try again later or %s. 😰',
+      openIssue: 'open an issue'
+    }
   },
 
   projects: {

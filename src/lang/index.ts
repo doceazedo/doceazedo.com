@@ -97,10 +97,13 @@ export type Language = {
   newsletter: {
     title: string;
     paragraph: string;
-    subscribeRSS: string;
-    subscribeNewsletter: string;
-    subscribeButton: string;
-    soon: string;
+    placeholder: string;
+    subscribe: string;
+    messages: {
+      success: string;
+      error: string;
+      openIssue: string;
+    };
   };
 
   projects: {

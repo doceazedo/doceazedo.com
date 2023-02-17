@@ -6,7 +6,7 @@
   import { browser } from '$app/environment';
   import { page } from '$app/stores';
   import { LANG } from '$lib/stores';
-  import { Metadata } from '$lib/components';
+  import { Metadata, Newsletter } from '$lib/components';
 
   export let title: string,
     description: string,
@@ -64,6 +64,8 @@
   <slot />
 </article>
 
+<Newsletter />
+
 <Giscus
   id="comments"
   repo="doceazedo/doceazedo.com"
@@ -86,7 +88,8 @@
     max-width: 900px
     margin: 0 auto
 
-  .content
+  .content,
+  :global(.newsletter)
     margin-bottom: 4rem
 
   header

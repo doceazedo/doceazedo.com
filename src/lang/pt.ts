@@ -215,13 +215,16 @@ export const pt: Language = {
   },
 
   newsletter: {
-    title: 'Ative o sininho',
+    title: 'Ative o sininho 🔔',
     paragraph:
-      'Não tem sininho para ativar e receber notificações de novos posts, o jeito é eu te mandar por e-mail assim que sair, sem cronograma definido. Você pode se desinscrever quando quiser.',
-    subscribeRSS: 'Assinar feed RSS',
-    subscribeNewsletter: 'ou inscreva-se na newsletter',
-    subscribeButton: 'Inscrever',
-    soon: 'Em breve™'
+      'Eu te aviso por e-mail assim que sairem novos posts, sem cronograma definido. Você pode se desinscrever quando quiser.',
+    placeholder: 'seuemail@exemplo.com',
+    subscribe: 'Inscrever',
+    messages: {
+      success: 'Show! Você agora vai receber avisos de novos posts. ✨',
+      error: 'Algo deu errado! Tente novamente mais tarde ou %s. 😰',
+      openIssue: 'abra um issue'
+    }
   },
 
   projects: {

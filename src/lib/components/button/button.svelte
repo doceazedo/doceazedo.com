@@ -2,24 +2,28 @@
   export let outline = false,
     href: string = null,
     target: string = null,
+    light = false,
     center = false,
     small = false,
     medium = false;
 </script>
 
-<a
+<svelte:element
+  this={href ? 'a' : 'button'}
   {href}
   {target}
   class="button"
   class:is-link={!!href}
   class:outline
+  class:light
   class:center
   class:small
   class:medium
   on:click
+  on:keypress
 >
   <slot />
-</a>
+</svelte:element>
 
 <style lang="sass">
   @import '../../../assets/sass/vars'
@@ -29,6 +33,7 @@
     gap: .5rem
     border: none
     padding: 1rem 1.75rem
+    font-family: $font-primary
     font-size: 1.25rem
     text-decoration: none
     color: #fff
@@ -45,6 +50,10 @@
       color: $primary-light
       background-color: rgba($primary-light, .1)
       box-shadow: 0 0 .5rem .25rem rgba($primary, .25), inset 0 0 0 1px $primary
+
+    &.light
+      background-color: #fff
+      color: $primary
 
     :global(svg)
       height: 1.5rem
