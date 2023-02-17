@@ -29,12 +29,28 @@ const createSubscriber = async (email: string, groups: string[] = []) => {
   return data.data;
 };
 
-// FIXME: error messages are not being used and not translated
-export const POST: RequestHandler = async ({ request }) => {
+const requestHistory = new Map<string, Date>();
+
+const isRateLimited = (ip: string, cooldown = 5000) => {
+  const lastRequest = requestHistory.get(ip);
+  const now = new Date();
+
+  if (!lastRequest || now.getTime() - lastRequest.getTime() > cooldown) {
+    requestHistory.set(ip, now);
+    return false;
+  }
+
+  return true;
+};
+
+export const POST: RequestHandler = async ({ request, getClientAddress }) => {
   const body = await request.json();
   if (!body.email) throw error(400, 'Informe um e-mail válido');
   if (!body.language) throw error(400, 'Informe o idioma da newsletter');
   if (!LANGUAGES.includes(body.language)) throw error(400, 'Informe um idioma válido');
+
+  const ip = getClientAddress();
+  if (isRateLimited(ip)) throw error(429);
 
   const emailValidation = await validate({
     email: body.email,
@@ -42,8 +58,6 @@ export const POST: RequestHandler = async ({ request }) => {
     validateSMTP: false
   });
   if (!emailValidation.valid) throw error(400, emailValidation.reason);
-
-  // TODO: rate limit
 
   const languageGroup = LANGUAGE_GROUPS.get(body.language);
   const groups = languageGroup ? [languageGroup] : [];
