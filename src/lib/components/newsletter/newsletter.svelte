@@ -32,9 +32,14 @@
   <div class="newsletter-content">
     <h1 class="title">{$LANG.newsletter.title}</h1>
     <p class="subtitle">{$LANG.newsletter.paragraph}</p>
-    <form class="form" on:submit|preventDefault={handleSubmit}>
-      <input type="email" bind:value={email} placeholder={$LANG.newsletter.placeholder} />
-      <Button type="submit">{$LANG.newsletter.subscribe}</Button>
+    <form class="form" class:disabled={loading} on:submit|preventDefault={handleSubmit}>
+      <input
+        type="email"
+        bind:value={email}
+        disabled={loading}
+        placeholder={$LANG.newsletter.placeholder}
+      />
+      <Button type="submit" disabled={loading}>{$LANG.newsletter.subscribe}</Button>
     </form>
     {#if showMessage}
       <p
@@ -124,6 +129,9 @@
       &:focus
         background-color: rgba(#fff, .08)
         box-shadow: 0 0 0 1px $primary, 0 0 0 .25rem rgba($primary, .25)
+
+      &:disabled
+        opacity: .5
 
   @media screen and (max-width: 768px)
 </style>

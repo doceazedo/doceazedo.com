@@ -3,6 +3,7 @@
     href: string = null,
     target: string = null,
     type: string = null,
+    disabled = false,
     light = false,
     center = false,
     small = false,
@@ -14,6 +15,7 @@
   {href}
   {target}
   {type}
+  {disabled}
   class="button"
   class:is-link={!!href}
   class:outline
@@ -42,11 +44,14 @@
     background-color: $primary
     box-shadow: 0 0 .5rem .25rem rgba($primary, .25)
     border-radius: .5rem
-    cursor: pointer
     transition: all .2s ease
 
-    &:hover
+    &:not(:disabled):hover
       transform: translateY(-.25rem)
+      cursor: pointer
+
+    &:disabled
+      opacity: .5
 
     &.outline
       color: $primary-light
