@@ -1,5 +1,6 @@
 const baseUrl = '/api/newsletter';
 
+// FIXME: error messages are not being used and not translated
 export const subscribeToNewsletter = async (email: string, language: string) => {
   try {
     const resp = await fetch(baseUrl, {

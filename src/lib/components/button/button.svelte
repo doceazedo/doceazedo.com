@@ -2,6 +2,7 @@
   export let outline = false,
     href: string = null,
     target: string = null,
+    type: string = null,
     light = false,
     center = false,
     small = false,
@@ -12,6 +13,7 @@
   this={href ? 'a' : 'button'}
   {href}
   {target}
+  {type}
   class="button"
   class:is-link={!!href}
   class:outline

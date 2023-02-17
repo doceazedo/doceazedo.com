@@ -34,7 +34,7 @@
     <p class="subtitle">{$LANG.newsletter.paragraph}</p>
     <form class="form" on:submit|preventDefault={handleSubmit}>
       <input type="email" bind:value={email} placeholder={$LANG.newsletter.placeholder} />
-      <Button>{$LANG.newsletter.subscribe}</Button>
+      <Button type="submit">{$LANG.newsletter.subscribe}</Button>
     </form>
     {#if showMessage}
       <p

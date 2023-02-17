@@ -1,3 +1,4 @@
+import { validate } from 'deep-email-validator';
 import { error, json } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import type { RequestHandler } from '@sveltejs/kit';
@@ -21,12 +22,19 @@ const createSubscriber = async (email: string, groups: string[] = []) => {
   return data.data;
 };
 
+// FIXME: error messages are not being used and not translated
 export const POST: RequestHandler = async ({ request }) => {
   const body = await request.json();
   if (!body.email) throw error(400, 'Informe um e-mail válido');
   if (!body.language) throw error(400, 'Informe o idioma da newsletter');
 
-  // TODO: validate email (use blocklist?)
+  const emailValidation = await validate({
+    email: body.email,
+    validateTypo: false,
+    validateSMTP: false
+  });
+  if (!emailValidation.valid) throw error(400, emailValidation.reason);
+
   // TODO: rate limit
   // TODO: add subscriber to according group
 
