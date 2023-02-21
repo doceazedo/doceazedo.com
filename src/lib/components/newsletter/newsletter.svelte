@@ -134,4 +134,9 @@
         opacity: .5
 
   @media screen and (max-width: 768px)
+    .newsletter
+      padding: 2rem
+
+      form
+        flex-direction: column
 </style>

@@ -34,6 +34,7 @@
 
   .button
     display: flex
+    justify-content: center
     gap: .5rem
     border: none
     padding: 1rem 1.75rem
