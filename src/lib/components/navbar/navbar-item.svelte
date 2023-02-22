@@ -55,6 +55,15 @@
         width: .5rem
         border: none
 
+  :global([data-theme="light"])
+    .navbar-item
+      color: $blackish
+
+      &:hover,
+      &.active
+        color: $primary-light
+        text-shadow: 0 0 .25rem rgba($primary-light, .25)
+
   @media screen and (max-width: 768px)
     .navbar-item
       height: 4rem

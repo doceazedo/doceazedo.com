@@ -1,8 +1,10 @@
 <script lang="ts">
+  import { NavbarThemeSwitcher } from '.';
   import { shortcuts } from './navbar-data';
 </script>
 
 <div class="navbar-shortcuts">
+  <NavbarThemeSwitcher />
   {#each shortcuts as shortcut}
     <!-- TODO: add alt text to icons (<a title="">) -->
     <a href={shortcut.href} target={shortcut.target} class="icon">
@@ -12,32 +14,18 @@
 </div>
 
 <style lang="sass">
-  @import '../../../assets/sass/vars.sass'
+  @import '../../../assets/sass/vars'
+  @import '../../../assets/sass/mixins'
 
   .navbar-shortcuts
     display: flex
     
     .icon
-      position: relative
-      display: flex
-      justify-content: center
-      align-items: center
-      padding: .25rem
-      color: $whiteish
-      font-size: 1.25rem
-      background: none
-      border: none
-      cursor: pointer
-      transition: all .2s ease
+      @include icon-button
 
-      :global(svg)
-        width: 1.25rem
-        height: 1.25rem
-        transition: all .2s ease
-
-      &:hover :global(svg)
-        color: $primary-light
-        text-shadow: 0 0 .25rem $primary-light
+  :global([data-theme="light"])
+    .icon
+      color: $blackish
 
   @media screen and (max-width: 768px)
     .navbar-shortcuts

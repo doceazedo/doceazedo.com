@@ -1,7 +1,7 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
-  import { LANG } from '$lib/stores';
+  import { LANG, THEME } from '$lib/stores';
   import { Button } from '$lib/components';
   import { subscribeToNewsletter } from '$lib/modules/newsletter';
 
@@ -39,7 +39,9 @@
         disabled={loading}
         placeholder={$LANG.newsletter.placeholder}
       />
-      <Button type="submit" disabled={loading}>{$LANG.newsletter.subscribe}</Button>
+      <Button type="submit" disabled={loading} light={$THEME == 'light'}>
+        {$LANG.newsletter.subscribe}
+      </Button>
     </form>
     {#if showMessage}
       <p
@@ -132,6 +134,10 @@
 
       &:disabled
         opacity: .5
+
+  :global([data-theme="light"])
+    .newsletter
+      background-color: $primary
 
   @media screen and (max-width: 768px)
     .newsletter

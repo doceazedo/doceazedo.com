@@ -59,6 +59,14 @@
     margin-top: -1rem
     margin-bottom: 3rem
 
+  :global([data-theme="light"])
+    h1
+      border-bottom: $hr-light
+
+    h1 a,
+    p
+      color: $blackish
+
   @media screen and (max-width: 768px)
     h1
       font-size: 1.5rem

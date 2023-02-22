@@ -5,6 +5,36 @@ body
   background-color: $background
   overflow-y: scroll
   -webkit-tap-highlight-color: transparent
+  transition: color .4s ease
+
+  &::before
+    content: ''
+    position: fixed
+    top: 0
+    left: -115%
+    width: 215%
+    height: 100vh
+    background: linear-gradient(100deg, #fff 0%, #fff 50%, transparent 50%)
+    z-index: -1
+    transition: all .8s ease
+
+  &::after
+    content: ''
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-image: url(/img/noise.png)
+    opacity: 0.75
+    z-index: 100
+    pointer-events: none
+
+  &[data-theme="light"]
+    color: #000
+    
+    &::before
+      left: 0
 
 body,
 button,
@@ -13,18 +43,6 @@ input
   font-weight: 300
   font-size: 1rem
   color: #fff
-
-body::before
-  content: ''
-  position: fixed
-  top: 0
-  bottom: 0
-  left: 0
-  right: 0
-  background-image: url(/img/noise.png)
-  opacity: 0.75
-  z-index: 100
-  pointer-events: none
 
 a
   color: inherit

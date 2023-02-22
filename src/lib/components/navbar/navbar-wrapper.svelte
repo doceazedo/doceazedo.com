@@ -12,6 +12,10 @@
     max-width: 900px
     margin: 0 auto
     border-bottom: $hr
+  
+  :global([data-theme="light"])
+    .navbar
+      border-bottom: $hr-light
 
   @media screen and (max-width: 768px)
     .navbar

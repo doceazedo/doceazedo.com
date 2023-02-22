@@ -102,6 +102,11 @@
     font-size: 1.25rem
     line-height: 1.25
     color: $whiteish
+    transition: color .4s ease
+
+  :global([data-theme="light"])
+    .bio
+      color: $blackish
 
   @media screen and (max-width: 768px)
     .name

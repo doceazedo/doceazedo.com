@@ -46,6 +46,10 @@
         display: inline-block
         transform: scaleX(-1)
 
+  :global([data-theme="light"])
+    footer
+      border-top: $hr-light
+
   @media screen and (max-width: 768px)
     footer
       position: relative

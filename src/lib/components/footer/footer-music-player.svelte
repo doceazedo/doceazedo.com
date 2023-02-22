@@ -92,6 +92,13 @@
         h2
           font-weight: 300
 
+  :global([data-theme="light"])
+    .now-playing
+      color: $blackish
+      
+      &::before
+        border-color: #fff
+
   @media screen and (max-width: 768px)
     .now-playing
       max-width: 18rem
