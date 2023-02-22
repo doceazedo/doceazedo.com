@@ -208,3 +208,8 @@ code[class*='language-']::-webkit-scrollbar-thumb:hover {
 .token.variable {
   color: #ff6666;
 }
+
+body[data-theme="light"] code[class*='language-'],
+body[data-theme="light"] pre[class*='language-'] {
+  background-color: #49454c;
+}

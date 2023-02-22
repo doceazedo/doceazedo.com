@@ -5,7 +5,7 @@
   import Giscus from '@giscus/svelte';
   import { browser } from '$app/environment';
   import { page } from '$app/stores';
-  import { LANG } from '$lib/stores';
+  import { LANG, THEME } from '$lib/stores';
   import { Metadata, Newsletter } from '$lib/components';
 
   export let title: string,
@@ -75,7 +75,7 @@
   mapping="pathname"
   reactionsEnabled="1"
   emitMetadata="0"
-  theme="dark"
+  theme={$THEME}
   lang={$LANG.code}
   loading="lazy"
 />
@@ -110,6 +110,7 @@
       font-size: 1.25rem
       font-weight: 400
       color: $whiteish
+      transition: color .4s ease
 
     ul
       display: flex
@@ -119,6 +120,7 @@
         border-radius: .25rem
         background-color: $primary
         box-shadow: 0 0 .5rem .25rem rgba($primary, .25)
+        color: #fff
 
         &:not(:last-child)
           margin-right: .5rem
@@ -137,6 +139,13 @@
     border: none
     border-bottom: $hr
     margin-bottom: 4rem
+
+  :global([data-theme="light"])
+    header p
+      color: $blackish
+
+    hr
+      border-bottom: $hr-light
 
   @media screen and (max-width: 768px)
     header

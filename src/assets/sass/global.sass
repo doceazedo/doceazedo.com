@@ -53,6 +53,7 @@ a
   font-size: 1.2rem
   line-height: 1.4
   color: #ccc
+  transition: color .4s ease
 
   li + li
     margin-top: 0.25em
@@ -106,6 +107,7 @@ a
     color: #fff
     text-shadow: 0 0 0.25rem #fff
     text-decoration: none
+    transition: all .2s ease
 
     &::before
       content: ''
@@ -234,6 +236,7 @@ a
     padding: .5rem 1rem
     font-size: 1rem
     font-weight: 600
+    color: #fff
     background-color: rgba(#fff, .15)
     border-top-left-radius: 1rem
     border-top-right-radius: 1rem
@@ -259,6 +262,26 @@ a
     &.is-spotify iframe
       flex-grow: 1
       border-radius: 12px
+
+body[data-theme="light"] .content
+  color: #000
+
+  a:not(:hover)
+    color: #000
+    text-shadow: none
+
+  blockquote
+    background-color: rgba($primary-light, .1)
+
+  code:not([class])
+    background-color: rgba($primary-light, .25)
+
+  img,
+  video
+    box-shadow: rgba(0, 0, 0, .05) 0 0 0 1px
+
+  .file-title
+    background-color: $primary
 
 ::selection
   color: #fff
