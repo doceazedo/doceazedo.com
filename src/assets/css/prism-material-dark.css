@@ -211,5 +211,5 @@ code[class*='language-']::-webkit-scrollbar-thumb:hover {
 
 body[data-theme="light"] code[class*='language-'],
 body[data-theme="light"] pre[class*='language-'] {
-  background-color: #49454c;
+  background-color: #070212;
 }

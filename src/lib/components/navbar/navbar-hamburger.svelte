@@ -16,6 +16,10 @@
   .navbar-hamburger
     display: none
     color: $whiteish
+  
+  :global([data-theme="light"])
+    .navbar-hamburger
+      color: $primary
 
   @media screen and (max-width: 768px)
     .navbar-hamburger

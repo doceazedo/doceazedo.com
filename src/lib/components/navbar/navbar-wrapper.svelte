@@ -27,4 +27,10 @@
       backdrop-filter: blur(.5rem)
       -webkit-backdrop-filter: blur(.5rem)
       z-index: 20
+      transition: all .4s ease
+  
+    :global([data-theme="light"])
+      .navbar
+        background-color: rgba($primary-light, .25)
+        border-bottom-color: $primary
 </style>

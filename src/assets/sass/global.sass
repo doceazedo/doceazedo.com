@@ -263,12 +263,34 @@ a
       flex-grow: 1
       border-radius: 12px
 
+  .heading-link
+    color: $whiteish
+    text-shadow: none
+    opacity: 0
+
+    &:hover
+      color: #fff
+
+    svg
+      width: 1rem
+      height: 1rem
+
+    &::before
+      content: none
+
+  *:hover .heading-link
+    margin-left: .5rem
+    opacity: 1
+
 body[data-theme="light"] .content
   color: #000
 
   a:not(:hover)
     color: #000
     text-shadow: none
+
+  h3
+    color: #000
 
   blockquote
     background-color: rgba($primary-light, .1)
@@ -278,16 +300,26 @@ body[data-theme="light"] .content
 
   img,
   video
-    box-shadow: rgba(0, 0, 0, .05) 0 0 0 1px
+    box-shadow: rgba(#000, .05) 0 0 0 1px
 
   .file-title
     background-color: $primary
+
+  .heading-link
+    color: rgba(#000, .5) !important
+
+    &:hover
+      color: #000 !important
 
 ::selection
   color: #fff
   background: $primary-light
 
 @media screen and (max-width: 768px)
+  body::before
+    width: 250%
+    left: -150%
+
   .content a
     display: unset
     border-bottom: 2px solid $primary
