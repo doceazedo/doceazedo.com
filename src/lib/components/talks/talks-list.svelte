@@ -68,7 +68,7 @@
         border: .25rem solid #070212
         border-radius: 1rem
         overflow: hidden
-        transition: all .2s ease
+        transition: transform .2s ease, border .6s ease
 
         &:hover
           transform: translateY(-.25rem)
@@ -93,6 +93,10 @@
         font-family: $font-secondary
         font-size: 1.25rem
         color: $whiteish
+
+  :global([data-theme="light"])
+    .talk .thumbnail .promoter
+      border-color: #fff
 
   @media screen and (max-width: 768px)
     .talk
