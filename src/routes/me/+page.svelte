@@ -157,11 +157,17 @@
   ul
     :global(span)
       color: #fff
+      transition: all .4s ease
 
   .wrap-up
     display: flex
     flex-direction: column
     align-items: center
+
+  :global([data-theme="light"])
+    ul :global(span)
+      color: #000
+      font-weight: 600
 
   @media screen and (max-width: 768px)
     .wrap-up

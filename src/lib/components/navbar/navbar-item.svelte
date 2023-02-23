@@ -59,6 +59,9 @@
     .navbar-item
       color: $blackish
 
+      &::before
+        box-shadow: 0 0 .75rem .25rem rgba($primary, .25)
+        
       &:hover,
       &.active
         color: $primary-light

@@ -50,6 +50,8 @@
 {/if}
 
 <style lang="sass">
+  @import '../../../assets/sass/vars'
+
   .icon-item
     position: relative
     display: flex
@@ -67,7 +69,11 @@
     transition: all .2s ease
 
     &:hover
-      background-color: var(--color)
+      background-color: var(--color) !important
+      color: #fff
+
+      :global(svg)
+        fill: #fff !important
 
     :global(.ripple)
       position: absolute
@@ -86,6 +92,18 @@
       flex-shrink: 0
       height: 1.5rem
       fill: #fff
+      transition: all .2s ease
+
+  :global([data-theme="light"])
+    .icon-item
+      background-color: rgba($primary-light, .1)
+      box-shadow: inset 0 0 0 1px $primary
+
+      :global(svg)
+        fill: $primary
+
+      &:hover
+        box-shadow: none
 
   @keyframes ripple
     to

@@ -240,6 +240,8 @@
 </table>
 
 <style lang="sass">
+  @import '../../../assets/sass/vars'
+
   table
     width: 100%
     border-radius: 1rem
@@ -262,4 +264,19 @@
     td:first-child,
     td:nth-child(2)
       width: 16rem
+
+  :global([data-theme="light"])
+    table
+      box-shadow: inset 0 0 0 1px $primary
+
+      th,
+      td
+        border-color: $primary
+
+      thead th,
+      tr.primary
+        background-color: rgba($primary-light, .25)
+
+      thead th
+        color: $primary
 </style>

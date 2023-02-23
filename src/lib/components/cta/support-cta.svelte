@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { LANG } from '$lib/stores';
+  import { LANG, THEME } from '$lib/stores';
   import { Button } from '$lib/components/button';
   import { PicPayIcon } from '$lib/components/icons';
 
@@ -18,8 +18,16 @@
       </ul>
     </div>
     <div class="buttons">
-      <Button href="/live/prime" medium>{$LANG.streams.subscribe.prime}</Button>
-      <Button href="https://twitch.tv/subs/doceazedo911" target="_blank" medium outline>
+      <Button href="/live/prime" medium light={$THEME == 'light'}
+        >{$LANG.streams.subscribe.prime}</Button
+      >
+      <Button
+        href="https://twitch.tv/subs/doceazedo911"
+        target="_blank"
+        medium
+        outline
+        light={$THEME == 'light'}
+      >
         {$LANG.streams.subscribe.sub}
       </Button>
     </div>
@@ -49,10 +57,10 @@
       gap: .75rem
       padding: 1rem
       border-radius: 1rem
-      background-color: rgba(#fff, .1)
 
     &-sub
       flex-grow: 1
+      background-color: rgba(#fff, .1)
       
       p
         color: $whiteish
@@ -91,6 +99,7 @@
       :global(svg)
         width: 3rem
         height: 3rem
+        color: #fff
 
       p
         color: $whiteish
@@ -98,6 +107,25 @@
   .title
     font-size: 1.5rem
     font-weight: 600
+
+  :global([data-theme="light"])
+    .cta-sub
+      background-color: $primary
+      color: #fff
+
+      li
+        color: $whiteish
+
+      p,
+      li::marker
+        color: #fff
+
+    .cta-donate
+      h1
+        color: #000
+
+      p
+        color: $blackish
 
   @media screen and (max-width: 768px)
     .cta

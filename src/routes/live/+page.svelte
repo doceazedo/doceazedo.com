@@ -43,4 +43,8 @@
     font-size: 1.25rem
     line-height: 1.25
     color: $whiteish
+
+  :global([data-theme="light"])
+    .subtitle
+      color: $blackish
 </style>

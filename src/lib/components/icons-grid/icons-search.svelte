@@ -38,4 +38,12 @@
 
     &:focus-within :global(svg)
       color: $primary-light
+
+  :global([data-theme="light"])
+    .search
+      &:focus-within :global(svg)
+        color: $primary
+
+      :global(svg)
+        color: $primary-light
 </style>

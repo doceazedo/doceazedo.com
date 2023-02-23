@@ -37,6 +37,8 @@
 {/if}
 
 <style lang="sass">
+  @import '../../../assets/sass/vars'
+
   .icons-grid
     display: grid
     grid-template-columns: repeat(6, 1fr)
@@ -57,4 +59,15 @@
 
     &::-webkit-scrollbar-thumb:hover
       background-color: rgba(#fff, .2)
+
+  :global([data-theme="light"])
+    .icons-grid
+      &::-webkit-scrollbar-track
+        background-color: rgba($primary, .1)
+
+      &::-webkit-scrollbar-thumb
+        background-color: $primary-light
+
+      &::-webkit-scrollbar-thumb:hover
+        background-color: $primary
 </style>

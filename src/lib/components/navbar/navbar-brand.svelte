@@ -61,6 +61,10 @@
       transform: scale(1.25)
       pointer-events: none
       transition: all .2s ease
+  
+  :global([data-theme="light"])
+    .navbar-brand::before
+      background-color: rgba($primary-light, .25)
 
   @media screen and (max-width: 768px)
     .navbar-brand :global(svg),

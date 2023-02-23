@@ -63,6 +63,11 @@
       background-color: #fff
       color: $primary
 
+    &.outline.light
+      color: #fff
+      background-color: rgba(#fff, .1)
+      box-shadow: inset 0 0 0 1px #fff
+
     :global(svg)
       height: 1.5rem
       width: 1.5rem
@@ -84,4 +89,10 @@
     &.medium
       font-size: 1.1rem
       padding: 1rem 1.6rem
+
+  :global([data-theme="light"])
+    .button.outline:not(.light)
+      color: $primary
+      background-color: rgba($primary-light, .1)
+      box-shadow: 0 0 .75rem .25rem rgba($primary-light, .2), inset 0 0 0 1px $primary
 </style>

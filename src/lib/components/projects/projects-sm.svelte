@@ -89,4 +89,12 @@
       .item
         width: 17.5rem
         flex-shrink: 0
+
+  :global([data-theme="light"])
+    .item
+      background-color: rgba($primary-light, .1)
+      box-shadow: inset 0 0 0 1px $primary
+
+      p
+        color: $blackish
 </style>

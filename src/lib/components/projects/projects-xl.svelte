@@ -90,6 +90,10 @@
     justify-content: center
     gap: .75rem
 
+    h1,
+    p
+      transition: color .4s ease
+
     h1
       font-size: 1.75rem
       font-weight: 600
@@ -100,6 +104,14 @@
       font-size: 1.25rem
       line-height: 1.25
       color: $whiteish
+
+  :global([data-theme="light"])
+    .info
+      h1
+        color: #000
+
+      p
+        color: $blackish
 
   @media screen and (max-width: 768px)
     .item
