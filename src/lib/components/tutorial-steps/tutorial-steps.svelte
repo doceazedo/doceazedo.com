@@ -49,6 +49,7 @@
         border-radius: .5rem
         font-weight: 700
         box-shadow: 0 0 .5rem .25rem rgba($primary, .25)
+        color: #fff
 
       &-details
         h2
@@ -81,4 +82,8 @@
         video,
         img
           border-radius: 1rem
+
+  :global([data-theme="light"])
+    .step-details .content
+      color: $blackish
 </style>
