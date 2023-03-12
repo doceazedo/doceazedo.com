@@ -4,8 +4,8 @@
   import { AudioIcon, Buttons, Button, ButtonIcon } from '$lib/components';
   import {
     GithubIcon,
-    InstagramIcon,
     LastfmIcon,
+    MastodonIcon,
     TwitchIcon,
     TwitterIcon
   } from '$lib/components/icons';
@@ -18,8 +18,8 @@
       href: 'https://twitter.com/doceazedo911'
     },
     {
-      icon: InstagramIcon,
-      href: 'https://instagram.com/doceazedo911/'
+      icon: MastodonIcon,
+      href: 'https://svelte.gay/@doceazedo'
     },
     {
       icon: TwitchIcon,
@@ -62,7 +62,7 @@
       GitHub
     </Button>
     {#each socials as social}
-      <ButtonIcon href={social.href} isLarge={social?.isLarge}>
+      <ButtonIcon href={social.href} rel="me" isLarge={social?.isLarge}>
         <svelte:component this={social.icon} />
       </ButtonIcon>
     {/each}

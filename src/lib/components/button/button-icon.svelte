@@ -1,9 +1,10 @@
 <script lang="ts">
   export let href: string,
+    rel: string,
     isLarge = false;
 </script>
 
-<a {href} target="_blank" class="button-icon" class:xl={isLarge}>
+<a {href} target="_blank" {rel} class="button-icon" class:xl={isLarge}>
   <slot />
 </a>
 

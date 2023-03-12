@@ -13,6 +13,7 @@ export { default as HomeIcon } from './home-icon.svelte';
 export { default as InstagramIcon } from './instagram-icon.svelte';
 export { default as LastfmIcon } from './lastfm-icon.svelte';
 export { default as LiveIcon } from './live-icon.svelte';
+export { default as MastodonIcon } from './mastodon-icon.svelte';
 export { default as MoonIcon } from './moon-icon.svelte';
 export { default as NewspaperIcon } from './newspaper-icon.svelte';
 export { default as PicPayIcon } from './picpay-icon.svelte';
