@@ -1,14 +1,15 @@
 <script lang="ts">
   import { browser, dev } from '$app/environment';
   import { LANG } from '$lib/stores';
-  import selfie from '../../../assets/img/me-chinese-new-year.webp';
+  import selfie from '../../../assets/img/me-selfie-v3.webp';
   import selfieRedacted from '../../../assets/img/me-redacted.webp';
   import customCursorImage from '../../../assets/img/pat.gif';
 
   const selfieSrc = dev ? selfieRedacted : selfie;
+  const instagramURL = 'https://instagram.com/doceazedo911';
 
   let customCursorEl: HTMLImageElement;
-  const customCursorSize = 24;
+  const customCursorSize = 40;
 
   const positionCursor = (event: MouseEvent) => {
     if (customCursorEl == null) return;
@@ -17,12 +18,19 @@
   };
 
   if (browser) window.addEventListener('mousemove', (event) => positionCursor(event));
+
+  const openInstagram = () => {
+    // Weird way of doing links, yeah, I know.
+    // But I wanted this to be kinda hidden, so...
+    if (!browser) return;
+    window.open(instagramURL, '_blank')?.focus();
+  };
 </script>
 
-<div class="blurb-selfie">
+<div class="blurb-selfie" on:click={openInstagram} on:keydown>
   <figure class="selfie-wrapper">
     <img class="selfie" src={selfieSrc} alt={$LANG.alt.selfie} />
-    <div class="pat-area" class:is-active={customCursorImage} />
+    <div class="pat-area" class:is-active={customCursorImage} class:is-debug={dev} />
     <img src={customCursorImage} alt="" class="pat-cursor" bind:this={customCursorEl} />
   </figure>
 </div>
@@ -74,11 +82,14 @@
 
     .pat-area
       position: absolute
-      top: 80px
-      left: 130px
-      width: 40px
-      height: 25px
+      top: 10px
+      left: 120px
+      width: 90px
+      height: 70px
       z-index: 10
+
+      &.is-debug
+        border: 1px dashed rgba(red, .25)
 
       &.is-active
         cursor: none
@@ -86,8 +97,8 @@
     .pat-cursor
       position: fixed
       display: none
-      width: 3rem
-      height: 3rem
+      width: 5rem
+      height: 5rem
       pointer-events: none
       z-index: 10
 
