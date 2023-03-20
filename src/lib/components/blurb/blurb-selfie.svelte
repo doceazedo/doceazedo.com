@@ -27,7 +27,7 @@
   };
 </script>
 
-<div class="blurb-selfie" on:click={openInstagram} on:keydown>
+<div class="blurb-selfie" on:contextmenu|preventDefault={openInstagram}>
   <figure class="selfie-wrapper">
     <img class="selfie" src={selfieSrc} alt={$LANG.alt.selfie} />
     <div class="pat-area" class:is-active={customCursorImage} class:is-debug={dev} />
