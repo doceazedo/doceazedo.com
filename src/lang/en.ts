@@ -273,6 +273,13 @@ export const en: Language = {
         'Choose one of the %s icons below to copy the command and paste it into the chat to join a team and show your pride for it!',
       copied: 'Command copied, now paste it into the chat!'
     },
+    pronouns: {
+      title: 'Pronouns',
+      subtitle:
+        'Use the following command to let everyone know how to refer to you (PT-BR only for now):',
+      command: 'pronouns',
+      copy: 'Copy command'
+    },
     tts: {
       title: 'TTS',
       subtitle:

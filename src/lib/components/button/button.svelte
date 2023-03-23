@@ -35,6 +35,7 @@
   .button
     display: flex
     justify-content: center
+    align-items: center
     gap: .5rem
     border: none
     padding: 1rem 1.75rem
@@ -89,6 +90,10 @@
     &.medium
       font-size: 1.1rem
       padding: 1rem 1.6rem
+
+      :global(svg)
+        height: 1.25rem
+        width: 1.25rem
 
   :global([data-theme="light"])
     .button.outline:not(.light)

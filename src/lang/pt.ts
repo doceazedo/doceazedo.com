@@ -274,6 +274,12 @@ export const pt: Language = {
         'Escolha um dos %s ícones abaixo para copiar o comando e cole no chat para participar de um time e mostrar seu orgulho por ele!',
       copied: 'Comando copiado, agora é só colar no chat!'
     },
+    pronouns: {
+      title: 'Pronomes',
+      subtitle: 'Use o comando abaixo para indicar como as pessoas devem se referir a você:',
+      command: 'pronomes',
+      copy: 'Copiar comando'
+    },
     tts: {
       title: 'TTS',
       subtitle:

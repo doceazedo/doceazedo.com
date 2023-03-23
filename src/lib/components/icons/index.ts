@@ -2,6 +2,7 @@ export { default as AchievementIcon } from './achievement-icon.svelte';
 export { default as ArrowRightIcon } from './arrow-right-icon.svelte';
 export { default as AudioIcon } from './audio-icon.svelte';
 export { default as BookmarkIcon } from './bookmark-icon.svelte';
+export { default as ClipboardIcon } from './clipboard-icon.svelte';
 export { default as CloseIcon } from './close-icon.svelte';
 export { default as CodeIcon } from './code-icon.svelte';
 export { default as ElevatorIcon } from './elevator-icon.svelte';

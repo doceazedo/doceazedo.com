@@ -138,6 +138,12 @@ export type Language = {
       subtitle: string;
       copied: string;
     };
+    pronouns: {
+      title: string;
+      subtitle: string;
+      command: string;
+      copy: string;
+    };
     tts: {
       title: string;
       subtitle: string;

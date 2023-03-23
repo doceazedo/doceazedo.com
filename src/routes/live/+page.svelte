@@ -3,6 +3,7 @@
   import { Metadata } from '$lib/components/metadata';
   import { SupportCTA } from '$lib/components/cta';
   import { TtsUsage, TtsVoicesTable } from '$lib/components/tts';
+  import { PronounsCmd } from '$lib/components/pronouns-cmd';
   import { LIVE_DATA } from '$lib/modules/live';
   import { TwitchPlayer } from '$lib/modules/twitch-player';
   import { IconsGrid, ICONS } from '$lib/components/icons-grid';
@@ -25,6 +26,10 @@
   {$LANG.streams.icons.subtitle.replace('%s', iconsQty.toString())}
 </p>
 <IconsGrid />
+
+<h1 id="pronouns" class="title">{$LANG.streams.pronouns.title}</h1>
+<p class="subtitle content">{$LANG.streams.pronouns.subtitle}</p>
+<PronounsCmd />
 
 <h1 id="tts" class="title">{$LANG.streams.tts.title}</h1>
 <p class="subtitle">{$LANG.streams.tts.subtitle}</p>
