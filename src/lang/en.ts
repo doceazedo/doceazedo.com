@@ -278,7 +278,8 @@ export const en: Language = {
       subtitle:
         'The TTS command can be used to send voice messages, simple as that. If you want to go a step further, several different voices, languages and features are available:',
       usage: {
-        default: 'Use %s to send a voice message with the Google default Brazilian female voice',
+        default: 'Use %s to send a voice message with a random Brazilian TikTok voice',
+        google: 'Use %s to send a voice message with the Brazilian Google female voice',
         polly: 'Use %s to send a voice message with one of the voices below',
         ssml: 'Use %s to send a voice message with %s'
       },

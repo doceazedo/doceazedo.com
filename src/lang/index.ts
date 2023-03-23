@@ -143,6 +143,7 @@ export type Language = {
       subtitle: string;
       usage: {
         default: string;
+        google: string;
         polly: string;
         ssml: string;
       };

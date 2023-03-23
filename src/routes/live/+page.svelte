@@ -26,7 +26,7 @@
 </p>
 <IconsGrid />
 
-<h1 class="title">{$LANG.streams.tts.title}</h1>
+<h1 id="tts" class="title">{$LANG.streams.tts.title}</h1>
 <p class="subtitle">{$LANG.streams.tts.subtitle}</p>
 <TtsUsage />
 <TtsVoicesTable />

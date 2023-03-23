@@ -3,7 +3,7 @@
 
   type Voice = {
     id: string;
-    gender: 'f' | 'm'; // lol
+    vendor: 'polly' | 'tiktok';
   };
 
   type VoiceLanguage = {
@@ -12,202 +12,238 @@
     primary?: boolean;
   };
 
-  const polly: VoiceLanguage[] = [
+  const voices: VoiceLanguage[] = [
     {
-      lang: 'Alemão',
+      lang: '🇩🇪 DE',
       voices: [
-        { id: 'marlene', gender: 'f' },
-        { id: 'vicki', gender: 'f' },
-        { id: 'hans', gender: 'm' }
+        { id: 'marlene', vendor: 'polly' },
+        { id: 'vicki', vendor: 'polly' },
+        { id: 'hans', vendor: 'polly' },
+        { id: 'de_001', vendor: 'tiktok' },
+        { id: 'de_002', vendor: 'tiktok' }
       ]
     },
     {
-      lang: 'Árabe',
-      voices: [{ id: 'zeina', gender: 'f' }]
+      lang: '🇸🇦 AR',
+      voices: [{ id: 'zeina', vendor: 'polly' }]
     },
     {
-      lang: 'Chinês',
-      voices: [{ id: 'zhiyu', gender: 'f' }]
+      lang: '🇨🇳 ZH',
+      voices: [{ id: 'zhiyu', vendor: 'polly' }]
     },
     {
-      lang: 'Coreano',
-      voices: [{ id: 'seoyeon', gender: 'f' }]
-    },
-    {
-      lang: 'Dinamarquês',
+      lang: '🇰🇷 KO',
       voices: [
-        { id: 'naja', gender: 'f' },
-        { id: 'mads', gender: 'm' }
+        { id: 'seoyeon', vendor: 'polly' },
+        { id: 'kr_002', vendor: 'tiktok' },
+        { id: 'kr_004', vendor: 'tiktok' },
+        { id: 'kr_003', vendor: 'tiktok' }
       ]
     },
     {
-      lang: 'Holandês',
+      lang: '🇩🇰 DA',
       voices: [
-        { id: 'lotte', gender: 'f' },
-        { id: 'ruben', gender: 'm' }
+        { id: 'naja', vendor: 'polly' },
+        { id: 'mads', vendor: 'polly' }
       ]
     },
     {
-      lang: 'Inglês (australiano)',
+      lang: '🇳🇱 NL',
       voices: [
-        { id: 'nicole', gender: 'f' },
-        { id: 'olivia', gender: 'f' },
-        { id: 'russell', gender: 'm' }
+        { id: 'lotte', vendor: 'polly' },
+        { id: 'ruben', vendor: 'polly' }
       ]
     },
     {
-      lang: 'Inglês (britânico)',
+      lang: '🇦🇺 EN-AU',
       voices: [
-        { id: 'amy', gender: 'f' },
-        { id: 'emma', gender: 'f' },
-        { id: 'brian', gender: 'm' }
+        { id: 'nicole', vendor: 'polly' },
+        { id: 'olivia', vendor: 'polly' },
+        { id: 'russell', vendor: 'polly' },
+        { id: 'en_au_001', vendor: 'tiktok' },
+        { id: 'en_au_002', vendor: 'tiktok' }
       ]
     },
     {
-      lang: 'Inglês (indiano)',
+      lang: '🇬🇧 EN-GB',
       voices: [
-        { id: 'aditi', gender: 'f' },
-        { id: 'raveena', gender: 'f' }
+        { id: 'amy', vendor: 'polly' },
+        { id: 'emma', vendor: 'polly' },
+        { id: 'brian', vendor: 'polly' },
+        { id: 'en_uk_001', vendor: 'tiktok' },
+        { id: 'en_uk_003', vendor: 'tiktok' }
       ]
     },
     {
-      lang: 'Inglês (neozelandês)',
-      voices: [{ id: 'aria', gender: 'f' }]
-    },
-    {
-      lang: 'Inglês (sul-africano)',
-      voices: [{ id: 'ayanda', gender: 'f' }]
-    },
-    {
-      lang: 'Inglês (americano)',
+      lang: '🇮🇳 EN-IN',
       voices: [
-        { id: 'ivy', gender: 'f' },
-        { id: 'joanna', gender: 'f' },
-        { id: 'kendra', gender: 'f' },
-        { id: 'kimberly', gender: 'f' },
-        { id: 'salli', gender: 'f' },
-        { id: 'joey', gender: 'm' },
-        { id: 'justin', gender: 'm' },
-        { id: 'kevin', gender: 'm' },
-        { id: 'matthew', gender: 'm' }
+        { id: 'aditi', vendor: 'polly' },
+        { id: 'raveena', vendor: 'polly' }
       ]
     },
     {
-      lang: 'Inglês (galês)',
-      voices: [{ id: 'geraint', gender: 'm' }]
+      lang: '🇳🇿 EN-NZ',
+      voices: [{ id: 'aria', vendor: 'polly' }]
     },
     {
-      lang: 'Francês',
+      lang: '🇿🇦 EN-ZA',
+      voices: [{ id: 'ayanda', vendor: 'polly' }]
+    },
+    {
+      lang: '🇺🇸 EN-US',
       voices: [
-        { id: 'celine', gender: 'f' },
-        { id: 'lea', gender: 'f' },
-        { id: 'mathieu', gender: 'm' }
+        { id: 'ivy', vendor: 'polly' },
+        { id: 'joanna', vendor: 'polly' },
+        { id: 'kendra', vendor: 'polly' },
+        { id: 'kimberly', vendor: 'polly' },
+        { id: 'salli', vendor: 'polly' },
+        { id: 'joey', vendor: 'polly' },
+        { id: 'justin', vendor: 'polly' },
+        { id: 'kevin', vendor: 'polly' },
+        { id: 'matthew', vendor: 'polly' },
+        { id: 'en_us_001', vendor: 'tiktok' },
+        { id: 'en_us_006', vendor: 'tiktok' },
+        { id: 'en_us_007', vendor: 'tiktok' },
+        { id: 'en_us_009', vendor: 'tiktok' },
+        { id: 'en_us_010', vendor: 'tiktok' },
+        { id: 'en_us_ghostface', vendor: 'tiktok' },
+        { id: 'en_us_c3po', vendor: 'tiktok' },
+        { id: 'en_us_stitch', vendor: 'tiktok' }
       ]
     },
     {
-      lang: 'Francês (canadense)',
+      lang: '🏴󠁧󠁢󠁷󠁬󠁳󠁿 EN-CY',
+      voices: [{ id: 'geraint', vendor: 'polly' }]
+    },
+    {
+      lang: '🇫🇷 FR',
       voices: [
-        { id: 'chantal', gender: 'f' },
-        { id: 'gabrielle', gender: 'f' }
+        { id: 'celine', vendor: 'polly' },
+        { id: 'lea', vendor: 'polly' },
+        { id: 'mathieu', vendor: 'polly' },
+        { id: 'fr_001', vendor: 'tiktok' },
+        { id: 'fr_002', vendor: 'tiktok' }
       ]
     },
     {
-      lang: 'Galês',
-      voices: [{ id: 'gwyneth', gender: 'f' }]
-    },
-    {
-      lang: 'Hindi',
-      voices: [{ id: 'aditi', gender: 'f' }]
-    },
-    {
-      lang: 'Islandês',
+      lang: '🇨🇦 FR-CA',
       voices: [
-        { id: 'dora', gender: 'f' },
-        { id: 'karl', gender: 'm' }
+        { id: 'chantal', vendor: 'polly' },
+        { id: 'gabrielle', vendor: 'polly' }
       ]
     },
     {
-      lang: 'Italiano',
+      lang: '🏴󠁧󠁢󠁷󠁬󠁳󠁿 CY',
+      voices: [{ id: 'gwyneth', vendor: 'polly' }]
+    },
+    {
+      lang: '🇮🇳 HI',
+      voices: [{ id: 'aditi', vendor: 'polly' }]
+    },
+    {
+      lang: '🇮🇩 ID',
+      voices: [{ id: 'id_001', vendor: 'tiktok' }]
+    },
+    {
+      lang: '🇮🇸 IS',
       voices: [
-        { id: 'carla', gender: 'f' },
-        { id: 'bianca', gender: 'f' },
-        { id: 'giorgio', gender: 'm' }
+        { id: 'dora', vendor: 'polly' },
+        { id: 'karl', vendor: 'polly' }
       ]
     },
     {
-      lang: 'Japonês',
+      lang: '🇮🇹 IT',
       voices: [
-        { id: 'mizuki', gender: 'f' },
-        { id: 'takumi', gender: 'm' }
+        { id: 'carla', vendor: 'polly' },
+        { id: 'bianca', vendor: 'polly' },
+        { id: 'giorgio', vendor: 'polly' }
       ]
     },
     {
-      lang: 'Norueguês',
-      voices: [{ id: 'liv', gender: 'f' }]
-    },
-    {
-      lang: 'Polonês',
+      lang: '🇯🇵 JA',
       voices: [
-        { id: 'ewa', gender: 'f' },
-        { id: 'maja', gender: 'f' },
-        { id: 'jacek', gender: 'm' },
-        { id: 'jan', gender: 'm' }
+        { id: 'mizuki', vendor: 'polly' },
+        { id: 'takumi', vendor: 'polly' },
+        { id: 'jp_001', vendor: 'tiktok' },
+        { id: 'jp_003', vendor: 'tiktok' },
+        { id: 'jp_005', vendor: 'tiktok' },
+        { id: 'jp_006', vendor: 'tiktok' }
       ]
     },
     {
-      lang: 'Português (brasileiro)',
+      lang: '🇳🇴 NB',
+      voices: [{ id: 'liv', vendor: 'polly' }]
+    },
+    {
+      lang: '🇵🇱 PL',
+      voices: [
+        { id: 'ewa', vendor: 'polly' },
+        { id: 'maja', vendor: 'polly' },
+        { id: 'jacek', vendor: 'polly' },
+        { id: 'jan', vendor: 'polly' }
+      ]
+    },
+    {
+      lang: '🇧🇷 PT-BR',
       primary: true,
       voices: [
-        { id: 'camila', gender: 'f' },
-        { id: 'vitoria', gender: 'f' },
-        { id: 'ricardo', gender: 'm' }
+        { id: 'camila', vendor: 'polly' },
+        { id: 'vitoria', vendor: 'polly' },
+        { id: 'ricardo', vendor: 'polly' },
+        { id: 'br_003', vendor: 'tiktok' },
+        { id: 'br_004', vendor: 'tiktok' },
+        { id: 'br_005', vendor: 'tiktok' }
       ]
     },
     {
-      lang: 'Português (europeu)',
+      lang: '🇵🇹 PT-PT',
       voices: [
-        { id: 'ines', gender: 'f' },
-        { id: 'cristiano', gender: 'm' }
+        { id: 'ines', vendor: 'polly' },
+        { id: 'cristiano', vendor: 'polly' }
       ]
     },
     {
-      lang: 'Romeno',
-      voices: [{ id: 'carmen', gender: 'f' }]
+      lang: '🇷🇴 RO',
+      voices: [{ id: 'carmen', vendor: 'polly' }]
     },
     {
-      lang: 'Russo',
+      lang: '🇷🇺 RU',
       voices: [
-        { id: 'tatyana', gender: 'f' },
-        { id: 'maxim', gender: 'm' }
+        { id: 'tatyana', vendor: 'polly' },
+        { id: 'maxim', vendor: 'polly' }
       ]
     },
     {
-      lang: 'Espanhol (europeu)',
+      lang: '🇪🇸 ES-ES',
       voices: [
-        { id: 'conchita', gender: 'f' },
-        { id: 'lucia', gender: 'f' },
-        { id: 'enrique', gender: 'm' }
+        { id: 'conchita', vendor: 'polly' },
+        { id: 'lucia', vendor: 'polly' },
+        { id: 'enrique', vendor: 'polly' },
+        { id: 'es_002', vendor: 'tiktok' }
       ]
     },
     {
-      lang: 'Espanhol (mexicano)',
-      voices: [{ id: 'mia', gender: 'f' }]
-    },
-    {
-      lang: 'Espanhol (americano)',
+      lang: '🇲🇽 ES-MX',
       voices: [
-        { id: 'lupe', gender: 'f' },
-        { id: 'penelope', gender: 'f' },
-        { id: 'miguel', gender: 'm' }
+        { id: 'mia', vendor: 'polly' },
+        { id: 'es_mx_002', vendor: 'tiktok' }
       ]
     },
     {
-      lang: 'Sueco',
-      voices: [{ id: 'astrid', gender: 'f' }]
+      lang: '🇺🇸 ES-US',
+      voices: [
+        { id: 'lupe', vendor: 'polly' },
+        { id: 'penelope', vendor: 'polly' },
+        { id: 'miguel', vendor: 'polly' }
+      ]
     },
     {
-      lang: 'Turco',
-      voices: [{ id: 'filiz', gender: 'f' }]
+      lang: '🇸🇪 SV',
+      voices: [{ id: 'astrid', vendor: 'polly' }]
+    },
+    {
+      lang: '🇹🇷 TR',
+      voices: [{ id: 'filiz', vendor: 'polly' }]
     }
   ];
 </script>
@@ -215,24 +251,32 @@
 <table class="table">
   <thead>
     <tr>
-      <th>{$LANG.streams.tts.table.code}</th>
       <th>{$LANG.streams.tts.table.lang}</th>
-      <th>{$LANG.streams.tts.table.type}</th>
+      <th>Amazon Polly</th>
+      <th>TikTok</th>
     </tr>
   </thead>
   <tbody>
-    {#each polly as lang}
+    {#each voices as lang}
+      {@const pollyVoices = lang.voices.filter((voice) => voice.vendor == 'polly')}
+      {@const tikTokVoices = lang.voices.filter((voice) => voice.vendor == 'tiktok')}
       <tr class:primary={lang.primary}>
         <td>{lang.lang}</td>
         <td>
-          {#each lang.voices as voice}
+          {#each pollyVoices as voice}
             {voice.id}<br />
           {/each}
+          {#if !pollyVoices.length}
+            -
+          {/if}
         </td>
         <td>
-          {#each lang.voices as voice}
-            {$LANG.streams.tts.table.voiceTypes[voice.gender]}<br />
+          {#each tikTokVoices as voice}
+            {voice.id}<br />
           {/each}
+          {#if !tikTokVoices.length}
+            -
+          {/if}
         </td>
       </tr>
     {/each}
@@ -261,9 +305,9 @@
       vertical-align: top
       line-height: 1.5
 
-    td:first-child,
-    td:nth-child(2)
-      width: 16rem
+    td:nth-child(2),
+    td:nth-child(3)
+      width: 24rem
 
   :global([data-theme="light"])
     table
