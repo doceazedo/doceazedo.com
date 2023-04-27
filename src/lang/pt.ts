@@ -206,7 +206,7 @@ export const pt: Language = {
     paragraph: 'Alguns dos meus sites/ferramentas preferidos que eu recomendo',
     devUtils: '👨‍💻 Dev utils',
     design: '🎨 Design',
-    resources: '📦 Materiais',
+    resources: '📦 Recursos',
     subreddits: '👽 Subreddits',
     english: '📚 Inglês',
     extensions: '🌎 Extensões',

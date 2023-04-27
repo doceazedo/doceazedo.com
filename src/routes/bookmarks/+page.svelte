@@ -33,6 +33,14 @@
       title: 'design',
       items: [
         {
+          title: 'Iconês',
+          href: 'https://icones.js.org'
+        },
+        {
+          title: 'SVGOMG',
+          href: 'https://jakearchibald.github.io/svgomg'
+        },
+        {
           title: 'Bulk Resize Photos',
           href: 'https://bulkresizephotos.com'
         }
@@ -41,10 +49,6 @@
     {
       title: 'resources',
       items: [
-        {
-          title: 'Iconês',
-          href: 'https://icones.js.org'
-        },
         {
           title: 'Ninite',
           href: 'https://ninite.com'
@@ -101,8 +105,8 @@
           href: 'https://chrome.google.com/webstore/detail/iaddfgegjgjelgkanamleadckkpnjpjc'
         },
         {
-          title: 'WA Web Plus for WhatsApp',
-          href: 'https://chrome.google.com/webstore/detail/wa-web-plus-for-whatsapp/ekcgkejcjdcmonfpmnljobemcbpnkamh'
+          title: 'SponsorBlock',
+          href: 'https://chrome.google.com/webstore/detail/sponsorblock-for-youtube/mnjggcdmjocbbbhaepdhchncahnbgone'
         }
       ]
     },
