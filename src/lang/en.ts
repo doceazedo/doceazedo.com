@@ -234,12 +234,11 @@ export const en: Language = {
     source: 'Source',
     demo: 'Demo',
     details: {
-      semaninha:
-        "Last.fm collage generator, featuring the songs you've listened to the most, powered by SvelteKit and Puppeteer.",
-      'svelte-flow':
-        'Library for creating diagrams, inspired by React Flow and still at the early stages of development.',
+      fazendoca:
+        'A social game about taking care of your farm, made on UE5 with a SvelteKit REST API, currently on early development.',
       overlay:
         'A set of visual scenes and interactive commands to spice up my live coding streams on Twitch.',
+      ssn: 'A Minecraft server with no rules, open-source, with its own first-party web authentication, plugins and patches.',
       emotettv: 'A dead simple library to parse Twitch emotes with ease',
       powerchat: 'Inactive project that aims to make the Twitch chat more modern',
       'quarto-101': 'Project with the aim of recreating all the BBB (reality show) systems',

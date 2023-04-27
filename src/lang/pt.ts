@@ -235,12 +235,11 @@ export const pt: Language = {
     source: 'Código',
     demo: 'Demo',
     details: {
-      semaninha:
-        'Gerador de colagens com as músicas que você mais ouviu na semana no Last.fm, desenvolvido com SvelteKit e Puppeteer.',
-      'svelte-flow':
-        'Biblioteca que permite criar diagramas, inspirado no React Flow e ainda no início do desenvolvimento.',
+      fazendoca:
+        'Um joguinho social sobre cuidar da sua fazenda, feito na UE5 com uma API REST em SvelteKit; ainda em desenvolvimento.',
       overlay:
         'Um conjunto de visuais e comandos interativos para animar as minhas livestreams de programação.',
+      ssn: 'Um servidor de Minecraft sem regras e open-source com sistema de autenticação web, plugins e correções próprias.',
       emotettv: 'Biblioteca para fazer parse dos emotes da Twitch, sem esforço',
       powerchat: 'Projeto (inativo) que visa deixar o chat da Twitch mais moderno',
       'quarto-101': 'Projeto com o objetivo de recriar os sistemas da casa do BBB',
