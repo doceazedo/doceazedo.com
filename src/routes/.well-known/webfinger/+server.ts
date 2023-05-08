@@ -5,8 +5,8 @@ const MASTODON_USERNAME = 'doceazedo';
 const MASTODON_DOMAIN = 'svelte.gay';
 
 export const GET = async ({ url }) => {
-  //const resource = url.searchParams.get('resource');
-  //if (resource != `acct:${MASTODON_ALIAS}`) throw error(404);
+  const resource = url.searchParams.get('resource');
+  if (resource != `acct:${MASTODON_ALIAS}`) throw error(404);
 
   return json(
     {
