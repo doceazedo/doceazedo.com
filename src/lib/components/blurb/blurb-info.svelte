@@ -19,7 +19,7 @@
     },
     {
       icon: MastodonIcon,
-      href: 'https://svelte.gay/@doceazedo'
+      href: 'https://bolha.us/@doceazedo'
     },
     {
       icon: TwitchIcon,
