@@ -2,6 +2,7 @@
   import { page } from '$app/stores';
   import { browser } from '$app/environment';
   import { Container, Footer, Navbar, SkipToContent } from '$lib/components';
+  import { Screensaver } from '$lib/components/screensaver';
   import { TopbarDomainMigration } from '$lib/modules';
   import '../assets/sass/minireset.sass';
   import '../assets/sass/global.sass';
@@ -16,3 +17,4 @@
   <slot />
 </Container>
 <Footer />
+<Screensaver />

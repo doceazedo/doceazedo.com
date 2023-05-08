@@ -61,3 +61,5 @@ THEME.subscribe((theme) => {
 
   document.body.dataset.theme = theme;
 });
+
+export const IS_SLEEPING = writable(false);

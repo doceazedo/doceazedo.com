@@ -2,12 +2,21 @@
   import { onMount } from 'svelte';
   import { sleep } from '$lib/utils';
 
-  export let showDoce = false,
-    showAzedo = false;
+  export let showDoce = false;
+  export let showAzedo = false;
+  export let enableTransitions = true;
+  export let color = '#6930c3';
 
   let showLogo = false;
 
   onMount(async () => {
+    if (!enableTransitions) {
+      showLogo = true;
+      showDoce = true;
+      showAzedo = true;
+      return;
+    }
+
     await sleep(100);
     showLogo = true;
     await sleep(1);
@@ -17,7 +26,13 @@
   });
 </script>
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 314.05 113.79" class:hide={!showLogo}>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 314.05 113.79"
+  class:hide={!showLogo}
+  class:is-animated={enableTransitions}
+  fill={color}
+>
   <path
     class:hide={!showDoce}
     d="M34.18 0a33.12 33.12 0 0 1 11.13 1.73 22.41 22.41 0 0 1 8.2 4.97 21.05 21.05 0 0 1 5.08 7.85 29.37 29.37 0 0 1 1.73 10.37v.07a29.14 29.14 0 0 1-1.73 10.3 21.03 21.03 0 0 1-5.07 7.85 22.41 22.41 0 0 1-8.21 4.96 33.12 33.12 0 0 1-11.13 1.73H0V0ZM11.02 39.6h23.16q7.56 0 11.38-3.92t3.82-10.7v-.07q0-6.84-3.82-10.76t-11.38-3.93H11.02ZM65.7 24.91v-.07a25.69 25.69 0 0 1 1.8-9.83 22.2 22.2 0 0 1 5.21-8.06 23.04 23.04 0 0 1 8.36-5.15A32.53 32.53 0 0 1 92.27 0h7.17a32.54 32.54 0 0 1 11.2 1.8A23.05 23.05 0 0 1 119 6.95a22.2 22.2 0 0 1 5.23 8.06 25.72 25.72 0 0 1 1.8 9.83v.07a29.4 29.4 0 0 1-1.8 10.55 22.2 22.2 0 0 1-5.22 8.06 23.05 23.05 0 0 1-8.36 5.15 32.52 32.52 0 0 1-11.2 1.8h-7.18a32.51 32.51 0 0 1-11.2-1.8 23.04 23.04 0 0 1-8.35-5.15 22.19 22.19 0 0 1-5.22-8.06 29.36 29.36 0 0 1-1.8-10.55Zm10.94 0q0 7.06 4.03 11.27t11.6 4.21h7.17q7.64 0 11.63-4.21t4-11.27v-.07a14.04 14.04 0 0 0-4-10.55q-4-4.21-11.63-4.21h-7.18q-7.56 0-11.6 4.21a13.97 13.97 0 0 0-4.02 10.55ZM0 88.88v-.07a25.7 25.7 0 0 1 1.8-9.83 22.18 22.18 0 0 1 5.22-8.06 23.04 23.04 0 0 1 8.35-5.15 32.53 32.53 0 0 1 11.2-1.8h10.37a37.1 37.1 0 0 1 10.65 1.4 21.6 21.6 0 0 1 8.35 4.72l-6.26 8.06a14.9 14.9 0 0 0-5.65-3.17 24.8 24.8 0 0 0-7.1-.93H26.58a18.34 18.34 0 0 0-6.59 1.11 13.3 13.3 0 0 0-4.9 3.17 14.3 14.3 0 0 0-3.06 4.86 13.97 13.97 0 0 0-1.08 5.62v.07a14.24 14.24 0 0 0 4.14 10.59q4.07 4.24 11.48 4.24h10.38a23.79 23.79 0 0 0 7.34-1 14.73 14.73 0 0 0 5.4-3.1l6.26 8.06a21.29 21.29 0 0 1-8.1 4.68 36.57 36.57 0 0 1-10.9 1.44H26.57a32.51 32.51 0 0 1-11.2-1.8 23.04 23.04 0 0 1-8.35-5.14 22.17 22.17 0 0 1-5.22-8.07 25.9 25.9 0 0 1-1.8-9.9ZM124.4 63.97v9.86H79.7v10.3h40.23v9.65H79.7v10.08h44.7v9.94H68.54V63.97Z"
@@ -29,25 +44,24 @@
 </svg>
 
 <style lang="sass">
-  @import '../../../assets/sass/vars.sass'
-
   svg
-    fill: $primary
     overflow: visible
-    transition: all .2s ease .2s
 
     &.hide
       display: none
 
-    path
-      transition: all .2s ease
+    &.is-animated
+      transition: all .2s ease .2s
 
-      &.hide
-        opacity: 0
+      path
+        transition: all .2s ease
 
-        &:first-child
-          transform: translateY(-18px)
+    path.hide
+      opacity: 0
 
-        &:last-child
-          transform: translateY(18px)
+      &:first-child
+        transform: translateY(-18px)
+
+      &:last-child
+        transform: translateY(18px)
 </style>

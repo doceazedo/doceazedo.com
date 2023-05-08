@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import { IS_SLEEPING } from '$lib/stores';
 
   export let title = '',
     description = "I'm DoceAzedo, a curiosity-driven developer, Svelte evangelist and live coder.",
@@ -7,10 +8,12 @@
 
   const baseURL = 'https://doceazedo.com';
   $: pageTitle = !!title ? `${title} » DoceAzedo` : 'DoceAzedo';
+
+  $: titlePrefix = $IS_SLEEPING ? '😴 | ' : '';
 </script>
 
 <svelte:head>
-  <title>{pageTitle}</title>
+  <title>{titlePrefix}{pageTitle}</title>
   <meta name="title" content={pageTitle} />
   <meta name="description" content={description} />
   <meta name="theme-color" content="#6930c3" />
