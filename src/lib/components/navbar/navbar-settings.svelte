@@ -45,7 +45,6 @@
   };
 
   const reset = () => {
-    $THEME = 'dark';
     $COLOR_THEME = 'purple';
     $READING_FONT_SIZE = 1;
     $READING_MAX_WIDTH = 1;
