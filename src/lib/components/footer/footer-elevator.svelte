@@ -2,8 +2,8 @@
   import { browser } from '$app/environment';
   import { ElevatorIcon } from '$lib/components';
   import { IS_ELEVATOR_FAST } from '$lib/stores';
-  import regularElevatorMusic from '../../../assets/audio/Toby Fox - Hotel.mp3';
-  import altElevatorMusic from "../../../assets/audio/Toby Fox - Can You Really Call This A Hotel, I Didn't Receive A Mint On My Pillow Or Anything.mp3";
+  import regularElevatorMusic from '../../../assets/audio/toby_fox_hotel.mp3';
+  import altElevatorMusic from '../../../assets/audio/toby_fox_can_you_really_call_this_a_hotel_i_didn_t_receive_a_mint_on_my_pillow_or_anything.mp3';
   import chimeAudio from '../../../assets/audio/chime.mp3';
 
   let scrollY = 0;
