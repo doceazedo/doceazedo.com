@@ -23,42 +23,16 @@ export const initializeLang = () => {
 
 export const LANG = initializeLang();
 
-const getSystemTheme = (): Theme => {
-  const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  return prefersDarkMode ? 'dark' : 'light';
-};
-
-const handleSystemThemeUpdate = (e: MediaQueryListEvent) => {
-  const prefersDarkMode = e.matches;
-  THEME.set(prefersDarkMode ? 'dark' : 'light');
-};
-
 export const THEME = writable<Theme>('dark', () => {
   if (!browser) return;
 
-  window
-    .matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener('change', handleSystemThemeUpdate);
-
   const storedTheme = localStorage.getItem('THEME');
-  if (storedTheme == 'dark' || storedTheme == 'light') {
-    THEME.set(storedTheme);
-    return;
-  }
-
-  const systemTheme = getSystemTheme();
-  THEME.set(systemTheme);
+  if (storedTheme == 'dark' || storedTheme == 'light') THEME.set(storedTheme);
 });
 
 THEME.subscribe((theme) => {
   if (!browser) return;
-
-  const storedTheme = localStorage.getItem('THEME');
-  const systemTheme = getSystemTheme();
-
-  if (storedTheme || systemTheme != theme) localStorage.setItem('THEME', theme);
-  if (systemTheme == theme) localStorage.removeItem('THEME');
-
+  localStorage.setItem('THEME', theme);
   document.body.dataset.theme = theme;
 });
 
