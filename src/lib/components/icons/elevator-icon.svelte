@@ -1,9 +1,4 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 48 67.29"
-  height="48"
-  fill="rgba(255, 255, 255, .75)"
->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 67.29" height="48" fill="currentColor">
   <path
     d="M45 19.29H3a3 3 0 0 0-3 3v42a3 3 0 0 0 3 3h42a3 3 0 0 0 3-3v-42a3 3 0 0 0-3-3Zm-26 45h-8v-23h8Zm4 0v-23h8v23Zm22 0H35v-24a3 3 0 0 0-3-3H10a3 3 0 0 0-3 3v24H3v-42h42Z"
   />

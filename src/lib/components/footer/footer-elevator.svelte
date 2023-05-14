@@ -54,6 +54,8 @@
 </button>
 
 <style lang="sass">
+  @import '../../../assets/sass/vars'
+
   .elevator
     position: absolute
     right: 1rem
@@ -62,6 +64,7 @@
     justify-content: center
     align-items: center
     background-color: transparent
+    color: rgba(#fff, .75)
     border: none
     cursor: pointer
     transition: all .2s ease
@@ -71,4 +74,8 @@
 
     &:not(:hover)
       opacity: .5
+
+  :global([data-theme="light"])
+    .elevator
+      color: rgba($primary, .75)
 </style>
