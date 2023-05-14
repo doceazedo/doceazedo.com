@@ -16,7 +16,7 @@
   } from '$lib/stores';
   import { clickOutside } from '$lib/utils';
 
-  let isOpen = true;
+  let isOpen = false;
   let toggleEl: HTMLElement;
 
   const togglePanel = () => (isOpen = !isOpen);
@@ -115,7 +115,7 @@
         </li>
         <li>
           {$LANG.settings.dyslexiaFont}
-          <Switch bind:active={$USE_DYSLEXIA_FONT} />
+          <Switch bind:active={$USE_DYSLEXIA_FONT} iconOff="Aa" iconOn="Aa" />
         </li>
         <li>
           {$LANG.settings.elevatorSpeed}
