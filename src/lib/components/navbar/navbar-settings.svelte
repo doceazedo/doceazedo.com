@@ -1,11 +1,19 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import { fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import { MoonIcon, SettingsIcon, SunIcon } from '$lib/components/icons';
   import { Button } from '$lib/components/button';
   import { Range, Select, Switch } from '$lib/components/input';
-  import { LANG, THEME } from '$lib/stores';
+  import {
+    COLOR_THEME,
+    IS_ELEVATOR_FAST,
+    LANG,
+    READING_FONT_SIZE,
+    READING_LINE_HEIGHT,
+    READING_MAX_WIDTH,
+    THEME,
+    USE_DYSLEXIA_FONT
+  } from '$lib/stores';
   import { clickOutside } from '$lib/utils';
 
   let isOpen = true;
@@ -22,13 +30,8 @@
 
   const switchTheme = () => ($THEME = $THEME == 'dark' ? 'light' : 'dark');
 
-  let fontSize = 1;
-  let lineHeight = 1;
-  let maxWidth = 1;
-
   const readingWidths = ['600px', '700px', '800px', '900px'];
 
-  const COLOR_THEME = writable('purple');
   $: colorThemes = new Map([
     ['purple', $LANG.settings.themes['purple']],
     ['blue', $LANG.settings.themes['blue']],
@@ -44,8 +47,11 @@
   const reset = () => {
     $THEME = 'dark';
     $COLOR_THEME = 'purple';
-    fontSize = 1;
-    lineHeight = 1;
+    $READING_FONT_SIZE = 1;
+    $READING_MAX_WIDTH = 1;
+    $READING_LINE_HEIGHT = 1;
+    $USE_DYSLEXIA_FONT = false;
+    $IS_ELEVATOR_FAST = false;
   };
 </script>
 
@@ -84,8 +90,8 @@
           {$LANG.settings.fontSize}
           <Range
             name="font-size"
-            bind:value={fontSize}
-            label={$LANG.settings.fontSizes[fontSize]}
+            bind:value={$READING_FONT_SIZE}
+            label={$LANG.settings.fontSizes[$READING_FONT_SIZE]}
             max={$LANG.settings.fontSizes.length - 1}
           />
         </li>
@@ -93,8 +99,8 @@
           {$LANG.settings.readingWidth}
           <Range
             name="max-width"
-            bind:value={maxWidth}
-            label={readingWidths[maxWidth]}
+            bind:value={$READING_MAX_WIDTH}
+            label={readingWidths[$READING_MAX_WIDTH]}
             max={readingWidths.length - 1}
           />
         </li>
@@ -102,18 +108,18 @@
           {$LANG.settings.lineHeight}
           <Range
             name="line-height"
-            bind:value={lineHeight}
-            label={$LANG.settings.lineHeights[lineHeight]}
+            bind:value={$READING_LINE_HEIGHT}
+            label={$LANG.settings.lineHeights[$READING_LINE_HEIGHT]}
             max={$LANG.settings.lineHeights.length - 1}
           />
         </li>
         <li>
           {$LANG.settings.dyslexiaFont}
-          <Switch />
+          <Switch bind:active={$USE_DYSLEXIA_FONT} />
         </li>
         <li>
           {$LANG.settings.elevatorSpeed}
-          <Switch iconOff="🐌" iconOn="⚡" />
+          <Switch bind:active={$IS_ELEVATOR_FAST} iconOff="🐌" iconOn="⚡" />
         </li>
         <li>
           {$LANG.settings.resetLabel}
