@@ -84,6 +84,7 @@
             name="theme"
             options={colorThemes}
             on:change={handleColorThemeChange}
+            disabled
           />
         </li>
         <li>
