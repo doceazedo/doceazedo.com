@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { dev } from '$app/environment';
   import { IS_SLEEPING } from '$lib/stores';
   import { ScreensaverDisplay } from '.';
 
-  const secondsUntilSleep = dev ? 3 : 30;
+  const secondsUntilSleep = 60;
 
   let screensaverTimer: ReturnType<typeof setInterval>;
 
