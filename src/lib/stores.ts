@@ -40,19 +40,32 @@ THEME.subscribe((theme) => {
 export const COLOR_THEME = writable<ColorTheme>('purple');
 COLOR_THEME.subscribe((colorTheme) => {
   if (!browser) return;
-  if (colorTheme == 'purple') {
-    localStorage.removeItem('COLOR_THEME');
-    document.body.dataset.color = undefined;
-    return;
-  }
   localStorage.setItem('COLOR_THEME', colorTheme);
+  if (colorTheme == 'purple') localStorage.removeItem('COLOR_THEME');
   document.body.dataset.color = colorTheme;
 });
 
 export const READING_FONT_SIZE = writable<number>(1);
 export const READING_LINE_HEIGHT = writable<number>(1);
 export const READING_MAX_WIDTH = writable<number>(1);
-export const USE_DYSLEXIA_FONT = writable<boolean>(false);
+
+export const USE_DYSLEXIA_FONT = writable<boolean>(false, () => {
+  if (!browser) return;
+
+  const storedState = localStorage.getItem('USE_DYSLEXIA_FONT');
+  if (storedState == 'true') {
+    USE_DYSLEXIA_FONT.set(true);
+    document.body.dataset.dyslexiaMode = 'true';
+  }
+});
+USE_DYSLEXIA_FONT.subscribe((useDyslexiaFont) => {
+  if (!browser) return;
+
+  localStorage.setItem('USE_DYSLEXIA_FONT', 'true');
+  if (!useDyslexiaFont) localStorage.removeItem('USE_DYSLEXIA_FONT');
+  document.body.dataset.dyslexiaMode = useDyslexiaFont ? 'true' : 'false';
+});
+
 export const IS_ELEVATOR_FAST = writable<boolean>(false);
 
 export const IS_SLEEPING = writable(false);

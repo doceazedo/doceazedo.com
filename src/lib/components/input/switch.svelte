@@ -9,7 +9,7 @@
 <button class="switch" on:click={() => (active = !active)} on:click class:is-active={active}>
   <div class="icon">
     {#if typeof iconOn === 'string'}
-      {iconOn}
+      <span>{iconOn}</span>
     {:else}
       <svelte:component this={iconOn} />
     {/if}
@@ -17,7 +17,7 @@
 
   <div class="icon">
     {#if typeof iconOff === 'string'}
-      {iconOff}
+      <span>{iconOff}</span>
     {:else}
       <svelte:component this={iconOff} />
     {/if}
@@ -64,8 +64,16 @@
       justify-content: center
       width: 50%
       color: $whiteish
+      transition: all .2s ease
 
       :global(svg)
         width: 1.25rem
         height: 1.25rem
+
+  :global([data-dyslexia-mode="true"])
+    .icon span
+      margin-top: -.25rem
+
+    .switch.is-active .icon:last-child
+      opacity: 0
 </style>

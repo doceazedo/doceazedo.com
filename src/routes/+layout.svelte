@@ -5,6 +5,7 @@
   import { Screensaver } from '$lib/components/screensaver';
   import { TopbarDomainMigration } from '$lib/modules';
   import '../assets/sass/minireset.sass';
+  import '../assets/sass/fonts.sass';
   import '../assets/sass/global.sass';
 
   $: ref = browser ? $page.url.searchParams.get('ref') : '';
