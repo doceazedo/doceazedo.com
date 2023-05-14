@@ -124,7 +124,9 @@
         </li>
         <li>
           {$LANG.settings.resetLabel}
-          <Button small on:click={reset}>{$LANG.settings.resetButton}</Button>
+          <Button small light={$THEME == 'light'} on:click={reset}>
+            {$LANG.settings.resetButton}
+          </Button>
         </li>
       </ul>
     </div>
@@ -152,6 +154,7 @@
     box-shadow: .25rem .25rem .5rem 0 rgba($primary, .2)
     border-radius: .5rem
     z-index: 20
+    transition: all .4s ease
 
     .title
       color: #fff
@@ -177,10 +180,17 @@
       right: 14px
       width: 1.5rem
       fill: #150e2f
+      transition: all .4s ease
 
   :global([data-theme="light"])
     .settings-toggle
       color: $blackish
+
+    .settings-panel
+      background-color: $primary
+
+      .tail
+        fill: $primary
 
   :global([data-dyslexia-mode="true"])
     .settings-panel

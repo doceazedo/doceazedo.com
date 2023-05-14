@@ -76,4 +76,19 @@
 
     .switch.is-active .icon:last-child
       opacity: 0
+
+  :global([data-theme="light"])
+    .switch
+      box-shadow: 0 0 0 1px rgba(#fff, .25)
+
+      &.is-active
+        background-color: rgba(#fff, .1)
+        box-shadow: 0 0 0 1px #fff
+
+        .icon
+          color: #fff
+          fill: #fff
+
+      &::before
+        background-color: #fff
 </style>

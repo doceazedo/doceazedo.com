@@ -25,4 +25,9 @@
     &:disabled
       opacity: .5
       cursor: not-allowed
+
+  :global([data-theme="light"])
+    select
+      background-color: rgba(#fff, .1)
+      box-shadow: 0 0 0 1px #fff
 </style>

@@ -41,4 +41,8 @@
       box-shadow: none
       border: none
       background: none
+
+  :global([data-theme="light"])
+    input::-webkit-slider-thumb
+      background-color: #fff
 </style>
