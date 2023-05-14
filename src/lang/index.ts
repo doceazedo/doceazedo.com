@@ -202,6 +202,24 @@ export type Language = {
     highlight: string;
     readMore: string;
   };
+
+  settings: {
+    title: string;
+    theme: string;
+    colorTheme: string;
+    fontSize: string;
+    readingWidth: string;
+    lineHeight: string;
+    dyslexiaFont: string;
+    elevatorSpeed: string;
+    resetLabel: string;
+    resetButton: string;
+    themes: {
+      [id: string]: string;
+    };
+    fontSizes: string[];
+    lineHeights: string[];
+  };
 };
 
 type KeyValue = {

@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { NavbarThemeSwitcher } from '.';
+  import { NavbarSettings } from '.';
   import { shortcuts } from './navbar-data';
 </script>
 
 <div class="navbar-shortcuts">
-  <NavbarThemeSwitcher />
+  <NavbarSettings />
   {#each shortcuts as shortcut}
     <!-- TODO: add alt text to icons (<a title="">) -->
     <a href={shortcut.href} target={shortcut.target} class="icon">

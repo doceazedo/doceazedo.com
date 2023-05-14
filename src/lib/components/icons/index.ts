@@ -21,6 +21,7 @@ export { default as PicPayIcon } from './picpay-icon.svelte';
 export { default as PushpinIcon } from './pushpin-icon.svelte';
 export { default as RssIcon } from './rss-icon.svelte';
 export { default as SearchIcon } from './search-icon.svelte';
+export { default as SettingsIcon } from './settings-icon.svelte';
 export { default as SlideshowIcon } from './slideshow-icon.svelte';
 export { default as SunIcon } from './sun-icon.svelte';
 export { default as TwitchIcon } from './twitch-icon.svelte';

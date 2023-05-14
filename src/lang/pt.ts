@@ -361,5 +361,27 @@ export const pt: Language = {
       '"Me desculpe, o antigo Lucas não pode atender o telefone agora. Por quê? Ah, porque ele está %s!" Eu adotei meu apelido DoceAzedo como o nome que melhor representa quem eu sou. E eu escrevi sobre isso.',
     highlight: 'morto',
     readMore: 'Saiba mais.'
+  },
+
+  settings: {
+    title: 'Preferências',
+    theme: 'Plano de fundo',
+    colorTheme: 'Cor do tema',
+    fontSize: 'Tamanho da fonte',
+    readingWidth: 'Largura da leitura',
+    lineHeight: 'Altura da linha',
+    dyslexiaFont: 'Usar fonte para dislexia',
+    elevatorSpeed: 'Velocidade do elevador',
+    resetLabel: 'Ajustes predefinidos',
+    resetButton: 'Redefinir',
+    themes: {
+      purple: '🍇 Uva',
+      blue: '🌊 Costa azul',
+      orange: '🧡 Papoula',
+      carmine: '🍓 Framboesa',
+      green: '🍃 Menta'
+    },
+    fontSizes: ['Pequena', 'Normal', 'Grande', 'Enorme'],
+    lineHeights: ['Condensado', 'Padrão', 'Espaçado']
   }
 };

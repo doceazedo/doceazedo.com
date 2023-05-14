@@ -362,5 +362,27 @@ export const en: Language = {
       "\"I'm sorry, the old Lucas can't come to the phone right now. Why? Oh 'cause they're %s!\" I've fully embraced my DoceAzedo nickname as the name that better represents who I am. I also wrote something about it.",
     highlight: 'dead',
     readMore: 'Learn more about it.'
+  },
+
+  settings: {
+    title: 'Preferences',
+    theme: 'Background',
+    colorTheme: 'Theme color',
+    fontSize: 'Font size',
+    readingWidth: 'Reading length',
+    lineHeight: 'Line height',
+    dyslexiaFont: 'Use font for dyslexia',
+    elevatorSpeed: 'Elevator speed',
+    resetLabel: 'Use default settings',
+    resetButton: 'Reset',
+    themes: {
+      purple: '🍇 Grape',
+      blue: '🌊 Blue coast',
+      orange: '🧡 Coquelicot',
+      carmine: '🍓 Raspberry',
+      green: '🍃 Mint'
+    },
+    fontSizes: ['Small', 'Normal', 'Large', 'Huge'],
+    lineHeights: ['Condensed', 'Default', 'Spaced']
   }
 };
