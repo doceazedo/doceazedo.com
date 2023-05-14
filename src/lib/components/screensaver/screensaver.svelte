@@ -2,7 +2,7 @@
   import { IS_SLEEPING } from '$lib/stores';
   import { ScreensaverDisplay } from '.';
 
-  const secondsUntilSleep = 50000;
+  const secondsUntilSleep = 1;
 
   let screensaverTimer: ReturnType<typeof setInterval>;
 

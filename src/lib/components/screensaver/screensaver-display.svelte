@@ -86,4 +86,8 @@
         filter: blur(1rem)
         transform: scaleX(1.25) scaleY(1.5)
         pointer-events: none
+
+  :global([data-theme="light"])
+    .screensaver
+      background-color: rgba(#d3c2f0, .75)
 </style>
