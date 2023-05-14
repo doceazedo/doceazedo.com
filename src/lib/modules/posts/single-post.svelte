@@ -85,8 +85,9 @@
 
   header,
   .content
-    max-width: 700px
+    max-width: var(--readingMaxWidth)
     margin: 0 auto
+    transition: all .2s ease
 
   .content,
   :global(.newsletter)

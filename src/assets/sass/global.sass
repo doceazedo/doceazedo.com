@@ -61,8 +61,8 @@ a
 
 .content
   font-family: $font-secondary
-  font-size: 1.2rem
-  line-height: 32px
+  font-size: var(--readingFontSize)
+  line-height: calc(32px + var(--readingLineHeight))
   color: #ccc
   transition: color .4s ease
 
@@ -124,7 +124,7 @@ a
       content: ''
       position: absolute
       left: 0
-      bottom: 0
+      bottom: 2px
       width: 100%
       height: 2px
       background-color: $primary
@@ -132,7 +132,7 @@ a
       z-index: -1
 
     &:hover::before
-      height: 100%
+      height: calc(100% - 2px)
 
   blockquote
     background-color: rgba(#fff, .1)
