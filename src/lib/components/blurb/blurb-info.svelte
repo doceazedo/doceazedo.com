@@ -123,4 +123,16 @@
 
     .bio
       margin-bottom: 3rem
+
+    :global([data-dyslexia-mode="true"])
+      .name
+        font-size: 2rem
+
+  :global([data-dyslexia-mode="true"])
+    .name
+      font-size: 2.5rem
+
+    .bio
+      max-width: 30rem
+      line-height: 1.5
 </style>

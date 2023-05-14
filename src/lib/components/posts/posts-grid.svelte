@@ -143,4 +143,12 @@
 
         .title
           font-size: 1.3rem
+
+  :global([data-dyslexia-mode="true"])
+    .article .title
+      line-height: 1.375
+
+    .tags > *
+      padding: .25rem .5rem .375rem !important
+      font-size: .8rem
 </style>

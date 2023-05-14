@@ -165,4 +165,13 @@
     hr,
     .content
       margin-bottom: 2.5rem
+
+  :global([data-dyslexia-mode="true"])
+    header
+
+      h1
+        line-height: 1.75
+
+      ul li a
+        padding: .1rem .5rem .375rem
 </style>

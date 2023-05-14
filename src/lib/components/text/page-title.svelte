@@ -29,4 +29,8 @@
 
     p
       margin-bottom: 2.5rem
+
+  :global([data-dyslexia-mode="true"])
+    p
+      line-height: 1.5
 </style>

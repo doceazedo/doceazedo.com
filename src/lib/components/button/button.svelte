@@ -100,4 +100,14 @@
       color: $primary
       background-color: rgba($primary-light, .1)
       box-shadow: 0 0 .75rem .25rem rgba($primary-light, .2), inset 0 0 0 1px $primary
+
+  :global([data-dyslexia-mode="true"])
+    .button
+      padding: .5rem 1.75rem .75rem
+
+      &.small
+        padding: .25rem 1rem .5rem
+
+      &.medium
+        padding: .5rem 1.6rem .75rem
 </style>

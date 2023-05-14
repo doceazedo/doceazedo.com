@@ -115,4 +115,8 @@
 
       :global(.buttons)
         justify-content: center
+
+  :global([data-dyslexia-mode="true"])
+    .talk .title
+      line-height: 1.5
 </style>

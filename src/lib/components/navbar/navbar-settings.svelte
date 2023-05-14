@@ -180,4 +180,9 @@
   :global([data-theme="light"])
     .settings-toggle
       color: $blackish
+
+  :global([data-dyslexia-mode="true"])
+    .settings-panel
+      width: 24rem
+      left: -21.5rem
 </style>

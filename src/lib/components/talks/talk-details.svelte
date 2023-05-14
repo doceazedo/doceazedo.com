@@ -40,4 +40,8 @@
   @media screen and (max-width: 768px)
     .title
       font-size: 1.5rem
+
+  :global([data-dyslexia-mode="true"])
+    .title
+      line-height: 1.75
 </style>

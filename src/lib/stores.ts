@@ -66,6 +66,17 @@ USE_DYSLEXIA_FONT.subscribe((useDyslexiaFont) => {
   document.body.dataset.dyslexiaMode = useDyslexiaFont ? 'true' : 'false';
 });
 
-export const IS_ELEVATOR_FAST = writable<boolean>(false);
+export const IS_ELEVATOR_FAST = writable<boolean>(false, () => {
+  if (!browser) return;
+
+  const storedState = localStorage.getItem('IS_ELEVATOR_FAST');
+  if (storedState == 'true') IS_ELEVATOR_FAST.set(true);
+});
+IS_ELEVATOR_FAST.subscribe((useDyslexiaFont) => {
+  if (!browser) return;
+
+  localStorage.setItem('IS_ELEVATOR_FAST', 'true');
+  if (!useDyslexiaFont) localStorage.removeItem('IS_ELEVATOR_FAST');
+});
 
 export const IS_SLEEPING = writable(false);
