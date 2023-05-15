@@ -89,7 +89,7 @@
             max={$LANG.settings.fontSizes.length - 1}
           />
         </li>
-        <li>
+        <li class="is-desktop-only">
           {$LANG.settings.readingWidth}
           <Range
             name="max-width"
@@ -200,4 +200,7 @@
 
       .tail
         right: 6.7rem
+
+    .is-desktop-only
+      display: none !important
 </style>
