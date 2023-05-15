@@ -3,7 +3,7 @@
   import { quintOut } from 'svelte/easing';
   import { ExpandIcon } from '$lib/components/icons';
   import { clickOutside } from '$lib/utils';
-  import { themes } from '$lib/stores';
+  import { COLOR_THEMES } from '$lib/stores';
 
   export let options: Map<string, string>;
   export let value: string;
@@ -37,7 +37,7 @@
       {#each [...options] as option}
         <button class="option" on:click={() => pick(option[0])}>
           {#if hasColorPreview}
-            <span class="color" style="background-color:#{themes[option[0]].primary}" />
+            <span class="color" style="background-color:#{$COLOR_THEMES[option[0]].primary}" />
           {/if}
           <span class="label">{option[1]}</span>
         </button>

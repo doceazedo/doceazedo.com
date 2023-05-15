@@ -380,7 +380,8 @@ export const en: Language = {
       blue: 'Blue coast',
       orange: 'Coquelicot',
       carmine: 'Raspberry',
-      green: 'Mint'
+      green: 'Mint',
+      pink: 'Flamingo'
     },
     fontSizes: ['Small', 'Regular', 'Large', 'Huge'],
     lineHeights: ['Condensed', 'Default', 'Spaced']

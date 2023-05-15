@@ -5,6 +5,7 @@
   import { Button } from '$lib/components/button';
   import { Range, Select, Switch } from '$lib/components/input';
   import {
+    COLOR_THEMES,
     COLOR_THEME,
     IS_ELEVATOR_FAST,
     LANG,
@@ -12,7 +13,8 @@
     READING_LINE_HEIGHT,
     READING_MAX_WIDTH,
     THEME,
-    USE_DYSLEXIA_FONT
+    USE_DYSLEXIA_FONT,
+    unlockTheme
   } from '$lib/stores';
   import { clickOutside } from '$lib/utils';
 
@@ -32,13 +34,19 @@
 
   const readingWidths = ['600px', '700px', '800px', '900px'];
 
-  $: colorThemes = new Map([
-    ['purple', $LANG.settings.themes['purple']],
-    ['blue', $LANG.settings.themes['blue']],
-    ['orange', $LANG.settings.themes['orange']],
-    ['carmine', $LANG.settings.themes['carmine']],
-    ['green', $LANG.settings.themes['green']]
-  ]);
+  $: colorThemes = new Map(
+    Object.keys($COLOR_THEMES).map((theme) => [theme, $LANG.settings.themes[theme] || theme])
+  );
+
+  const originalColorThemesLength = Object.keys($COLOR_THEMES).length;
+  const pickedColorThemes = new Set<string>();
+  COLOR_THEME.subscribe((theme) => {
+    pickedColorThemes.add(theme);
+    console.log({ ...pickedColorThemes });
+    if (pickedColorThemes.size >= originalColorThemesLength) {
+      unlockTheme('pink');
+    }
+  });
 
   const reset = () => {
     $COLOR_THEME = 'purple';

@@ -20,7 +20,7 @@ type ColorThemes = {
   };
 };
 
-export const themes: ColorThemes = {
+export const COLOR_THEMES = writable<ColorThemes>({
   purple: {
     primary: '6930C3',
     primaryLight: '8968D3',
@@ -54,6 +54,31 @@ export const themes: ColorThemes = {
     primaryLight: '66D9A2',
     background: '07120D'
   }
+});
+
+const extraThemes: ColorThemes = {
+  pink: {
+    primary: 'F266AB',
+    primaryLight: 'FF85C9',
+    background: '180A11'
+  }
+};
+
+const addExtraTheme = (theme: string) => {
+  const extraTheme = extraThemes[theme];
+  if (!extraTheme) return console.warn(`Could not find extra theme ${theme}`);
+
+  const themes = get(COLOR_THEMES);
+  if (themes[theme]) return console.warn(`Extra theme ${theme} already added`);
+
+  themes[theme] = extraTheme;
+  COLOR_THEMES.set(themes);
+};
+
+export const unlockTheme = (theme: string) => {
+  const unlockedThemes = get(UNLOCKED_THEMES);
+  if (unlockedThemes.includes(theme)) return;
+  UNLOCKED_THEMES.set([...unlockedThemes, theme]);
 };
 
 const fontSizes = ['16px', '19.2px', '22px', '24px'];
@@ -80,6 +105,7 @@ export const updateCssVariables = () => {
 
   const styleTag = findStyleTag();
 
+  const themes = get(COLOR_THEMES);
   const colorTheme = themes[get(COLOR_THEME)];
   if (!colorTheme) {
     console.warn('Invalid color theme. User settings might not be applied.');
@@ -143,6 +169,19 @@ export const COLOR_THEME = writable<string>('purple', () => {
   if (!browser) return;
   const stored = localStorage.getItem('COLOR_THEME');
   if (stored) COLOR_THEME.set(stored);
+});
+
+export const UNLOCKED_THEMES = writable<string[]>([], () => {
+  if (!browser) return;
+  const stored = localStorage.getItem('UNLOCKED_THEMES');
+  if (stored) UNLOCKED_THEMES.set(stored.split(','));
+});
+
+UNLOCKED_THEMES.subscribe((themes) => {
+  if (!browser) return;
+  localStorage.setItem('UNLOCKED_THEMES', themes.join(','));
+  if (!themes.length) localStorage.removeItem('UNLOCKED_THEMES');
+  themes.map((theme) => addExtraTheme(theme));
 });
 
 export const READING_FONT_SIZE = writable<number>(1, () => {

@@ -379,7 +379,8 @@ export const pt: Language = {
       blue: 'Costa azul',
       orange: 'Papoula',
       carmine: 'Framboesa',
-      green: 'Menta'
+      green: 'Menta',
+      pink: 'Flamingo'
     },
     fontSizes: ['Pequena', 'Normal', 'Grande', 'Enorme'],
     lineHeights: ['Condensado', 'Padrão', 'Espaçado']

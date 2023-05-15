@@ -1,13 +1,13 @@
 <script lang="ts">
   import { browser, dev } from '$app/environment';
-  import { COLOR_THEME, LANG, themes } from '$lib/stores';
+  import { COLOR_THEMES, COLOR_THEME, LANG } from '$lib/stores';
   import customCursorImage from '../../../assets/img/pat.gif';
   import defaultSelfie from '../../../assets/img/me-selfie-v3.webp';
 
-  $: selfieSrc = themes[$COLOR_THEME].selfie || defaultSelfie;
+  $: selfieSrc = $COLOR_THEMES[$COLOR_THEME]?.selfie || defaultSelfie;
   const instagramURL = 'https://instagram.com/doceazedo911';
 
-  $: patArea = themes[$COLOR_THEME].patArea || {
+  $: patArea = $COLOR_THEMES[$COLOR_THEME].patArea || {
     x: 10,
     y: 120,
     width: 90,
