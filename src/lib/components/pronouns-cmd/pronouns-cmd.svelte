@@ -70,7 +70,7 @@
     select
       background-color: transparent
       color: #fff
-      border: 1px solid #6a32c3
+      border: 1px solid var(--primary)
       padding: .25rem
       border-radius: .5rem
 </style>

@@ -291,17 +291,17 @@
     border-radius: 1rem
     border-collapse: collapse
     overflow: hidden
-    box-shadow: inset 0 0 0 1px #201c2a
+    box-shadow: inset 0 0 0 1px rgba(var(--primary-light-rgb), .1)
     margin-top: 2rem
 
     thead th,
     tr.primary
-      background-color: #201c2a
+      background-color: rgba(var(--primary-light-rgb), .1)
 
     th,
     td
       padding: .5em
-      border: 1px solid #201c2a
+      border: 1px solid rgba(var(--primary-light-rgb), .1)
       vertical-align: top
       line-height: 1.5
 
