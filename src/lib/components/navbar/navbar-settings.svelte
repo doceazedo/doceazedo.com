@@ -189,4 +189,14 @@
     .settings-panel
       width: 24rem
       left: -21.5rem
+
+  @media screen and (max-width: 768px)
+    .settings-panel
+      position: fixed
+      left: 1rem
+      top: 4rem
+      width: calc(100% - 2rem)
+
+      .tail
+        right: 6.7rem
 </style>
