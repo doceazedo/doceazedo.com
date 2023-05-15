@@ -78,6 +78,7 @@
 
     .expand
       display: flex
+      width: .75rem
       height: .75rem
       color: $whiteish
 
