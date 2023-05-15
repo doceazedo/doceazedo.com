@@ -25,7 +25,7 @@
       {#if hasColorPreview}
         <span class="color" />
       {/if}
-      {options.get(value)}
+      <span class="label">{options.get(value)}</span>
     </span>
     <span class="expand">
       <ExpandIcon />
@@ -39,7 +39,7 @@
           {#if hasColorPreview}
             <span class="color" style="background-color:#{themes[option[0]].primary}" />
           {/if}
-          {option[1]}
+          <span class="label">{option[1]}</span>
         </button>
       {/each}
     </div>
@@ -94,6 +94,7 @@
     border-radius: .5rem
     background-color: var(--background)
     border: 1px solid var(--primary)
+    z-index: 10
     transition: all .2s ease
 
     .option
@@ -134,4 +135,15 @@
 
         &:hover
           background-color: rgba(var(--background-rgb), .1)
+
+  :global([data-dyslexia-mode="true"])
+    .select-toggle,
+    .options
+      width: 9rem
+
+    .options
+      top: 3rem
+
+    .label
+      margin-top: -.25rem
 </style>
