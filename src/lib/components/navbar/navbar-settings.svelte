@@ -58,8 +58,12 @@
   </button>
   {#if isOpen}
     <div class="settings-panel" transition:fly={{ duration: 200, y: -8, easing: quintOut }}>
-      <svg class="tail" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.05 3.72">
-        <path d="M0 3.67 3.09.59a1.97 1.97 0 0 1 2.82 0l3.14 3.14L0 3.68Z" />
+      <svg class="tail" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.77 3.94">
+        <path d="M.35,3.94L3.44,.85C4.24,.05,5.53,.05,6.32,.85l3.08,3.08H.35Z" />
+        <path
+          d="M.35,3.94L3.44,.85c.4-.4,.92-.6,1.44-.6s1.04,.2,1.44,.6l3.08,3.08H.35s9.41,0,9.41,0l-.18-.18L6.5,.67c-.43-.43-1.01-.67-1.62-.67s-1.19,.24-1.62,.67L.18,3.76l-.18,.18H.35Z"
+          fill="rgba(255, 255, 255, .1)"
+        />
       </svg>
       <ul>
         <h1 class="title">{$LANG.settings.title}</h1>
@@ -138,9 +142,9 @@
     left: -19.5rem
     width: 22rem
     padding: 1rem
-    background-color: #150e2f
+    background-color: var(--background)
     color: $whiteish
-    box-shadow: .25rem .25rem .5rem 0 rgba(var(--primary-rgb), .2)
+    box-shadow: 0 0 0 1px rgba(#fff, .1), .25rem .25rem .5rem 0 rgba(var(--primary-rgb), .1)
     border-radius: .5rem
     z-index: 20
     transition: all .4s ease
@@ -168,7 +172,7 @@
       top: -9px
       right: 14px
       width: 1.5rem
-      fill: #150e2f
+      fill: var(--background)
       transition: all .4s ease
 
   :global([data-theme="light"])
