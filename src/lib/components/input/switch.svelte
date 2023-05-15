@@ -34,8 +34,8 @@
     width: 3.5rem
     height: 1.75rem
     padding: 0 .25rem
-    background-color: rgba($primary, .1)
-    box-shadow: 0 0 0 1px $primary
+    background-color: rgba(var(--primary-rgb), .1)
+    box-shadow: 0 0 0 1px var(--primary)
     border-radius: 1rem
     border: none
     cursor: pointer
@@ -48,12 +48,12 @@
       left: 2px
       width: 1.5rem
       height: 1.5rem
-      background-color: $primary
+      background-color: var(--primary)
       border-radius: 50%
       transition: all .2s ease
 
     &.is-active
-      background-color: $primary
+      background-color: var(--primary)
 
       &::before
         left: 30px

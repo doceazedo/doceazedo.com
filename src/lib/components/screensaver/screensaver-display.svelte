@@ -65,7 +65,7 @@
     width: 100%
     height: 100%
     z-index: 20
-    background-color: rgba($background, .75)
+    background-color: rgba(var(--background-rgb), .75)
     backdrop-filter: blur(8rem)
     -webkit-backdrop-filter: blur(8rem)
 

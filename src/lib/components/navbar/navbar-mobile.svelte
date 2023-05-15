@@ -68,7 +68,7 @@
     .mobile-menu
       width: 100%
       padding: .5rem 0
-      background-color: $primary
+      background-color: var(--primary)
       border-top-left-radius: 1.5rem
       border-top-right-radius: 1.5rem
 

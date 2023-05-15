@@ -96,11 +96,11 @@
 
   :global([data-theme="light"])
     .icon-item
-      background-color: rgba($primary-light, .1)
-      box-shadow: inset 0 0 0 1px $primary
+      background-color: rgba(var(--primary-rgb), .1)
+      box-shadow: inset 0 0 0 1px var(--primary)
 
       :global(svg)
-        fill: $primary
+        fill: var(--primary)
 
       &:hover
         box-shadow: none

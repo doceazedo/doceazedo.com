@@ -311,16 +311,16 @@
 
   :global([data-theme="light"])
     table
-      box-shadow: inset 0 0 0 1px $primary
+      box-shadow: inset 0 0 0 1px var(--primary)
 
       th,
       td
-        border-color: $primary
+        border-color: var(--primary)
 
       thead th,
       tr.primary
-        background-color: rgba($primary-light, .25)
+        background-color: rgba(var(--primary-rgb), .25)
 
       thead th
-        color: $primary
+        color: var(--primary)
 </style>

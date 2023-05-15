@@ -23,7 +23,7 @@
       top: 0
       left: 0
       width: 100%
-      background-color: rgba($background, .75)
+      background-color: rgba(var(--background-rgb), .75)
       backdrop-filter: blur(.5rem)
       -webkit-backdrop-filter: blur(.5rem)
       z-index: 20
@@ -31,6 +31,6 @@
   
     :global([data-theme="light"])
       .navbar
-        background-color: rgba($primary-light, .25)
-        border-bottom-color: $primary
+        background-color: rgba(var(--primary-rgb), .25)
+        border-bottom-color: var(--primary)
 </style>

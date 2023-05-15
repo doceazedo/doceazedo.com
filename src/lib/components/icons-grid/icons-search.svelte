@@ -37,13 +37,13 @@
       transition: all .2s ease
 
     &:focus-within :global(svg)
-      color: $primary-light
+      color: var(--primary)-light
 
   :global([data-theme="light"])
     .search
       &:focus-within :global(svg)
-        color: $primary
+        color: var(--primary)
 
       :global(svg)
-        color: $primary-light
+        color: var(--primary)-light
 </style>

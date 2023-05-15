@@ -56,7 +56,7 @@
       position: absolute
       height: 100%
       width: 100%
-      background-color: rgba($primary, .1)
+      background-color: rgba(var(--primary-rgb), .1)
       border-radius: 50%
       filter: blur(2rem)
       pointer-events: none

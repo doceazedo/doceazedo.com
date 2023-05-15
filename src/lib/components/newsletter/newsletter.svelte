@@ -71,8 +71,8 @@
     justify-content: center
     text-align: center
     padding: 3rem
-    background-color: rgba($primary, .1)
-    border: 1px solid $primary
+    background-color: rgba(var(--primary-rgb), .1)
+    border: 1px solid var(--primary)
     border-radius: 1rem
 
     &-content
@@ -130,14 +130,14 @@
 
       &:focus
         background-color: rgba(#fff, .08)
-        box-shadow: 0 0 0 1px $primary, 0 0 0 .25rem rgba($primary, .25)
+        box-shadow: 0 0 0 1px var(--primary), 0 0 0 .25rem rgba(var(--primary-rgb), .25)
 
       &:disabled
         opacity: .5
 
   :global([data-theme="light"])
     .newsletter
-      background-color: $primary
+      background-color: var(--primary)
 
   @media screen and (max-width: 768px)
     .newsletter

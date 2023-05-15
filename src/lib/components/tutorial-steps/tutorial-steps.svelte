@@ -45,10 +45,10 @@
         display: flex
         height: fit-content
         padding: .5rem .75rem
-        background-color: $primary
+        background-color: var(--primary)
         border-radius: .5rem
         font-weight: 700
-        box-shadow: 0 0 .5rem .25rem rgba($primary, .25)
+        box-shadow: 0 0 .5rem .25rem rgba(var(--primary-rgb), .25)
         color: #fff
 
       &-details
@@ -73,7 +73,7 @@
             position: absolute
             width: 100%
             height: 100%
-            background-color: rgba($primary, .1)
+            background-color: rgba(var(--primary-rgb), .1)
             filter: blur(2rem)
             z-index: -1
             border-radius: 50%

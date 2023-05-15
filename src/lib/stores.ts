@@ -27,6 +27,13 @@ export const updateCssVariables = () => {
 
   styleTag.innerHTML = `
     :root {
+      --primary-rgb: 105, 48, 195;
+      --primary: rgb(var(--primary-rgb));
+      --primary-light-rgb: 137, 104, 211;
+      --primary-light: rgb(var(--primary-light-rgb));
+      --background-rgb: 7, 2, 18;
+      --background: rgb(var(--background-rgb));
+
       --readingFontSize: ${fontSize};
       --readingMaxWidth: ${maxWidth};
       --readingLineHeight: ${lineHeight};

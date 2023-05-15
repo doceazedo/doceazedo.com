@@ -110,7 +110,7 @@
 
   :global([data-theme="light"])
     .cta-sub
-      background-color: $primary
+      background-color: var(--primary)
       color: #fff
 
       li

@@ -70,12 +70,12 @@
     &::before
       left: -1rem
       bottom: -1rem
-      border: 2px solid $primary
+      border: 2px solid var(--primary)
       border-radius: 1rem
       transition: .5s ease
 
     &::after
-      background-color: rgba($primary, .125)
+      background-color: rgba(var(--primary-rgb), .125)
       transform: scaleY(1.2) scalex(1.5)
       border-radius: 50%
       filter: blur(1.5rem)

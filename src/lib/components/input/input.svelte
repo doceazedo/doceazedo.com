@@ -19,16 +19,16 @@
     transition: all .2s ease
 
     &:focus
-      background-color: rgba($primary-light, .1)
-      box-shadow: 0 0 .5rem .25rem rgba($primary, .25), inset 0 0 0 1px $primary
+      background-color: rgba(var(--primary-rgb), .1)
+      box-shadow: 0 0 .5rem .25rem rgba(var(--primary-rgb), .25), inset 0 0 0 1px var(--primary)
 
   :global([data-theme="light"])
     .input
-      background-color: rgba($primary-light, .1)
-      box-shadow: 0 0 .5rem .25rem transparent, inset 0 0 0 1px $primary-light
+      background-color: rgba(var(--primary-rgb), .1)
+      box-shadow: 0 0 .5rem .25rem transparent, inset 0 0 0 1px var(--primary)-light
       color: #000
 
       &:focus
-        background-color: rgba($primary-light, .2)
-        box-shadow: 0 0 .5rem .25rem rgba($primary, .25), inset 0 0 0 1px $primary
+        background-color: rgba(var(--primary-rgb), .2)
+        box-shadow: 0 0 .5rem .25rem rgba(var(--primary-rgb), .25), inset 0 0 0 1px var(--primary)
 </style>

@@ -14,7 +14,7 @@
     padding: .5rem 1rem .5rem .5rem
     border-top-right-radius: 1rem
     border-bottom-right-radius: 1rem
-    background-color: $primary
+    background-color: var(--primary)
     transition: all .2s ease
 
     &:not(:focus)

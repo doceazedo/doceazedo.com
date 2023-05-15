@@ -89,8 +89,8 @@
       width: 1.5rem
       height: 1.5rem
       padding: 0
-      color: $primary-light
-      background-color: rgba($primary, .3)
+      color: var(--primary)-light
+      background-color: rgba(var(--primary-rgb), .3)
       border: none
       border-radius: 50%
       cursor: pointer

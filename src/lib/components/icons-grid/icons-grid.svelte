@@ -63,11 +63,11 @@
   :global([data-theme="light"])
     .icons-grid
       &::-webkit-scrollbar-track
-        background-color: rgba($primary, .1)
+        background-color: rgba(var(--primary-rgb), .1)
 
       &::-webkit-scrollbar-thumb
-        background-color: $primary-light
+        background-color: var(--primary)-light
 
       &::-webkit-scrollbar-thumb:hover
-        background-color: $primary
+        background-color: var(--primary)
 </style>

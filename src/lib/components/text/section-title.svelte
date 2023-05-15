@@ -49,7 +49,7 @@
       :global(svg)
         height: 1.25rem
         width: 1.25rem
-        color: $primary
+        color: var(--primary)
 
   p
     font-family: $font-secondary

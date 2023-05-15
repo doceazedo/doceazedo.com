@@ -5,7 +5,7 @@
   export let showDoce = false;
   export let showAzedo = false;
   export let enableTransitions = true;
-  export let color = '#6930c3';
+  export let color = 'var(--primary)';
 
   let showLogo = false;
 

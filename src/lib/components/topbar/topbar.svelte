@@ -26,7 +26,7 @@
     display: flex
     width: 100%
     margin-bottom: .5rem
-    background-color: $primary
+    background-color: var(--primary)
 
     &-content
       max-width: 900px
@@ -37,7 +37,7 @@
 
       :global(a)
         background-color: #fff
-        color: $primary
+        color: var(--primary)
         font-weight: 700
         padding: 0 .25rem
         border-radius: .25rem

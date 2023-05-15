@@ -107,7 +107,7 @@
           transition: all .2s ease
 
           &:hover
-            background-color: $primary
+            background-color: var(--primary)
             transform: translateY(-2px)
 
         .pin,
@@ -115,7 +115,7 @@
           display: flex
           justify-content: center
           align-items: center
-          background-color: $primary
+          background-color: var(--primary)
           color: #fff
           box-shadow: rgba(#000, .1) 0 .5rem 1.5rem
 

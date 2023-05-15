@@ -77,5 +77,5 @@
 
   :global([data-theme="light"])
     .elevator
-      color: rgba($primary, .75)
+      color: rgba(var(--primary-rgb), .75)
 </style>

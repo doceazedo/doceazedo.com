@@ -19,7 +19,7 @@
   
   :global([data-theme="light"])
     .navbar-hamburger
-      color: $primary
+      color: var(--primary)
 
   @media screen and (max-width: 768px)
     .navbar-hamburger

@@ -17,8 +17,8 @@
   select
     width: 8rem
     padding: .25rem
-    background-color: rgba($primary, .1)
-    box-shadow: 0 0 0 1px $primary
+    background-color: rgba(var(--primary-rgb), .1)
+    box-shadow: 0 0 0 1px var(--primary)
     border-radius: .5rem
     border: none
 

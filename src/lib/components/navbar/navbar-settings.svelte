@@ -150,7 +150,7 @@
     padding: 1rem
     background-color: #150e2f
     color: $whiteish
-    box-shadow: .25rem .25rem .5rem 0 rgba($primary, .2)
+    box-shadow: .25rem .25rem .5rem 0 rgba(var(--primary-rgb), .2)
     border-radius: .5rem
     z-index: 20
     transition: all .4s ease
@@ -186,10 +186,10 @@
       color: $blackish
 
     .settings-panel
-      background-color: $primary
+      background-color: var(--primary)
 
       .tail
-        fill: $primary
+        fill: var(--primary)
 
   :global([data-dyslexia-mode="true"])
     .settings-panel

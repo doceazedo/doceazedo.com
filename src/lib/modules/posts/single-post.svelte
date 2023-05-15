@@ -119,8 +119,8 @@
 
       li
         border-radius: .25rem
-        background-color: $primary
-        box-shadow: 0 0 .5rem .25rem rgba($primary, .25)
+        background-color: var(--primary)
+        box-shadow: 0 0 .5rem .25rem rgba(var(--primary-rgb), .25)
         color: #fff
 
         &:not(:last-child)

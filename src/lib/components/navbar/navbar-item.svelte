@@ -31,15 +31,15 @@
       z-index: 1
       width: 100%
       height: 1px
-      background-color: $primary
-      box-shadow: 0 0 .5rem .25rem rgba($primary, .25)
+      background-color: var(--primary)
+      box-shadow: 0 0 .5rem .25rem rgba(var(--primary-rgb), .25)
       opacity: 0
       transition: all .2s ease
 
     &:hover,
     &.active
-      color: $primary-light
-      text-shadow: 0 0 .25rem $primary-light
+      color: var(--primary)-light
+      text-shadow: 0 0 .25rem var(--primary)-light
 
     &.active::before
       opacity: 1
@@ -60,12 +60,12 @@
       color: $blackish
 
       &::before
-        box-shadow: 0 0 .75rem .25rem rgba($primary, .25)
+        box-shadow: 0 0 .75rem .25rem rgba(var(--primary-rgb), .25)
         
       &:hover,
       &.active
-        color: $primary-light
-        text-shadow: 0 0 .25rem rgba($primary-light, .25)
+        color: var(--primary)-light
+        text-shadow: 0 0 .25rem rgba(var(--primary-rgb), .25)
 
   @media screen and (max-width: 768px)
     .navbar-item

@@ -31,7 +31,7 @@
       height: 1rem
       width: 1rem
       border-radius: 50%
-      background: $primary
+      background: var(--primary)
       cursor: ew-resize
       box-shadow: 0 0 2px 0 #555
       transition: background .3s ease-in-out

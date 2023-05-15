@@ -43,8 +43,8 @@
     font-size: 1.25rem
     text-decoration: none
     color: #fff
-    background-color: $primary
-    box-shadow: 0 0 .5rem .25rem rgba($primary, .25)
+    background-color: var(--primary)
+    box-shadow: 0 0 .5rem .25rem rgba(var(--primary-rgb), .25)
     border-radius: .5rem
     transition: all .2s ease
 
@@ -56,13 +56,13 @@
       opacity: .5
 
     &.outline
-      color: $primary-light
-      background-color: rgba($primary-light, .1)
-      box-shadow: 0 0 .5rem .25rem rgba($primary, .25), inset 0 0 0 1px $primary
+      color: var(--primary)-light
+      background-color: rgba(var(--primary-rgb), .1)
+      box-shadow: 0 0 .5rem .25rem rgba(var(--primary-rgb), .25), inset 0 0 0 1px var(--primary)
 
     &.light
       background-color: #fff
-      color: $primary
+      color: var(--primary)
 
     &.outline.light
       color: #fff
@@ -97,9 +97,9 @@
 
   :global([data-theme="light"])
     .button.outline:not(.light)
-      color: $primary
-      background-color: rgba($primary-light, .1)
-      box-shadow: 0 0 .75rem .25rem rgba($primary-light, .2), inset 0 0 0 1px $primary
+      color: var(--primary)
+      background-color: rgba(var(--primary-rgb), .1)
+      box-shadow: 0 0 .75rem .25rem rgba(var(--primary-rgb), .2), inset 0 0 0 1px var(--primary)
 
   :global([data-dyslexia-mode="true"])
     .button

@@ -55,7 +55,7 @@
       position: absolute
       width: 100%
       height: 100%
-      background-color: rgba($primary, .25)
+      background-color: rgba(var(--primary-rgb), .25)
       border-radius: 50%
       filter: blur(1rem)
       transform: scale(1.25)
@@ -64,7 +64,7 @@
   
   :global([data-theme="light"])
     .navbar-brand::before
-      background-color: rgba($primary-light, .25)
+      background-color: rgba(var(--primary-rgb), .25)
 
   @media screen and (max-width: 768px)
     .navbar-brand :global(svg),

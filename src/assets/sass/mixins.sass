@@ -9,7 +9,7 @@
   width: .75rem
   box-sizing: content-box
   background-color: #ff0000
-  border: .25rem solid $background
+  border: .25rem solid var(--background)
   border-radius: 50%
   box-shadow: 0 0 .5rem 0 rgba(255, 0, 0, .75)
   animation: pulse 2s infinite
@@ -46,5 +46,5 @@
     transition: all .2s ease
 
   &:hover :global(svg)
-    color: $primary-light
-    text-shadow: 0 0 .25rem $primary-light
+    color: var(--primary)-light
+    text-shadow: 0 0 .25rem var(--primary)-light
