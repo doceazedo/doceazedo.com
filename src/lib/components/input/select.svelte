@@ -90,7 +90,7 @@
     width: 8rem
     top: 2.25rem
     left: 0
-    padding: .25rem
+    padding: .14rem
     border-radius: .5rem
     background-color: var(--background)
     border: 1px solid var(--primary)
@@ -146,4 +146,26 @@
 
     .label
       margin-top: -.25rem
+
+  @media screen and (max-width: 768px)
+    .select-toggle,
+    .options
+      width: 9rem
+
+      .color
+        width: 1.25rem !important
+        height: 1.25rem !important
+
+    .select-toggle,
+    .option
+      gap: .375rem !important
+      padding: .375rem !important
+
+    .options
+      gap: 0
+      padding: .14rem 0
+      top: 2.5rem
+
+      .option:hover
+        background: none
 </style>

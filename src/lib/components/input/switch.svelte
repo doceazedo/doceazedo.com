@@ -91,4 +91,8 @@
 
       &::before
         background-color: #fff
+
+  @media screen and (max-width: 768px)
+    .switch .icon
+      font-size: .9rem
 </style>
