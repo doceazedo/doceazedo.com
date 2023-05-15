@@ -1,9 +1,11 @@
 <script lang="ts">
   import { browser, dev } from '$app/environment';
-  import { COLOR_THEME, LANG, themes } from '$lib/stores';
+  import { LANG } from '$lib/stores';
+  import selfie from '../../../assets/img/me-selfie-v3.webp';
+  import selfieRedacted from '../../../assets/img/me-redacted.webp';
   import customCursorImage from '../../../assets/img/pat.gif';
 
-  $: selfieSrc = themes[$COLOR_THEME].selfie;
+  const selfieSrc = dev ? selfieRedacted : selfie;
   const instagramURL = 'https://instagram.com/doceazedo911';
 
   let customCursorEl: HTMLImageElement;
