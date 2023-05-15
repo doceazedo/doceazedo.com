@@ -3,7 +3,41 @@ import { browser } from '$app/environment';
 import { en, pt } from '../lang';
 
 type Theme = 'light' | 'dark';
-type ColorTheme = 'purple' | 'blue' | 'orange' | 'carmine' | 'green';
+type ColorThemes = {
+  [name: string]: {
+    primary: string;
+    primaryLight: string;
+    background: string;
+  };
+};
+
+const themes: ColorThemes = {
+  purple: {
+    primary: '6930C3',
+    primaryLight: '8968D3',
+    background: '070212'
+  },
+  blue: {
+    primary: '057EA4',
+    primaryLight: '3494BB',
+    background: '010D10'
+  },
+  orange: {
+    primary: 'FF3E00',
+    primaryLight: 'FF5E24',
+    background: '100B0A'
+  },
+  carmine: {
+    primary: 'D02548',
+    primaryLight: 'E9415B',
+    background: '111111'
+  },
+  green: {
+    primary: '42B883',
+    primaryLight: '66D9A2',
+    background: '07120D'
+  }
+};
 
 const fontSizes = ['16px', '19.2px', '22px', '24px'];
 const lineHeights = ['-4px', '0px', '4px'];
@@ -16,10 +50,24 @@ export const findStyleTag = (): HTMLElement => {
   return findStyleTag();
 };
 
+const hexToRgb = (hex: string) => {
+  const bigint = parseInt(hex, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return [r, g, b].join();
+};
+
 export const updateCssVariables = () => {
   if (!browser) return;
 
   const styleTag = findStyleTag();
+
+  const colorTheme = themes[get(COLOR_THEME)];
+  if (!colorTheme) {
+    console.warn('Invalid color theme. User settings might not be applied.');
+    return;
+  }
 
   const fontSize = fontSizes[get(READING_FONT_SIZE)];
   const maxWidth = maxWidths[get(READING_MAX_WIDTH)];
@@ -27,11 +75,12 @@ export const updateCssVariables = () => {
 
   styleTag.innerHTML = `
     :root {
-      --primary-rgb: 105, 48, 195;
+      --primary-rgb: ${hexToRgb(colorTheme.primary)};
+      --primary-light-rgb: ${hexToRgb(colorTheme.primaryLight)};
+      --background-rgb: ${hexToRgb(colorTheme.background)};
+
       --primary: rgb(var(--primary-rgb));
-      --primary-light-rgb: 137, 104, 211;
       --primary-light: rgb(var(--primary-light-rgb));
-      --background-rgb: 7, 2, 18;
       --background: rgb(var(--background-rgb));
 
       --readingFontSize: ${fontSize};
@@ -73,12 +122,10 @@ THEME.subscribe((theme) => {
   document.body.dataset.theme = theme;
 });
 
-export const COLOR_THEME = writable<ColorTheme>('purple');
-COLOR_THEME.subscribe((colorTheme) => {
+export const COLOR_THEME = writable<string>('purple', () => {
   if (!browser) return;
-  localStorage.setItem('COLOR_THEME', colorTheme);
-  if (colorTheme == 'purple') localStorage.removeItem('COLOR_THEME');
-  document.body.dataset.color = colorTheme;
+  const stored = localStorage.getItem('COLOR_THEME');
+  if (stored) COLOR_THEME.set(stored);
 });
 
 export const READING_FONT_SIZE = writable<number>(1, () => {
@@ -97,6 +144,14 @@ export const READING_MAX_WIDTH = writable<number>(1, () => {
   if (!browser) return;
   const stored = localStorage.getItem('READING_MAX_WIDTH');
   if (stored) READING_MAX_WIDTH.set(Number(stored));
+});
+
+COLOR_THEME.subscribe((colorTheme) => {
+  if (!browser) return;
+  localStorage.setItem('COLOR_THEME', colorTheme);
+  if (colorTheme == 'purple') localStorage.removeItem('COLOR_THEME');
+  document.body.dataset.color = colorTheme;
+  updateCssVariables();
 });
 
 READING_FONT_SIZE.subscribe((data) => {

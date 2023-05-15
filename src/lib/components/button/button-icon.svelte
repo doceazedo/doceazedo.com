@@ -17,7 +17,7 @@
     align-items: center
     width: 1.5rem
     height: 1.5rem
-    color: var(--primary)-light
+    color: var(--primary-light)
     transition: all .2s ease
 
     &.xl

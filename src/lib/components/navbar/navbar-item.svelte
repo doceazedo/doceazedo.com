@@ -38,8 +38,8 @@
 
     &:hover,
     &.active
-      color: var(--primary)-light
-      text-shadow: 0 0 .25rem var(--primary)-light
+      color: var(--primary-light)
+      text-shadow: 0 0 .25rem var(--primary-light)
 
     &.active::before
       opacity: 1
@@ -64,7 +64,7 @@
         
       &:hover,
       &.active
-        color: var(--primary)-light
+        color: var(--primary-light)
         text-shadow: 0 0 .25rem rgba(var(--primary-rgb), .25)
 
   @media screen and (max-width: 768px)

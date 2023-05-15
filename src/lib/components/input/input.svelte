@@ -25,7 +25,7 @@
   :global([data-theme="light"])
     .input
       background-color: rgba(var(--primary-rgb), .1)
-      box-shadow: 0 0 .5rem .25rem transparent, inset 0 0 0 1px var(--primary)-light
+      box-shadow: 0 0 .5rem .25rem transparent, inset 0 0 0 1px var(--primary-light)
       color: #000
 
       &:focus

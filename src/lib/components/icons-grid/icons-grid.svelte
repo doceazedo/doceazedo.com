@@ -66,7 +66,7 @@
         background-color: rgba(var(--primary-rgb), .1)
 
       &::-webkit-scrollbar-thumb
-        background-color: var(--primary)-light
+        background-color: var(--primary-light)
 
       &::-webkit-scrollbar-thumb:hover
         background-color: var(--primary)

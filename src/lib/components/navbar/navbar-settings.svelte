@@ -40,10 +40,6 @@
     ['green', $LANG.settings.themes['green']]
   ]);
 
-  const handleColorThemeChange = () => {
-    console.log({ $COLOR_THEME });
-  };
-
   const reset = () => {
     $COLOR_THEME = 'purple';
     $READING_FONT_SIZE = 1;
@@ -78,13 +74,7 @@
         </li>
         <li>
           {$LANG.settings.colorTheme}
-          <Select
-            bind:value={$COLOR_THEME}
-            name="theme"
-            options={colorThemes}
-            on:change={handleColorThemeChange}
-            disabled
-          />
+          <Select bind:value={$COLOR_THEME} name="theme" options={colorThemes} />
         </li>
         <li>
           {$LANG.settings.fontSize}

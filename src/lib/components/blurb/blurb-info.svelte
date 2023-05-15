@@ -89,7 +89,7 @@
       width: 1.5rem
       height: 1.5rem
       padding: 0
-      color: var(--primary)-light
+      color: var(--primary-light)
       background-color: rgba(var(--primary-rgb), .3)
       border: none
       border-radius: 50%

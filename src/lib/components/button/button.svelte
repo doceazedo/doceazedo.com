@@ -56,7 +56,7 @@
       opacity: .5
 
     &.outline
-      color: var(--primary)-light
+      color: var(--primary-light)
       background-color: rgba(var(--primary-rgb), .1)
       box-shadow: 0 0 .5rem .25rem rgba(var(--primary-rgb), .25), inset 0 0 0 1px var(--primary)
 
