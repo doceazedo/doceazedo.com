@@ -382,7 +382,7 @@ export const en: Language = {
       carmine: 'Raspberry',
       green: 'Mint'
     },
-    fontSizes: ['Small', 'Normal', 'Large', 'Huge'],
+    fontSizes: ['Small', 'Regular', 'Large', 'Huge'],
     lineHeights: ['Condensed', 'Default', 'Spaced']
   }
 };
