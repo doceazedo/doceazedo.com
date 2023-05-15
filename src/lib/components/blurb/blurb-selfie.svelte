@@ -1,12 +1,24 @@
 <script lang="ts">
   import { browser, dev } from '$app/environment';
-  import { LANG } from '$lib/stores';
-  import selfie from '../../../assets/img/me-selfie-v3.webp';
-  import selfieRedacted from '../../../assets/img/me-redacted.webp';
+  import { COLOR_THEME, LANG, themes } from '$lib/stores';
   import customCursorImage from '../../../assets/img/pat.gif';
+  import defaultSelfie from '../../../assets/img/me-selfie-v3.webp';
 
-  const selfieSrc = dev ? selfieRedacted : selfie;
+  $: selfieSrc = themes[$COLOR_THEME].selfie || defaultSelfie;
   const instagramURL = 'https://instagram.com/doceazedo911';
+
+  $: patArea = themes[$COLOR_THEME].patArea || {
+    x: 10,
+    y: 120,
+    width: 90,
+    height: 70
+  };
+  $: patAreaStyle = `
+    --x: ${patArea.x}px;
+    --y: ${patArea.y}px;
+    --width: ${patArea.width}px;
+    --height: ${patArea.height}px;
+  `;
 
   let customCursorEl: HTMLImageElement;
   const customCursorSize = 40;
@@ -20,8 +32,6 @@
   if (browser) window.addEventListener('mousemove', (event) => positionCursor(event));
 
   const openInstagram = () => {
-    // Weird way of doing links, yeah, I know.
-    // But I wanted this to be kinda hidden, so...
     if (!browser) return;
     window.open(instagramURL, '_blank')?.focus();
   };
@@ -30,7 +40,12 @@
 <div class="blurb-selfie" on:contextmenu|preventDefault={openInstagram}>
   <figure class="selfie-wrapper">
     <img class="selfie" src={selfieSrc} alt={$LANG.alt.selfie} />
-    <div class="pat-area" class:is-active={customCursorImage} class:is-debug={dev} />
+    <div
+      class="pat-area"
+      class:is-active={customCursorImage}
+      class:is-debug={dev}
+      style={patAreaStyle}
+    />
     <img src={customCursorImage} alt="" class="pat-cursor" bind:this={customCursorEl} />
   </figure>
 </div>
@@ -82,10 +97,10 @@
 
     .pat-area
       position: absolute
-      top: 10px
-      left: 120px
-      width: 90px
-      height: 70px
+      top: var(--x)
+      left: var(--y)
+      width: var(--width)
+      height: var(--height)
       z-index: 10
 
       &.is-debug

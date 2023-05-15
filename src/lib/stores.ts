@@ -1,6 +1,8 @@
 import { get, writable } from 'svelte/store';
 import { browser } from '$app/environment';
 import { en, pt } from '../lang';
+import selfiePurple from '../assets/img/me-selfie-v3.webp';
+import selfieRed from '../assets/img/me-selfie-goptun.png';
 
 type Theme = 'light' | 'dark';
 type ColorThemes = {
@@ -8,6 +10,13 @@ type ColorThemes = {
     primary: string;
     primaryLight: string;
     background: string;
+    selfie?: string;
+    patArea?: {
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+    };
   };
 };
 
@@ -15,7 +24,8 @@ export const themes: ColorThemes = {
   purple: {
     primary: '6930C3',
     primaryLight: '8968D3',
-    background: '070212'
+    background: '070212',
+    selfie: selfiePurple
   },
   blue: {
     primary: '057EA4',
@@ -30,7 +40,14 @@ export const themes: ColorThemes = {
   carmine: {
     primary: 'D02548',
     primaryLight: 'E9415B',
-    background: '111111'
+    background: '111111',
+    selfie: selfieRed,
+    patArea: {
+      x: 80,
+      y: 128,
+      width: 112,
+      height: 70
+    }
   },
   green: {
     primary: '42B883',
