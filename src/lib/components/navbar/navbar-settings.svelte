@@ -191,7 +191,8 @@
       left: -21.5rem
 
   @media screen and (max-width: 768px)
-    .settings-panel
+    .settings-panel,
+    :global([data-dyslexia-mode="true"]) .settings-panel
       position: fixed
       left: 1rem
       top: 4rem
