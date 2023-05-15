@@ -11,7 +11,7 @@ type ColorThemes = {
   };
 };
 
-const themes: ColorThemes = {
+export const themes: ColorThemes = {
   purple: {
     primary: '6930C3',
     primaryLight: '8968D3',

@@ -78,7 +78,7 @@
         </li>
         <li>
           {$LANG.settings.colorTheme}
-          <Select bind:value={$COLOR_THEME} name="theme" options={colorThemes} />
+          <Select bind:value={$COLOR_THEME} options={colorThemes} hasColorPreview />
         </li>
         <li>
           {$LANG.settings.fontSize}

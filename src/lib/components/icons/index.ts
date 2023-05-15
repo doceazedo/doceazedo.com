@@ -6,6 +6,7 @@ export { default as ClipboardIcon } from './clipboard-icon.svelte';
 export { default as CloseIcon } from './close-icon.svelte';
 export { default as CodeIcon } from './code-icon.svelte';
 export { default as ElevatorIcon } from './elevator-icon.svelte';
+export { default as ExpandIcon } from './expand-icon.svelte';
 export { default as FlagBrazilIcon } from './flag-br-icon.svelte';
 export { default as FlagUnitedKingdomIcon } from './flag-uk-icon.svelte';
 export { default as GithubIcon } from './github-icon.svelte';

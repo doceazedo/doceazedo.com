@@ -375,11 +375,11 @@ export const pt: Language = {
     resetLabel: 'Ajustes predefinidos',
     resetButton: 'Redefinir',
     themes: {
-      purple: '🍇 Uva',
-      blue: '🌊 Costa azul',
-      orange: '🧡 Papoula',
-      carmine: '🍓 Framboesa',
-      green: '🍃 Menta'
+      purple: 'Uva',
+      blue: 'Costa azul',
+      orange: 'Papoula',
+      carmine: 'Framboesa',
+      green: 'Menta'
     },
     fontSizes: ['Pequena', 'Normal', 'Grande', 'Enorme'],
     lineHeights: ['Condensado', 'Padrão', 'Espaçado']

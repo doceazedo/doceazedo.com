@@ -1,33 +1,136 @@
 <script lang="ts">
-  export let name: string;
+  import { fly } from 'svelte/transition';
+  import { quintOut } from 'svelte/easing';
+  import { ExpandIcon } from '$lib/components/icons';
+  import { clickOutside } from '$lib/utils';
+  import { themes } from '$lib/stores';
+
   export let options: Map<string, string>;
   export let value: string;
-  export let disabled = false;
+  export let hasColorPreview = false;
+
+  let isOpen = false;
+
+  const toggleOptions = () => (isOpen = !isOpen);
+
+  const pick = (newValue: string) => {
+    value = newValue;
+    isOpen = false;
+  };
 </script>
 
-<select {name} bind:value on:change {disabled}>
-  {#each [...options] as option}
-    <option value={option[0]}>{option[1]}</option>
-  {/each}
-</select>
+<div class="select" use:clickOutside={() => (isOpen = false)}>
+  <button class="select-toggle" on:click={toggleOptions}>
+    <span class="value">
+      {#if hasColorPreview}
+        <span class="color" />
+      {/if}
+      {options.get(value)}
+    </span>
+    <span class="expand">
+      <ExpandIcon />
+    </span>
+  </button>
+
+  {#if isOpen}
+    <div class="options" transition:fly={{ duration: 200, y: -8, easing: quintOut }}>
+      {#each [...options] as option}
+        <button class="option" on:click={() => pick(option[0])}>
+          {#if hasColorPreview}
+            <span class="color" style="background-color:#{themes[option[0]].primary}" />
+          {/if}
+          {option[1]}
+        </button>
+      {/each}
+    </div>
+  {/if}
+</div>
 
 <style lang="sass">
   @import '../../../assets/sass/vars'
 
-  select
-    width: 8rem
-    padding: .25rem
-    background-color: rgba(var(--primary-rgb), .1)
-    box-shadow: 0 0 0 1px var(--primary)
-    border-radius: .5rem
-    border: none
+  .select
+    position: relative
 
-    &:disabled
-      opacity: .5
-      cursor: not-allowed
+  .select-toggle
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 8rem
+    padding: .25rem .25rem .25rem .375rem
+    background-color: rgba(var(--primary-rgb), .1)
+    border-radius: .5rem
+    border: 1px solid var(--primary)
+    cursor: pointer
+    transition: all .2s ease
+
+    .value
+      display: flex
+      align-items: center
+      gap: .25rem
+
+      .color
+        width: 1rem
+        height: 1rem
+        background-color: var(--primary)
+        border-radius: .2rem
+        transition: all .2s ease
+
+    .expand
+      display: flex
+      height: .75rem
+      color: $whiteish
+
+  .options
+    position: absolute
+    display: flex
+    flex-direction: column
+    gap: .25rem
+    width: 8rem
+    top: 2.25rem
+    left: 0
+    padding: .25rem
+    border-radius: .5rem
+    background-color: var(--background)
+    border: 1px solid var(--primary)
+    transition: all .2s ease
+
+    .option
+      display: flex
+      align-items: center
+      gap: .25rem
+      width: 100%
+      padding: .25rem
+      background: none
+      border: none
+      border-radius: .3rem
+      cursor: pointer
+      transition: color .2s ease
+
+      .color
+        width: 1rem
+        height: 1rem
+        border-radius: .2rem
+        transition: all .2s ease
+
+      &:hover
+        background-color: rgba(#fff, .1)
 
   :global([data-theme="light"])
-    select
-      background-color: rgba(#fff, .1)
-      box-shadow: 0 0 0 1px #fff
+    .select-toggle
+      background-color: #fff
+      color: #000
+      border-color: rgba(#fff, .1)
+
+      .expand
+        color: rgba(#000, .5)
+
+    .options
+      background-color: #fff
+
+      .option
+        color: #000
+
+        &:hover
+          background-color: rgba(var(--background-rgb), .1)
 </style>

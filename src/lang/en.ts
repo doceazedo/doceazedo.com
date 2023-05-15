@@ -376,11 +376,11 @@ export const en: Language = {
     resetLabel: 'Use default settings',
     resetButton: 'Reset',
     themes: {
-      purple: '🍇 Grape',
-      blue: '🌊 Blue coast',
-      orange: '🧡 Coquelicot',
-      carmine: '🍓 Raspberry',
-      green: '🍃 Mint'
+      purple: 'Grape',
+      blue: 'Blue coast',
+      orange: 'Coquelicot',
+      carmine: 'Raspberry',
+      green: 'Mint'
     },
     fontSizes: ['Small', 'Normal', 'Large', 'Huge'],
     lineHeights: ['Condensed', 'Default', 'Spaced']
