@@ -10,7 +10,7 @@
   {#each items as item}
     <li class="item">
       <figure class="screenshot">
-        <img src="/img/projects/{item.id}.webp" class="image" alt="" />
+        <img src="/img/projects/{item.id}.{item.imageFormat || 'webp'}" class="image" alt="" />
       </figure>
 
       <div class="info">

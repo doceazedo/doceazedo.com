@@ -12,7 +12,8 @@
       id: 'overlay',
       title: 'Overlay & SucoBOT',
       url: 'https://twitch.tv/doceazedo911',
-      source: 'https://github.com/doceazedo/overlay'
+      source: 'https://github.com/doceazedo/overlay',
+      imageFormat: 'gif'
     },
     {
       id: 'ssn',
