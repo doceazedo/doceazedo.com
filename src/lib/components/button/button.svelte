@@ -39,7 +39,7 @@
     gap: .5rem
     border: none
     padding: 1rem 1.75rem
-    font-family: $font-primary
+    font-family: var(--font-primary)
     font-size: 1.25rem
     text-decoration: none
     color: #fff

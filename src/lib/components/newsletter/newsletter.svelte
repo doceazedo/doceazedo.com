@@ -81,13 +81,13 @@
       align-items: center
       width: 100%
       max-width: 600px
-      font-family: $font-secondary
+      font-family: var(--font-secondary)
       font-size: 1.25rem
       line-height: 1.25
       color: $whiteish
 
       .title
-        font-family: $font-primary
+        font-family: var(--font-primary)
         font-size: 1.75rem
         font-weight: 600
         color: #fff

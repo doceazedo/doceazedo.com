@@ -17,6 +17,10 @@ type ColorThemes = {
       width: number;
       height: number;
     };
+    fonts?: {
+      primary?: string;
+      secondary?: string;
+    };
   };
 };
 
@@ -116,6 +120,9 @@ export const updateCssVariables = () => {
   const maxWidth = maxWidths[get(READING_MAX_WIDTH)];
   const lineHeight = lineHeights[get(READING_LINE_HEIGHT)];
 
+  const primaryFont = colorTheme?.fonts?.primary || "'Rubik', sans-serif";
+  const secondaryFont = colorTheme?.fonts?.secondary || "'Karla', sans-serif";
+
   styleTag.innerHTML = `
     :root {
       --primary-rgb: ${hexToRgb(colorTheme.primary)};
@@ -125,6 +132,11 @@ export const updateCssVariables = () => {
       --primary: rgb(var(--primary-rgb));
       --primary-light: rgb(var(--primary-light-rgb));
       --background: rgb(var(--background-rgb));
+
+      --font-emoji: Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+      --font-primary: ${primaryFont}, var(--font-emoji);
+      --font-secondary: ${secondaryFont}, var(--font-emoji);
+      --font-dyslexia: 'OpenDyslexic', sans-serif, var(--font-emoji);
 
       --readingFontSize: ${fontSize};
       --readingMaxWidth: ${maxWidth};

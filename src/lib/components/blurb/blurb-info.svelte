@@ -104,7 +104,7 @@
   .bio
     max-width: 31rem
     margin-bottom: 4rem
-    font-family: $font-secondary
+    font-family: var(--font-secondary)
     font-size: 1.25rem
     line-height: 1.25
     color: $whiteish

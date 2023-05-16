@@ -90,7 +90,7 @@
         font-weight: 600
 
       .promoter
-        font-family: $font-secondary
+        font-family: var(--font-secondary)
         font-size: 1.25rem
         color: $whiteish
 

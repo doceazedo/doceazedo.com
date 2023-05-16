@@ -41,7 +41,7 @@ body
 
   &[data-dyslexia-mode="true"]
     *
-      font-family: $font-dyslexia !important
+      font-family: var(--font-dyslexia) !important
 
     article
       line-height: unset
@@ -50,7 +50,7 @@ body,
 button,
 input,
 select
-  font-family: $font-primary
+  font-family: var(--font-primary)
   font-weight: 300
   font-size: 1rem
   color: #fff
@@ -60,7 +60,7 @@ a
   text-decoration: none
 
 .content
-  font-family: $font-secondary
+  font-family: var(--font-secondary)
   font-size: var(--readingFontSize)
   line-height: calc(32px + var(--readingLineHeight))
   color: #ccc
@@ -73,7 +73,7 @@ a
     margin-bottom: 2em
 
   h1, h2, h3, h4, h5, h6
-    font-family: $font-primary
+    font-family: var(--font-primary)
     color: var(--primary-light)
     font-weight: 600
     line-height: 1.125
