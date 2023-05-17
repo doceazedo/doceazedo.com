@@ -53,21 +53,6 @@ export type Language = {
         notes: KeyValue;
         music: KeyValue;
       };
-      bookmarks: {
-        paragraph: string;
-        linkLabel: string;
-      };
-    };
-    hardware: {
-      title: string;
-      items: {
-        devPc: KeyValue;
-        gamingPc: {
-          title: string;
-          items: KeyValue[];
-        };
-        peripherals: KeyValue[];
-      };
     };
     wrapup: string;
   };
