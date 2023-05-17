@@ -57,4 +57,8 @@
 
       &::-webkit-scrollbar-thumb:hover
         background-color: var(--primary)
+
+  @media screen and (max-width: 768px)
+    .icons-grid
+      grid-template-columns: repeat(3, 1fr)
 </style>
