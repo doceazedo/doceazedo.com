@@ -270,6 +270,7 @@ export const en: Language = {
       green: 'Mint',
       pink: 'Flamingo'
     },
+    themeUnlock: 'New color theme unlocked:',
     fontSizes: ['Small', 'Regular', 'Large', 'Huge'],
     lineHeights: ['Condensed', 'Default', 'Spaced']
   },

@@ -1,5 +1,5 @@
 <script>
-  import toast, { Toaster } from 'svelte-french-toast';
+  import toast from 'svelte-french-toast';
   import { browser } from '$app/environment';
   import { LANG } from '$lib/stores';
   import { toastTheme } from '$lib/utils/toast';
@@ -38,8 +38,6 @@
     {$LANG.streams.pronouns.copy}
   </Button>
 </div>
-
-<Toaster />
 
 <style lang="sass">
   .pronouns-wrapper

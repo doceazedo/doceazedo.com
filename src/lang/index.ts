@@ -194,6 +194,7 @@ export type Language = {
     themes: {
       [id: string]: string;
     };
+    themeUnlock: string;
     fontSizes: string[];
     lineHeights: string[];
   };

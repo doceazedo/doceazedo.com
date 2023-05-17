@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Toaster } from 'svelte-french-toast';
   import { page } from '$app/stores';
   import { browser } from '$app/environment';
   import { Container, Footer, Navbar, SkipToContent } from '$lib/components';
@@ -19,3 +20,4 @@
 </Container>
 <Footer />
 <Screensaver />
+<Toaster />

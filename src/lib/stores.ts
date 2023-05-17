@@ -1,6 +1,8 @@
+import toast from 'svelte-french-toast';
 import { get, writable } from 'svelte/store';
 import { browser } from '$app/environment';
 import { en, pt } from '../lang';
+import { toastTheme } from './utils/toast';
 import selfiePurple from '../assets/img/me-selfie-v3.webp';
 import selfieRed from '../assets/img/me-selfie-goptun.png';
 
@@ -83,6 +85,12 @@ export const unlockTheme = (theme: string) => {
   const unlockedThemes = get(UNLOCKED_THEMES);
   if (unlockedThemes.includes(theme)) return;
   UNLOCKED_THEMES.set([...unlockedThemes, theme]);
+
+  const lang = get(LANG);
+  toast.success(`${lang.settings.themeUnlock} ${lang.settings.themes[theme]}`, {
+    ...toastTheme,
+    duration: 6000
+  });
 };
 
 const fontSizes = ['16px', '19.2px', '22px', '24px'];

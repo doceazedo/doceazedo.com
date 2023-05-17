@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import * as simpleIcons from 'simple-icons';
-  import toast, { Toaster } from 'svelte-french-toast';
+  import toast from 'svelte-french-toast';
   import { LANG } from '$lib/stores';
   import { toastTheme } from '$lib/utils/toast';
   import { IconItem, IconsSearch } from '.';
@@ -22,8 +22,6 @@
     {/key}
   {/each}
 </ul>
-
-<Toaster />
 
 <style lang="sass">
   @import '../../../assets/sass/vars'

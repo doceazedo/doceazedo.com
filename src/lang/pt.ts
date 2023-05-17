@@ -268,6 +268,7 @@ export const pt: Language = {
       green: 'Menta',
       pink: 'Flamingo'
     },
+    themeUnlock: 'Nova cor de tema desbloqueada:',
     fontSizes: ['Pequena', 'Normal', 'Grande', 'Enorme'],
     lineHeights: ['Condensado', 'Padrão', 'Espaçado']
   },
