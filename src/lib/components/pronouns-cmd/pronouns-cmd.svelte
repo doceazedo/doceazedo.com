@@ -1,26 +1,20 @@
 <script>
+  import toast, { Toaster } from 'svelte-french-toast';
   import { browser } from '$app/environment';
   import { LANG } from '$lib/stores';
+  import { toastTheme } from '$lib/utils/toast';
   import { Button } from '$lib/components/button';
   import { ClipboardIcon } from '$lib/components/icons';
-  import { Toast } from '$lib/components/toast';
 
   const pronouns = ['ela', 'ele', 'elu'];
   let hasPickedSecondaryPronouns = false;
   let primaryPronouns = 'ela';
   $: secondaryPronouns = !hasPickedSecondaryPronouns ? primaryPronouns : 'ela';
 
-  let isToastVisible = false;
-  const showToast = () => {
-    if (isToastVisible) return;
-    isToastVisible = true;
-    setTimeout(() => (isToastVisible = false), 3500);
-  };
-
   const copyCommand = () => {
     if (!browser) return;
     navigator.clipboard.writeText(`!pronomes ${primaryPronouns}/d${secondaryPronouns}`);
-    showToast();
+    toast.success($LANG.streams.icons.copied, toastTheme);
   };
 </script>
 
@@ -45,12 +39,7 @@
   </Button>
 </div>
 
-{#if isToastVisible}
-  <Toast>
-    {$LANG.streams.icons.copied}
-    <img src="/img/KomodoHype.png" alt="KomodoHype" />
-  </Toast>
-{/if}
+<Toaster />
 
 <style lang="sass">
   .pronouns-wrapper

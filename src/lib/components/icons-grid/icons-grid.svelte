@@ -1,8 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import * as simpleIcons from 'simple-icons';
+  import toast, { Toaster } from 'svelte-french-toast';
   import { LANG } from '$lib/stores';
-  import { Toast } from '$lib/components/toast';
+  import { toastTheme } from '$lib/utils/toast';
   import { IconItem, IconsSearch } from '.';
   import { FILTERED_ICONS, ICONS } from './icons-grid.store';
 
@@ -10,13 +11,6 @@
     $ICONS = Object.values(simpleIcons).sort((a, b) => a.slug.localeCompare(b.slug));
     $FILTERED_ICONS = $ICONS;
   });
-
-  let isToastVisible = false;
-  const showToast = () => {
-    if (isToastVisible) return;
-    isToastVisible = true;
-    setTimeout(() => (isToastVisible = false), 3500);
-  };
 </script>
 
 <IconsSearch />
@@ -24,17 +18,12 @@
 <ul class="icons-grid" id="icons">
   {#each $FILTERED_ICONS as icon}
     {#key icon.slug}
-      <IconItem {icon} on:click={showToast} />
+      <IconItem {icon} on:click={() => toast.success($LANG.streams.icons.copied, toastTheme)} />
     {/key}
   {/each}
 </ul>
 
-{#if isToastVisible}
-  <Toast>
-    {$LANG.streams.icons.copied}
-    <img src="/img/KomodoHype.png" alt="KomodoHype" />
-  </Toast>
-{/if}
+<Toaster />
 
 <style lang="sass">
   @import '../../../assets/sass/vars'

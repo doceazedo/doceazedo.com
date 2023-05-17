@@ -345,3 +345,11 @@ body[data-theme="light"] .content
 
   .content .showcase
     flex-direction: column
+
+body
+  --toast-background-color: var(--primary)
+  --toast-color: $whiteish
+
+  &[data-theme="light"]
+    --toast-background-color: #fff
+    --toast-color: #000

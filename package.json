@@ -49,6 +49,7 @@
     "dotenv": "^16.0.3",
     "fast-xml-parser": "^4.2.2",
     "simple-icons": "^8.13.0",
-    "spotify-web-api-node": "^5.0.2"
+    "spotify-web-api-node": "^5.0.2",
+    "svelte-french-toast": "^1.0.4-beta.0"
   }
 }
