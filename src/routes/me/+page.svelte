@@ -16,13 +16,6 @@
     <li><span>{$LANG.about.tldr.online.key}:</span> {$LANG.about.tldr.online.value}</li>
     <li><span>{$LANG.about.tldr.legally.key}:</span> {$LANG.about.tldr.legally.value}</li>
     <li><span>{$LANG.about.tldr.physically.key}:</span> {$LANG.about.tldr.physically.value}</li>
-    <li>
-      <span>{$LANG.about.tldr.professionally.key}:</span>
-      {@html $LANG.about.tldr.professionally.value.replace(
-        '%s',
-        '<a href="https://datawrapper.de" target="_blank" rel="noreferrer">Datawrapper</a>'
-      )}
-    </li>
     <li><span>{$LANG.about.tldr.casually.key}:</span> {$LANG.about.tldr.casually.value}</li>
     <li><span>{$LANG.about.tldr.pronouns.key}:</span> {$LANG.about.tldr.pronouns.value}</li>
   </ul>
@@ -34,7 +27,12 @@
   </p>
 
   <h2>{$LANG.about.me.title}</h2>
-  <img src={meAtParis} alt="Foto de mim com a Torre Eiffel ao fundo" />
+
+  <figure>
+    <img src={meAtParis} alt={$LANG.about.me.photoCaption} />
+    <figcaption>{$LANG.about.me.photoCaption} <span>👨‍🎨🥖🥐🇫🇷✨</span></figcaption>
+  </figure>
+
   <p>
     {$LANG.about.me.intro}
   </p>

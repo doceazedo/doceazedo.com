@@ -61,6 +61,7 @@ export const pt: Language = {
       'Você pode entrar em contato comigo pelo e-mail %email% ou me mandar uma DM no %twitter% ou no %discord%. Eu adoro conhecer gente nova!',
     me: {
       title: 'Oi, muito prazer!',
+      photoCaption: 'Eu em Paris com a Torre Eiffel ao fundo (2022)',
       intro:
         'Pode me chamar de Doce, eu sou um programador fullstack com foco em frontend atualmente morando na cidade de São Paulo, Brasil. Esse site é o lugarzinho em que eu falo sobre mim e sobre as coisas que eu gosto, e espero que você encontre algo legal ou útil por aqui.',
       interests:
@@ -79,31 +80,6 @@ export const pt: Language = {
         'Além disso eu também jogo Fortnite, Valorant e Beat Saber ocasionalmente',
         'Eu tenho interesse na cena de cheating em jogos e a eterna luta entre hackers e anticheats'
       ]
-    },
-    software: {
-      title: 'Meus programas',
-      items: {
-        stack: {
-          key: 'Stack',
-          value: 'Esse site foi feito com %framework% e hospedado na %host%'
-        },
-        ide: {
-          key: 'IDE',
-          value: '%main_ide% com o tema %main_theme% (e %kotlin_ide%)'
-        },
-        terminal: {
-          key: 'Terminal',
-          value: '%s'
-        },
-        notes: {
-          key: 'Anotações',
-          value: '%s'
-        },
-        music: {
-          key: 'Música',
-          value: '%s'
-        }
-      }
     },
     wrapup: 'Tem alguma dúvida ou quer trocar uma ideia? É só chamar!'
   },

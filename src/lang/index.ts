@@ -36,6 +36,7 @@ export type Language = {
     contact: string;
     me: {
       title: string;
+      photoCaption: string;
       intro: string;
       interests: string;
       music: string;
@@ -43,16 +44,6 @@ export type Language = {
     trivia: {
       title: string;
       items: string[];
-    };
-    software: {
-      title: string;
-      items: {
-        stack: KeyValue;
-        ide: KeyValue;
-        terminal: KeyValue;
-        notes: KeyValue;
-        music: KeyValue;
-      };
     };
     wrapup: string;
   };

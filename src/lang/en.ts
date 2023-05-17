@@ -61,6 +61,7 @@ export const en: Language = {
       'You can get in touch with me by email at %email% or just DM me on %twitter% or %discord%. I always appreciate meeting new people!',
     me: {
       title: 'Hi, nice to meet you!',
+      photoCaption: 'Me in Paris with the Eiffel Tower on the background (2022)',
       intro:
         "You can call me Doce, I'm a fullstack frontend developer currently living in São Paulo, Brazil. This is my little spot on the web where I talk about myself and stuff that I like, and I hope you can find something cool or useful here.",
       interests:
@@ -79,31 +80,6 @@ export const en: Language = {
         'Despite that, I also play Fortnite, Valorant and Beat Saber occasionally',
         "I'm quite into the game cheating scene and the never ending battle between hackers and anticheats"
       ]
-    },
-    software: {
-      title: 'My software',
-      items: {
-        stack: {
-          key: 'Stack',
-          value: 'This website is made with %framework% and is hosted on %host%'
-        },
-        ide: {
-          key: 'IDE',
-          value: '%main_ide% with the %main_theme% theme (and %kotlin_ide%)'
-        },
-        terminal: {
-          key: 'Terminal',
-          value: '%s'
-        },
-        notes: {
-          key: 'Notes',
-          value: '%s'
-        },
-        music: {
-          key: 'Music',
-          value: '%s'
-        }
-      }
     },
     wrapup: 'Have a question or just wanna talk? Hit me up!'
   },
