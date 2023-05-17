@@ -2,7 +2,6 @@ import type { Language } from '.';
 
 export const pt: Language = {
   code: 'pt',
-
   navbar: {
     home: 'Início',
     blog: 'Blog',
@@ -11,13 +10,11 @@ export const pt: Language = {
     projects: 'Projetos',
     me: 'Sobre mim'
   },
-
   blurb: {
     title: 'Oiee, eu sou o Doce!',
     paragraph:
       'Eu sou o DoceAzedo, tenho %s anos e sou um dev movido à curiosidade, evangelista de Svelte, arqui-inimigo dos zeros e uns (ele/delu) e live coder.'
   },
-
   skills: {
     title: 'O que eu gosto de fazer',
     paragraph: [
@@ -25,9 +22,7 @@ export const pt: Language = {
       'tanto de Svelte. Mas por enquanto, vou deixar essas outras techs que eu curto:'
     ]
   },
-
   footer: ['Powered by Svelte & SvelteKit', 'Desenvolvido por DoceAzedo'],
-
   blog: {
     title: 'As últimas coisas que eu escrevi',
     subtitle:
@@ -35,7 +30,6 @@ export const pt: Language = {
     more: 'Ver mais',
     new: 'Novo!'
   },
-
   about: {
     tldr: {
       online: {
@@ -190,7 +184,6 @@ export const pt: Language = {
     },
     wrapup: 'Tem alguma dúvida ou quer trocar uma ideia? É só chamar!'
   },
-
   talks: {
     title: 'Palestras',
     paragraph:
@@ -200,7 +193,6 @@ export const pt: Language = {
     resources: 'Recursos',
     resourcesPretitle: 'Recursos da talk'
   },
-
   bookmarks: {
     title: 'Favoritos',
     paragraph: 'Alguns dos meus sites/ferramentas preferidos que eu recomendo',
@@ -213,7 +205,6 @@ export const pt: Language = {
     accessibility: '🧏‍♀️ Acessibilidade',
     miscellaneous: '👌 Diversos'
   },
-
   newsletter: {
     title: 'Ative o sininho 🔔',
     paragraph:
@@ -226,7 +217,6 @@ export const pt: Language = {
       openIssue: 'abra um issue'
     }
   },
-
   projects: {
     subtitle: 'Alguns destaques dos meus projetos open-source. Veja todos',
     subtitleGitHub: 'no GitHub',
@@ -247,7 +237,6 @@ export const pt: Language = {
       bitterctf: 'Plugin Spigot de um minigame de rouba-bandeira independente'
     }
   },
-
   streams: {
     titleOnline: 'Ao vivo agora!',
     titleOffline: 'Última transmissão',
@@ -335,11 +324,9 @@ export const pt: Language = {
       ]
     }
   },
-
   email: 'eu@doceazedo.com',
   posted: 'Publicado',
   skipToContent: 'Ir para o conteúdo',
-
   alt: {
     logo: 'Logotipo Doce Azedo',
     selfie: 'Fotografia de mim',
@@ -353,16 +340,16 @@ export const pt: Language = {
     langPt: 'Português',
     nowLive: 'Ao vivo agora.',
     audioButton: 'Ouvir pronúncia',
-    home: 'Início'
+    home: 'Início',
+    setup:
+      "Foto da minha mesa com meu notebook, monitor, gabinete, microfone condensador, teclado, mouse, headphone, mesa digitalizadora, duas facas e uma garrafa d'água em cima. Ao lado da mesa está um tripé para telefone."
   },
-
   topbar: {
     content:
       '"Me desculpe, o antigo Lucas não pode atender o telefone agora. Por quê? Ah, porque ele está %s!" Eu adotei meu apelido DoceAzedo como o nome que melhor representa quem eu sou. E eu escrevi sobre isso.',
     highlight: 'morto',
     readMore: 'Saiba mais.'
   },
-
   settings: {
     title: 'Preferências',
     theme: 'Plano de fundo',
@@ -384,5 +371,135 @@ export const pt: Language = {
     },
     fontSizes: ['Pequena', 'Normal', 'Grande', 'Enorme'],
     lineHeights: ['Condensado', 'Padrão', 'Espaçado']
+  },
+  uses: {
+    title: 'Eu uso',
+    paragraph:
+      'Todos os tipos de programas, configurações e serviços que eu uso no dia a dia e para programar',
+    hardware: {
+      title: 'Meu equipamento',
+      mainPC: 'Principal',
+      gamingPC: {
+        title: 'Jogatina',
+        items: {
+          cpu: 'CPU',
+          mobo: 'Placa-mãe',
+          ram: 'RAM',
+          gpu: 'Placa de vídeo',
+          psu: 'Fonte',
+          storage: 'Armazenamento',
+          case: 'Gabinete'
+        }
+      },
+      peripherals: {
+        items: {
+          display: 'Monitor',
+          keyboard: 'Teclado',
+          mouse: 'Mouse',
+          tablet: 'Mesa digitalizadora',
+          headphone: 'Fone de ouvido',
+          mic: 'Microfone',
+          webcam: 'Câmera'
+        }
+      }
+    },
+    general: {
+      title: 'Dia a dia',
+      items: {
+        browser: 'para navegar na internet',
+        music: 'para ouvir música',
+        passwordManager: 'para gerenciamento de senhas',
+        docs: 'para escrever documentos',
+        slides: 'para fazer apresentações',
+        cloud: 'para armazenamento em nuvem e sincronizar arquivos'
+      }
+    },
+    productivity: {
+      title: 'Produtividade',
+      items: {
+        notes: 'para anotações e gerenciamento de tarefas',
+        drafts: 'para rascunhos, diagramas e quadro branco',
+        raycast: 'para substituir o Spotlight e o seletor de emojis',
+        screenshot: 'para screenshots e gravações de tela simples',
+        videoEditing: 'para edição de vídeos'
+      }
+    },
+    coding: {
+      title: 'Programação',
+      items: {
+        ide: 'para programação no geral',
+        ideKotlin: 'para programação em Kotlin',
+        terminal: 'para emulador de terminal'
+      },
+      vscode: {
+        theme: 'como tema',
+        font: 'como fonte',
+        settings: 'Configurações e extensões'
+      },
+      web: {
+        title: 'Desenvolvimento web',
+        items: {
+          language: 'como minha linguagem preferida',
+          svelte: 'como meu framework preferido',
+          svelteKit: 'como meu meta-framework preferido',
+          css: 'para estilização',
+          icons: 'para ícones bonitos e coesos',
+          brandIcons: 'para ícones de marcas',
+          bundler: 'para ferramentas de frontend',
+          tests: 'para escrever testes unitários',
+          hosting: 'para hospedagem'
+        }
+      }
+    },
+    streaming: {
+      title: 'Streaming',
+      items: {
+        obs: 'para transmissão e gravação de tela',
+        chat: 'para chat da Twitch',
+        audio: 'para roteamento de áudio no Mac'
+      }
+    },
+    design: {
+      title: 'Design',
+      items: {
+        figma: 'para design de UI e prototipagem',
+        illustrator: 'para design de vetores no geral',
+        photopea: 'para edição de imagens no geral'
+      }
+    },
+    social: {
+      title: 'Comunicação',
+      items: {
+        mastodonWeb: 'para aplicativo web do Mastodon',
+        mastodonMobile: 'para aplicativo iOS do Mastodon',
+        tweetdeck: 'para uma melhor experiência no Twitter',
+        discord: 'para participação e gerenciamento de comunidades'
+      }
+    },
+    utils: {
+      title: 'Utilitários',
+      items: {
+        pxToRem: 'para conversor de PX e REM bidirecional',
+        gridGenerator: 'para gerar grids CSS',
+        svgomg: 'para otimizar SVGs',
+        bulkResize: 'para redimensionar e otimizar imagens',
+        icons: 'para navegação entre ícones e fontes de emoji'
+      }
+    },
+    extensions: {
+      title: 'Extensões',
+      items: {
+        adblocker: 'para bloqueador de anúncios',
+        darkReader: 'para habilitar modo escuro em todos os lugares',
+        rss: 'para leitor de RSS',
+        wappalyzer: 'para descobrir a stack de um site',
+        jsonViewer: 'para visualização de JSONs',
+        hardRefresh: 'para todos os seus problemas de cache',
+        ogChecker: 'para pré-visualização local de metatags de redes sociais',
+        youtubeDislike: 'para mostrar dislikes no YouTube',
+        youtubeQuality: 'para sempre tocar vídeos em HD no YouTube',
+        youtubeSponsorBlock: 'para pular segmentos patrocinados no YouTube'
+      }
+    }
   }
 };

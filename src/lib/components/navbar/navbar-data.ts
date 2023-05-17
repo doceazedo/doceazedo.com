@@ -56,7 +56,7 @@ export const navbarItems: NavbarLink[] = [
 export const shortcuts: NavbarShortcut[] = [
   {
     icon: BookmarkIcon,
-    href: '/bookmarks'
+    href: '/uses'
   },
   {
     icon: RssIcon,

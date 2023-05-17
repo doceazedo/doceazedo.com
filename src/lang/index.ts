@@ -195,6 +195,7 @@ export type Language = {
     nowLive: string;
     audioButton: string;
     home: string;
+    setup: string;
   };
 
   topbar: {
@@ -220,11 +221,46 @@ export type Language = {
     fontSizes: string[];
     lineHeights: string[];
   };
+
+  uses: {
+    title: string;
+    paragraph: string;
+    hardware: {
+      title: string;
+      mainPC: string;
+      gamingPC: UsesThingSection;
+      peripherals: {
+        items: {
+          [item: string]: string;
+        };
+      };
+    };
+    general: UsesThingSection;
+    productivity: UsesThingSection;
+    coding: UsesThingSection & {
+      vscode: {
+        [item: string]: string;
+      };
+      web: UsesThingSection;
+    };
+    streaming: UsesThingSection;
+    design: UsesThingSection;
+    social: UsesThingSection;
+    utils: UsesThingSection;
+    extensions: UsesThingSection;
+  };
 };
 
 type KeyValue = {
   key: string;
   value: string;
+};
+
+export type UsesThingSection = {
+  title: string;
+  items: {
+    [item: string]: string;
+  };
 };
 
 export * from './en';

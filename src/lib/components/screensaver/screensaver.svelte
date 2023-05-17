@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onDestroy } from 'svelte';
   import { IS_SLEEPING } from '$lib/stores';
   import { ScreensaverDisplay } from '.';
 
@@ -21,6 +22,8 @@
   };
 
   const clearTimer = () => clearInterval(screensaverTimer);
+
+  onDestroy(clearTimer);
 </script>
 
 <svelte:window on:blur={onBlur} on:focus={clearTimer} />

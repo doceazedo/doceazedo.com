@@ -2,7 +2,6 @@ import type { Language } from '.';
 
 export const en: Language = {
   code: 'en',
-
   navbar: {
     home: 'Home',
     blog: 'Blog',
@@ -11,13 +10,11 @@ export const en: Language = {
     projects: 'Projects',
     me: 'About me'
   },
-
   blurb: {
     title: "Howdy, I'm Doce!",
     paragraph:
       "I'm DoceAzedo, a %s years old curiosity-driven developer, Svelte evangelist, arch-enemy of the zeros and ones (he/they) and live coder."
   },
-
   skills: {
     title: 'What I like to do',
     paragraph: [
@@ -25,7 +22,6 @@ export const en: Language = {
       "love Svelte so much. For now, I'll just leave these other tech I like:"
     ]
   },
-
   blog: {
     title: "See what I've written lately",
     subtitle:
@@ -33,9 +29,7 @@ export const en: Language = {
     more: 'View all',
     new: 'New!'
   },
-
   footer: ['Powered by Svelte & SvelteKit', 'Developed by DoceAzedo'],
-
   about: {
     tldr: {
       online: {
@@ -189,7 +183,6 @@ export const en: Language = {
     },
     wrapup: 'Have a question or just wanna talk? Hit me up!'
   },
-
   talks: {
     title: 'Talks',
     paragraph:
@@ -199,7 +192,6 @@ export const en: Language = {
     resources: 'Resources',
     resourcesPretitle: 'Talk resources'
   },
-
   bookmarks: {
     title: 'Bookmarks',
     paragraph: 'Some of my favorite websites/tools that I highly recommend',
@@ -212,7 +204,6 @@ export const en: Language = {
     accessibility: '🧏‍♀️ Accessibility',
     miscellaneous: '👌 Miscellaneous'
   },
-
   newsletter: {
     title: 'Ring the bell 🔔',
     paragraph:
@@ -225,7 +216,6 @@ export const en: Language = {
       openIssue: 'open an issue'
     }
   },
-
   projects: {
     subtitle: 'A few highlights of my open-source projects. View them all',
     subtitleGitHub: 'on GitHub',
@@ -246,7 +236,6 @@ export const en: Language = {
       bitterctf: 'Spigot plugin for a standalone capture the flag minigame server'
     }
   },
-
   streams: {
     titleOnline: 'Live now!',
     titleOffline: 'Last livestream',
@@ -336,11 +325,9 @@ export const en: Language = {
       ]
     }
   },
-
   email: 'me@doceazedo.com',
   posted: 'Published',
   skipToContent: 'Skip to content',
-
   alt: {
     logo: 'DoceAzedo logo',
     selfie: 'Photo of me',
@@ -354,16 +341,16 @@ export const en: Language = {
     langPt: 'Portuguese',
     nowLive: 'Now live.',
     audioButton: 'Listen to pronunciation',
-    home: 'Home'
+    home: 'Home',
+    setup:
+      'Picture of my desk with my laptop, display, computer case, microphone, keyboard, headphones, drawing tablet, two knifes and a water bottle on top. There is a phone tripod besides the desk.'
   },
-
   topbar: {
     content:
       "\"I'm sorry, the old Lucas can't come to the phone right now. Why? Oh 'cause they're %s!\" I've fully embraced my DoceAzedo nickname as the name that better represents who I am. I also wrote something about it.",
     highlight: 'dead',
     readMore: 'Learn more about it.'
   },
-
   settings: {
     title: 'Preferences',
     theme: 'Background',
@@ -385,5 +372,134 @@ export const en: Language = {
     },
     fontSizes: ['Small', 'Regular', 'Large', 'Huge'],
     lineHeights: ['Condensed', 'Default', 'Spaced']
+  },
+  uses: {
+    title: 'Uses',
+    paragraph: 'All sorts of apps, settings and services I use for my daily life and development',
+    hardware: {
+      title: 'My hardware',
+      mainPC: 'Main PC',
+      gamingPC: {
+        title: 'Gaming PC',
+        items: {
+          cpu: 'CPU',
+          mobo: 'Motherboard',
+          ram: 'RAM',
+          gpu: 'GPU',
+          psu: 'PSU',
+          storage: 'Storage',
+          case: 'Case'
+        }
+      },
+      peripherals: {
+        items: {
+          display: 'Display',
+          keyboard: 'Keyboard',
+          mouse: 'Mouse',
+          tablet: 'Drawing tablet',
+          headphone: 'Headphone',
+          mic: 'Microphone',
+          webcam: 'Camera'
+        }
+      }
+    },
+    general: {
+      title: 'General',
+      items: {
+        browser: 'for web browsing',
+        music: 'for music streaming',
+        passwordManager: 'for password management',
+        docs: 'for writing documents',
+        slides: 'for making presentations',
+        cloud: 'for cloud storage and file sync'
+      }
+    },
+    productivity: {
+      title: 'Productivity',
+      items: {
+        notes: 'for note taking and task management',
+        drafts: 'for drafts, diagrams and whiteboard',
+        raycast: 'for a Spotlight and emoji picker alternative',
+        screenshot: 'for screenshots and simple screen recordings',
+        videoEditing: 'for video editing'
+      }
+    },
+    coding: {
+      title: 'Coding',
+      items: {
+        ide: 'for general development',
+        ideKotlin: 'for Kotlin development',
+        terminal: 'for terminal emulator'
+      },
+      vscode: {
+        theme: 'for theme',
+        font: 'for font',
+        settings: 'Settings and extensions'
+      },
+      web: {
+        title: 'Web development',
+        items: {
+          language: 'as my preferred language',
+          svelte: 'as my preferred framework',
+          svelteKit: 'as my preferred meta-framework',
+          css: 'for styling',
+          icons: 'for beautiful and cohesive icons',
+          brandIcons: 'for brand icons',
+          bundler: 'for frontend tooling',
+          tests: 'for writing unit tests',
+          hosting: 'for hosting'
+        }
+      }
+    },
+    streaming: {
+      title: 'Streaming',
+      items: {
+        obs: 'for streaming and screen recording',
+        chat: 'for Twitch chat',
+        audio: 'for Mac audio routing'
+      }
+    },
+    design: {
+      title: 'Design',
+      items: {
+        figma: 'for UI design and prototyping',
+        illustrator: 'for general vector design',
+        photopea: 'for general image editing'
+      }
+    },
+    social: {
+      title: 'Social',
+      items: {
+        mastodonWeb: 'for Mastodon web client',
+        mastodonMobile: 'for Mastodon iOS client',
+        tweetdeck: 'for a better Twitter experience',
+        discord: 'for joining and managing communities'
+      }
+    },
+    utils: {
+      title: 'Utilities',
+      items: {
+        pxToRem: 'for bidirectional PX to REM converter',
+        gridGenerator: 'for generating CSS grids',
+        svgomg: 'for optimizing SVGs',
+        bulkResize: 'for resizing and optimizing images',
+        icons: 'for browsing icon packs and emoji fonts'
+      }
+    },
+    extensions: {
+      title: 'Extensions',
+      items: {
+        adblocker: 'for blocking ads',
+        darkReader: 'for dark mode everywhere',
+        rss: 'for RSS reader',
+        wappalyzer: 'for fiding out what stack a website is built with',
+        jsonViewer: 'for viewing JSONs',
+        hardRefresh: 'for all your cache problems',
+        ogChecker: 'for previewing social metatags locally',
+        youtubeDislike: 'for showing YouTube dislikes',
+        youtubeQuality: 'for forcing HD videos on YouTube',
+        youtubeSponsorBlock: 'for skipping sponsor segments on YouTube'
+      }
+    }
   }
 };
