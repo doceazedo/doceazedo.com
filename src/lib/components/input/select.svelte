@@ -8,6 +8,7 @@
   export let options: Map<string, string>;
   export let value: string;
   export let hasColorPreview = false;
+  export let small = false;
 
   let isOpen = false;
 
@@ -19,7 +20,7 @@
   };
 </script>
 
-<div class="select" use:clickOutside={() => (isOpen = false)}>
+<div class="select" use:clickOutside={() => (isOpen = false)} class:small>
   <button class="select-toggle" on:click={toggleOptions}>
     <span class="value">
       {#if hasColorPreview}
@@ -51,6 +52,11 @@
 
   .select
     position: relative
+
+    &.small
+      .select-toggle,
+      .options
+        width: 4rem
 
   .select-toggle
     display: flex

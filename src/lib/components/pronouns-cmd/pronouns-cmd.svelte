@@ -4,16 +4,19 @@
   import { LANG } from '$lib/stores';
   import { toastTheme } from '$lib/utils/toast';
   import { Button } from '$lib/components/button';
+  import { Select } from '$lib/components/input';
   import { ClipboardIcon } from '$lib/components/icons';
 
   const pronouns = ['ela', 'ele', 'elu'];
-  let hasPickedSecondaryPronouns = false;
+  const primaryPronounsMap = new Map(pronouns.map((x) => [x, x]));
+  const secondaryPronounsMap = new Map(pronouns.map((x) => [`d${x}`, `d${x}`]));
+
   let primaryPronouns = 'ela';
-  $: secondaryPronouns = !hasPickedSecondaryPronouns ? primaryPronouns : 'ela';
+  $: secondaryPronouns = `d${primaryPronouns}`;
 
   const copyCommand = () => {
     if (!browser) return;
-    navigator.clipboard.writeText(`!pronomes ${primaryPronouns}/d${secondaryPronouns}`);
+    navigator.clipboard.writeText(`!pronomes ${primaryPronouns}/${secondaryPronouns}`);
     toast.success($LANG.streams.icons.copied, toastTheme);
   };
 </script>
@@ -21,17 +24,9 @@
 <div class="pronouns-wrapper">
   <div class="pronouns-cmd">
     <span>!{$LANG.streams.pronouns.command}</span>
-    <select bind:value={primaryPronouns}>
-      {#each pronouns as pronoun}
-        <option value={pronoun}>{pronoun}</option>
-      {/each}
-    </select>
+    <Select small bind:value={primaryPronouns} options={primaryPronounsMap} />
     <span>/</span>
-    <select bind:value={secondaryPronouns} on:change={() => (hasPickedSecondaryPronouns = true)}>
-      {#each pronouns as pronoun}
-        <option value={pronoun}>d{pronoun}</option>
-      {/each}
-    </select>
+    <Select small bind:value={secondaryPronouns} options={secondaryPronounsMap} />
   </div>
   <Button medium on:click={copyCommand}>
     <ClipboardIcon />
@@ -51,13 +46,11 @@
     gap: .5rem
     width: fit-content
     background-color: rgba(#fff, .1)
-    border-radius: .75rem
+    border-radius: .5rem
     padding: .75rem 1.25rem
 
-    select
-      background-color: transparent
-      color: #fff
-      border: 1px solid var(--primary)
-      padding: .25rem
-      border-radius: .5rem
+  @media screen and (max-width: 768px)
+    .pronouns-wrapper
+      flex-direction: column
+      width: fit-content
 </style>
