@@ -1,7 +1,5 @@
 import { writable } from 'svelte/store';
 
-export { default as PostsGrid } from './PostsGrid.svelte';
-
 export type Post = {
   slug: string;
   title: string;

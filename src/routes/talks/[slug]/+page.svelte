@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { Metadata, TalkDetails } from '$lib/components';
-  import type { PageData } from './$types';
+  import { Metadata } from '$lib/components';
+  import TalkDetails from '$lib/components/talks/TalkDetails.svelte';
 
-  export let data: PageData;
+  export let data;
 </script>
 
 <Metadata title={data.talk.title} />

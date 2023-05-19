@@ -2,28 +2,26 @@
   import dayjs from 'dayjs';
   import { Buttons, Button } from '$lib/components';
   import { LANG } from '$lib/stores';
-  import type { Talk } from '$lib/modules';
+  import { TALKS } from '.';
 
   const getFullDate = (date: Date) => dayjs(date).format('DD/MM/YYYY');
-
-  export let talks: Talk[] = [];
 </script>
 
 <div class="talks">
-  {#each talks as talk}
+  {#each $TALKS as talk}
     <div class="talk">
       <div class="thumbnail">
         <figure
           class="preview"
           style="background-image:url(/img/talks/thumbnails/{talk.slug}.jpg)"
         />
-        <a class="promoter" href={talk.promoter.url} target="_blank" rel="noreferrer">
-          <figure style="background-image:url(/img/talks/promoters/{talk.promoter.slug}.jpg)" />
+        <a class="promoter" href={talk.organizer.url} target="_blank" rel="noreferrer">
+          <figure style="background-image:url(/img/talks/promoters/{talk.organizer.slug}.jpg)" />
         </a>
       </div>
       <div class="details">
         <h1 class="title">{talk.title}</h1>
-        <p class="promoter">{getFullDate(talk.date)} {$LANG.talks.at} {talk.promoter.name}</p>
+        <p class="promoter">{getFullDate(talk.date)} {$LANG.talks.at} {talk.organizer.name}</p>
         <Buttons small>
           <Button small href={talk.replay} target="_blank">{$LANG.talks.watch}</Button>
           <Button small outline href="/talks/{talk.slug}">{$LANG.talks.resources}</Button>

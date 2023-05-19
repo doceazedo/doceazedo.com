@@ -10,7 +10,6 @@ export * from './layout';
 export * from './metadata';
 export * from './navbar';
 export * from './newsletter';
-export * from './posts';
 export * from './skip-to-content';
 export * from './talks';
 export * from './text';

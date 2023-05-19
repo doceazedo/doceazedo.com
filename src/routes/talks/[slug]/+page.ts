@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { get } from 'svelte/store';
-import { TALKS } from '$lib/modules/talks';
+import { TALKS } from '$lib/components/talks';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = ({ params }) => {

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { LANG } from '$lib/stores';
   import { Metadata, PageTitle } from '$lib/components';
-  import { TalksList } from '$lib/modules';
+  import TalksList from '$lib/components/talks/TalksList.svelte';
 
   const emailLink = '<a href="mailto:me@doceazedo.com">me@doceazedo.com</a>';
 </script>

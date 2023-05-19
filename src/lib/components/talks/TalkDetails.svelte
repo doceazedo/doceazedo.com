@@ -1,6 +1,6 @@
 <script lang="ts">
   import { LANG } from '$lib/stores';
-  import type { Talk } from '$lib/modules';
+  import type { Talk } from '.';
 
   export let talk: Talk;
 </script>
