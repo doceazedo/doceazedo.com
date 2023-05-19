@@ -320,7 +320,7 @@ export const pt: Language = {
         notes: 'para anotações e gerenciamento de tarefas',
         drafts: 'para rascunhos, diagramas e quadro branco',
         raycast: 'para substituir o Spotlight e o seletor de emojis',
-        screenshot: 'para screenshots e gravações de tela simples',
+        screenshot: 'para screenshots e gravações de tela',
         videoEditing: 'para edição de vídeos'
       }
     },

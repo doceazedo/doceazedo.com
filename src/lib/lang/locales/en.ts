@@ -321,7 +321,7 @@ export const en: Language = {
         notes: 'for note taking and task management',
         drafts: 'for drafts, diagrams and whiteboard',
         raycast: 'for a Spotlight and emoji picker alternative',
-        screenshot: 'for screenshots and simple screen recordings',
+        screenshot: 'for screenshots and screen recordings',
         videoEditing: 'for video editing'
       }
     },
