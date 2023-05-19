@@ -1,5 +1,5 @@
 import { XMLBuilder } from 'fast-xml-parser';
-import { getPosts } from '$lib/utils';
+import { getPosts } from '$lib/components/posts';
 import type { RequestHandler } from '@sveltejs/kit';
 
 const baseUrl = 'https://doceazedo.com';
