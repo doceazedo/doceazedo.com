@@ -7,7 +7,7 @@
 
 <section>
   <SectionTitle title={$LANG.blog.title} actionLabel={$LANG.blog.more} actionHref="/blog" />
-  <PostsGrid posts={$POSTS} />
+  <PostsGrid posts={$POSTS} hasHighlight />
 </section>
 
 <style lang="sass">

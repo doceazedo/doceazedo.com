@@ -21,4 +21,4 @@
 </script>
 
 <PostTagsList {tags} bind:selected={selectedTags} />
-<PostsGrid posts={filteredPosts} regular />
+<PostsGrid posts={filteredPosts} />

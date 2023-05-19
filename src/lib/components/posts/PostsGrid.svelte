@@ -6,14 +6,14 @@
   import { isNewPost, readableDate } from '$lib/utils';
   import type { Post } from '.';
 
-  export let posts: Post[] = [],
-    regular = false;
+  export let posts: Post[] = [];
+  export let hasHighlight = false;
 
   const background = (slug: string) =>
     `linear-gradient(to bottom, rgba(7, 2, 18, 0), rgba(7, 2, 18, .75)), url('/img/thumbnails/${slug}.jpg')`;
 </script>
 
-<div class="articles" class:regular>
+<div class="articles" class:has-highlight={hasHighlight}>
   {#each posts as post (post.slug)}
     <a
       href="/blog/{post.slug}"
@@ -56,7 +56,7 @@
     grid-row-gap: 1.75rem
     width: 100%
 
-    &.regular
+    &:not(.has-highlight)
       grid-auto-rows: 24rem
       grid-template-rows: none
 

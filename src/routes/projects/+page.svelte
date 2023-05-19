@@ -1,7 +1,8 @@
 <script lang="ts">
   import { LANG } from '$lib/stores';
   import { Metadata, PageTitle } from '$lib/components';
-  import { ProjectsXL, ProjectsSM } from '$lib/modules/projects';
+  import ProjectsSM from '$lib/components/projects/ProjectsSM.svelte';
+  import ProjectsXL from '$lib/components/projects/ProjectsXL.svelte';
 </script>
 
 <Metadata title={$LANG.navbar.projects} />

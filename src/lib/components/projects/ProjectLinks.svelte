@@ -1,11 +1,11 @@
 <script lang="ts">
   import { LANG, THEME } from '$lib/stores';
   import { Button, Buttons } from '$lib/components';
-  import type { Project } from './projects.types';
+  import type { Project } from '.';
 
   export let item: Project;
 
-  const linkTypes = ['url', 'writeup', 'source', 'demo'];
+  const linkTypes = ['url', 'writeup', 'source', 'demo'] as const;
 </script>
 
 <Buttons small>

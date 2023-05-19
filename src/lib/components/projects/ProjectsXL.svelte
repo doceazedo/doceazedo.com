@@ -1,9 +1,28 @@
 <script lang="ts">
   import { LANG } from '$lib/stores';
-  import { ProjectButtons } from '.';
-  import type { Project } from './projects.types';
+  import ProjectLinks from './ProjectLinks.svelte';
+  import type { Project } from '.';
 
-  export let items: Project[];
+  const items: Project[] = [
+    {
+      id: 'fazendoca',
+      title: 'Fazendoca',
+      source: 'https://github.com/doceazedo/fazendoca-ue5'
+    },
+    {
+      id: 'overlay',
+      title: 'Overlay & SucoBOT',
+      url: 'https://twitch.tv/doceazedo911',
+      source: 'https://github.com/doceazedo/overlay',
+      imageFormat: 'gif'
+    },
+    {
+      id: 'ssn',
+      title: 'SSN.gg',
+      url: 'http://ssn.gg',
+      source: 'https://github.com/doceazedo/ssn'
+    }
+  ];
 </script>
 
 <ul class="projects">
@@ -16,7 +35,7 @@
       <div class="info">
         <h1>{item.title}</h1>
         <p>{$LANG.projects.details?.[item.id]}</p>
-        <ProjectButtons {item} />
+        <ProjectLinks {item} />
       </div>
     </li>
   {/each}
