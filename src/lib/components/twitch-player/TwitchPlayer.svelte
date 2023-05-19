@@ -4,7 +4,7 @@
   import relativeTime from 'dayjs/plugin/relativeTime.js';
   import 'dayjs/locale/pt-br.js';
   import { browser } from '$app/environment';
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { LIVE_DATA } from '$lib/modules/live';
 
   type VOD = {

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { LIVE_DATA } from '$lib/modules/live';
   import { NavbarItem } from '$lib/components';
   import { navbarItems } from './navbar-data';

@@ -1,4 +1,4 @@
-import type { Language } from '.';
+import type { Language } from '..';
 
 export const en: Language = {
   code: 'en',

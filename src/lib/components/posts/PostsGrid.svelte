@@ -1,7 +1,7 @@
 <script lang="ts">
   import { flip } from 'svelte/animate';
   import { fade } from 'svelte/transition';
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { PushpinIcon } from '$lib/components/icons';
   import { isNewPost, readableDate } from '$lib/utils';
   import type { Post } from '.';

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { browser, dev } from '$app/environment';
-  import { COLOR_THEMES, COLOR_THEME, LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
+  import { COLOR_THEMES, COLOR_THEME } from '$lib/stores';
   import customCursorImage from '../../../assets/img/pat.gif';
   import defaultSelfie from '../../../assets/img/me-selfie-v3.webp';
 

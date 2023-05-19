@@ -1,6 +1,6 @@
 <script lang="ts">
   import '../../assets/css/prism-material-dark.css';
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { Metadata, PageTitle, SubtitleWithIcon } from '$lib/components';
   import {
     AttachmentIcon,

@@ -2,8 +2,10 @@
 import fs from 'fs';
 import jsonic from 'jsonic';
 import jp from 'jsonpath';
-import { UsesThingSection, en, pt } from '../src/lang';
-import type { Language } from '../src/lang';
+import { UsesThingSection } from '../src/lib/lang';
+import { en } from '../src/lib/lang/locales/en';
+import { pt } from '../src/lib/lang/locales/pt';
+import type { Language } from '../src/lib/lang';
 
 type SectionNames = {
   page: string;
@@ -43,8 +45,8 @@ const updateLocale = (section: string, keys: string[], lang: Language, langCode:
 
 const updateLocaleFile = (lang: Language) => {
   fs.writeFileSync(
-    `./src/lang/${lang.code}.ts`,
-    `import type { Language } from '.';\n\nexport const ${lang.code}: Language = ${JSON.stringify(
+    `./src/lib/lang/locales/${lang.code}.ts`,
+    `import type { Language } from '..';\n\nexport const ${lang.code}: Language = ${JSON.stringify(
       lang,
       null,
       2

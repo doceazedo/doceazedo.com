@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { Metadata, PageTitle } from '$lib/components';
   import TalksList from '$lib/components/talks/TalksList.svelte';
 

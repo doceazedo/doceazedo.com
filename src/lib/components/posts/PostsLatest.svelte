@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { SectionTitle } from '$lib/components';
   import PostsGrid from './PostsGrid.svelte';
   import { POSTS } from '.';

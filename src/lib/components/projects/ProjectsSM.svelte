@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from '$app/environment';
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import ProjectLinks from './ProjectLinks.svelte';
   import type { Project } from '.';
 

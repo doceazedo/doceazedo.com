@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { AudioIcon, Buttons, Button, ButtonIcon } from '$lib/components';
   import {
     GithubIcon,

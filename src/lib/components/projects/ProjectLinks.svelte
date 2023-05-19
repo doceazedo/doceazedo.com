@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { LANG, THEME } from '$lib/stores';
+  import LANG from '$lib/lang';
+  import { THEME } from '$lib/stores';
   import { Button, Buttons } from '$lib/components';
   import type { Project } from '.';
 

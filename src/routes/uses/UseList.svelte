@@ -2,7 +2,7 @@
   import { SubtitleWithIcon } from '$lib/components';
   import { AttachmentIcon } from '$lib/components/icons';
   import type { SvelteComponent } from 'svelte';
-  import type { UsesThingSection } from '../../lang';
+  import type { UsesThingSection } from '$lib/lang';
 
   type ThingsWithLinks = {
     [key: string]: {

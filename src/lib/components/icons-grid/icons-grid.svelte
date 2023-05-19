@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import * as simpleIcons from 'simple-icons';
   import toast from 'svelte-french-toast';
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { toastTheme } from '$lib/utils/toast';
   import { IconItem, IconsSearch } from '.';
   import { FILTERED_ICONS, ICONS } from './icons-grid.store';

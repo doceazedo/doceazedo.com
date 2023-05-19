@@ -1,3 +1,8 @@
+import { writable } from 'svelte/store';
+import { browser } from '$app/environment';
+import { en } from './locales/en';
+import { pt } from './locales/pt';
+
 export type Language = {
   code: string;
 
@@ -240,5 +245,23 @@ export type UsesThingSection = {
   };
 };
 
-export * from './en';
-export * from './pt';
+const updateAria = (code: string) => browser && document.documentElement.setAttribute('lang', code);
+
+const initializeLang = () => {
+  let defaultLang = en;
+  if (browser && navigator.language.startsWith('pt')) defaultLang = pt;
+  const { subscribe, set } = writable(defaultLang);
+  updateAria(defaultLang.code);
+
+  return {
+    subscribe,
+    change: (lang: string) => {
+      set(lang == 'pt' ? pt : en);
+      updateAria(lang);
+    }
+  };
+};
+
+const LANG = initializeLang();
+
+export default LANG;

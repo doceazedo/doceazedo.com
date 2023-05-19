@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
+  import LANG from '$lib/lang';
   import { MoonIcon, SettingsIcon, SunIcon } from '$lib/components/icons';
   import { Button } from '$lib/components/button';
   import { Range, Select, Switch } from '$lib/components/input';
@@ -8,7 +9,6 @@
     COLOR_THEMES,
     COLOR_THEME,
     IS_ELEVATOR_FAST,
-    LANG,
     READING_FONT_SIZE,
     READING_LINE_HEIGHT,
     READING_MAX_WIDTH,
@@ -42,7 +42,6 @@
   const pickedColorThemes = new Set<string>();
   COLOR_THEME.subscribe((theme) => {
     pickedColorThemes.add(theme);
-    console.log({ ...pickedColorThemes });
     if (pickedColorThemes.size >= originalColorThemesLength) {
       unlockTheme('pink');
     }

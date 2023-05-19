@@ -1,7 +1,7 @@
 import toast from 'svelte-french-toast';
 import { get, writable } from 'svelte/store';
 import { browser } from '$app/environment';
-import { en, pt } from '../lang';
+import LANG from './lang';
 import { toastTheme } from './utils/toast';
 import selfiePurple from '../assets/img/me-selfie-v3.webp';
 import selfieRed from '../assets/img/me-selfie-goptun.png';
@@ -152,25 +152,6 @@ export const updateCssVariables = () => {
     }
   `;
 };
-
-const updateAria = (code: string) => browser && document.documentElement.setAttribute('lang', code);
-
-export const initializeLang = () => {
-  let defaultLang = en;
-  if (browser && navigator.language.startsWith('pt')) defaultLang = pt;
-  const { subscribe, set } = writable(defaultLang);
-  updateAria(defaultLang.code);
-
-  return {
-    subscribe,
-    change: (lang: string) => {
-      set(lang == 'pt' ? pt : en);
-      updateAria(lang);
-    }
-  };
-};
-
-export const LANG = initializeLang();
 
 export const THEME = writable<Theme>('dark', () => {
   if (!browser) return;

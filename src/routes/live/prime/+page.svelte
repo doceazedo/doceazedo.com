@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Metadata, PageTitle } from '$lib/components';
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
 
   const isLastStep = (i: number) => i == $LANG.streams.prime.steps.length - 1;
 

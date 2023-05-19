@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { LIVE_DATA } from '$lib/modules/live';
   import { HomeIcon } from '$lib/components/icons';
   import { navbarItems } from './navbar-data';

@@ -8,7 +8,8 @@
   import Giscus from '@giscus/svelte';
   import { browser } from '$app/environment';
   import { page } from '$app/stores';
-  import { LANG, THEME } from '$lib/stores';
+  import LANG from '$lib/lang';
+  import { THEME } from '$lib/stores';
   import { Metadata, Newsletter } from '$lib/components';
 
   export let title;

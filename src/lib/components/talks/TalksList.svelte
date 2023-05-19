@@ -1,7 +1,7 @@
 <script lang="ts">
   import dayjs from 'dayjs';
   import { Buttons, Button } from '$lib/components';
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { TALKS } from '.';
 
   const getFullDate = (date: Date) => dayjs(date).format('DD/MM/YYYY');

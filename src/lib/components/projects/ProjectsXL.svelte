@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import ProjectLinks from './ProjectLinks.svelte';
   import type { Project } from '.';
 

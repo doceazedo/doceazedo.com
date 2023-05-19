@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Metadata, PageTitle } from '$lib/components';
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
 
   type BookmarkItem = {
     title: string;

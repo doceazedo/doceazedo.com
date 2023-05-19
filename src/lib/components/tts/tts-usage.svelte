@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
 
   $: defaultUsage = $LANG.streams.tts.usage.default.split('%s');
   $: googleUsage = $LANG.streams.tts.usage.google.split('%s');

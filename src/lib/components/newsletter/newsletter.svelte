@@ -1,7 +1,8 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
-  import { LANG, THEME } from '$lib/stores';
+  import LANG from '$lib/lang';
+  import { THEME } from '$lib/stores';
   import { Button } from '$lib/components';
   import { subscribeToNewsletter } from '$lib/modules/newsletter';
 

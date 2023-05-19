@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { Metadata } from '$lib/components/metadata';
   import { SupportCTA } from '$lib/components/cta';
   import { TtsUsage, TtsVoicesTable } from '$lib/components/tts';

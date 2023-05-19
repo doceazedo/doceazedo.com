@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { Metadata, PageTitle } from '$lib/components';
   import meAtParis from '../../assets/img/me-paris.webp';
   import thatsAllFolks from '../../assets/img/thats-all-folks.gif';

@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { LANG, THEME } from '$lib/stores';
+  import LANG from '$lib/lang';
+  import { THEME } from '$lib/stores';
   import { Button } from '$lib/components/button';
   import { PicPayIcon } from '$lib/components/icons';
 

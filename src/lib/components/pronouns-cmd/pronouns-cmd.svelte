@@ -1,7 +1,7 @@
 <script>
   import toast from 'svelte-french-toast';
   import { browser } from '$app/environment';
-  import { LANG } from '$lib/stores';
+  import LANG from '$lib/lang';
   import { toastTheme } from '$lib/utils/toast';
   import { Button } from '$lib/components/button';
   import { Select } from '$lib/components/input';
