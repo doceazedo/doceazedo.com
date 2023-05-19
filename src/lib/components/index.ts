@@ -14,5 +14,4 @@ export * from './skip-to-content';
 export * from './talks';
 export * from './text';
 export * from './tts';
-export * from './tutorial-steps';
 export * from './twitch-player';
