@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import _ from '$lib/lang';
-  import { LIVE_DATA } from '$lib/modules/live';
+  import { LIVE_DATA } from '$lib/stores/live-data';
   import { NavbarItem } from '$lib/components';
   import { navbarItems } from './navbar-data';
 </script>

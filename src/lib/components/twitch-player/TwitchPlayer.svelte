@@ -5,7 +5,7 @@
   import 'dayjs/locale/pt-br.js';
   import { browser } from '$app/environment';
   import _ from '$lib/lang';
-  import { LIVE_DATA } from '$lib/modules/live';
+  import { LIVE_DATA } from '$lib/stores/live-data';
 
   type VOD = {
     id: string;

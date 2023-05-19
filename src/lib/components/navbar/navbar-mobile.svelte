@@ -2,7 +2,7 @@
   import { fade, fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import _ from '$lib/lang';
-  import { LIVE_DATA } from '$lib/modules/live';
+  import { LIVE_DATA } from '$lib/stores/live-data';
   import { HomeIcon } from '$lib/components/icons';
   import { navbarItems } from './navbar-data';
 

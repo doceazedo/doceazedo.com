@@ -1,6 +1,6 @@
 <script lang="ts">
   import _ from '$lib/lang';
-  import { LIVE_DATA } from '$lib/modules/live';
+  import { LIVE_DATA } from '$lib/stores/live-data';
 
   const lastfmUrl = 'https://last.fm/user/doceazedo911';
 </script>

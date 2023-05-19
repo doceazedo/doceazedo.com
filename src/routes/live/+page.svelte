@@ -4,7 +4,7 @@
   import { SupportCTA } from '$lib/components/cta';
   import { TtsUsage, TtsVoicesTable } from '$lib/components/tts';
   import { PronounsCmd } from '$lib/components/pronouns-cmd';
-  import { LIVE_DATA } from '$lib/modules/live';
+  import { LIVE_DATA } from '$lib/stores/live-data';
   import TwitchPlayer from '$lib/components/twitch-player/TwitchPlayer.svelte';
   import { IconsGrid, ICONS } from '$lib/components/icons-grid';
 
