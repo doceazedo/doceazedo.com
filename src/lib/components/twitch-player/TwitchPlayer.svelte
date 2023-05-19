@@ -1,14 +1,59 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import dayjs from 'dayjs';
   import relativeTime from 'dayjs/plugin/relativeTime.js';
   import 'dayjs/locale/pt-br.js';
   import { browser } from '$app/environment';
   import { LANG } from '$lib/stores';
-  import type { VOD } from '$lib/modules/twitch-player';
+  import { LIVE_DATA } from '$lib/modules/live';
 
-  export let videoUrl: string,
-    chatboxUrl: string,
-    vods: VOD[] = [];
+  type VOD = {
+    id: string;
+    stream_id: string;
+    user_id: string;
+    user_login: string;
+    user_name: string;
+    title: string;
+    description: string;
+    created_at: Date;
+    published_at: Date;
+    url: string;
+    thumbnail_url: string;
+    viewable: string;
+    view_count: number;
+    language: string;
+    type: string;
+    duration: string;
+    muted_segments: null;
+  };
+
+  let allVods: VOD[] = [];
+  let vods: VOD[] = [];
+  let videoUrl = '';
+
+  const channel = 'doceazedo911';
+  const parents = '?parent=localhost&parent=doceazedo.com&parent=pbe.doceazedo.com';
+  const baseUrl = `https://player.twitch.tv/${parents}`;
+  const chatboxUrl = `https://twitch.tv/embed/doceazedo911/chat${parents}&darkpopout`;
+
+  onMount(async () => {
+    try {
+      const resp = await fetch('/api/vods');
+      allVods = await resp.json();
+    } catch (error) {
+      console.error('Could not fetch VODs');
+    }
+    updateVideos();
+  });
+
+  const updateVideos = () => {
+    videoUrl = $LIVE_DATA?.isLive
+      ? `${baseUrl}&channel=${channel}`
+      : `${baseUrl}&video=${allVods?.[0]?.id}`;
+    vods = $LIVE_DATA?.isLive ? allVods.slice(0, 3) : allVods.slice(1);
+  };
+
+  LIVE_DATA.subscribe(updateVideos);
 
   const getDate = (date: Date, code: string) => {
     if (!browser) return;

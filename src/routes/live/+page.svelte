@@ -5,7 +5,7 @@
   import { TtsUsage, TtsVoicesTable } from '$lib/components/tts';
   import { PronounsCmd } from '$lib/components/pronouns-cmd';
   import { LIVE_DATA } from '$lib/modules/live';
-  import { TwitchPlayer } from '$lib/modules/twitch-player';
+  import TwitchPlayer from '$lib/components/twitch-player/TwitchPlayer.svelte';
   import { IconsGrid, ICONS } from '$lib/components/icons-grid';
 
   $: iconsQty = $ICONS.length;
