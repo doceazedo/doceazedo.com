@@ -1,10 +1,10 @@
 import toast from 'svelte-french-toast';
 import { get, writable } from 'svelte/store';
 import { browser } from '$app/environment';
-import _ from './lang';
-import { toastTheme } from './utils/toast';
-import selfiePurple from '../assets/img/me-selfie-v3.webp';
-import selfieRed from '../assets/img/me-selfie-goptun.png';
+import _ from '../lang';
+import { toastTheme } from '../utils/toast';
+import selfiePurple from '../../assets/img/me-selfie-v3.webp';
+import selfieRed from '../../assets/img/me-selfie-goptun.png';
 
 type Theme = 'light' | 'dark';
 type ColorThemes = {
