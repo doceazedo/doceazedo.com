@@ -13,7 +13,6 @@ export * from './newsletter';
 export * from './skip-to-content';
 export * from './talks';
 export * from './text';
-export * from './topbar';
 export * from './tts';
 export * from './tutorial-steps';
 export * from './twitch-player';

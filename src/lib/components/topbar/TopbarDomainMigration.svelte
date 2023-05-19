@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Topbar } from '$lib/components';
+  import Topbar from './Topbar.svelte';
   import { LANG } from '$lib/stores';
 
   $: content = $LANG.topbar.content.split('%s');

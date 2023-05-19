@@ -4,7 +4,7 @@
   import { browser } from '$app/environment';
   import { Container, Footer, Navbar, SkipToContent } from '$lib/components';
   import { Screensaver } from '$lib/components/screensaver';
-  import { TopbarDomainMigration } from '$lib/modules';
+  import TopbarDomainMigration from '$lib/components/topbar/TopbarDomainMigration.svelte';
   import '../assets/sass/minireset.sass';
   import '../assets/sass/fonts.sass';
   import '../assets/sass/global.sass';
