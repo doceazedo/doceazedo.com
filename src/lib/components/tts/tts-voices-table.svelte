@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
 
   type Voice = {
     id: string;
@@ -251,7 +251,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>{$LANG.streams.tts.table.lang}</th>
+      <th>{$_.streams.tts.table.lang}</th>
       <th>Amazon Polly</th>
       <th>TikTok</th>
     </tr>

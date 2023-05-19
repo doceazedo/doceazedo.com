@@ -8,7 +8,7 @@
   import Giscus from '@giscus/svelte';
   import { browser } from '$app/environment';
   import { page } from '$app/stores';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { THEME } from '$lib/stores';
   import { Metadata, Newsletter } from '$lib/components';
 
@@ -28,7 +28,7 @@
   if (browser) {
     dayjs.extend(relativeTime);
     readableDate = dayjs(date)
-      .locale($LANG.code == 'pt' ? 'pt-br' : 'en-us')
+      .locale($_.code == 'pt' ? 'pt-br' : 'en-us')
       .fromNow();
     fullDate = dayjs(date).format('DD/MM/YYYY à[s] HH:mm');
   }
@@ -36,7 +36,7 @@
   $: {
     if (browser)
       readableDate = dayjs(date)
-        .locale($LANG.code == 'pt' ? 'pt-br' : 'en-us')
+        .locale($_.code == 'pt' ? 'pt-br' : 'en-us')
         .fromNow();
   }
 </script>
@@ -46,7 +46,7 @@
 <header>
   <div>
     <h1>{title}</h1>
-    <p title={fullDate}>{$LANG.posted} {readableDate}</p>
+    <p title={fullDate}>{$_.posted} {readableDate}</p>
     <ul>
       {#each tags as tag}
         <li>
@@ -80,7 +80,7 @@
   reactionsEnabled="1"
   emitMetadata="0"
   theme={$THEME}
-  lang={$LANG.code}
+  lang={$_.code}
   loading="lazy"
 />
 

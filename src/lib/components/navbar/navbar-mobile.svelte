@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { LIVE_DATA } from '$lib/modules/live';
   import { HomeIcon } from '$lib/components/icons';
   import { navbarItems } from './navbar-data';
@@ -35,14 +35,14 @@
   <div class="mobile-menu" transition:fly={{ duration: 300, y: 64, opacity: 0, easing: quintOut }}>
     <a href="/" class="mobile-menu-item">
       <HomeIcon />
-      {$LANG.navbar.home}
+      {$_.navbar.home}
     </a>
 
     {#each navbarItems as item}
       <a href="/{item.slug}" class="mobile-menu-item">
         <svelte:component this={item.icon} />
         <span class:live={item.slug == 'streams' && $LIVE_DATA?.isLive}>
-          {$LANG.navbar[item.slug]}
+          {$_.navbar[item.slug]}
         </span>
       </a>
     {/each}

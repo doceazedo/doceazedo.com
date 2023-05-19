@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { Metadata } from '$lib/components/metadata';
   import { SupportCTA } from '$lib/components/cta';
   import { TtsUsage, TtsVoicesTable } from '$lib/components/tts';
@@ -11,28 +11,28 @@
   $: iconsQty = $ICONS.length;
 </script>
 
-<Metadata title={$LANG.navbar.live} />
+<Metadata title={$_.navbar.live} />
 
 <h1 class="title">
-  {$LIVE_DATA?.isLive ? $LANG.streams.titleOnline : $LANG.streams.titleOffline}
+  {$LIVE_DATA?.isLive ? $_.streams.titleOnline : $_.streams.titleOffline}
 </h1>
 <TwitchPlayer />
 
-<h1 class="title">{$LANG.streams.supportMe}</h1>
+<h1 class="title">{$_.streams.supportMe}</h1>
 <SupportCTA />
 
-<h1 class="title">{$LANG.streams.icons.title}</h1>
+<h1 class="title">{$_.streams.icons.title}</h1>
 <p class="subtitle">
-  {$LANG.streams.icons.subtitle.replace('%s', iconsQty.toString())}
+  {$_.streams.icons.subtitle.replace('%s', iconsQty.toString())}
 </p>
 <IconsGrid />
 
-<h1 id="pronouns" class="title">{$LANG.streams.pronouns.title}</h1>
-<p class="subtitle content">{$LANG.streams.pronouns.subtitle}</p>
+<h1 id="pronouns" class="title">{$_.streams.pronouns.title}</h1>
+<p class="subtitle content">{$_.streams.pronouns.subtitle}</p>
 <PronounsCmd />
 
-<h1 id="tts" class="title">{$LANG.streams.tts.title}</h1>
-<p class="subtitle">{$LANG.streams.tts.subtitle}</p>
+<h1 id="tts" class="title">{$_.streams.tts.title}</h1>
+<p class="subtitle">{$_.streams.tts.subtitle}</p>
 <TtsUsage />
 <TtsVoicesTable />
 

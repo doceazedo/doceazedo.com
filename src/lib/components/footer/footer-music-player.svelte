@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { LIVE_DATA } from '$lib/modules/live';
 
   const lastfmUrl = 'https://last.fm/user/doceazedo911';
@@ -11,7 +11,7 @@
     href={lastfmUrl}
     target="_blank"
     rel="noreferrer"
-    aria-label={`${$LANG.alt.listeningTo} ${$LIVE_DATA.nowPlaying.artist} - ${$LIVE_DATA.nowPlaying.title}. ${$LANG.alt.lastfm}`}
+    aria-label={`${$_.alt.listeningTo} ${$LIVE_DATA.nowPlaying.artist} - ${$LIVE_DATA.nowPlaying.title}. ${$_.alt.lastfm}`}
   >
     <div class="song-cover">
       <img src={$LIVE_DATA.nowPlaying.cover} alt="" />

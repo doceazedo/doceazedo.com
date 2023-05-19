@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Metadata, PageTitle } from '$lib/components';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { POSTS } from '$lib/components/posts';
   import PostsAll from '$lib/components/posts/PostsAll.svelte';
 
@@ -9,6 +9,6 @@
   $POSTS = data.posts;
 </script>
 
-<Metadata title={$LANG.navbar.blog} />
-<PageTitle title={$LANG.navbar.blog} paragraph={$LANG.blog.subtitle} />
+<Metadata title={$_.navbar.blog} />
+<PageTitle title={$_.navbar.blog} paragraph={$_.blog.subtitle} />
 <PostsAll />

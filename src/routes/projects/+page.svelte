@@ -1,17 +1,17 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { Metadata, PageTitle } from '$lib/components';
   import ProjectsSM from '$lib/components/projects/ProjectsSM.svelte';
   import ProjectsXL from '$lib/components/projects/ProjectsXL.svelte';
 </script>
 
-<Metadata title={$LANG.navbar.projects} />
+<Metadata title={$_.navbar.projects} />
 
-<PageTitle title={$LANG.navbar.projects}>
+<PageTitle title={$_.navbar.projects}>
   <div class="content">
-    {$LANG.projects.subtitle}
+    {$_.projects.subtitle}
     <a href="https://github.com/doceazedo" target="_blank">
-      {$LANG.projects.subtitleGitHub}
+      {$_.projects.subtitleGitHub}
     </a>.
   </div>
 </PageTitle>

@@ -3,9 +3,9 @@ import { error, json } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import type { RequestHandler } from '@sveltejs/kit';
 
-const LANGUAGES = ['pt', 'en'];
+const _UAGES = ['pt', 'en'];
 
-const LANGUAGE_GROUPS = new Map([
+const _UAGE_GROUPS = new Map([
   ['pt', '80386612044760880'],
   ['en', '80392877986809440']
 ]);
@@ -47,7 +47,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
   const body = await request.json();
   if (!body.email) throw error(400, 'Informe um e-mail válido');
   if (!body.language) throw error(400, 'Informe o idioma da newsletter');
-  if (!LANGUAGES.includes(body.language)) throw error(400, 'Informe um idioma válido');
+  if (!_UAGES.includes(body.language)) throw error(400, 'Informe um idioma válido');
 
   const ip = getClientAddress();
   if (isRateLimited(ip)) throw error(429);
@@ -59,7 +59,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
   });
   if (!emailValidation.valid) throw error(400, emailValidation.reason);
 
-  const languageGroup = LANGUAGE_GROUPS.get(body.language);
+  const languageGroup = _UAGE_GROUPS.get(body.language);
   const groups = languageGroup ? [languageGroup] : [];
 
   const subscriber = await createSubscriber(body.email, groups);

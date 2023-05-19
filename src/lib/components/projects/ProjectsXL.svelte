@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import ProjectLinks from './ProjectLinks.svelte';
   import type { Project } from '.';
 
@@ -34,7 +34,7 @@
 
       <div class="info">
         <h1>{item.title}</h1>
-        <p>{$LANG.projects.details?.[item.id]}</p>
+        <p>{$_.projects.details?.[item.id]}</p>
         <ProjectLinks {item} />
       </div>
     </li>

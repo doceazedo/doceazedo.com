@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { Metadata, PageTitle } from '$lib/components';
   import meAtParis from '../../assets/img/me-paris.webp';
   import thatsAllFolks from '../../assets/img/thats-all-folks.gif';
@@ -7,42 +7,42 @@
   const songIDs = ['7AZzCQ6S8HXLFBXsqH2HWE', '4SBTecHxEs2ayXLiqs7Kmz', '78Jpy7RTri3JulwgQ9sNEP'];
 </script>
 
-<Metadata title={$LANG.navbar.me} />
-<PageTitle title={$LANG.navbar.me} />
+<Metadata title={$_.navbar.me} />
+<PageTitle title={$_.navbar.me} />
 
 <div class="content">
   <h2>TL;DR</h2>
   <ul>
-    <li><span>{$LANG.about.tldr.online.key}:</span> {$LANG.about.tldr.online.value}</li>
-    <li><span>{$LANG.about.tldr.legally.key}:</span> {$LANG.about.tldr.legally.value}</li>
-    <li><span>{$LANG.about.tldr.physically.key}:</span> {$LANG.about.tldr.physically.value}</li>
-    <li><span>{$LANG.about.tldr.casually.key}:</span> {$LANG.about.tldr.casually.value}</li>
-    <li><span>{$LANG.about.tldr.pronouns.key}:</span> {$LANG.about.tldr.pronouns.value}</li>
+    <li><span>{$_.about.tldr.online.key}:</span> {$_.about.tldr.online.value}</li>
+    <li><span>{$_.about.tldr.legally.key}:</span> {$_.about.tldr.legally.value}</li>
+    <li><span>{$_.about.tldr.physically.key}:</span> {$_.about.tldr.physically.value}</li>
+    <li><span>{$_.about.tldr.casually.key}:</span> {$_.about.tldr.casually.value}</li>
+    <li><span>{$_.about.tldr.pronouns.key}:</span> {$_.about.tldr.pronouns.value}</li>
   </ul>
   <p>
-    {@html $LANG.about.contact
+    {@html $_.about.contact
       .replace('%email%', '<a href="mailto:me@doceazedo.com">me@doceazedo.com</a>')
       .replace('%twitter%', '<a href="https://twitter.com/doceazedo911">Twitter</a>')
       .replace('%discord%', '<a href="https://discord.gg/vEGRe2kq8B">Discord</a>')}
   </p>
 
-  <h2>{$LANG.about.me.title}</h2>
+  <h2>{$_.about.me.title}</h2>
 
   <figure>
-    <img src={meAtParis} alt={$LANG.about.me.photoCaption} />
-    <figcaption>{$LANG.about.me.photoCaption} <span>👨‍🎨🥖🥐🇫🇷✨</span></figcaption>
+    <img src={meAtParis} alt={$_.about.me.photoCaption} />
+    <figcaption>{$_.about.me.photoCaption} <span>👨‍🎨🥖🥐🇫🇷✨</span></figcaption>
   </figure>
 
   <p>
-    {$LANG.about.me.intro}
+    {$_.about.me.intro}
   </p>
   <p>
-    {@html $LANG.about.me.interests
+    {@html $_.about.me.interests
       .replace('%twitch%', '<a href="https://twitch.tv/doceazedo911">Twitch</a>')
       .replace('%svelte%', '<a href="https://svelte.dev">Svelte</a>')}
   </p>
   <p>
-    {@html $LANG.about.me.music.replace(
+    {@html $_.about.me.music.replace(
       '%s',
       '<a href="https://last.fm/user/doceazedo911">Last.fm</a>'
     )}
@@ -60,16 +60,16 @@
     {/each}
   </p>
 
-  <h2>{$LANG.about.trivia.title}</h2>
+  <h2>{$_.about.trivia.title}</h2>
   <ul>
-    {#each $LANG.about.trivia.items as item}
+    {#each $_.about.trivia.items as item}
       <li>{@html item}</li>
     {/each}
   </ul>
 
   <div class="wrap-up">
     <img src={thatsAllFolks} alt="" />
-    <p>{$LANG.about.wrapup}</p>
+    <p>{$_.about.wrapup}</p>
   </div>
 </div>
 

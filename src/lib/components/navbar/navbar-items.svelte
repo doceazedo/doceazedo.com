@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { LIVE_DATA } from '$lib/modules/live';
   import { NavbarItem } from '$lib/components';
   import { navbarItems } from './navbar-data';
@@ -13,7 +13,7 @@
       active={$page.url.pathname.startsWith(`/${item.slug}`)}
       live={item.slug == 'live' && $LIVE_DATA?.isLive}
     >
-      {$LANG.navbar[item.slug]}
+      {$_.navbar[item.slug]}
     </NavbarItem>
   {/each}
 </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { AudioIcon, Buttons, Button, ButtonIcon } from '$lib/components';
   import {
     GithubIcon,
@@ -33,7 +33,7 @@
     }
   ];
 
-  $: showAudioButton = $LANG.code == 'en';
+  $: showAudioButton = $_.code == 'en';
   const audio = browser && new Audio(namePronunciationAudio);
   const onClickAudioButton = () => audio && audio.play();
 
@@ -54,14 +54,14 @@
 
 <div class="blurb-info">
   <h1 class="name">
-    {$LANG.blurb.title}
+    {$_.blurb.title}
     {#if showAudioButton}
-      <button class="audio" on:click={onClickAudioButton} aria-label={$LANG.alt.audioButton}>
+      <button class="audio" on:click={onClickAudioButton} aria-label={$_.alt.audioButton}>
         <AudioIcon />
       </button>
     {/if}
   </h1>
-  <p class="bio">{$LANG.blurb.paragraph.replace('%s', age.toString())}</p>
+  <p class="bio">{$_.blurb.paragraph.replace('%s', age.toString())}</p>
   <Buttons>
     <Button href={githubUrl} target="_blank">
       <GithubIcon />

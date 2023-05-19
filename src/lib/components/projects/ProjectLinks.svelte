@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { THEME } from '$lib/stores';
   import { Button, Buttons } from '$lib/components';
   import type { Project } from '.';
@@ -13,7 +13,7 @@
   {#each linkTypes as type}
     {#if !!item?.[type]}
       <Button href={item?.[type]} target="_blank" outline={$THEME == 'dark'} small>
-        {$LANG.projects?.[type]}
+        {$_.projects?.[type]}
       </Button>
     {/if}
   {/each}

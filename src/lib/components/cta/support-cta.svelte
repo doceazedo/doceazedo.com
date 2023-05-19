@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { THEME } from '$lib/stores';
   import { Button } from '$lib/components/button';
   import { PicPayIcon } from '$lib/components/icons';
@@ -9,18 +9,18 @@
 
 <div class="cta">
   <div class="cta-sub">
-    <h1 class="title">{$LANG.streams.subscribe.title}</h1>
-    <p>{$LANG.streams.subscribe.paragraph}</p>
+    <h1 class="title">{$_.streams.subscribe.title}</h1>
+    <p>{$_.streams.subscribe.paragraph}</p>
     <div class="content">
       <ul>
-        {#each $LANG.streams.subscribe.benefits as benefit}
+        {#each $_.streams.subscribe.benefits as benefit}
           <li>{benefit}</li>
         {/each}
       </ul>
     </div>
     <div class="buttons">
       <Button href="/live/prime" medium light={$THEME == 'light'}
-        >{$LANG.streams.subscribe.prime}</Button
+        >{$_.streams.subscribe.prime}</Button
       >
       <Button
         href="https://twitch.tv/subs/doceazedo911"
@@ -29,7 +29,7 @@
         outline
         light={$THEME == 'light'}
       >
-        {$LANG.streams.subscribe.sub}
+        {$_.streams.subscribe.sub}
       </Button>
     </div>
   </div>
@@ -37,8 +37,8 @@
     <div class="icon">
       <PicPayIcon />
     </div>
-    <h1 class="title">{$LANG.streams.donate.title}</h1>
-    <p>{$LANG.streams.donate.paragraph}</p>
+    <h1 class="title">{$_.streams.donate.title}</h1>
+    <p>{$_.streams.donate.paragraph}</p>
   </a>
 </div>
 

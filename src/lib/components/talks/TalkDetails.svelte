@@ -1,11 +1,11 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import type { Talk } from '.';
 
   export let talk: Talk;
 </script>
 
-<p class="pretitle">{$LANG.talks.resourcesPretitle}</p>
+<p class="pretitle">{$_.talks.resourcesPretitle}</p>
 <div class="title">
   {talk.title}
 </div>

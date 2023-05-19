@@ -1,36 +1,35 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
 
-  $: defaultUsage = $LANG.streams.tts.usage.default.split('%s');
-  $: googleUsage = $LANG.streams.tts.usage.google.split('%s');
-  $: pollyUsage = $LANG.streams.tts.usage.polly.split('%s');
-  $: ssmlUsage = $LANG.streams.tts.usage.ssml.split('%s');
+  $: defaultUsage = $_.streams.tts.usage.default.split('%s');
+  $: googleUsage = $_.streams.tts.usage.google.split('%s');
+  $: pollyUsage = $_.streams.tts.usage.polly.split('%s');
+  $: ssmlUsage = $_.streams.tts.usage.ssml.split('%s');
 </script>
 
 <div class="content">
   <ul>
     <li>
       {defaultUsage[0]}
-      <code>!tts &lt;{$LANG.streams.tts.placeholder.message}&gt;</code>
+      <code>!tts &lt;{$_.streams.tts.placeholder.message}&gt;</code>
       {defaultUsage[1]}
     </li>
     <li>
       {googleUsage[0]}
-      <code>!tts google &lt;{$LANG.streams.tts.placeholder.message}&gt;</code>
+      <code>!tts google &lt;{$_.streams.tts.placeholder.message}&gt;</code>
       {googleUsage[1]}
     </li>
     <li>
       {pollyUsage[0]}
       <code>
-        !tts &lt;{$LANG.streams.tts.placeholder.code}&gt; &lt;{$LANG.streams.tts.placeholder
-          .message}&gt;
+        !tts &lt;{$_.streams.tts.placeholder.code}&gt; &lt;{$_.streams.tts.placeholder.message}&gt;
       </code>
       {pollyUsage[1]}
     </li>
     <li>
       {ssmlUsage[0]}
       <code
-        >!tts &lt;{$LANG.streams.tts.placeholder.code}&gt; ssml &lt;{$LANG.streams.tts.placeholder
+        >!tts &lt;{$_.streams.tts.placeholder.code}&gt; ssml &lt;{$_.streams.tts.placeholder
           .message}&gt;</code
       >
       {ssmlUsage[1]}
@@ -39,7 +38,7 @@
         target="_blank"
         rel="noreferrer"
       >
-        {$LANG.streams.tts.ssmlTags}
+        {$_.streams.tts.ssmlTags}
       </a>
       {ssmlUsage[2]}
     </li>

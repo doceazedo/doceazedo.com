@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from '$app/environment';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import ProjectLinks from './ProjectLinks.svelte';
   import type { Project } from '.';
 
@@ -50,7 +50,7 @@
         <h1>{item.title}</h1>
         <img src="/img/projects/{item.id}.{item.imageFormat || 'webp'}" alt="" />
         <ProjectLinks {item} />
-        <p>{$LANG.projects.details?.[item.id]}</p>
+        <p>{$_.projects.details?.[item.id]}</p>
       </li>
     {/each}
   </ul>

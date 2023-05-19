@@ -1,15 +1,15 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { languages } from './navbar-data';
 
   const switchLanguage = () => {
-    const code = $LANG.code == 'en' ? 'pt' : 'en';
-    LANG.change(code);
+    const code = $_.code == 'en' ? 'pt' : 'en';
+    _.change(code);
   };
 </script>
 
 <button on:click={switchLanguage} class="navbar-lang">
-  <svelte:component this={languages[$LANG.code].icon} />
+  <svelte:component this={languages[$_.code].icon} />
 </button>
 
 <style lang="sass">

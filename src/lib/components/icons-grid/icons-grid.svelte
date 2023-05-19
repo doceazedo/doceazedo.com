@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import * as simpleIcons from 'simple-icons';
   import toast from 'svelte-french-toast';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { toastTheme } from '$lib/utils/toast';
   import { IconItem, IconsSearch } from '.';
   import { FILTERED_ICONS, ICONS } from './icons-grid.store';
@@ -18,7 +18,7 @@
 <ul class="icons-grid" id="icons">
   {#each $FILTERED_ICONS as icon}
     {#key icon.slug}
-      <IconItem {icon} on:click={() => toast.success($LANG.streams.icons.copied, toastTheme)} />
+      <IconItem {icon} on:click={() => toast.success($_.streams.icons.copied, toastTheme)} />
     {/key}
   {/each}
 </ul>

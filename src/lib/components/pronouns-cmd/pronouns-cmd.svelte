@@ -1,7 +1,7 @@
 <script>
   import toast from 'svelte-french-toast';
   import { browser } from '$app/environment';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { toastTheme } from '$lib/utils/toast';
   import { Button } from '$lib/components/button';
   import { Select } from '$lib/components/input';
@@ -17,20 +17,20 @@
   const copyCommand = () => {
     if (!browser) return;
     navigator.clipboard.writeText(`!pronomes ${primaryPronouns}/${secondaryPronouns}`);
-    toast.success($LANG.streams.icons.copied, toastTheme);
+    toast.success($_.streams.icons.copied, toastTheme);
   };
 </script>
 
 <div class="pronouns-wrapper">
   <div class="pronouns-cmd">
-    <span>!{$LANG.streams.pronouns.command}</span>
+    <span>!{$_.streams.pronouns.command}</span>
     <Select small bind:value={primaryPronouns} options={primaryPronounsMap} />
     <span>/</span>
     <Select small bind:value={secondaryPronouns} options={secondaryPronounsMap} />
   </div>
   <Button medium on:click={copyCommand}>
     <ClipboardIcon />
-    {$LANG.streams.pronouns.copy}
+    {$_.streams.pronouns.copy}
   </Button>
 </div>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser, dev } from '$app/environment';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { COLOR_THEMES, COLOR_THEME } from '$lib/stores';
   import customCursorImage from '../../../assets/img/pat.gif';
   import defaultSelfie from '../../../assets/img/me-selfie-v3.webp';
@@ -40,7 +40,7 @@
 
 <div class="blurb-selfie" on:contextmenu|preventDefault={openInstagram}>
   <figure class="selfie-wrapper">
-    <img class="selfie" src={selfieSrc} alt={$LANG.alt.selfie} />
+    <img class="selfie" src={selfieSrc} alt={$_.alt.selfie} />
     <div
       class="pat-area"
       class:is-active={customCursorImage}

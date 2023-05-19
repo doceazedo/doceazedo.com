@@ -1,7 +1,7 @@
 <script lang="ts">
   import dayjs from 'dayjs';
   import { Buttons, Button } from '$lib/components';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { TALKS } from '.';
 
   const getFullDate = (date: Date) => dayjs(date).format('DD/MM/YYYY');
@@ -21,10 +21,10 @@
       </div>
       <div class="details">
         <h1 class="title">{talk.title}</h1>
-        <p class="promoter">{getFullDate(talk.date)} {$LANG.talks.at} {talk.organizer.name}</p>
+        <p class="promoter">{getFullDate(talk.date)} {$_.talks.at} {talk.organizer.name}</p>
         <Buttons small>
-          <Button small href={talk.replay} target="_blank">{$LANG.talks.watch}</Button>
-          <Button small outline href="/talks/{talk.slug}">{$LANG.talks.resources}</Button>
+          <Button small href={talk.replay} target="_blank">{$_.talks.watch}</Button>
+          <Button small outline href="/talks/{talk.slug}">{$_.talks.resources}</Button>
         </Buttons>
       </div>
     </div>

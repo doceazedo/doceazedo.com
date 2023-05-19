@@ -1,7 +1,7 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { THEME } from '$lib/stores';
   import { Button } from '$lib/components';
   import { subscribeToNewsletter } from '$lib/modules/newsletter';
@@ -18,7 +18,7 @@
     showMessage = false;
 
     try {
-      await subscribeToNewsletter(email, $LANG.code);
+      await subscribeToNewsletter(email, $_.code);
       success = true;
     } catch (error) {
       success = false;
@@ -31,17 +31,17 @@
 
 <section class="newsletter">
   <div class="newsletter-content">
-    <h1 class="title">{$LANG.newsletter.title}</h1>
-    <p class="subtitle">{$LANG.newsletter.paragraph}</p>
+    <h1 class="title">{$_.newsletter.title}</h1>
+    <p class="subtitle">{$_.newsletter.paragraph}</p>
     <form class="form" class:disabled={loading} on:submit|preventDefault={handleSubmit}>
       <input
         type="email"
         bind:value={email}
         disabled={loading}
-        placeholder={$LANG.newsletter.placeholder}
+        placeholder={$_.newsletter.placeholder}
       />
       <Button type="submit" disabled={loading} light={$THEME == 'light'}>
-        {$LANG.newsletter.subscribe}
+        {$_.newsletter.subscribe}
       </Button>
     </form>
     {#if showMessage}
@@ -52,11 +52,11 @@
         transition:slide={{ duration: 200, easing: quintOut }}
       >
         {#if success}
-          {$LANG.newsletter.messages.success}
+          {$_.newsletter.messages.success}
         {:else}
-          {@html $LANG.newsletter.messages.error.replace(
+          {@html $_.newsletter.messages.error.replace(
             '%s',
-            `<a href="https://github.com/doceazedo/doceazedo.com/issues" target="_blank">${$LANG.newsletter.messages.openIssue}</a>`
+            `<a href="https://github.com/doceazedo/doceazedo.com/issues" target="_blank">${$_.newsletter.messages.openIssue}</a>`
           )}
         {/if}
       </p>

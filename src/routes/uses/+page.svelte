@@ -1,6 +1,6 @@
 <script lang="ts">
   import '../../assets/css/prism-material-dark.css';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { Metadata, PageTitle, SubtitleWithIcon } from '$lib/components';
   import {
     AttachmentIcon,
@@ -163,59 +163,59 @@
   };
 </script>
 
-<Metadata title={$LANG.uses.title} />
-<PageTitle title={$LANG.uses.title} paragraph={$LANG.uses.paragraph} />
+<Metadata title={$_.uses.title} />
+<PageTitle title={$_.uses.title} paragraph={$_.uses.paragraph} />
 
 <article class="content">
-  <SubtitleWithIcon icon={ComputerIcon}>{$LANG.uses.hardware.title}</SubtitleWithIcon>
+  <SubtitleWithIcon icon={ComputerIcon}>{$_.uses.hardware.title}</SubtitleWithIcon>
   <ul>
-    <li><span>{$LANG.uses.hardware.mainPC}:</span> {mainPC}</li>
-    <li><span>{$LANG.uses.hardware.gamingPC.title}:</span></li>
+    <li><span>{$_.uses.hardware.mainPC}:</span> {mainPC}</li>
+    <li><span>{$_.uses.hardware.gamingPC.title}:</span></li>
     <ul>
       {#each Object.keys(gamingPC) as part}
-        <li><span>{$LANG.uses.hardware.gamingPC.items[part]}:</span> {gamingPC[part]}</li>
+        <li><span>{$_.uses.hardware.gamingPC.items[part]}:</span> {gamingPC[part]}</li>
       {/each}
     </ul>
     {#each Object.keys(peripherals) as item}
-      <li><span>{$LANG.uses.hardware.peripherals.items[item]}:</span> {peripherals[item]}</li>
+      <li><span>{$_.uses.hardware.peripherals.items[item]}:</span> {peripherals[item]}</li>
     {/each}
   </ul>
-  <img src={setupImg} alt={$LANG.alt.setup} />
+  <img src={setupImg} alt={$_.alt.setup} />
 
-  <UseList things={generalApps} lang={$LANG.uses.general} icon={SparklesIcon} />
+  <UseList things={generalApps} lang={$_.uses.general} icon={SparklesIcon} />
 
-  <UseList things={productivityApps} lang={$LANG.uses.productivity} icon={AttachmentIcon} />
+  <UseList things={productivityApps} lang={$_.uses.productivity} icon={AttachmentIcon} />
 
-  <UseList things={codingApps} lang={$LANG.uses.coding} icon={CodeIcon}>
+  <UseList things={codingApps} lang={$_.uses.coding} icon={CodeIcon}>
     <li slot="pre">
       <a href="/" target="_blank" rel="noopener noreferrer">VS Code</a>
-      {$LANG.uses.coding.items.ide}
+      {$_.uses.coding.items.ide}
       <ul>
         {#each Object.keys(vscodeSettings) as key}
           {@const setting = vscodeSettings[key]}
           <li>
             <a href={setting.url} target="_blank" rel="noopener noreferrer">
-              {setting?.name || $LANG.uses.coding.vscode[key]}
+              {setting?.name || $_.uses.coding.vscode[key]}
             </a>
-            {setting?.name ? $LANG.uses.coding.vscode[key] : ''}
+            {setting?.name ? $_.uses.coding.vscode[key] : ''}
           </li>
         {/each}
       </ul>
     </li>
 
-    <li><span>{$LANG.uses.coding.web.title}:</span></li>
-    <UseList things={webDevStack} lang={$LANG.uses.coding.web} showTitle={false} />
+    <li><span>{$_.uses.coding.web.title}:</span></li>
+    <UseList things={webDevStack} lang={$_.uses.coding.web} showTitle={false} />
   </UseList>
 
-  <UseList things={streamingApps} lang={$LANG.uses.streaming} icon={LiveIcon} />
+  <UseList things={streamingApps} lang={$_.uses.streaming} icon={LiveIcon} />
 
-  <UseList things={designApps} lang={$LANG.uses.design} icon={PencilRulerIcon} />
+  <UseList things={designApps} lang={$_.uses.design} icon={PencilRulerIcon} />
 
-  <UseList things={socialApps} lang={$LANG.uses.social} icon={ChatIcon} />
+  <UseList things={socialApps} lang={$_.uses.social} icon={ChatIcon} />
 
-  <UseList things={utils} lang={$LANG.uses.utils} icon={ToolsIcon} />
+  <UseList things={utils} lang={$_.uses.utils} icon={ToolsIcon} />
 
-  <UseList things={extensions} lang={$LANG.uses.extensions} icon={PuzzleIcon} />
+  <UseList things={extensions} lang={$_.uses.extensions} icon={PuzzleIcon} />
 </article>
 
 <style lang="sass">

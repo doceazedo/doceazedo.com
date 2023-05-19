@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Metadata, PageTitle } from '$lib/components';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
 
   type BookmarkItem = {
     title: string;
@@ -135,12 +135,12 @@
   ];
 </script>
 
-<Metadata title={$LANG.bookmarks.title} />
-<PageTitle title={$LANG.bookmarks.title} paragraph={$LANG.bookmarks.paragraph} />
+<Metadata title={$_.bookmarks.title} />
+<PageTitle title={$_.bookmarks.title} paragraph={$_.bookmarks.paragraph} />
 
 <div class="content">
   {#each bookmarks as category}
-    <h2>{_(category.title)($LANG.bookmarks)}</h2>
+    <h2>{_(category.title)($_.bookmarks)}</h2>
     <ul>
       {#each category.items as item}
         <li>

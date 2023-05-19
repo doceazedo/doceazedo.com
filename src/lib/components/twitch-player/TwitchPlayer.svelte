@@ -4,7 +4,7 @@
   import relativeTime from 'dayjs/plugin/relativeTime.js';
   import 'dayjs/locale/pt-br.js';
   import { browser } from '$app/environment';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { LIVE_DATA } from '$lib/modules/live';
 
   type VOD = {
@@ -80,7 +80,7 @@
           class="vod"
           style="background-image:url({vod.thumbnail_url})"
         >
-          <span class="date">{getDate(vod.created_at, $LANG.code)}</span>
+          <span class="date">{getDate(vod.created_at, $_.code)}</span>
         </a>
       {/each}
     </div>

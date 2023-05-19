@@ -1,7 +1,7 @@
 <script lang="ts">
   import { flip } from 'svelte/animate';
   import { fade } from 'svelte/transition';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { PushpinIcon } from '$lib/components/icons';
   import { isNewPost, readableDate } from '$lib/utils';
   import type { Post } from '.';
@@ -30,12 +30,12 @@
         {/if}
         {#if isNewPost(post.date)}
           <li class="new">
-            {$LANG.blog.new}
+            {$_.blog.new}
           </li>
         {/if}
       </ul>
       <h1 class="title">{post.title}</h1>
-      <div class="date">{$LANG.posted} {readableDate(post.date, $LANG.code)}</div>
+      <div class="date">{$_.posted} {readableDate(post.date, $_.code)}</div>
       <div class="tags">
         {#each post.tags as tag}
           <a href="/blog?tags={tag}">#{tag}</a>

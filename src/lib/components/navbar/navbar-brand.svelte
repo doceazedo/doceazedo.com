@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { sleep } from '$lib/utils';
   import { BrandDoceAzedo, NavbarAchievement } from '$lib/components';
 
@@ -29,7 +29,7 @@
   };
 </script>
 
-<a class="navbar-brand" href="/" on:click={onClickBrand} aria-label={$LANG.alt.home}>
+<a class="navbar-brand" href="/" on:click={onClickBrand} aria-label={$_.alt.home}>
   <BrandDoceAzedo />
 </a>
 

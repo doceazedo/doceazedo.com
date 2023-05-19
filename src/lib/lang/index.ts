@@ -262,6 +262,6 @@ const initializeLang = () => {
   };
 };
 
-const LANG = initializeLang();
+const _ = initializeLang();
 
-export default LANG;
+export default _;

@@ -1,7 +1,7 @@
 import toast from 'svelte-french-toast';
 import { get, writable } from 'svelte/store';
 import { browser } from '$app/environment';
-import LANG from './lang';
+import _ from './lang';
 import { toastTheme } from './utils/toast';
 import selfiePurple from '../assets/img/me-selfie-v3.webp';
 import selfieRed from '../assets/img/me-selfie-goptun.png';
@@ -86,7 +86,7 @@ export const unlockTheme = (theme: string) => {
   if (unlockedThemes.includes(theme)) return;
   UNLOCKED_THEMES.set([...unlockedThemes, theme]);
 
-  const lang = get(LANG);
+  const lang = get(_);
   toast.success(`${lang.settings.themeUnlock} ${lang.settings.themes[theme]}`, {
     ...toastTheme,
     duration: 6000

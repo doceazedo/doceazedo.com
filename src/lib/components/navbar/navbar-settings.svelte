@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { MoonIcon, SettingsIcon, SunIcon } from '$lib/components/icons';
   import { Button } from '$lib/components/button';
   import { Range, Select, Switch } from '$lib/components/input';
@@ -35,7 +35,7 @@
   const readingWidths = ['600px', '700px', '800px', '900px'];
 
   $: colorThemes = new Map(
-    Object.keys($COLOR_THEMES).map((theme) => [theme, $LANG.settings.themes[theme] || theme])
+    Object.keys($COLOR_THEMES).map((theme) => [theme, $_.settings.themes[theme] || theme])
   );
 
   const originalColorThemesLength = Object.keys($COLOR_THEMES).length;
@@ -73,9 +73,9 @@
         />
       </svg>
       <ul>
-        <h1 class="title">{$LANG.settings.title}</h1>
+        <h1 class="title">{$_.settings.title}</h1>
         <li>
-          {$LANG.settings.theme}
+          {$_.settings.theme}
           <Switch
             on:click={switchTheme}
             active={$THEME === 'light'}
@@ -84,20 +84,20 @@
           />
         </li>
         <li>
-          {$LANG.settings.colorTheme}
+          {$_.settings.colorTheme}
           <Select bind:value={$COLOR_THEME} options={colorThemes} hasColorPreview />
         </li>
         <li>
-          {$LANG.settings.fontSize}
+          {$_.settings.fontSize}
           <Range
             name="font-size"
             bind:value={$READING_FONT_SIZE}
-            label={$LANG.settings.fontSizes[$READING_FONT_SIZE]}
-            max={$LANG.settings.fontSizes.length - 1}
+            label={$_.settings.fontSizes[$READING_FONT_SIZE]}
+            max={$_.settings.fontSizes.length - 1}
           />
         </li>
         <li class="is-desktop-only">
-          {$LANG.settings.readingWidth}
+          {$_.settings.readingWidth}
           <Range
             name="max-width"
             bind:value={$READING_MAX_WIDTH}
@@ -106,26 +106,26 @@
           />
         </li>
         <li>
-          {$LANG.settings.lineHeight}
+          {$_.settings.lineHeight}
           <Range
             name="line-height"
             bind:value={$READING_LINE_HEIGHT}
-            label={$LANG.settings.lineHeights[$READING_LINE_HEIGHT]}
-            max={$LANG.settings.lineHeights.length - 1}
+            label={$_.settings.lineHeights[$READING_LINE_HEIGHT]}
+            max={$_.settings.lineHeights.length - 1}
           />
         </li>
         <li>
-          {$LANG.settings.dyslexiaFont}
+          {$_.settings.dyslexiaFont}
           <Switch bind:active={$USE_DYSLEXIA_FONT} iconOff="Aa" iconOn="Aa" />
         </li>
         <li>
-          {$LANG.settings.elevatorSpeed}
+          {$_.settings.elevatorSpeed}
           <Switch bind:active={$IS_ELEVATOR_FAST} iconOff="🐌" iconOn="⚡" />
         </li>
         <li>
-          {$LANG.settings.resetLabel}
+          {$_.settings.resetLabel}
           <Button small light={$THEME == 'light'} on:click={reset}>
-            {$LANG.settings.resetButton}
+            {$_.settings.resetButton}
           </Button>
         </li>
       </ul>

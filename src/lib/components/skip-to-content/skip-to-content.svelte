@@ -1,8 +1,8 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
 </script>
 
-<a href="#main">{$LANG.skipToContent}</a>
+<a href="#main">{$_.skipToContent}</a>
 
 <style lang="sass">
   @import '../../../assets/sass/vars.sass'

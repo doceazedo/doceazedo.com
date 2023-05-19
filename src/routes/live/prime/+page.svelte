@@ -1,10 +1,10 @@
 <script lang="ts">
   import { Metadata, PageTitle } from '$lib/components';
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
 
-  const isLastStep = (i: number) => i == $LANG.streams.prime.steps.length - 1;
+  const isLastStep = (i: number) => i == $_.streams.prime.steps.length - 1;
 
-  $: steps = $LANG.streams.prime.steps.map((step, i) => ({
+  $: steps = $_.streams.prime.steps.map((step, i) => ({
     title: step.title,
     description: step.description
       .replace('%prime_link%', 'https://gaming.amazon.com/intro')
@@ -15,8 +15,8 @@
   }));
 </script>
 
-<Metadata title={$LANG.streams.prime.title} />
-<PageTitle title={$LANG.streams.prime.title} paragraph={$LANG.streams.prime.paragraph} />
+<Metadata title={$_.streams.prime.title} />
+<PageTitle title={$_.streams.prime.title} paragraph={$_.streams.prime.paragraph} />
 
 <ul class="steps">
   {#each steps as step, i}

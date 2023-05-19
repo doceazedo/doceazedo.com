@@ -1,18 +1,18 @@
 <script lang="ts">
-  import LANG from '$lib/lang';
+  import _ from '$lib/lang';
   import { FooterElevator, FooterMusicPlayer } from '.';
 </script>
 
 <footer>
   <p class="copyleft">
-    <span>{$LANG.footer[0]}</span>
+    <span>{$_.footer[0]}</span>
     <span>
-      {$LANG.footer[1]}
+      {$_.footer[1]}
       <a
         href="https://gnu.org/licenses/copyleft.html"
         target="_blank"
         rel="noreferrer"
-        aria-label={$LANG.alt.copyleft}
+        aria-label={$_.alt.copyleft}
       >
         <span class="flip">&copy;</span>
         {new Date().getFullYear()}
