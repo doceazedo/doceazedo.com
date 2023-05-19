@@ -1,12 +1,14 @@
 <script lang="ts">
-  import { PostsGrid } from '$lib/modules/posts';
   import { Metadata, PageTitle } from '$lib/components';
   import { LANG } from '$lib/stores';
-  import type { PageData } from './$types';
+  import { POSTS } from '$lib/components/posts';
+  import PostsAll from '$lib/components/posts/PostsAll.svelte';
 
-  export let data: PageData;
+  export let data;
+
+  $POSTS = data.posts;
 </script>
 
 <Metadata title={$LANG.navbar.blog} />
 <PageTitle title={$LANG.navbar.blog} paragraph={$LANG.blog.subtitle} />
-<PostsGrid posts={data.posts} regular showTags />
+<PostsAll />

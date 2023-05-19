@@ -13,7 +13,6 @@ export * from './newsletter';
 export * from './projects';
 export * from './posts';
 export * from './skip-to-content';
-export * from './tags-list';
 export * from './talks';
 export * from './text';
 export * from './topbar';

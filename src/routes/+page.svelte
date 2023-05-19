@@ -1,12 +1,14 @@
 <script lang="ts">
-  import { PostsLatest } from '$lib/modules';
   import { Blurb, Metadata, Newsletter } from '$lib/components';
-  import type { PageData } from './$types';
+  import { POSTS } from '$lib/components/posts';
+  import PostsLatest from '$lib/components/posts/PostsLatest.svelte';
 
-  export let data: PageData;
+  export let data;
+
+  $POSTS = data.posts;
 </script>
 
 <Metadata />
 <Blurb />
-<PostsLatest posts={data.posts} />
+<PostsLatest />
 <Newsletter />

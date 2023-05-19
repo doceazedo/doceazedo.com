@@ -4,7 +4,7 @@
   import { LANG } from '$lib/stores';
   import { PushpinIcon } from '$lib/components/icons';
   import { isNewPost, readableDate } from '$lib/utils';
-  import type { Post } from '$lib/modules/posts';
+  import type { Post } from '.';
 
   export let posts: Post[] = [],
     regular = false;

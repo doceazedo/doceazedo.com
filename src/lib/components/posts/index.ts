@@ -1,1 +1,14 @@
-export { default as PostsGrid } from './posts-grid.svelte';
+import { writable } from 'svelte/store';
+
+export { default as PostsGrid } from './PostsGrid.svelte';
+
+export type Post = {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+  pinned?: boolean;
+};
+
+export const POSTS = writable<Post[]>([]);
