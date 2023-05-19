@@ -10,7 +10,8 @@
   import { page } from '$app/stores';
   import _ from '$lib/lang';
   import { THEME } from '$lib/stores';
-  import { Metadata, Newsletter } from '$lib/components';
+  import { Metadata } from '$lib/components';
+  import Newsletter from '$lib/components/newsletter/Newsletter.svelte';
 
   export let title;
   export let description;
