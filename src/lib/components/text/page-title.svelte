@@ -1,10 +1,16 @@
 <script lang="ts">
-  export let title: string,
-    paragraph = '';
+  export let title: string;
+  export let subtitle = '';
 </script>
 
 <h1>{title}</h1>
-<p class="content"><slot />{@html paragraph}</p>
+{#if $$slots.default || subtitle}
+  <p class="content">
+    <slot>
+      <span>{@html subtitle}</span>
+    </slot>
+  </p>
+{/if}
 
 <style lang="sass">
   @import '../../../assets/sass/vars.sass'

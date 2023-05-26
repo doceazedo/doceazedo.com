@@ -8,12 +8,10 @@
 <Metadata title={$_.navbar.projects} />
 
 <PageTitle title={$_.navbar.projects}>
-  <div class="content">
-    {$_.projects.subtitle}
-    <a href="https://github.com/doceazedo" target="_blank">
-      {$_.projects.subtitleGitHub}
-    </a>.
-  </div>
+  {$_.projects.subtitle}
+  <a href="https://github.com/doceazedo" target="_blank">
+    {$_.projects.subtitleGitHub}
+  </a>.
 </PageTitle>
 
 <div class="projects-container">

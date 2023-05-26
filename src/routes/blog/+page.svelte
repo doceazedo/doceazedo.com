@@ -10,5 +10,5 @@
 </script>
 
 <Metadata title={$_.navbar.blog} />
-<PageTitle title={$_.navbar.blog} paragraph={$_.blog.subtitle} />
+<PageTitle title={$_.navbar.blog} subtitle={$_.blog.subtitle} />
 <PostsAll />

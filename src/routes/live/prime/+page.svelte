@@ -16,7 +16,7 @@
 </script>
 
 <Metadata title={$_.streams.prime.title} />
-<PageTitle title={$_.streams.prime.title} paragraph={$_.streams.prime.paragraph} />
+<PageTitle title={$_.streams.prime.title} subtitle={$_.streams.prime.paragraph} />
 
 <ul class="steps">
   {#each steps as step, i}

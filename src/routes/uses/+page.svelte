@@ -164,7 +164,7 @@
 </script>
 
 <Metadata title={$_.uses.title} />
-<PageTitle title={$_.uses.title} paragraph={$_.uses.paragraph} />
+<PageTitle title={$_.uses.title} subtitle={$_.uses.paragraph} />
 
 <article class="content">
   <SubtitleWithIcon icon={ComputerIcon}>{$_.uses.hardware.title}</SubtitleWithIcon>
