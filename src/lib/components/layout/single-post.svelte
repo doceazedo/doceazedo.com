@@ -12,6 +12,7 @@
   import { THEME } from '$lib/stores';
   import { Metadata } from '$lib/components';
   import Newsletter from '$lib/components/newsletter/Newsletter.svelte';
+  import '../../../assets/css/prism-material-dark.css';
 
   export let title;
   export let description;
