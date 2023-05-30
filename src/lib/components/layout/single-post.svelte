@@ -26,6 +26,7 @@
 
   let readableDate = '';
   let fullDate = '';
+  let articleEl;
 
   if (browser) {
     dayjs.extend(relativeTime);
@@ -41,6 +42,9 @@
         .locale($_.code == 'pt' ? 'pt-br' : 'en-us')
         .fromNow();
   }
+
+  const wpm = 265; // same as medium
+  $: readingTime = articleEl ? Math.ceil(articleEl.innerText.trim().split(/\s+/).length / wpm) : 0;
 </script>
 
 <Metadata {title} {description} {thumbnail} />
@@ -48,7 +52,11 @@
 <header>
   <div>
     <h1>{title}</h1>
-    <p title={fullDate}>{$_.posted} {readableDate}</p>
+    <p>
+      <span title={fullDate}>{$_.posted} {readableDate}</span>
+      &bull;
+      <span>{$_.blog.readingTime.replace('%s', readingTime)}</span>
+    </p>
     <ul>
       {#each tags as tag}
         <li>
@@ -66,7 +74,7 @@
 
 <hr />
 
-<article class="content">
+<article class="content" bind:this={articleEl}>
   <slot />
 </article>
 

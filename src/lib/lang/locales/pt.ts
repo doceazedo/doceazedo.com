@@ -28,7 +28,8 @@ export const pt: Language = {
     subtitle:
       'Um amontoado de textos sobre tecnologia e programação, misturados com conversa fiada sobre música, vivências pessoais e outras besteiras.',
     more: 'Ver mais',
-    new: 'Novo!'
+    new: 'Novo!',
+    readingTime: '%smin de leitura'
   },
   about: {
     tldr: {

@@ -27,7 +27,8 @@ export const en: Language = {
     subtitle:
       'A bunch of texts about technology and programming, mixed with me talking about music, personal experiences and other nerdy nonsense.',
     more: 'View all',
-    new: 'New!'
+    new: 'New!',
+    readingTime: '%smin read'
   },
   footer: ['Powered by Svelte & SvelteKit', 'Developed by DoceAzedo'],
   about: {

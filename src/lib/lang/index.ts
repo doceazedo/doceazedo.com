@@ -25,6 +25,7 @@ export type Language = {
     subtitle: string;
     more: string;
     new: string;
+    readingTime: string;
   };
 
   footer: string[];
