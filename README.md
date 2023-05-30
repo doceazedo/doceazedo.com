@@ -14,4 +14,13 @@
   </a>
 </p>
 
-**Note:** This website was not created to be a template or theme, but for my own use. Feel free to take whatever piece of code or inspiration from it that you want, but it was not written with the intention of being cloned and deployed.
+## Deployments
+
+| Environment  | URL                                             | Branch                                   |
+|--------------|-------------------------------------------------|------------------------------------------|
+| 🚀 Production | [doceazedo.com](https://doceazedo.com)         | Deploys on every commit to `main` branch |
+| 🔮 Canary     | [pbe.doceazedo.com](https://pbe.doceazedo.com) | Deploys on every commit to `pbe` branch  |
+
+## Hold up! ✋
+
+**Note:** This website was not created to be used as a template or theme, but for my personal use. Feel free to borrow any piece of code or draw inspiration from it, but don't expect it to work by just cloning and deploying it.
