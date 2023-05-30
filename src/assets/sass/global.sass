@@ -367,3 +367,32 @@ body
   &[data-theme="light"]
     --toast-background-color: #fff
     --toast-color: #000
+
+  &[data-color="fortnite"]
+    background: radial-gradient(#45b2f8, #2244a3)
+    color: #fff !important
+    --toast-color: #000
+
+    &::after
+      background-image: url(https://i.imgur.com/HpcRN6r.png)
+      opacity: .05
+
+    &::before
+      opacity: 0
+
+    .button,
+    .tags .new,
+    .tags a
+      color: #000 !important
+
+    .button.outline
+      color: var(--primary) !important
+
+    .article .tags a:not(:hover)
+      color: #fff !important
+
+    .content
+      color: #fff
+
+      a:hover
+        color: #000

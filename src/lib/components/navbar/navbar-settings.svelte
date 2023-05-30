@@ -1,4 +1,5 @@
 <script lang="ts">
+  import toast from 'svelte-french-toast';
   import { fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import _ from '$lib/lang';
@@ -17,6 +18,7 @@
     unlockTheme
   } from '$lib/stores';
   import { clickOutside } from '$lib/utils';
+  import { toastTheme } from '$lib/utils/toast';
 
   let isOpen = false;
   let toggleEl: HTMLElement;
@@ -44,6 +46,20 @@
     pickedColorThemes.add(theme);
     if (pickedColorThemes.size >= originalColorThemesLength) {
       unlockTheme('pink');
+    }
+    if ($COLOR_THEMES[theme].isDarkOnly) {
+      $THEME = 'dark';
+    }
+  });
+
+  THEME.subscribe((theme) => {
+    if (theme == 'dark') return;
+    if ($COLOR_THEMES[$COLOR_THEME].isDarkOnly) {
+      $THEME = 'dark';
+      toast.error($_.settings.noLightMode, {
+        ...toastTheme,
+        duration: 3500
+      });
     }
   });
 

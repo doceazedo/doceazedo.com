@@ -271,7 +271,8 @@ export const pt: Language = {
     },
     themeUnlock: 'Nova cor de tema desbloqueada:',
     fontSizes: ['Pequena', 'Normal', 'Grande', 'Enorme'],
-    lineHeights: ['Condensado', 'Padrão', 'Espaçado']
+    lineHeights: ['Condensado', 'Padrão', 'Espaçado'],
+    noLightMode: 'Esse tema não tem suporte para modo claro'
   },
   uses: {
     title: 'Eu uso',

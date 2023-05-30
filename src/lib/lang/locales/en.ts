@@ -273,7 +273,8 @@ export const en: Language = {
     },
     themeUnlock: 'New color theme unlocked:',
     fontSizes: ['Small', 'Regular', 'Large', 'Huge'],
-    lineHeights: ['Condensed', 'Default', 'Spaced']
+    lineHeights: ['Condensed', 'Default', 'Spaced'],
+    noLightMode: 'This theme does not support light mode'
   },
   uses: {
     title: 'Uses',

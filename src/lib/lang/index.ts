@@ -203,6 +203,7 @@ export type Language = {
     themeUnlock: string;
     fontSizes: string[];
     lineHeights: string[];
+    noLightMode: string;
   };
 
   uses: {
