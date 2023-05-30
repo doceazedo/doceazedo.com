@@ -2,7 +2,7 @@
 title: 'Svelte: visão geral e primeiros passos'
 description: 'Tutorial de introdução ao Svelte para iniciantes'
 date: '2023-02-15 08:30'
-tags: ['svelte']
+tags: ['svelte', 'beginners']
 icon: 'svelte'
 ---
 
