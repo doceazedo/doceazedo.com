@@ -163,6 +163,7 @@ export type Language = {
   email: string;
   posted: string;
   skipToContent: string;
+  thankBusDriver: string;
 
   alt: {
     logo: string;

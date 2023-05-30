@@ -229,6 +229,7 @@ export const en: Language = {
   email: 'me@doceazedo.com',
   posted: 'Published',
   skipToContent: 'Skip to content',
+  thankBusDriver: 'You thanked the bus driver',
   alt: {
     logo: 'DoceAzedo logo',
     selfie: 'Photo of me',
@@ -269,7 +270,8 @@ export const en: Language = {
       orange: 'Coquelicot',
       carmine: 'Raspberry',
       green: 'Mint',
-      pink: 'Flamingo'
+      pink: 'Flamingo',
+      fortnite: 'Fortnite'
     },
     themeUnlock: 'New color theme unlocked:',
     fontSizes: ['Small', 'Regular', 'Large', 'Huge'],

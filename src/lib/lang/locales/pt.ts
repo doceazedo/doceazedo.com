@@ -227,6 +227,7 @@ export const pt: Language = {
   email: 'eu@doceazedo.com',
   posted: 'Publicado',
   skipToContent: 'Ir para o conteúdo',
+  thankBusDriver: 'Você agradeceu ao motorista do ônibus',
   alt: {
     logo: 'Logotipo Doce Azedo',
     selfie: 'Fotografia de mim',
@@ -267,7 +268,8 @@ export const pt: Language = {
       orange: 'Papoula',
       carmine: 'Framboesa',
       green: 'Menta',
-      pink: 'Flamingo'
+      pink: 'Flamingo',
+      fortnite: 'Fortnite'
     },
     themeUnlock: 'Nova cor de tema desbloqueada:',
     fontSizes: ['Pequena', 'Normal', 'Grande', 'Enorme'],
