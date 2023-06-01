@@ -1,6 +1,6 @@
 ---
 title: 'O que esperar do Svelte 4'
-description: 'Svelte 4 está em beta'
+description: 'Svelte 4 entrou em beta, o que será que vem aí?'
 date: '2023-06-01 04:41'
 tags: ['svelte']
 icon: 'svelte'
