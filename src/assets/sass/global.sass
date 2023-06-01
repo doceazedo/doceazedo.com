@@ -140,6 +140,11 @@ a
     border-radius: .25rem
     padding: 1.25em 1.5em
 
+    p + cite
+      display: inherit
+      margin-top: -1.5rem
+      opacity: .8
+
   ol
     list-style-position: outside
     margin-left: 2em
@@ -297,6 +302,12 @@ a
     margin-left: .5rem
     opacity: 1
 
+  hr
+    border: var(--hr)
+
+    &:not(:last-child)
+      margin-bottom: 2em
+
 body[data-theme="light"] .content
   color: #000
 
@@ -325,6 +336,9 @@ body[data-theme="light"] .content
 
     &:hover
       color: #000 !important
+
+  hr
+    border: var(--hr-light)
 
 ::selection
   color: #fff
