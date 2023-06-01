@@ -14,7 +14,7 @@ Se você esteve presente no anúncio do Svelte 3 e já está tendo um surto de e
 
 Toda a base de código do Svelte está sendo reestruturada para o lançamento do Svelte 4, com a intenção de fornecer um alicerce para mudanças mais significativas no Svelte 5.
 
-Isso significa que as novidades do Svelte 4 são focadas em prover uma base sólida, gerar códigos menores e mais rapidos e deixar algumas funcionalidades que atrasam o desenvolvimento para trás. Por isso, não espere grandes mudanças na API.
+Isso significa que as novidades do Svelte 4 são focadas em prover uma base sólida, gerar códigos menores e mais rápidos e deixar algumas funcionalidades que atrasam o desenvolvimento para trás. Por isso, não espere grandes mudanças na API.
 
 No futuro, o Svelte 5 terá uma fundação para implementar funcionalidades, algumas inclusive muito aguardadas.
 
@@ -26,9 +26,9 @@ No futuro, o Svelte 5 terá uma fundação para implementar funcionalidades, alg
 
 ### Reidratação otimizada
 
-No SvelteKit, as páginas são **hidratadas** por padrão. Isso significa que componentes renderizados no servidor, são "reanimados" no navegador, permitindo que eles fiquem interativos e mantenham seu estado.
+No SvelteKit, as páginas são **hidratadas** por padrão. Isso significa que componentes renderizados no servidor são "reanimados" no navegador, permitindo que eles fiquem interativos e mantenham seu estado.
 
-No Svelte 4, nós podemos adicionar o atributo `data-svelte-h` a um componentes para que ele não sejam rehidratados e continuem estáticos, otimizando o tamanho do código e tempo de execução desse processo.
+No Svelte 4, nós podemos adicionar o atributo `data-svelte-h` a um componente para que ele não seja rehidratado e continue estático, otimizando o tamanho do código e tempo de execução desse processo.
 
 ### Iterar Sets e Maps
 
@@ -56,9 +56,9 @@ Isso muda com a chegada do Svelte 4, já que agora o `{#each}` consegue iterar a
 
 ### Acessibilidade
 
-Duas novas regras de ESLint relacionadas a acessibilidade foram adicionadas até agora. A primeira, desaconselha que elementos que não deveriam ser interativos como, por exemplo, `<p>` e `<img>`, lidem com eventos do mouse e teclado.
+Duas novas regras de ESLint relacionadas a acessibilidade foram adicionadas até agora. A primeira desencoraja que elementos que não deveriam ser interativos como, por exemplo, `<p>` e `<img>`, lidem com eventos do mouse e teclado.
 
-A segunda, enforça que elementos considerados estáticos como, por exemplo, `<div>`, `<span>` e `<a>`, não lidem com interações, à menos que um atributo `role` seja informado, veja:
+A segunda enforça que elementos considerados estáticos como, por exemplo, `<div>`, `<span>` e `<a>`, não lidem com interações, à menos que um atributo `role` seja informado, veja:
 
 ```svelte
 <div
