@@ -321,7 +321,7 @@ Antes de nos aprofundarmos no código, recomendo que instale as extensões [Svel
 
 ## Estrutura do projeto
 
-Com o projeto inicializado, se abrirmos a paste que o Vite criou podemos notar três arquivos interessantes:
+Com o projeto inicializado, se abrirmos a pasta que o Vite criou podemos notar três arquivos interessantes:
 
 ### main.js
 
