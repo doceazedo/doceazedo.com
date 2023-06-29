@@ -301,7 +301,9 @@ export const en: Language = {
           tablet: 'Drawing tablet',
           headphone: 'Headphone',
           mic: 'Microphone',
-          webcam: 'Camera'
+          webcam: 'Camera',
+          desk: 'Desk',
+          chair: 'Chair'
         }
       }
     },

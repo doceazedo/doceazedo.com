@@ -51,7 +51,9 @@
     tablet: 'Wacom CTL472',
     headphone: 'AirPods Max',
     mic: 'HyperX QuadCast',
-    webcam: 'iPhone 13 Pro Max / Logitech C922 Pro'
+    webcam: 'iPhone 13 Pro Max',
+    desk: 'GenioDesk PLUS',
+    chair: 'GenioDesk ErgoChair'
   };
 
   const generalApps: ThingsWithLinks = {

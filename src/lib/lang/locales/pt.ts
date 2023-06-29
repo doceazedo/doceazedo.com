@@ -300,7 +300,9 @@ export const pt: Language = {
           tablet: 'Mesa digitalizadora',
           headphone: 'Fone de ouvido',
           mic: 'Microfone',
-          webcam: 'Câmera'
+          webcam: 'Câmera',
+          desk: 'Mesa',
+          chair: 'Cadeira'
         }
       }
     },
