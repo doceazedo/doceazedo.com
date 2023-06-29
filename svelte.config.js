@@ -22,12 +22,12 @@ const config = {
   // for more information about preprocessors
   extensions: ['.svelte', '.md'],
   preprocess: [
-    preprocess(),
     mdsvex({
       extensions: ['.md'],
       layout: 'src/lib/components/layout/single-post.svelte',
       rehypePlugins: [rehypeSlug, autolinkHeadings]
-    })
+    }),
+    preprocess()
   ],
 
   kit: {
