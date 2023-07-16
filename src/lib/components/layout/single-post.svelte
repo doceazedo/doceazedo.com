@@ -57,7 +57,7 @@
       &bull;
       <span>{$_.blog.readingTime.replace('%s', readingTime)}</span>
     </p>
-    <ul>
+    <ul class="tags">
       {#each tags as tag}
         <li>
           <a href="/blog?tags={encodeURIComponent(tag)}">

@@ -163,6 +163,7 @@ export type Language = {
   email: string;
   posted: string;
   skipToContent: string;
+  thankBusDriver: string;
 
   alt: {
     logo: string;
@@ -203,6 +204,7 @@ export type Language = {
     themeUnlock: string;
     fontSizes: string[];
     lineHeights: string[];
+    noLightMode: string;
   };
 
   uses: {

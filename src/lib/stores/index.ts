@@ -23,6 +23,7 @@ type ColorThemes = {
       primary?: string;
       secondary?: string;
     };
+    isDarkOnly?: boolean;
   };
 };
 
@@ -67,6 +68,12 @@ const extraThemes: ColorThemes = {
     primary: 'F266AB',
     primaryLight: 'FF85C9',
     background: '180A11'
+  },
+  fortnite: {
+    primary: 'F7FF19',
+    primaryLight: 'F7FF19',
+    background: '1B90DD',
+    isDarkOnly: true
   }
 };
 
