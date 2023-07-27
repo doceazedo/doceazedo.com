@@ -1,6 +1,6 @@
 ---
 title: 'Como usar SvelteKit com Docker'
-description: ''
+description: 'Tutorial de como colocar projetos SvelteKit em contêineres Docker'
 date: '2023-07-27 09:00'
 tags: ['svelte', 'docker']
 icon: 'docker-moby'
