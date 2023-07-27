@@ -38,6 +38,7 @@ node_modules
 .gitignore
 .prettierignore
 .prettierrc
+Dockerfile
 README.md
 ```
 
@@ -85,7 +86,7 @@ Tudo pronto! 🎉 Sua aplicação agora está rodando e pode ser acessada em `ht
 
 ## Docker Compose
 
-Se quiser ir um passo além, você pode configurar um novo contâiner com seu projeto usando o **Docker Compose**, uma ferramenta que te ajuda a configurar e rodar aplicações com múltiplos contâineres.
+Se quiser ir um passo além, você pode configurar um novo contêiner com seu projeto usando o **Docker Compose**, uma ferramenta que te ajuda a configurar e rodar aplicações com múltiplos contêineres.
 
 Se ainda não tiver, crie um arquivo **docker-compose.yml**. Depois, adicione um novo serviço com um nome de sua escolha, que deve ficar mais ou menos assim:
 
