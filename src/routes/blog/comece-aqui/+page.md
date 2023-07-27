@@ -1,7 +1,7 @@
 ---
 title: 'Definitivamente NÃO é um tutorial de como aprender a programar'
 description: ''
-date: '2023-05-30 03:45'
+date: '2023-07-16 02:13'
 tags: ['coding', 'beginners']
 icon: 'technologist-emoji'
 ---
