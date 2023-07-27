@@ -22,16 +22,23 @@ Para começar, vamos usar um [*adapter*](https://kit.svelte.dev/docs/adapters) p
 
 ## Dockerizando
 
-Na raíz do seu projeto, crie um arquivo **.dockerignore** que listará os arquivos e diretórios que nós queremos que o contêiner ignore, como dependências e arquivos gerados pelo SvelteKit:
+Na raíz do seu projeto, crie um arquivo **.dockerignore** que listará os arquivos e diretórios que nós queremos que o contêiner ignore, como dependências, configurações e arquivos gerados pelo SvelteKit:
 
 <p class="file-title">.dockerignore</p>
 
 ```
+.svelte-kit
+build
 node_modules
+.dockerignore
+.eslintignore
+.eslintrc.cjs
 .git
 .gitattributes
-build
-
+.gitignore
+.prettierignore
+.prettierrc
+README.md
 ```
 
 Depois, crie um arquivo **Dockerfile**, que servirá como uma lista de intruções para o Docker construir a imagem do contêiner.
