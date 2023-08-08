@@ -9,6 +9,7 @@
     position: relative
     display: flex
     align-items: center
+    width: 100%
     max-width: 900px
     margin: 0 auto
     border-bottom: $hr

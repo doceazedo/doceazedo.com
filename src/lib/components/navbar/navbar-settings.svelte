@@ -7,6 +7,7 @@
   import { Button } from '$lib/components/button';
   import { Range, Select, Switch } from '$lib/components/input';
   import {
+    ADHD_MODE,
     COLOR_THEMES,
     COLOR_THEME,
     IS_ELEVATOR_FAST,
@@ -15,7 +16,8 @@
     READING_MAX_WIDTH,
     THEME,
     USE_DYSLEXIA_FONT,
-    unlockTheme
+    unlockTheme,
+    IS_ADHD_MODE_AVAILABLE
   } from '$lib/stores';
   import { clickOutside } from '$lib/utils';
   import { toastTheme } from '$lib/utils/toast';
@@ -134,6 +136,12 @@
           {$_.settings.dyslexiaFont}
           <Switch bind:active={$USE_DYSLEXIA_FONT} iconOff="Aa" iconOn="Aa" />
         </li>
+        {#if $IS_ADHD_MODE_AVAILABLE}
+          <li>
+            {$_.settings.adhdMode}
+            <Switch bind:active={$ADHD_MODE} />
+          </li>
+        {/if}
         <li>
           {$_.settings.elevatorSpeed}
           <Switch bind:active={$IS_ELEVATOR_FAST} iconOff="🐌" iconOn="⚡" />
