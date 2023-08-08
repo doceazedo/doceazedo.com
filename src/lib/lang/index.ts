@@ -205,7 +205,6 @@ export type Language = {
     fontSizes: string[];
     lineHeights: string[];
     noLightMode: string;
-    adhdMode: string;
   };
 
   uses: {

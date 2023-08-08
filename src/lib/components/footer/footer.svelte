@@ -33,7 +33,6 @@
     display: flex
     justify-content: space-between
     align-items: center
-    width: 100%
     max-width: 900px
     margin: 4rem auto 0
     padding: 3rem 0
