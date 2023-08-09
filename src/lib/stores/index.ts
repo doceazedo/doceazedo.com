@@ -273,3 +273,6 @@ IS_ELEVATOR_FAST.subscribe((useDyslexiaFont) => {
 });
 
 export const IS_SLEEPING = writable(false);
+
+export const ADHD_MODE = writable(false);
+export const IS_ADHD_MODE_AVAILABLE = writable(false);

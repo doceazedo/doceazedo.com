@@ -31,6 +31,7 @@ export { default as SearchIcon } from './search-icon.svelte';
 export { default as SettingsIcon } from './settings-icon.svelte';
 export { default as SlideshowIcon } from './slideshow-icon.svelte';
 export { default as SparklesIcon } from './sparkles-icon.svelte';
+export { default as SpinnerIcon } from './spinner-icon.svelte';
 export { default as SunIcon } from './sun-icon.svelte';
 export { default as ToolsIcon } from './tools-icon.svelte';
 export { default as TwitchIcon } from './twitch-icon.svelte';
