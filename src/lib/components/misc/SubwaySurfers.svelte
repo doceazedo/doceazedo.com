@@ -6,10 +6,17 @@
 
   let screenWidth: number;
   let muted = false;
+  let playing = false;
+  let currentTime = 0;
 
   $: screenWidth, ($IS_ADHD_MODE_AVAILABLE = screenWidth >= 900 + 384 + 48);
 
   const toggleMute = () => (muted = !muted);
+
+  const showVideo = () => {
+    if (currentTime > 0 && playing == false) playing = true;
+  };
+  $: currentTime, showVideo();
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
@@ -24,7 +31,15 @@
     >
       <SpinnerIcon />
       <!-- svelte-ignore a11y-media-has-caption -->
-      <video class="video" src="/video/subway-surfers.mp4" autoplay loop bind:muted />
+      <video
+        class="video"
+        class:playing
+        src="/video/subway-surfers.mp4"
+        autoplay
+        loop
+        bind:muted
+        bind:currentTime
+      />
     </button>
   </aside>
 {/if}
@@ -54,6 +69,9 @@
       height: 1.5rem
 
   .video
-    width: 100%
-    height: 100%
+    width: 0
+
+    &.playing
+      width: 100%
+      height: 100%
 </style>
