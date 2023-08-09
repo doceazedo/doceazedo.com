@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { ADHD_MODE, IS_ADHD_MODE_AVAILABLE } from '$lib/stores';
   import { quintOut } from 'svelte/easing';
   import { fade, slide } from 'svelte/transition';
+  import { ADHD_MODE, IS_ADHD_MODE_AVAILABLE } from '$lib/stores';
+  import { SpinnerIcon } from '$lib/components/icons';
 
   let screenWidth: number;
   let muted = false;
@@ -21,6 +22,7 @@
       out:fade={{ duration: 800, easing: quintOut }}
       on:click={toggleMute}
     >
+      <SpinnerIcon />
       <!-- svelte-ignore a11y-media-has-caption -->
       <video class="video" src="/video/subway-surfers.mp4" autoplay loop bind:muted />
     </button>
@@ -29,20 +31,29 @@
 
 <style lang="sass">
   aside,
-  .video
-    width: 24rem
+  .video-wrapper
+    width: 20rem
 
   .video-wrapper
+    position: fixed
+    left: calc(50% + 450px - 10rem + 1.5rem)
+    top: calc(50% - 284px)
+    aspect-ratio: 9 / 16
     display: flex
+    justify-content: center
+    align-items: center
     margin: 0
     padding: 0
     border: none
-
-  .video
-    position: fixed
-    left: calc(50% + 450px - 12rem + 1.5rem)
-    top: calc(50% - 341px)
-    aspect-ratio: 9 / 16
     border-radius: 1rem
     overflow: hidden
+    background-color: rgba(#fff, .1)
+
+    :global(svg)
+      width: 1.5rem
+      height: 1.5rem
+
+  .video
+    width: 100%
+    height: 100%
 </style>
