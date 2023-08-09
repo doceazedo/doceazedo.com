@@ -32,12 +32,12 @@
 <style lang="sass">
   aside,
   .video-wrapper
-    width: 20rem
+    width: 16rem
 
   .video-wrapper
     position: fixed
-    left: calc(50% + 450px - 10rem + 1.5rem)
-    top: calc(50% - 284px)
+    left: calc(50% + 450px - 8rem + 1.5rem)
+    top: calc(50% - 228px)
     aspect-ratio: 9 / 16
     display: flex
     justify-content: center
