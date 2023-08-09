@@ -9,7 +9,7 @@
   let playing = false;
   let currentTime = 0;
 
-  $: screenWidth, ($IS_ADHD_MODE_AVAILABLE = screenWidth >= 900 + 384 + 48);
+  $: screenWidth, ($IS_ADHD_MODE_AVAILABLE = screenWidth >= 1280);
 
   const toggleMute = () => (muted = !muted);
 
