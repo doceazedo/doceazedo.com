@@ -33,7 +33,6 @@ export type Language = {
   about: {
     tldr: {
       online: KeyValue;
-      legally: KeyValue;
       physically: KeyValue;
       professionally: KeyValue;
       casually: KeyValue;

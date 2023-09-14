@@ -14,8 +14,14 @@
   <h2>TL;DR</h2>
   <ul>
     <li><span>{$_.about.tldr.online.key}:</span> {$_.about.tldr.online.value}</li>
-    <li><span>{$_.about.tldr.legally.key}:</span> {$_.about.tldr.legally.value}</li>
     <li><span>{$_.about.tldr.physically.key}:</span> {$_.about.tldr.physically.value}</li>
+    <li>
+      <span>{$_.about.tldr.professionally.key}:</span>
+      {@html $_.about.tldr.professionally.value.replace(
+        '%s',
+        '<a href="https://voolt.com" target="_blank" rel="noreferrer">Voolt</a>'
+      )}
+    </li>
     <li><span>{$_.about.tldr.casually.key}:</span> {$_.about.tldr.casually.value}</li>
     <li><span>{$_.about.tldr.pronouns.key}:</span> {$_.about.tldr.pronouns.value}</li>
   </ul>

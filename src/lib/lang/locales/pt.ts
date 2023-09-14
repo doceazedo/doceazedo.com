@@ -37,21 +37,17 @@ export const pt: Language = {
         key: 'Online',
         value: 'DoceAzedo'
       },
-      legally: {
-        key: 'Legalmente',
-        value: 'Lucas Fernandes'
-      },
       physically: {
         key: 'Fisicamente',
         value: 'São Paulo, Brasil'
       },
       professionally: {
         key: 'Profisionalmente',
-        value: 'Fullstack Developer @ %s'
+        value: 'Frontend Developer @ %s'
       },
       casually: {
         key: 'Casualmente',
-        value: 'Live coding, hyperpop, emojis'
+        value: 'Live coding, hyperpop, cultura clubber'
       },
       pronouns: {
         key: 'Pronomes',
