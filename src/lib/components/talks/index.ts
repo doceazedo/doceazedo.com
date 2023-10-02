@@ -32,6 +32,11 @@ const organizers: Organizers = {
     name: 'Kotlinautas',
     slug: 'kotlinautas',
     url: 'https://kotlinautas.dev'
+  },
+  nodebr: {
+    name: 'NodeBR',
+    slug: 'nodebr',
+    url: 'https://nodebr.org'
   }
 };
 
@@ -99,6 +104,40 @@ export const TALKS = writable<Talk[]>([
       },
       {
         html: 'Comando para fazer build do JAR: <code>mvn install</code>'
+      }
+    ]
+  },
+
+  {
+    title: 'Mensageria e tarefas assíncronas com Node.js e BullMQ',
+    slug: 'nodebr-bullmq',
+    date: new Date('02 Oct 2023'),
+    organizer: organizers.nodebr,
+    replay: 'https://www.youtube.com/watch?v=CxTTt0zuXuU',
+    resources: [
+      {
+        link: {
+          label: 'Baixar slides (PDF)',
+          url: '/resources/nodebr-bullmq.pdf'
+        }
+      },
+      {
+        link: {
+          label: 'Código fonte',
+          url: 'https://github.com/doceazedo/nodebr-bullmq'
+        }
+      },
+      {
+        link: {
+          label: 'BullMQ',
+          url: 'https://github.com/taskforcesh/bullmq'
+        }
+      },
+      {
+        link: {
+          label: 'Bull Dashboard',
+          url: 'https://github.com/felixmosh/bull-board'
+        }
       }
     ]
   }

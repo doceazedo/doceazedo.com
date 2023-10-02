@@ -16,7 +16,7 @@
           style="background-image:url(/img/talks/thumbnails/{talk.slug}.jpg)"
         />
         <a class="promoter" href={talk.organizer.url} target="_blank" rel="noreferrer">
-          <figure style="background-image:url(/img/talks/promoters/{talk.organizer.slug}.jpg)" />
+          <figure style="background-image:url(/img/talks/promoters/{talk.organizer.slug}.png)" />
         </a>
       </div>
       <div class="details">
