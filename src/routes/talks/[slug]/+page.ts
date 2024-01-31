@@ -6,7 +6,7 @@ import type { PageLoad } from './$types';
 export const load: PageLoad = ({ params }) => {
   const talks = get(TALKS);
   const talk = talks.find((talk) => talk.slug == params.slug);
-  if (!talk) throw error(404);
+  if (!talk) error(404);
 
   return {
     talk
