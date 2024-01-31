@@ -34,16 +34,9 @@ const fetchNowPlaying = async () => {
 };
 
 const fetchIsLive = async () => {
-  const twitch = await (
-    await fetch(`https://api.twitch.tv/helix/streams?user_login=${process.env.TWITCH_CHANNEL}`, {
-      headers: {
-        Authorization: `Bearer ${process.env.TWITCH_OAUTH_TOKEN}`,
-        'Client-Id': `${process.env.TWITCH_CLIENT_ID}`
-      }
-    })
-  ).json();
-
-  return twitch.data?.length ? true : false;
+  const resp = await fetch(`https://unttv.vercel.app/streams/${process.env.TWITCH_CHANNEL}`);
+  const data = await resp.json();
+  return !!data;
 };
 
 export const GET: RequestHandler = async () => {

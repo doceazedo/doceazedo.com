@@ -29,28 +29,30 @@
 
   let allVods: VOD[] = [];
   let vods: VOD[] = [];
-  let videoUrl = '';
+  let videoUrl: string | null = null;
 
   const channel = 'doceazedo911';
   const parents = '?parent=localhost&parent=doceazedo.com&parent=pbe.doceazedo.com';
   const baseUrl = `https://player.twitch.tv/${parents}`;
-  const chatboxUrl = `https://twitch.tv/embed/doceazedo911/chat${parents}&darkpopout`;
+  const chatboxUrl = `https://twitch.tv/embed/${channel}/chat${parents}&darkpopout`;
 
   onMount(async () => {
     try {
       const resp = await fetch('/api/vods');
       allVods = await resp.json();
+      updateVideos();
     } catch (error) {
       console.error('Could not fetch VODs');
     }
-    updateVideos();
   });
 
   const updateVideos = () => {
-    videoUrl = $LIVE_DATA?.isLive
-      ? `${baseUrl}&channel=${channel}`
-      : `${baseUrl}&video=${allVods?.[0]?.id}`;
     vods = $LIVE_DATA?.isLive ? allVods.slice(0, 3) : allVods.slice(1);
+    if ($LIVE_DATA?.isLive) {
+      videoUrl = `${baseUrl}&channel=${channel}`;
+    } else if (allVods?.[0]) {
+      videoUrl = `${baseUrl}&video=${allVods?.[0]?.id}`;
+    }
   };
 
   LIVE_DATA.subscribe(updateVideos);
@@ -69,18 +71,22 @@
 <div class="twitch-player">
   <main class="twitch-player-main">
     <div class="twitch-player-embed">
-      <iframe src={videoUrl} title="" allowfullscreen />
+      {#if videoUrl}
+        <iframe src={videoUrl} title="" allowfullscreen />
+      {/if}
     </div>
 
     <div class="twitch-player-vods">
-      {#each vods as vod}
+      {#each vods.length ? vods : Array(3).fill(null) as vod}
         <a
-          href={vod.url}
+          href={vod?.url || '#'}
           target="_blank"
           class="vod"
-          style="background-image:url({vod.thumbnail_url})"
+          style="background-image:url({vod?.thumbnail_url})"
         >
-          <span class="date">{getDate(vod.created_at, $_.code)}</span>
+          {#if vod?.created_at}
+            <span class="date">{getDate(vod.created_at, $_.code)}</span>
+          {/if}
         </a>
       {/each}
     </div>
@@ -114,6 +120,12 @@
       gap: 1rem
 
     &-embed,
+    &-chat,
+    .vod
+      background-color: rgba(#fff, .1)
+      animation: skeleton 2s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate
+
+    &-embed,
     &-chat
       border-radius: 1rem
       overflow: hidden
@@ -142,7 +154,6 @@
       flex-grow: 1
       padding: .5rem
       aspect-ratio: 16 / 9
-      background-color: rgba(#fff, .1)
       border-radius: 1rem
       background-position: center
       background-repeat: no-repeat
@@ -168,4 +179,11 @@
       &-vods .vod:last-child,
       &-chat
         display: none
+
+  @keyframes skeleton
+    from
+      background-color: rgba(#fff, .1)
+
+    to
+      background-color: rgba(#fff, .2)
 </style>
