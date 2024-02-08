@@ -20,7 +20,7 @@ type VOD = {
   duration: string;
   durationInSeconds: number;
   streamId: string;
-  mutedSegmentData: Array<unknown>;
+  mutedSegmentData: unknown[];
 };
 
 export const GET: RequestHandler = async () => {
@@ -34,7 +34,7 @@ export const GET: RequestHandler = async () => {
       .filter((vod: VOD) => !!vod.thumbnailUrl)
       .map((vod: VOD) => ({
         ...vod,
-        thumbnail_url: vod.thumbnailUrl.replace('%{width}', '640').replace('%{height}', '360')
+        thumbnailUrl: vod.thumbnailUrl.replace('%{width}', '640').replace('%{height}', '360')
       }))
       .slice(0, 4) || [];
 

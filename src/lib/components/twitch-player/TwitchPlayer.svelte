@@ -1,5 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { fade } from 'svelte/transition';
+  import { quintOut } from 'svelte/easing';
   import dayjs from 'dayjs';
   import relativeTime from 'dayjs/plugin/relativeTime.js';
   import 'dayjs/locale/pt-br.js';
@@ -9,27 +11,30 @@
 
   type VOD = {
     id: string;
-    stream_id: string;
-    user_id: string;
-    user_login: string;
-    user_name: string;
+    userId: string;
+    userName: string;
+    userDisplayName: string;
     title: string;
     description: string;
-    created_at: Date;
-    published_at: Date;
+    creationDate: string;
+    publishDate: string;
     url: string;
-    thumbnail_url: string;
-    viewable: string;
-    view_count: number;
+    thumbnailUrl: string;
+    isPublic: boolean;
+    views: number;
     language: string;
     type: string;
     duration: string;
-    muted_segments: null;
+    durationInSeconds: number;
+    streamId: string;
+    mutedSegmentData: unknown[];
   };
 
   let allVods: VOD[] = [];
   let vods: VOD[] = [];
   let videoUrl: string | null = null;
+
+  $: vodsGrid = vods.length ? vods : [null, null, null];
 
   const channel = 'doceazedo911';
   const parents = '?parent=localhost&parent=doceazedo.com&parent=pbe.doceazedo.com';
@@ -57,9 +62,10 @@
 
   LIVE_DATA.subscribe(updateVideos);
 
-  const getDate = (date: Date, code: string) => {
+  const getDate = (dateStr: string, code: string) => {
     if (!browser) return;
     dayjs.extend(relativeTime);
+    const date = new Date(dateStr);
     const readableDate = dayjs(date)
       .locale(code == 'pt' ? 'pt-br' : 'en-us')
       .fromNow();
@@ -77,15 +83,20 @@
     </div>
 
     <div class="twitch-player-vods">
-      {#each vods.length ? vods : Array(3).fill(null) as vod}
+      {#each vodsGrid as vod, i}
         <a
           href={vod?.url || '#'}
           target="_blank"
           class="vod"
-          style="background-image:url({vod?.thumbnail_url})"
+          style="background-image:url({vod?.thumbnailUrl})"
         >
-          {#if vod?.created_at}
-            <span class="date">{getDate(vod.created_at, $_.code)}</span>
+          {#if vod?.creationDate}
+            <span
+              class="date"
+              transition:fade={{ duration: 200, delay: 200 * (i + 1), easing: quintOut }}
+            >
+              {getDate(vod.creationDate, $_.code)}
+            </span>
           {/if}
         </a>
       {/each}
@@ -123,7 +134,7 @@
     &-chat,
     .vod
       background-color: rgba(#fff, .1)
-      animation: skeleton 2s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate
+      animation: skeleton .8s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate
 
     &-embed,
     &-chat
@@ -185,5 +196,5 @@
       background-color: rgba(#fff, .1)
 
     to
-      background-color: rgba(#fff, .2)
+      background-color: rgba(#fff, .15)
 </style>
