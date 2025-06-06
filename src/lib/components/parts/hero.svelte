@@ -4,7 +4,24 @@
 </script>
 
 <section class="relative flex w-full justify-between py-24">
-	<div class="flex flex-col">
+	<div class="pointer-none absolute -top-52 -right-96 opacity-80">
+		<div class="relative -z-20 grid grid-cols-12">
+			{#each Array(12 * 9).fill(null) as _uwu}
+				<div class="size-24 border-t border-r"></div>
+			{/each}
+		</div>
+		<div
+			class="from-background/0 to-background absolute top-0 -z-10 h-full w-48 bg-linear-to-l"
+		></div>
+		<div
+			class="from-background/0 to-background absolute top-0 right-0 -z-10 h-full w-48 bg-linear-to-r"
+		></div>
+		<div
+			class="from-background/0 to-background absolute bottom-0 -z-10 h-48 w-full bg-linear-to-b"
+		></div>
+	</div>
+
+	<div class="relative z-0 flex flex-col">
 		<h1 class="max-w-[12ch] text-6xl/18">{m.greetings()}</h1>
 		<a
 			href="/"
@@ -16,7 +33,7 @@
 			/>
 		</a>
 	</div>
-	<figure class="group relative aspect-[4/5] w-60">
+	<figure class="group relative z-0 aspect-[4/5] w-60">
 		<img
 			src="/img/selfie.webp"
 			alt=""
@@ -33,7 +50,7 @@
 		></span>
 	</figure>
 	<p
-		class="text-body [&>span]:text-foreground [&>a]:text-foreground [&>a]:hover:text-primary mt-auto max-w-[27ch] translate-y-6 [&>a]:underline [&>a]:transition-all"
+		class="text-body [&>span]:text-foreground [&>a]:text-foreground [&>a]:hover:text-primary relative z-0 mt-auto max-w-[27ch] translate-y-6 [&>a]:underline [&>a]:transition-all"
 	>
 		{@html m.mini_bio()}
 	</p>
