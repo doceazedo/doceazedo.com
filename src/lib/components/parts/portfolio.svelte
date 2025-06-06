@@ -11,45 +11,41 @@
 		siSupabase,
 		siBackblaze,
 	} from "simple-icons";
+	import { m } from "$lib/paraglide/messages";
 
 	const WORK_PROJECTS = [
 		{
-			pretitle: "SaaS",
-			title: "Afterparty",
-			description:
-				"Event photo management platform, with 4K storage, multiplayer, and built-in engagement features.",
+			pretitle: m.portfolio_afterparty_pretitle(),
+			title: m.portfolio_afterparty_title(),
+			description: m.portfolio_afterparty_description(),
 			thumbnail: "/img/afterparty-lp.webp",
 			stack: [siSvelte.svg, siPocketbase.svg, siFfmpeg.svg, siBackblaze.svg],
 		},
 		{
-			pretitle: "Extension",
-			title: "Godot WRY",
-			description:
-				"Rust-based extension that integrates platform-specific webviews into Godot games (without extra dependencies).",
+			pretitle: m.portfolio_godot_wry_pretitle(),
+			title: m.portfolio_godot_wry_title(),
+			description: m.portfolio_godot_wry_description(),
 			thumbnail: "/img/godot-wry-cas.webp",
 			stack: [siRust.svg, siGodotengine.svg],
 		},
 		{
-			pretitle: "Mobile",
-			title: "Powershift",
-			description:
-				"Field service management mobile app for utility workers with a web dashboard.",
+			pretitle: m.portfolio_powershift_pretitle(),
+			title: m.portfolio_powershift_title(),
+			description: m.portfolio_powershift_description(),
 			thumbnail: "/img/powershift-mockup.webp",
 			stack: [siFlutter.svg, siSvelte.svg, siSupabase.svg],
 		},
 		{
-			pretitle: "Minecraft Server",
-			title: "SSN.gg",
-			description:
-				"A Minecraft server with no rules, an infinite map, and open-source plugins and configs.",
+			pretitle: m.portfolio_ssn_pretitle(),
+			title: m.portfolio_ssn_title(),
+			description: m.portfolio_ssn_description(),
 			thumbnail: "/img/ssn-bee.webp",
 			stack: [siKotlin.svg, siPocketbase.svg],
 		},
 		{
-			pretitle: "Mystery Box",
-			title: "What's inside...?",
-			description:
-				"It makes tiny happy noises when you're not paying attention...",
+			pretitle: m.portfolio_gachapon_pretitle(),
+			title: m.portfolio_gachapon_title(),
+			description: m.portfolio_gachapon_description(),
 			thumbnail: "",
 			stack: ["✨", "💫", "🔮"],
 		},
@@ -58,9 +54,9 @@
 
 <section class="flex flex-col gap-14 py-24">
 	<h2 class="text-3xl">
-		Select work
+		{m.select_work()}
 		<span class="text-primary">/</span>
-		Case studies
+		{m.case_studies()}
 	</h2>
 	<div class="grid grid-cols-6 gap-x-6 gap-y-14">
 		{#each WORK_PROJECTS as project, i}

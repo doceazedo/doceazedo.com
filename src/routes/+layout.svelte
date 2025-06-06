@@ -1,8 +1,7 @@
 <script lang="ts">
 	import "../app.css";
-	import BrazilFlag from "$lib/components/icons/brazil-flag.svg?component";
-	import { ArrowDownSLineArrows } from "svelte-remix";
 	import { cn } from "$lib/utils";
+	import LanguagePicker from "$lib/components/settings/language-picker.svelte";
 
 	let { children } = $props();
 
@@ -21,7 +20,7 @@
 
 <nav
 	class={cn(
-		"fixed top-0 left-0 z-40 h-20 w-full border-b border-b-transparent bg-transparent transition-all",
+		"fixed top-0 left-0 z-40 h-20 w-full border-b border-b-transparent bg-transparent pr-[var(--scrollbar-width)] transition-colors",
 		scrollY > 24 && "bg-background/70 border-b-border backdrop-blur-md",
 	)}
 >
@@ -43,15 +42,7 @@
 				</a>
 			{/each}
 
-			<button
-				class="hover:text-foreground flex h-full cursor-pointer items-center gap-3 px-3 transition-all"
-			>
-				<BrazilFlag class="size-6" />
-				<span class="flex items-center gap-1.5">
-					Português
-					<ArrowDownSLineArrows class="size-4" />
-				</span>
-			</button>
+			<LanguagePicker />
 		</div>
 	</div>
 </nav>
