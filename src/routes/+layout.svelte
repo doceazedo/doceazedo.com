@@ -2,6 +2,7 @@
 	import "../app.css";
 	import BrazilFlag from "$lib/components/icons/brazil-flag.svg?component";
 	import { ArrowDownSLineArrows } from "svelte-remix";
+	import { cn } from "$lib/utils";
 
 	let { children } = $props();
 
@@ -12,18 +13,27 @@
 		{ label: "Stack", href: "/" },
 		{ label: "About me", href: "/" },
 	];
+
+	let scrollY = $state(0);
 </script>
 
-<nav class="fixed top-0 left-0 h-20 w-full">
+<svelte:window bind:scrollY />
+
+<nav
+	class={cn(
+		"fixed top-0 left-0 z-40 h-20 w-full border-b border-b-transparent bg-transparent transition-all",
+		scrollY > 24 && "bg-background/70 border-b-border backdrop-blur-md",
+	)}
+>
 	<div class="mx-auto flex size-full max-w-5xl items-center">
 		<a href="/" class="flex items-center gap-1.5 text-2xl">
 			<img src="/img/memoji.png" alt="" class="size-8" />
 			<span>
-				doce<span class="text-foreground/70">.sh</span>
+				doce<span class="text-body">.sh</span>
 			</span>
 		</a>
 
-		<div class="text-foreground/70 -mr-3 ml-auto flex h-full items-center">
+		<div class="text-body -mr-3 ml-auto flex h-full items-center">
 			{#each PAGES as page}
 				<a
 					href={page.href}

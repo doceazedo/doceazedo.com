@@ -19,19 +19,19 @@
 		<img
 			src="/img/selfie.webp"
 			alt=""
-			class="relative z-20 rounded object-cover transition-all group-hover:-translate-x-3 group-hover:translate-y-3"
+			class="ease-elastic relative z-20 rounded object-cover transition-all group-hover:-translate-x-3 group-hover:translate-y-3"
 		/>
 		<span
-			class="border-foreground/10 absolute top-0 left-0 z-30 size-full rounded border transition-all group-hover:-translate-x-3 group-hover:translate-y-3"
+			class="border-foreground/10 ease-elastic absolute top-0 left-0 z-30 size-full rounded border transition-all group-hover:-translate-x-3 group-hover:translate-y-3"
 		></span>
 		<span
 			class="border-primary absolute top-11 -left-11 z-10 size-full rounded border"
 		></span>
 		<span
-			class="border-primary/20 absolute top-[88px] left-[-88px] z-10 size-full rounded border transition-all group-hover:top-[76px] group-hover:left-[-76px]"
+			class="border-primary/20 ease-elastic absolute top-[88px] left-[-88px] z-10 size-full rounded border transition-all group-hover:top-[76px] group-hover:left-[-76px]"
 		></span>
 	</figure>
-	<p class="text-foreground/70 mt-auto max-w-[27ch] translate-y-6">
+	<p class="text-body mt-auto max-w-[27ch] translate-y-6">
 		A <span class="text-foreground">🦄</span> developer, designer, and DJ. I
 		build tools with Rust & Svelte, maintain FOSS projects, work at
 		<a
