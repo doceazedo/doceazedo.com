@@ -24,5 +24,8 @@
 	"portfolio_ssn_description": "A Minecraft server with no rules, a persistent map, and open-source plugins and configs.",
 	"portfolio_gachapon_pretitle": "Mystery Box",
 	"portfolio_gachapon_title": "What's inside...?",
-	"portfolio_gachapon_description": "It makes tiny happy noises when you're not paying attention..."
+	"portfolio_gachapon_description": "It makes tiny happy noises when you're not paying attention...",
+	"articles": "Articles",
+	"articles_subtitle": "Guides, tutorials and personal notes",
+	"see_all_articles": "See all articles"
 }

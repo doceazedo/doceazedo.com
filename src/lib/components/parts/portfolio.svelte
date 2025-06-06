@@ -52,7 +52,7 @@
 	];
 </script>
 
-<section class="relative z-0 flex flex-col gap-14 py-12 md:py-24">
+<section class="relative z-0 flex flex-col gap-12 py-12 md:py-24">
 	<h2 class="text-3xl">
 		{m.select_work()}
 		<span class="text-primary">/</span>
