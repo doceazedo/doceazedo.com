@@ -52,24 +52,24 @@
 	];
 </script>
 
-<section class="relative z-0 flex flex-col gap-14 py-24">
+<section class="relative z-0 flex flex-col gap-14 py-12 md:py-24">
 	<h2 class="text-3xl">
 		{m.select_work()}
 		<span class="text-primary">/</span>
 		{m.case_studies()}
 	</h2>
-	<div class="grid grid-cols-6 gap-x-6 gap-y-14">
+	<div class="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-6 md:gap-y-14">
 		{#each WORK_PROJECTS as project, i}
 			<button
 				class={cn(
 					"hover:bg-muted group flex w-full cursor-pointer flex-col rounded-xs text-left transition-all hover:shadow-[0_0_0_8px_var(--muted)]",
-					i <= 1 ? "col-span-3" : "col-span-2",
+					i <= 1 ? "md:col-span-3" : "md:col-span-2",
 				)}
 			>
 				<figure
 					class={cn(
-						"bg-muted after:border-foreground/10 relative mb-3 flex w-full items-center justify-center overflow-hidden rounded after:absolute after:top-0 after:left-0 after:block after:size-full after:rounded after:border",
-						i <= 1 ? "aspect-[16/9]" : "aspect-[5/4]",
+						"bg-muted after:border-foreground/10 relative mb-3 flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded after:absolute after:top-0 after:left-0 after:block after:size-full after:rounded after:border",
+						i >= 2 && "md:aspect-[5/4]",
 					)}
 				>
 					{#if project.thumbnail}

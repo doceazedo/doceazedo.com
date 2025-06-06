@@ -22,19 +22,23 @@
 	} as const;
 
 	const FlagIcon = LANGUAGES[getLocale()].flag;
+
+	let innerWidth = $state(0);
 </script>
+
+<svelte:window bind:innerWidth />
 
 <DropdownMenu.Root>
 	<DropdownMenu.Trigger
 		class="hover:text-foreground flex h-full cursor-pointer items-center gap-2.5 px-3 transition-all"
 	>
-		<FlagIcon class="size-5" />
+		<FlagIcon class="size-5 rounded-full" />
 		<span class="flex items-center gap-1.5">
 			{m.locale_current()}
 			<ArrowDownSLineArrows class="size-4" />
 		</span>
 	</DropdownMenu.Trigger>
-	<DropdownMenu.Content sideOffset={-12} align="start">
+	<DropdownMenu.Content sideOffset={innerWidth >= 768 ? -12 : 12} align="start">
 		<DropdownMenu.Group>
 			<DropdownMenu.Label>{m.select_language()}</DropdownMenu.Label>
 			<DropdownMenu.Separator />
