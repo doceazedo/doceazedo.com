@@ -35,5 +35,9 @@
 	"subscribe": "Inscrever",
 	"now_playing": "Ouvindo agora",
 	"licensed_under": "Website licensiado sob a {license}.",
-	"last_played": "Última tocada"
+	"last_played": "Última tocada",
+	"published_at": "Publicado em {date}",
+	"published_this_week": "Dessa semana",
+	"pinned": "Fixado",
+	"toc": "Nesse artigo"
 }

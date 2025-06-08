@@ -46,14 +46,21 @@
 >
 	<div class="text-body flex flex-col items-center text-sm md:items-start">
 		<img src="/img/memoji.png" alt="" class="mb-3 size-12" />
-		<p class="-mb-1.5">&copy; 2025 Doce Fernandes</p>
+		<p class="-mb-1.5">&copy; {new Date().getFullYear()} Doce Fernandes</p>
 		<p>{m.licensed_under({ license: "GPLv3" })}</p>
 	</div>
 
-	<div class="text-body mx-auto mt-auto flex gap-1.5">
-		{#each SOCIALS as social}
-			<a href={social.url} target="_blank">
-				<social.icon class="hover:text-foreground size-6 transition-all" />
+	<div class="text-body mx-auto mt-auto flex translate-y-1.5">
+		{#each SOCIALS as social, i}
+			<a
+				href={social.url}
+				target="_blank"
+				class={cn(
+					"hover:text-foreground ease-elastic p-1.5 transition-all hover:scale-115",
+					i % 2 ? "hover:rotate-6" : "hover:-rotate-6",
+				)}
+			>
+				<social.icon class="size-6 transition-all" />
 			</a>
 		{/each}
 	</div>
@@ -87,7 +94,7 @@
 
 <button
 	class={cn(
-		"text-body hover:text-foreground pointer-events-none fixed right-0 bottom-0 translate-y-3 cursor-pointer p-3 opacity-0 transition-all md:p-6",
+		"text-body hover:text-foreground ease-elastic pointer-events-none fixed right-0 bottom-0 translate-y-3 cursor-pointer p-3 opacity-0 transition-all hover:scale-115 md:p-6",
 		scrolledToBottom && "pointer-events-auto translate-y-0 opacity-100",
 	)}
 	onclick={scrollToTop}

@@ -76,7 +76,7 @@
 						<img
 							src={project.thumbnail}
 							alt=""
-							class="size-full rounded object-cover"
+							class="ease-elastic size-full rounded object-cover transition-all group-hover:scale-105"
 						/>
 					{/if}
 					{#if i === WORK_PROJECTS.length - 1}

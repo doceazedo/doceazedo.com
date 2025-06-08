@@ -35,5 +35,9 @@
 	"subscribe": "Subscribe",
 	"now_playing": "Now playing",
 	"licensed_under": "Website licensed under {license}.",
-	"last_played": "Last played"
+	"last_played": "Last played",
+	"published_at": "Published at {date}",
+	"published_this_week": "This week",
+	"pinned": "Pinned",
+	"toc": "On this article"
 }
