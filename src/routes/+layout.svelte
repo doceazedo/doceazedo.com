@@ -6,6 +6,7 @@
 	import { MenuFillSystem } from "svelte-remix";
 	import * as Drawer from "$lib/components/ui/drawer";
 	import Footer from "$lib/components/parts/footer.svelte";
+	import Memoji from "$lib/components/memoji.svelte";
 
 	let { children } = $props();
 
@@ -30,7 +31,7 @@
 >
 	<div class="mx-auto flex size-full max-w-5xl items-center">
 		<a href="/" class="flex items-center gap-1.5 text-2xl">
-			<img src="/img/memoji.png" alt="" class="size-8" />
+			<Memoji />
 			<span>
 				doce<span class="text-body">.sh</span>
 			</span>

@@ -11,6 +11,7 @@
 	import { cn } from "$lib/utils";
 	import { onMount } from "svelte";
 	import type { NowPlayingTrack } from "$lib/types";
+	import Memoji from "$lib/components/memoji.svelte";
 
 	const SOCIALS = [
 		{ icon: GithubLineLogos, url: "https://github.com/doceazedo" },
@@ -65,7 +66,7 @@
 	class="mb-6 flex flex-col justify-between gap-6 border-t pt-6 text-center md:flex-row md:text-left"
 >
 	<div class="text-body flex flex-col items-center text-sm md:items-start">
-		<img src="/img/memoji.png" alt="" class="mb-3 size-12" />
+		<Memoji class="mb-1.5 size-14" />
 		<p class="-mb-1.5">&copy; {new Date().getFullYear()} Doce Fernandes</p>
 		<p>{m.licensed_under({ license: "GPLv3" })}</p>
 	</div>
