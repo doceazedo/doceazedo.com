@@ -19,7 +19,7 @@ export const GET = async () => {
 			artist: track.artist["#text"],
 			track: track.name,
 			cover: track?.image?.[2]?.["#text"] || null,
-			nowPlaying: track["@attr"].nowplaying === "true",
+			nowPlaying: track?.["@attr"]?.nowplaying === "true",
 		} as NowPlayingTrack);
 	} catch (_error) {
 		return json(null);
