@@ -7,12 +7,6 @@ type Post = {
 };
 
 export const load = async () => {
-	const modules = import.meta.glob("/src/lib/components/*.*");
-	const menuItems = Object.keys(modules).map((item) =>
-		item.replace("./components/", "").replace(".svelte", ""),
-	);
-	console.log("MODULES & Menu", modules, menuItems);
-
 	let posts: Post[] = [];
 	const paths = import.meta.glob("/src/**/*.md", {
 		eager: true,

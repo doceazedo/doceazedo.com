@@ -9,6 +9,8 @@
 	} from "svelte-remix";
 	import ElevatorUp from "$lib/components/icons/elevator-up.svg?component";
 	import { cn } from "$lib/utils";
+	import { onMount } from "svelte";
+	import type { NowPlayingTrack } from "$lib/types";
 
 	const SOCIALS = [
 		{ icon: GithubLineLogos, url: "https://github.com/doceazedo" },
@@ -36,6 +38,24 @@
 			window.scrollTo(0, scrollY - scrollY / 48);
 		}
 	};
+
+	let currentTrack = $state<NowPlayingTrack | null>(null);
+
+	const updateNowPlayingTrack = async () => {
+		try {
+			const resp = await fetch("/api/now-playing");
+			const data = await resp.json();
+			currentTrack = data;
+		} catch (_error) {
+			// uwu
+		}
+	};
+
+	onMount(() => {
+		updateNowPlayingTrack();
+		const nowPlayingInterval = setInterval(updateNowPlayingTrack, 10000);
+		return () => clearInterval(nowPlayingInterval);
+	});
 </script>
 
 <svelte:window bind:scrollY bind:innerHeight />
@@ -65,31 +85,35 @@
 		{/each}
 	</div>
 
-	<a
-		href={LAST_FM_URL}
-		target="_blank"
-		class="hover:bg-muted group relative mx-auto mt-auto flex h-fit flex-row-reverse items-center gap-2 rounded-xs p-1 transition-all hover:shadow-[0_0_0_4px_var(--muted)] md:mx-0 md:translate-1 md:flex-row"
-	>
-		<hgroup class="text-left md:text-right">
-			<p class="text-body -mb-1 text-xs">{m.now_playing()}</p>
-			<p class="text-sm font-medium">FBC - Baile de Ladrão</p>
-		</hgroup>
-		<img
-			src="https://i.scdn.co/image/ab67616d0000b2737ce4002911f389a2a4465d6f"
-			alt=""
-			class="size-10 rounded"
-		/>
-		<div
-			class="absolute top-0 left-10 flex size-2.5 items-center justify-center md:right-0 md:left-auto"
+	{#if currentTrack}
+		<a
+			href={LAST_FM_URL}
+			target="_blank"
+			class="hover:bg-muted group relative mx-auto mt-auto flex h-fit flex-row-reverse items-center gap-2 rounded-xs p-1 transition-all hover:shadow-[0_0_0_4px_var(--muted)] md:mx-0 md:translate-1 md:flex-row"
 		>
-			<span
-				class="group-hover:border-muted border-background absolute size-full rounded-full border-2 bg-red-500 transition-all"
-			></span>
-			<span
-				class="border-background animation-duration-[2s] absolute size-2 animate-ping rounded-full bg-red-500 opacity-80 transition-all"
-			></span>
-		</div>
-	</a>
+			<hgroup class="text-left md:text-right">
+				<p class="text-body -mb-1 text-xs">
+					{currentTrack.nowPlaying ? m.now_playing() : m.last_played()}
+				</p>
+				<p class="text-sm font-medium">
+					{currentTrack.artist} - {currentTrack.track}
+				</p>
+			</hgroup>
+			<img src={currentTrack.cover} alt="" class="bg-muted size-10 rounded" />
+			{#if currentTrack.nowPlaying}
+				<div
+					class="absolute top-0 left-10 flex size-2.5 items-center justify-center md:right-0 md:left-auto"
+				>
+					<span
+						class="group-hover:border-muted border-background absolute size-full rounded-full border-2 bg-red-500 transition-all"
+					></span>
+					<span
+						class="border-background animation-duration-[2s] absolute size-2 animate-ping rounded-full bg-red-500 opacity-80 transition-all"
+					></span>
+				</div>
+			{/if}
+		</a>
+	{/if}
 </footer>
 
 <button
