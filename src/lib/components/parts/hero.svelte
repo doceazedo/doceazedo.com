@@ -54,12 +54,15 @@
 			class="border-primary absolute top-4 left-3 z-10 h-full w-[calc(100%-1.5rem)] rounded border md:top-11 md:-left-11 md:w-full"
 		></span>
 		<span
-			class="border-primary/20 ease-elastic absolute top-8 left-6 z-10 h-full w-[calc(100%-3rem)] rounded border transition-all group-hover:top-[76px] group-hover:left-[-76px] md:top-[88px] md:left-[-88px] md:w-full"
+			class="border-primary/50 ease-elastic absolute top-8 left-6 z-10 h-full w-[calc(100%-3rem)] rounded border transition-all group-hover:top-[76px] group-hover:left-[-76px] md:top-[88px] md:left-[-88px] md:w-full"
 		></span>
 	</figure>
 	<p
 		class="text-body [&>span]:text-foreground [&>a]:text-foreground [&>a]:hover:text-primary relative z-0 mt-auto max-w-[27ch] translate-y-6 [&>a]:underline [&>a]:transition-all"
 	>
-		{@html m.mini_bio()}
+		{@html m.mini_bio({
+			companyName: "Rail Europe",
+			companyUrl: "https://www.linkedin.com/company/1528184",
+		})}
 	</p>
 </section>

@@ -7,7 +7,7 @@
 	"select_language": "Select language:",
 	"greetings": "I’m Doce Fernandes",
 	"lets_work_together": "Let's work\ntogether",
-	"mini_bio": "A <span>🦄</span> developer, designer, and DJ. I build tools with Rust & Svelte, maintain FOSS projects, work at <a href=\"https://www.linkedin.com/company/1528184\" target=\"_blank\" rel=\"noopener noreferrer\">RailEurope</a>, and spin DJ sets on weekends <span>✌️</span>",
+	"mini_bio": "A <span>🦄</span> developer, designer, and DJ. I build tools with Rust & Svelte, maintain FOSS projects, work at <a href=\"{companyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">{companyName}</a>, and spin DJ sets on weekends <span>✌️</span>",
 	"select_work": "Select work",
 	"case_studies": "Case studies",
 	"portfolio_afterparty_pretitle": "SaaS",
@@ -32,5 +32,8 @@
 	"newsletter_subtitle": "I'll hit you up via email when there's a new post or when I've got something cool to share, no fixed schedule. You can unsubscribe whenever you want.",
 	"your_email": "Your email",
 	"email_placeholder": "john.doe@example.com",
-	"subscribe": "Subscribe"
+	"subscribe": "Subscribe",
+	"now_playing": "Now playing",
+	"licensed_under": "Website licensed under {license}.",
+	"last_played": "Last played"
 }

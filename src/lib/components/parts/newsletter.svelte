@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Button } from "$lib/components/ui/button";
-	import { ArrowRightLineArrows, PushpinFillMap } from "svelte-remix";
 	import { m } from "$lib/paraglide/messages";
 	import { Input } from "$lib/components/ui/input";
 	import { Label } from "$lib/components/ui/label";

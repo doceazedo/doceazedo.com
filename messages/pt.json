@@ -7,7 +7,7 @@
 	"select_language": "Selecionar idioma:",
 	"greetings": "Prazer, Doce Fernandes",
 	"lets_work_together": "Bora trampar\njuntes",
-	"mini_bio": "Um dev <span>🦄</span>, designer e DJ. Eu crio coisas com Rust & Svelte, mantenho projetos open-source, trabalho na <a href=\"https://www.linkedin.com/company/1528184\" target=\"_blank\" rel=\"noopener noreferrer\">RailEurope</a>, e toco como DJ nos fins de semana <span>✌️</span>",
+	"mini_bio": "Um dev <span>🦄</span>, designer e DJ. Eu crio coisas com Rust & Svelte, mantenho projetos open-source, trabalho na <a href=\"{companyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">{companyName}</a>, e toco como DJ nos fins de semana <span>✌️</span>",
 	"select_work": "Uns trampos daora",
 	"case_studies": "Estudos de caso",
 	"portfolio_afterparty_pretitle": "SaaS",
@@ -32,5 +32,8 @@
 	"newsletter_subtitle": "Te mando um e-mail quando sair post novo ou quando eu tiver algo maneiro pra contar, sem cronograma. Você pode descadastrar quando quiser.",
 	"your_email": "Seu e-mail",
 	"email_placeholder": "john.doe@exemplo.com",
-	"subscribe": "Inscrever"
+	"subscribe": "Inscrever",
+	"now_playing": "Ouvindo agora",
+	"licensed_under": "Website licensiado sob a {license}.",
+	"last_played": "Última tocada"
 }
