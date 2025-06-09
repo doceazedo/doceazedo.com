@@ -1,7 +1,7 @@
 ---
 title: "How I hacked a CouchDB database and ended up compromising a machine"
 date: "2023-05-07"
-icon: "/img/technologist-emoji.webp"
+icon: "/img/technologist-emoji.svg"
 ---
 
 My friend [Leozinho](https://github.com/leoggo) called me to play capture the flag. I innocently accepted without knowing it was actually a CTF (**C**apture **t**he **F**lag), an information security challenge where you have to hack a system to get a secret key.

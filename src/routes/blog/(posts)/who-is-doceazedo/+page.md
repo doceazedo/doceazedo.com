@@ -1,7 +1,7 @@
 ---
 title: "So, who the f*ck is DoceAzedo?"
 date: "2022-07-19"
-icon: "/img/raising-hand-emoji.webp"
+icon: "/img/raising-hand-emoji.svg"
 ---
 
 The pseudonym DoceAzedo was created on June 1st, 2020 with the goal of separating my online identity from my personal life. At that time I didn't want to mix my projects with my day-to-day life outside the computer, so I decided to rename and separate all my accounts and names across the internet in an attempt to hide Lucas from whoever knew Doce.

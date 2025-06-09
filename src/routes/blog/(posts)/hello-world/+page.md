@@ -1,6 +1,6 @@
 ---
 title: "Design para devs: um guia de bolso para melhorar seus designs"
-icon: "/img/nerd-emoji.webp"
+icon: "/img/nerd-emoji.svg"
 date: "2025-06-08"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Track your site traffic with privacy using Plausible"
 date: "2023-04-03"
-icon: "/img/detective-emoji.webp"
+icon: "/img/detective-emoji.svg"
 ---
 
 I always wanted to know how many people visit my site, where they come from, which pages they care about and how they navigate it. The problem was that tools like Google Analytics felt way too invasive for me.
