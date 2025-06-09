@@ -1,9 +1,45 @@
 <script lang="ts">
 	import { m } from "$lib/paraglide/messages.js";
 	import { getLocale } from "$lib/paraglide/runtime.js";
+	import { cn } from "$lib/utils.js";
+	import { onMount } from "svelte";
 	import { CalendarLineBusiness } from "svelte-remix";
 
+	type Heading = {
+		label: string;
+		id: string;
+		tag: string;
+	};
+
 	let { children, data } = $props();
+
+	let headings = $state<Heading[]>([]);
+	let activeHeading = $state("");
+
+	onMount(() => {
+		const headingEls = document.querySelectorAll<HTMLHeadingElement>(
+			".prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6",
+		);
+
+		headings = [...headingEls].map((x) => ({
+			label: x.innerText,
+			id: x.id,
+			tag: x.tagName.toLowerCase(),
+		}));
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				const id = entry.target.getAttribute("id") || "";
+				if (entry.intersectionRatio > 0) {
+					activeHeading = id;
+				}
+			});
+		});
+
+		headingEls.forEach((section) => {
+			observer.observe(section);
+		});
+	});
 </script>
 
 <div class="flex w-full gap-12 py-12">
@@ -35,18 +71,21 @@
 	>
 		<h1 class="ml-6 font-medium">{m.toc()}</h1>
 		<div class="flex flex-col gap-1.5">
-			<a
-				href="#hello-world"
-				class="before:bg-primary relative flex h-6 items-center pl-6 transition-all before:absolute before:top-0 before:-left-px before:h-full before:w-px"
-			>
-				Heading
-			</a>
-			<a
-				href="#hello-world"
-				class="text-body hover:text-foreground flex h-6 items-center pl-10 transition-all"
-			>
-				Sub heading
-			</a>
+			{#each headings as heading}
+				<a
+					href="#{heading.id}"
+					class={cn(
+						"text-body hover:text-foreground relative flex h-6 items-center transition-all before:absolute before:top-0 before:-left-px before:h-full before:w-px",
+						activeHeading === heading.id && "text-foreground before:bg-primary",
+						heading.tag === "h2" && "pl-6",
+						heading.tag === "h3" && "pl-10",
+						heading.tag === "h4" && "pl-14",
+						heading.tag === "h5" && "pl-18",
+					)}
+				>
+					{heading.label}
+				</a>
+			{/each}
 		</div>
 	</aside>
 </div>
