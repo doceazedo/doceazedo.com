@@ -30,7 +30,7 @@
 			{m.greetings()}
 		</h1>
 		<a
-			href="/"
+			href="/contact"
 			class="border-b-primary text-primary hover:text-foreground hover:border-b-foreground group my-6 ml-auto flex w-fit gap-1.5 border-b pb-1 leading-5 font-medium transition-all md:mt-11 md:mr-24 md:mb-0"
 		>
 			<span class="whitespace-pre">{m.lets_work_together()}</span>

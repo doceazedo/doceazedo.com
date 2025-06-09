@@ -9,15 +9,16 @@
 	import * as Drawer from "$lib/components/ui/drawer";
 	import Footer from "$lib/components/parts/footer.svelte";
 	import Memoji from "$lib/components/memoji.svelte";
+	import { page } from "$app/state";
 
 	let { children } = $props();
 
 	const PAGES = [
-		{ label: "Speaking", href: "/" },
-		{ label: "Blog", href: "/" },
-		{ label: "Resources", href: "/" },
-		{ label: "Stack", href: "/" },
-		{ label: "About me", href: "/" },
+		{ label: "Speaking", href: "/talks" },
+		{ label: "Blog", href: "/blog" },
+		{ label: "Resources", href: "/resources" },
+		{ label: "Stack", href: "/stack" },
+		{ label: "About me", href: "/me" },
 	];
 
 	let scrollY = $state(0);
@@ -40,12 +41,15 @@
 		</a>
 
 		<div class="text-body -mr-3 ml-auto hidden h-full items-center md:flex">
-			{#each PAGES as page}
+			{#each PAGES as _page}
 				<a
-					href={page.href}
-					class="hover:text-foreground flex h-full items-center px-3 transition-all"
+					href={_page.href}
+					class={cn(
+						"hover:text-foreground flex h-full items-center px-3 transition-all",
+						page.url.pathname.startsWith(_page.href) && "text-foreground",
+					)}
 				>
-					{page.label}
+					{_page.label}
 				</a>
 			{/each}
 

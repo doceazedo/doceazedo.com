@@ -7,7 +7,7 @@
 </script>
 
 <hgroup class="mb-3 py-3 md:mb-6 md:py-6">
-	<h2 class="text-3xl md:text-4xl">{m.articles()}</h2>
+	<h1 class="text-3xl md:text-4xl">{m.articles()}</h1>
 	<p class="text-body">{m.articles_subtitle()}</p>
 </hgroup>
 
