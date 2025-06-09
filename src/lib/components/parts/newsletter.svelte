@@ -6,7 +6,7 @@
 </script>
 
 <section
-	class="mb-12 flex flex-col items-center gap-6 border-t pt-12 md:mb-24 md:flex-row md:justify-between md:pt-24"
+	class="flex flex-col items-center gap-6 border-t pt-12 md:flex-row md:justify-between md:pt-24 md:pb-12"
 >
 	<hgroup>
 		<h2 class="mb-1.5 text-3xl">{m.newsletter()}</h2>

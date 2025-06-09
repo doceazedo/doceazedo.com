@@ -8,26 +8,7 @@
 	import { m } from "$lib/paraglide/messages";
 	import { page } from "$app/state";
 	import { getLocale } from "$lib/paraglide/runtime";
-
-	const wasPostedThisWeek = (date: Date) => {
-		const now = new Date();
-		const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-		return date >= oneWeekAgo;
-	};
-
-	const postedAt = (date: Date) => {
-		if (wasPostedThisWeek(date)) return m.published_this_week();
-
-		const now = new Date();
-		if (date.getFullYear() === now.getFullYear()) {
-			return date.toLocaleDateString(getLocale(), { month: "long" });
-		}
-
-		return date.toLocaleDateString(getLocale(), {
-			month: "long",
-			year: "numeric",
-		});
-	};
+	import { postedAt, wasPostedThisWeek } from "$lib/utils/date";
 </script>
 
 <section class="mb-12 flex flex-col gap-12 border-t pt-12 md:mb-24 md:pt-24">
@@ -38,7 +19,7 @@
 			<h2 class="text-3xl">{m.articles()}</h2>
 			<p class="text-body">{m.articles_subtitle()}</p>
 		</hgroup>
-		<Button variant="link" class="w-fit">
+		<Button href="/blog" variant="link" class="w-fit">
 			{m.see_all_articles()}
 			<ArrowRightLineArrows class="size-5" />
 		</Button>

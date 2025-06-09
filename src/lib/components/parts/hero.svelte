@@ -35,7 +35,7 @@
 		>
 			<span class="whitespace-pre">{m.lets_work_together()}</span>
 			<ArrowRightUpLineArrows
-				class="size-5 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+				class="ease-elastic size-5 transition-all group-hover:translate-x-0.75 group-hover:-translate-y-0.75"
 			/>
 		</a>
 	</div>

@@ -20,7 +20,7 @@
 					"bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
 				ghost:
 					"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-				link: "text-primary border-b border-b-primary rounded-none px-0! h-8! hover:text-foreground hover:border-b-foreground [&_svg]:transition-all hover:[&_svg]:translate-x-0.5",
+				link: "text-primary border-b border-b-primary rounded-none px-0! h-8! hover:text-foreground hover:border-b-foreground [&_svg]:transition-all hover:[&_svg]:translate-x-0.75 [&_svg]:ease-elastic",
 			},
 			size: {
 				default: "h-9 px-4 py-2 has-[>svg]:px-3",

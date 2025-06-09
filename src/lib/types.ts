@@ -1,3 +1,12 @@
+export type Post = {
+	metadata: object;
+	date: string;
+	title: string;
+	icon: string;
+	slug: string;
+	pinned?: boolean;
+};
+
 export type NowPlayingTrack = {
 	artist: string;
 	track: string;
