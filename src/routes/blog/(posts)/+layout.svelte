@@ -25,12 +25,14 @@
 			</hgroup>
 		</header>
 		<article
-			class="prose xl:prose-lg prose-neutral dark:prose-invert prose-headings:font-semibold max-w-full"
+			class="prose xl:prose-lg prose-neutral dark:prose-invert prose-headings:font-semibold prose-code:before:hidden prose-blockquote:[&>p]:before:hidden prose-code:after:hidden prose-blockquote:not-italic prose-blockquote:bg-primary/20 [&>p>code]:bg-primary/20 prose-blockquote:border-primary prose-blockquote:rounded prose-blockquote:p-3 prose-blockquote:[&>p]:m-0 prose-blockquote:font-normal [&>p>code]:text-primary dark:[&_[data-remark-code-title]]:bg-muted/50 max-w-full [&_[data-remark-code-title]]:-mb-2 [&_[data-remark-code-title]]:rounded-t [&_[data-remark-code-title]]:bg-neutral-200 [&_[data-remark-code-title]]:px-3 [&_[data-remark-code-title]]:py-1.5 [&_[data-remark-code-title]+pre]:rounded-t-none [&>p>code]:rounded [&>p>code]:px-1 [&>p>code]:py-0.5 [&>p>code]:font-normal"
 		>
 			{@render children()}
 		</article>
 	</main>
-	<aside class="hidden h-fit w-full flex-col gap-3 border-l lg:flex">
+	<aside
+		class="sticky top-26 hidden h-fit w-full flex-col gap-3 border-l lg:flex"
+	>
 		<h1 class="ml-6 font-medium">{m.toc()}</h1>
 		<div class="flex flex-col gap-1.5">
 			<a

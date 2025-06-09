@@ -3,13 +3,17 @@ import adapter from "@sveltejs/adapter-auto";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import rehypeSlug from "rehype-slug";
 import pluginToc from "remark-table-of-content";
+import codeTitle from "remark-code-title";
 
 const config = {
 	preprocess: [
 		vitePreprocess(),
 		mdsvex({
 			extensions: [".md"],
-			remarkPlugins: [[pluginToc, { property: ["metadata", "toc"] }]],
+			remarkPlugins: [
+				[pluginToc, { property: ["metadata", "toc"] }],
+				codeTitle,
+			],
 			rehypePlugins: [rehypeSlug],
 		}),
 	],

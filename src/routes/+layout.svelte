@@ -1,5 +1,7 @@
 <script lang="ts">
 	import "../app.css";
+	import "../prism-theme-github-light.css";
+	import "../prism-theme-github-dark.css";
 	import { cn } from "$lib/utils";
 	import LanguagePicker from "$lib/components/settings/language-picker.svelte";
 	import { Button } from "$lib/components/ui/button";
