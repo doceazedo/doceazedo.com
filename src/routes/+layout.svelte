@@ -17,7 +17,7 @@
 		{ label: "Speaking", href: "/talks" },
 		{ label: "Blog", href: "/blog" },
 		{ label: "Resources", href: "/resources" },
-		{ label: "Stack", href: "/stack" },
+		{ label: "Stack", href: "/uses" },
 		{ label: "About me", href: "/me" },
 	];
 
