@@ -10,14 +10,15 @@
 	import Footer from "$lib/components/parts/footer.svelte";
 	import Memoji from "$lib/components/memoji.svelte";
 	import { page } from "$app/state";
+	import { m } from "$lib/paraglide/messages";
 
 	let { children } = $props();
 
 	const PAGES = [
-		{ label: "Speaking", href: "/talks" },
-		{ label: "Blog", href: "/blog" },
+		{ label: m.talks(), href: "/talks" },
+		{ label: m.blog(), href: "/blog" },
 		{ label: "Resources", href: "/resources" },
-		{ label: "Stack", href: "/uses" },
+		{ label: m.stack(), href: "/uses" },
 		{ label: "About me", href: "/me" },
 	];
 
