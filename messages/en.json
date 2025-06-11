@@ -186,5 +186,9 @@
 	"lets_have_fun": "Let's have some fun!",
 	"lets_have_fun_description": "Don't be shy! I'm everywhere online (footer has the links) but active the most on Discord. I'm always excited to meet new humans. Just please don't send <a href=\"https://nohello.net\" target=\"_blank\">a plain \"hey\" and nothing else</a>, give me something to work with lol.",
 	"likes": "Likes",
-	"dislikes": "Dislikes"
+	"dislikes": "Dislikes",
+	"blog_footnote": "Written by Doce Fernandes, a <u>human</u>.",
+	"ai_usage": "AI usage",
+	"ai_usage_subtitle": "This page is my <a href=\"https://www.bydamo.la/p/ai-manifesto\" target=\"_blank\">AI manifesto</a>.",
+	"ai_usage_description": "<p>Everything you see here was made by me. The code, the design, the writing, everything. It all comes from things I've learned, things I've felt, and things I wanted to exist.</p><p>I do lightly use LLMs and AI as a tool. Not to generate content, but to support my process. That is, mostly translation and proofreading. All the creative process is my work. I also don't use any AI pair programmers solely as a personal choice.</p><p>This site is not a portfolio (even tho I also use it as such), it's a personal playground. I break things because I want to understand them and I leave things unfinished because I want to code them myself.</p><p>And while we're at it... I'm not into AI-generated art or music. I'm very much not insterested in soulless generated slop.</p><p>I like my stuff human :)</p>"
 }

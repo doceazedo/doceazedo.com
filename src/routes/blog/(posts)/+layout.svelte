@@ -3,7 +3,10 @@
 	import { getLocale } from "$lib/paraglide/runtime.js";
 	import { cn } from "$lib/utils.js";
 	import { onMount } from "svelte";
-	import { CalendarLineBusiness } from "svelte-remix";
+	import {
+		CalendarLineBusiness,
+		VerifiedBadgeFillBusiness,
+	} from "svelte-remix";
 
 	type Heading = {
 		label: string;
@@ -43,8 +46,8 @@
 </script>
 
 <div class="flex w-full gap-12 py-12">
-	<main class="mx-auto flex w-full max-w-2xl shrink-0 flex-col">
-		<header class="mb-12 flex gap-3">
+	<main class="mx-auto flex w-full max-w-2xl shrink-0 flex-col gap-12">
+		<header class="flex gap-3">
 			<img src={data.metadata.icon} alt="" class="size-12" />
 			<hgroup>
 				<h1 class="mb-3 text-3xl font-semibold lg:text-4xl">
@@ -65,6 +68,15 @@
 		>
 			{@render children()}
 		</article>
+		<footer class="flex justify-center">
+			<a
+				href="/ai"
+				class="ease-elastic hover:bg-muted hover:text-foreground text-body flex w-fit items-center gap-1.5 rounded border px-2 py-1.5 text-sm transition-all hover:scale-105"
+			>
+				<VerifiedBadgeFillBusiness class="text-primary size-5" />
+				<p>{@html m.blog_footnote()}</p>
+			</a>
+		</footer>
 	</main>
 	<aside
 		class="sticky top-26 hidden h-fit w-full flex-col gap-3 border-l lg:flex"

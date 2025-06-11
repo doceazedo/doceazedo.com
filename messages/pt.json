@@ -186,5 +186,9 @@
 	"lets_have_fun_description": "Não precisa ficar com vergonha! Tô em tudo quanto é canto da internet (tem os links no rodapé), mas o lugar que mais uso é o Discord. Curto muito conhecer seres humanos novos. Só não manda <a href=\"https://nohello.net\" target=\"_blank\">um \"oi\" seco sem contexto</a>, me dá algo pra responder né kkkk",
 	"likes": "Gosto",
 	"dislikes": "Não gosto",
-	"map_distance_fallback": "Eu sou de <span>Belo Horizonte, MG</span>! Me pergunto de onde você é..."
+	"map_distance_fallback": "Eu sou de <span>Belo Horizonte, MG</span>! Me pergunto de onde você é...",
+	"blog_footnote": "Escrito por Doce Fernandes, um <u>ser humano</u>.",
+	"ai_usage": "Uso de IA",
+	"ai_usage_subtitle": "Essa página é o meu <a href=\"https://www.bydamo.la/p/ai-manifesto\" target=\"_blank\">manifesto sobre IA</a>.",
+	"ai_usage_description": "<p>Tudo que você vê aqui foi feito por mim. O código, o design, os textos, tudo. Vem de coisas que aprendi, coisas que senti ou daquilo que eu queria ver existindo.</p><p>Eu uso LLMs e IA de forma pontual como uma ferramenta. Não para gerar conteúdo, mas para apoiar o processo. Isso inclui principalmente tradução e revisão de texto. Todo o processo criativo é meu. Também prefiro não usar nenhum desses assistentes de programação apenas por uma escolha pessoal.</p><p>Esse site não é um portfólio (apesar de eu também usar ele como um), ele é um playground pessoal. Eu quebro as coisas porque quero entender como elas funcionam, e deixo coisas pela metade porque quero codar do meu jeito.</p><p>Já aproveitando... não curto arte ou música gerada por IA. Não tenho o menor interesse em gororoba gerada por máquina e sem alma.</p><p>Gosto das minhas coisas humanas :)</p>"
 }
