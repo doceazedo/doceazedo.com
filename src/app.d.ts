@@ -1,5 +1,5 @@
-// See https://svelte.dev/docs/kit/types#app.d.ts
-// for information about these interfaces
+import mapboxgl from "mapbox-gl";
+
 declare global {
 	namespace App {
 		// interface Error {}
@@ -7,6 +7,10 @@ declare global {
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
+	}
+
+	declare interface Window {
+		mapboxgl: typeof mapboxgl;
 	}
 }
 

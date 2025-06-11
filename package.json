@@ -49,6 +49,8 @@
 	},
 	"dependencies": {
 		"@inlang/paraglide-js": "^2.0.0",
+		"@turf/turf": "^7.2.0",
+		"mapbox-gl": "^3.12.0",
 		"rehype-slug": "^6.0.0",
 		"remark-code-title": "^0.2.5",
 		"remark-table-of-content": "^0.5.2",

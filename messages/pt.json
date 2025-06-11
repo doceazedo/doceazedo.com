@@ -174,16 +174,17 @@
 	"personally_work": "Atualmente trabalho como Desenvolvedore Frontend na Rail Europe. Lá eu consigo criar coisas que realmente me empolgam e ainda explorar outras áreas além da web, o que é massa demais.",
 	"personally_early_days": "Comecei a programar em 2015 com VB.NET, o que parece uma vida atrás. Desde então foram váaarios projetos aleatórios até conseguir meu primeiro emprego de verdade em 2018.",
 	"personally_hobbies": "Quando não tô programando (o que é raro), provavelmente tô caçando vinil, sofrendo com o Fruity Loops ou só de boas no Discord. Sou obcecade por hyperpop e música experimental, principalmente da cena local. Amo misturar funk com outros sons eletrônicos.",
-	"map_distance": "Eu sou de <span>Belo Horizonte, MG</span>, a mais ou menos <span>0km</span> da sua localização atual, de acordo com o seu IP.",
+	"map_distance": "Eu sou de <span>Belo Horizonte, MG</span>, a mais ou menos <span>{km}km</span> da sua localização atual, de acordo com o seu IP.",
 	"about_music": "Ouvindo e fazendo som",
 	"music_taste": "O que eu curto",
 	"music_taste_subtitle": "Meu gosto musical é meio caótico... então deixa eu puxar os dados do Last.fm que eles explicam melhor.",
-	"top_tags": "Gêneros mais ouvidos",
+	"top_tags": "Top tags",
 	"about_dj": "Fazendo uns beats",
 	"about_dj_subtitle": "Às vezes tento produzir umas músicas minhas. Ainda não cheguei no som que quero, mas já tá sendo bem divertido.",
 	"more_on_soundcloud": "Tem mais no SoundCloud",
 	"lets_have_fun": "Bora se divertir!",
 	"lets_have_fun_description": "Não precisa ficar com vergonha! Tô em tudo quanto é canto da internet (tem os links no rodapé), mas o lugar que mais uso é o Discord. Curto muito conhecer seres humanos novos. Só não manda <a href=\"https://nohello.net\" target=\"_blank\">um \"oi\" seco sem contexto</a>, me dá algo pra responder né kkkk",
 	"likes": "Gosto",
-	"dislikes": "Não gosto"
+	"dislikes": "Não gosto",
+	"map_distance_fallback": "Eu sou de <span>Belo Horizonte, MG</span>! Me pergunto de onde você é..."
 }

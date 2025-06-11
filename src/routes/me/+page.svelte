@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Button } from "$lib/components/ui/button";
 	import { Skeleton } from "$lib/components/ui/skeleton";
-
 	import { m } from "$lib/paraglide/messages";
 	import { cn } from "$lib/utils";
 	import {
@@ -15,6 +14,12 @@
 		ShakeHandsLineBusiness,
 		SoundcloudLineLogos,
 	} from "svelte-remix";
+	import Map from "./map.svelte";
+	import { distance } from "@turf/turf";
+	import { MY_LOCATION } from "$lib/constants";
+	import { getLocale } from "$lib/paraglide/runtime";
+
+	let { data } = $props();
 
 	const PHOTOS = [
 		"/img/me-haircut.webp",
@@ -170,9 +175,21 @@
 		<div
 			class="text-body flex h-fit shrink-0 flex-col gap-3 rounded border p-3 text-center"
 		>
-			<div class="bg-muted aspect-video w-full rounded"></div>
+			<div
+				class="bg-muted relative aspect-video w-full overflow-hidden rounded before:absolute before:top-0 before:left-0 before:z-10 before:size-full before:rounded before:border before:border-white/10"
+			>
+				<Map userLocation={data.location} />
+			</div>
 			<p class="[&>span]:text-foreground">
-				{@html m.map_distance()}
+				{#if data.location}
+					{@html m.map_distance({
+						km: Math.floor(
+							distance(MY_LOCATION, data.location, { units: "kilometers" }),
+						).toLocaleString(getLocale()),
+					})}
+				{:else}
+					{@html m.map_distance_fallback()}
+				{/if}
 			</p>
 		</div>
 	</div>
