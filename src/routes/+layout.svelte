@@ -17,9 +17,11 @@
 	const PAGES = [
 		{ label: m.talks(), href: "/talks" },
 		{ label: m.blog(), href: "/blog" },
-		{ label: "Resources", href: "/resources" },
-		{ label: m.stack(), href: "/uses" },
-		{ label: "About me", href: "/me" },
+		{ label: m.about_me(), href: "/me" },
+		{ label: m.now_short(), href: "/now" },
+		{ label: m.uses_short(), href: "/uses" },
+		{ label: m.contact(), href: "/contact" },
+		{ label: m.colophon(), href: "/colophon" },
 	];
 
 	let scrollY = $state(0);

@@ -1,17 +1,29 @@
 <script lang="ts">
 	import { ArrowRightUpLineArrows } from "svelte-remix";
 	import { m } from "$lib/paraglide/messages";
+	import { onMount } from "svelte";
+	import { cn } from "$lib/utils";
+
+	let isDayTime = $state(false);
+
+	onMount(() => {
+		const hour = new Date().getHours();
+		isDayTime = hour >= 7 && hour <= 17;
+	});
 </script>
 
 <section
 	class="relative flex w-full flex-col justify-between py-6 md:flex-row md:py-24"
 >
-	<div
-		class="pointer-none absolute -top-52 -right-96 hidden opacity-80 lg:block"
-	>
+	<div class="pointer-none absolute -top-52 -right-96 hidden lg:block">
 		<div class="relative -z-20 grid grid-cols-12">
 			{#each Array(12 * 9).fill(null) as _uwu}
-				<div class="size-24 border-t border-r"></div>
+				<div
+					class={cn(
+						"size-24 border-t border-r",
+						isDayTime ? "border-foreground/15" : "opacity-80",
+					)}
+				></div>
 			{/each}
 		</div>
 		<div

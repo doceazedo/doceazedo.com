@@ -1,7 +1,7 @@
 <script lang="ts">
 	import BrazilFlag from "$lib/components/icons/brazil-flag.svg?component";
 	import UsaFlag from "$lib/components/icons/usa-flag.svg?component";
-	import { ArrowDownSLineArrows } from "svelte-remix";
+	import { ArrowDownSLineArrows, GlobalLineBusiness } from "svelte-remix";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import { getLocale, setLocale } from "$lib/paraglide/runtime";
 	import { m } from "$lib/paraglide/messages";
@@ -21,9 +21,8 @@
 		},
 	} as const;
 
-	const FlagIcon = LANGUAGES[getLocale()].flag;
-
 	let innerWidth = $state(0);
+	let isDesktop = $derived(innerWidth >= 768);
 </script>
 
 <svelte:window bind:innerWidth />
@@ -32,13 +31,12 @@
 	<DropdownMenu.Trigger
 		class="hover:text-foreground flex h-full cursor-pointer items-center gap-2.5 px-3 transition-all"
 	>
-		<FlagIcon class="size-5 rounded-full" />
-		<span class="flex items-center gap-1.5">
-			{m.locale_current()}
-			<ArrowDownSLineArrows class="size-4" />
-		</span>
+		<GlobalLineBusiness class="size-5" />
 	</DropdownMenu.Trigger>
-	<DropdownMenu.Content sideOffset={innerWidth >= 768 ? -12 : 12} align="start">
+	<DropdownMenu.Content
+		sideOffset={isDesktop ? -12 : 12}
+		align={isDesktop ? "end" : "start"}
+	>
 		<DropdownMenu.Group>
 			<DropdownMenu.Label>{m.select_language()}</DropdownMenu.Label>
 			<DropdownMenu.Separator />
@@ -51,6 +49,7 @@
 					}}
 					closeOnSelect={false}
 				>
+					<lang.flag class="size-4" />
 					{lang.label}
 				</DropdownMenu.CheckboxItem>
 			{/each}
