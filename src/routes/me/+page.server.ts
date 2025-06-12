@@ -1,29 +1,15 @@
 export const load = async ({ request }) => {
-	const ip = request.headers.get("CF-Connecting-IP");
-	const [location, vinylCollection] = await Promise.all([
-		getGeolocation(ip),
-		getVinylCollection(),
-	]);
+	const lon = request.headers.get("x-vercel-ip-longitude");
+	const lat = request.headers.get("x-vercel-ip-latitude");
+	const location: [number, number] | null =
+		lon && lat ? [parseFloat(lon), parseFloat(lat)] : null;
+
+	const vinylCollection = await getVinylCollection();
+
 	return {
 		location,
 		vinylCollection,
 	};
-};
-
-const getGeolocation = async (
-	ip: string | null,
-): Promise<[number, number] | null> => {
-	try {
-		if (!ip) return null;
-
-		const resp = await fetch(`http://ip-api.com/json/${ip}`);
-		const data = await resp.json();
-		if (!data?.lon || !data?.lat) return null;
-
-		return [data.lon, data.lat];
-	} catch (_error) {
-		return null;
-	}
 };
 
 const DISCOGS_BASE_URL = "https://api.discogs.com";
