@@ -66,7 +66,7 @@
 <svelte:body bind:clientHeight />
 
 <footer
-	class="mt-12 mb-6 flex flex-col justify-between gap-6 border-t pt-6 text-center md:flex-row md:text-left"
+	class="mt-12 mb-6 flex flex-col justify-between gap-6 border-t py-12 text-center md:flex-row md:pt-6 md:pb-0 md:text-left"
 >
 	<div class="text-body flex flex-col items-center text-sm md:items-start">
 		<Memoji class="mb-1.5 size-14" />
