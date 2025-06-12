@@ -90,7 +90,7 @@ To track events like button clicks or link interactions, use the attribute `plau
 You can also enable weekly or monthly email reports. Plausible will email you analytics summaries. You can even set it up to notify you when traffic spikes.
 
 <p>
-  <video autoplay loop controls>
+  <video autoplay loop controls playsinline>
     <source src="/video/plausible-email-reports.mp4" type="video/mp4">
   </video>
 </p>

@@ -209,7 +209,7 @@ npm run dev
 ```
 
 <p>
-  <video autoplay loop controls>
+  <video autoplay loop controls playsinline>
     <source src="/video/svelte-overview-scaffold.mp4" type="video/mp4">
   </video>
 </p>
