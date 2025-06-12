@@ -42,7 +42,8 @@
 <nav
 	class={cn(
 		"bg-background/70 fixed top-0 left-0 z-40 h-16 w-full border-b px-3 backdrop-blur-md transition-colors md:h-20 md:border-b-transparent md:bg-transparent md:pr-[var(--scrollbar-width)]! md:backdrop-blur-none lg:px-0",
-		scrollY > 24 && "bg-background/70 border-b-border backdrop-blur-md",
+		scrollY > 24 &&
+			"md:bg-background/70 md:border-b-border md:backdrop-blur-md",
 	)}
 >
 	<div class="mx-auto flex size-full max-w-5xl items-center">
