@@ -12,4 +12,5 @@ export type NowPlayingTrack = {
 	track: string;
 	cover: string | null;
 	nowPlaying: boolean;
+	playedAt: string | null;
 };

@@ -107,7 +107,7 @@
 		{#each PHOTOS as photo, i}
 			<figure
 				class={cn(
-					"bg-muted ease-elastic relative aspect-[4/5] w-full rounded transition-all before:absolute before:size-full before:rounded before:border before:border-white/15 hover:scale-110 hover:rotate-0",
+					"bg-muted ease-elastic relative aspect-[4/5] w-full rounded transition-all before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/15 hover:scale-110 hover:rotate-0",
 					i !== 0 && "-ml-12 lg:ml-0",
 					i === 0 && "translate-y-1 -rotate-2",
 					i === 1 && "translate-y-6 rotate-1",

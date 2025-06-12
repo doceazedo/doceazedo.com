@@ -12,6 +12,7 @@
 	import { onMount } from "svelte";
 	import type { NowPlayingTrack } from "$lib/types";
 	import Memoji from "$lib/components/memoji.svelte";
+	import { LAST_PLAYED_TRACKS } from "$lib/stores";
 
 	const SOCIALS = [
 		{ icon: GithubLineLogos, url: "https://github.com/doceazedo" },
@@ -40,22 +41,24 @@
 		}
 	};
 
-	let currentTrack = $state<NowPlayingTrack | null>(null);
+	let currentTrack = $derived<NowPlayingTrack | null>(
+		$LAST_PLAYED_TRACKS?.[0] || null,
+	);
 
-	const updateNowPlayingTrack = async () => {
+	const updateLastPlayedTracks = async () => {
 		try {
-			const resp = await fetch("/api/now-playing");
+			const resp = await fetch("/api/now/listening?limit=5");
 			const data = await resp.json();
-			currentTrack = data;
+			$LAST_PLAYED_TRACKS = data;
 		} catch (_error) {
 			// uwu
 		}
 	};
 
 	onMount(() => {
-		updateNowPlayingTrack();
-		const nowPlayingInterval = setInterval(updateNowPlayingTrack, 10000);
-		return () => clearInterval(nowPlayingInterval);
+		updateLastPlayedTracks();
+		const lastPlayedInterval = setInterval(updateLastPlayedTracks, 10000);
+		return () => clearInterval(lastPlayedInterval);
 	});
 </script>
 

@@ -193,5 +193,17 @@
 	"ai_usage_description": "<p>Everything you see here was made by me. The code, the design, the writing, everything. It all comes from things I've learned, things I've felt, and things I wanted to exist.</p><p>I do lightly use LLMs and AI as a tool. Not to generate content, but to support my process. That is, mostly translation and proofreading. All the creative process is my work. I also don't use any AI pair programmers solely as a personal choice.</p><p>This site is not a portfolio (even tho I also use it as such), it's a personal playground. I break things because I want to understand them and I leave things unfinished because I want to code them myself.</p><p>And while we're at it... I'm not into AI-generated art or music. I'm very much not insterested in soulless generated slop.</p><p>I like my stuff human :)</p>",
 	"vinyl_collection": "My vinyl collection",
 	"vinyl_collection_subtitle": "I love being able to store, display, touch and listen my favorite albums.",
-	"see_on_discogs": "See on Discogs"
+	"see_on_discogs": "See on Discogs",
+	"now": "Now",
+	"now_subtitle": "Everything I'm currently up to.",
+	"listening": "Listening",
+	"listening_subtitle": "What's been playing in my little world.",
+	"last_played_tracks": "Last played tracks",
+	"see_on_lastfm": "See on Last.fm",
+	"discover_weekly": "Discover Weekly",
+	"playing_games": "Playing",
+	"playing_games_subtitle": "I'm not a huge gamer, but this is what I've been playing.",
+	"updated_at": "Updated <span>{date}</span>",
+	"played_last_two_weeks": "<span>{time}</span> in the last 2 weeks",
+	"date_time": "{date} @ {time}"
 }
