@@ -1,6 +1,6 @@
 ---
 title: "How to create a Spigot plugin in Kotlin"
-date: "2021-12-15"
+date: "2021/12/15"
 icon: "/img/kotlin.svg"
 ---
 

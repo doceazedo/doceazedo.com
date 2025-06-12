@@ -1,6 +1,6 @@
 ---
 title: "Getting started with Svelte 4: overview & first steps"
-date: "2023-02-15"
+date: "2023/02/15"
 icon: "/img/svelte.svg"
 ---
 

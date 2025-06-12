@@ -1,6 +1,6 @@
 ---
 title: "How to use SvelteKit with Docker"
-date: "2023-07-27"
+date: "2023/07/27"
 icon: "/img/docker-moby.svg"
 ---
 

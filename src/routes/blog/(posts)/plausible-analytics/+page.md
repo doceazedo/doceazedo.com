@@ -1,6 +1,6 @@
 ---
 title: "Track your site traffic with privacy using Plausible"
-date: "2023-04-03"
+date: "2023/04/03"
 icon: "/img/detective-emoji.svg"
 ---
 

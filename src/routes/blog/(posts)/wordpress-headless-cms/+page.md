@@ -1,6 +1,6 @@
 ---
 title: "Old school: Using WordPress as a headless CMS"
-date: "2022-01-11"
+date: "2022/01/11"
 icon: "/img/wordpress.svg"
 ---
 

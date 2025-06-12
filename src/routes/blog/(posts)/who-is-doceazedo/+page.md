@@ -1,6 +1,6 @@
 ---
 title: "So, who the f*ck is DoceAzedo?"
-date: "2022-07-19"
+date: "2022/07/19"
 icon: "/img/raising-hand-emoji.svg"
 ---
 

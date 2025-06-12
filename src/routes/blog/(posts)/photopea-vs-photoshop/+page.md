@@ -1,6 +1,6 @@
 ---
 title: "Photopea made me ditch Photoshop forever"
-date: "2022-05-03"
+date: "2022/05/03"
 icon: "/img/artist-emoji.svg"
 ---
 

@@ -11,14 +11,14 @@
 		{
 			title: "Aprenda a programar em Kotlin fazendo plugins para Minecraft",
 			organizer: "Kotlinautas",
-			date: new Date("2022-07-09"),
+			date: new Date("2022/07/09"),
 			watch: "https://twitch.tv/videos/1537950001",
 			slides: "/slides/plugin-minecraft-futebol-kotlin.pdf",
 		},
 		{
 			title: "Mensageria e tarefas assíncronas com Node.js e BullMQ",
 			organizer: "NodeBR",
-			date: new Date("2023-10-02"),
+			date: new Date("2023/10/02"),
 			watch: "https://www.youtube.com/watch?v=CxTTt0zuXuU",
 			slides: "/slides/nodebr-bullmq.pdf",
 		},

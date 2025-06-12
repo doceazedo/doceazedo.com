@@ -1,6 +1,6 @@
 ---
 title: "How I hacked a CouchDB database and ended up compromising a machine"
-date: "2023-05-07"
+date: "2023/05/07"
 icon: "/img/technologist-emoji.svg"
 ---
 
