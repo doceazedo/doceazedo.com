@@ -88,8 +88,20 @@
 		},
 	];
 
-	const fetchMusicTaste = async () => {
+	const getMusicTaste = async (): Promise<string[]> => {
 		const resp = await fetch("/api/music-taste");
+		const data = await resp.json();
+		return data;
+	};
+
+	const getDiscogsCollection = async (): Promise<
+		{
+			cover: string;
+			artist: string;
+			title: string;
+		}[]
+	> => {
+		const resp = await fetch("/api/discogs/collection");
 		const data = await resp.json();
 		return data;
 	};
@@ -214,7 +226,7 @@
 					{m.top_tags()}
 				</h3>
 				<div class="flex flex-wrap gap-1.5">
-					{#await fetchMusicTaste()}
+					{#await getMusicTaste()}
 						<Skeleton class="h-[30px] w-20 rounded-full" />
 						<Skeleton class="h-[30px] w-24 rounded-full" />
 						<Skeleton class="h-[30px] w-20 rounded-full" />
@@ -273,38 +285,44 @@
 				</p>
 			</hgroup>
 			<div class="grid grid-cols-6 gap-3 lg:grid-cols-12">
-				{#each data.vinylCollection as lp}
-					{@const variant = Math.floor(Math.random() * 3)}
-					<Tooltip.Provider delayDuration={0} disableHoverableContent>
-						<Tooltip.Root>
-							<Tooltip.Trigger class="aspect-square">
-								<div
-									class={cn(
-										"bg-muted ease-elastic relative size-full rounded transition-all before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/15 hover:z-10 hover:scale-125 hover:-rotate-2",
-										variant === 0 && "hover:-rotate-2",
-										variant === 1 && "hover:rotate-2",
-										variant === 2 && "hover:-rotate-3",
-										variant === 4 && "hover:rotate-3",
-									)}
+				{#await getDiscogsCollection()}
+					{#each Array(18) as _uwu}
+						<Skeleton class="aspect-square size-full rounded" />
+					{/each}
+				{:then collection}
+					{#each collection as lp}
+						{@const variant = Math.floor(Math.random() * 3)}
+						<Tooltip.Provider delayDuration={0} disableHoverableContent>
+							<Tooltip.Root>
+								<Tooltip.Trigger class="aspect-square">
+									<div
+										class={cn(
+											"bg-muted ease-elastic relative size-full rounded transition-all before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/15 hover:z-10 hover:scale-125 hover:-rotate-2",
+											variant === 0 && "hover:-rotate-2",
+											variant === 1 && "hover:rotate-2",
+											variant === 2 && "hover:-rotate-3",
+											variant === 4 && "hover:rotate-3",
+										)}
+									>
+										<img
+											src={lp.cover}
+											alt=""
+											class="size-full rounded object-cover"
+										/>
+									</div>
+								</Tooltip.Trigger>
+								<Tooltip.Content
+									side="bottom"
+									align="center"
+									class="flex cursor-default flex-col items-center"
 								>
-									<img
-										src={lp.cover}
-										alt=""
-										class="size-full rounded object-cover"
-									/>
-								</div>
-							</Tooltip.Trigger>
-							<Tooltip.Content
-								side="bottom"
-								align="center"
-								class="flex cursor-default flex-col items-center"
-							>
-								<p class="text-body -mb-0.5 text-sm">{lp.artist}</p>
-								<p>{lp.title}</p>
-							</Tooltip.Content>
-						</Tooltip.Root>
-					</Tooltip.Provider>
-				{/each}
+									<p class="text-body -mb-0.5 text-sm">{lp.artist}</p>
+									<p>{lp.title}</p>
+								</Tooltip.Content>
+							</Tooltip.Root>
+						</Tooltip.Provider>
+					{/each}
+				{/await}
 			</div>
 			<Button
 				href="https://www.discogs.com/user/doceazedo/collection"
