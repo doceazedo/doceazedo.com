@@ -17,7 +17,7 @@
 				outline:
 					"bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 border",
 				secondary:
-					"bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+					"bg-foreground text-background shadow-xs hover:bg-foreground/80",
 				ghost:
 					"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
 				link: "text-primary border-b border-b-primary rounded-none px-0! h-8! hover:text-foreground hover:border-b-foreground [&_svg]:transition-all hover:[&_svg]:translate-x-0.75 [&_svg]:ease-elastic",

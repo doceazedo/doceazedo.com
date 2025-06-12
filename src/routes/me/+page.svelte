@@ -4,6 +4,7 @@
 	import { m } from "$lib/paraglide/messages";
 	import { cn } from "$lib/utils";
 	import {
+		ArrowRightLineArrows,
 		Cake2LineFood,
 		CheckLineSystem,
 		CloseLineSystem,
@@ -18,6 +19,7 @@
 	import { distance } from "@turf/turf";
 	import { MY_LOCATION } from "$lib/constants";
 	import { getLocale } from "$lib/paraglide/runtime";
+	import * as Tooltip from "$lib/components/ui/tooltip";
 
 	let { data } = $props();
 
@@ -257,6 +259,59 @@
 			>
 				<SoundcloudLineLogos class="size-5" />
 				{m.more_on_soundcloud()}
+			</Button>
+		</div>
+		<div
+			class="col-span-2 flex flex-col gap-3 rounded border p-3 md:gap-6 md:p-6"
+		>
+			<hgroup>
+				<h3 class="mb-0.5 text-xl md:text-2xl">{m.vinyl_collection()}</h3>
+				<p class="text-body leading-5">
+					{m.vinyl_collection_subtitle()}
+				</p>
+			</hgroup>
+			<div class="grid grid-cols-6 gap-3">
+				{#each data.vinylCollection as lp}
+					{@const variant = Math.floor(Math.random() * 3)}
+					<Tooltip.Provider delayDuration={0} disableHoverableContent>
+						<Tooltip.Root>
+							<Tooltip.Trigger class="aspect-square">
+								<div
+									class={cn(
+										"bg-muted ease-elastic relative size-full rounded transition-all before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/15 hover:z-10 hover:scale-125 hover:-rotate-2",
+										variant === 0 && "hover:-rotate-2",
+										variant === 1 && "hover:rotate-2",
+										variant === 2 && "hover:-rotate-3",
+										variant === 4 && "hover:rotate-3",
+									)}
+								>
+									<img
+										src={lp.cover}
+										alt=""
+										class="size-full rounded object-cover"
+									/>
+								</div>
+							</Tooltip.Trigger>
+							<Tooltip.Content
+								side="bottom"
+								align="center"
+								class="flex cursor-default flex-col items-center"
+							>
+								<p class="text-body -mb-0.5 text-sm">{lp.artist}</p>
+								<p>{lp.title}</p>
+							</Tooltip.Content>
+						</Tooltip.Root>
+					</Tooltip.Provider>
+				{/each}
+			</div>
+			<Button
+				href="https://www.discogs.com/user/doceazedo/collection"
+				target="_blank"
+				variant="link"
+				class="ml-auto w-fit"
+			>
+				{m.see_on_discogs()}
+				<ArrowRightLineArrows class="size-5" />
 			</Button>
 		</div>
 	</div>
