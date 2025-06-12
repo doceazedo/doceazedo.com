@@ -14,5 +14,6 @@
 	controls={false}
 	muted
 	playsinline
+	autoplay
 	onmouseover={() => video?.play()}
 ></video>
