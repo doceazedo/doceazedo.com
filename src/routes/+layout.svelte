@@ -5,7 +5,16 @@
 	import { cn } from "$lib/utils";
 	import LanguagePicker from "$lib/components/settings/language-picker.svelte";
 	import { Button } from "$lib/components/ui/button";
-	import { MenuFillSystem } from "svelte-remix";
+	import {
+		Chat1LineCommunication,
+		CodeSSlashLineDevelopment,
+		HourglassLineSystem,
+		MenuFillSystem,
+		MouseLineDevice,
+		NewsLineDocument,
+		PresentationFillBusiness,
+		User5LineUserFaces,
+	} from "svelte-remix";
 	import * as Drawer from "$lib/components/ui/drawer";
 	import Footer from "$lib/components/parts/footer.svelte";
 	import Memoji from "$lib/components/memoji.svelte";
@@ -15,16 +24,17 @@
 	let { children } = $props();
 
 	const PAGES = [
-		{ label: m.talks(), href: "/talks" },
-		{ label: m.blog(), href: "/blog" },
-		{ label: m.about_me(), href: "/me" },
-		{ label: m.now_short(), href: "/now" },
-		{ label: m.uses_short(), href: "/uses" },
-		{ label: m.contact(), href: "/contact" },
-		{ label: m.colophon(), href: "/colophon" },
+		{ label: m.talks(), href: "/talks", icon: PresentationFillBusiness },
+		{ label: m.blog(), href: "/blog", icon: NewsLineDocument },
+		{ label: m.about_me(), href: "/me", icon: User5LineUserFaces },
+		{ label: m.now_short(), href: "/now", icon: HourglassLineSystem },
+		{ label: m.uses_short(), href: "/uses", icon: MouseLineDevice },
+		{ label: m.contact(), href: "/contact", icon: Chat1LineCommunication },
+		{ label: m.colophon(), href: "/colophon", icon: CodeSSlashLineDevelopment },
 	];
 
 	let scrollY = $state(0);
+	let isDrawerOpen = $state(false);
 </script>
 
 <svelte:window bind:scrollY />
@@ -45,11 +55,12 @@
 
 		<div class="text-body -mr-3 ml-auto hidden h-full items-center md:flex">
 			{#each PAGES as _page}
+				{@const isCurrentPage = page.url.pathname.startsWith(_page.href)}
 				<a
 					href={_page.href}
 					class={cn(
 						"hover:text-foreground flex h-full items-center px-3 transition-all",
-						page.url.pathname.startsWith(_page.href) && "text-foreground",
+						isCurrentPage && "text-foreground",
 					)}
 				>
 					{_page.label}
@@ -59,7 +70,7 @@
 			<LanguagePicker />
 		</div>
 
-		<Drawer.Root>
+		<Drawer.Root bind:open={isDrawerOpen}>
 			<Drawer.Trigger
 				class="-mr-1.5 ml-auto flex size-12 items-center justify-center md:hidden"
 			>
@@ -67,13 +78,24 @@
 			</Drawer.Trigger>
 			<Drawer.Content>
 				<nav class="flex flex-col">
-					{#each PAGES as page}
+					{#each PAGES as _page}
+						{@const isCurrentPage = page.url.pathname.startsWith(_page.href)}
+						{@const Icon = _page.icon}
+
 						<Button
-							href={page.href}
+							href={_page.href}
+							onclick={() => (isDrawerOpen = false)}
 							variant="ghost"
-							class="justify-start text-left"
+							size="lg"
+							class={cn(
+								"justify-start text-left",
+								isCurrentPage && "text-primary",
+							)}
 						>
-							{page.label}
+							<Icon
+								class={cn("text-body size-5", isCurrentPage && "text-primary")}
+							/>
+							{_page.label}
 						</Button>
 					{/each}
 				</nav>
