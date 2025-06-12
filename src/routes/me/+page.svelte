@@ -178,7 +178,7 @@
 			class="text-body flex h-fit shrink-0 flex-col gap-3 rounded border p-3 text-center"
 		>
 			<div
-				class="bg-muted relative aspect-video w-full overflow-hidden rounded before:absolute before:top-0 before:left-0 before:z-10 before:size-full before:rounded before:border before:border-white/10"
+				class="bg-muted relative aspect-video w-full overflow-hidden rounded before:pointer-events-none before:absolute before:top-0 before:left-0 before:z-10 before:size-full before:rounded before:border before:border-white/10"
 			>
 				<Map userLocation={data.location} />
 			</div>
@@ -199,7 +199,7 @@
 	<hr />
 
 	<h2 class="text-2xl md:text-3xl">{m.about_music()}</h2>
-	<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+	<div class="flex flex-col gap-6 lg:grid lg:grid-cols-2">
 		<div class="flex flex-col gap-3 rounded border p-3 md:gap-6 md:p-6">
 			<hgroup>
 				<h3 class="mb-0.5 text-xl md:text-2xl">{m.music_taste()}</h3>
@@ -270,7 +270,7 @@
 					{m.vinyl_collection_subtitle()}
 				</p>
 			</hgroup>
-			<div class="grid grid-cols-6 gap-3">
+			<div class="grid grid-cols-6 gap-3 lg:grid-cols-12">
 				{#each data.vinylCollection as lp}
 					{@const variant = Math.floor(Math.random() * 3)}
 					<Tooltip.Provider delayDuration={0} disableHoverableContent>
