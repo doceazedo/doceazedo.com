@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { SOCIALS, WORK } from "$lib/constants";
 	import { m } from "$lib/paraglide/messages";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import {
@@ -39,18 +40,18 @@
 		{ key: m.location(), value: m.my_location() },
 		{
 			key: m.company(),
-			value: "Rail Europe",
-			href: "https://www.linkedin.com/company/1528184",
+			value: WORK.company,
+			href: WORK.url,
 		},
 		{
 			key: m.speaker_info_website(),
-			value: "doceazedo.com",
-			href: "https://doceazedo.com",
+			value: "doce.sh",
+			href: "https://doce.sh",
 		},
 		{
 			key: "GitHub",
-			value: "@doceazedo",
-			href: "https://github.com/doceazedo",
+			value: `@${SOCIALS.github.url.split(".com/")[1]}`,
+			href: SOCIALS.github.url,
 		},
 	];
 </script>

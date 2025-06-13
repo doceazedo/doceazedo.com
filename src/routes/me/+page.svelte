@@ -174,12 +174,17 @@
 
 	<h2 class="text-2xl md:text-3xl">{m.personally()}</h2>
 	<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-		<main class="prose prose-neutral dark:prose-invert">
+		<main
+			class="prose prose-neutral dark:prose-invert prose-a:hover:text-primary prose-a:transition-all"
+		>
 			<p>
 				{m.personally_intro()}
 			</p>
 			<p>
-				{m.personally_work()}
+				{@html m.personally_work({
+					companyName: WORK.company,
+					companyUrl: WORK.url,
+				})}
 			</p>
 			<p>
 				{m.personally_early_days()}

@@ -171,7 +171,7 @@
 	"dislikes_touching_grass": "Tocar grama",
 	"personally": "Pessoalmente",
 	"personally_intro": "Eu sou o Doce Fernandes, uma pessoa curiosa, legal e queer do interior de Minas Gerais. Morei um ano em São Paulo e agora tô em BH. Sair do interior, viver na cidade mais populosa do Brasil e depois me encontrar entre esses dois mundos tem sido insano...",
-	"personally_work": "Atualmente trabalho como Desenvolvedore Frontend na Rail Europe. Lá eu consigo criar coisas que realmente me empolgam e ainda explorar outras áreas além da web, o que é massa demais.",
+	"personally_work": "Atualmente trabalho como Desenvolvedore Frontend na <a href=\"{companyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">{companyName}</a>. Lá eu consigo criar coisas que realmente me empolgam e ainda explorar outras áreas além da web, o que é massa demais.",
 	"personally_early_days": "Comecei a programar em 2015 com VB.NET, o que parece uma vida atrás. Desde então foram váaarios projetos aleatórios até conseguir meu primeiro emprego de verdade em 2018.",
 	"personally_hobbies": "Quando não tô programando (o que é raro), provavelmente tô caçando vinil, sofrendo com o Fruity Loops ou só de boas no Discord. Sou obcecade por hyperpop e música experimental, principalmente da cena local. Amo misturar funk com outros sons eletrônicos.",
 	"map_distance": "Eu sou de <span>Belo Horizonte, MG</span>, a mais ou menos <span>{km}km</span> da sua localização atual, de acordo com o seu IP.",

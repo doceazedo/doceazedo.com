@@ -171,7 +171,7 @@
 	"dislikes_touching_grass": "Touching grass",
 	"personally": "Personally",
 	"personally_intro": "I'm Doce Fernandes, a curious, nice, and queer person from a small town in Minas Gerais, Brazil, that moved to São Paulo for a year, and is now living in Belo Horizonte. The journey from leaving the heartland, to living in the most populous city in Brazil, then finding myself in between has been wild...",
-	"personally_work": "I make my living as a Frontend Developer at Rail Europe, where I get to build actually cool stuff and have the means to experiment with more than just the web, which is great.",
+	"personally_work": "I make my living as a Frontend Developer at <a href=\"{companyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">{companyName}</a>, where I get to build actually cool stuff and have the means to experiment with more than just the web, which is great.",
 	"personally_early_days": "My programming journey started in 2015 with VB.NET, which feels like a lifetime ago. From there it was this whole chaotic path through random projects until eventually landing my first actual job in 2018.",
 	"personally_hobbies": "When I'm not coding (rare), you'll find me looking for vinyl records, fighting against Fruity Loops, or chilling in the voice chat. I'm obsessed with hyperpop and more experimental music, especially the local scene, and I love mixing Brazilian Funk with other electronic sounds.",
 	"map_distance": "I'm from <span>Belo Horizonte, Brazil</span>, roughly <span>{km}km</span> away from your current location, according to your IP address.",
