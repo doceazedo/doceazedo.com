@@ -153,7 +153,7 @@
 				)}
 			>
 				<i
-					class="flex size-8 shrink-0 items-center justify-center rounded md:size-10"
+					class="flex size-8 shrink-0 items-center justify-center rounded text-white md:size-10"
 				>
 					<card.icon class="size-5 md:size-6" />
 				</i>
@@ -344,12 +344,14 @@
 				class={cn(
 					"flex flex-col gap-3 rounded border p-3 md:gap-6 md:p-6",
 					i === 0
-						? "border-green-500 bg-green-500/20 [&_i]:bg-green-500"
-						: "border-red-700 bg-red-700/20 [&_i]:bg-red-700",
+						? "border-green-500 bg-green-500/5 dark:bg-green-500/20 [&_i]:bg-green-500"
+						: "border-red-700 bg-red-700/5 dark:bg-red-700/20 [&_i]:bg-red-700",
 				)}
 			>
 				<div class="flex items-center gap-3">
-					<i class="flex size-10 shrink-0 items-center justify-center rounded">
+					<i
+						class="flex size-10 shrink-0 items-center justify-center rounded text-white"
+					>
 						<column.icon class="size-6" />
 					</i>
 					<h2 class="text-2xl md:text-3xl">{column.title}</h2>

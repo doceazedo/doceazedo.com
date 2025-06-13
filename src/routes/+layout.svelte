@@ -20,6 +20,8 @@
 	import Memoji from "$lib/components/memoji.svelte";
 	import { page } from "$app/state";
 	import { m } from "$lib/paraglide/messages";
+	import { ModeWatcher } from "mode-watcher";
+	import DarkModeSwitch from "$lib/components/settings/dark-mode-switch.svelte";
 
 	let { children } = $props();
 
@@ -38,6 +40,8 @@
 </script>
 
 <svelte:window bind:scrollY />
+
+<ModeWatcher defaultMode="dark" disableTransitions={false} />
 
 <nav
 	class={cn(
@@ -68,6 +72,7 @@
 				</a>
 			{/each}
 
+			<DarkModeSwitch class="-mr-1.5" />
 			<LanguagePicker />
 		</div>
 
@@ -101,7 +106,10 @@
 					{/each}
 				</nav>
 				<hr />
-				<LanguagePicker />
+				<div class="flex gap-3">
+					<DarkModeSwitch />
+					<LanguagePicker />
+				</div>
 			</Drawer.Content>
 		</Drawer.Root>
 	</div>

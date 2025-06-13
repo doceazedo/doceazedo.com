@@ -21,7 +21,7 @@
 					<img
 						src={item.image}
 						alt=""
-						class="mb-3 aspect-video w-full rounded object-cover"
+						class="mb-3 aspect-video w-full rounded border object-cover"
 					/>
 				{/if}
 				{#if item.label}

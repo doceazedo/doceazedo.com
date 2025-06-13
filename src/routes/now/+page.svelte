@@ -210,7 +210,7 @@
 			<a
 				href={project.url}
 				target={!project.url.startsWith("/") ? "_blank" : undefined}
-				class="ease-elastic hover:bg-muted flex flex-col gap-3 rounded border p-3 transition-all hover:scale-105"
+				class="ease-elastic hover:bg-muted flex flex-col gap-3 rounded border p-6 transition-all hover:scale-105"
 			>
 				<hgroup>
 					<p class="text-primary -mb-0.5 text-xs font-semibold uppercase">
@@ -237,7 +237,7 @@
 							</div>
 						{/each}
 					</div>
-					<ul class="text-body flex items-center gap-3 text-xs">
+					<ul class="text-body flex items-center gap-1.5 text-xs">
 						<li class="flex items-center gap-1">
 							<span class="size-3 rounded-xs bg-emerald-500"></span>
 							{m.booking_month_status_available()}
@@ -559,7 +559,7 @@
 						cy="18"
 						r="16"
 						fill="none"
-						class="stroke-muted"
+						class="stroke-primary/20"
 						stroke-width="0.5"
 					></circle>
 					<circle
