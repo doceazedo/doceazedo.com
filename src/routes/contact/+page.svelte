@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { m } from "$lib/paraglide/messages";
 	import { onMount } from "svelte";
+	import Seo from "$lib/components/seo.svelte";
 
 	let pageHeight = $state(0);
 
@@ -20,6 +21,8 @@
 			4;
 	});
 </script>
+
+<Seo title={m.contact_seo_title()} />
 
 <div
 	class="flex w-full flex-col items-center justify-center"

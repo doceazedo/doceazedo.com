@@ -20,6 +20,7 @@
 	import { MY_LOCATION, SOCIALS, WORK } from "$lib/constants";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import * as Tooltip from "$lib/components/ui/tooltip";
+	import Seo from "$lib/components/seo.svelte";
 
 	let { data } = $props();
 
@@ -106,6 +107,8 @@
 		return data;
 	};
 </script>
+
+<Seo title={m.about_me_seo_title()} />
 
 <hgroup class="mb-3 py-3 md:mb-6 md:py-6">
 	<h1 class="text-3xl md:text-4xl">{m.about_me()}</h1>

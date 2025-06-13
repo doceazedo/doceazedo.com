@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from "$lib/components/seo.svelte";
 	import { m } from "$lib/paraglide/messages";
 	import AppsGrid from "./apps-grid.svelte";
 	import ProductsGrid from "./products-grid.svelte";
@@ -192,6 +193,8 @@
 		},
 	];
 </script>
+
+<Seo title={m.uses_seo_title()} />
 
 <hgroup class="mb-3 py-3 md:mb-6 md:py-6">
 	<h1 class="text-3xl md:text-4xl">{m.thing_i_use()}</h1>

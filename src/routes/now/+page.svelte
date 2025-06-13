@@ -26,6 +26,7 @@
 	import { SOCIALS, WORK } from "$lib/constants";
 	import { cn } from "$lib/utils";
 	import { daysAgo } from "$lib/utils/date";
+	import Seo from "$lib/components/seo.svelte";
 
 	type Availability = {
 		label: string;
@@ -193,6 +194,8 @@
 </script>
 
 <svelte:window bind:innerWidth />
+
+<Seo title={m.now_seo_title()} />
 
 <div class="flex flex-col gap-12">
 	<hgroup class="py-3 md:py-6">

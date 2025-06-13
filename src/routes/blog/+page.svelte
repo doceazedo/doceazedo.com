@@ -1,10 +1,13 @@
 <script lang="ts">
+	import Seo from "$lib/components/seo.svelte";
 	import { m } from "$lib/paraglide/messages";
 	import { postedAt, wasPostedThisWeek } from "$lib/utils/date";
 	import { StarFillSystem } from "svelte-remix";
 
 	let { data } = $props();
 </script>
+
+<Seo title={m.articles_seo_title()} />
 
 <hgroup class="mb-3 py-3 md:mb-6 md:py-6">
 	<h1 class="text-3xl md:text-4xl">{m.articles()}</h1>

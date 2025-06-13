@@ -46,7 +46,7 @@
 	<p
 		class="text-body [&>span]:text-foreground [&>a]:text-foreground [&>a]:hover:text-primary relative z-0 mt-auto max-w-[27ch] translate-y-6 [&>a]:underline [&>a]:transition-all"
 	>
-		{@html m.mini_bio({
+		{@html m.excerpt({
 			companyName: WORK.company,
 			companyUrl: WORK.url,
 		})}

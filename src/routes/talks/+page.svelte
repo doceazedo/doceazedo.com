@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from "$lib/components/seo.svelte";
 	import { SOCIALS, WORK } from "$lib/constants";
 	import { m } from "$lib/paraglide/messages";
 	import { getLocale } from "$lib/paraglide/runtime";
@@ -55,6 +56,10 @@
 		},
 	];
 </script>
+
+<Seo
+	title="{m.upcoming_talks()} & {m.past_talks().toLowerCase()} • Doce Fernandes"
+/>
 
 <div class="flex flex-col gap-6 py-3 md:gap-12 md:py-6">
 	<h1 class="text-3xl md:text-4xl">{m.upcoming_talks()}</h1>

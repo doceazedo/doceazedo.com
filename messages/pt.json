@@ -7,7 +7,6 @@
 	"select_language": "Selecionar idioma:",
 	"greetings": "Prazer, Doce Fernandes",
 	"lets_work_together": "Bora trampar\njuntes",
-	"mini_bio": "Um dev <span>🦄</span>, designer e DJ. Eu crio coisas com Rust & Svelte, mantenho projetos open-source, trabalho na <a href=\"{companyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">{companyName}</a>, e toco como DJ nos fins de semana <span>✌️</span>",
 	"select_work": "Uns trampos daora",
 	"case_studies": "Estudos de caso",
 	"portfolio_afterparty_pretitle": "SaaS",
@@ -238,5 +237,13 @@
 	"current_classes": "Disciplinas atuais",
 	"period_exams": "Período de provas",
 	"period_classes": "Período de aulas",
-	"period_soon": "Em breve"
+	"period_soon": "Em breve",
+	"excerpt": "Um dev <span>🦄</span>, designer e DJ. Eu crio coisas com Rust & Svelte, mantenho projetos open-source, trabalho na <a href=\"{companyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">{companyName}</a>, e toco como DJ nos fins de semana <span>✌️</span>",
+	"excerpt_clean": "Prazer, Doce Fernandes! Um dev unicórnio, designer e DJ. Eu crio coisas com Rust & Svelte, mantenho projetos open-source, trabalho na {company}, e toco como DJ nos fins de semana.",
+	"articles_seo_title": "Guias, tutoriais e notas pessoais de Doce Fernandes",
+	"about_me_seo_title": "URGENTE: Doce Fernandes é flagrado em plena terça-feira sendo interessante e bem resolvido",
+	"colophon_seo_title": "Como o site de Doce Fernandes foi feito?",
+	"contact_seo_title": "Contato, redes sociais e outros links de Doce Fernandes",
+	"now_seo_title": "O que Doce Fernandes tá fazendo tipo ...NESSE EXATO MOMENTO???",
+	"uses_seo_title": "Quase tudo que Doce Fernandes usa"
 }

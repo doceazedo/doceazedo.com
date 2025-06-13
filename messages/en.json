@@ -7,7 +7,6 @@
 	"select_language": "Select language:",
 	"greetings": "I’m Doce Fernandes",
 	"lets_work_together": "Let's work\ntogether",
-	"mini_bio": "A <span>🦄</span> developer, designer, and DJ. I build tools with Rust & Svelte, maintain FOSS projects, work at <a href=\"{companyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">{companyName}</a>, and spin DJ sets on weekends <span>✌️</span>",
 	"select_work": "Select work",
 	"case_studies": "Case studies",
 	"portfolio_afterparty_pretitle": "SaaS",
@@ -175,7 +174,6 @@
 	"personally_early_days": "My programming journey started in 2015 with VB.NET, which feels like a lifetime ago. From there it was this whole chaotic path through random projects until eventually landing my first actual job in 2018.",
 	"personally_hobbies": "When I'm not coding (rare), you'll find me looking for vinyl records, fighting against Fruity Loops, or chilling in the voice chat. I'm obsessed with hyperpop and more experimental music, especially the local scene, and I love mixing Brazilian Funk with other electronic sounds.",
 	"map_distance": "I'm from <span>Belo Horizonte, Brazil</span>, roughly <span>{km}km</span> away from your current location, according to your IP address.",
-	"map_distance_fallback": "I'm from <span>Belo Horizonte, Brazil</span>! I wonder where you're from...",
 	"about_music": "Listening & making music",
 	"music_taste": "What I'm into",
 	"music_taste_subtitle": "I would say my taste is a bit all over the place... So let me fetch my Last.fm data to tell you about it instead.",
@@ -185,6 +183,7 @@
 	"more_on_soundcloud": "More on SoundCloud",
 	"lets_have_fun": "Let's have some fun!",
 	"lets_have_fun_description": "Don't be shy! I'm everywhere online (footer has the links) but active the most on Discord. I'm always excited to meet new humans. Just please don't send <a href=\"https://nohello.net\" target=\"_blank\">a plain \"hey\" and nothing else</a>, give me something to work with lol.",
+	"map_distance_fallback": "I'm from <span>Belo Horizonte, Brazil</span>! I wonder where you're from...",
 	"likes": "Likes",
 	"dislikes": "Dislikes",
 	"blog_footnote": "Written by Doce Fernandes, a <u>human</u>.",
@@ -238,5 +237,13 @@
 	"current_classes": "Current classes",
 	"period_exams": "Exams period",
 	"period_classes": "Classes period",
-	"period_soon": "Starting soon"
+	"period_soon": "Starting soon",
+	"excerpt": "A <span>🦄</span> developer, designer, and DJ. I build tools with Rust & Svelte, maintain FOSS projects, work at <a href=\"{companyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">{companyName}</a>, and spin DJ sets on weekends <span>✌️</span>",
+	"excerpt_clean": "I'm Doce Fernandes, a unicorn developer, designer, and DJ. I build tools with Rust & Svelte, maintain FOSS projects, work at {company}, and spin DJ sets on weekends.",
+	"articles_seo_title": "Guides, tutorials and personal notes by Doce Fernandes",
+	"about_me_seo_title": "BREAKING: All about Doce Fernandes, former gifted kid now full-time weird icon!",
+	"colophon_seo_title": "How was Doce Fernandes's site made?",
+	"contact_seo_title": "Contact, social media, and other links of Doce Fernandes",
+	"now_seo_title": "What is Doce Fernandes doing like ...RIGHT NOW???",
+	"uses_seo_title": "Almost every single thing Doce Fernandes uses"
 }

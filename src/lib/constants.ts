@@ -10,6 +10,8 @@ import {
 } from "svelte-remix";
 import { m } from "$lib/paraglide/messages";
 
+export const DOMAIN = "doce.sh";
+
 export const MY_LOCATION: [number, number] = [-43.938, -19.92]; // Belo Horizonte
 
 export const DEBUG_LOCATION: [number, number] = [-71.077, -8.797]; // Acre

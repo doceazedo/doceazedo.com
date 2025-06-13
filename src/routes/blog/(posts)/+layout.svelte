@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from "$lib/components/seo.svelte";
 	import { m } from "$lib/paraglide/messages.js";
 	import { getLocale } from "$lib/paraglide/runtime.js";
 	import { cn } from "$lib/utils.js";
@@ -44,6 +45,8 @@
 		});
 	});
 </script>
+
+<Seo title="{data.metadata.title} • Doce Fernandes" />
 
 <div class="flex w-full gap-12 py-12">
 	<main class="mx-auto flex w-full max-w-2xl shrink-0 flex-col gap-12">
