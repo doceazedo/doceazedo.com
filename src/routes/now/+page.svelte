@@ -49,7 +49,7 @@
 			total: 656,
 			updatedAt: new Date("2025/06/13 GMT-3"),
 		},
-		startedAt: new Date("2025/06/29 GMT-3"),
+		startedAt: new Date("2025/06/13 GMT-3"),
 	};
 
 	const getLastPlayedGames = async () => {
