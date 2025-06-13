@@ -18,6 +18,7 @@
 	import { Button } from "$lib/components/ui/button";
 	import { LAST_PLAYED_TRACKS } from "$lib/stores";
 	import { Progress } from "$lib/components/ui/progress";
+	import { SOCIALS } from "$lib/constants";
 
 	const BOOK = {
 		title: {
@@ -213,7 +214,7 @@
 					{/each}
 				{/if}
 				<Button
-					href="https://www.last.fm/user/doceazedo911"
+					href={SOCIALS.lastfm.url}
 					target="_blank"
 					variant="link"
 					class="ml-auto"

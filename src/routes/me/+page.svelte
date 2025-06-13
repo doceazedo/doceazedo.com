@@ -17,7 +17,7 @@
 	} from "svelte-remix";
 	import Map from "./map.svelte";
 	import { distance } from "@turf/turf";
-	import { MY_LOCATION } from "$lib/constants";
+	import { MY_LOCATION, SOCIALS, WORK } from "$lib/constants";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import * as Tooltip from "$lib/components/ui/tooltip";
 
@@ -49,8 +49,8 @@
 			icon: CodeSSlashLineDevelopment,
 			color: "blue",
 			pretitle: m.work(),
-			title: "Rail Europe",
-			description: "Frontend Developer",
+			title: WORK.company,
+			description: m.work_position(),
 		},
 		{
 			icon: GraduationCapLineOthers,
@@ -267,7 +267,7 @@
 				title="SoundCloud"
 			></iframe>
 			<Button
-				href="https://soundcloud.com/doceazedo"
+				href={SOCIALS.soundcloud.url}
 				target="_blank"
 				class="mt-auto w-fit bg-[#ff7700] hover:bg-[#ff7700dd]"
 			>

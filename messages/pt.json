@@ -210,5 +210,6 @@
 	"reading_subtitle": "Eu tô (lentamente) tentando criar um hábito de leitura.",
 	"started_at": "Comecei em <span>{date}</span>",
 	"pages_read": "Página <span>{current}</span> de <span>{total}</span>",
-	"add_me_on_steam": "Me adiciona na Steam"
+	"add_me_on_steam": "Me adiciona na Steam",
+	"work_position": "Frontend Developer"
 }

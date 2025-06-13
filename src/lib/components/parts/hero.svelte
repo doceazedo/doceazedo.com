@@ -3,6 +3,7 @@
 	import { m } from "$lib/paraglide/messages";
 	import { onMount } from "svelte";
 	import { cn } from "$lib/utils";
+	import { WORK } from "$lib/constants";
 
 	let isDayTime = $state(false);
 
@@ -73,8 +74,8 @@
 		class="text-body [&>span]:text-foreground [&>a]:text-foreground [&>a]:hover:text-primary relative z-0 mt-auto max-w-[27ch] translate-y-6 [&>a]:underline [&>a]:transition-all"
 	>
 		{@html m.mini_bio({
-			companyName: "Rail Europe",
-			companyUrl: "https://www.linkedin.com/company/1528184",
+			companyName: WORK.company,
+			companyUrl: WORK.url,
 		})}
 	</p>
 </section>

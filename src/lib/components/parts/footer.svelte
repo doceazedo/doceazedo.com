@@ -1,31 +1,21 @@
 <script lang="ts">
 	import { m } from "$lib/paraglide/messages";
-	import {
-		BlueskyLineLogos,
-		DiscordLineLogos,
-		GithubLineLogos,
-		InstagramLineLogos,
-		LinkedinBoxLineLogos,
-	} from "svelte-remix";
 	import ElevatorUp from "$lib/components/icons/elevator-up.svg?component";
 	import { cn } from "$lib/utils";
 	import { onMount } from "svelte";
 	import type { NowPlayingTrack } from "$lib/types";
 	import Memoji from "$lib/components/memoji.svelte";
 	import { LAST_PLAYED_TRACKS } from "$lib/stores";
+	import { SOCIALS } from "$lib/constants";
 
-	const SOCIALS = [
-		{ icon: GithubLineLogos, url: "https://github.com/doceazedo" },
-		{
-			icon: LinkedinBoxLineLogos,
-			url: "https://www.linkedin.com/in/doceazedo",
-		},
-		{ icon: BlueskyLineLogos, url: "https://bsky.app/profile/doceazedo.com" },
-		{ icon: InstagramLineLogos, url: "https://instagram.com/doceazedo911" },
-		{ icon: DiscordLineLogos, url: "https://discord.gg/vEGRe2kq8B" },
+	const FOOTER_SOCIALS = [
+		SOCIALS.github,
+		SOCIALS.linkedin,
+		SOCIALS.bluesky,
+		SOCIALS.instagram,
+		SOCIALS.discord,
+		SOCIALS.soundcloud,
 	];
-
-	const LAST_FM_URL = "https://www.last.fm/user/doceazedo911";
 
 	let scrollY = $state(0);
 	let innerHeight = $state(0);
@@ -75,7 +65,7 @@
 	</div>
 
 	<div class="text-body mx-auto mt-auto flex translate-y-1.5">
-		{#each SOCIALS as social, i}
+		{#each FOOTER_SOCIALS as social, i}
 			<a
 				href={social.url}
 				target="_blank"
@@ -91,7 +81,7 @@
 
 	{#if currentTrack}
 		<a
-			href={LAST_FM_URL}
+			href={SOCIALS.lastfm.url}
 			target="_blank"
 			class="hover:bg-muted group relative mx-auto mt-auto flex h-fit flex-row-reverse items-center gap-2 rounded-xs p-1 transition-all hover:shadow-[0_0_0_4px_var(--muted)] md:mx-0 md:translate-1 md:flex-row"
 		>
