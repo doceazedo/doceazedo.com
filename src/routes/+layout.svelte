@@ -106,9 +106,9 @@
 					{/each}
 				</nav>
 				<hr />
-				<div class="flex gap-3">
-					<DarkModeSwitch />
+				<div class="flex">
 					<LanguagePicker />
+					<DarkModeSwitch />
 				</div>
 			</Drawer.Content>
 		</Drawer.Root>

@@ -33,10 +33,7 @@
 	>
 		<GlobalLineBusiness class="size-5" />
 	</DropdownMenu.Trigger>
-	<DropdownMenu.Content
-		sideOffset={isDesktop ? -12 : 12}
-		align={isDesktop ? "end" : "start"}
-	>
+	<DropdownMenu.Content align={isDesktop ? "end" : "start"}>
 		<DropdownMenu.Group>
 			<DropdownMenu.Label>{m.select_language()}</DropdownMenu.Label>
 			<DropdownMenu.Separator />
