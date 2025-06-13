@@ -9,8 +9,10 @@
 		BookMarkedFillDocument,
 		CalendarCheckLineBusiness,
 		CalendarLineBusiness,
+		CodeSSlashLineDevelopment,
 		GamepadFillDevice,
 		GamepadLineDevice,
+		GitRepositoryCommitsLineDevelopment,
 		HeadphoneFillMedia,
 		UserLineUserFaces,
 	} from "svelte-remix";
@@ -18,7 +20,14 @@
 	import { Button } from "$lib/components/ui/button";
 	import { LAST_PLAYED_TRACKS } from "$lib/stores";
 	import { Progress } from "$lib/components/ui/progress";
-	import { SOCIALS } from "$lib/constants";
+	import { SOCIALS, WORK } from "$lib/constants";
+	import { cn } from "$lib/utils";
+	import { daysAgo } from "$lib/utils/date";
+
+	type Availability = {
+		label: string;
+		available: boolean | "partial";
+	};
 
 	const BOOK = {
 		title: {
@@ -37,7 +46,7 @@
 			total: 656,
 			updatedAt: new Date("2025/06/13 GMT-3"),
 		},
-		startedAt: new Date("2025/06/13 GMT-3"),
+		startedAt: new Date("2025/06/29 GMT-3"),
 	};
 
 	const getLastPlayedGames = async () => {
@@ -58,6 +67,99 @@
 
 	let innerWidth = $state(0);
 	let isDesktop = $derived(innerWidth >= 768);
+
+	const CURRENT_PROJECT_DEADLINES = [
+		new Date("2025/07/27"), // Tekne
+	];
+
+	const BLOCKED_FREELANCE_MONTHS = [
+		0, // Jan (New Years)
+		11, // Dec (Christmas)
+	];
+
+	const PARTIALLY_BLOCKED_FREELANCE_MONTHS = [
+		2, // Mar (Carnival)
+		9, // Oct (Usually on vacation)
+	];
+
+	const getNewProjectsAvailability = (monthsAhead = 6): Availability[] => {
+		const today = new Date();
+
+		return Array.from({ length: monthsAhead }, (_uwu, i) => {
+			const targetDate = new Date(today);
+			targetDate.setMonth(today.getMonth() + i);
+
+			const monthIdx = targetDate.getMonth();
+			const label = targetDate
+				.toLocaleDateString(getLocale(), { month: "long" })
+				.slice(0, 3)
+				.toUpperCase();
+
+			const hasCurrentProjects = CURRENT_PROJECT_DEADLINES.some(
+				(deadline) => targetDate <= deadline,
+			);
+			if (hasCurrentProjects) {
+				return { label, available: false };
+			}
+
+			const isCurrentMonth = monthIdx === today.getMonth();
+			if (isCurrentMonth) {
+				return { label, available: "partial" };
+			}
+
+			if (PARTIALLY_BLOCKED_FREELANCE_MONTHS.includes(monthIdx)) {
+				return { label, available: "partial" };
+			}
+
+			const isBlocked = BLOCKED_FREELANCE_MONTHS.includes(monthIdx);
+			return { label, available: !isBlocked };
+		});
+	};
+
+	const getNewProjectsBookingStatus = () => {
+		const availability = getNewProjectsAvailability();
+		const availableMonths = availability.filter(
+			(x) => x.available === true,
+		).length;
+		if (availableMonths === 0) return m.booking_status_closed();
+		if (availableMonths <= 4) return m.booking_status_some_availability();
+		return m.booking_status_open();
+	};
+
+	const getLastCommitDate = async (repo: string) => {
+		try {
+			const resp = await fetch(`/api/now/last-commit?repo=${repo}`);
+			const data = await resp.json();
+			return data?.date || null;
+		} catch (_error) {
+			return null;
+		}
+	};
+
+	const DEV_PROJECTS = [
+		{
+			pretitle: m.side_project(),
+			title: "Godot WRY",
+			description: m.portfolio_godot_wry_description(),
+			url: "https://github.com/doceazedo/godot_wry",
+			lastCommitAt: getLastCommitDate("doceazedo/godot_wry"),
+		},
+		{
+			pretitle: m.day_job(),
+			title: WORK.company,
+			description: WORK.description,
+			url: WORK.url,
+			cta: m.more_about({ subject: WORK.company }),
+		},
+		{
+			pretitle: m.freelance(),
+			title: getNewProjectsBookingStatus(),
+			description: m.freelance_description(),
+			url: "/contact",
+			cta: m.reach_out(),
+			isFreelance: true,
+		},
+	];
 </script>
 
 <svelte:window bind:innerWidth />
@@ -67,6 +169,90 @@
 		<h1 class="text-3xl md:text-4xl">{m.now()}</h1>
 		<p class="text-body">{m.now_subtitle()}</p>
 	</hgroup>
+
+	<NowSectionTitle
+		icon={CodeSSlashLineDevelopment}
+		title={m.coding()}
+		subtitle={m.coding_description()}
+	/>
+
+	<div class="grid gap-6 md:grid-cols-3">
+		{#each DEV_PROJECTS as project}
+			<a
+				href={project.url}
+				target={!project.url.startsWith("/") ? "_blank" : undefined}
+				class="ease-elastic hover:bg-muted flex flex-col gap-3 rounded border p-3 transition-all hover:scale-105"
+			>
+				<hgroup>
+					<p class="text-primary -mb-0.5 text-xs font-semibold uppercase">
+						{project.pretitle}
+					</p>
+					<h3 class="text-xl md:-mb-px md:text-2xl">{project.title}</h3>
+				</hgroup>
+				<p class="text-body leading-5">
+					{project.description}
+				</p>
+				{#if project.isFreelance}
+					<div class="grid grid-cols-6 gap-4 md:gap-2 lg:gap-3">
+						{#each getNewProjectsAvailability() as month}
+							<div class="flex flex-col items-center gap-0.5 text-center">
+								<span
+									class={cn(
+										"aspect-square w-full rounded",
+										month.available === true && "bg-emerald-500",
+										month.available === false && "bg-red-400",
+										month.available === "partial" && "bg-yellow-500",
+									)}
+								></span>
+								<p class="text-body text-xs">{month.label}</p>
+							</div>
+						{/each}
+					</div>
+					<ul class="text-body flex items-center gap-3 text-xs">
+						<li class="flex items-center gap-1">
+							<span class="size-3 rounded-xs bg-emerald-500"></span>
+							{m.booking_month_status_available()}
+						</li>
+						<li class="flex items-center gap-1">
+							<span class="size-3 rounded-xs bg-yellow-500"></span>
+							{m.booking_month_status_partial()}
+						</li>
+						<li class="flex items-center gap-1">
+							<span class="size-3 rounded-xs bg-red-400"></span>
+							{m.booking_month_status_unavailable()}
+						</li>
+					</ul>
+				{/if}
+				<div class="mt-auto flex items-center gap-1.5">
+					{#if project.lastCommitAt}
+						<GitRepositoryCommitsLineDevelopment class="size-4" />
+						<p class="text-body flex items-center gap-1 text-sm">
+							{m.last_commit()}:
+							{#await project.lastCommitAt}
+								<Skeleton class="h-4 w-14 rounded" />
+							{:then lastCommitAt}
+								{#if lastCommitAt}
+									{@const days = daysAgo(new Date(lastCommitAt))}
+									<span
+										class="text-foreground hover:text-primary underline transition-all"
+									>
+										{m.days_ago({ days })}
+									</span>
+								{/if}
+							{/await}
+						</p>
+					{:else if project.cta}
+						<Button variant="link" size="sm">
+							{project.cta}
+							<ArrowRightLineArrows class="size-4.5" />
+						</Button>
+					{/if}
+				</div>
+			</a>
+		{/each}
+	</div>
+
+	<hr />
 
 	<NowSectionTitle
 		icon={BookMarkedFillDocument}

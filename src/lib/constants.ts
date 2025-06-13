@@ -8,6 +8,7 @@ import {
 	SoundcloudLineLogos,
 	SteamLineLogos,
 } from "svelte-remix";
+import { m } from "$lib/paraglide/messages";
 
 export const MY_LOCATION: [number, number] = [-43.938, -19.92]; // Belo Horizonte
 
@@ -42,4 +43,6 @@ export const SOCIALS = {
 export const WORK = {
 	company: "Rail Europe",
 	url: "https://www.linkedin.com/company/1528184",
+	position: m.work_position(),
+	description: m.work_description({ since: 2024 }),
 };

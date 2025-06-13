@@ -211,5 +211,22 @@
 	"started_at": "Comecei em <span>{date}</span>",
 	"pages_read": "Página <span>{current}</span> de <span>{total}</span>",
 	"add_me_on_steam": "Me adiciona na Steam",
-	"work_position": "Frontend Developer"
+	"work_position": "Frontend Developer",
+	"work_description": "Eu trabalho como desenvolvedore web frontend em tempo integral na Rail Europe desde {since}!",
+	"more_about": "Mais sobre {subject}",
+	"booking_status_closed": "Agenda cheia",
+	"booking_status_some_availability": "Levemente ocupade",
+	"booking_status_open": "Aberto a novos projetos",
+	"side_project": "Projeto pessoal",
+	"day_job": "Emprego",
+	"freelance": "Freela",
+	"freelance_description": "Faço freelas quando faz sentido. Minha disponibilidade pros próximos 6 meses:",
+	"coding": "Programando",
+	"coding_description": "Projetos e outros trampos que eu tô focade no momento.",
+	"booking_month_status_available": "Livre",
+	"booking_month_status_partial": "Meio livre",
+	"booking_month_status_unavailable": "Indisponível",
+	"last_commit": "Último commit",
+	"days_ago": "há {days} dias",
+	"reach_out": "Fala comigo"
 }
