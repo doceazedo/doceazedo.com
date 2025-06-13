@@ -1,5 +1,17 @@
-/// <reference types="@sveltejs/kit" />
+import mapboxgl from "mapbox-gl";
 
-// See https://kit.svelte.dev/docs/typescript
-// for information about these interfaces
-declare namespace App {}
+declare global {
+	namespace App {
+		// interface Error {}
+		// interface Locals {}
+		// interface PageData {}
+		// interface PageState {}
+		// interface Platform {}
+	}
+
+	declare interface Window {
+		mapboxgl: typeof mapboxgl;
+	}
+}
+
+export {};

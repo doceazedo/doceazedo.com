@@ -1,40 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%sveltekit.assets%/img/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;700&family=Karla:ital,wght@0,300;0,700;1,300;1,700&display=swap"
-    />
-    <script
-      defer
-      src="/stats/js/script.js"
-      data-api="/stats/api/event"
-      data-domain="doceazedo.com"
-    ></script>
-    <style data-user-settings>
-      :root {
-        --primary-rgb: 105, 48, 195;
-        --primary-light-rgb: 137, 104, 211;
-        --background-rgb: 7, 2, 18;
-
-        --primary: rgb(var(--primary-rgb));
-        --primary-light: rgb(var(--primary-light-rgb));
-        --background: rgb(var(--background-rgb));
-
-        --font-emoji: Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-        --font-primary: 'Rubik', sans-serif, var(--font-emoji);
-        --font-secondary: 'Karla', sans-serif, var(--font-emoji);
-        --font-dyslexia: 'OpenDyslexic', sans-serif, var(--font-emoji);
-      }
-    </style>
-    %sveltekit.head%
-  </head>
-  <body>
-    %sveltekit.body%
-  </body>
+<!doctype html>
+<html lang="%paraglide.lang%" class="dark">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/img/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.css"
+			rel="stylesheet"
+		/>
+		%sveltekit.head%
+	</head>
+	<body
+		data-sveltekit-preload-data="hover"
+		class="transition-colors duration-300"
+	>
+		<div style="display: contents">%sveltekit.body%</div>
+		<script src="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js"></script>
+	</body>
 </html>

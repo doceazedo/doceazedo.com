@@ -1,15 +1,13 @@
 <script lang="ts">
-  import { Blurb, Metadata } from '$lib/components';
-  import { POSTS } from '$lib/components/posts';
-  import PostsLatest from '$lib/components/posts/PostsLatest.svelte';
-  import Newsletter from '$lib/components/newsletter/Newsletter.svelte';
-
-  export let data;
-
-  $POSTS = data.posts;
+	import Hero from "$lib/components/parts/hero.svelte";
+	import Portfolio from "$lib/components/parts/portfolio.svelte";
+	import BlogPosts from "$lib/components/parts/blog-posts.svelte";
+	import Newsletter from "$lib/components/parts/newsletter.svelte";
+	import Seo from "$lib/components/seo.svelte";
 </script>
 
-<Metadata />
-<Blurb />
-<PostsLatest />
+<Seo title="Doce Fernandes • Unicorn Developer, Designer & DJ" />
+<Hero />
+<Portfolio />
+<BlogPosts />
 <Newsletter />

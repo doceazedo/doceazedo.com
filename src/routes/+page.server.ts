@@ -1,4 +1,6 @@
-import { getPosts } from '$lib/components/posts';
-import type { PageServerLoad } from './$types';
+import { getLatestBlogPosts } from "$lib/utils/blog-posts";
 
-export const load: PageServerLoad = async () => await getPosts(5);
+export const load = async () => {
+	const posts = getLatestBlogPosts();
+	return { posts };
+};

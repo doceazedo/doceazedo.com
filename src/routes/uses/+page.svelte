@@ -1,235 +1,233 @@
 <script lang="ts">
-  import '../../assets/css/prism-material-dark.css';
-  import _ from '$lib/lang';
-  import { Metadata, PageTitle, SubtitleWithIcon } from '$lib/components';
-  import {
-    AttachmentIcon,
-    ChatIcon,
-    CodeIcon,
-    ComputerIcon,
-    GlobeIcon,
-    LiveIcon,
-    PencilRulerIcon,
-    PuzzleIcon,
-    SparklesIcon,
-    ToolsIcon
-  } from '$lib/components/icons';
-  import UseList from './UseList.svelte';
-  import setupImg from '../../assets/img/setup.webp';
+	import Seo from "$lib/components/seo.svelte";
+	import { m } from "$lib/paraglide/messages";
+	import AppsGrid from "./apps-grid.svelte";
+	import ProductsGrid from "./products-grid.svelte";
 
-  type Things = {
-    [key: string]: string;
-  };
+	const PC_PARTS = [
+		{ label: m.uses_cpu(), product: "AMD Ryzen 7 7700X" },
+		{ label: m.uses_gpu(), product: "Gigabyte RTX 5070 Ti" },
+		{ label: m.uses_mobo(), product: "Gigabyte B650M" },
+		{ label: m.uses_ram(), product: "32GB (2×16) Crucial DDR5 5600MHz" },
+		{
+			label: m.uses_rom(),
+			product: "2TB Crucial NVMe SSD + 480GB Crucial SATA SSD",
+		},
+		{ label: m.uses_psu(), product: "Cooler Master GX Gold 850" },
+		{ label: m.uses_case(), product: "NZXT H5 Flow" },
+		{ label: m.uses_cooling(), product: "NZXT Kraken 240 RGB Water Cooler" },
+	];
 
-  type ThingsWithLinks = {
-    [key: string]: {
-      name: string;
-      url: string;
-    };
-  };
+	const PERIPHERALS = [
+		{
+			image: "/img/uses-display.webp",
+			label: m.uses_display(),
+			product: "Gigabyte M27Q",
+		},
+		{
+			image: "/img/uses-keyboard.webp",
+			label: m.uses_keyboard(),
+			product: "Keychron K10 Pro (Brown)",
+		},
+		{
+			image: "/img/uses-mouse.webp",
+			label: m.uses_mouse(),
+			product: "Logitech MX Master 3S",
+		},
+		{
+			image: "/img/uses-drawing-tablet.webp",
+			label: m.uses_drawing_tablet(),
+			product: "Wacom CTL472",
+		},
+		{
+			image: "/img/uses-webcam.webp",
+			label: m.uses_webcam(),
+			product: "Logitech C922",
+		},
+		{
+			image: "/img/uses-deskmat.webp",
+			label: m.uses_deskmat(),
+			product: "Kumori Speed Vissotto (90×40cm)",
+		},
+	];
 
-  type Links = {
-    [name: string]: {
-      url: string;
-    };
-  };
+	const AUDIO = [
+		{
+			image: "/img/uses-speakers.webp",
+			label: m.uses_speakers_office(),
+			product: "Edifier R1280DB",
+		},
+		{
+			image: "/img/uses-speakers-2.webp",
+			label: m.uses_speakers_home(),
+			product: "Edifier S360DB",
+		},
+		{
+			image: "/img/uses-headphones.webp",
+			label: m.uses_headphones(),
+			product: "AirPods Max",
+		},
+		{
+			image: "/img/uses-microphone.webp",
+			label: m.uses_microphone(),
+			product: "HyperX QuadCast",
+		},
+		{
+			image: "/img/uses-audio-interface.webp",
+			label: m.uses_audio_interface(),
+			product: "Focusrite Scarlett 2i2",
+		},
+		{
+			image: "/img/uses-earbuds.webp",
+			label: m.uses_earbuds(),
+			product: "AirPods Pro 2",
+		},
+		{
+			image: "/img/uses-turntable.webp",
+			label: m.uses_turntable(),
+			product: "Audio-Technica LP70XBT",
+		},
+	];
 
-  const mainPC = 'M1 MacBook Pro 14" 2021';
-  const gamingPC: Things = {
-    cpu: 'AMD Ryzen 3600X',
-    mobo: 'Gigabyte B450M DS3H',
-    ram: '24GB (3x8) Crucial Ballistix 3000MHz',
-    gpu: 'EVGA GTX 1660',
-    psu: 'Corsair CV650',
-    storage: '2TB NVMe + 480GB SATA + 500GB HDD',
-    case: 'Corsair Spec Delta RGB'
-  };
-  const peripherals: Things = {
-    display: 'Samsung UR550 28" 4K (👎)',
-    keyboard: 'Logitech G512 (GX Brown)',
-    mouse: 'Redragon Cobra',
-    tablet: 'Wacom CTL472',
-    headphone: 'AirPods Max',
-    mic: 'HyperX QuadCast',
-    webcam: 'iPhone 13 Pro Max',
-    desk: 'GenioDesk PLUS',
-    chair: 'GenioDesk ErgoChair'
-  };
+	const DEVELOPMENT_SOFTWARE = [
+		{
+			icon: "/img/uses-vscode.webp",
+			name: "VS Code",
+			label: m.uses_code_editor(),
+		},
+		{
+			icon: "/img/uses-intellij.webp",
+			name: "IntelliJ IDEA",
+			label: m.uses_kotlin_ide(),
+		},
+		{
+			icon: "/img/uses-rustrover.webp",
+			name: "RustRover",
+			label: m.uses_rust_ide(),
+		},
+		{
+			icon: "/img/uses-warp.webp",
+			name: "Warp",
+			label: m.uses_terminal(),
+		},
+		{
+			icon: "/img/uses-new-moon.webp",
+			name: "New Moon",
+			label: m.uses_theme(),
+		},
+	];
 
-  const generalApps: ThingsWithLinks = {
-    browser: { name: 'Chrome', url: 'https://google.com/chrome' },
-    music: { name: 'Spotify', url: 'https://spotify.com' },
-    passwordManager: { name: 'Bitwarden', url: 'https://bitwarden.com' },
-    docs: { name: 'Google Docs', url: 'https://docs.google.com' },
-    slides: { name: 'PowerPoint', url: 'https://microsoft.com/pt-br/microsoft-365/powerpoint' },
-    cloud: { name: 'MEGA', url: 'https://mega.nz' }
-  };
+	const GENERAL_SOFTWARE = [
+		{
+			icon: "/img/uses-firefox.webp",
+			name: "Firefox",
+			label: m.uses_browser(),
+		},
+		{
+			icon: "/img/uses-spotify.webp",
+			name: "Spotify",
+			label: m.uses_music_streaming(),
+		},
+		{
+			icon: "/img/uses-bitwarden.webp",
+			name: "Bitwarden",
+			label: m.uses_password_manager(),
+		},
+		{
+			icon: "/img/uses-docs.webp",
+			name: "Google Docs",
+			label: m.uses_documents(),
+		},
+		{
+			icon: "/img/uses-powerpoint.webp",
+			name: "PowerPoint",
+			label: m.uses_slides(),
+		},
+		{
+			icon: "/img/uses-mega.webp",
+			name: "MEGA",
+			label: m.uses_cloud(),
+		},
+		{
+			icon: "/img/uses-obsidian.webp",
+			name: "Obsidian",
+			label: m.uses_notes(),
+		},
+		{
+			icon: "/img/uses-raycast.webp",
+			name: "Raycast",
+			label: m.uses_app_launcher(),
+		},
+		{
+			icon: "/img/uses-cleanshotx.webp",
+			name: "CleanShot X",
+			label: m.uses_screenshots(),
+		},
+		{
+			icon: "/img/uses-screenstudio.webp",
+			name: "Screen Studio",
+			label: m.uses_screen_recorder(),
+		},
+		{
+			icon: "/img/uses-capcut.webp",
+			name: "CapCut",
+			label: m.uses_video_editor(),
+		},
+	];
 
-  const productivityApps: ThingsWithLinks = {
-    notes: { name: 'Obsidian', url: 'https://obsidian.md' },
-    drafts: { name: 'Excalidraw+', url: 'https://excalidraw.com' },
-    raycast: { name: 'Raycast', url: 'https://raycast.com' },
-    screenshot: { name: 'CleanShot X', url: 'https://cleanshot.com' },
-    videoEditing: { name: 'Filmora', url: 'https://filmora.wondershare.com.br' }
-  };
-
-  const codingApps: ThingsWithLinks = {
-    ideKotlin: { name: 'IntelliJ IDEA', url: 'https://jetbrains.com/idea' },
-    terminal: { name: 'Warp', url: 'https://warp.dev' }
-  };
-  const vscodeSettings: ThingsWithLinks | Links = {
-    theme: { name: 'New Moon', url: 'https://taniarascia.github.io/new-moon' },
-    font: { name: 'Fira Code', url: 'https://github.com/tonsky/FiraCode' },
-    settings: { url: 'https://gist.github.com/doceazedo/a82ef97ebd94227d48f270042fcb63aa' }
-  };
-  const webDevStack: ThingsWithLinks = {
-    language: { name: 'TypeScript', url: 'https://typescriptlang.org' },
-    svelte: { name: 'Svelte', url: 'https://svelte.dev' },
-    svelteKit: { name: 'SvelteKit', url: 'https://kit.svelte.dev' },
-    css: { name: 'SASS', url: 'https://sass-lang.com' },
-    icons: { name: 'Lucide', url: 'https://lucide.dev' },
-    brandIcons: { name: 'Simple Icons', url: 'https://simpleicons.org' },
-    bundler: { name: 'Vite', url: 'https://vitejs.dev' },
-    tests: { name: 'Vitest', url: 'https://vitest.dev' },
-    hosting: { name: 'Vercel', url: 'https://vercel.com' }
-  };
-
-  const streamingApps: ThingsWithLinks = {
-    obs: { name: 'OBS', url: 'https://obsproject.com' },
-    chat: { name: 'Chatterino', url: 'https://chatterino.com' },
-    audio: { name: 'Loopback', url: 'https://rogueamoeba.com/loopback' }
-  };
-
-  const designApps: ThingsWithLinks = {
-    figma: { name: 'Figma', url: 'https://figma.com' },
-    illustrator: { name: 'Illustrator', url: 'https://reddit.com/r/GenP' },
-    photopea: { name: 'Photopea', url: 'https://photopea.com' }
-  };
-
-  const socialApps: ThingsWithLinks = {
-    mastodonWeb: { name: 'Elk', url: 'https://elk.zone' },
-    mastodonMobile: { name: 'Mammoth', url: 'https://getmammoth.app' },
-    tweetdeck: { name: 'TweetDeck', url: 'https://tweetdeck.twitter.com' },
-    discord: { name: 'Discord', url: 'https://qg.doceazedo.com' }
-  };
-
-  const utils: ThingsWithLinks = {
-    pxToRem: { name: 'PX to REM converter', url: 'https://nekocalc.com/px-to-rem-converter' },
-    gridGenerator: { name: 'CSS Grid Generator', url: 'https://cssgrid-generator.netlify.app' },
-    svgomg: { name: 'SVGOMG', url: 'https://jakearchibald.github.io/svgomg' },
-    bulkResize: { name: 'Bulk Resize Photos', url: 'https://bulkresizephotos.com' },
-    icons: { name: 'Iconês', url: 'https://icones.js.org' }
-  };
-
-  const extensions: ThingsWithLinks = {
-    adblocker: {
-      name: 'uBlock Origin',
-      url: 'https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm'
-    },
-    darkReader: {
-      name: 'Dark Reader',
-      url: 'https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh'
-    },
-    rss: {
-      name: 'Feeder',
-      url: 'https://chrome.google.com/webstore/detail/pnjaodmkngahhkoihejjehlcdlnohgmp'
-    },
-    wappalyzer: {
-      name: 'Wappalyzer',
-      url: 'https://chrome.google.com/webstore/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg'
-    },
-    jsonViewer: {
-      name: 'JSON Viewer',
-      url: 'https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh'
-    },
-    hardRefresh: {
-      name: 'Hard Refresh',
-      url: 'https://chrome.google.com/webstore/detail/hard-refresh/ichmdelihgokllcnibkcpciljnggojkj'
-    },
-    ogChecker: {
-      name: 'Localhost Open Graph Checker',
-      url: 'https://chrome.google.com/webstore/detail/localhost-open-graph-chec/gcbnmkhkglonipggglncobhklaegphgn'
-    },
-    youtubeDislike: {
-      name: 'Return YouTube Dislike',
-      url: 'https://chrome.google.com/webstore/detail/return-youtube-dislike/gebbhagfogifgggkldgodflihgfeippi'
-    },
-    youtubeQuality: {
-      name: 'Auto Quality for YouTube',
-      url: 'https://chrome.google.com/webstore/detail/iaddfgegjgjelgkanamleadckkpnjpjc'
-    },
-    youtubeSponsorBlock: {
-      name: 'SponsorBlock',
-      url: 'https://chrome.google.com/webstore/detail/sponsorblock-for-youtube/mnjggcdmjocbbbhaepdhchncahnbgone'
-    }
-  };
+	const DESIGN_SOFTWARE = [
+		{
+			icon: "/img/uses-figma.webp",
+			name: "Figma",
+			label: m.uses_ui_design(),
+		},
+		{
+			icon: "/img/uses-illustrator.webp",
+			name: "Illustrator",
+			label: m.uses_vector_editor(),
+		},
+		{
+			icon: "/img/uses-photopea.webp",
+			name: "Photopea",
+			label: m.uses_bitmap_editor(),
+		},
+	];
 </script>
 
-<Metadata title={$_.uses.title} />
-<PageTitle title={$_.uses.title} subtitle={$_.uses.paragraph} />
+<Seo title={m.uses_seo_title()} />
 
-<article class="content">
-  <SubtitleWithIcon icon={ComputerIcon}>{$_.uses.hardware.title}</SubtitleWithIcon>
-  <ul>
-    <li><span>{$_.uses.hardware.mainPC}:</span> {mainPC}</li>
-    <li><span>{$_.uses.hardware.gamingPC.title}:</span></li>
-    <ul>
-      {#each Object.keys(gamingPC) as part}
-        <li><span>{$_.uses.hardware.gamingPC.items[part]}:</span> {gamingPC[part]}</li>
-      {/each}
-    </ul>
-    {#each Object.keys(peripherals) as item}
-      <li><span>{$_.uses.hardware.peripherals.items[item]}:</span> {peripherals[item]}</li>
-    {/each}
-  </ul>
-  <img src={setupImg} alt={$_.alt.setup} />
+<hgroup class="mb-3 py-3 md:mb-6 md:py-6">
+	<h1 class="text-3xl md:text-4xl">{m.thing_i_use()}</h1>
+</hgroup>
 
-  <UseList things={generalApps} lang={$_.uses.general} icon={SparklesIcon} />
-
-  <UseList things={productivityApps} lang={$_.uses.productivity} icon={AttachmentIcon} />
-
-  <UseList things={codingApps} lang={$_.uses.coding} icon={CodeIcon}>
-    <li slot="pre">
-      <a href="/" target="_blank" rel="noopener noreferrer">VS Code</a>
-      {$_.uses.coding.items.ide}
-      <ul>
-        {#each Object.keys(vscodeSettings) as key}
-          {@const setting = vscodeSettings[key]}
-          <li>
-            <a href={setting.url} target="_blank" rel="noopener noreferrer">
-              {setting?.name || $_.uses.coding.vscode[key]}
-            </a>
-            {setting?.name ? $_.uses.coding.vscode[key] : ''}
-          </li>
-        {/each}
-      </ul>
-    </li>
-
-    <li><span>{$_.uses.coding.web.title}:</span></li>
-    <UseList things={webDevStack} lang={$_.uses.coding.web} showTitle={false} />
-  </UseList>
-
-  <UseList things={streamingApps} lang={$_.uses.streaming} icon={LiveIcon} />
-
-  <UseList things={designApps} lang={$_.uses.design} icon={PencilRulerIcon} />
-
-  <UseList things={socialApps} lang={$_.uses.social} icon={ChatIcon} />
-
-  <UseList things={utils} lang={$_.uses.utils} icon={ToolsIcon} />
-
-  <UseList things={extensions} lang={$_.uses.extensions} icon={PuzzleIcon} />
-</article>
-
-<style lang="sass">
-  li span
-    color: #fff
-    transition: all .4s ease
-
-  img
-    margin-bottom: 0
-
-  :global([data-theme="light"])
-    li span
-      color: #000
-      font-weight: 600
-</style>
+<div class="flex flex-col gap-6 md:gap-12">
+	<figure
+		class="bg-muted relative aspect-video w-full rounded before:absolute before:size-full before:rounded before:border before:border-white/10"
+	>
+		<img
+			src="/img/setup.webp"
+			alt=""
+			class="aspect-video w-full rounded object-cover"
+		/>
+	</figure>
+	<hr />
+	<ProductsGrid
+		label={m.uses_main_pc()}
+		items={[{ product: 'M1 MacBook Pro 14" 2021' }]}
+	/>
+	<hr />
+	<ProductsGrid label={m.uses_gaming_pc()} items={PC_PARTS} />
+	<hr />
+	<ProductsGrid label={m.uses_peripherals()} items={PERIPHERALS} />
+	<hr />
+	<ProductsGrid label={m.uses_audio()} items={AUDIO} />
+	<hr />
+	<AppsGrid
+		label={m.uses_development_software()}
+		items={DEVELOPMENT_SOFTWARE}
+	/>
+	<hr />
+	<AppsGrid label={m.uses_general_software()} items={GENERAL_SOFTWARE} />
+	<hr />
+	<AppsGrid label={m.uses_design_software()} items={DESIGN_SOFTWARE} />
+</div>
