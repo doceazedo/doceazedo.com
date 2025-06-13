@@ -205,5 +205,9 @@
 	"playing_games_subtitle": "Não sou muito de jogar... mas é isso o que eu tenho jogado!",
 	"updated_at": "Atualizado em <span>{date}</span>",
 	"played_last_two_weeks": "<span>{time}</span> nas últimas 2 semanas",
-	"date_time": "{date} às {time}"
+	"date_time": "{date} às {time}",
+	"reading": "Lendo",
+	"reading_subtitle": "Eu tô (lentamente) tentando criar um hábito de leitura.",
+	"started_at": "Comecei em <span>{date}</span>",
+	"pages_read": "Página <span>{current}</span> de <span>{total}</span>"
 }
