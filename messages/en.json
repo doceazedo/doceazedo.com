@@ -209,5 +209,6 @@
 	"reading": "Reading",
 	"reading_subtitle": "I'm (slowly) trying to develop a reading habit.",
 	"started_at": "Started at <span>{date}</span>",
-	"pages_read": "Page <span>{current}</span> of <span>{total}</span>"
+	"pages_read": "Page <span>{current}</span> of <span>{total}</span>",
+	"add_me_on_steam": "Add me on Steam"
 }

@@ -244,68 +244,79 @@
 		title={m.playing_games()}
 		subtitle={m.playing_games_subtitle()}
 	/>
-	<div class="grid grid-cols-2 gap-3 md:grid-cols-5 lg:gap-6">
-		{#await getLastPlayedGames()}
-			{#each Array(5).fill(null) as _uwu}
-				<Skeleton class="aspect-[6/9] rounded" />
-			{/each}
-		{:then games}
-			{#each games as game}
-				<Tooltip.Provider delayDuration={300}>
-					<Tooltip.Root>
-						<Tooltip.Trigger>
-							<a
-								href={game.url}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="bg-muted ease-elastic relative flex aspect-[6/9] rounded transition-all before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/15 hover:scale-105 lg:hover:scale-115"
-							>
-								<img
-									src={game.cover}
-									alt={game.name}
-									class="size-full rounded object-cover"
-									data-appid={game.appid}
-									onerror={handleMissingGameCover}
-								/>
-							</a></Tooltip.Trigger
-						>
-						<Tooltip.Content
-							side="bottom"
-							class="justify-center"
-							sideOffset={24}
-						>
-							<p class="mx-auto mb-px max-w-[20ch] text-center leading-5">
-								{game.name}
-							</p>
-							<div class="flex items-center justify-center gap-1">
-								{#if game.updatedAt}
-									<CalendarCheckLineBusiness class="text-body size-4" />
-								{:else}
-									<GamepadLineDevice class="text-body size-4" />
-								{/if}
-								<p
-									class="text-body [&>span]:text-secondary-foreground text-center text-sm"
+	<div class="flex flex-col gap-3 md:gap-6">
+		<div class="grid grid-cols-3 gap-3 md:grid-cols-5 lg:gap-6">
+			{#await getLastPlayedGames()}
+				{#each Array(5).fill(null) as _uwu}
+					<Skeleton class="aspect-[6/9] rounded" />
+				{/each}
+			{:then games}
+				{#each games as game}
+					<Tooltip.Provider delayDuration={300}>
+						<Tooltip.Root>
+							<Tooltip.Trigger>
+								<a
+									href={game.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="bg-muted ease-elastic relative flex aspect-[6/9] rounded transition-all before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/15 hover:scale-105 lg:hover:scale-115"
 								>
-									{#if game.updatedAt}
-										{@html m.updated_at({
-											date: new Date(game.updatedAt).toLocaleDateString(
-												getLocale(),
-											),
-										})}
-									{:else if game.playtime}
-										{@html m.played_last_two_weeks({
-											time:
-												game.playtime >= 60
-													? `${toFixedIfNecessary(game.playtime / 60)}h`
-													: `${game.playtime}min`,
-										})}
-									{/if}
+									<img
+										src={game.cover}
+										alt={game.name}
+										class="size-full rounded object-cover"
+										data-appid={game.appid}
+										onerror={handleMissingGameCover}
+									/>
+								</a></Tooltip.Trigger
+							>
+							<Tooltip.Content
+								side="bottom"
+								class="justify-center"
+								sideOffset={24}
+							>
+								<p class="mx-auto mb-px max-w-[20ch] text-center leading-5">
+									{game.name}
 								</p>
-							</div>
-						</Tooltip.Content>
-					</Tooltip.Root>
-				</Tooltip.Provider>
-			{/each}
-		{/await}
+								<div class="flex items-center justify-center gap-1">
+									{#if game.updatedAt}
+										<CalendarCheckLineBusiness class="text-body size-4" />
+									{:else}
+										<GamepadLineDevice class="text-body size-4" />
+									{/if}
+									<p
+										class="text-body [&>span]:text-secondary-foreground text-center text-sm"
+									>
+										{#if game.updatedAt}
+											{@html m.updated_at({
+												date: new Date(game.updatedAt).toLocaleDateString(
+													getLocale(),
+												),
+											})}
+										{:else if game.playtime}
+											{@html m.played_last_two_weeks({
+												time:
+													game.playtime >= 60
+														? `${toFixedIfNecessary(game.playtime / 60)}h`
+														: `${game.playtime}min`,
+											})}
+										{/if}
+									</p>
+								</div>
+							</Tooltip.Content>
+						</Tooltip.Root>
+					</Tooltip.Provider>
+				{/each}
+			{/await}
+		</div>
+		<Button
+			href="https://steamcommunity.com/id/doceazedo911"
+			target="_blank"
+			variant="link"
+			class="w-fit md:ml-auto"
+		>
+			{m.add_me_on_steam()}
+			<ArrowRightLineArrows class="size-5" />
+		</Button>
 	</div>
 </div>
