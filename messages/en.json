@@ -230,5 +230,13 @@
 	"days_ago": "{days} days ago",
 	"reach_out": "Reach out",
 	"today": "today",
-	"yesterday": "yesterday"
+	"yesterday": "yesterday",
+	"studying": "Studying",
+	"studying_description": "Enrolled in Computer Science, focused on more low-level dev stuff through self-study.",
+	"degree_progress": "Degree progress",
+	"classe_completed": "<span>{approved}</span>/<span>{total}</span> classes completed",
+	"current_classes": "Current classes",
+	"period_exams": "Exams period",
+	"period_classes": "Classes period",
+	"period_soon": "Starting soon"
 }

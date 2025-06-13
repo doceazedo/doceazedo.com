@@ -230,5 +230,13 @@
 	"days_ago": "há {days} dias",
 	"reach_out": "Fala comigo",
 	"today": "hoje",
-	"yesterday": "ontem"
+	"yesterday": "ontem",
+	"studying": "Estudando",
+	"studying_description": "Cursando Ciência da Computação, focade em aprender programação de baixo nível por conta própria.",
+	"degree_progress": "Progresso no curso",
+	"classe_completed": "<span>{approved}</span>/<span>{total}</span> disciplinas concluídas",
+	"current_classes": "Disciplinas atuais",
+	"period_exams": "Período de provas",
+	"period_classes": "Período de aulas",
+	"period_soon": "Em breve"
 }

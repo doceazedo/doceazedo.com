@@ -7,12 +7,15 @@
 	import {
 		ArrowRightLineArrows,
 		BookMarkedFillDocument,
+		BookMarkedLineDocument,
 		CalendarCheckLineBusiness,
 		CalendarLineBusiness,
 		CodeSSlashLineDevelopment,
+		Edit2LineDesign,
 		GamepadFillDevice,
 		GamepadLineDevice,
 		GitRepositoryCommitsLineDevelopment,
+		GraduationCapFillOthers,
 		HeadphoneFillMedia,
 		UserLineUserFaces,
 	} from "svelte-remix";
@@ -160,6 +163,33 @@
 			isFreelance: true,
 		},
 	];
+
+	const COLLEGE_CLASSES = {
+		updatedAt: new Date("2025/06/13"),
+		approved: 11,
+		total: 47,
+		current: [
+			{
+				name: {
+					en: "Logic and computational mathematics",
+					pt: "Lógica e matemática computacional",
+				},
+				classPeriodStartsAt: new Date("2025/07/01"),
+				examPeriodStartsAt: new Date("2025/08/01"),
+			},
+			{
+				name: {
+					en: "Extension Project I - Computer Science",
+					pt: "Projeto de Extensão I - Ciência da Computação",
+				},
+				classPeriodStartsAt: new Date("2025/07/01"),
+				examPeriodStartsAt: new Date("2025/08/01"),
+			},
+		],
+	};
+	const COLLEGE_PROGRESS = Math.floor(
+		(COLLEGE_CLASSES.approved / COLLEGE_CLASSES.total) * 100,
+	);
 </script>
 
 <svelte:window bind:innerWidth />
@@ -175,7 +205,6 @@
 		title={m.coding()}
 		subtitle={m.coding_description()}
 	/>
-
 	<div class="grid gap-6 md:grid-cols-3">
 		{#each DEV_PROJECTS as project}
 			<a
@@ -504,5 +533,92 @@
 			{m.add_me_on_steam()}
 			<ArrowRightLineArrows class="size-5" />
 		</Button>
+	</div>
+
+	<hr />
+
+	<NowSectionTitle
+		icon={GraduationCapFillOthers}
+		title={m.studying()}
+		subtitle={m.studying_description()}
+		updatedAt={COLLEGE_CLASSES.updatedAt}
+	/>
+	<div class="flex grid-cols-3 flex-col gap-6 md:grid md:gap-12">
+		<div class="flex flex-col gap-3">
+			<h3 class="text-xl md:text-2xl">{m.degree_progress()}</h3>
+			<div
+				class="relative mx-auto flex size-full max-w-64 items-center justify-center md:max-w-none"
+			>
+				<svg
+					class="size-full -rotate-90"
+					viewBox="0 0 36 36"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<circle
+						cx="18"
+						cy="18"
+						r="16"
+						fill="none"
+						class="stroke-muted"
+						stroke-width="0.5"
+					></circle>
+					<circle
+						cx="18"
+						cy="18"
+						r="16"
+						fill="none"
+						class="stroke-primary"
+						stroke-width="0.5"
+						stroke-dasharray="100"
+						stroke-dashoffset={100 - COLLEGE_PROGRESS}
+					></circle>
+				</svg>
+
+				<div class="absolute flex flex-col items-center gap-0.5 text-center">
+					<p class="text-xl md:text-2xl">
+						{COLLEGE_PROGRESS}%
+					</p>
+					<p
+						class="text-body [&>span]:text-foreground max-w-[15ch] text-sm leading-4 lg:max-w-none"
+					>
+						{@html m.classe_completed({
+							approved: COLLEGE_CLASSES.approved,
+							total: COLLEGE_CLASSES.total,
+						})}
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-span-2 flex flex-col gap-3">
+			<h3 class="text-xl md:text-2xl">{m.current_classes()}</h3>
+			{#each COLLEGE_CLASSES.current as subject}
+				{@const today = new Date().getTime()}
+				{@const isExamPeriod = subject.examPeriodStartsAt.getTime() <= today}
+				{@const isClassPeriod = subject.classPeriodStartsAt.getTime() <= today}
+				<div
+					class="text-body ease-elastic hover:bg-muted group flex cursor-default items-center gap-3 rounded border p-3 transition-all hover:-translate-y-1"
+				>
+					{subject.name[getLocale()]}
+					<span
+						class={cn(
+							"text-muted-foreground group-hover:bg-foreground/10 bg-muted ml-auto flex w-fit shrink-0 items-center gap-1.5 rounded px-2 py-1 text-sm transition-all",
+							isExamPeriod &&
+								"bg-primary text-primary-foreground group-hover:bg-primary",
+						)}
+					>
+						{#if isExamPeriod}
+							<Edit2LineDesign class="size-3.5" />
+							{m.period_exams()}
+						{:else if isClassPeriod}
+							<BookMarkedLineDocument class="size-3.5" />
+							{m.period_classes()}
+						{:else}
+							{m.period_soon()}
+						{/if}
+					</span>
+				</div>
+			{/each}
+		</div>
 	</div>
 </div>
