@@ -81,16 +81,15 @@
 
 	{#if currentTrack}
 		<a
-			href={SOCIALS.lastfm.url}
-			target="_blank"
+			href="/now"
 			class="hover:bg-muted group relative mx-auto mt-auto flex h-fit flex-row-reverse items-center gap-2 rounded-xs p-1 transition-all hover:shadow-[0_0_0_4px_var(--muted)] md:mx-0 md:translate-1 md:flex-row"
 		>
 			<hgroup class="text-left md:text-right">
 				<p class="text-body -mb-1 text-xs">
-					{currentTrack.nowPlaying ? m.now_playing() : m.last_played()}
+					{currentTrack.artist}
 				</p>
 				<p class="text-sm font-medium">
-					{currentTrack.artist} - {currentTrack.track}
+					{currentTrack.track}
 				</p>
 			</hgroup>
 			<img src={currentTrack.cover} alt="" class="bg-muted size-10 rounded" />
