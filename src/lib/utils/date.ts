@@ -23,5 +23,10 @@ export const postedAt = (date: Date) => {
 
 export const daysAgo = (date: Date) => {
 	const today = new Date();
-	return Math.round((today.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
+	const days = Math.round(
+		(today.getTime() - date.getTime()) / (1000 * 60 * 60 * 24),
+	);
+	if (days === 0) return m.today();
+	if (days === 1) return m.yesterday();
+	return m.days_ago({ days });
 };

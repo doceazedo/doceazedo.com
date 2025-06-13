@@ -1,3 +1,4 @@
+import { GITHUB_PERSONAL_ACCESS_TOKEN } from "$env/static/private";
 import { error } from "@sveltejs/kit";
 import { json } from "@sveltejs/kit";
 
@@ -8,7 +9,11 @@ export const GET = async ({ url }) => {
 	if (!repo) return error(400, "Missing ?repo=");
 
 	try {
-		const resp = await fetch(`${GITHUB_BASE_URL}/repos/${repo}/commits`);
+		const resp = await fetch(`${GITHUB_BASE_URL}/repos/${repo}/commits`, {
+			headers: {
+				Authorization: `Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}`,
+			},
+		});
 		const data = await resp.json();
 		return json({
 			date: data?.[0]?.commit?.author?.date,

@@ -228,5 +228,7 @@
 	"booking_month_status_unavailable": "Indisponível",
 	"last_commit": "Último commit",
 	"days_ago": "há {days} dias",
-	"reach_out": "Fala comigo"
+	"reach_out": "Fala comigo",
+	"today": "hoje",
+	"yesterday": "ontem"
 }

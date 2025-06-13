@@ -228,5 +228,7 @@
 	"booking_month_status_unavailable": "Unavailable",
 	"last_commit": "Last commit",
 	"days_ago": "{days} days ago",
-	"reach_out": "Reach out"
+	"reach_out": "Reach out",
+	"today": "today",
+	"yesterday": "yesterday"
 }

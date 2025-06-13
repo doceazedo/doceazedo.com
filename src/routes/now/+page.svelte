@@ -232,11 +232,10 @@
 								<Skeleton class="h-4 w-14 rounded" />
 							{:then lastCommitAt}
 								{#if lastCommitAt}
-									{@const days = daysAgo(new Date(lastCommitAt))}
 									<span
 										class="text-foreground hover:text-primary underline transition-all"
 									>
-										{m.days_ago({ days })}
+										{daysAgo(new Date(lastCommitAt))}
 									</span>
 								{/if}
 							{/await}
