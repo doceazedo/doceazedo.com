@@ -1,14 +1,18 @@
-import { STEAM_API_KEY } from "$env/static/private";
+import { FORTNITE_API_KEY, STEAM_API_KEY } from "$env/static/private";
 import { json } from "@sveltejs/kit";
 
 export const GET = async () => {
-	const steamGames = await getSteamGames();
+	const [steamGames, lastPlayedFortniteAt] = await Promise.all([
+		getSteamGames(),
+		getFortniteLastPlayedAt(),
+	]);
 	const nonSteamGames = [
 		{
 			name: "Fortnite",
 			cover: await getGridDbGameCover(36136, "age_desc"),
 			url: "https://www.fortnite.com",
-			updatedAt: "2025/06/12 GMT-3",
+			lastPlayedAt: lastPlayedFortniteAt,
+			// updatedAt: "2025/06/12 GMT-3",
 		},
 	];
 
@@ -92,5 +96,25 @@ const getGridDbGameCover = async (
 		return data?.data?.assets?.[0]?.thumb;
 	} catch (error) {
 		return "";
+	}
+};
+
+const FORTNITE_API_BASE_URL = "https://fortnite-api.com/v2";
+const FORTNITE_USERNAME = "DoceAzedo911";
+
+const getFortniteLastPlayedAt = async (): Promise<string | null> => {
+	try {
+		const resp = await fetch(
+			`${FORTNITE_API_BASE_URL}/stats/br/v2?name=${FORTNITE_USERNAME}`,
+			{
+				headers: {
+					Authorization: FORTNITE_API_KEY,
+				},
+			},
+		);
+		const data = await resp.json();
+		return data?.data?.stats?.all?.overall?.lastModified || null;
+	} catch (_error) {
+		return null;
 	}
 };

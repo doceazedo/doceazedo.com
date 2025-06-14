@@ -245,5 +245,6 @@
 	"colophon_seo_title": "How was Doce Fernandes's site made?",
 	"contact_seo_title": "Contact, social media, and other links of Doce Fernandes",
 	"now_seo_title": "What is Doce Fernandes doing like ...RIGHT NOW???",
-	"uses_seo_title": "Almost every single thing Doce Fernandes uses"
+	"uses_seo_title": "Almost every single thing Doce Fernandes uses",
+	"last_played_game": "Last played <span>{date}</span>"
 }
