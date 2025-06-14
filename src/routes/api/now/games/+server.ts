@@ -48,6 +48,7 @@ const _gameCoverByAppId = (appid: number) =>
 const GAME_COVER_OVERRIDES = {
 	480: "/img/spacewar.webp",
 	3589100: _gameCoverByAppId(2456420),
+	3670000: _gameCoverByAppId(2350790),
 } as { [appid: number]: string };
 
 const getGameCover = (appid: number) => {
