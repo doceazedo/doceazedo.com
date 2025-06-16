@@ -172,12 +172,17 @@
 	{#if mounted}
 		<div class="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-6 md:gap-y-14">
 			{#each workProjects as project, i}
+				{@const isGachapon = i === workProjects.length - 1}
 				<Dialog.Root>
 					<Dialog.Trigger
 						class={cn(
-							"hover:bg-muted group w-full cursor-pointer rounded-xs text-left transition-all hover:shadow-[0_0_0_8px_var(--muted)]",
+							"w-full cursor-pointer rounded-xs text-left transition-all",
 							i <= 1 ? "md:col-span-3" : "md:col-span-2",
+							isGachapon && "cursor-not-allowed",
+							!isGachapon &&
+								"group hover:bg-muted hover:shadow-[0_0_0_8px_var(--muted)]",
 						)}
+						disabled={isGachapon}
 					>
 						<div use:onVisible={() => (project.visible = true)}>
 							{#if project.visible !== false}
@@ -203,7 +208,7 @@
 												class="ease-elastic size-full rounded object-cover transition-all group-hover:scale-105"
 											/>
 										{/if}
-										{#if i === workProjects.length - 1}
+										{#if isGachapon}
 											<div
 												class="animate animation-duration-[10s] size-full scale-200 animate-spin bg-linear-to-r from-[#a6c0fe] to-[#f68084]"
 											></div>
