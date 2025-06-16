@@ -197,7 +197,8 @@
 	const COLLEGE_PROGRESS_TARGET = Math.floor(
 		(COLLEGE_CLASSES.approved / COLLEGE_CLASSES.total) * 100,
 	);
-	const COLLEGE_PROGRESS = new Tween(browser ? 0 : COLLEGE_PROGRESS_TARGET, {
+	// FIXME: suddenly not working so i replaced for now 0 with the target
+	const COLLEGE_PROGRESS = new Tween(COLLEGE_PROGRESS_TARGET, {
 		duration: 1600,
 		easing: cubicInOut,
 	});
