@@ -116,7 +116,7 @@
 </hgroup>
 
 <div
-	class="-ml-6 flex w-dvw flex-col gap-6 overflow-x-hidden px-6 md:ml-0 md:w-full md:gap-12 md:overflow-x-visible"
+	class="-ml-6 flex w-dvw flex-col gap-6 overflow-x-hidden px-6 md:ml-0 md:w-full md:gap-12 md:overflow-x-visible md:px-0"
 >
 	<div
 		class="-ml-24 flex w-[calc(100%+12rem)] py-12 md:mb-6 md:gap-12 md:py-0 lg:-ml-12 lg:w-[calc(100%+6rem)]"
