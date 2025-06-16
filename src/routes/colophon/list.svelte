@@ -20,7 +20,7 @@
 			<a
 				class={cn(
 					"inline-flex items-center gap-1",
-					item.icon && "group translate-y-px",
+					item.icon && "group translate-y-0.5",
 				)}
 				href={item.url}
 				target="_blank"
