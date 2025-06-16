@@ -4,6 +4,7 @@
 	import type { Map } from "mapbox-gl";
 	import { MY_LOCATION } from "$lib/constants";
 	import { onVisible } from "$lib/utils/actions";
+	import { getLocale } from "$lib/paraglide/runtime";
 
 	let { userLocation } = $props<{ userLocation: [number, number] | null }>();
 
@@ -17,6 +18,7 @@
 			container: "map",
 			center: MY_LOCATION,
 			zoom: 3,
+			cooperativeGestures: true,
 		});
 
 		map.on("load", () => {
@@ -77,7 +79,7 @@
 		use:onVisible={() =>
 			setTimeout(() => {
 				map.fitBounds([MY_LOCATION, userLocation], {
-					padding: { top: 12, bottom: 24, left: 12, right: 12 },
+					padding: { top: 24, bottom: 24, left: 24, right: 24 },
 				});
 			}, 100)}
 	></div>
