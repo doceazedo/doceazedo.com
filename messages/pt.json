@@ -150,7 +150,7 @@
 	"uses_short": "Uso",
 	"now_short": "Agora",
 	"contact": "Contato",
-	"colophon": "Colophon",
+	"colophon": "Colofão",
 	"cake_day": "Dia do bolo",
 	"birthday_short": "21 de Janeiro",
 	"aquarius": "Aquário",
@@ -246,5 +246,6 @@
 	"contact_seo_title": "Contato, redes sociais e outros links de Doce Fernandes",
 	"now_seo_title": "O que Doce Fernandes tá fazendo tipo ...NESSE EXATO MOMENTO???",
 	"uses_seo_title": "Quase tudo que Doce Fernandes usa",
-	"last_played_game": "Joguei por último <span>{date}</span>"
+	"last_played_game": "Joguei por último <span>{date}</span>",
+	"colophon_subtitle": "\"Um espaço para que o autor reflita sobre sua escrita, sobre seu livro, seu processo criativo.\" — <a href=\"https://www.editorapatua.com.br/institucional/15360/45203\" target=\"_blank\" rel=\"noopener noreferrer\">Editora Patuá</a>"
 }

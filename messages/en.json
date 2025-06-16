@@ -239,12 +239,5 @@
 	"period_classes": "Classes period",
 	"period_soon": "Starting soon",
 	"excerpt": "A <span>🦄</span> developer, designer, and DJ. I build tools with Rust & Svelte, maintain FOSS projects, work at <a href=\"{companyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">{companyName}</a>, and spin DJ sets on weekends <span>✌️</span>",
-	"excerpt_clean": "I'm Doce Fernandes, a unicorn developer, designer, and DJ. I build tools with Rust & Svelte, maintain FOSS projects, work at {company}, and spin DJ sets on weekends.",
-	"articles_seo_title": "Guides, tutorials and personal notes by Doce Fernandes",
-	"about_me_seo_title": "BREAKING: All about Doce Fernandes, former gifted kid now full-time weird icon!",
-	"colophon_seo_title": "How was Doce Fernandes's site made?",
-	"contact_seo_title": "Contact, social media, and other links of Doce Fernandes",
-	"now_seo_title": "What is Doce Fernandes doing like ...RIGHT NOW???",
-	"uses_seo_title": "Almost every single thing Doce Fernandes uses",
-	"last_played_game": "Last played <span>{date}</span>"
+	"excerpt_clean": "I'm Doce Fernandes, a unicorn developer, designer, and DJ. I build tools with Rust & Svelte, maintain FOSS projects, work at {companyName}, and spin DJ sets on weekends."
 }

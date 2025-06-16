@@ -40,6 +40,10 @@ export const SOCIALS = {
 		url: "https://soundcloud.com/doceazedo",
 	},
 	steam: { icon: SteamLineLogos, url: "https://soundcloud.com/doceazedo" },
+	discogs: {
+		icon: Music2FillMedia,
+		url: "https://www.discogs.com/user/doceazedo",
+	},
 };
 
 export const WORK = {

@@ -333,7 +333,7 @@
 				{/await}
 			</div>
 			<Button
-				href="https://www.discogs.com/user/doceazedo/collection"
+				href="{SOCIALS.discogs.url}/collection"
 				target="_blank"
 				variant="link"
 				class="ml-auto w-fit"

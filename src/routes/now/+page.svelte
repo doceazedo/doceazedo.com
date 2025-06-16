@@ -19,7 +19,7 @@
 		HeadphoneFillMedia,
 		UserLineUserFaces,
 	} from "svelte-remix";
-	import NowSectionTitle from "./now-section-title.svelte";
+	import SectionTitleWithIcon from "$lib/components/parts/section-title-with-icon.svelte";
 	import { Button } from "$lib/components/ui/button";
 	import { LAST_PLAYED_TRACKS } from "$lib/stores";
 	import { Progress } from "$lib/components/ui/progress";
@@ -203,7 +203,7 @@
 		<p class="text-body">{m.now_subtitle()}</p>
 	</hgroup>
 
-	<NowSectionTitle
+	<SectionTitleWithIcon
 		icon={CodeSSlashLineDevelopment}
 		title={m.coding()}
 		subtitle={m.coding_description()}
@@ -285,7 +285,7 @@
 
 	<hr />
 
-	<NowSectionTitle
+	<SectionTitleWithIcon
 		icon={BookMarkedFillDocument}
 		title={m.reading()}
 		subtitle={m.reading_subtitle()}
@@ -357,7 +357,7 @@
 
 	<hr />
 
-	<NowSectionTitle
+	<SectionTitleWithIcon
 		icon={HeadphoneFillMedia}
 		title={m.listening()}
 		subtitle={m.listening_subtitle()}
@@ -457,7 +457,7 @@
 
 	<hr />
 
-	<NowSectionTitle
+	<SectionTitleWithIcon
 		icon={GamepadFillDevice}
 		title={m.playing_games()}
 		subtitle={m.playing_games_subtitle()}
@@ -544,7 +544,7 @@
 
 	<hr />
 
-	<NowSectionTitle
+	<SectionTitleWithIcon
 		icon={GraduationCapFillOthers}
 		title={m.studying()}
 		subtitle={m.studying_description()}
