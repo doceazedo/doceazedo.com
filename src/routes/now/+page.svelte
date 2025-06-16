@@ -513,9 +513,7 @@
 											})}
 										{:else if game.lastPlayedAt}
 											{@html m.last_played_game({
-												date: new Date(game.lastPlayedAt).toLocaleDateString(
-													getLocale(),
-												),
+												date: daysAgo(new Date(game.lastPlayedAt)),
 											})}
 										{:else if game.playtime}
 											{@html m.played_last_two_weeks({
