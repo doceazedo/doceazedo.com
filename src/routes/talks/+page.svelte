@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Seo from "$lib/components/seo.svelte";
-	import { SOCIALS, WORK } from "$lib/constants";
+	import { DOMAIN, SOCIALS, WORK } from "$lib/constants";
 	import { m } from "$lib/paraglide/messages";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import {
@@ -31,7 +31,7 @@
 		{ key: m.pronouns(), value: m.my_pronouns() },
 		{
 			key: m.avatar(),
-			value: "doceazedo.com/img/avatar.jpg",
+			value: `${DOMAIN}/img/avatar.jpg`,
 			href: "/img/avatar.jpg",
 		},
 		{
