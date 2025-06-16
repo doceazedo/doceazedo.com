@@ -16,7 +16,7 @@
 		map = new window.mapboxgl.Map({
 			container: "map",
 			center: MY_LOCATION,
-			zoom: 6,
+			zoom: 3,
 		});
 
 		map.on("load", () => {
