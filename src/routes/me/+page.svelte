@@ -21,6 +21,10 @@
 	import { getLocale } from "$lib/paraglide/runtime";
 	import * as Tooltip from "$lib/components/ui/tooltip";
 	import Seo from "$lib/components/seo.svelte";
+	import { onMount } from "svelte";
+	import { browser } from "$app/environment";
+	import { elasticFly } from "$lib/utils/transitions";
+	import { onVisible } from "$lib/utils/actions";
 
 	let { data } = $props();
 
@@ -106,6 +110,11 @@
 		const data = await resp.json();
 		return data;
 	};
+
+	let mounted = $state(!browser);
+	let isVinylCollectionVisible = $state(!browser);
+
+	onMount(() => (mounted = true));
 </script>
 
 <Seo title={m.about_me_seo_title()} />
@@ -121,56 +130,72 @@
 	<div
 		class="-ml-24 flex w-[calc(100%+12rem)] py-12 md:mb-6 md:gap-12 md:py-0 lg:-ml-12 lg:w-[calc(100%+6rem)]"
 	>
-		{#each PHOTOS as photo, i}
-			<figure
-				class={cn(
-					"bg-muted ease-elastic relative aspect-[4/5] w-full rounded transition-all before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/15 hover:scale-110 hover:rotate-0",
-					i !== 0 && "-ml-12 lg:ml-0",
-					i === 0 && "translate-y-1 -rotate-2",
-					i === 1 && "translate-y-6 rotate-1",
-					i === 2 && "rotate-3",
-					i === 3 && "translate-y-2 -rotate-6",
-				)}
-			>
-				<img src={photo} alt="" class="size-full rounded object-fill" />
-			</figure>
-		{/each}
+		{#if mounted}
+			{#each PHOTOS as photo, i (i)}
+				<figure
+					class={cn(
+						"bg-muted ease-elastic relative aspect-[4/5] w-full rounded transition-all before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/15 hover:scale-110 hover:rotate-0",
+						i !== 0 && "-ml-12 lg:ml-0",
+						i === 0 && "translate-y-1 -rotate-2",
+						i === 1 && "translate-y-6 rotate-1",
+						i === 2 && "rotate-3",
+						i === 3 && "translate-y-2 -rotate-6",
+					)}
+					in:elasticFly|global={{
+						opacity: 0,
+						x: -24,
+						duration: 800,
+						delay: 100 * (i + 1),
+					}}
+				>
+					<img src={photo} alt="" class="size-full rounded object-fill" />
+				</figure>
+			{/each}
+		{/if}
 	</div>
 
 	<hr />
 
 	<h2 class="text-2xl md:text-3xl">TL;DR</h2>
 	<ul class="grid gap-3 md:grid-cols-2 md:flex-row md:gap-6 lg:grid-cols-4">
-		{#each TLDR as card}
-			<li
-				class={cn(
-					"flex gap-3 rounded border p-3",
-					card.color === "pink" &&
-						"border-pink-500 bg-pink-500/20 [&_h3]:text-pink-500 [&_i]:bg-pink-500",
-					card.color === "yellow" &&
-						"border-yellow-500 bg-yellow-500/20 [&_h3]:text-yellow-500 [&_i]:bg-yellow-500",
-					card.color === "blue" &&
-						"border-blue-500 bg-blue-500/20 [&_h3]:text-blue-500 [&_i]:bg-blue-500",
-					card.color === "green" &&
-						"border-emerald-500 bg-emerald-500/20 [&_h3]:text-emerald-500 [&_i]:bg-emerald-500",
-				)}
-			>
-				<i
-					class="flex size-8 shrink-0 items-center justify-center rounded text-white md:size-10"
+		{#if mounted}
+			{#each TLDR as card, i (i)}
+				<li
+					class={cn(
+						"flex gap-3 rounded border p-3",
+						card.color === "pink" &&
+							"border-pink-500 bg-pink-500/20 [&_h3]:text-pink-500 [&_i]:bg-pink-500",
+						card.color === "yellow" &&
+							"border-yellow-500 bg-yellow-500/20 [&_h3]:text-yellow-500 [&_i]:bg-yellow-500",
+						card.color === "blue" &&
+							"border-blue-500 bg-blue-500/20 [&_h3]:text-blue-500 [&_i]:bg-blue-500",
+						card.color === "green" &&
+							"border-emerald-500 bg-emerald-500/20 [&_h3]:text-emerald-500 [&_i]:bg-emerald-500",
+					)}
+					in:elasticFly|global={{
+						opacity: 0,
+						y: 24,
+						duration: 1200,
+						delay: 300 + 100 * i,
+					}}
 				>
-					<card.icon class="size-5 md:size-6" />
-				</i>
-				<hgroup>
-					<h3 class="-mb-1 text-xs font-medium uppercase">
-						{card.pretitle}
-					</h3>
-					<p class="mb-0.5">{card.title}</p>
-					<p class="text-foreground/80 text-sm leading-4">
-						{card.description}
-					</p>
-				</hgroup>
-			</li>
-		{/each}
+					<i
+						class="flex size-8 shrink-0 items-center justify-center rounded text-white md:size-10"
+					>
+						<card.icon class="size-5 md:size-6" />
+					</i>
+					<hgroup>
+						<h3 class="-mb-1 text-xs font-medium uppercase">
+							{card.pretitle}
+						</h3>
+						<p class="mb-0.5">{card.title}</p>
+						<p class="text-foreground/80 text-sm leading-4">
+							{card.description}
+						</p>
+					</hgroup>
+				</li>
+			{/each}
+		{/if}
 	</ul>
 
 	<hr />
@@ -249,7 +274,7 @@
 								href="https://www.last.fm/tag/{tag.replaceAll(' ', '+')}"
 								target="_blank"
 								rel="noopener noreferrer"
-								class="ease-elastic hover:bg-muted text-body hover:text-foreground rounded-full border px-3 py-0.5 transition-all hover:-translate-y-0.5"
+								class="ease-elastic text-body hover:text-foreground rounded-full border px-3 py-0.5 transition-all hover:-translate-y-0.5"
 							>
 								{tag}
 							</a>
@@ -285,6 +310,7 @@
 		</div>
 		<div
 			class="col-span-2 flex flex-col gap-3 rounded border p-3 md:gap-6 md:p-6"
+			use:onVisible={() => (isVinylCollectionVisible = true)}
 		>
 			<hgroup>
 				<h3 class="mb-0.5 text-xl md:text-2xl">{m.vinyl_collection()}</h3>
@@ -298,37 +324,45 @@
 						<Skeleton class="aspect-square size-full rounded" />
 					{/each}
 				{:then collection}
-					{#each collection as lp}
+					{#each collection as lp, i (i)}
 						{@const variant = Math.floor(Math.random() * 3)}
-						<Tooltip.Provider delayDuration={0} disableHoverableContent>
-							<Tooltip.Root>
-								<Tooltip.Trigger class="aspect-square">
-									<div
-										class={cn(
-											"bg-muted ease-elastic relative size-full rounded transition-all before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/15 hover:z-10 hover:scale-125 hover:-rotate-2",
-											variant === 0 && "hover:-rotate-2",
-											variant === 1 && "hover:rotate-2",
-											variant === 2 && "hover:-rotate-3",
-											variant === 4 && "hover:rotate-3",
-										)}
+						{#if isVinylCollectionVisible}
+							<Tooltip.Provider delayDuration={0} disableHoverableContent>
+								<Tooltip.Root>
+									<Tooltip.Trigger class="aspect-square">
+										<div
+											class={cn(
+												"bg-muted ease-elastic relative size-full rounded transition-all before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/15 hover:z-10 hover:scale-125 hover:-rotate-2",
+												variant === 0 && "hover:-rotate-2",
+												variant === 1 && "hover:rotate-2",
+												variant === 2 && "hover:-rotate-3",
+												variant === 4 && "hover:rotate-3",
+											)}
+											in:elasticFly|global={{
+												opacity: 0,
+												y: 12,
+												duration: 600,
+												delay: 25 * i,
+											}}
+										>
+											<img
+												src={lp.cover}
+												alt=""
+												class="size-full rounded object-cover"
+											/>
+										</div>
+									</Tooltip.Trigger>
+									<Tooltip.Content
+										side="bottom"
+										align="center"
+										class="flex cursor-default flex-col items-center"
 									>
-										<img
-											src={lp.cover}
-											alt=""
-											class="size-full rounded object-cover"
-										/>
-									</div>
-								</Tooltip.Trigger>
-								<Tooltip.Content
-									side="bottom"
-									align="center"
-									class="flex cursor-default flex-col items-center"
-								>
-									<p class="text-body -mb-0.5 text-sm">{lp.artist}</p>
-									<p>{lp.title}</p>
-								</Tooltip.Content>
-							</Tooltip.Root>
-						</Tooltip.Provider>
+										<p class="text-body -mb-0.5 text-sm">{lp.artist}</p>
+										<p>{lp.title}</p>
+									</Tooltip.Content>
+								</Tooltip.Root>
+							</Tooltip.Provider>
+						{/if}
 					{/each}
 				{/await}
 			</div>

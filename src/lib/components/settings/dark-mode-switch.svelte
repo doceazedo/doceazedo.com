@@ -10,7 +10,7 @@
 <Button
 	onclick={toggleMode}
 	variant="ghost"
-	class={cn("hover:bg-foreground/5 relative size-10", className)}
+	class={cn("relative size-10 hover:bg-transparent", className)}
 >
 	<SunLineWeather
 		class="ease-elastic absolute size-5 transition-all dark:scale-50 dark:opacity-0"

@@ -1,8 +1,11 @@
 <script lang="ts">
 	import Seo from "$lib/components/seo.svelte";
 	import { m } from "$lib/paraglide/messages";
+	import { onMount } from "svelte";
 	import AppsGrid from "./apps-grid.svelte";
 	import ProductsGrid from "./products-grid.svelte";
+	import { browser } from "$app/environment";
+	import { elasticScale } from "$lib/utils/transitions";
 
 	const PC_PARTS = [
 		{ label: m.uses_cpu(), product: "AMD Ryzen 7 7700X" },
@@ -192,6 +195,10 @@
 			label: m.uses_bitmap_editor(),
 		},
 	];
+
+	let mounted = $state(!browser);
+
+	onMount(() => (mounted = true));
 </script>
 
 <Seo title={m.uses_seo_title()} />
@@ -201,15 +208,21 @@
 </hgroup>
 
 <div class="flex flex-col gap-6 md:gap-12">
-	<figure
-		class="bg-muted relative aspect-video w-full rounded before:absolute before:size-full before:rounded before:border before:border-white/10"
-	>
-		<img
-			src="/img/setup.webp"
-			alt=""
-			class="aspect-video w-full rounded object-cover"
-		/>
-	</figure>
+	{#if mounted}
+		<figure
+			class="bg-muted relative aspect-video w-full rounded before:absolute before:size-full before:rounded before:border before:border-white/10"
+			in:elasticScale|global={{
+				start: 0.9,
+				duration: 800,
+			}}
+		>
+			<img
+				src="/img/setup.webp"
+				alt=""
+				class="aspect-video w-full rounded object-cover"
+			/>
+		</figure>
+	{/if}
 	<hr />
 	<ProductsGrid
 		label={m.uses_main_pc()}

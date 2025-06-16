@@ -27,6 +27,12 @@
 	import { cn } from "$lib/utils";
 	import { daysAgo } from "$lib/utils/date";
 	import Seo from "$lib/components/seo.svelte";
+	import { onMount } from "svelte";
+	import { browser } from "$app/environment";
+	import { elasticFly } from "$lib/utils/transitions";
+	import { onVisible } from "$lib/utils/actions";
+	import { Tween } from "svelte/motion";
+	import { cubicInOut } from "svelte/easing";
 
 	type Availability = {
 		label: string;
@@ -188,9 +194,18 @@
 			},
 		],
 	};
-	const COLLEGE_PROGRESS = Math.floor(
+	const COLLEGE_PROGRESS_TARGET = Math.floor(
 		(COLLEGE_CLASSES.approved / COLLEGE_CLASSES.total) * 100,
 	);
+	const COLLEGE_PROGRESS = new Tween(browser ? 0 : COLLEGE_PROGRESS_TARGET, {
+		duration: 1600,
+		easing: cubicInOut,
+	});
+
+	let mounted = $state(!browser);
+	let isPlayingGamesVisible = $state(!browser);
+
+	onMount(() => (mounted = true));
 </script>
 
 <svelte:window bind:innerWidth />
@@ -209,78 +224,86 @@
 		subtitle={m.coding_description()}
 	/>
 	<div class="grid gap-6 md:grid-cols-3">
-		{#each DEV_PROJECTS as project}
-			<a
-				href={project.url}
-				target={!project.url.startsWith("/") ? "_blank" : undefined}
-				class="ease-elastic hover:bg-muted flex flex-col gap-3 rounded border p-6 transition-all hover:scale-105"
-			>
-				<hgroup>
-					<p class="text-primary -mb-0.5 text-xs font-semibold uppercase">
-						{project.pretitle}
-					</p>
-					<h3 class="text-xl md:-mb-px md:text-2xl">{project.title}</h3>
-				</hgroup>
-				<p class="text-body leading-5">
-					{project.description}
-				</p>
-				{#if project.isFreelance}
-					<div class="grid grid-cols-6 gap-4 md:gap-2 lg:gap-3">
-						{#each getNewProjectsAvailability() as month}
-							<div class="flex flex-col items-center gap-0.5 text-center">
-								<span
-									class={cn(
-										"aspect-square w-full rounded",
-										month.available === true && "bg-emerald-500",
-										month.available === false && "bg-red-400",
-										month.available === "partial" && "bg-yellow-500",
-									)}
-								></span>
-								<p class="text-body text-xs">{month.label}</p>
-							</div>
-						{/each}
-					</div>
-					<ul class="text-body flex items-center gap-1.5 text-xs">
-						<li class="flex items-center gap-1">
-							<span class="size-3 rounded-xs bg-emerald-500"></span>
-							{m.booking_month_status_available()}
-						</li>
-						<li class="flex items-center gap-1">
-							<span class="size-3 rounded-xs bg-yellow-500"></span>
-							{m.booking_month_status_partial()}
-						</li>
-						<li class="flex items-center gap-1">
-							<span class="size-3 rounded-xs bg-red-400"></span>
-							{m.booking_month_status_unavailable()}
-						</li>
-					</ul>
-				{/if}
-				<div class="mt-auto flex items-center gap-1.5">
-					{#if project.lastCommitAt}
-						<GitRepositoryCommitsLineDevelopment class="size-4" />
-						<p class="text-body flex items-center gap-1 text-sm">
-							{m.last_commit()}:
-							{#await project.lastCommitAt}
-								<Skeleton class="h-4 w-14 rounded" />
-							{:then lastCommitAt}
-								{#if lastCommitAt}
-									<span
-										class="text-foreground hover:text-primary underline transition-all"
-									>
-										{daysAgo(new Date(lastCommitAt))}
-									</span>
-								{/if}
-							{/await}
+		{#if mounted}
+			{#each DEV_PROJECTS as project, i (i)}
+				<a
+					href={project.url}
+					target={!project.url.startsWith("/") ? "_blank" : undefined}
+					class="ease-elastic flex flex-col gap-3 rounded border p-6 transition-all hover:scale-105"
+					in:elasticFly|global={{
+						opacity: 0,
+						y: 24,
+						duration: 800,
+						delay: 100 * (i + 1),
+					}}
+				>
+					<hgroup>
+						<p class="text-primary -mb-0.5 text-xs font-semibold uppercase">
+							{project.pretitle}
 						</p>
-					{:else if project.cta}
-						<Button variant="link" size="sm">
-							{project.cta}
-							<ArrowRightLineArrows class="size-4.5" />
-						</Button>
+						<h3 class="text-xl md:-mb-px md:text-2xl">{project.title}</h3>
+					</hgroup>
+					<p class="text-body leading-5">
+						{project.description}
+					</p>
+					{#if project.isFreelance}
+						<div class="grid grid-cols-6 gap-4 md:gap-2 lg:gap-3">
+							{#each getNewProjectsAvailability() as month}
+								<div class="flex flex-col items-center gap-0.5 text-center">
+									<span
+										class={cn(
+											"aspect-square w-full rounded",
+											month.available === true && "bg-emerald-500",
+											month.available === false && "bg-red-400",
+											month.available === "partial" && "bg-yellow-500",
+										)}
+									></span>
+									<p class="text-body text-xs">{month.label}</p>
+								</div>
+							{/each}
+						</div>
+						<ul class="text-body flex items-center gap-1.5 text-xs">
+							<li class="flex items-center gap-1">
+								<span class="size-3 rounded-xs bg-emerald-500"></span>
+								{m.booking_month_status_available()}
+							</li>
+							<li class="flex items-center gap-1">
+								<span class="size-3 rounded-xs bg-yellow-500"></span>
+								{m.booking_month_status_partial()}
+							</li>
+							<li class="flex items-center gap-1">
+								<span class="size-3 rounded-xs bg-red-400"></span>
+								{m.booking_month_status_unavailable()}
+							</li>
+						</ul>
 					{/if}
-				</div>
-			</a>
-		{/each}
+					<div class="mt-auto flex items-center gap-1.5">
+						{#if project.lastCommitAt}
+							<GitRepositoryCommitsLineDevelopment class="size-4" />
+							<p class="text-body flex items-center gap-1 text-sm">
+								{m.last_commit()}:
+								{#await project.lastCommitAt}
+									<Skeleton class="h-4 w-14 rounded" />
+								{:then lastCommitAt}
+									{#if lastCommitAt}
+										<span
+											class="text-foreground hover:text-primary underline transition-all"
+										>
+											{daysAgo(new Date(lastCommitAt))}
+										</span>
+									{/if}
+								{/await}
+							</p>
+						{:else if project.cta}
+							<Button variant="link" size="sm">
+								{project.cta}
+								<ArrowRightLineArrows class="size-4.5" />
+							</Button>
+						{/if}
+					</div>
+				</a>
+			{/each}
+		{/if}
 	</div>
 
 	<hr />
@@ -290,70 +313,80 @@
 		title={m.reading()}
 		subtitle={m.reading_subtitle()}
 	/>
-	<a
-		href={BOOK.url}
-		target="_blank"
-		rel="noopener noreferrer"
-		class="ease-elastic hover:bg-muted flex grid-cols-6 gap-6 rounded border p-3 transition-all hover:scale-105 md:grid"
-	>
-		<figure
-			class="relative h-fit w-1/4 shrink-0 before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/20 md:w-auto"
+	{#if mounted}
+		<a
+			href={BOOK.url}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="ease-elastic flex grid-cols-6 gap-6 rounded border p-3 transition-all hover:scale-105 md:grid"
+			in:elasticFly|global={{
+				opacity: 0,
+				y: 24,
+				duration: 800,
+				delay: 400,
+			}}
 		>
-			<img src={BOOK.cover} alt="" class="w-full rounded" />
-		</figure>
-		<div class="col-span-5 flex w-full flex-col gap-1.5 md:gap-3">
-			<hgroup>
-				<h3 class="-mb-0.5 text-xl md:-mb-px md:text-2xl">
-					{BOOK.title[getLocale()]}
-				</h3>
-				<p class="text-body text-xs leading-4 md:text-sm">
-					{BOOK.subtitle[getLocale()]}
-				</p>
-			</hgroup>
-			<div
-				class="text-body flex flex-col gap-1.5 text-sm md:flex-row md:gap-3 md:text-base"
+			<figure
+				class="relative h-fit w-1/4 shrink-0 before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/20 md:w-auto"
 			>
-				<p class="hidden items-center gap-1 md:flex">
-					<UserLineUserFaces class="text-foreground size-3.5 md:size-4.5" />
-					{BOOK.author}
-				</p>
-				<span class="hidden opacity-80 md:block">&bull;</span>
-				<div class="flex items-center gap-1">
-					<CalendarLineBusiness class="text-foreground size-3.5 md:size-4.5" />
-					<p class="[&>span]:text-foreground">
-						{@html m.started_at({
-							date: BOOK.startedAt.toLocaleDateString(getLocale()),
-						})}
+				<img src={BOOK.cover} alt="" class="w-full rounded" />
+			</figure>
+			<div class="col-span-5 flex w-full flex-col gap-1.5 md:gap-3">
+				<hgroup>
+					<h3 class="-mb-0.5 text-xl md:-mb-px md:text-2xl">
+						{BOOK.title[getLocale()]}
+					</h3>
+					<p class="text-body text-xs leading-4 md:text-sm">
+						{BOOK.subtitle[getLocale()]}
 					</p>
-				</div>
-			</div>
-			<div class="mt-auto flex flex-col gap-1.5">
-				<div class="flex items-center justify-between text-sm md:text-base">
-					<p class="text-body [&>span]:text-foreground">
-						{@html m.pages_read({
-							current: BOOK.pages.read,
-							total: BOOK.pages.total,
-						})}
+				</hgroup>
+				<div
+					class="text-body flex flex-col gap-1.5 text-sm md:flex-row md:gap-3 md:text-base"
+				>
+					<p class="hidden items-center gap-1 md:flex">
+						<UserLineUserFaces class="text-foreground size-3.5 md:size-4.5" />
+						{BOOK.author}
 					</p>
-					<div class="text-body flex items-center gap-1 text-sm md:text-base">
-						<CalendarCheckLineBusiness
+					<span class="hidden opacity-80 md:block">&bull;</span>
+					<div class="flex items-center gap-1">
+						<CalendarLineBusiness
 							class="text-foreground size-3.5 md:size-4.5"
 						/>
 						<p class="[&>span]:text-foreground">
-							{#if isDesktop}
-								{@html m.updated_at({
-									date: BOOK.pages.updatedAt.toLocaleDateString(getLocale()),
-								})}
-							{:else}
-								{BOOK.pages.updatedAt.toLocaleDateString(getLocale())}
-							{/if}
+							{@html m.started_at({
+								date: BOOK.startedAt.toLocaleDateString(getLocale()),
+							})}
 						</p>
 					</div>
 				</div>
-				<Progress value={BOOK.pages.read} max={BOOK.pages.total} />
+				<div class="mt-auto flex flex-col gap-1.5">
+					<div class="flex items-center justify-between text-sm md:text-base">
+						<p class="text-body [&>span]:text-foreground">
+							{@html m.pages_read({
+								current: BOOK.pages.read,
+								total: BOOK.pages.total,
+							})}
+						</p>
+						<div class="text-body flex items-center gap-1 text-sm md:text-base">
+							<CalendarCheckLineBusiness
+								class="text-foreground size-3.5 md:size-4.5"
+							/>
+							<p class="[&>span]:text-foreground">
+								{#if isDesktop}
+									{@html m.updated_at({
+										date: BOOK.pages.updatedAt.toLocaleDateString(getLocale()),
+									})}
+								{:else}
+									{BOOK.pages.updatedAt.toLocaleDateString(getLocale())}
+								{/if}
+							</p>
+						</div>
+					</div>
+					<Progress value={BOOK.pages.read} max={BOOK.pages.total} />
+				</div>
 			</div>
-		</div>
-	</a>
+		</a>
+	{/if}
 
 	<hr />
 
@@ -379,7 +412,7 @@
 							)}/_/{track.track.replaceAll(' ', '+')}"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="ease-elastic hover:bg-muted flex items-center gap-1.5 rounded border p-1.5 pr-3 transition-all hover:-translate-y-1"
+							class="ease-elastic flex items-center gap-1.5 rounded border p-1.5 pr-3 transition-all hover:-translate-y-1"
 						>
 							<img
 								src={track.cover}
@@ -462,73 +495,84 @@
 		title={m.playing_games()}
 		subtitle={m.playing_games_subtitle()}
 	/>
-	<div class="flex flex-col gap-3 md:gap-6">
+	<div
+		class="flex flex-col gap-3 md:gap-6"
+		use:onVisible={() => (isPlayingGamesVisible = true)}
+	>
 		<div class="grid grid-cols-3 gap-3 md:grid-cols-5 lg:gap-6">
 			{#await getLastPlayedGames()}
 				{#each Array(5).fill(null) as _uwu}
 					<Skeleton class="aspect-[6/9] rounded" />
 				{/each}
 			{:then games}
-				{#each games as game}
-					<Tooltip.Provider delayDuration={300}>
-						<Tooltip.Root>
-							<Tooltip.Trigger>
-								<a
-									href={game.url}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="bg-muted ease-elastic relative flex aspect-[6/9] rounded transition-all before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/15 hover:scale-105 lg:hover:scale-115"
-								>
-									<img
-										src={game.cover}
-										alt={game.name}
-										class="size-full rounded object-cover"
-										data-appid={game.appid}
-										onerror={handleMissingGameCover}
-									/>
-								</a></Tooltip.Trigger
-							>
-							<Tooltip.Content
-								side="bottom"
-								class="justify-center"
-								sideOffset={24}
-							>
-								<p class="mx-auto mb-px max-w-[20ch] text-center leading-5">
-									{game.name}
-								</p>
-								<div class="flex items-center justify-center gap-1">
-									{#if game.updatedAt}
-										<CalendarCheckLineBusiness class="text-body size-4" />
-									{:else}
-										<GamepadLineDevice class="text-body size-4" />
-									{/if}
-									<p
-										class="text-body [&>span]:text-secondary-foreground text-center text-sm"
+				{#if isPlayingGamesVisible}
+					{#each games as game, i (i)}
+						<Tooltip.Provider delayDuration={300}>
+							<Tooltip.Root>
+								<Tooltip.Trigger>
+									<a
+										href={game.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="bg-muted ease-elastic relative flex aspect-[6/9] rounded transition-all before:absolute before:top-0 before:left-0 before:size-full before:rounded before:border before:border-white/15 hover:scale-105 lg:hover:scale-115"
+										in:elasticFly|global={{
+											opacity: 0,
+											y: 12,
+											duration: 800,
+											delay: 50 * (i + 1),
+										}}
 									>
-										{#if game.updatedAt}
-											{@html m.updated_at({
-												date: new Date(game.updatedAt).toLocaleDateString(
-													getLocale(),
-												),
-											})}
-										{:else if game.lastPlayedAt}
-											{@html m.last_played_game({
-												date: daysAgo(new Date(game.lastPlayedAt)),
-											})}
-										{:else if game.playtime}
-											{@html m.played_last_two_weeks({
-												time:
-													game.playtime >= 60
-														? `${toFixedIfNecessary(game.playtime / 60)}h`
-														: `${game.playtime}min`,
-											})}
-										{/if}
+										<img
+											src={game.cover}
+											alt={game.name}
+											class="size-full rounded object-cover"
+											data-appid={game.appid}
+											onerror={handleMissingGameCover}
+										/>
+									</a></Tooltip.Trigger
+								>
+								<Tooltip.Content
+									side="bottom"
+									class="justify-center"
+									sideOffset={24}
+								>
+									<p class="mx-auto mb-px max-w-[20ch] text-center leading-5">
+										{game.name}
 									</p>
-								</div>
-							</Tooltip.Content>
-						</Tooltip.Root>
-					</Tooltip.Provider>
-				{/each}
+									<div class="flex items-center justify-center gap-1">
+										{#if game.updatedAt}
+											<CalendarCheckLineBusiness class="text-body size-4" />
+										{:else}
+											<GamepadLineDevice class="text-body size-4" />
+										{/if}
+										<p
+											class="text-body [&>span]:text-secondary-foreground text-center text-sm"
+										>
+											{#if game.updatedAt}
+												{@html m.updated_at({
+													date: new Date(game.updatedAt).toLocaleDateString(
+														getLocale(),
+													),
+												})}
+											{:else if game.lastPlayedAt}
+												{@html m.last_played_game({
+													date: daysAgo(new Date(game.lastPlayedAt)),
+												})}
+											{:else if game.playtime}
+												{@html m.played_last_two_weeks({
+													time:
+														game.playtime >= 60
+															? `${toFixedIfNecessary(game.playtime / 60)}h`
+															: `${game.playtime}min`,
+												})}
+											{/if}
+										</p>
+									</div>
+								</Tooltip.Content>
+							</Tooltip.Root>
+						</Tooltip.Provider>
+					{/each}
+				{/if}
 			{/await}
 		</div>
 		<Button
@@ -555,6 +599,8 @@
 			<h3 class="text-xl md:text-2xl">{m.degree_progress()}</h3>
 			<div
 				class="relative mx-auto flex size-full max-w-64 items-center justify-center md:max-w-none"
+				use:onVisible={() =>
+					(COLLEGE_PROGRESS.target = COLLEGE_PROGRESS_TARGET)}
 			>
 				<svg
 					class="size-full -rotate-90"
@@ -577,13 +623,13 @@
 						class="stroke-primary"
 						stroke-width="0.5"
 						stroke-dasharray="100"
-						stroke-dashoffset={100 - COLLEGE_PROGRESS}
+						stroke-dashoffset={100 - COLLEGE_PROGRESS.current}
 					></circle>
 				</svg>
 
 				<div class="absolute flex flex-col items-center gap-0.5 text-center">
 					<p class="text-xl md:text-2xl">
-						{COLLEGE_PROGRESS}%
+						{Math.floor(COLLEGE_PROGRESS.current)}%
 					</p>
 					<p
 						class="text-body [&>span]:text-foreground max-w-[15ch] text-sm leading-4 lg:max-w-none"
@@ -604,7 +650,7 @@
 				{@const isExamPeriod = subject.examPeriodStartsAt.getTime() <= today}
 				{@const isClassPeriod = subject.classPeriodStartsAt.getTime() <= today}
 				<div
-					class="text-body ease-elastic hover:bg-muted group flex cursor-default items-center gap-3 rounded border p-3 transition-all hover:-translate-y-1"
+					class="text-body ease-elastic group flex cursor-default items-center gap-3 rounded border p-3 transition-all hover:-translate-y-1"
 				>
 					{subject.name[getLocale()]}
 					<span

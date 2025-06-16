@@ -3,10 +3,12 @@
 	import { onMount } from "svelte";
 	import type { Map } from "mapbox-gl";
 	import { MY_LOCATION } from "$lib/constants";
+	import { onVisible } from "$lib/utils/actions";
 
 	let { userLocation } = $props<{ userLocation: [number, number] | null }>();
 
 	let map: Map;
+	let loaded = $state(false);
 
 	onMount(() => {
 		window.mapboxgl.accessToken = PUBLIC_MAPBOX_TOKEN;
@@ -14,10 +16,12 @@
 		map = new window.mapboxgl.Map({
 			container: "map",
 			center: MY_LOCATION,
-			zoom: 4,
+			zoom: 6,
 		});
 
 		map.on("load", () => {
+			loaded = true;
+
 			new window.mapboxgl.Marker(
 				document.getElementById("doce-marker") as HTMLElement,
 			)
@@ -58,12 +62,6 @@
 					"line-color": "#85cc1a",
 				},
 			});
-
-			setTimeout(() => {
-				map.fitBounds([MY_LOCATION, userLocation], {
-					padding: { top: 12, bottom: 24, left: 12, right: 12 },
-				});
-			}, 500);
 		});
 	});
 </script>
@@ -72,3 +70,15 @@
 
 <img src="/img/memoji-wink.webp" alt="" class="size-12" id="doce-marker" />
 <img src="/img/emoji-apple-you.webp" alt="" class="size-10" id="user-marker" />
+
+{#if loaded}
+	<div
+		class="pointer-events-none absolute top-0 left-0 size-full"
+		use:onVisible={() =>
+			setTimeout(() => {
+				map.fitBounds([MY_LOCATION, userLocation], {
+					padding: { top: 12, bottom: 24, left: 12, right: 12 },
+				});
+			}, 100)}
+	></div>
+{/if}

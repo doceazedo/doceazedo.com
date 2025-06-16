@@ -20,6 +20,9 @@
 
 	let headings = $state<Heading[]>([]);
 	let activeHeading = $state("");
+	let activeHeadingIdx = $derived(
+		headings.findIndex((x) => x.id === activeHeading),
+	);
 
 	onMount(() => {
 		const headingEls = document.querySelectorAll<HTMLHeadingElement>(
@@ -81,16 +84,16 @@
 		</footer>
 	</main>
 	<aside
-		class="sticky top-26 hidden h-fit w-full flex-col gap-3 border-l lg:flex"
+		class="sticky top-32 hidden h-fit w-full flex-col gap-3 border-l lg:flex"
 	>
 		<h1 class="ml-6 font-medium">{m.toc()}</h1>
-		<div class="flex flex-col gap-1.5">
+		<div class="relative flex flex-col gap-1.5">
 			{#each headings as heading}
 				<a
 					href="#{heading.id}"
 					class={cn(
-						"text-body hover:text-foreground relative flex h-6 items-center transition-all before:absolute before:top-0 before:-left-px before:h-full before:w-px",
-						activeHeading === heading.id && "text-foreground before:bg-primary",
+						"text-body hover:text-foreground relative flex h-6 items-center transition-all",
+						activeHeading === heading.id && "text-foreground",
 						heading.tag === "h2" && "pl-6",
 						heading.tag === "h3" && "pl-10",
 						heading.tag === "h4" && "pl-14",
@@ -100,6 +103,10 @@
 					{heading.label}
 				</a>
 			{/each}
+			<span
+				class="bg-primary ease-elastic absolute top-0 -left-px h-6 w-px transition-all duration-300"
+				style="top:{activeHeadingIdx >= 0 ? activeHeadingIdx * 30 : 0}px"
+			></span>
 		</div>
 	</aside>
 </div>

@@ -9,6 +9,7 @@
 		Chat1LineCommunication,
 		CodeSSlashLineDevelopment,
 		HourglassLineSystem,
+		Loader2LineSystem,
 		MenuFillSystem,
 		MouseLineDevice,
 		NewsLineDocument,
@@ -22,6 +23,7 @@
 	import { m } from "$lib/paraglide/messages";
 	import { ModeWatcher } from "mode-watcher";
 	import DarkModeSwitch from "$lib/components/settings/dark-mode-switch.svelte";
+	import { onMount } from "svelte";
 
 	let { children } = $props();
 
@@ -37,6 +39,9 @@
 
 	let scrollY = $state(0);
 	let isDrawerOpen = $state(false);
+	let mounted = $state(false);
+
+	onMount(() => (mounted = true));
 </script>
 
 <svelte:window bind:scrollY />
@@ -118,4 +123,14 @@
 <div class="mx-auto max-w-5xl px-6 pt-20 lg:px-0">
 	{@render children()}
 	<Footer />
+</div>
+
+<div
+	class={cn(
+		"bg-background text-body fixed top-0 left-0 z-50 flex size-full cursor-wait items-center justify-center gap-1.5 transition-all duration-100",
+		mounted && "pointer-events-none opacity-0 select-none",
+	)}
+>
+	<Loader2LineSystem class="text-primary size-6 animate-spin" />
+	{m.loading()}
 </div>

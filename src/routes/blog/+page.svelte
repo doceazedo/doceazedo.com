@@ -1,10 +1,16 @@
 <script lang="ts">
+	import { browser } from "$app/environment";
 	import Seo from "$lib/components/seo.svelte";
 	import { m } from "$lib/paraglide/messages";
 	import { postedAt, wasPostedThisWeek } from "$lib/utils/date";
+	import { elasticFly } from "$lib/utils/transitions.js";
+	import { onMount } from "svelte";
 	import { StarFillSystem } from "svelte-remix";
 
 	let { data } = $props();
+
+	let mounted = $state(!browser);
+	onMount(() => (mounted = true));
 </script>
 
 <Seo title={m.articles_seo_title()} />
@@ -15,32 +21,53 @@
 </hgroup>
 
 <ul class="flex flex-col gap-12">
-	{#each data.postsByYear as yearPosts}
-		{@const year = new Date(yearPosts[0].date).getFullYear()}
-		<li class="flex flex-col gap-3">
-			<h3 class="text-body text-2xl md:text-3xl">{year}</h3>
-			{#each yearPosts as post}
-				{@const publishDate = new Date(`${post.date} GMT-3`)}
-				<a
-					href="/blog/{post.slug}"
-					class="hover:bg-muted/70 ease-elastic flex items-center gap-3 rounded border p-6 transition-all hover:-translate-y-1.5"
+	{#if mounted}
+		{#each data.postsByYear as yearPosts, i}
+			{@const year = new Date(yearPosts[0].date).getFullYear()}
+			{@const previousPostsDelay =
+				data.postsByYear.slice(0, i).flat().length * 50}
+
+			<li class="flex flex-col gap-3">
+				<h3
+					class="text-body text-2xl md:text-3xl"
+					in:elasticFly|global={{
+						opacity: 0,
+						y: 24,
+						duration: 800,
+						delay: previousPostsDelay + 50 * i,
+					}}
 				>
-					<img src={post.icon} alt="" class="size-12" />
-					<hgroup class="flex flex-col gap-0.5">
-						<p
-							class="text-primary flex items-center gap-1.5 text-xs font-semibold uppercase"
-						>
-							{#if wasPostedThisWeek(publishDate)}
-								<StarFillSystem class="size-3.5" />
-							{/if}
-							{postedAt(publishDate)}
-						</p>
-						<h3 class="leading-5">
-							{post.title}
-						</h3>
-					</hgroup>
-				</a>
-			{/each}
-		</li>
-	{/each}
+					{year}
+				</h3>
+				{#each yearPosts as post, j}
+					{@const publishDate = new Date(`${post.date} GMT-3`)}
+					<a
+						href="/blog/{post.slug}"
+						class="ease-elastic flex items-center gap-3 rounded border p-6 transition-all hover:-translate-y-1"
+						in:elasticFly|global={{
+							opacity: 0,
+							y: 24,
+							duration: 800,
+							delay: previousPostsDelay + 50 * (j + 1),
+						}}
+					>
+						<img src={post.icon} alt="" class="size-12" />
+						<hgroup class="flex flex-col gap-0.5">
+							<p
+								class="text-primary flex items-center gap-1.5 text-xs font-semibold uppercase"
+							>
+								{#if wasPostedThisWeek(publishDate)}
+									<StarFillSystem class="size-3.5" />
+								{/if}
+								{postedAt(publishDate)}
+							</p>
+							<h3 class="leading-5">
+								{post.title}
+							</h3>
+						</hgroup>
+					</a>
+				{/each}
+			</li>
+		{/each}
+	{/if}
 </ul>

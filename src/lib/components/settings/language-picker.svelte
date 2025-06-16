@@ -29,7 +29,7 @@
 
 <DropdownMenu.Root>
 	<DropdownMenu.Trigger
-		class="hover:bg-foreground/5 hover:text-accent-foreground dark:hover:bg-accent/50 flex size-10 cursor-pointer items-center justify-center gap-2.5 rounded transition-all"
+		class="hover:text-accent-foreground flex size-10 cursor-pointer items-center justify-center gap-2.5 rounded transition-all"
 	>
 		<GlobalLineBusiness class="size-5" />
 	</DropdownMenu.Trigger>
