@@ -7,6 +7,7 @@
 	import Memoji from "$lib/components/memoji.svelte";
 	import { LAST_PLAYED_TRACKS } from "$lib/stores";
 	import { SOCIALS } from "$lib/constants";
+	import { getLocale } from "$lib/paraglide/runtime";
 
 	const FOOTER_SOCIALS = [
 		SOCIALS.github,
@@ -16,6 +17,11 @@
 		SOCIALS.discord,
 		SOCIALS.soundcloud,
 	];
+
+	const COPYLEFT_URL = {
+		en: "https://www.gnu.org/licenses/copyleft.en.html",
+		pt: "https://www.gnu.org/licenses/copyleft.pt-br.html",
+	};
 
 	let scrollY = $state(0);
 	let innerHeight = $state(0);
@@ -60,7 +66,16 @@
 >
 	<div class="text-body flex flex-col items-center text-sm md:items-start">
 		<Memoji class="mb-1.5 size-14" />
-		<p class="-mb-1.5">&copy; {new Date().getFullYear()} Doce Fernandes</p>
+		<p class="-mb-1.5">
+			<a
+				href={COPYLEFT_URL[getLocale()]}
+				target="_blank"
+				class="hover:text-primary inline-flex -translate-y-0.75 rotate-180"
+			>
+				&copy;
+			</a>
+			{new Date().getFullYear()} Doce Fernandes.
+		</p>
 		<p>{m.licensed_under({ license: "GPLv3" })}</p>
 	</div>
 
