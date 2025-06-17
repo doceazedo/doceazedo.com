@@ -148,7 +148,7 @@ body::before {
 
 .dark body::before {
   filter: invert(1);
-  opacity: .8;
+  opacity: .08;
 }
 
 @media screen and (min-width: 48rem /* md */) {
