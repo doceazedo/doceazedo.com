@@ -11,6 +11,9 @@
 	} from "svelte-remix";
 	import { toast } from "svelte-sonner";
 	import { getLocale } from "$lib/paraglide/runtime";
+	import { browser } from "$app/environment";
+	import { onMount } from "svelte";
+	import { elasticFly } from "$lib/utils/transitions";
 
 	const CALL_URLS = {
 		en: "https://cal.com/docef/chat",
@@ -30,6 +33,9 @@
 			toast.error(m.copy_error());
 		}
 	};
+
+	let mounted = $state(!browser);
+	onMount(() => (mounted = true));
 </script>
 
 <Seo title={m.contact_seo_title()} />
@@ -44,62 +50,105 @@
 	</h1>
 </hgroup>
 
-<div class="mx-auto flex max-w-lg flex-col gap-12">
-	<div class="flex gap-3 md:mb-12">
-		<Button href="mailto:{EMAIL}" variant="outline" size="lg" class="grow">
-			<MailLineBusiness class="size-5" />
-			{EMAIL}
-		</Button>
-		<Button variant="secondary" size="lg" onclick={copyEmail}>
-			{#if copied}
-				<CheckLineSystem class="size-5" />
-			{:else}
-				<FileCopyLineDocument class="size-5" />
-			{/if}
-			{m.copy()}
-		</Button>
-	</div>
+{#if mounted}
+	<div class="mx-auto flex max-w-lg flex-col gap-12">
+		<div class="flex gap-3 md:mb-12">
+			<span
+				class="flex w-full"
+				in:elasticFly|global={{
+					opacity: 0,
+					y: 12,
+					duration: 800,
+				}}
+			>
+				<Button href="mailto:{EMAIL}" variant="outline" size="lg" class="grow">
+					<MailLineBusiness class="size-5" />
+					{EMAIL}
+				</Button>
+			</span>
+			<span
+				in:elasticFly|global={{
+					opacity: 0,
+					y: 12,
+					duration: 800,
+					delay: 50,
+				}}
+			>
+				<Button variant="secondary" size="lg" onclick={copyEmail}>
+					{#if copied}
+						<CheckLineSystem class="size-5" />
+					{:else}
+						<FileCopyLineDocument class="size-5" />
+					{/if}
+					{m.copy()}
+				</Button>
+			</span>
+		</div>
 
-	<hr />
+		<hr />
 
-	<div class="flex flex-col gap-3">
-		<h2 class="text-2xl">{m.contact_call_title()}</h2>
-		<Button
-			href={CALL_URLS[getLocale()]}
-			target="_blank"
-			variant="outline"
-			size="lg"
-		>
-			<CalendarScheduleLineBusiness class="size-5" />
-			{m.book_a_call()}
-		</Button>
-	</div>
-
-	<hr />
-
-	<div class="flex flex-col gap-6">
-		<hgroup>
-			<h2 class="text-2xl">{m.contact_socials_title()}</h2>
-			<p class="text-body">
-				{m.contact_socials_subtitle()}
-			</p>
-		</hgroup>
-		<div class="grid grid-cols-2 gap-3">
-			{#each Object.values(SOCIALS) as social}
+		<div class="flex flex-col gap-3">
+			<h2 class="text-2xl">{m.contact_call_title()}</h2>
+			<span
+				class="flex w-full"
+				in:elasticFly|global={{
+					opacity: 0,
+					y: 12,
+					duration: 800,
+					delay: 150,
+				}}
+			>
 				<Button
-					href={social.url}
+					href={CALL_URLS[getLocale()]}
+					target="_blank"
+					rel="noopener noreferrer"
 					variant="outline"
 					size="lg"
-					class="[&_svg]:fill-accent-foreground [&_svg]:size-5"
+					class="w-full"
 				>
-					{#if typeof social.icon === "string"}
-						{@html social.icon}
-					{:else}
-						<social.icon class="size-5" />
-					{/if}
-					{social.label}
+					<CalendarScheduleLineBusiness class="size-5" />
+					{m.book_a_call()}
 				</Button>
-			{/each}
+			</span>
+		</div>
+
+		<hr />
+
+		<div class="flex flex-col gap-6">
+			<hgroup>
+				<h2 class="text-2xl">{m.contact_socials_title()}</h2>
+				<p class="text-body">
+					{m.contact_socials_subtitle()}
+				</p>
+			</hgroup>
+			<ul class="grid grid-cols-2 gap-3">
+				{#each Object.values(SOCIALS) as social, i (i)}
+					<li
+						in:elasticFly|global={{
+							opacity: 0,
+							y: 12,
+							duration: 800,
+							delay: 250 + i * 75,
+						}}
+					>
+						<Button
+							href={social.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							variant="outline"
+							size="lg"
+							class="[&_svg]:fill-accent-foreground w-full [&_svg]:size-5"
+						>
+							{#if typeof social.icon === "string"}
+								{@html social.icon}
+							{:else}
+								<social.icon class="size-5" />
+							{/if}
+							{social.label}
+						</Button>
+					</li>
+				{/each}
+			</ul>
 		</div>
 	</div>
-</div>
+{/if}
