@@ -1,4 +1,4 @@
-<h1 align="center">doceazedo.com</h1>
+<h1 align="center">doce.sh</h1>
 
 <p align="center">
   This is my personal website and blog proudly made with <a href="https://svelte.dev" target="_blank">Svelte</a> and <a href="https://kit.svelte.dev" target="_blank">SvelteKit</a>, consuming posts from plain Markdown files and running on <a href="https://vercel.com" target="_blank">Vercel</a>.
@@ -8,17 +8,13 @@
   <img src="https://img.shields.io/github/deployments/doceazedo/doceazedo.com/Production?label=vercel&logo=vercel&style=flat-square" alt="Vercel Status">
 </p>
 
-<p align="center">
-  <a href="https://doceazedo.com">
-    <img src="static/img/thumbnail.jpg">
-  </a>
-</p>
+[![](static/img/thumbnail-full-rounded.png)](https://doce.sh)
 
 ## Deployments
 
-| Environment  | URL                                             | Branch                                   |
-|--------------|-------------------------------------------------|------------------------------------------|
-| 🚀 Production | [doceazedo.com](https://doceazedo.com)         | Deploys on every commit to `main` branch |
+| Environment   | URL                                            | Branch                                   |
+| ------------- | ---------------------------------------------- | ---------------------------------------- |
+| 🚀 Production | [doce.sh](https://doce.sh)                     | Deploys on every commit to `main` branch |
 | 🔮 Canary     | [pbe.doceazedo.com](https://pbe.doceazedo.com) | Deploys on every commit to `pbe` branch  |
 
 ## Hold up! ✋

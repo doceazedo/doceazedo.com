@@ -243,7 +243,7 @@
 			</div>
 			<div class="hidden md:flex">
 				<Button
-					href="https://github.com/doceazedo/doceazedo.com/commit/41868455226b6a99155355e10255cfa4fecfe1f9"
+					href="https://github.com/doceazedo/doce.sh/commit/41868455226b6a99155355e10255cfa4fecfe1f9"
 					target="_blank"
 					size="sm"
 					variant="ghost"
@@ -259,7 +259,7 @@
 					<FileCopyLineDocument />
 				</Button>
 				<Button
-					href="https://github.com/doceazedo/doceazedo.com/blob/1c5fdad5086898afca61ece21ac2632c2b02fb87/README.md"
+					href="https://github.com/doceazedo/doce.sh/blob/1c5fdad5086898afca61ece21ac2632c2b02fb87/README.md"
 					target="_blank"
 					size="sm"
 					variant="ghost"
@@ -268,7 +268,7 @@
 					<FileCodeLineDocument />
 				</Button>
 				<Button
-					href="https://github.com/doceazedo/doceazedo.com/tree/1c5fdad5086898afca61ece21ac2632c2b02fb87"
+					href="https://github.com/doceazedo/doce.sh/tree/1c5fdad5086898afca61ece21ac2632c2b02fb87"
 					target="_blank"
 					size="sm"
 					variant="ghost"
