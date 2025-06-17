@@ -135,9 +135,55 @@ body::before {
   bottom: 0;
   left: 0;
   right: 0;
-  background-image: url("/img/noise.png");
+  image-rendering: crisp-edges;
+  background-image: url("/img/noise.webp");
+  background-size: 640px 360px;
+  background-repeat: repeat;
   z-index: 100;
   pointer-events: none;
+  opacity: .07;
+	animation: noise 0.5s steps(4, jump-both) infinite;
+  transition: all .3s ease;
+}
+
+.dark body::before {
+  filter: invert(1);
+  opacity: .15;
+}
+
+@media screen and (min-width: 96rem /* 2xl */) {
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .5));
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: all .3s ease;
+  }
+
+  .dark body::after {
+    opacity: 1;
+  }
+}
+
+@keyframes noise {
+	0% {
+		background-position: top right;
+	}
+	25% {
+		background-position: bottom right;
+	}
+	50% {
+		background-position: top left;
+	}
+	100% {
+		background-position: bottom left;
+	}
 }
 
 hr {

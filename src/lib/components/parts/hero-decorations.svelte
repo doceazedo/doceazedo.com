@@ -27,7 +27,7 @@
 					class={cn(
 						"size-24 border-t border-r opacity-30 transition-all",
 						isDayTime
-							? "dark:border-foreground/15 opacity-40 dark:opacity-100"
+							? "dark:border-foreground/10 opacity-40 dark:opacity-100"
 							: "dark:opacity-80",
 					)}
 				></div>

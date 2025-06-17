@@ -57,7 +57,7 @@
 			<img
 				src="/img/selfie.webp"
 				alt=""
-				class="ease-elastic relative z-20 rounded object-cover transition-all group-hover:-translate-x-3 group-hover:translate-y-3"
+				class="ease-elastic relative z-20 rounded object-cover transition-all group-hover:-translate-x-3 group-hover:translate-y-3 dark:brightness-85 dark:contrast-125"
 				in:elasticFly={{
 					opacity: 0,
 					x: 24,

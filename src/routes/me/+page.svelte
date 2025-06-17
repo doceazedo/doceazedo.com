@@ -148,7 +148,11 @@
 						delay: 100 * (i + 1),
 					}}
 				>
-					<img src={photo} alt="" class="size-full rounded object-fill" />
+					<img
+						src={photo}
+						alt=""
+						class="size-full rounded object-fill transition-all dark:brightness-85 dark:contrast-125"
+					/>
 				</figure>
 			{/each}
 		{/if}
