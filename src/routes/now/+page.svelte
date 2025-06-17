@@ -52,9 +52,9 @@
 		cover: "/img/o-nome-do-vento.webp",
 		url: "https://www.goodreads.com/book/show/8480575-o-nome-do-vento",
 		pages: {
-			read: 38,
+			read: 53,
 			total: 656,
-			updatedAt: new Date("2025/06/13 GMT-3"),
+			updatedAt: new Date("2025/06/17 GMT-3"),
 		},
 		startedAt: new Date("2025/06/13 GMT-3"),
 	};
