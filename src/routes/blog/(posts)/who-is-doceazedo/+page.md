@@ -4,21 +4,23 @@ date: "2022/07/19"
 icon: "/img/raising-hand-emoji.svg"
 ---
 
-The pseudonym DoceAzedo was created on June 1st, 2020 with the goal of separating my online identity from my personal life. At that time I didn't want to mix my projects with my day-to-day life outside the computer, so I decided to rename and separate all my accounts and names across the internet in an attempt to hide Lucas from whoever knew Doce.
+> 👋 Hey, Doce from 2025 here! I changed even more since I originally wrote this, but I thought it would be good to keep this post online for the ages.
+
+The pseudonym DoceAzedo was created on June 1st, 2020 with the goal of separating my online identity from my personal life. At that time I didn't want to mix my projects with my day-to-day life outside the computer, so I decided to rename and separate all my accounts and names across the internet in an attempt to hide the IRL me from whoever knew Doce.
 
 I created this nickname exactly three days after the release of the album "Chromatica", translating the title of the track "Sour Candy" to "DoceAzedo" (which means "sour sweet" in Portuguese). You'll still find the suffix "911", another track from that same album, on social media where this name by itself wasn't available.
 
 For context, Lady Gaga's "Chromatica" was a huge cultural moment in 2020, especially for LGBTQ+ folks. The album was all about self-acceptance, healing, and finding your authentic self, which honestly feels pretty relevant to this whole identity journey I'm about to unpack.
 
-What happened is that since then my online presence started representing my livestreams and open-source projects more than my old projects of questionable nature, already abandoned at that point. Meanwhile, the name "Lucas Fernandes" became more tied to my professional career.
+What happened is that since then my online presence started representing my livestreams and open-source projects more than my old projects of questionable nature, already abandoned at that point. Meanwhile, my old name became more tied to my professional career.
 
 ## Identity beyond the visuals
 
-Starting from this principle, I began to notice that the name "Doce" started to portray much better who I am as a person than "Lucas". For example, whoever knows me as Doce knows at least that I'm a programmer, I do live coding and, no less important, I'm a non-binary person. Different from those who know me as Lucas, who either only know my resume, or only know that I'm the "computer kid".
+Starting from this principle, I began to notice that the name "Doce" started to portray much better who I am as a person than my old name. For example, whoever knows me as Doce knows at least that I'm a programmer, I do live coding and, no less important, I'm a non-binary person. Different from those who know me by my old name, who either only know my resume, or only know that I'm the "computer kid".
 
 Especially because in a three-year window, nobody is the same person at the end, even more considering that three years ago I was just a teenager.
 
-So gradually I started perceiving and understanding that the depreciation of the name "Lucas" in favor of the name "Doce" was more than a visual identity change of a brand, but rather a change in the way to better represent who I am.
+So gradually I started perceiving and understanding that the depreciation of my old name in favor of the name "Doce" was more than a visual identity change of a brand, but rather a change in the way to better represent who I am.
 
 <p align="center">
   <img src="/img/old-taylor.gif">
@@ -28,7 +30,7 @@ Non-binary identity, for those who might not be familiar, means I don't exclusiv
 
 ## A site that's mine (and only mine)
 
-And following this same logic, my website stops being Lucas's resume to become DoceAzedo's personal space on the world wide web. This feeling of wanting to own a place that is truly mine, independent of platforms governed by big corporations, grows as they become increasingly predatory and try to impose movements with false promises of providing what, ironically, we already had before they arrived and oppressed it: a free and independent internet.
+And following this same logic, my website stops being my resume to become DoceAzedo's personal space on the world wide web. This feeling of wanting to own a place that is truly mine, independent of platforms governed by big corporations, grows as they become increasingly predatory and try to impose movements with false promises of providing what, ironically, we already had before they arrived and oppressed it: a free and independent internet.
 
 This is why movements like [Keep the Web Free, Say No to Web3](https://yesterweb.org/no-to-web3) are gaining so much strength. There was a time on the internet when we had various small independent sites, blogs and forums that were decimated by the power of big platforms that now promise everything they destroyed but with keywords like "NFT" and "blockchain" involved.
 
@@ -44,10 +46,10 @@ I think my personal process of continuing with just one name happened very unpre
 
 I continue to have a good relationship with what we can call my "legal name" or "dead name", but from my point of view the difference between those who only recognize me by it is clear, and at the same time I'm at peace with that.
 
-The term "dead name" refers to the birth name that a transgender or non-binary person no longer uses. It's called "dead" because that name no longer represents who they are. Some people have complicated relationships with their dead names, but like I mentioned, I'm pretty chill about mine. It's more about context, Lucas feels like my professional/legal identity while Doce feels like my authentic self.
+The term "dead name" refers to the birth name that a transgender or non-binary person no longer uses. It's called "dead" because that name no longer represents who they are. Some people have complicated relationships with their dead names, but like I mentioned, I'm pretty chill about mine, but "Doce" feels like my authentic self.
 
-And if you knew me as Lucas and took the trouble to read this whole post, thank you so much and **nice to meet you, I'm Doce**!
+And if you knew me as my now deprecated name and took the trouble to read this whole post, thank you so much and **nice to meet you, I'm Doce**!
 
-This whole journey from Lucas to Doce has been about finding a name that actually fits who I am, not just what's on my birth certificate. It's been about creating spaces where I can be authentically myself, whether that's through live coding streams, open-source projects, or just existing as a non-binary person in tech. The internet gave me the freedom to explore this identity, and now I'm trying to protect that same freedom for others by maintaining my own independent corner of the web.
+This whole journey from my old self to Doce has been about finding a name that actually fits who I am, not just what's on my birth certificate. It's been about creating spaces where I can be authentically myself, whether that's through live coding streams, open-source projects, or just existing as a non-binary person in tech. The internet gave me the freedom to explore this identity, and now I'm trying to protect that same freedom for others by maintaining my own independent corner of the web.
 
 If you're struggling with your own identity, whether that's about gender, career, or just figuring out who you want to be online, know that it's okay to evolve. Names, identities, and how we present ourselves can change as we grow and understand ourselves better. The most important thing is that you feel authentic and comfortable with who you are.
