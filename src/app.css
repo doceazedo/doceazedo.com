@@ -151,12 +151,6 @@ body::before {
   opacity: .08;
 }
 
-@media screen and (min-width: 48rem /* md */) {
-  .dark body::before {
-    opacity: .1;
-  }
-}
-
 @media screen and (min-width: 96rem /* 2xl */) {
   body::after {
     content: "";
