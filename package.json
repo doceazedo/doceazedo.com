@@ -38,6 +38,7 @@
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"svelte-remix": "^2.0.1",
+		"svelte-sonner": "^1.0.5",
 		"tailwind-merge": "^3.0.2",
 		"tailwind-variants": "^1.0.0",
 		"tailwindcss": "^4.0.0",

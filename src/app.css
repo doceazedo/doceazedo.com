@@ -139,3 +139,7 @@ body::before {
   z-index: 100;
   pointer-events: none;
 }
+
+hr {
+  transition: all .3s ease;
+}

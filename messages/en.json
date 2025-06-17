@@ -294,5 +294,14 @@
 	"acknowledgements_josh_comeau": "Idea for the map on the <a href=\"/me\">/me</a> page.",
 	"acknowledgements_bulk_resize_photos": "Super helpful tool for resizing and compressing images.",
 	"acknowledgements_cobalt": "Excerpt about analytics.",
-	"loading": "Just a sec..."
+	"loading": "Just a sec...",
+	"contact_in_person_title": "If you're in town, let's grab a coffee.",
+	"contact_email_title": "Otherwise, an email should work.",
+	"contact_call_title": "Rather talking face to face?",
+	"book_a_call": "Book a call with me",
+	"contact_socials_title": "Let's be mutuals",
+	"contact_socials_subtitle": "Choose a site below, send me a message and I'll reply to you.",
+	"copy": "Copy",
+	"copy_success": "Copied to clipboard :)",
+	"copy_error": "Couldn't copy, try copying manually instead."
 }

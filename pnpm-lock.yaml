@@ -105,6 +105,9 @@ importers:
       svelte-remix:
         specifier: ^2.0.1
         version: 2.0.1(svelte@5.33.14)
+      svelte-sonner:
+        specifier: ^1.0.5
+        version: 1.0.5(svelte@5.33.14)
       tailwind-merge:
         specifier: ^3.0.2
         version: 3.3.0
@@ -2308,6 +2311,11 @@ packages:
   svelte-remix@2.0.1:
     resolution: {integrity: sha512-2l3VvQgHtY3nCYM+4zm5xrRbbKHw/E//V4mVVnT6Z5naeJus0xKBPg1sGnanc4isZtPi9evqrlyFR//I6VlhFw==}
     engines: {node: '>=18.0.0', npm: '>=7.0.0'}
+    peerDependencies:
+      svelte: ^5.0.0
+
+  svelte-sonner@1.0.5:
+    resolution: {integrity: sha512-9dpGPFqKb/QWudYqGnEz93vuY+NgCEvyNvxoCLMVGw6sDN/3oVeKV1xiEirW2E1N3vJEyj5imSBNOGltQHA7mg==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -5478,6 +5486,11 @@ snapshots:
 
   svelte-remix@2.0.1(svelte@5.33.14):
     dependencies:
+      svelte: 5.33.14
+
+  svelte-sonner@1.0.5(svelte@5.33.14):
+    dependencies:
+      runed: 0.28.0(svelte@5.33.14)
       svelte: 5.33.14
 
   svelte-toolbelt@0.7.1(svelte@5.33.14):

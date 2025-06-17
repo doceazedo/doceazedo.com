@@ -293,5 +293,14 @@
 	"acknowledgements_joao_pescada": "Inspiração para a página <a href=\"/me\">/me</a> e títulos engraçados.",
 	"acknowledgements_josh_comeau": "Ideia para o mapa na página <a href=\"/me\">/me</a>.",
 	"acknowledgements_bulk_resize_photos": "Ferramenta super útil pra redimensionar e comprimir imagens.",
-	"acknowledgements_cobalt": "Trecho sobre analytics."
+	"acknowledgements_cobalt": "Trecho sobre analytics.",
+	"contact_in_person_title": "Se você tá em BH, me chama pra um café.",
+	"contact_email_title": "Se não, um e-mail deve resolver.",
+	"contact_call_title": "Prefere falar cara a cara?",
+	"book_a_call": "Agende uma call comigo",
+	"contact_socials_title": "Vamos amigar",
+	"contact_socials_subtitle": "Escolhe um site e me manda uma mensagem que eu te respondo.",
+	"copy": "Copiar",
+	"copy_success": "Copiado para área de transferência :)",
+	"copy_error": "Não foi possível copiar, tente copiar manualmente."
 }
