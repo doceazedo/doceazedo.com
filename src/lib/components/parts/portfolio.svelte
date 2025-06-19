@@ -19,6 +19,7 @@
 	import { onMount } from "svelte";
 	import { elasticFly } from "$lib/utils/transitions";
 	import { onVisible } from "$lib/utils/actions";
+	import { IS_DESKTOP } from "$lib/stores";
 
 	type Project = {
 		pretitle: string;
@@ -192,7 +193,7 @@
 										opacity: 0,
 										y: 24,
 										duration: 800,
-										delay: 100 * (i + 1),
+										delay: $IS_DESKTOP ? 100 * (i + 1) : 100,
 									}}
 								>
 									<figure
