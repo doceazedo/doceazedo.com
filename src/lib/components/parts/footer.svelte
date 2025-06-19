@@ -2,7 +2,6 @@
 	import { m } from "$lib/paraglide/messages";
 	import ElevatorUp from "$lib/components/icons/elevator-up.svg?component";
 	import { cn } from "$lib/utils";
-	import { onMount } from "svelte";
 	import type { NowPlayingTrack } from "$lib/types";
 	import Memoji from "$lib/components/memoji.svelte";
 	import { LAST_PLAYED_TRACKS } from "$lib/stores";
@@ -40,22 +39,6 @@
 	let currentTrack = $derived<NowPlayingTrack | null>(
 		$LAST_PLAYED_TRACKS?.[0] || null,
 	);
-
-	const updateLastPlayedTracks = async () => {
-		try {
-			const resp = await fetch("/api/now/listening?limit=5");
-			const data = await resp.json();
-			$LAST_PLAYED_TRACKS = data;
-		} catch (_error) {
-			// uwu
-		}
-	};
-
-	onMount(() => {
-		updateLastPlayedTracks();
-		const lastPlayedInterval = setInterval(updateLastPlayedTracks, 10000);
-		return () => clearInterval(lastPlayedInterval);
-	});
 </script>
 
 <svelte:window bind:scrollY bind:innerHeight />

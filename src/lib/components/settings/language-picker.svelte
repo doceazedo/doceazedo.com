@@ -1,10 +1,11 @@
 <script lang="ts">
 	import BrazilFlag from "$lib/components/icons/brazil-flag.svg?component";
 	import UsaFlag from "$lib/components/icons/usa-flag.svg?component";
-	import { ArrowDownSLineArrows, GlobalLineBusiness } from "svelte-remix";
+	import { GlobalLineBusiness } from "svelte-remix";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import { getLocale, setLocale } from "$lib/paraglide/runtime";
 	import { m } from "$lib/paraglide/messages";
+	import { IS_DESKTOP } from "$lib/stores";
 
 	let selectedLang = $state(getLocale());
 
@@ -20,12 +21,7 @@
 			flag: BrazilFlag,
 		},
 	} as const;
-
-	let innerWidth = $state(0);
-	let isDesktop = $derived(innerWidth >= 768);
 </script>
-
-<svelte:window bind:innerWidth />
 
 <DropdownMenu.Root>
 	<DropdownMenu.Trigger
@@ -33,7 +29,7 @@
 	>
 		<GlobalLineBusiness class="size-5" />
 	</DropdownMenu.Trigger>
-	<DropdownMenu.Content align={isDesktop ? "end" : "start"}>
+	<DropdownMenu.Content align={$IS_DESKTOP ? "end" : "start"}>
 		<DropdownMenu.Group>
 			<DropdownMenu.Label>{m.select_language()}</DropdownMenu.Label>
 			<DropdownMenu.Separator />

@@ -25,6 +25,7 @@
 	import DarkModeSwitch from "$lib/components/settings/dark-mode-switch.svelte";
 	import { onMount } from "svelte";
 	import { Toaster } from "$lib/components/ui/sonner";
+	import Global from "$lib/components/global.svelte";
 
 	let { children } = $props();
 
@@ -49,6 +50,7 @@
 
 <ModeWatcher defaultMode="dark" disableTransitions={false} />
 <Toaster richColors position="top-right" />
+<Global />
 
 <nav
 	class={cn(

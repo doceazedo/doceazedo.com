@@ -21,7 +21,7 @@
 	} from "svelte-remix";
 	import SectionTitleWithIcon from "$lib/components/parts/section-title-with-icon.svelte";
 	import { Button } from "$lib/components/ui/button";
-	import { LAST_PLAYED_TRACKS } from "$lib/stores";
+	import { IS_DESKTOP, LAST_PLAYED_TRACKS } from "$lib/stores";
 	import { Progress } from "$lib/components/ui/progress";
 	import { SOCIALS, WORK } from "$lib/constants";
 	import { cn } from "$lib/utils";
@@ -74,9 +74,6 @@
 		if (img.src === placeholder) return;
 		img.src = placeholder;
 	};
-
-	let innerWidth = $state(0);
-	let isDesktop = $derived(innerWidth >= 768);
 
 	const CURRENT_PROJECT_DEADLINES = [
 		new Date("2025/07/27"), // Tekne
@@ -208,8 +205,6 @@
 
 	onMount(() => (mounted = true));
 </script>
-
-<svelte:window bind:innerWidth />
 
 <Seo title={m.now_seo_title()} />
 
@@ -373,7 +368,7 @@
 								class="text-foreground size-3.5 md:size-4.5"
 							/>
 							<p class="[&>span]:text-foreground">
-								{#if isDesktop}
+								{#if $IS_DESKTOP}
 									{@html m.updated_at({
 										date: BOOK.pages.updatedAt.toLocaleDateString(getLocale()),
 									})}
