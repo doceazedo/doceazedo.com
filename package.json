@@ -49,14 +49,20 @@
 		"vite": "^6.2.6"
 	},
 	"dependencies": {
+		"@dimforge/rapier3d-compat": "^0.17.3",
 		"@inlang/paraglide-js": "^2.0.0",
+		"@threlte/core": "^8.0.5",
+		"@threlte/extras": "^9.4.0",
+		"@threlte/rapier": "^3.1.4",
 		"@turf/turf": "^7.2.0",
+		"@types/three": "^0.177.0",
 		"mapbox-gl": "^3.12.0",
 		"mode-watcher": "^1.0.8",
 		"rehype-slug": "^6.0.0",
 		"remark-code-title": "^0.2.5",
 		"remark-table-of-content": "^0.5.2",
-		"remark-table-of-contents": "^2.1.0"
+		"remark-table-of-contents": "^2.1.0",
+		"three": "^0.177.0"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [

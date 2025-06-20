@@ -20,6 +20,7 @@
 	import { elasticFly } from "$lib/utils/transitions";
 	import { onVisible } from "$lib/utils/actions";
 	import { IS_DESKTOP } from "$lib/stores";
+	import GachaponDialog from "../gachapon/gachapon-dialog.svelte";
 
 	type Project = {
 		pretitle: string;
@@ -177,13 +178,9 @@
 				<Dialog.Root>
 					<Dialog.Trigger
 						class={cn(
-							"w-full cursor-pointer rounded-xs text-left transition-all",
+							"group hover:bg-muted w-full cursor-pointer rounded-xs text-left transition-all hover:shadow-[0_0_0_8px_var(--muted)]",
 							i <= 1 ? "md:col-span-3" : "md:col-span-2",
-							isGachapon && "cursor-not-allowed",
-							!isGachapon &&
-								"group hover:bg-muted hover:shadow-[0_0_0_8px_var(--muted)]",
 						)}
-						disabled={isGachapon}
 					>
 						<div use:onVisible={() => (project.visible = true)}>
 							{#if project.visible !== false}
@@ -248,82 +245,86 @@
 							>
 							<Dialog.Title>{project.title}</Dialog.Title>
 						</Dialog.Header>
-						<Dialog.Body class="gap-6 overflow-y-scroll lg:flex-row">
-							<aside
-								class="flex w-full shrink-0 flex-col gap-6 lg:sticky lg:top-0 lg:max-w-lg"
-							>
-								<div>
-									<h2 class="mb-px font-medium">{m.my_role()}</h2>
-									<p class="text-body">{project.role}</p>
-								</div>
-								<div>
-									<h2 class="mb-px font-medium">{m.project_description()}</h2>
-									<p class="text-body">
-										{@html project.details.replaceAll("\n", "<br />")}
-									</p>
-								</div>
-								{#if project.stack.every((x) => typeof x === "object")}
+						{#if isGachapon}
+							<GachaponDialog />
+						{:else}
+							<Dialog.Body class="gap-6 overflow-y-scroll lg:flex-row">
+								<aside
+									class="flex w-full shrink-0 flex-col gap-6 lg:sticky lg:top-0 lg:max-w-lg"
+								>
 									<div>
-										<h2 class="mb-1 font-medium">{m.tech_stack()}</h2>
-										<ul class="flex flex-wrap gap-1.5">
-											{#each project.stack as icon}
-												<li
-													class="[&>svg]:fill-body text-body bg-muted flex cursor-default items-center justify-center gap-1.5 rounded border px-1.5 py-1 text-sm transition-all [&>svg]:size-3.5"
-												>
-													{@html icon.svg}
-													{icon.title}
-												</li>
-											{/each}
-										</ul>
+										<h2 class="mb-px font-medium">{m.my_role()}</h2>
+										<p class="text-body">{project.role}</p>
 									</div>
-								{/if}
-								{#if project.links.length > 0}
 									<div>
-										<h2 class="mb-1 font-medium">{m.links()}</h2>
-										<ul class="flex gap-1.5">
-											{#each project.links as link, i}
-												<Button
-													href={link.url}
-													target="_blank"
-													variant={i === 0 ? "default" : "secondary"}
-												>
-													{link.label}
-												</Button>
-											{/each}
-										</ul>
+										<h2 class="mb-px font-medium">{m.project_description()}</h2>
+										<p class="text-body">
+											{@html project.details.replaceAll("\n", "<br />")}
+										</p>
 									</div>
-								{/if}
-							</aside>
-							<main class="flex w-full flex-col gap-6">
-								{#if project.media.length > 0}
-									{#each project.media as media}
-										<div class="text-body flex flex-col gap-1.5 text-center">
-											<div
-												class="bg-muted aspect-video w-full overflow-hidden rounded border"
-											>
-												{#if media.url.includes("youtube")}
-													<iframe
-														class="size-full"
-														src={media.url}
-														title="YouTube video player"
-														frameborder="0"
-														allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-														referrerpolicy="strict-origin-when-cross-origin"
-													></iframe>
-												{:else}
-													<img
-														src={media.url}
-														alt=""
-														class="size-full object-cover"
-													/>
-												{/if}
-											</div>
-											<p>{media.label}</p>
+									{#if project.stack.every((x) => typeof x === "object")}
+										<div>
+											<h2 class="mb-1 font-medium">{m.tech_stack()}</h2>
+											<ul class="flex flex-wrap gap-1.5">
+												{#each project.stack as icon}
+													<li
+														class="[&>svg]:fill-body text-body bg-muted flex cursor-default items-center justify-center gap-1.5 rounded border px-1.5 py-1 text-sm transition-all [&>svg]:size-3.5"
+													>
+														{@html icon.svg}
+														{icon.title}
+													</li>
+												{/each}
+											</ul>
 										</div>
-									{/each}
-								{/if}
-							</main>
-						</Dialog.Body>
+									{/if}
+									{#if project.links.length > 0}
+										<div>
+											<h2 class="mb-1 font-medium">{m.links()}</h2>
+											<ul class="flex gap-1.5">
+												{#each project.links as link, i}
+													<Button
+														href={link.url}
+														target="_blank"
+														variant={i === 0 ? "default" : "secondary"}
+													>
+														{link.label}
+													</Button>
+												{/each}
+											</ul>
+										</div>
+									{/if}
+								</aside>
+								<main class="flex w-full flex-col gap-6">
+									{#if project.media.length > 0}
+										{#each project.media as media}
+											<div class="text-body flex flex-col gap-1.5 text-center">
+												<div
+													class="bg-muted aspect-video w-full overflow-hidden rounded border"
+												>
+													{#if media.url.includes("youtube")}
+														<iframe
+															class="size-full"
+															src={media.url}
+															title="YouTube video player"
+															frameborder="0"
+															allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+															referrerpolicy="strict-origin-when-cross-origin"
+														></iframe>
+													{:else}
+														<img
+															src={media.url}
+															alt=""
+															class="size-full object-cover"
+														/>
+													{/if}
+												</div>
+												<p>{media.label}</p>
+											</div>
+										{/each}
+									{/if}
+								</main>
+							</Dialog.Body>
+						{/if}
 					</Dialog.Content>
 				</Dialog.Root>
 			{/each}
