@@ -10,9 +10,11 @@
 	import { bounceOut, cubicOut, elasticOut, expoOut } from "svelte/easing";
 	import { cn, sleep } from "$lib/utils";
 	import { tick } from "svelte";
-	import { CopperCoinLineFinance } from "svelte-remix";
+	import { CopperCoinLineFinance, Swap2LineFinance } from "svelte-remix";
 	import Button from "$lib/components/ui/button/button.svelte";
-	import { fly, scale } from "svelte/transition";
+	import { scale } from "svelte/transition";
+	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
+	import { BALANCE, GAME_STATE } from "./stores";
 
 	const getGridPosition = (
 		index: number,
@@ -79,12 +81,9 @@
 		"#1DCD9F",
 	];
 
-	let isPrizeOpen = $state(false);
 	let isGumballLoaded = $state(false);
-	let isRedeeming = $state(false);
 
 	const resetPositions = () => {
-		isPrizeOpen = false;
 		gravity = [0, 0, 0];
 		prizePosition.set([...INITIAL_PRIZE_POSITION], { duration: 0 });
 		prizeUpPosition.set([...INITIAL_PRIZE_UP_POSITION], {
@@ -99,8 +98,11 @@
 	};
 
 	const dispense = async () => {
-		if (isRedeeming) return;
-		isRedeeming = true;
+		if ($GAME_STATE !== "idle") return;
+		$GAME_STATE = "drawing";
+
+		if ($BALANCE < 100) return;
+		$BALANCE -= 100;
 
 		resetPositions();
 		await sleep(50);
@@ -158,16 +160,15 @@
 		});
 
 		await sleep(1500);
-		isPrizeOpen = true;
+		$GAME_STATE = "prize";
 		prizeUpPosition.target = [0, prizeUpPosition.current[1] + 0.2, 0];
 		prizeDownPosition.target = [0, prizeDownPosition.current[1] - 0.2, 0];
 	};
 
-	const redeem = () => {
+	const claim = () => {
 		resetPositions();
 		gumballScale.target = [1, 1, 1];
-		isRedeeming = false;
-		isPrizeOpen = false;
+		$GAME_STATE = "idle";
 	};
 </script>
 
@@ -212,7 +213,6 @@
 						position={gumballPosition.current}
 						coinMeshRotation={coinMeshRotation.current}
 						rotation.y={degToRad(90)}
-						{isRedeeming}
 						oncreate={() => {
 							isGumballLoaded = true;
 						}}
@@ -257,22 +257,7 @@
 		{/await}
 	{/if}
 
-	{#if !isRedeeming}
-		<div
-			transition:fly={{
-				easing: cubicOut,
-				opacity: 0,
-				y: -12,
-				duration: 200,
-			}}
-			class="absolute top-6 flex items-center gap-1.5 rounded border px-3 py-1.5"
-		>
-			<CopperCoinLineFinance class="text-body size-5" />
-			100
-		</div>
-	{/if}
-
-	{#if !isRedeeming}
+	{#if $GAME_STATE === "idle"}
 		<div
 			transition:scale={{
 				easing: cubicOut,
@@ -280,8 +265,24 @@
 				start: 0.9,
 				duration: 200,
 			}}
-			class="absolute bottom-6"
+			class="absolute bottom-6 flex gap-3"
 		>
+			<DropdownMenu.Root>
+				<DropdownMenu.Trigger>
+					<Button variant="outline" size="lg" class="h-12" aria-readonly>
+						<Swap2LineFinance class="size-5" />
+						Mode
+					</Button>
+				</DropdownMenu.Trigger>
+				<DropdownMenu.Content side="top">
+					<DropdownMenu.Group>
+						<DropdownMenu.CheckboxItem checked>
+							Standard
+						</DropdownMenu.CheckboxItem>
+					</DropdownMenu.Group>
+				</DropdownMenu.Content>
+			</DropdownMenu.Root>
+
 			<Button size="lg" class="h-12" onclick={dispense}>
 				<div class="flex items-center gap-1">
 					<CopperCoinLineFinance class="size-5" />
@@ -293,7 +294,7 @@
 		</div>
 	{/if}
 
-	{#if isPrizeOpen}
+	{#if $GAME_STATE === "prize"}
 		<div
 			transition:scale={{
 				easing: cubicOut,
@@ -303,24 +304,26 @@
 			}}
 			class="absolute bottom-6"
 		>
-			<Button variant="outline" onclick={redeem}>Redeem</Button>
+			<Button variant="outline" onclick={claim}>Claim</Button>
 		</div>
 	{/if}
 </div>
 
-<div class="bg-primary/10 absolute h-56 w-96 rounded-full blur-3xl"></div>
+<div
+	class="bg-primary absolute h-56 w-96 rounded-full opacity-20 blur-3xl dark:opacity-10"
+></div>
 <img
 	src="/img/sunray.webp"
 	alt=""
 	class={cn(
-		"animation-duration-10000 absolute size-[32rem] animate-spin opacity-3 transition-all",
-		!isPrizeOpen && "scale-50 opacity-0",
+		"animation-duration-10000 absolute size-[32rem] animate-spin opacity-3 invert-50 transition-all dark:invert-0",
+		$GAME_STATE !== "prize" && "scale-50 opacity-0",
 	)}
 />
 <p
 	class={cn(
 		"ease-elastic absolute transition-all",
-		!isPrizeOpen && "scale-50 opacity-0",
+		$GAME_STATE !== "prize" && "scale-50 opacity-0",
 	)}
 >
 	WIP :3

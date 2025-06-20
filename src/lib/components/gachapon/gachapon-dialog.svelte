@@ -4,6 +4,7 @@
 	import {
 		ArchiveStackFillBusiness,
 		ArchiveStackLineBusiness,
+		CopperCoinLineFinance,
 		GiftFillFinance,
 		GiftLineFinance,
 		SparklingFillWeather,
@@ -11,12 +12,15 @@
 	} from "svelte-remix";
 	import { cn } from "$lib/utils";
 	import { IS_DESKTOP } from "$lib/stores";
-	import { fade } from "svelte/transition";
+	import { fade, fly } from "svelte/transition";
 	import { elasticScale } from "$lib/utils/transitions";
 	import GachaponPlay from "./gachapon-play.svelte";
 	import GachaponRewards from "./gachapon-rewards.svelte";
 	import GachaponInventory from "./gachapon-inventory.svelte";
-	import { elasticOut } from "svelte/easing";
+	import { cubicOut, elasticOut } from "svelte/easing";
+	import { BALANCE, GAME_STATE, TWEENED_BALANCE } from "./stores";
+	import { onMount } from "svelte";
+	import { getLocale } from "$lib/paraglide/runtime";
 
 	const TABS = [
 		{
@@ -43,9 +47,37 @@
 	] as const;
 
 	let activeTab = $state<(typeof TABS)[number]["id"]>("play");
+
+	onMount(() => {
+		BALANCE.subscribe((balance) => {
+			if (!TWEENED_BALANCE) return;
+			TWEENED_BALANCE.target = balance;
+		});
+	});
 </script>
 
-<Dialog.Body class="relative overflow-hidden">
+<Dialog.Body
+	class="relative flex flex-col items-center justify-center gap-3 overflow-hidden"
+>
+	{#if $GAME_STATE === "idle" && activeTab !== "inventory"}
+		<div
+			transition:fly={{
+				easing: cubicOut,
+				opacity: 0,
+				y: -12,
+				duration: 200,
+			}}
+			class={cn(
+				"absolute top-6 flex items-center gap-1.5 rounded border px-3 py-1.5",
+				activeTab === "rewards" &&
+					"top-0 w-full justify-center rounded-none border-0 border-b lg:top-6 lg:w-fit lg:rounded lg:border",
+			)}
+		>
+			<CopperCoinLineFinance class="size-5 text-amber-500" />
+			{Math.floor(TWEENED_BALANCE.current).toLocaleString(getLocale())}
+		</div>
+	{/if}
+
 	{#key activeTab}
 		{@const tab = TABS.find((x) => x.id === activeTab)}
 		{#if tab}
@@ -76,6 +108,7 @@
 					"text-primary! hover:bg-primary/10! md:border-b-primary md:bg-primary/10! md:border-primary/40!",
 			)}
 			onclick={() => (activeTab = tab.id)}
+			disabled={$GAME_STATE !== "idle"}
 		>
 			<span class="relative size-5">
 				{#key isActive}

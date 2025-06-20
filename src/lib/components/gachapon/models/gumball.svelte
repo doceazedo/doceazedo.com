@@ -7,13 +7,13 @@ Command: npx @threlte/gltf@3.0.1 static/models/gumball.glb
 	import { T } from "@threlte/core";
 	import { useCursor, useGltf } from "@threlte/extras";
 	import { interactivity } from "@threlte/extras";
+	import { GAME_STATE } from "../stores";
 
 	let {
 		error,
 		children,
 		ref = $bindable(),
 		oncreate,
-		isRedeeming = false,
 		coinMeshRotation = 0,
 		...props
 	} = $props();
@@ -28,7 +28,7 @@ Command: npx @threlte/gltf@3.0.1 static/models/gumball.glb
 <T.Group
 	bind:ref
 	dispose={false}
-	onpointerenter={!isRedeeming ? onPointerEnter : undefined}
+	onpointerenter={$GAME_STATE === "idle" ? onPointerEnter : undefined}
 	onpointerleave={onPointerLeave}
 	{...props}
 >
@@ -47,8 +47,8 @@ Command: npx @threlte/gltf@3.0.1 static/models/gumball.glb
 							clearcoatRoughness={0.02}
 							color="#ffffff"
 							envMapIntensity={0.9}
-							opacity={0.5}
-							reflectivity={0.05}
+							opacity={0.2}
+							reflectivity={0.1}
 						/>
 					</T.Mesh>
 				</rapier.AutoColliders>

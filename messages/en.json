@@ -303,5 +303,8 @@
 	"contact_socials_subtitle": "Choose a site below, send me a message and I'll reply to you.",
 	"copy": "Copy",
 	"copy_success": "Copied to clipboard :)",
-	"copy_error": "Couldn't copy, try copying manually instead."
+	"copy_error": "Couldn't copy, try copying manually instead.",
+	"tommorow": "Tomorrow",
+	"ready_in_x_days": "Ready in {days} days",
+	"ready_at": "Ready at {time}"
 }
