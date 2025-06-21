@@ -18,6 +18,7 @@
 	import { ITEMS, RARITIES, type Item } from "./constants";
 	import GachaponPrize from "./gachapon-prize.svelte";
 	import { IS_DESKTOP } from "$lib/stores";
+	import { WebGLRenderer } from "three";
 
 	const getGridPosition = (
 		index: number,
@@ -202,7 +203,7 @@
 		capDownPosition.target = [0, capDownPosition.current[1] - 1, 0];
 
 		prizeScale.target = [1, 1, 1];
-		prizeRotation.target = degToRad(360 * 1.75);
+		prizeRotation.target = degToRad(360 * 2);
 
 		const existingItemIdx = $GAME_DATA.inventory.findIndex(
 			(x) => x.item === prizeItem?.id,
@@ -232,6 +233,14 @@
 	{#if browser}
 		{#await import('@threlte/rapier') then rapier}
 			<Canvas
+				createRenderer={(canvas) => {
+					return new WebGLRenderer({
+						canvas,
+						alpha: true,
+						preserveDrawingBuffer: true,
+					});
+				}}
+				preserveDrawingBuffer
 				shadows
 				toneMapping="ACESFilmicToneMapping"
 				toneMappingExposure={1.2}

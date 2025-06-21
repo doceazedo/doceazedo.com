@@ -81,7 +81,7 @@
 					{@const rarity = RARITIES.find((x) => x.id === itemData?.rarity)}
 					{#if itemData && rarity}
 						<div
-							class="relative flex aspect-[3/4] flex-col items-center justify-center rounded border p-3"
+							class="relative flex aspect-[3/4] flex-col items-center justify-center overflow-hidden rounded border p-3"
 						>
 							{#if item.qty > 1}
 								<span
@@ -90,10 +90,24 @@
 									{item.qty}
 								</span>
 							{/if}
+							<figure
+								class="relative my-auto flex aspect-square w-2/3 items-center justify-center"
+							>
+								<img
+									src="/img/gachapon/{itemData.id}.webp"
+									alt=""
+									class="relative z-20"
+								/>
+								<span
+									class={cn(
+										"absolute z-10 size-full rounded-full blur-3xl",
+										rarity.badgeColor,
+									)}
+								></span>
+							</figure>
 							<div
-								class="bg-muted/50 my-auto aspect-[3/4] w-1/2 rounded-full"
-							></div>
-							<div class="flex flex-col items-center gap-0.5">
+								class="text-fore text-foreground flex flex-col items-center gap-0.5"
+							>
 								<p>{itemData.label}</p>
 								<span
 									class={cn(
