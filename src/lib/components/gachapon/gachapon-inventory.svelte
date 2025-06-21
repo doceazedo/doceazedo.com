@@ -1,8 +1,8 @@
 <script>
 	import { CopperCoinLineFinance } from "svelte-remix";
-	import { RARITIES } from "./constants";
+	import { ITEMS, RARITIES } from "./constants";
 	import { cn } from "$lib/utils";
-	import { TWEENED_BALANCE } from "./stores";
+	import { GAME_DATA, TWEENED_BALANCE } from "./stores";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { Button } from "$lib/components/ui/button";
 </script>
@@ -18,7 +18,7 @@
 				class="bg-background z-10 flex aspect-square size-44 flex-col items-center justify-center rounded-full border p-12 text-center lg:size-36 xl:size-44"
 			>
 				<p class="text-foreground mb-1.5 text-3xl font-semibold xl:text-4xl">
-					10
+					{$GAME_DATA.inventory.reduce((total, entry) => total + entry.qty, 0)}
 				</p>
 				<p class="text-body mb-1.5 leading-4">Collectibles owned</p>
 			</div>
@@ -76,26 +76,37 @@
 		>
 			<h2 class="text-foreground text-xl md:text-2xl">Recently acquired</h2>
 			<div class="grid grid-cols-2 gap-6 md:grid-cols-3">
-				{#each Array(24).fill(null) as _uwu}
-					<div
-						class="flex aspect-[3/4] flex-col items-center justify-center rounded border p-3"
-					>
+				{#each $GAME_DATA.inventory.reverse() as item}
+					{@const itemData = ITEMS.find((x) => x.id === item.item)}
+					{@const rarity = RARITIES.find((x) => x.id === itemData?.rarity)}
+					{#if itemData && rarity}
 						<div
-							class="bg-muted/50 my-auto aspect-[3/4] w-1/2 rounded-full"
-						></div>
-						<div class="flex flex-col items-center">
-							<p>Title</p>
-							<span
-								class={cn(
-									"rounded px-1 text-sm font-medium",
-									RARITIES[1].textColor,
-									RARITIES[1].badgeColor,
-								)}
-							>
-								{RARITIES[1].label}
-							</span>
+							class="relative flex aspect-[3/4] flex-col items-center justify-center rounded border p-3"
+						>
+							{#if item.qty > 1}
+								<span
+									class="bg-muted/50 text-muted-foreground absolute top-3 right-3 rounded px-1.5 text-sm"
+								>
+									{item.qty}
+								</span>
+							{/if}
+							<div
+								class="bg-muted/50 my-auto aspect-[3/4] w-1/2 rounded-full"
+							></div>
+							<div class="flex flex-col items-center gap-0.5">
+								<p>{itemData.label}</p>
+								<span
+									class={cn(
+										"rounded px-1 text-sm font-medium",
+										rarity.textColor,
+										rarity.badgeColor,
+									)}
+								>
+									{rarity.label}
+								</span>
+							</div>
 						</div>
-					</div>
+					{/if}
 				{/each}
 			</div>
 		</main>

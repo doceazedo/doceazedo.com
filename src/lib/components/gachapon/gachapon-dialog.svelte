@@ -18,7 +18,7 @@
 	import GachaponRewards from "./gachapon-rewards.svelte";
 	import GachaponInventory from "./gachapon-inventory.svelte";
 	import { cubicOut, elasticOut } from "svelte/easing";
-	import { BALANCE, GAME_STATE, TWEENED_BALANCE } from "./stores";
+	import { GAME_DATA, GAME_STATE, TWEENED_BALANCE } from "./stores";
 	import { onMount } from "svelte";
 	import { getLocale } from "$lib/paraglide/runtime";
 
@@ -49,7 +49,7 @@
 	let activeTab = $state<(typeof TABS)[number]["id"]>("play");
 
 	onMount(() => {
-		BALANCE.subscribe((balance) => {
+		GAME_DATA.subscribe(({ balance }) => {
 			if (!TWEENED_BALANCE) return;
 			TWEENED_BALANCE.target = balance;
 		});

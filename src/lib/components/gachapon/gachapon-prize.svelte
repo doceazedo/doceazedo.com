@@ -1,10 +1,13 @@
 <script lang="ts">
 	import { T, useTask } from "@threlte/core";
-	import Mp3Player from "./models/mp3-player.svelte";
+	import type { Item } from "./constants";
 
-	let { scale, rotationY } = $props();
-
-	const Prize = Mp3Player;
+	let {
+		item,
+		scale,
+		rotationY,
+	}: { item: Item; scale: [number, number, number]; rotationY: number } =
+		$props();
 
 	let orbitRotation = $state(0);
 	useTask((delta) => {
@@ -13,5 +16,5 @@
 </script>
 
 <T.Group rotation.y={orbitRotation}>
-	<Prize {scale} rotation.y={rotationY} />
+	<item.mesh {scale} rotation.y={rotationY} />
 </T.Group>

@@ -14,12 +14,10 @@
 	import Button from "$lib/components/ui/button/button.svelte";
 	import { scale } from "svelte/transition";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
-	import { BALANCE, GAME_STATE } from "./stores";
-	import Mp3Player from "./models/mp3-player.svelte";
-	import { RARITIES } from "./constants";
+	import { GAME_DATA, GAME_STATE } from "./stores";
+	import { ITEMS, RARITIES, type Item } from "./constants";
 	import GachaponPrize from "./gachapon-prize.svelte";
-
-	const Prize = Mp3Player;
+	import { IS_DESKTOP } from "$lib/stores";
 
 	const getGridPosition = (
 		index: number,
@@ -36,7 +34,7 @@
 	const INITIAL_PRIZE_POSITION = [0.4, 0.7, 0] as const;
 	const INITIAL_PRIZE_UP_POSITION = [0, 0, 0] as const;
 	const INITIAL_PRIZE_DOWN_POSITION = [0, 0.2, 0] as const;
-	const prizePosition = new Tween<[number, number, number]>(
+	const capsulePosition = new Tween<[number, number, number]>(
 		[...INITIAL_PRIZE_POSITION],
 		{
 			easing: bounceOut,
@@ -96,10 +94,10 @@
 	];
 
 	let isGumballLoaded = $state(false);
+	let prizeItem = $state<Item | null>(null);
 
 	const resetPositions = () => {
-		gravity = [0, 0, 0];
-		prizePosition.set([...INITIAL_PRIZE_POSITION], { duration: 0 });
+		capsulePosition.set([...INITIAL_PRIZE_POSITION], { duration: 0 });
 		capUpPosition.set([...INITIAL_PRIZE_UP_POSITION], {
 			duration: 0,
 		});
@@ -109,13 +107,31 @@
 		capsuleScale.set([1, 1, 1], { duration: 0 });
 		gumballPosition.set([0, 2.5, 0], { duration: 0 });
 		coinMeshRotation.set(0, { duration: 0 });
-		prizeScale.set([0, 0, 0], { duration: 0 });
-		prizeRotation.set(0, { duration: 0 });
+		prizeScale.target = [0, 0, 0];
+		prizeRotation.target = 0;
+	};
+
+	const getRandomRarity = () => {
+		return ITEMS[0].rarity;
+		const rand = Math.random();
+		let sum = 0;
+		return (
+			RARITIES.find((rarity) => {
+				sum += rarity.odds;
+				return rand < sum;
+			})?.id || RARITIES[RARITIES.length - 1].id
+		);
+	};
+
+	const getRandomItem = () => {
+		const rarity = getRandomRarity();
+		const filteredItems = ITEMS.filter((x) => x.rarity === rarity);
+		return filteredItems[Math.floor(Math.random() * filteredItems.length)];
 	};
 
 	const dispense = async () => {
-		if ($BALANCE < 100) return;
-		$BALANCE -= 100;
+		if ($GAME_DATA.balance < 100) return;
+		$GAME_DATA.balance -= 100;
 
 		if ($GAME_STATE !== "idle") return;
 		$GAME_STATE = "drawing";
@@ -128,12 +144,14 @@
 		capsuleColor =
 			CAPSULE_COLORS[Math.floor(Math.random() * CAPSULE_COLORS.length)];
 
+		gravity = [0, 0, 0];
+		const force = $IS_DESKTOP ? 25 : 10;
 		capsules.forEach((body) => {
 			body.setLinvel(
 				{
-					x: (Math.random() - 0.5) * 25,
-					y: (Math.random() - 0.5) * 25,
-					z: (Math.random() - 0.5) * 25,
+					x: (Math.random() - 0.5) * force,
+					y: (Math.random() - 0.5) * force,
+					z: (Math.random() - 0.5) * force,
 				},
 				true,
 			);
@@ -143,11 +161,11 @@
 		gravity = [0, -9.81, 0];
 
 		await sleep(1500);
-		prizePosition.target = [0.9, 0.7, 0];
+		capsulePosition.target = [0.9, 0.7, 0];
 
 		await sleep(2000);
 		capsuleScale.target = [5, 5, 5];
-		prizePosition.set([1.1, 2.15, 1.1], {
+		capsulePosition.set([1.1, 2.15, 1.1], {
 			easing: cubicOut,
 			duration: 800,
 		});
@@ -156,24 +174,27 @@
 		gumballScale.target = [0.01, 0.01, 0.01];
 
 		await sleep(950);
-		prizePosition.set([0.9, 2.15, 1.1], {
+		capsulePosition.set([0.9, 2.15, 1.1], {
 			duration: 0,
 		});
 		await tick();
-		prizePosition.set([1.1, 2.15, 1.1], {
+		capsulePosition.set([1.1, 2.15, 1.1], {
 			easing: elasticOut,
 			duration: 600,
 		});
 
 		await sleep(1500);
-		prizePosition.set([1.1, 2.15, 0.9], {
+		capsulePosition.set([1.1, 2.15, 0.9], {
 			duration: 0,
 		});
 		await tick();
-		prizePosition.set([1.1, 2.15, 1.1], {
+		capsulePosition.set([1.1, 2.15, 1.1], {
 			easing: elasticOut,
 			duration: 600,
 		});
+
+		prizeItem = getRandomItem();
+		if (!prizeItem) return;
 
 		await sleep(1500);
 		$GAME_STATE = "prize";
@@ -181,7 +202,23 @@
 		capDownPosition.target = [0, capDownPosition.current[1] - 1, 0];
 
 		prizeScale.target = [1, 1, 1];
-		prizeRotation.target = degToRad(360 * 2);
+		prizeRotation.target = degToRad(360 * 1.75);
+
+		const existingItemIdx = $GAME_DATA.inventory.findIndex(
+			(x) => x.item === prizeItem?.id,
+		);
+		if (existingItemIdx >= 0) {
+			$GAME_DATA.inventory[existingItemIdx].qty += 1;
+			return;
+		}
+
+		$GAME_DATA.inventory = [
+			...$GAME_DATA.inventory,
+			{
+				item: prizeItem.id,
+				qty: 1,
+			},
+		];
 	};
 
 	const claim = () => {
@@ -211,10 +248,13 @@
 						}}
 					/>
 
-					<GachaponPrize
-						scale={prizeScale.current}
-						rotationY={prizeRotation.current}
-					/>
+					{#if prizeItem}
+						<GachaponPrize
+							item={prizeItem}
+							scale={prizeScale.current}
+							rotationY={prizeRotation.current}
+						/>
+					{/if}
 
 					<T.HemisphereLight
 						skyColor="#f5f5f5"
@@ -269,7 +309,7 @@
 						{/each}
 
 						<Capsule
-							position={prizePosition.current}
+							position={capsulePosition.current}
 							positionUp={capUpPosition.current}
 							positionDown={capDownPosition.current}
 							scale={capsuleScale.current}
@@ -311,11 +351,12 @@
 				size="lg"
 				class="h-12"
 				onclick={dispense}
-				disabled={$BALANCE < 100}
+				disabled={$GAME_DATA.balance < 100}
 			>
 				<div class="flex items-center gap-1">
 					<CopperCoinLineFinance class="size-5" />
-					<span class={cn($BALANCE < 100 && "text-red-800")}>100</span>
+					<span class={cn($GAME_DATA.balance < 100 && "text-red-800")}>100</span
+					>
 				</div>
 				<hr class="bg-primary-foreground/20 h-1/2 w-px" />
 				Dispense now

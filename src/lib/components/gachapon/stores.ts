@@ -5,9 +5,15 @@ import { get, writable } from "svelte/store";
 
 export const GAME_STATE = writable<"idle" | "drawing" | "prize">("idle");
 
-export const BALANCE = storage(writable(500), "gachapon_balance");
+export const GAME_DATA = storage(
+	writable<{ balance: number; inventory: { item: string; qty: number }[] }>({
+		balance: 500,
+		inventory: [],
+	}),
+	"gachapon_data",
+);
 
-export const TWEENED_BALANCE = new Tween(get(BALANCE), {
+export const TWEENED_BALANCE = new Tween(get(GAME_DATA).balance, {
 	easing: cubicOut,
 	duration: 800,
 });

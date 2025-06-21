@@ -10,7 +10,7 @@
 	import { storage } from "$lib/utils/storage";
 	import { writable } from "svelte/store";
 	import { readyInDays } from "$lib/utils/date";
-	import { BALANCE } from "./stores";
+	import { GAME_DATA } from "./stores";
 
 	const CHA_CHING_AUDIO = new Audio("/audio/cha-ching.ogg");
 
@@ -59,7 +59,7 @@
 
 		const reward = DAILY_REWARDS[idx];
 		if (reward.type === "coins") {
-			$BALANCE += reward.quantity;
+			$GAME_DATA.balance += reward.quantity;
 			CHA_CHING_AUDIO.play();
 		}
 	};

@@ -1,3 +1,4 @@
+import type { Component } from "svelte";
 import {
 	CircleFillDesign,
 	HexagonFillDesign,
@@ -6,9 +7,11 @@ import {
 	TriangleFillDesign,
 	VipDiamondFillFinance,
 } from "svelte-remix";
+import Mp3Player from "./models/mp3-player.svelte";
 
 export const RARITIES = [
 	{
+		id: "common",
 		label: "Common",
 		odds: 0.5,
 		textColor: "text-slate-500",
@@ -18,6 +21,7 @@ export const RARITIES = [
 		icon: CircleFillDesign,
 	},
 	{
+		id: "uncommon",
 		label: "Uncommon",
 		odds: 0.25,
 		textColor: "text-emerald-500",
@@ -27,6 +31,7 @@ export const RARITIES = [
 		icon: TriangleFillDesign,
 	},
 	{
+		id: "rare",
 		label: "Rare",
 		odds: 0.12,
 		textColor: "text-blue-500",
@@ -36,8 +41,9 @@ export const RARITIES = [
 		icon: SquareFillDesign,
 	},
 	{
+		id: "epic",
 		label: "Epic",
-		odds: 0.7,
+		odds: 0.07,
 		textColor: "text-violet-500",
 		bgColor: "bg-violet-500!",
 		badgeColor: "bg-violet-500/20",
@@ -45,8 +51,9 @@ export const RARITIES = [
 		icon: PentagonFillDesign,
 	},
 	{
+		id: "legendary",
 		label: "Legendary",
-		odds: 0.4,
+		odds: 0.04,
 		textColor: "text-amber-400",
 		bgColor: "bg-amber-400!",
 		badgeColor: "bg-amber-400/20",
@@ -54,8 +61,9 @@ export const RARITIES = [
 		icon: VipDiamondFillFinance,
 	},
 	{
+		id: "exotic",
 		label: "Exotic",
-		odds: 0.2,
+		odds: 0.02,
 		textColor: "text-sky-300",
 		bgColor: "bg-sky-300!",
 		badgeColor: "bg-sky-300/20",
@@ -63,3 +71,32 @@ export const RARITIES = [
 		icon: HexagonFillDesign,
 	},
 ] as const;
+
+export type RarityId = (typeof RARITIES)[number]["id"];
+
+export const COLLECTIONS = [
+	{
+		id: "y2k",
+		label: "Y2K",
+	},
+] as const;
+
+export type CollectionId = (typeof COLLECTIONS)[number]["id"];
+
+export type Item = {
+	id: string;
+	label: string;
+	mesh: Component;
+	collection: CollectionId;
+	rarity: RarityId;
+};
+
+export const ITEMS: Item[] = [
+	{
+		id: "mp3-player",
+		label: "MP3 Player",
+		mesh: Mp3Player as Component,
+		collection: "y2k",
+		rarity: "uncommon",
+	},
+];
