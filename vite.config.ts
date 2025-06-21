@@ -3,9 +3,11 @@ import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vite";
 import svg from "@poppanator/sveltekit-svg";
+import { threlteStudio } from "@threlte/studio/vite";
 
 export default defineConfig({
 	plugins: [
+		threlteStudio(),
 		tailwindcss(),
 		sveltekit(),
 		svg(),

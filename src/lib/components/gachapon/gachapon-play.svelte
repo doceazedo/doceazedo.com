@@ -15,6 +15,9 @@
 	import { scale } from "svelte/transition";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import { BALANCE, GAME_STATE } from "./stores";
+	import Mp3Player from "./models/mp3-player.svelte";
+
+	const Prize = Mp3Player;
 
 	const getGridPosition = (
 		index: number,
@@ -38,25 +41,34 @@
 			duration: 1600,
 		},
 	);
-	const prizeUpPosition = new Tween<[number, number, number]>(
+	const capUpPosition = new Tween<[number, number, number]>(
 		[...INITIAL_PRIZE_UP_POSITION],
 		{
 			easing: expoOut,
 			duration: 600,
 		},
 	);
-	const prizeDownPosition = new Tween<[number, number, number]>(
+	const capDownPosition = new Tween<[number, number, number]>(
 		[...INITIAL_PRIZE_DOWN_POSITION],
 		{
 			easing: expoOut,
 			duration: 600,
 		},
 	);
-	const prizeScale = new Tween<[number, number, number]>([1, 1, 1], {
+	const capsuleScale = new Tween<[number, number, number]>([1, 1, 1], {
 		easing: cubicOut,
 		duration: 800,
 	});
-	let prizeColor = $state("#000000");
+	let capsuleColor = $state("#000000");
+
+	const prizeScale = new Tween<[number, number, number]>([0, 0, 0], {
+		easing: cubicOut,
+		duration: 800,
+	});
+	const prizeRotation = new Tween(0, {
+		easing: cubicOut,
+		duration: 1600,
+	});
 
 	const gumballPosition = new Tween<[number, number, number]>([0, 2.5, 0], {
 		easing: elasticOut,
@@ -86,15 +98,17 @@
 	const resetPositions = () => {
 		gravity = [0, 0, 0];
 		prizePosition.set([...INITIAL_PRIZE_POSITION], { duration: 0 });
-		prizeUpPosition.set([...INITIAL_PRIZE_UP_POSITION], {
+		capUpPosition.set([...INITIAL_PRIZE_UP_POSITION], {
 			duration: 0,
 		});
-		prizeDownPosition.set([...INITIAL_PRIZE_DOWN_POSITION], {
+		capDownPosition.set([...INITIAL_PRIZE_DOWN_POSITION], {
 			duration: 0,
 		});
-		prizeScale.set([1, 1, 1], { duration: 0 });
+		capsuleScale.set([1, 1, 1], { duration: 0 });
 		gumballPosition.set([0, 2.5, 0], { duration: 0 });
 		coinMeshRotation.set(0, { duration: 0 });
+		prizeScale.set([0, 0, 0], { duration: 0 });
+		prizeRotation.set(0, { duration: 0 });
 	};
 
 	const dispense = async () => {
@@ -109,7 +123,7 @@
 
 		coinMeshRotation.target = coinMeshRotation.current - degToRad(360 * 2);
 		gumballPosition.target = [0, 2.5, 0];
-		prizeColor =
+		capsuleColor =
 			CAPSULE_COLORS[Math.floor(Math.random() * CAPSULE_COLORS.length)];
 
 		capsules.forEach((body) => {
@@ -130,7 +144,7 @@
 		prizePosition.target = [0.9, 0.7, 0];
 
 		await sleep(2000);
-		prizeScale.target = [5, 5, 5];
+		capsuleScale.target = [5, 5, 5];
 		prizePosition.set([1.1, 2.15, 1.1], {
 			easing: cubicOut,
 			duration: 800,
@@ -161,8 +175,11 @@
 
 		await sleep(1500);
 		$GAME_STATE = "prize";
-		prizeUpPosition.target = [0, prizeUpPosition.current[1] + 0.2, 0];
-		prizeDownPosition.target = [0, prizeDownPosition.current[1] - 0.2, 0];
+		capUpPosition.target = [0, capUpPosition.current[1] + 0.5, 0];
+		capDownPosition.target = [0, capDownPosition.current[1] - 0.5, 0];
+
+		prizeScale.target = [1, 1, 1];
+		//prizeRotation.target = degToRad(360 * 2);
 	};
 
 	const claim = () => {
@@ -190,6 +207,11 @@
 						oncreate={(ref) => {
 							ref.lookAt(0, 1.75, 0);
 						}}
+					/>
+
+					<Prize
+						scale={prizeScale.current}
+						rotation.y={prizeRotation.current}
 					/>
 
 					<T.HemisphereLight
@@ -246,10 +268,10 @@
 
 						<Capsule
 							position={prizePosition.current}
-							positionUp={prizeUpPosition.current}
-							positionDown={prizeDownPosition.current}
-							scale={prizeScale.current}
-							color={prizeColor}
+							positionUp={capUpPosition.current}
+							positionDown={capDownPosition.current}
+							scale={capsuleScale.current}
+							color={capsuleColor}
 						/>
 					{/if}
 				</rapier.World>

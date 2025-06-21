@@ -54,6 +54,7 @@
 		"@threlte/core": "^8.0.5",
 		"@threlte/extras": "^9.4.0",
 		"@threlte/rapier": "^3.1.4",
+		"@threlte/studio": "^0.1.7",
 		"@turf/turf": "^7.2.0",
 		"@types/three": "^0.177.0",
 		"mapbox-gl": "^3.12.0",
