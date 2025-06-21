@@ -1,9 +1,10 @@
 <script>
-	import { CopperCoinLineFinance, VipDiamondFillFinance } from "svelte-remix";
+	import { CopperCoinLineFinance } from "svelte-remix";
 	import { RARITIES } from "./constants";
 	import { cn } from "$lib/utils";
 	import { TWEENED_BALANCE } from "./stores";
 	import { getLocale } from "$lib/paraglide/runtime";
+	import { Button } from "$lib/components/ui/button";
 </script>
 
 <div
@@ -38,8 +39,31 @@
 		</aside>
 		<main class="col-span-6 hidden lg:flex"></main>
 		<aside class="col-span-3 hidden size-full flex-col gap-6 lg:flex">
-			<h2 class="text-foreground text-xl md:text-2xl">Reroll</h2>
-			<div class="size-full rounded border"></div>
+			<hgroup>
+				<h2 class="text-foreground text-xl md:text-2xl">Reroll</h2>
+				<div class="text-body text-sm leading-4">
+					Destroy three items to be rerolled as a random new collectible.
+				</div>
+			</hgroup>
+			<div
+				class="flex size-full flex-col items-center justify-center gap-3 rounded border p-6"
+			>
+				<div class="grid w-full grid-cols-3 gap-x-3 gap-y-6">
+					<div
+						class="before:border-border after:border-border relative col-start-2 row-start-1 flex aspect-[3/4] items-center justify-center rounded border before:absolute before:right-[calc(100%+1px)] before:w-[calc(50%+.75rem+1px)] before:border-t after:absolute after:left-[calc(100%+1px)] after:w-[calc(50%+.75rem+1px)] after:border-t"
+					></div>
+					<div
+						class="before:border-border relative col-start-1 row-start-2 flex aspect-[3/4] items-center justify-center rounded border before:absolute before:bottom-[calc(100%+1px)] before:h-[calc(50%+1.75rem-3px)] before:border-l"
+					></div>
+					<div
+						class="before:border-border relative col-start-2 row-start-2 flex aspect-[3/4] items-center justify-center rounded border before:absolute before:bottom-[calc(100%+1px)] before:h-6 before:border-l"
+					></div>
+					<div
+						class="before:border-border relative col-start-3 row-start-2 flex aspect-[3/4] items-center justify-center rounded border before:absolute before:bottom-[calc(100%+1px)] before:h-[calc(50%+1.75rem-3px)] before:border-l"
+					></div>
+				</div>
+			</div>
+			<Button variant="secondary" disabled>Reroll</Button>
 		</aside>
 	</div>
 

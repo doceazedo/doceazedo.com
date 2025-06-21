@@ -10,7 +10,7 @@
 	import { storage } from "$lib/utils/storage";
 	import { writable } from "svelte/store";
 	import { readyInDays } from "$lib/utils/date";
-	import { BALANCE, TWEENED_BALANCE } from "./stores";
+	import { BALANCE } from "./stores";
 
 	const CHA_CHING_AUDIO = new Audio("/audio/cha-ching.ogg");
 

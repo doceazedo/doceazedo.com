@@ -98,11 +98,11 @@
 	};
 
 	const dispense = async () => {
-		if ($GAME_STATE !== "idle") return;
-		$GAME_STATE = "drawing";
-
 		if ($BALANCE < 100) return;
 		$BALANCE -= 100;
+
+		if ($GAME_STATE !== "idle") return;
+		$GAME_STATE = "drawing";
 
 		resetPositions();
 		await sleep(50);
@@ -283,10 +283,15 @@
 				</DropdownMenu.Content>
 			</DropdownMenu.Root>
 
-			<Button size="lg" class="h-12" onclick={dispense}>
+			<Button
+				size="lg"
+				class="h-12"
+				onclick={dispense}
+				disabled={$BALANCE < 100}
+			>
 				<div class="flex items-center gap-1">
 					<CopperCoinLineFinance class="size-5" />
-					100
+					<span class={cn($BALANCE < 100 && "text-red-800")}>100</span>
 				</div>
 				<hr class="bg-primary-foreground/20 h-1/2 w-px" />
 				Dispense now
