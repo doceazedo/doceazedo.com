@@ -1,5 +1,6 @@
 import type { Component } from "svelte";
 import {
+	AliensFillUserFaces,
 	CircleFillDesign,
 	HexagonFillDesign,
 	PentagonFillDesign,
@@ -77,7 +78,8 @@ export type RarityId = (typeof RARITIES)[number]["id"];
 export const COLLECTIONS = [
 	{
 		id: "y2k",
-		label: "Y2K",
+		label: "Y2K Collection",
+		icon: AliensFillUserFaces,
 	},
 ] as const;
 

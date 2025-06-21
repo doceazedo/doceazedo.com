@@ -1,6 +1,6 @@
 <script>
 	import { CopperCoinLineFinance, Progress5LineSystem } from "svelte-remix";
-	import { ITEMS, RARITIES } from "./constants";
+	import { COLLECTIONS, ITEMS, RARITIES } from "./constants";
 	import { cn } from "$lib/utils";
 	import { GAME_DATA, TWEENED_BALANCE } from "./stores";
 	import { getLocale } from "$lib/paraglide/runtime";
@@ -92,53 +92,71 @@
 		<main
 			class="col-span-6 mb-6 flex size-full flex-col gap-6 md:mb-12 lg:mb-0"
 		>
-			<h2 class="text-foreground text-xl md:text-2xl">Recently acquired</h2>
-			<div class="grid grid-cols-2 gap-6 md:grid-cols-3">
-				{#each $GAME_DATA.inventory.reverse() as item}
-					{@const itemData = ITEMS.find((x) => x.id === item.item)}
-					{@const rarity = RARITIES.find((x) => x.id === itemData?.rarity)}
-					{#if itemData && rarity}
+			<div class="flex flex-col gap-6">
+				{#each COLLECTIONS as collection}
+					<h2 class="text-foreground flex gap-3 text-xl md:text-2xl">
 						<div
-							class="relative flex aspect-[3/4] flex-col items-center justify-center overflow-hidden rounded border p-3"
+							class="bg-primary/20 border-primary flex size-8 shrink-0 items-center justify-center rounded border"
 						>
-							{#if item.qty > 1}
-								<span
-									class="bg-muted/50 text-muted-foreground absolute top-3 right-3 rounded px-1.5 text-sm"
-								>
-									{item.qty}
-								</span>
-							{/if}
-							<figure
-								class="relative my-auto flex aspect-square w-2/3 items-center justify-center"
-							>
-								<img
-									src="/img/gachapon/{itemData.id}.webp"
-									alt=""
-									class="relative z-20"
-								/>
-								<span
-									class={cn(
-										"absolute z-10 size-full rounded-full blur-3xl",
-										rarity.badgeColor,
-									)}
-								></span>
-							</figure>
-							<div
-								class="text-fore text-foreground flex flex-col items-center gap-0.5"
-							>
-								<p>{itemData.label}</p>
-								<span
-									class={cn(
-										"rounded px-1 text-sm font-medium",
-										rarity.textColor,
-										rarity.badgeColor,
-									)}
-								>
-									{rarity.label}
-								</span>
-							</div>
+							<collection.icon class="text-primary size-5" />
 						</div>
-					{/if}
+						{collection.label}
+					</h2>
+					<div class="grid grid-cols-2 gap-6 md:grid-cols-3">
+						{#each ITEMS.filter((x) => x.collection === collection.id) as item}
+							{@const quantity =
+								$GAME_DATA.inventory.find((x) => x.item === item.id)?.qty || 0}
+							{@const owned = quantity > 0}
+							{@const rarity =
+								RARITIES.find((x) => x.id === item.rarity) || RARITIES[0]}
+							<div
+								class="relative flex aspect-[3/4] flex-col items-center justify-center overflow-hidden rounded border p-3"
+							>
+								{#if quantity > 1}
+									<span
+										class="bg-muted/50 text-muted-foreground absolute top-3 right-3 rounded px-1.5 text-sm"
+									>
+										{quantity}
+									</span>
+								{/if}
+								<figure
+									class="relative my-auto flex aspect-square w-2/3 items-center justify-center"
+								>
+									<img
+										src="/img/gachapon/{item.id}.webp"
+										alt=""
+										class={cn(
+											"relative z-20",
+											!owned &&
+												"opacity-10 brightness-0 dark:brightness-999999",
+										)}
+									/>
+									{#if owned}
+										<span
+											class={cn(
+												"absolute z-10 size-full rounded-full opacity-40 blur-3xl dark:opacity-20",
+												rarity.bgColor,
+											)}
+										></span>
+									{/if}
+								</figure>
+								<div
+									class="text-fore text-foreground flex flex-col items-center gap-0.5"
+								>
+									<p>{owned ? item.label : "??????"}</p>
+									<span
+										class={cn(
+											"rounded px-1 text-sm font-medium",
+											rarity.textColor,
+											rarity.badgeColor,
+										)}
+									>
+										{rarity.label}
+									</span>
+								</div>
+							</div>
+						{/each}
+					</div>
 				{/each}
 			</div>
 		</main>
