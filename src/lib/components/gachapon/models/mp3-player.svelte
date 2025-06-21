@@ -21,23 +21,26 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/mp3-player.glb
 			scale={[0.05, 0.05, 0.05]}
 			rotation.x={degToRad(90)}
 			rotation.z={degToRad(-90)}
-			position={[-1.5, 3.5, -0.75]}
+			position={[-1.5, 3.25, -0.75]}
 		>
 			<T.Mesh
 				geometry={gltf.nodes.Text001_1.geometry}
-				material={gltf.materials["10___Default"]}
+				material.color="#737373"
 			/>
 			<T.Mesh
 				geometry={gltf.nodes.Text001_1_1.geometry}
 				material={gltf.materials["07___Default"]}
+				material.color="#fafafa"
 			/>
 			<T.Mesh
 				geometry={gltf.nodes.Text001_1_2.geometry}
 				material={gltf.materials["02___Default"]}
+				material.color="#0f172a"
 			/>
 			<T.Mesh
 				geometry={gltf.nodes.Text001_1_3.geometry}
 				material={gltf.materials["01___Default"]}
+				material.color="#EC5298"
 			/>
 		</T.Group>
 	{:catch err}

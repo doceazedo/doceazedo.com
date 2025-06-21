@@ -16,6 +16,8 @@
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import { BALANCE, GAME_STATE } from "./stores";
 	import Mp3Player from "./models/mp3-player.svelte";
+	import { RARITIES } from "./constants";
+	import GachaponPrize from "./gachapon-prize.svelte";
 
 	const Prize = Mp3Player;
 
@@ -175,11 +177,11 @@
 
 		await sleep(1500);
 		$GAME_STATE = "prize";
-		capUpPosition.target = [0, capUpPosition.current[1] + 0.5, 0];
-		capDownPosition.target = [0, capDownPosition.current[1] - 0.5, 0];
+		capUpPosition.target = [0, capUpPosition.current[1] + 1, 0];
+		capDownPosition.target = [0, capDownPosition.current[1] - 1, 0];
 
 		prizeScale.target = [1, 1, 1];
-		//prizeRotation.target = degToRad(360 * 2);
+		prizeRotation.target = degToRad(360 * 2);
 	};
 
 	const claim = () => {
@@ -209,9 +211,9 @@
 						}}
 					/>
 
-					<Prize
+					<GachaponPrize
 						scale={prizeScale.current}
-						rotation.y={prizeRotation.current}
+						rotationY={prizeRotation.current}
 					/>
 
 					<T.HemisphereLight
@@ -347,11 +349,20 @@
 		$GAME_STATE !== "prize" && "scale-50 opacity-0",
 	)}
 />
-<p
+<hgroup
 	class={cn(
-		"ease-elastic absolute transition-all",
+		"ease-elastic absolute top-6 text-center transition-all",
 		$GAME_STATE !== "prize" && "scale-50 opacity-0",
 	)}
 >
-	WIP :3
-</p>
+	<span
+		class={cn(
+			"rounded px-1 text-sm font-medium",
+			RARITIES[1].textColor,
+			RARITIES[1].badgeColor,
+		)}
+	>
+		{RARITIES[1].label}
+	</span>
+	<h1 class="text-xl md:text-2xl">MP3 Player</h1>
+</hgroup>
