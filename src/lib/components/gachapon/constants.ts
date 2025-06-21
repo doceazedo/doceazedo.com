@@ -1,3 +1,12 @@
+import {
+	CircleFillDesign,
+	HexagonFillDesign,
+	PentagonFillDesign,
+	SquareFillDesign,
+	TriangleFillDesign,
+	VipDiamondFillFinance,
+} from "svelte-remix";
+
 export const RARITIES = [
 	{
 		label: "Common",
@@ -6,6 +15,7 @@ export const RARITIES = [
 		bgColor: "bg-slate-500!",
 		badgeColor: "bg-slate-500/20",
 		borderColor: "border-slate-500",
+		icon: CircleFillDesign,
 	},
 	{
 		label: "Uncommon",
@@ -14,6 +24,7 @@ export const RARITIES = [
 		bgColor: "bg-emerald-500!",
 		badgeColor: "bg-emerald-500/20",
 		borderColor: "border-emerald-500",
+		icon: TriangleFillDesign,
 	},
 	{
 		label: "Rare",
@@ -22,6 +33,7 @@ export const RARITIES = [
 		bgColor: "bg-blue-500!",
 		badgeColor: "bg-blue-500/20",
 		borderColor: "border-blue-500",
+		icon: SquareFillDesign,
 	},
 	{
 		label: "Epic",
@@ -30,6 +42,7 @@ export const RARITIES = [
 		bgColor: "bg-violet-500!",
 		badgeColor: "bg-violet-500/20",
 		borderColor: "border-violet-500",
+		icon: PentagonFillDesign,
 	},
 	{
 		label: "Legendary",
@@ -38,6 +51,7 @@ export const RARITIES = [
 		bgColor: "bg-amber-400!",
 		badgeColor: "bg-amber-400/20",
 		borderColor: "border-amber-400",
+		icon: VipDiamondFillFinance,
 	},
 	{
 		label: "Exotic",
@@ -46,5 +60,6 @@ export const RARITIES = [
 		bgColor: "bg-sky-300!",
 		badgeColor: "bg-sky-300/20",
 		borderColor: "border-sky-300",
+		icon: HexagonFillDesign,
 	},
 ] as const;
