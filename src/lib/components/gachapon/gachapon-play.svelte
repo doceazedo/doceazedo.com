@@ -95,7 +95,10 @@
 	];
 
 	let isGumballLoaded = $state(false);
-	let prizeItem = $state<Item | null>(null);
+	let prizeItem = $state<Item | null>(ITEMS[0]);
+	let prizeRarity = $derived(
+		RARITIES.find((x) => x.id === prizeItem?.rarity) || RARITIES[0],
+	);
 
 	const resetPositions = () => {
 		capsulePosition.set([...INITIAL_PRIZE_POSITION], { duration: 0 });
@@ -113,7 +116,6 @@
 	};
 
 	const getRandomRarity = () => {
-		return ITEMS[0].rarity;
 		const rand = Math.random();
 		let sum = 0;
 		return (
@@ -172,7 +174,7 @@
 		});
 
 		await sleep(50);
-		gumballScale.target = [0.01, 0.01, 0.01];
+		gumballScale.target = [0.001, 0.001, 0.001];
 
 		await sleep(950);
 		capsulePosition.set([0.9, 2.15, 1.1], {
@@ -240,7 +242,6 @@
 						preserveDrawingBuffer: true,
 					});
 				}}
-				preserveDrawingBuffer
 				shadows
 				toneMapping="ACESFilmicToneMapping"
 				toneMappingExposure={1.2}
@@ -408,11 +409,13 @@
 	<span
 		class={cn(
 			"rounded px-1 text-sm font-medium",
-			RARITIES[1].textColor,
-			RARITIES[1].badgeColor,
+			prizeRarity.textColor,
+			prizeRarity.badgeColor,
 		)}
 	>
-		{RARITIES[1].label}
+		{prizeRarity.label}
 	</span>
-	<h1 class="text-xl md:text-2xl">MP3 Player</h1>
+	<h1 class="text-xl md:text-2xl">
+		{prizeItem?.label}
+	</h1>
 </hgroup>

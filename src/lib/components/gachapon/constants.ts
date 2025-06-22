@@ -9,6 +9,9 @@ import {
 	VipDiamondFillFinance,
 } from "svelte-remix";
 import Mp3Player from "./models/mp3-player.svelte";
+import Nds from "./models/nds.svelte";
+import Cd from "./models/cd.svelte";
+import DebugNds from "./models/debug-nds.svelte";
 
 export const RARITIES = [
 	{
@@ -95,10 +98,52 @@ export type Item = {
 
 export const ITEMS: Item[] = [
 	{
+		id: "cd",
+		label: "CD",
+		mesh: Cd as Component,
+		collection: "y2k",
+		rarity: "common",
+	},
+	{
 		id: "mp3-player",
 		label: "MP3 Player",
 		mesh: Mp3Player as Component,
 		collection: "y2k",
 		rarity: "uncommon",
+	},
+	{
+		id: "nds",
+		label: "Handheld Console",
+		mesh: Nds as Component,
+		collection: "y2k",
+		rarity: "uncommon",
+	},
+	{
+		id: "placeholder-rare",
+		label: "Debug",
+		mesh: DebugNds as Component,
+		collection: "y2k",
+		rarity: "rare",
+	},
+	{
+		id: "placeholder-epic",
+		label: "Debug",
+		mesh: DebugNds as Component,
+		collection: "y2k",
+		rarity: "epic",
+	},
+	{
+		id: "placeholder-legendary",
+		label: "Debug",
+		mesh: DebugNds as Component,
+		collection: "y2k",
+		rarity: "legendary",
+	},
+	{
+		id: "placeholder-exotic",
+		label: "Debug",
+		mesh: DebugNds as Component,
+		collection: "y2k",
+		rarity: "exotic",
 	},
 ];

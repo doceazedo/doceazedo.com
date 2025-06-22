@@ -11,7 +11,7 @@
 
 	let orbitRotation = $state(0);
 	useTask((delta) => {
-		//orbitRotation += delta;
+		orbitRotation += delta;
 	});
 </script>
 

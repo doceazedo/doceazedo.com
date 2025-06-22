@@ -1,5 +1,9 @@
 <script>
-	import { CopperCoinLineFinance, Progress5LineSystem } from "svelte-remix";
+	import {
+		CheckboxCircleFillSystem,
+		CopperCoinLineFinance,
+		Progress5LineSystem,
+	} from "svelte-remix";
 	import { COLLECTIONS, ITEMS, RARITIES } from "./constants";
 	import { cn } from "$lib/utils";
 	import { GAME_DATA, TWEENED_BALANCE } from "./stores";
@@ -24,13 +28,19 @@
 			</div>
 			<div class="-mt-22 mb-6 w-full rounded border pt-22">
 				<div class="mx-auto grid w-2/3 grid-cols-3 gap-x-3 gap-y-6 py-6">
-					<div class="col-span-3 flex items-center justify-center gap-6">
+					<div
+						class="col-span-3 flex items-center justify-center gap-6 lg:flex-col lg:gap-3 xl:flex-row xl:gap-6"
+					>
 						<div class="flex items-center gap-1.5">
 							<CopperCoinLineFinance class="size-5 text-amber-500" />
 							{Math.floor(TWEENED_BALANCE.current).toLocaleString(getLocale())}
 						</div>
 						<div class="flex items-center gap-1.5">
-							<Progress5LineSystem class="text-body size-5" />
+							{#if $GAME_DATA.inventory.length < ITEMS.length}
+								<Progress5LineSystem class="text-body size-5" />
+							{:else}
+								<CheckboxCircleFillSystem class="text-primary size-5" />
+							{/if}
 							<p>
 								{$GAME_DATA.inventory.length}
 								<span class="text-body">/</span>
@@ -109,8 +119,13 @@
 							{@const owned = quantity > 0}
 							{@const rarity =
 								RARITIES.find((x) => x.id === item.rarity) || RARITIES[0]}
-							<div
-								class="relative flex aspect-[3/4] flex-col items-center justify-center overflow-hidden rounded border p-3"
+							<button
+								disabled={!owned}
+								class={cn(
+									"relative flex aspect-[3/4] flex-col items-center justify-center overflow-hidden rounded border p-3",
+									owned &&
+										"group ease-elastic cursor-pointer transition-all hover:scale-105",
+								)}
 							>
 								{#if quantity > 1}
 									<span
@@ -127,8 +142,9 @@
 										alt=""
 										class={cn(
 											"relative z-20",
-											!owned &&
-												"opacity-10 brightness-0 dark:brightness-999999",
+											owned
+												? "ease-elastic transition-all group-hover:scale-125"
+												: "opacity-10 brightness-0 dark:brightness-999999",
 										)}
 									/>
 									{#if owned}
@@ -154,7 +170,7 @@
 										{rarity.label}
 									</span>
 								</div>
-							</div>
+							</button>
 						{/each}
 					</div>
 				{/each}
