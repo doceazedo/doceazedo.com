@@ -3,6 +3,7 @@
 	import type { Item } from "./constants";
 	import { interactivity, type IntersectionEvent } from "@threlte/extras";
 	import { Spring } from "svelte/motion";
+	import { IS_DESKTOP } from "$lib/stores";
 
 	interactivity();
 
@@ -61,6 +62,7 @@
 	rotation.y={orbitRotation.current}
 	onpointerdown={onPointerDown}
 	ontouchstart={onPointerDown}
+	scale={$IS_DESKTOP ? 1 : 0.9}
 >
 	<item.mesh {scale} rotation.y={rotationY} />
 	<T.Mesh scale={5} position.y={1.75}>

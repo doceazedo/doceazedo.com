@@ -108,7 +108,7 @@
 </script>
 
 <Dialog.Root bind:open>
-	<Dialog.Content>
+	<Dialog.Content class="max-h-[calc(100%-3rem)]">
 		{#if item && invItem}
 			<Dialog.Header class="items-center sm:text-center">
 				<Dialog.Title>{item.label}</Dialog.Title>
@@ -123,8 +123,8 @@
 					{rarity.label}
 				</span>
 			</Dialog.Header>
-			<Dialog.Body>
-				<div class="aspect-square w-full">
+			<Dialog.Body class="overflow-y-auto">
+				<div class="-mt-12 aspect-square w-full shrink-0">
 					<Canvas
 						createRenderer={(canvas) => {
 							return new WebGLRenderer({
@@ -185,8 +185,8 @@
 					onOpenChange={() =>
 						(sellQuantity = invItem.quantity > 1 ? invItem.quantity - 1 : 1)}
 				>
-					<Dialog.Trigger>
-						<Button class="gap-1.5 bg-amber-500 hover:bg-amber-500/90">
+					<Dialog.Trigger class="w-full">
+						<Button class="w-full gap-1.5 bg-amber-500 hover:bg-amber-500/90">
 							{m.sell_for()}
 							<div class="flex items-center gap-1">
 								<CopperCoinLineFinance class="size-5" />
