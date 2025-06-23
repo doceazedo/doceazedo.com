@@ -17,6 +17,7 @@ import Potion from "./models/potion.svelte";
 import Spellbook from "./models/spellbook.svelte";
 import Sword from "./models/sword.svelte";
 import Crystal from "./models/crystal.svelte";
+import BloodRing from "./models/blood-ring.svelte";
 
 export const RARITIES = [
 	{
@@ -186,5 +187,12 @@ export const ITEMS: Item[] = [
 		mesh: Crystal as Component,
 		collection: "loot",
 		rarity: "legendary",
+	},
+	{
+		id: "blood-ring",
+		label: "Blood Ring",
+		mesh: BloodRing as Component,
+		collection: "loot",
+		rarity: "exotic",
 	},
 ];
