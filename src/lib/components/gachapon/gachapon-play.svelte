@@ -22,6 +22,7 @@
 	import GumballSkeleton from "$lib/components/icons/gumball.svg?component";
 	import World from "./scenes/world.svelte";
 	import { m } from "$lib/paraglide/messages";
+	import { giveItem } from "./utils";
 
 	const getGridPosition = (
 		index: number,
@@ -210,24 +211,7 @@
 		prizeScale.target = [1, 1, 1];
 		prizeRotation.target = degToRad(360 * 2);
 
-		const existingItemIdx = $GAME_DATA.inventory.findIndex(
-			(x) => x.item === prizeItem?.id,
-		);
-		if (existingItemIdx >= 0) {
-			$GAME_DATA.inventory[existingItemIdx].quantity += 1;
-			$GAME_DATA.inventory[existingItemIdx].lastAt = new Date().toString();
-			return;
-		}
-
-		$GAME_DATA.inventory = [
-			...$GAME_DATA.inventory,
-			{
-				item: prizeItem.id,
-				quantity: 1,
-				firstAt: new Date().toString(),
-				lastAt: new Date().toString(),
-			},
-		];
+		giveItem(prizeItem);
 	};
 
 	const claim = () => {

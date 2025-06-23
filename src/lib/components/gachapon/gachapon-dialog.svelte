@@ -18,10 +18,17 @@
 	import GachaponRewards from "./gachapon-rewards.svelte";
 	import GachaponInventory from "./gachapon-inventory.svelte";
 	import { cubicOut, elasticOut } from "svelte/easing";
-	import { GAME_DATA, GAME_STATE, TWEENED_BALANCE } from "./stores";
+	import {
+		CHA_CHING_AUDIO,
+		GAME_DATA,
+		GAME_STATE,
+		TWEENED_BALANCE,
+	} from "./stores";
 	import { onMount } from "svelte";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { m } from "$lib/paraglide/messages";
+	import { giveCoins, giveItem } from "./utils";
+	import { ITEMS } from "./constants";
 
 	const TABS = [
 		{
@@ -54,6 +61,16 @@
 			if (!TWEENED_BALANCE) return;
 			TWEENED_BALANCE.target = balance;
 		});
+
+		$CHA_CHING_AUDIO = new Audio("/audio/cha-ching.ogg");
+
+		// cheats >:3
+		window.rosebud = () => giveCoins(1000);
+		window.kaching = () => giveCoins(1000);
+		window.motherlode = () => giveCoins(50000);
+		window.giveAll = () => {
+			ITEMS.forEach((item) => giveItem(item));
+		};
 	});
 </script>
 

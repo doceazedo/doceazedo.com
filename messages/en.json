@@ -356,5 +356,12 @@
 	"gachapon_item_description_blood_ring": "Someone probably wants this back.",
 	"order_by_recent_title": "My collectibles",
 	"order_by_duplicate_title": "Repeated collectibles",
-	"gachapon_gamemode": "Mode"
+	"gachapon_gamemode": "Mode",
+	"sell_item_title": "Sell {item}?",
+	"sell_item_description_many": "You've got {quantity} of those. How many of them do you wanna sell? Once they're gone, they're gone forever (a long time)!",
+	"sell_item_description_single": "You've only got one of those. Once it's gone, it's gone forever!",
+	"sell_one_for": "Sell one for",
+	"sell_all_for": "Sell all for",
+	"sell_x_for": "Sell {quantity}x for",
+	"nevermind": "Nevermind"
 }

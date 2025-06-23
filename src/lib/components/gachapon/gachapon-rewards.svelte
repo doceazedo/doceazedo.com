@@ -5,16 +5,13 @@
 		GiftLineFinance,
 	} from "svelte-remix";
 	import { Button } from "$lib/components/ui/button";
-	import { ITEMS, RARITIES } from "./constants";
+	import { RARITIES } from "./constants";
 	import { cn } from "$lib/utils";
 	import { storage } from "$lib/utils/storage";
 	import { writable } from "svelte/store";
 	import { readyInDays } from "$lib/utils/date";
-	import { GAME_DATA } from "./stores";
-	import { onMount } from "svelte";
 	import { m } from "$lib/paraglide/messages";
-
-	const CHA_CHING_AUDIO = new Audio("/audio/cha-ching.ogg");
+	import { giveCoins } from "./utils";
 
 	const DAILY_REWARDS = [
 		{
@@ -55,11 +52,6 @@
 		"gachapon_daily_streak",
 	);
 
-	const giveCoins = (quantity: number) => {
-		$GAME_DATA.balance += quantity;
-		CHA_CHING_AUDIO.play();
-	};
-
 	const claimReward = (idx: number) => {
 		if ($dailyStreak.claimed.includes(idx)) return;
 		$dailyStreak.claimed = [...$dailyStreak.claimed, idx];
@@ -88,33 +80,6 @@
 
 		return "ready";
 	};
-
-	onMount(() => {
-		window.rosebud = () => giveCoins(1000);
-		window.kaching = () => giveCoins(1000);
-		window.motherlode = () => giveCoins(50000);
-		window.giveAll = () => {
-			ITEMS.forEach((item) => {
-				const existingItemIdx = $GAME_DATA.inventory.findIndex(
-					(x) => x.item === item?.id,
-				);
-				if (existingItemIdx >= 0) {
-					$GAME_DATA.inventory[existingItemIdx].quantity += 1;
-					$GAME_DATA.inventory[existingItemIdx].lastAt = new Date().toString();
-					return;
-				}
-				$GAME_DATA.inventory = [
-					...$GAME_DATA.inventory,
-					{
-						item: item.id,
-						quantity: 1,
-						firstAt: new Date().toString(),
-						lastAt: new Date().toString(),
-					},
-				];
-			});
-		};
-	});
 </script>
 
 <div

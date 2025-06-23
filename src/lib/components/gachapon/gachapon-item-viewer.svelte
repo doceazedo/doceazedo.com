@@ -20,6 +20,8 @@
 	import { GAME_DATA } from "./stores";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { m } from "$lib/paraglide/messages";
+	import { Slider } from "$lib/components/ui/slider";
+	import { giveCoins } from "./utils";
 
 	let { item = $bindable() }: { item: Item | null } = $props();
 
@@ -76,6 +78,32 @@
 				]
 			: [],
 	);
+
+	let openSellDialog = $state(false);
+	let sellQuantity = $state(1);
+
+	const sell = () => {
+		if (!item || !invItem) return;
+
+		giveCoins(price * sellQuantity);
+
+		if (sellQuantity >= invItem.quantity) {
+			$GAME_DATA.inventory = $GAME_DATA.inventory.filter(
+				(x) => x.item !== item.id,
+			);
+		} else {
+			$GAME_DATA.inventory = $GAME_DATA.inventory.map((x) => {
+				if (x.item !== item.id) return x;
+				return {
+					...x,
+					quantity: x.quantity - sellQuantity,
+				};
+			});
+		}
+
+		openSellDialog = false;
+		open = false;
+	};
 </script>
 
 <Dialog.Root bind:open>
@@ -143,13 +171,78 @@
 					<Dice6LineOthers class="size-5" />
 					{m.reroll()}
 				</Button>
-				<Button class="gap-1.5 bg-amber-500 hover:bg-amber-500/90">
-					{m.sell_for()}
-					<div class="flex items-center gap-1">
-						<CopperCoinLineFinance class="size-5" />
-						{price}
-					</div>
-				</Button>
+				<Dialog.Root
+					bind:open={openSellDialog}
+					onOpenChange={() =>
+						(sellQuantity = invItem.quantity > 1 ? invItem.quantity - 1 : 1)}
+				>
+					<Dialog.Trigger>
+						<Button class="gap-1.5 bg-amber-500 hover:bg-amber-500/90">
+							{m.sell_for()}
+							<div class="flex items-center gap-1">
+								<CopperCoinLineFinance class="size-5" />
+								{price}
+							</div>
+						</Button>
+					</Dialog.Trigger>
+					<Dialog.Content>
+						<Dialog.Header class="border-0">
+							<Dialog.Title
+								>{m.sell_item_title({ item: item.label })}</Dialog.Title
+							>
+							<Dialog.Description>
+								{#if invItem.quantity > 1}
+									{m.sell_item_description_many({ quantity: invItem.quantity })}
+								{:else}
+									{m.sell_item_description_single()}
+								{/if}
+							</Dialog.Description>
+						</Dialog.Header>
+						{#if invItem.quantity > 1}
+							<Dialog.Body>
+								<div class="text-body/70 flex w-full items-center gap-3">
+									0
+									<Slider
+										type="single"
+										bind:value={sellQuantity}
+										min={0}
+										max={invItem.quantity}
+										step={1}
+									/>
+									{invItem.quantity}
+								</div>
+							</Dialog.Body>
+						{/if}
+						<Dialog.Footer>
+							<Button
+								variant="outline"
+								class="gap-1.5"
+								onclick={() => (openSellDialog = false)}
+							>
+								{m.nevermind()}
+							</Button>
+							<Button
+								disabled={invItem.quantity > 1 && sellQuantity <= 0}
+								class="gap-1.5"
+								onclick={sell}
+							>
+								{#if invItem.quantity === 1 || sellQuantity === 0}
+									{m.sell_for()}
+								{:else if sellQuantity === 1}
+									{m.sell_one_for()}
+								{:else if sellQuantity === invItem.quantity}
+									{m.sell_all_for()}
+								{:else}
+									{m.sell_x_for({ quantity: sellQuantity })}
+								{/if}
+								<div class="flex items-center gap-1">
+									<CopperCoinLineFinance class="size-5" />
+									{price * sellQuantity}
+								</div>
+							</Button>
+						</Dialog.Footer>
+					</Dialog.Content>
+				</Dialog.Root>
 			</Dialog.Footer>
 		{/if}
 	</Dialog.Content>

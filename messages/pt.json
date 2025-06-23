@@ -320,7 +320,7 @@
 	"epic": "Épico",
 	"legendary": "Lendário",
 	"exotic": "Exótico",
-	"items_owned": "Itens coletados",
+	"items_owned": "Colecionáveis obtidos",
 	"order_by": "Organizar por",
 	"collection": "Coleção",
 	"rarity": "Raridade",
@@ -356,5 +356,12 @@
 	"order_by_duplicate_title": "Colecionáveis repetidos",
 	"tommorow": "Amanhã",
 	"ready_in_x_days": "Pronto em {days} dias",
-	"gachapon_gamemode": "Modo"
+	"gachapon_gamemode": "Modo",
+	"sell_item_title": "Vender {item}?",
+	"sell_item_description_many": "Você possui {quantity} desses. Quantos você quer vender? Depois que eles forem vendidos, já era pra sempre (muito tempo)!",
+	"sell_item_description_single": "Você só tem um desses. Se você vender, já era!",
+	"sell_one_for": "Vender um por",
+	"sell_all_for": "Vender tudo por",
+	"sell_x_for": "Vender {quantity}x por",
+	"nevermind": "Deixa pra lá"
 }
