@@ -14,6 +14,7 @@ import Nds from "./models/nds.svelte";
 import Cd from "./models/cd.svelte";
 import DebugNds from "./models/debug-nds.svelte";
 import Potion from "./models/potion.svelte";
+import Spellbook from "./models/spellbook.svelte";
 
 export const RARITIES = [
 	{
@@ -104,6 +105,7 @@ export type Item = {
 };
 
 export const ITEMS: Item[] = [
+	// y2k
 	{
 		id: "cd",
 		label: "CD",
@@ -123,13 +125,6 @@ export const ITEMS: Item[] = [
 		label: "Handheld Console",
 		mesh: Nds as Component,
 		collection: "y2k",
-		rarity: "uncommon",
-	},
-	{
-		id: "potion",
-		label: "Potion",
-		mesh: Potion as Component,
-		collection: "loot",
 		rarity: "uncommon",
 	},
 	{
@@ -159,5 +154,21 @@ export const ITEMS: Item[] = [
 		mesh: DebugNds as Component,
 		collection: "y2k",
 		rarity: "exotic",
+	},
+
+	// loot
+	{
+		id: "potion",
+		label: "Potion",
+		mesh: Potion as Component,
+		collection: "loot",
+		rarity: "uncommon",
+	},
+	{
+		id: "spellbook",
+		label: "Spellbook",
+		mesh: Spellbook as Component,
+		collection: "loot",
+		rarity: "rare",
 	},
 ];
