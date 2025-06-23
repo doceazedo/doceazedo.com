@@ -88,7 +88,9 @@
 	<p class="text-center text-lg font-semibold md:text-xl">
 		{m.rewards_title()}
 	</p>
-	<div class="grid grid-cols-1 gap-6 lg:grid-cols-3 xl:grid-cols-7 xl:gap-3">
+	<div
+		class="mx-auto grid w-full max-w-4xl grid-cols-1 gap-6 lg:grid-cols-3 xl:gap-3"
+	>
 		{#each DAILY_REWARDS as reward, i}
 			{@const readyDate = getRewardReadyDate(i)}
 			{@const status = getRewardStatus(i)}
@@ -97,9 +99,9 @@
 
 			<div
 				class={cn(
-					"ease-elastic flex h-fit items-center justify-between rounded border p-3 pr-4 transition-all hover:-translate-y-1.5 lg:h-48 lg:flex-col lg:items-center lg:justify-center lg:pr-3 lg:text-center xl:h-56",
+					"ease-elastic flex h-fit items-center justify-between rounded border p-3 pr-4 transition-all hover:-translate-y-1.5 lg:h-48 lg:flex-col lg:items-center lg:justify-center lg:pr-3 lg:text-center",
 					isLastReward &&
-						`${lastRewardRarity.borderColor} ${lastRewardRarity.badgeColor} lg:col-span-3 xl:col-span-1`,
+						`${lastRewardRarity.borderColor} ${lastRewardRarity.badgeColor} lg:col-span-3`,
 				)}
 			>
 				<div class="flex h-full flex-col gap-1">
