@@ -14,6 +14,7 @@ declare global {
 		rosebud: () => void;
 		kaching: () => void;
 		motherlode: () => void;
+		giveAll: () => void;
 	}
 }
 

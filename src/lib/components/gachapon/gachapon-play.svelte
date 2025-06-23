@@ -21,6 +21,7 @@
 	import { WebGLRenderer } from "three";
 	import GumballSkeleton from "$lib/components/icons/gumball.svg?component";
 	import World from "./scenes/world.svelte";
+	import { m } from "$lib/paraglide/messages";
 
 	const getGridPosition = (
 		index: number,
@@ -329,7 +330,7 @@
 				<DropdownMenu.Trigger>
 					<Button variant="outline" size="lg" class="h-12" aria-readonly>
 						<Swap2LineFinance class="size-5" />
-						Mode
+						{m.gachapon_gamemode()}
 					</Button>
 				</DropdownMenu.Trigger>
 				<DropdownMenu.Content side="top">
@@ -353,7 +354,7 @@
 					>
 				</div>
 				<hr class="bg-primary-foreground/20 h-1/2 w-px" />
-				Dispense now
+				{m.dispense_now()}
 			</Button>
 		</div>
 	{/if}
@@ -368,7 +369,7 @@
 			}}
 			class="absolute bottom-6"
 		>
-			<Button variant="outline" onclick={claim}>Claim</Button>
+			<Button variant="outline" onclick={claim}>{m.claim()}</Button>
 		</div>
 	{/if}
 

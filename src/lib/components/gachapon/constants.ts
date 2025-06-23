@@ -16,18 +16,18 @@ import {
 import Mp3Player from "./models/mp3-player.svelte";
 import Nds from "./models/nds.svelte";
 import Cd from "./models/cd.svelte";
-import DebugNds from "./models/debug-nds.svelte";
 import Potion from "./models/potion.svelte";
 import Spellbook from "./models/spellbook.svelte";
 import Sword from "./models/sword.svelte";
 import Crystal from "./models/crystal.svelte";
 import BloodRing from "./models/blood-ring.svelte";
 import CoinBag from "./models/coin-bag.svelte";
+import { m } from "$lib/paraglide/messages";
 
 export const RARITIES = [
 	{
 		id: "common",
-		label: "Common",
+		label: m.common(),
 		odds: 0.5,
 		textColor: "text-slate-500",
 		bgColor: "bg-slate-500!",
@@ -37,7 +37,7 @@ export const RARITIES = [
 	},
 	{
 		id: "uncommon",
-		label: "Uncommon",
+		label: m.uncommon(),
 		odds: 0.25,
 		textColor: "text-emerald-500",
 		bgColor: "bg-emerald-500!",
@@ -47,7 +47,7 @@ export const RARITIES = [
 	},
 	{
 		id: "rare",
-		label: "Rare",
+		label: m.rare(),
 		odds: 0.12,
 		textColor: "text-blue-500",
 		bgColor: "bg-blue-500!",
@@ -57,7 +57,7 @@ export const RARITIES = [
 	},
 	{
 		id: "epic",
-		label: "Epic",
+		label: m.epic(),
 		odds: 0.07,
 		textColor: "text-violet-500",
 		bgColor: "bg-violet-500!",
@@ -67,7 +67,7 @@ export const RARITIES = [
 	},
 	{
 		id: "legendary",
-		label: "Legendary",
+		label: m.legendary(),
 		odds: 0.04,
 		textColor: "text-amber-400",
 		bgColor: "bg-amber-400!",
@@ -77,7 +77,7 @@ export const RARITIES = [
 	},
 	{
 		id: "exotic",
-		label: "Exotic",
+		label: m.exotic(),
 		odds: 0.02,
 		textColor: "text-sky-300",
 		bgColor: "bg-sky-300!",
@@ -92,13 +92,13 @@ export type RarityId = (typeof RARITIES)[number]["id"];
 export const COLLECTIONS = [
 	{
 		id: "y2k",
-		label: "Y2K Starter Pack",
+		label: m.gachapon_collection_y2k(),
 		icon: AliensFillUserFaces,
 		iconLine: AliensLineUserFaces,
 	},
 	{
 		id: "loot",
-		label: "RPG Loot",
+		label: m.gachapon_collection_loot(),
 		icon: SwordFillOthers,
 		iconLine: SwordLineOthers,
 	},
@@ -109,6 +109,7 @@ export type CollectionId = (typeof COLLECTIONS)[number]["id"];
 export type Item = {
 	id: string;
 	label: string;
+	description: string;
 	mesh: Component;
 	collection: CollectionId;
 	rarity: RarityId;
@@ -119,7 +120,8 @@ export const ITEMS: Item[] = [
 	// y2k
 	{
 		id: "cd",
-		label: "CD",
+		label: m.gachapon_item_cd(),
+		description: m.gachapon_item_description_cd(),
 		mesh: Cd as Component,
 		collection: "y2k",
 		rarity: "common",
@@ -127,7 +129,8 @@ export const ITEMS: Item[] = [
 	},
 	{
 		id: "mp3-player",
-		label: "MP3 Player",
+		label: m.gachapon_item_mp3_player(),
+		description: m.gachapon_item_description_mp3_player(),
 		mesh: Mp3Player as Component,
 		collection: "y2k",
 		rarity: "uncommon",
@@ -135,7 +138,8 @@ export const ITEMS: Item[] = [
 	},
 	{
 		id: "nds",
-		label: "Handheld Console",
+		label: m.gachapon_item_nds(),
+		description: m.gachapon_item_description_nds(),
 		mesh: Nds as Component,
 		collection: "y2k",
 		rarity: "uncommon",
@@ -145,7 +149,8 @@ export const ITEMS: Item[] = [
 	// loot
 	{
 		id: "coin-bag",
-		label: "Coin Bag",
+		label: m.gachapon_item_coin_bag(),
+		description: m.gachapon_item_description_coin_bag(),
 		mesh: CoinBag as Component,
 		collection: "loot",
 		rarity: "uncommon",
@@ -153,7 +158,8 @@ export const ITEMS: Item[] = [
 	},
 	{
 		id: "potion",
-		label: "Potion",
+		label: m.gachapon_item_potion(),
+		description: m.gachapon_item_description_potion(),
 		mesh: Potion as Component,
 		collection: "loot",
 		rarity: "uncommon",
@@ -161,7 +167,8 @@ export const ITEMS: Item[] = [
 	},
 	{
 		id: "sword",
-		label: "Sword",
+		label: m.gachapon_item_sword(),
+		description: m.gachapon_item_description_sword(),
 		mesh: Sword as Component,
 		collection: "loot",
 		rarity: "rare",
@@ -169,7 +176,8 @@ export const ITEMS: Item[] = [
 	},
 	{
 		id: "spellbook",
-		label: "Spellbook",
+		label: m.gachapon_item_spellbook(),
+		description: m.gachapon_item_description_spellbook(),
 		mesh: Spellbook as Component,
 		collection: "loot",
 		rarity: "epic",
@@ -177,7 +185,8 @@ export const ITEMS: Item[] = [
 	},
 	{
 		id: "crystal",
-		label: "Blue Crystal",
+		label: m.gachapon_item_blue_crystal(),
+		description: m.gachapon_item_description_blue_crystal(),
 		mesh: Crystal as Component,
 		collection: "loot",
 		rarity: "legendary",
@@ -185,7 +194,8 @@ export const ITEMS: Item[] = [
 	},
 	{
 		id: "blood-ring",
-		label: "Blood Ring",
+		label: m.gachapon_item_blood_ring(),
+		description: m.gachapon_item_description_blood_ring(),
 		mesh: BloodRing as Component,
 		collection: "loot",
 		rarity: "exotic",

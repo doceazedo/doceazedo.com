@@ -19,6 +19,7 @@
 	import { fade } from "svelte/transition";
 	import { flip } from "svelte/animate";
 	import GachaponItemViewer from "./gachapon-item-viewer.svelte";
+	import { m } from "$lib/paraglide/messages";
 
 	type OrderBy = {
 		value: string;
@@ -39,7 +40,7 @@
 	const orderOptions = $derived<OrderBy[]>([
 		{
 			value: "collection",
-			label: "Collection",
+			label: m.collection(),
 			icon: ArchiveStackLineBusiness,
 			orderedItems: COLLECTIONS.map((collection) => ({
 				title: collection.label,
@@ -49,7 +50,7 @@
 		},
 		{
 			value: "rarity",
-			label: "Rarity",
+			label: m.rarity(),
 			icon: VipDiamondLineFinance,
 			orderedItems: RARITIES.map((rarity) => ({
 				title: rarity.label,
@@ -64,11 +65,11 @@
 		},
 		{
 			value: "recent",
-			label: "Recent",
+			label: m.recent(),
 			icon: HistoryLineSystem,
 			orderedItems: [
 				{
-					title: "My collectibles",
+					title: m.order_by_recent_title(),
 					items: $GAME_DATA.inventory
 						.sort(
 							(a, b) =>
@@ -81,11 +82,11 @@
 		},
 		{
 			value: "duplicate",
-			label: "Duplicates",
+			label: m.duplicates(),
 			icon: FileCopyLineDocument,
 			orderedItems: [
 				{
-					title: "Repeated collectibles",
+					title: m.order_by_duplicate_title(),
 					items: $GAME_DATA.inventory
 						.filter((x) => x.quantity > 1)
 						.sort(
@@ -126,7 +127,7 @@
 					)}
 				</p>
 				<p class="text-body mb-1.5 text-sm leading-3 xl:text-base xl:leading-4">
-					Collectibles owned
+					{m.items_owned()}
 				</p>
 			</div>
 			<div
@@ -172,7 +173,7 @@
 				</div>
 			</div>
 			<div class="mb-6 flex w-full flex-col gap-1.5">
-				<Label>Order by</Label>
+				<Label>{m.order_by()}</Label>
 				<Select.Root
 					type="single"
 					bind:value={$ORDER_BY}

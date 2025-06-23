@@ -5,13 +5,14 @@
 		GiftLineFinance,
 	} from "svelte-remix";
 	import { Button } from "$lib/components/ui/button";
-	import { RARITIES } from "./constants";
+	import { ITEMS, RARITIES } from "./constants";
 	import { cn } from "$lib/utils";
 	import { storage } from "$lib/utils/storage";
 	import { writable } from "svelte/store";
 	import { readyInDays } from "$lib/utils/date";
 	import { GAME_DATA } from "./stores";
 	import { onMount } from "svelte";
+	import { m } from "$lib/paraglide/messages";
 
 	const CHA_CHING_AUDIO = new Audio("/audio/cha-ching.ogg");
 
@@ -92,6 +93,27 @@
 		window.rosebud = () => giveCoins(1000);
 		window.kaching = () => giveCoins(1000);
 		window.motherlode = () => giveCoins(50000);
+		window.giveAll = () => {
+			ITEMS.forEach((item) => {
+				const existingItemIdx = $GAME_DATA.inventory.findIndex(
+					(x) => x.item === item?.id,
+				);
+				if (existingItemIdx >= 0) {
+					$GAME_DATA.inventory[existingItemIdx].quantity += 1;
+					$GAME_DATA.inventory[existingItemIdx].lastAt = new Date().toString();
+					return;
+				}
+				$GAME_DATA.inventory = [
+					...$GAME_DATA.inventory,
+					{
+						item: item.id,
+						quantity: 1,
+						firstAt: new Date().toString(),
+						lastAt: new Date().toString(),
+					},
+				];
+			});
+		};
 	});
 </script>
 
@@ -99,7 +121,7 @@
 	class="mt-auto flex size-full h-[calc(100%-2.25rem)] flex-col gap-6 overflow-y-auto p-6 md:border-t-0 lg:h-[calc(100%-86px)] lg:p-12 lg:pt-0 xl:h-full xl:justify-center xl:gap-12 xl:py-12"
 >
 	<p class="text-center text-lg font-semibold md:text-xl">
-		Play every day and get bonuses!
+		{m.rewards_title()}
 	</p>
 	<div class="grid grid-cols-1 gap-6 lg:grid-cols-3 xl:grid-cols-7 xl:gap-3">
 		{#each DAILY_REWARDS as reward, i}
@@ -123,14 +145,16 @@
 								`${lastRewardRarity.textColor} font-medium uppercase text-shadow-md text-shadow-white/5`,
 						)}
 					>
-						Day {i + 1}
+						{m.day_x({ day: i + 1 })}
 					</p>
 					<div
 						class="flex items-center gap-1.5 lg:my-auto lg:flex-col lg:items-center xl:gap-3"
 					>
 						{#if reward.type === "coins"}
 							<CopperCoinLineFinance class="size-6 text-amber-500 lg:size-7" />
-							{reward.quantity} coins
+							{m.x_coins({
+								quantity: reward.quantity,
+							})}
 						{:else if reward.type === "gift"}
 							<GiftLineFinance
 								class={cn(
@@ -139,6 +163,7 @@
 								)}
 							/>
 							<p>
+								{m.rarity_gift_before()}
 								<span
 									class={cn(
 										"mr-px rounded px-1 font-medium",
@@ -148,7 +173,7 @@
 								>
 									{reward.rarity.label}
 								</span>
-								gift
+								{m.rarity_gift_after()}
 							</p>
 						{/if}
 					</div>

@@ -19,6 +19,7 @@
 	import { cn } from "$lib/utils";
 	import { GAME_DATA } from "./stores";
 	import { getLocale } from "$lib/paraglide/runtime";
+	import { m } from "$lib/paraglide/messages";
 
 	let { item = $bindable() }: { item: Item | null } = $props();
 
@@ -43,12 +44,12 @@
 			? [
 					{
 						icon: FileCopyLineDocument,
-						label: "Quantity",
+						label: m.quantity(),
 						value: invItem.quantity,
 					},
 					{
 						icon: CalendarLineBusiness,
-						label: "First acquired",
+						label: m.first_acquired(),
 						value: new Date(invItem.firstAt || invItem.lastAt).toLocaleString(
 							getLocale(),
 							{
@@ -58,13 +59,13 @@
 					},
 					{
 						icon: collection.iconLine,
-						label: "Collection",
+						label: m.collection(),
 						value: collection.label,
 					},
 					{
 						isAuthor: true,
 						icon: author.license.icon,
-						label: "Attribution",
+						label: m.attribution(),
 						value: author.name,
 						url: author.url,
 						license: {
@@ -82,7 +83,7 @@
 		{#if item && invItem}
 			<Dialog.Header class="items-center sm:text-center">
 				<Dialog.Title>{item.label}</Dialog.Title>
-				<Dialog.Description>Item description goes here.</Dialog.Description>
+				<Dialog.Description>{item.description}</Dialog.Description>
 				<span
 					class={cn(
 						"w-fit rounded px-1.5 text-sm font-medium md:px-2 md:text-base",
@@ -104,7 +105,7 @@
 						<li class={cn("flex gap-1.5", !detail.isAuthor && "items-center")}>
 							<detail.icon class="text-primary size-5 lg:size-6" />
 							<p class={cn(detail.isAuthor && "-mt-0.5 md:mt-0")}>
-								{detail.label}:
+								{detail.label}
 							</p>
 							{#if detail.isAuthor}
 								<div
@@ -140,10 +141,10 @@
 			<Dialog.Footer>
 				<Button class="gap-1.5" variant="outline">
 					<Dice6LineOthers class="size-5" />
-					Reroll
+					{m.reroll()}
 				</Button>
 				<Button class="gap-1.5 bg-amber-500 hover:bg-amber-500/90">
-					Sell for
+					{m.sell_for()}
 					<div class="flex items-center gap-1">
 						<CopperCoinLineFinance class="size-5" />
 						{price}

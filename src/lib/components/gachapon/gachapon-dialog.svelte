@@ -21,25 +21,26 @@
 	import { GAME_DATA, GAME_STATE, TWEENED_BALANCE } from "./stores";
 	import { onMount } from "svelte";
 	import { getLocale } from "$lib/paraglide/runtime";
+	import { m } from "$lib/paraglide/messages";
 
 	const TABS = [
 		{
 			id: "rewards",
-			label: "Rewards",
+			label: m.rewards(),
 			icon: GiftLineFinance,
 			iconActive: GiftFillFinance,
 			content: GachaponRewards,
 		},
 		{
 			id: "play",
-			label: "Play",
+			label: m.play_tab(),
 			icon: SparklingLineWeather,
 			iconActive: SparklingFillWeather,
 			content: GachaponPlay,
 		},
 		{
 			id: "inventory",
-			label: "Inventory",
+			label: m.inventory(),
 			icon: ArchiveStackLineBusiness,
 			iconActive: ArchiveStackFillBusiness,
 			content: GachaponInventory,
