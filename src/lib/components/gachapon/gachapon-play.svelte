@@ -127,7 +127,6 @@
 	};
 
 	const getRandomItem = () => {
-		return ITEMS[6];
 		const rarity = getRandomRarity();
 		const filteredItems = ITEMS.filter((x) => x.rarity === rarity);
 		return filteredItems[Math.floor(Math.random() * filteredItems.length)];
