@@ -27,4 +27,4 @@ export const TWEENED_BALANCE = new Tween(get(GAME_DATA).balance, {
 	duration: 800,
 });
 
-export const ORDER_BY = writable("recent");
+export const ORDER_BY = storage(writable("recent"), "gachapon_order_by");
