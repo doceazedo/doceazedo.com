@@ -177,7 +177,7 @@
 			{#each workProjects as project, i}
 				{@const isGachapon = i === workProjects.length - 1}
 				{@const isPlayingGachapon = isGachapon && $GAME_STATE !== "idle"}
-				<Dialog.Root>
+				<Dialog.Root onOpenChange={() => isGachapon && ($GAME_STATE = "idle")}>
 					<Dialog.Trigger
 						class={cn(
 							"group hover:bg-muted w-full cursor-pointer rounded-xs text-left transition-all hover:shadow-[0_0_0_8px_var(--muted)]",

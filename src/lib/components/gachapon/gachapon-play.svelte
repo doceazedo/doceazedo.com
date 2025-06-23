@@ -19,6 +19,7 @@
 	import GachaponPrize from "./gachapon-prize.svelte";
 	import { IS_DESKTOP } from "$lib/stores";
 	import { WebGLRenderer } from "three";
+	import GumballSkeleton from "$lib/components/icons/gumball.svg?component";
 
 	const getGridPosition = (
 		index: number,
@@ -394,6 +395,10 @@
 		>
 			<Button variant="outline" onclick={claim}>Claim</Button>
 		</div>
+	{/if}
+
+	{#if !isGumballLoaded}
+		<GumballSkeleton class="absolute h-[22rem] animate-pulse" />
 	{/if}
 </div>
 
