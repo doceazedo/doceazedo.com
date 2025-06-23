@@ -16,6 +16,7 @@ import DebugNds from "./models/debug-nds.svelte";
 import Potion from "./models/potion.svelte";
 import Spellbook from "./models/spellbook.svelte";
 import Sword from "./models/sword.svelte";
+import Crystal from "./models/crystal.svelte";
 
 export const RARITIES = [
 	{
@@ -178,5 +179,12 @@ export const ITEMS: Item[] = [
 		mesh: Spellbook as Component,
 		collection: "loot",
 		rarity: "epic",
+	},
+	{
+		id: "crystal",
+		label: "Blue Crystal",
+		mesh: Crystal as Component,
+		collection: "loot",
+		rarity: "legendary",
 	},
 ];
