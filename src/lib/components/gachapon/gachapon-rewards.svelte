@@ -146,7 +146,7 @@
 					</div>
 				</div>
 				{#if status === "ready"}
-					<Button onclick={() => claimReward(i)}>Claim</Button>
+					<Button onclick={() => claimReward(i)}>{m.claim()}</Button>
 				{:else if status === "claimed"}
 					<div class="flex size-9 shrink-0 items-center justify-center">
 						<CheckLineSystem class="text-primary size-6" />
