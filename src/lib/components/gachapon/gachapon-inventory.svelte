@@ -1,14 +1,109 @@
-<script>
+<script lang="ts">
 	import {
+		ArchiveStackLineBusiness,
 		CheckboxCircleFillSystem,
 		CopperCoinLineFinance,
+		FileCopyLineDocument,
+		HistoryLineSystem,
 		Progress5LineSystem,
+		VipDiamondLineFinance,
 	} from "svelte-remix";
-	import { COLLECTIONS, ITEMS, RARITIES } from "./constants";
+	import { COLLECTIONS, ITEMS, RARITIES, type Item } from "./constants";
 	import { cn } from "$lib/utils";
-	import { GAME_DATA, TWEENED_BALANCE } from "./stores";
+	import { GAME_DATA, ORDER_BY, TWEENED_BALANCE } from "./stores";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { Button } from "$lib/components/ui/button";
+	import * as Select from "$lib/components/ui/select";
+	import { Label } from "$lib/components/ui/label";
+	import type { Component } from "svelte";
+	import { fade } from "svelte/transition";
+	import { flip } from "svelte/animate";
+
+	type OrderBy = {
+		value: string;
+		label: string;
+		icon: Component;
+		orderedItems: {
+			title: string;
+			icon?: Component;
+			iconColors?: {
+				text: string;
+				bg: string;
+				border: string;
+			};
+			items: Item[];
+		}[];
+	};
+
+	const orderOptions = $derived<OrderBy[]>([
+		{
+			value: "collection",
+			label: "Collection",
+			icon: ArchiveStackLineBusiness,
+			orderedItems: COLLECTIONS.map((collection) => ({
+				title: collection.label,
+				icon: collection.icon,
+				items: ITEMS.filter((x) => x.collection === collection.id),
+			})),
+		},
+		{
+			value: "rarity",
+			label: "Rarity",
+			icon: VipDiamondLineFinance,
+			orderedItems: RARITIES.map((rarity) => ({
+				title: rarity.label,
+				icon: rarity.icon,
+				iconColors: {
+					text: rarity.textColor,
+					bg: rarity.badgeColor,
+					border: rarity.borderColor,
+				},
+				items: ITEMS.filter((x) => x.rarity === rarity.id),
+			})),
+		},
+		{
+			value: "recent",
+			label: "Recent",
+			icon: HistoryLineSystem,
+			orderedItems: [
+				{
+					title: "My collectibles",
+					items: $GAME_DATA.inventory
+						.sort(
+							(a, b) =>
+								new Date(b.lastAt).getTime() - new Date(a.lastAt).getTime(),
+						)
+						.map((inv) => ITEMS.find((item) => item.id === inv.item))
+						.filter((x) => !!x),
+				},
+			],
+		},
+		{
+			value: "duplicate",
+			label: "Duplicates",
+			icon: FileCopyLineDocument,
+			orderedItems: [
+				{
+					title: "Repeated collectibles",
+					items: $GAME_DATA.inventory
+						.filter((x) => x.quantity > 1)
+						.sort(
+							(a, b) =>
+								new Date(b.lastAt).getTime() - new Date(a.lastAt).getTime(),
+						)
+						.sort((a, b) => b.quantity - a.quantity)
+						.map((inv) => ITEMS.find((item) => item.id === inv.item))
+						.filter((x) => !!x),
+				},
+			],
+		},
+	]);
+
+	let orderByOption = $derived(
+		orderOptions.find((x) => x.value === $ORDER_BY) || orderOptions[0],
+	);
+
+	let scrollEl: HTMLElement;
 </script>
 
 <div
@@ -17,19 +112,28 @@
 	<div
 		class="pointer-events-none top-0 left-0 flex size-full flex-col gap-6 p-6 pb-0 md:gap-12 md:p-12 md:pb-0 lg:absolute lg:grid lg:grid-cols-12 lg:pb-12"
 	>
-		<aside class="col-span-3 flex flex-col items-center">
+		<aside class="pointer-events-auto col-span-3 flex flex-col items-center">
 			<div
-				class="bg-background z-10 flex aspect-square size-44 flex-col items-center justify-center rounded-full border p-12 text-center lg:size-36 xl:size-44"
+				class="bg-background z-10 flex aspect-square size-36 flex-col items-center justify-center rounded-full border p-12 text-center xl:size-44"
 			>
 				<p class="text-foreground mb-1.5 text-3xl font-semibold xl:text-4xl">
-					{$GAME_DATA.inventory.reduce((total, entry) => total + entry.qty, 0)}
+					{$GAME_DATA.inventory.reduce(
+						(total, entry) => total + entry.quantity,
+						0,
+					)}
 				</p>
-				<p class="text-body mb-1.5 leading-4">Collectibles owned</p>
+				<p class="text-body mb-1.5 text-sm leading-3 xl:text-base xl:leading-4">
+					Collectibles owned
+				</p>
 			</div>
-			<div class="-mt-22 mb-6 w-full rounded border pt-22">
-				<div class="mx-auto grid w-2/3 grid-cols-3 gap-x-3 gap-y-6 py-6">
+			<div
+				class="-mt-[4.5rem] mb-6 w-full rounded border pt-[4.5rem] lg:-mt-22 lg:pt-22"
+			>
+				<div
+					class="mx-auto grid grid-cols-6 gap-x-3 gap-y-6 p-6 lg:w-2/3 lg:grid-cols-3 lg:px-0"
+				>
 					<div
-						class="col-span-3 flex items-center justify-center gap-6 lg:flex-col lg:gap-3 xl:flex-row xl:gap-6"
+						class="col-span-6 flex items-center justify-center gap-6 lg:col-span-3 lg:flex-col lg:gap-3 xl:flex-row xl:gap-6"
 					>
 						<div class="flex items-center gap-1.5">
 							<CopperCoinLineFinance class="size-5 text-amber-500" />
@@ -58,15 +162,39 @@
 											ITEMS.find((itemData) => itemData.id === item.item)
 												?.rarity === rarity.id,
 									)
-									.reduce((total, entry) => total + entry.qty, 0)}
+									.reduce((total, entry) => total + entry.quantity, 0)}
 							</p>
 						</div>
 					{/each}
 				</div>
 			</div>
+			<div class="mb-6 flex w-full flex-col gap-1.5">
+				<Label>Order by</Label>
+				<Select.Root
+					type="single"
+					bind:value={$ORDER_BY}
+					onValueChange={() => scrollEl.scroll(0, 0)}
+				>
+					<Select.Trigger class="w-full">
+						<div class="flex items-center gap-2">
+							<orderByOption.icon />
+							{orderByOption.label}
+						</div>
+					</Select.Trigger>
+					<Select.Content>
+						{#each orderOptions as option}
+							<Select.Item value={option.value}>
+								<option.icon />
+								{option.label}
+							</Select.Item>
+						{/each}
+					</Select.Content>
+				</Select.Root>
+			</div>
+			<hr class="mb-3 w-full md:mb-0 lg:hidden" />
 		</aside>
-		<main class="col-span-6 hidden lg:flex"></main>
-		<aside class="col-span-3 hidden size-full flex-col gap-6 lg:flex">
+		<main class="col-span-10 hidden w-full lg:flex"></main>
+		<aside class="col-span-3 hidden size-full flex-col gap-6">
 			<hgroup>
 				<h2 class="text-foreground text-xl md:text-2xl">Reroll</h2>
 				<div class="text-body text-sm leading-4">
@@ -96,26 +224,40 @@
 	</div>
 
 	<div
-		class="text-body grid size-full grid-cols-1 items-center justify-center gap-6 p-6 pt-0 md:gap-12 md:p-12 md:pt-0 lg:grid-cols-12 lg:overflow-y-auto lg:pt-12"
+		class="text-body pointer-events-none grid size-full grid-cols-1 items-center justify-center gap-6 p-6 pt-0 md:gap-12 md:p-12 md:pt-0 lg:grid-cols-12 lg:overflow-y-auto lg:pt-12"
+		bind:this={scrollEl}
 	>
 		<aside class="col-span-3"></aside>
 		<main
-			class="col-span-6 mb-6 flex size-full flex-col gap-6 md:mb-12 lg:mb-0"
+			class="pointer-events-auto col-span-9 mb-6 flex size-full flex-col gap-6 md:mb-12 lg:mb-0"
 		>
 			<div class="flex flex-col gap-6">
-				{#each COLLECTIONS as collection}
+				{#each orderByOption.orderedItems as group}
 					<h2 class="text-foreground flex gap-3 text-xl md:text-2xl">
-						<div
-							class="bg-primary/20 border-primary flex size-8 shrink-0 items-center justify-center rounded border"
-						>
-							<collection.icon class="text-primary size-5" />
-						</div>
-						{collection.label}
+						{#if group.icon}
+							<div
+								class={cn(
+									"flex size-8 shrink-0 items-center justify-center rounded border",
+									group.iconColors
+										? group.iconColors.bg && group.iconColors.border
+										: "bg-primary/20 border-primary",
+								)}
+							>
+								<group.icon
+									class={cn(
+										"text-primary size-5",
+										group.iconColors ? group.iconColors.text : "text-primary",
+									)}
+								/>
+							</div>
+						{/if}
+						{group.title}
 					</h2>
-					<div class="grid grid-cols-2 gap-6 md:grid-cols-3">
-						{#each ITEMS.filter((x) => x.collection === collection.id) as item}
+					<div class="grid grid-cols-2 gap-6 md:grid-cols-4">
+						{#each group.items as item (item.id)}
 							{@const quantity =
-								$GAME_DATA.inventory.find((x) => x.item === item.id)?.qty || 0}
+								$GAME_DATA.inventory.find((x) => x.item === item.id)
+									?.quantity || 0}
 							{@const owned = quantity > 0}
 							{@const rarity =
 								RARITIES.find((x) => x.id === item.rarity) || RARITIES[0]}
@@ -126,6 +268,8 @@
 									owned &&
 										"group ease-elastic cursor-pointer transition-all hover:scale-105",
 								)}
+								in:fade={{ duration: 300 }}
+								animate:flip={{ duration: 300 }}
 							>
 								{#if quantity > 1}
 									<span
@@ -176,6 +320,6 @@
 				{/each}
 			</div>
 		</main>
-		<aside class="col-span-3"></aside>
+		<aside class="col-span-3 hidden"></aside>
 	</div>
 </div>

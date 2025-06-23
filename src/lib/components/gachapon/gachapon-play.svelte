@@ -211,7 +211,8 @@
 			(x) => x.item === prizeItem?.id,
 		);
 		if (existingItemIdx >= 0) {
-			$GAME_DATA.inventory[existingItemIdx].qty += 1;
+			$GAME_DATA.inventory[existingItemIdx].quantity += 1;
+			$GAME_DATA.inventory[existingItemIdx].lastAt = new Date().toString();
 			return;
 		}
 
@@ -219,7 +220,8 @@
 			...$GAME_DATA.inventory,
 			{
 				item: prizeItem.id,
-				qty: 1,
+				quantity: 1,
+				lastAt: new Date().toString(),
 			},
 		];
 	};
