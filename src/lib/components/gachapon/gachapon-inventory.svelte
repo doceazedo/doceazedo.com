@@ -111,7 +111,7 @@
 </script>
 
 <div
-	class="relative flex size-full flex-col overflow-y-auto lg:flex-row lg:overflow-y-hidden"
+	class="relative flex size-full flex-col overflow-y-scroll lg:flex-row lg:overflow-y-hidden"
 >
 	<div
 		class="pointer-events-none top-0 left-0 flex size-full flex-col gap-6 p-6 pb-0 md:gap-12 md:p-12 md:pb-0 lg:absolute lg:grid lg:grid-cols-12 lg:pb-12"
@@ -228,7 +228,7 @@
 	</div>
 
 	<div
-		class="text-body pointer-events-none grid size-full grid-cols-1 items-center justify-center gap-6 p-6 pt-0 md:gap-12 md:p-12 md:pt-0 lg:grid-cols-12 lg:overflow-y-auto lg:pt-12"
+		class="text-body pointer-events-none grid size-full grid-cols-1 items-center justify-center gap-6 p-6 pt-0 md:gap-12 md:p-12 md:pt-0 lg:grid-cols-12 lg:overflow-y-scroll lg:pt-12"
 		bind:this={scrollEl}
 	>
 		<aside class="col-span-3"></aside>
