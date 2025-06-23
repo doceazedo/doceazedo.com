@@ -95,7 +95,7 @@
 	];
 
 	let isGumballLoaded = $state(false);
-	let prizeItem = $state<Item | null>(ITEMS[11]);
+	let prizeItem = $state<Item | null>(ITEMS[7]);
 	let prizeRarity = $derived(
 		RARITIES.find((x) => x.id === prizeItem?.rarity) || RARITIES[0],
 	);

@@ -18,6 +18,7 @@ import Spellbook from "./models/spellbook.svelte";
 import Sword from "./models/sword.svelte";
 import Crystal from "./models/crystal.svelte";
 import BloodRing from "./models/blood-ring.svelte";
+import CoinBag from "./models/coin-bag.svelte";
 
 export const RARITIES = [
 	{
@@ -160,6 +161,13 @@ export const ITEMS: Item[] = [
 	},
 
 	// loot
+	{
+		id: "coin-bag",
+		label: "Coin Bag",
+		mesh: CoinBag as Component,
+		collection: "loot",
+		rarity: "uncommon",
+	},
 	{
 		id: "potion",
 		label: "Potion",
