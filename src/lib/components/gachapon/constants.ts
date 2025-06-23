@@ -1,11 +1,15 @@
 import type { Component } from "svelte";
 import {
 	AliensFillUserFaces,
+	AliensLineUserFaces,
 	CircleFillDesign,
+	CreativeCommonsByLineBusiness,
+	CreativeCommonsZeroLineBusiness,
 	HexagonFillDesign,
 	PentagonFillDesign,
 	SquareFillDesign,
 	SwordFillOthers,
+	SwordLineOthers,
 	TriangleFillDesign,
 	VipDiamondFillFinance,
 } from "svelte-remix";
@@ -88,13 +92,15 @@ export type RarityId = (typeof RARITIES)[number]["id"];
 export const COLLECTIONS = [
 	{
 		id: "y2k",
-		label: "Y2K Collection",
+		label: "Y2K Starter Pack",
 		icon: AliensFillUserFaces,
+		iconLine: AliensLineUserFaces,
 	},
 	{
 		id: "loot",
 		label: "RPG Loot",
 		icon: SwordFillOthers,
+		iconLine: SwordLineOthers,
 	},
 ] as const;
 
@@ -106,6 +112,7 @@ export type Item = {
 	mesh: Component;
 	collection: CollectionId;
 	rarity: RarityId;
+	author: AuthorId;
 };
 
 export const ITEMS: Item[] = [
@@ -116,6 +123,7 @@ export const ITEMS: Item[] = [
 		mesh: Cd as Component,
 		collection: "y2k",
 		rarity: "common",
+		author: "poly",
 	},
 	{
 		id: "mp3-player",
@@ -123,6 +131,7 @@ export const ITEMS: Item[] = [
 		mesh: Mp3Player as Component,
 		collection: "y2k",
 		rarity: "uncommon",
+		author: "poly",
 	},
 	{
 		id: "nds",
@@ -130,6 +139,7 @@ export const ITEMS: Item[] = [
 		mesh: Nds as Component,
 		collection: "y2k",
 		rarity: "uncommon",
+		author: "poly",
 	},
 
 	// loot
@@ -139,6 +149,7 @@ export const ITEMS: Item[] = [
 		mesh: CoinBag as Component,
 		collection: "loot",
 		rarity: "uncommon",
+		author: "quaternius",
 	},
 	{
 		id: "potion",
@@ -146,6 +157,7 @@ export const ITEMS: Item[] = [
 		mesh: Potion as Component,
 		collection: "loot",
 		rarity: "uncommon",
+		author: "doncarson",
 	},
 	{
 		id: "sword",
@@ -153,6 +165,7 @@ export const ITEMS: Item[] = [
 		mesh: Sword as Component,
 		collection: "loot",
 		rarity: "rare",
+		author: "quaternius",
 	},
 	{
 		id: "spellbook",
@@ -160,6 +173,7 @@ export const ITEMS: Item[] = [
 		mesh: Spellbook as Component,
 		collection: "loot",
 		rarity: "epic",
+		author: "georgbossenz",
 	},
 	{
 		id: "crystal",
@@ -167,6 +181,7 @@ export const ITEMS: Item[] = [
 		mesh: Crystal as Component,
 		collection: "loot",
 		rarity: "legendary",
+		author: "ipoly3d",
 	},
 	{
 		id: "blood-ring",
@@ -174,5 +189,57 @@ export const ITEMS: Item[] = [
 		mesh: BloodRing as Component,
 		collection: "loot",
 		rarity: "exotic",
+		author: "quaternius",
 	},
 ];
+
+export const PRICE_MULTIPLIER = 25;
+
+const LICENSES = {
+	ccby: {
+		icon: CreativeCommonsByLineBusiness,
+		label: "CC-BY",
+		url: "https://creativecommons.org/licenses/by/3.0",
+	},
+	cc0: {
+		icon: CreativeCommonsZeroLineBusiness,
+		label: "CC0",
+		url: "https://creativecommons.org/public-domain/cc0",
+	},
+};
+
+export const AUTHORS = {
+	// should be used ONLY as fallback
+	unknown: {
+		license: LICENSES.cc0,
+		name: "Unknown",
+		url: "",
+	},
+	poly: {
+		license: LICENSES.ccby,
+		name: "Poly by Google",
+		url: "https://poly.pizza/u/Poly%20by%20Google",
+	},
+	quaternius: {
+		license: LICENSES.cc0,
+		name: "Quaternius",
+		url: "https://quaternius.com",
+	},
+	ipoly3d: {
+		license: LICENSES.cc0,
+		name: "iPoly3D",
+		url: "https://ipoly3d.com",
+	},
+	doncarson: {
+		license: LICENSES.ccby,
+		name: "Don Carson",
+		url: "https://poly.pizza/u/Don%20Carson",
+	},
+	georgbossenz: {
+		license: LICENSES.ccby,
+		name: "Georg Bossenz",
+		url: "https://poly.pizza/u/Georg%20Bossenz",
+	},
+} as const;
+
+type AuthorId = keyof typeof AUTHORS;

@@ -11,6 +11,9 @@ declare global {
 
 	declare interface Window {
 		mapboxgl: typeof mapboxgl;
+		rosebud: () => void;
+		kaching: () => void;
+		motherlode: () => void;
 	}
 }
 

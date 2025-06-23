@@ -103,7 +103,7 @@
 		<Button
 			variant="ghost"
 			class={cn(
-				"h-auto flex-col gap-0.5 rounded-none py-4 text-sm transition-all md:aspect-square md:border-b md:border-b-transparent",
+				"h-auto flex-col gap-0.5 rounded-none py-4 text-sm transition-all md:size-[99px] md:border-b md:border-b-transparent",
 				isActive &&
 					"text-primary! hover:bg-primary/10! md:border-b-primary md:bg-primary/10! md:border-primary/40!",
 			)}

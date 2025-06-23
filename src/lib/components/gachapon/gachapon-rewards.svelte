@@ -11,6 +11,7 @@
 	import { writable } from "svelte/store";
 	import { readyInDays } from "$lib/utils/date";
 	import { GAME_DATA } from "./stores";
+	import { onMount } from "svelte";
 
 	const CHA_CHING_AUDIO = new Audio("/audio/cha-ching.ogg");
 
@@ -53,14 +54,18 @@
 		"gachapon_daily_streak",
 	);
 
+	const giveCoins = (quantity: number) => {
+		$GAME_DATA.balance += quantity;
+		CHA_CHING_AUDIO.play();
+	};
+
 	const claimReward = (idx: number) => {
 		if ($dailyStreak.claimed.includes(idx)) return;
 		$dailyStreak.claimed = [...$dailyStreak.claimed, idx];
 
 		const reward = DAILY_REWARDS[idx];
 		if (reward.type === "coins") {
-			$GAME_DATA.balance += reward.quantity;
-			CHA_CHING_AUDIO.play();
+			giveCoins(reward.quantity);
 		}
 	};
 
@@ -82,6 +87,12 @@
 
 		return "ready";
 	};
+
+	onMount(() => {
+		window.rosebud = () => giveCoins(1000);
+		window.kaching = () => giveCoins(1000);
+		window.motherlode = () => giveCoins(50000);
+	});
 </script>
 
 <div

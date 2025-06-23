@@ -8,7 +8,12 @@ export const GAME_STATE = writable<"idle" | "drawing" | "prize">("idle");
 export const GAME_DATA = storage(
 	writable<{
 		balance: number;
-		inventory: { item: string; quantity: number; lastAt: string }[];
+		inventory: {
+			item: string;
+			quantity: number;
+			firstAt: string;
+			lastAt: string;
+		}[];
 	}>({
 		balance: 500,
 		inventory: [],

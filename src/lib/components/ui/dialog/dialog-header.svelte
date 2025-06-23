@@ -14,7 +14,7 @@
 	bind:this={ref}
 	data-slot="dialog-header"
 	class={cn(
-		"flex h-fit flex-col gap-2 border-b p-3 text-center sm:text-left md:p-6",
+		"flex h-fit flex-col gap-1.5 border-b p-3 text-center sm:text-left md:p-6",
 		className,
 	)}
 	{...restProps}

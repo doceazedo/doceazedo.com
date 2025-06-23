@@ -20,6 +20,7 @@
 	import { IS_DESKTOP } from "$lib/stores";
 	import { WebGLRenderer } from "three";
 	import GumballSkeleton from "$lib/components/icons/gumball.svg?component";
+	import World from "./scenes/world.svelte";
 
 	const getGridPosition = (
 		index: number,
@@ -202,8 +203,8 @@
 
 		await sleep(1500);
 		$GAME_STATE = "prize";
-		capUpPosition.target = [0, capUpPosition.current[1] + 1, 0];
-		capDownPosition.target = [0, capDownPosition.current[1] - 1, 0];
+		capUpPosition.target = [0, capUpPosition.current[1] + 1.5, 0];
+		capDownPosition.target = [0, capDownPosition.current[1] - 1.5, 0];
 
 		prizeScale.target = [1, 1, 1];
 		prizeRotation.target = degToRad(360 * 2);
@@ -222,6 +223,7 @@
 			{
 				item: prizeItem.id,
 				quantity: 1,
+				firstAt: new Date().toString(),
 				lastAt: new Date().toString(),
 			},
 		];
@@ -252,90 +254,63 @@
 					});
 				}}
 				shadows
-				toneMapping="ACESFilmicToneMapping"
-				toneMappingExposure={1.2}
 			>
-				<rapier.World {gravity}>
-					<!-- <rapier.Debug /> -->
+				<World>
+					<rapier.World {gravity}>
+						{#if prizeItem}
+							<GachaponPrize
+								item={prizeItem}
+								scale={prizeScale.current}
+								rotationY={prizeRotation.current}
+							/>
+						{/if}
 
-					<T.OrthographicCamera
-						makeDefault
-						zoom={100}
-						position={[10, 10, 10]}
-						oncreate={(ref) => {
-							ref.lookAt(0, 1.75, 0);
-						}}
-					/>
-
-					{#if prizeItem}
-						<GachaponPrize
-							item={prizeItem}
-							scale={prizeScale.current}
-							rotationY={prizeRotation.current}
+						<Gumball
+							scale={gumballScale.current}
+							position={gumballPosition.current}
+							coinMeshRotation={coinMeshRotation.current}
+							rotation.y={degToRad(90)}
+							oncreate={() => {
+								isGumballLoaded = true;
+							}}
+							onclick={dispense}
 						/>
-					{/if}
 
-					<T.HemisphereLight
-						skyColor="#f5f5f5"
-						groundColor="#dddddd"
-						intensity={0.6}
-					/>
-
-					<T.DirectionalLight
-						position={[5, 8, 5]}
-						intensity={1.2}
-						castShadow
-						shadow-mapSize-width={1024}
-						shadow-mapSize-height={1024}
-					/>
-
-					<T.DirectionalLight position={[-5, 6, 4]} intensity={0.5} />
-
-					<Gumball
-						scale={gumballScale.current}
-						position={gumballPosition.current}
-						coinMeshRotation={coinMeshRotation.current}
-						rotation.y={degToRad(90)}
-						oncreate={() => {
-							isGumballLoaded = true;
-						}}
-						onclick={dispense}
-					/>
-
-					{#if isGumballLoaded}
-						{#each Array(3).fill(CAPSULE_COLORS).flat() as color, i}
-							<T.Group position={getGridPosition(i, 4)}>
-								<rapier.RigidBody
-									linearDamping={0}
-									angularDamping={0}
-									oncreate={(x) => {
-										capsules.push(x);
-									}}
-								>
-									<rapier.Collider
-										shape="capsule"
-										args={[0.1, 0.15]}
-										restitution={1}
+						{#if isGumballLoaded}
+							{#each Array(3).fill(CAPSULE_COLORS).flat() as color, i}
+								<T.Group position={getGridPosition(i, 4)}>
+									<rapier.RigidBody
+										linearDamping={0}
+										angularDamping={0}
+										oncreate={(x) => {
+											capsules.push(x);
+										}}
 									>
-										<Capsule
-											scale={gumballScale.current}
-											position.y={-0.1}
-											{color}
-										/>
-									</rapier.Collider>
-								</rapier.RigidBody>
-							</T.Group>
-						{/each}
+										<rapier.Collider
+											shape="capsule"
+											args={[0.1, 0.15]}
+											restitution={1}
+										>
+											<Capsule
+												scale={gumballScale.current}
+												position.y={-0.1}
+												{color}
+											/>
+										</rapier.Collider>
+									</rapier.RigidBody>
+								</T.Group>
+							{/each}
 
-						<Capsule
-							position={capsulePosition.current}
-							positionUp={capUpPosition.current}
-							positionDown={capDownPosition.current}
-							scale={capsuleScale.current}
-							color={capsuleColor}
-						/>
-					{/if}
-				</rapier.World>
+							<Capsule
+								position={capsulePosition.current}
+								positionUp={capUpPosition.current}
+								positionDown={capDownPosition.current}
+								scale={capsuleScale.current}
+								color={capsuleColor}
+							/>
+						{/if}
+					</rapier.World>
+				</World>
 			</Canvas>
 		{/await}
 	{/if}

@@ -18,6 +18,7 @@
 	import type { Component } from "svelte";
 	import { fade } from "svelte/transition";
 	import { flip } from "svelte/animate";
+	import GachaponItemViewer from "./gachapon-item-viewer.svelte";
 
 	type OrderBy = {
 		value: string;
@@ -104,6 +105,8 @@
 	);
 
 	let scrollEl: HTMLElement;
+
+	let viewItem: Item | null = $state(null);
 </script>
 
 <div
@@ -254,7 +257,7 @@
 						{/if}
 						{group.title}
 					</h2>
-					<div class="grid grid-cols-2 gap-6 md:grid-cols-4">
+					<div class="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-6">
 						{#each group.items as item (item.id)}
 							{@const quantity =
 								$GAME_DATA.inventory.find((x) => x.item === item.id)
@@ -264,6 +267,7 @@
 								RARITIES.find((x) => x.id === item.rarity) || RARITIES[0]}
 							<button
 								disabled={!owned}
+								onclick={() => owned && (viewItem = item)}
 								class={cn(
 									"relative flex aspect-[3/4] flex-col items-center justify-center overflow-hidden rounded border p-3",
 									owned &&
@@ -302,12 +306,12 @@
 									{/if}
 								</figure>
 								<div
-									class="text-fore text-foreground flex flex-col items-center gap-0.5"
+									class="text-fore text-foreground flex flex-col items-center gap-1 text-sm leading-4 md:gap-0.5 md:text-base"
 								>
 									<p>{owned ? item.label : "??????"}</p>
 									<span
 										class={cn(
-											"rounded px-1 text-sm font-medium",
+											"rounded px-1 text-xs font-medium md:text-sm",
 											rarity.textColor,
 											rarity.badgeColor,
 										)}
@@ -327,3 +331,5 @@
 		<aside class="col-span-3 hidden"></aside>
 	</div>
 </div>
+
+<GachaponItemViewer bind:item={viewItem} />
