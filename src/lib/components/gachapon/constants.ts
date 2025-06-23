@@ -5,6 +5,7 @@ import {
 	HexagonFillDesign,
 	PentagonFillDesign,
 	SquareFillDesign,
+	SwordFillOthers,
 	TriangleFillDesign,
 	VipDiamondFillFinance,
 } from "svelte-remix";
@@ -12,6 +13,7 @@ import Mp3Player from "./models/mp3-player.svelte";
 import Nds from "./models/nds.svelte";
 import Cd from "./models/cd.svelte";
 import DebugNds from "./models/debug-nds.svelte";
+import Potion from "./models/potion.svelte";
 
 export const RARITIES = [
 	{
@@ -84,6 +86,11 @@ export const COLLECTIONS = [
 		label: "Y2K Collection",
 		icon: AliensFillUserFaces,
 	},
+	{
+		id: "loot",
+		label: "RPG Loot",
+		icon: SwordFillOthers,
+	},
 ] as const;
 
 export type CollectionId = (typeof COLLECTIONS)[number]["id"];
@@ -116,6 +123,13 @@ export const ITEMS: Item[] = [
 		label: "Handheld Console",
 		mesh: Nds as Component,
 		collection: "y2k",
+		rarity: "uncommon",
+	},
+	{
+		id: "potion",
+		label: "Potion",
+		mesh: Potion as Component,
+		collection: "loot",
 		rarity: "uncommon",
 	},
 	{

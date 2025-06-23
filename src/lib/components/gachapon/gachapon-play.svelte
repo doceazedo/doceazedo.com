@@ -4,7 +4,7 @@
 	import Gumball from "./models/gumball.svelte";
 	import { degToRad } from "three/src/math/MathUtils.js";
 	import Capsule from "./models/capsule.svelte";
-	import { browser } from "$app/environment";
+	import { browser, dev } from "$app/environment";
 	import type { RigidBody } from "@dimforge/rapier3d-compat";
 	import { Tween } from "svelte/motion";
 	import { bounceOut, cubicOut, elasticOut, expoOut } from "svelte/easing";
@@ -95,7 +95,7 @@
 	];
 
 	let isGumballLoaded = $state(false);
-	let prizeItem = $state<Item | null>(ITEMS[0]);
+	let prizeItem = $state<Item | null>(ITEMS[3]);
 	let prizeRarity = $derived(
 		RARITIES.find((x) => x.id === prizeItem?.rarity) || RARITIES[0],
 	);
@@ -233,7 +233,13 @@
 	};
 </script>
 
-<div class="relative z-10 flex size-full justify-center">
+<div class="relative z-10 flex size-full items-center justify-center">
+	{#if dev}
+		<div class="absolute size-48 border border-purple-500/20"></div>
+		<div class="absolute h-px w-full border border-purple-500/20"></div>
+		<div class="absolute h-full w-px border border-purple-500/20"></div>
+	{/if}
+
 	{#if browser}
 		{#await import('@threlte/rapier') then rapier}
 			<Canvas
@@ -261,11 +267,7 @@
 					/>
 
 					{#if prizeItem}
-						<GachaponPrize
-							item={prizeItem}
-							scale={prizeScale.current}
-							rotationY={prizeRotation.current}
-						/>
+						<GachaponPrize item={prizeItem} scale={[6, 6, 6]} />
 					{/if}
 
 					<T.HemisphereLight
@@ -284,6 +286,7 @@
 
 					<T.DirectionalLight position={[-5, 6, 4]} intensity={0.5} />
 
+					<!--
 					<Gumball
 						scale={gumballScale.current}
 						position={gumballPosition.current}
@@ -294,6 +297,7 @@
 						}}
 						onclick={dispense}
 					/>
+					-->
 
 					{#if isGumballLoaded}
 						{#each Array(3).fill(CAPSULE_COLORS).flat() as color, i}

@@ -4,14 +4,17 @@
 
 	let {
 		item,
-		scale,
-		rotationY,
-	}: { item: Item; scale: [number, number, number]; rotationY: number } =
-		$props();
+		scale = [1, 1, 1],
+		rotationY = 0,
+	}: {
+		item: Item;
+		scale: [number, number, number];
+		rotationY: number;
+	} = $props();
 
 	let orbitRotation = $state(0);
 	useTask((delta) => {
-		orbitRotation += delta;
+		//orbitRotation += delta;
 	});
 </script>
 

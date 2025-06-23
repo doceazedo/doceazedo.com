@@ -231,8 +231,9 @@
 		<main
 			class="pointer-events-auto col-span-9 mb-6 flex size-full flex-col gap-6 md:mb-12 lg:mb-0"
 		>
-			<div class="flex flex-col gap-6">
-				{#each orderByOption.orderedItems as group}
+			<div class="flex flex-col gap-12">
+				{#each orderByOption.orderedItems as group, i}
+					{@const isLastGroup = i >= orderByOption.orderedItems.length - 1}
 					<h2 class="text-foreground flex gap-3 text-xl md:text-2xl">
 						{#if group.icon}
 							<div
@@ -317,6 +318,9 @@
 							</button>
 						{/each}
 					</div>
+					{#if !isLastGroup}
+						<hr />
+					{/if}
 				{/each}
 			</div>
 		</main>
