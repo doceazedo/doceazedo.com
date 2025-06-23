@@ -14,6 +14,7 @@ export const GAME_DATA = storage(
 		inventory: [],
 	}),
 	"gachapon_data",
+	true,
 );
 
 export const TWEENED_BALANCE = new Tween(get(GAME_DATA).balance, {

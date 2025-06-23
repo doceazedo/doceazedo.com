@@ -1,11 +1,8 @@
 import { browser } from "$app/environment";
+import { compressSync, decompressSync, strFromU8, strToU8 } from "fflate";
 import { get, type Updater, type Writable } from "svelte/store";
 
-export function storage<T>(
-	store: Writable<T>,
-	key: string,
-	type: "Map" | "other" = "other",
-) {
+export function storage<T>(store: Writable<T>, key: string, gzip = false) {
 	if (!key || typeof key !== "string" || key.trim() === "") {
 		console.warn("Local storage key not provided or invalid!");
 	}
@@ -16,14 +13,16 @@ export function storage<T>(
 			try {
 				valueStr = localStorage.getItem(key);
 				if (valueStr !== null) {
-					const json = JSON.parse(valueStr);
-					if (type === "Map") {
-						store.set(new Map(Object.entries(json)));
-					} else {
-						store.set(json);
+					if (gzip) {
+						const decompressed = decompressSync(strToU8(valueStr, true));
+						valueStr = strFromU8(decompressed, true);
 					}
+					const json = JSON.parse(valueStr);
+					store.set(json);
 				}
 			} catch (e) {
+				console.log("deu ruim");
+				console.log(e);
 				if (valueStr === "") {
 					store.set("");
 				}
@@ -54,7 +53,12 @@ export function storage<T>(
 				if (value instanceof Map) {
 					localStorage.setItem(key, JSON.stringify(Object.fromEntries(value)));
 				} else {
-					localStorage.setItem(key, JSON.stringify(value));
+					value = JSON.stringify(value);
+					if (gzip) {
+						const compressed = compressSync(strToU8(value, true));
+						value = strFromU8(compressed, true);
+					}
+					localStorage.setItem(key, value);
 				}
 			}
 		}
