@@ -19,8 +19,8 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/crystal.glb
 		<T.Mesh
 			geometry={gltf.nodes.crystal_4.geometry}
 			material={gltf.materials["Material.004"]}
-			scale={4}
-			position.y={0.15}
+			scale={30}
+			position.y={0.7}
 		/>
 	{:catch err}
 		{@render error?.({ error: err })}

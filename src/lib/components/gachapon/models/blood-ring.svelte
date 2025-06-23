@@ -20,9 +20,9 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/blood-ring.glb
 		<T.Mesh
 			geometry={gltf.nodes.Blood_Ring.geometry}
 			material={gltf.materials.Atlas_Diffuse}
-			scale={20}
-			rotation.y={degToRad(100)}
-			position.y={0.3}
+			scale={100}
+			rotation.y={degToRad(45)}
+			position.y={1.8}
 		/>
 	{:catch err}
 		{@render error?.({ error: err })}

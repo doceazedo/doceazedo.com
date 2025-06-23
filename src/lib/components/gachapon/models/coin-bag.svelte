@@ -18,8 +18,8 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/coin-bag.glb
 	{:then gltf}
 		<T.Group
 			rotation={[-Math.PI / 2, 0, 0]}
-			scale={125}
-			position.y={0.3}
+			scale={500}
+			position.y={1.5}
 			position.z={0.05}
 		>
 			<T.Mesh

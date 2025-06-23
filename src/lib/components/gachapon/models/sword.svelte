@@ -17,15 +17,8 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/sword.glb
 	{#await gltf}
 		{@render fallback?.()}
 	{:then gltf}
-		<T.Group
-			rotation.y={degToRad(45)}
-			scale={[0.375, 0.375, 0.375]}
-			position={[-0.25, 0, 0]}
-		>
-			<T.Group
-				rotation={[degToRad(-90), degToRad(45), degToRad(-45)]}
-				scale={100}
-			>
+		<T.Group position.y={0.6}>
+			<T.Group rotation={[degToRad(-90), 0, 0]} scale={150}>
 				<T.Mesh
 					geometry={gltf.nodes.Sword_1.geometry}
 					material={gltf.materials.DarkSteel}

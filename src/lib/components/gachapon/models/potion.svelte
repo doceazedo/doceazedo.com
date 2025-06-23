@@ -16,7 +16,7 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/potion.glb
 	{#await gltf}
 		{@render fallback?.()}
 	{:then gltf}
-		<T.Group position.y={0.28}>
+		<T.Group scale={6} position.y={1.65}>
 			<T.Mesh
 				geometry={gltf.nodes.mesh2068853349.geometry}
 				material={gltf.materials.mat24}

@@ -18,9 +18,9 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/spellbook.glb
 		{@render fallback?.()}
 	{:then gltf}
 		<T.Group
-			scale={[0.25, 0.25, 0.25]}
+			scale={[1.25, 1.25, 1.25]}
 			rotation={[0, degToRad(15), degToRad(15)]}
-			position={[0.02, 0.3, -0.02]}
+			position={[0.25, 1.75, -0.25]}
 		>
 			<T.Mesh
 				geometry={gltf.nodes.group1413419146.geometry}
