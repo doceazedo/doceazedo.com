@@ -22,6 +22,7 @@
 	import { m } from "$lib/paraglide/messages";
 	import { Slider } from "$lib/components/ui/slider";
 	import { giveCoins } from "./utils";
+	import { WebGLRenderer } from "three";
 
 	let { item = $bindable() }: { item: Item | null } = $props();
 
@@ -124,7 +125,15 @@
 			</Dialog.Header>
 			<Dialog.Body>
 				<div class="aspect-square w-full">
-					<Canvas>
+					<Canvas
+						createRenderer={(canvas) => {
+							return new WebGLRenderer({
+								canvas,
+								alpha: true,
+								preserveDrawingBuffer: true,
+							});
+						}}
+					>
 						<ItemViewer {item} />
 					</Canvas>
 				</div>

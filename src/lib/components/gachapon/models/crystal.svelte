@@ -16,12 +16,23 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/crystal.glb
 	{#await gltf}
 		{@render fallback?.()}
 	{:then gltf}
-		<T.Mesh
-			geometry={gltf.nodes.crystal_4.geometry}
-			material={gltf.materials["Material.004"]}
-			scale={30}
-			position.y={0.7}
-		/>
+		<T.Group rotation={[-Math.PI / 2, 0, 0]} scale={500} position.y={1.25}>
+			<T.Mesh
+				name="Mineral_1"
+				geometry={gltf.nodes.Mineral_1.geometry}
+				material={gltf.materials.Grey}
+				morphTargetDictionary={gltf.nodes.Mineral_1.morphTargetDictionary}
+				morphTargetInfluences={gltf.nodes.Mineral_1.morphTargetInfluences}
+			/>
+			<T.Mesh
+				name="Mineral_2"
+				geometry={gltf.nodes.Mineral_2.geometry}
+				material={gltf.materials.Pink}
+				morphTargetDictionary={gltf.nodes.Mineral_2.morphTargetDictionary}
+				morphTargetInfluences={gltf.nodes.Mineral_2.morphTargetInfluences}
+				material.color="#0ea5e9"
+			/>
+		</T.Group>
 	{:catch err}
 		{@render error?.({ error: err })}
 	{/await}

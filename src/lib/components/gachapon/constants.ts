@@ -190,7 +190,7 @@ export const ITEMS: Item[] = [
 		mesh: Crystal as Component,
 		collection: "loot",
 		rarity: "legendary",
-		author: "ipoly3d",
+		author: "quaternius",
 	},
 	{
 		id: "blood-ring",
@@ -234,11 +234,6 @@ export const AUTHORS = {
 		license: LICENSES.cc0,
 		name: "Quaternius",
 		url: "https://quaternius.com",
-	},
-	ipoly3d: {
-		license: LICENSES.cc0,
-		name: "iPoly3D",
-		url: "https://ipoly3d.com",
 	},
 	doncarson: {
 		license: LICENSES.ccby,
