@@ -398,7 +398,7 @@
 </div>
 
 <div
-	class="bg-primary absolute h-56 w-96 rounded-full opacity-20 blur-3xl dark:opacity-10"
+	class="bg-primary absolute h-96 w-2xl rounded-full opacity-15 blur-3xl dark:opacity-5"
 ></div>
 <img
 	src="/img/sunray.webp"
