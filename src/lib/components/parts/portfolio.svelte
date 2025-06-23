@@ -21,6 +21,7 @@
 	import { onVisible } from "$lib/utils/actions";
 	import { IS_DESKTOP } from "$lib/stores";
 	import GachaponDialog from "../gachapon/gachapon-dialog.svelte";
+	import { GAME_STATE } from "../gachapon/stores";
 
 	type Project = {
 		pretitle: string;
@@ -175,6 +176,7 @@
 		<div class="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-6 md:gap-y-14">
 			{#each workProjects as project, i}
 				{@const isGachapon = i === workProjects.length - 1}
+				{@const isPlayingGachapon = isGachapon && $GAME_STATE !== "idle"}
 				<Dialog.Root>
 					<Dialog.Trigger
 						class={cn(
@@ -238,6 +240,8 @@
 					</Dialog.Trigger>
 					<Dialog.Content
 						class="h-[calc(100%-3rem)] max-w-[calc(100%-3rem)] sm:h-[calc(100%-6rem)] sm:max-w-[calc(100%-6rem)] 2xl:max-w-[96rem]"
+						disableCloseButton={isPlayingGachapon}
+						escapeKeydownBehavior={isPlayingGachapon ? "ignore" : "close"}
 					>
 						<Dialog.Header>
 							<Dialog.Description class="-mb-1.5 text-sm uppercase"
