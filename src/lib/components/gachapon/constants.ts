@@ -131,34 +131,6 @@ export const ITEMS: Item[] = [
 		collection: "y2k",
 		rarity: "uncommon",
 	},
-	{
-		id: "placeholder-rare",
-		label: "Debug",
-		mesh: DebugNds as Component,
-		collection: "y2k",
-		rarity: "rare",
-	},
-	{
-		id: "placeholder-epic",
-		label: "Debug",
-		mesh: DebugNds as Component,
-		collection: "y2k",
-		rarity: "epic",
-	},
-	{
-		id: "placeholder-legendary",
-		label: "Debug",
-		mesh: DebugNds as Component,
-		collection: "y2k",
-		rarity: "legendary",
-	},
-	{
-		id: "placeholder-exotic",
-		label: "Debug",
-		mesh: DebugNds as Component,
-		collection: "y2k",
-		rarity: "exotic",
-	},
 
 	// loot
 	{

@@ -95,7 +95,7 @@
 	];
 
 	let isGumballLoaded = $state(false);
-	let prizeItem = $state<Item | null>(ITEMS[7]);
+	let prizeItem = $state<Item | null>(null);
 	let prizeRarity = $derived(
 		RARITIES.find((x) => x.id === prizeItem?.rarity) || RARITIES[0],
 	);
@@ -267,7 +267,11 @@
 					/>
 
 					{#if prizeItem}
-						<GachaponPrize item={prizeItem} scale={[6, 6, 6]} />
+						<GachaponPrize
+							item={prizeItem}
+							scale={prizeScale.current}
+							rotationY={prizeRotation.current}
+						/>
 					{/if}
 
 					<T.HemisphereLight
@@ -286,7 +290,6 @@
 
 					<T.DirectionalLight position={[-5, 6, 4]} intensity={0.5} />
 
-					<!--
 					<Gumball
 						scale={gumballScale.current}
 						position={gumballPosition.current}
@@ -297,7 +300,6 @@
 						}}
 						onclick={dispense}
 					/>
-					-->
 
 					{#if isGumballLoaded}
 						{#each Array(3).fill(CAPSULE_COLORS).flat() as color, i}
