@@ -31,7 +31,7 @@ export const ORDER_BY = storage(writable("recent"), "gachapon_order_by");
 
 export const CHA_CHING_AUDIO = writable<HTMLAudioElement>();
 
-export const PIGGYBANK_BALANCE = new Tween(500, {
+export const PIGGYBANK_BALANCE = new Tween(0, {
 	duration: 300,
 	easing: cubicOut,
 });
