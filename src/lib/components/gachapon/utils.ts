@@ -3,7 +3,11 @@ import { CHA_CHING_AUDIO, GAME_DATA } from "./stores";
 import type { Item } from "./constants";
 
 export const giveCoins = (quantity: number) => {
-	get(GAME_DATA).balance += quantity;
+	const $GAME_DATA = get(GAME_DATA);
+	GAME_DATA.set({
+		...$GAME_DATA,
+		balance: $GAME_DATA.balance + quantity,
+	});
 	get(CHA_CHING_AUDIO).play();
 };
 
@@ -26,4 +30,5 @@ export const giveItem = (item: Item, quantity = 1) => {
 			lastAt: new Date().toString(),
 		},
 	];
+	GAME_DATA.set($GAME_DATA);
 };

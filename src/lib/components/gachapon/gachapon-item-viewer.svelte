@@ -185,7 +185,7 @@
 					onOpenChange={() =>
 						(sellQuantity = invItem.quantity > 1 ? invItem.quantity - 1 : 1)}
 				>
-					<Dialog.Trigger class="w-full">
+					<Dialog.Trigger class="w-full md:w-fit">
 						<Button class="w-full gap-1.5 bg-amber-500 hover:bg-amber-500/90">
 							{m.sell_for()}
 							<div class="flex items-center gap-1">
