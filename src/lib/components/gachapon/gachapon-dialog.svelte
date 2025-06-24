@@ -22,6 +22,7 @@
 		CHA_CHING_AUDIO,
 		GAME_DATA,
 		GAME_STATE,
+		GUMBALL_DISPENSE_AUDIO,
 		PIGGYBANK_BALANCE,
 		TWEENED_BALANCE,
 	} from "./stores";
@@ -63,8 +64,6 @@
 			if (!TWEENED_BALANCE) return;
 			TWEENED_BALANCE.target = balance;
 		});
-
-		$CHA_CHING_AUDIO = new Audio("/audio/cha-ching.ogg");
 
 		// cheats >:3
 		if (dev) {
@@ -151,3 +150,21 @@
 		</Button>
 	{/each}
 </Dialog.Footer>
+
+<audio
+	src="/audio/cha-ching.ogg"
+	preload="auto"
+	controls={false}
+	volume={0.5}
+	bind:this={$CHA_CHING_AUDIO}
+	class="hidden"
+></audio>
+
+<audio
+	src="/audio/gumball-dispense.ogg"
+	preload="auto"
+	controls={false}
+	volume={0.5}
+	bind:this={$GUMBALL_DISPENSE_AUDIO}
+	class="hidden"
+></audio>

@@ -10,7 +10,6 @@ export const giveCoins = (quantity: number) => {
 	});
 
 	const $CHA_CHING_AUDIO = get(CHA_CHING_AUDIO);
-	$CHA_CHING_AUDIO.volume = 0.5;
 	$CHA_CHING_AUDIO.play();
 };
 

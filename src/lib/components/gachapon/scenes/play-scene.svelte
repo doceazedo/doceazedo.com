@@ -12,6 +12,7 @@
 	import {
 		GAME_DATA,
 		GAME_STATE,
+		GUMBALL_DISPENSE_AUDIO,
 		IS_GUMBALL_LOADED,
 		PRIZE_ITEM,
 	} from "../stores";
@@ -157,8 +158,16 @@
 		$GAME_DATA.balance -= 100;
 		$GAME_STATE = "drawing";
 
+		$PRIZE_ITEM = getRandomItem();
+		if (!$PRIZE_ITEM) return;
+
+		if (!$GUMBALL_DISPENSE_AUDIO.paused) {
+			$GUMBALL_DISPENSE_AUDIO.currentTime = 0;
+		}
+		$GUMBALL_DISPENSE_AUDIO.play();
+
 		resetPositions();
-		await sleep(50);
+		await sleep(100);
 
 		coinMeshRotation.target = coinMeshRotation.current - degToRad(360 * 2);
 		gumballPosition.target = [0, 2.5, 0];
@@ -226,9 +235,6 @@
 			easing: elasticOut,
 			duration: 600,
 		});
-
-		$PRIZE_ITEM = getRandomItem();
-		if (!$PRIZE_ITEM) return;
 
 		await sleep(1500);
 		$GAME_STATE = "prize";
