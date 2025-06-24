@@ -8,7 +8,7 @@
 		RARITIES,
 		type Item,
 	} from "./constants";
-	import ItemViewer from "./scenes/item-viewer.svelte";
+	import ItemViewerScene from "./scenes/item-viewer-scene.svelte";
 	import Button from "$lib/components/ui/button/button.svelte";
 	import {
 		CalendarLineBusiness,
@@ -134,7 +134,7 @@
 							});
 						}}
 					>
-						<ItemViewer {item} />
+						<ItemViewerScene {item} />
 					</Canvas>
 				</div>
 				<ul class="flex w-full flex-col gap-2 lg:gap-3">

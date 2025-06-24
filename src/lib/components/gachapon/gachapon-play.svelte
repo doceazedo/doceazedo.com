@@ -1,224 +1,31 @@
 <script lang="ts">
-	import { T } from "@threlte/core";
-	import { Canvas } from "@threlte/core";
-	import Gumball from "./models/gumball.svelte";
-	import { degToRad } from "three/src/math/MathUtils.js";
-	import Capsule from "./models/capsule.svelte";
-	import { browser, dev } from "$app/environment";
-	import type { RigidBody } from "@dimforge/rapier3d-compat";
-	import { Tween } from "svelte/motion";
-	import { bounceOut, cubicOut, elasticOut, expoOut } from "svelte/easing";
-	import { cn, sleep } from "$lib/utils";
-	import { tick } from "svelte";
+	import { dev } from "$app/environment";
+	import { cubicOut } from "svelte/easing";
+	import { cn } from "$lib/utils";
 	import { CopperCoinLineFinance, Swap2LineFinance } from "svelte-remix";
 	import Button from "$lib/components/ui/button/button.svelte";
 	import { scale } from "svelte/transition";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
-	import { GAME_DATA, GAME_STATE } from "./stores";
-	import { ITEMS, RARITIES, type Item } from "./constants";
-	import GachaponPrize from "./gachapon-prize.svelte";
-	import { IS_DESKTOP } from "$lib/stores";
-	import { WebGLRenderer } from "three";
+	import {
+		GAME_DATA,
+		GAME_STATE,
+		IS_GUMBALL_LOADED,
+		PRIZE_ITEM,
+	} from "./stores";
+	import { RARITIES } from "./constants";
 	import GumballSkeleton from "$lib/components/icons/gumball.svg?component";
-	import World from "./scenes/world.svelte";
 	import { m } from "$lib/paraglide/messages";
-	import { giveItem } from "./utils";
+	import { Canvas } from "@threlte/core";
+	import { WebGLRenderer } from "three";
+	import PlayScene from "./scenes/play-scene.svelte";
 
-	const getGridPosition = (
-		index: number,
-		columns: number,
-	): [number, number, number] => [
-		(index % columns) * 0.1,
-		parseFloat((Math.random() * (2.2 - 3) + 3).toFixed(2)),
-		Math.floor(index / columns) * 0.1,
-	];
-
-	let capsules: RigidBody[] = [];
-	let gravity = $state<[number, number, number]>([0, -9.81, 0]);
-
-	const INITIAL_PRIZE_POSITION = [0.4, 0.7, 0] as const;
-	const INITIAL_PRIZE_UP_POSITION = [0, 0, 0] as const;
-	const INITIAL_PRIZE_DOWN_POSITION = [0, 0.2, 0] as const;
-	const capsulePosition = new Tween<[number, number, number]>(
-		[...INITIAL_PRIZE_POSITION],
-		{
-			easing: bounceOut,
-			duration: 1600,
-		},
-	);
-	const capUpPosition = new Tween<[number, number, number]>(
-		[...INITIAL_PRIZE_UP_POSITION],
-		{
-			easing: expoOut,
-			duration: 600,
-		},
-	);
-	const capDownPosition = new Tween<[number, number, number]>(
-		[...INITIAL_PRIZE_DOWN_POSITION],
-		{
-			easing: expoOut,
-			duration: 600,
-		},
-	);
-	const capsuleScale = new Tween<[number, number, number]>([1, 1, 1], {
-		easing: cubicOut,
-		duration: 800,
-	});
-	let capsuleColor = $state("#000000");
-
-	const prizeScale = new Tween<[number, number, number]>([0, 0, 0], {
-		easing: cubicOut,
-		duration: 800,
-	});
-	const prizeRotation = new Tween(0, {
-		easing: cubicOut,
-		duration: 1600,
-	});
-
-	const gumballPosition = new Tween<[number, number, number]>([0, 2.5, 0], {
-		easing: elasticOut,
-		duration: 800,
-	});
-	const gumballScale = new Tween<[number, number, number]>([1, 1, 1], {
-		easing: cubicOut,
-		duration: 300,
-	});
-
-	const coinMeshRotation = new Tween(0, {
-		easing: elasticOut,
-		duration: 5000,
-	});
-
-	const CAPSULE_COLORS = [
-		"#6DE1D2",
-		"#FFD63A",
-		"#FFA955",
-		"#F75A5A",
-		"#8E7DBE",
-		"#1DCD9F",
-	];
-
-	let isGumballLoaded = $state(false);
-	let prizeItem = $state<Item | null>(null);
 	let prizeRarity = $derived(
-		RARITIES.find((x) => x.id === prizeItem?.rarity) || RARITIES[0],
+		RARITIES.find((x) => x.id === $PRIZE_ITEM?.rarity) || RARITIES[0],
 	);
 
-	const resetPositions = () => {
-		capsulePosition.set([...INITIAL_PRIZE_POSITION], { duration: 0 });
-		capUpPosition.set([...INITIAL_PRIZE_UP_POSITION], {
-			duration: 0,
-		});
-		capDownPosition.set([...INITIAL_PRIZE_DOWN_POSITION], {
-			duration: 0,
-		});
-		capsuleScale.set([1, 1, 1], { duration: 0 });
-		gumballPosition.set([0, 2.5, 0], { duration: 0 });
-		coinMeshRotation.set(0, { duration: 0 });
-		prizeScale.target = [0, 0, 0];
-		prizeRotation.target = 0;
-	};
+	const play = () => ($GAME_STATE = "play_request");
 
-	const getRandomRarity = () => {
-		const rand = Math.random();
-		let sum = 0;
-		return (
-			RARITIES.find((rarity) => {
-				sum += rarity.odds;
-				return rand < sum;
-			})?.id || RARITIES[RARITIES.length - 1].id
-		);
-	};
-
-	const getRandomItem = () => {
-		const rarity = getRandomRarity();
-		const filteredItems = ITEMS.filter((x) => x.rarity === rarity);
-		return filteredItems[Math.floor(Math.random() * filteredItems.length)];
-	};
-
-	const dispense = async () => {
-		if ($GAME_DATA.balance < 100) return;
-		$GAME_DATA.balance -= 100;
-
-		if ($GAME_STATE !== "idle") return;
-		$GAME_STATE = "drawing";
-
-		resetPositions();
-		await sleep(50);
-
-		coinMeshRotation.target = coinMeshRotation.current - degToRad(360 * 2);
-		gumballPosition.target = [0, 2.5, 0];
-		capsuleColor =
-			CAPSULE_COLORS[Math.floor(Math.random() * CAPSULE_COLORS.length)];
-
-		gravity = [0, 0, 0];
-		const force = $IS_DESKTOP ? 25 : 10;
-		capsules.forEach((body) => {
-			body.setLinvel(
-				{
-					x: (Math.random() - 0.5) * force,
-					y: (Math.random() - 0.5) * force,
-					z: (Math.random() - 0.5) * force,
-				},
-				true,
-			);
-		});
-
-		await sleep(1500);
-		gravity = [0, -9.81, 0];
-
-		await sleep(1500);
-		capsulePosition.target = [0.9, 0.7, 0];
-
-		await sleep(2000);
-		capsuleScale.target = [5, 5, 5];
-		capsulePosition.set([1.1, 2.15, 1.1], {
-			easing: cubicOut,
-			duration: 800,
-		});
-
-		await sleep(50);
-		gumballScale.target = [0.001, 0.001, 0.001];
-
-		await sleep(950);
-		capsulePosition.set([0.9, 2.15, 1.1], {
-			duration: 0,
-		});
-		await tick();
-		capsulePosition.set([1.1, 2.15, 1.1], {
-			easing: elasticOut,
-			duration: 600,
-		});
-
-		await sleep(1500);
-		capsulePosition.set([1.1, 2.15, 0.9], {
-			duration: 0,
-		});
-		await tick();
-		capsulePosition.set([1.1, 2.15, 1.1], {
-			easing: elasticOut,
-			duration: 600,
-		});
-
-		prizeItem = getRandomItem();
-		if (!prizeItem) return;
-
-		await sleep(1500);
-		$GAME_STATE = "prize";
-		capUpPosition.target = [0, capUpPosition.current[1] + 1.5, 0];
-		capDownPosition.target = [0, capDownPosition.current[1] - 1.5, 0];
-
-		prizeScale.target = [1, 1, 1];
-		prizeRotation.target = degToRad(360 * 2);
-
-		giveItem(prizeItem);
-	};
-
-	const claim = () => {
-		resetPositions();
-		gumballScale.target = [1, 1, 1];
-		$GAME_STATE = "idle";
-	};
+	const claimReward = () => ($GAME_STATE = "idle");
 </script>
 
 <div class="relative z-10 flex size-full items-center justify-center">
@@ -228,77 +35,18 @@
 		<div class="absolute h-full w-px border border-purple-500/20"></div>
 	{/if}
 
-	{#if browser}
-		{#await import('@threlte/rapier') then rapier}
-			<Canvas
-				createRenderer={(canvas) => {
-					return new WebGLRenderer({
-						canvas,
-						alpha: true,
-						preserveDrawingBuffer: true,
-					});
-				}}
-				shadows
-			>
-				<World>
-					<rapier.World {gravity}>
-						{#if prizeItem}
-							<GachaponPrize
-								item={prizeItem}
-								scale={prizeScale.current}
-								rotationY={prizeRotation.current}
-							/>
-						{/if}
-
-						<Gumball
-							scale={gumballScale.current}
-							position={gumballPosition.current}
-							coinMeshRotation={coinMeshRotation.current}
-							rotation.y={degToRad(90)}
-							oncreate={() => {
-								isGumballLoaded = true;
-							}}
-							onclick={dispense}
-						/>
-
-						{#if isGumballLoaded}
-							{#each Array(3).fill(CAPSULE_COLORS).flat() as color, i}
-								<T.Group position={getGridPosition(i, 4)}>
-									<rapier.RigidBody
-										linearDamping={0}
-										angularDamping={0}
-										oncreate={(x) => {
-											capsules.push(x);
-										}}
-									>
-										<rapier.Collider
-											shape="capsule"
-											args={[0.1, 0.15]}
-											restitution={1}
-										>
-											<Capsule
-												scale={gumballScale.current}
-												position.y={-0.1}
-												{color}
-											/>
-										</rapier.Collider>
-									</rapier.RigidBody>
-								</T.Group>
-							{/each}
-
-							<Capsule
-								position={capsulePosition.current}
-								positionUp={capUpPosition.current}
-								positionDown={capDownPosition.current}
-								scale={capsuleScale.current}
-								color={capsuleColor}
-							/>
-						{/if}
-					</rapier.World>
-				</World>
-			</Canvas>
-		{/await}
-	{/if}
+	<Canvas
+		createRenderer={(canvas) => {
+			return new WebGLRenderer({
+				canvas,
+				alpha: true,
+				preserveDrawingBuffer: true,
+			});
+		}}
+		shadows
+	>
+		<PlayScene />
+	</Canvas>
 
 	{#if $GAME_STATE === "idle"}
 		<div
@@ -329,7 +77,7 @@
 			<Button
 				size="lg"
 				class="h-12"
-				onclick={dispense}
+				onclick={play}
 				disabled={$GAME_DATA.balance < 100}
 			>
 				<div class="flex items-center gap-1">
@@ -353,11 +101,11 @@
 			}}
 			class="absolute bottom-6"
 		>
-			<Button variant="outline" onclick={claim}>{m.claim()}</Button>
+			<Button variant="outline" onclick={claimReward}>{m.claim()}</Button>
 		</div>
 	{/if}
 
-	{#if !isGumballLoaded}
+	{#if !$IS_GUMBALL_LOADED}
 		<GumballSkeleton class="absolute h-[22rem] animate-pulse" />
 	{/if}
 </div>
@@ -389,6 +137,6 @@
 		{prizeRarity.label}
 	</span>
 	<h1 class="text-xl md:text-2xl">
-		{prizeItem?.label}
+		{$PRIZE_ITEM?.label}
 	</h1>
 </hgroup>

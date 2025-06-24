@@ -20,9 +20,7 @@ export function storage<T>(store: Writable<T>, key: string, gzip = false) {
 					const json = JSON.parse(valueStr);
 					store.set(json);
 				}
-			} catch (e) {
-				console.log("deu ruim");
-				console.log(e);
+			} catch (_e) {
 				if (valueStr === "") {
 					store.set("");
 				}

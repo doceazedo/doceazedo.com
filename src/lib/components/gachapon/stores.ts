@@ -2,8 +2,11 @@ import { storage } from "$lib/utils/storage";
 import { cubicOut } from "svelte/easing";
 import { Tween } from "svelte/motion";
 import { get, writable } from "svelte/store";
+import type { Item } from "./constants";
 
-export const GAME_STATE = writable<"idle" | "drawing" | "prize">("idle");
+export const GAME_STATE = writable<
+	"idle" | "drawing" | "prize" | "play_request"
+>("idle");
 
 export const GAME_DATA = storage(
 	writable<{
@@ -35,3 +38,7 @@ export const PIGGYBANK_BALANCE = new Tween(0, {
 	duration: 300,
 	easing: cubicOut,
 });
+
+export const PRIZE_ITEM = writable<Item | null>(null);
+
+export const IS_GUMBALL_LOADED = writable(false);
