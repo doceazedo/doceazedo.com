@@ -363,5 +363,11 @@
 	"sell_one_for": "Sell one for",
 	"sell_all_for": "Sell all for",
 	"sell_x_for": "Sell {quantity}x for",
-	"nevermind": "Nevermind"
+	"nevermind": "Nevermind",
+	"piggybank_title": "Idle coins??? In this economy???",
+	"piggybank": "Piggybank",
+	"piggybank_description": "This piggybank saves up <span>{quantity} coins</span> every <span>{interval}s</span>, up to <span>{max} max</span>. You can collect anytime, but if it's full, extra coins won't be saved!",
+	"cash_out": "Cash out",
+	"coins": "coins",
+	"piggybank_title_full": "Piggybank is full. Capitalism wins again."
 }

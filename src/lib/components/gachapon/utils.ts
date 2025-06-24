@@ -8,7 +8,10 @@ export const giveCoins = (quantity: number) => {
 		...$GAME_DATA,
 		balance: $GAME_DATA.balance + quantity,
 	});
-	get(CHA_CHING_AUDIO).play();
+
+	const $CHA_CHING_AUDIO = get(CHA_CHING_AUDIO);
+	$CHA_CHING_AUDIO.volume = 0.5;
+	$CHA_CHING_AUDIO.play();
 };
 
 export const giveItem = (item: Item, quantity = 1) => {

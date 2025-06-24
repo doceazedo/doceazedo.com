@@ -22,13 +22,15 @@
 		CHA_CHING_AUDIO,
 		GAME_DATA,
 		GAME_STATE,
+		PIGGYBANK_BALANCE,
 		TWEENED_BALANCE,
 	} from "./stores";
 	import { onMount } from "svelte";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { m } from "$lib/paraglide/messages";
 	import { giveCoins, giveItem } from "./utils";
-	import { ITEMS } from "./constants";
+	import { ITEMS, PIGGYBANK } from "./constants";
+	import { dev } from "$app/environment";
 
 	const TABS = [
 		{
@@ -65,12 +67,22 @@
 		$CHA_CHING_AUDIO = new Audio("/audio/cha-ching.ogg");
 
 		// cheats >:3
-		window.rosebud = () => giveCoins(1000);
-		window.kaching = () => giveCoins(1000);
-		window.motherlode = () => giveCoins(50000);
-		window.giveAll = () => {
-			ITEMS.forEach((item) => giveItem(item));
-		};
+		if (dev) {
+			window.rosebud = () => giveCoins(1000);
+			window.kaching = () => giveCoins(1000);
+			window.motherlode = () => giveCoins(50000);
+			window.giveAll = () => {
+				ITEMS.forEach((item) => giveItem(item));
+			};
+		}
+
+		const piggybankInterval = setInterval(() => {
+			if (PIGGYBANK_BALANCE.target >= PIGGYBANK.max) return;
+			const balanceTarget = PIGGYBANK_BALANCE.target + PIGGYBANK.quantity;
+			PIGGYBANK_BALANCE.target =
+				balanceTarget >= PIGGYBANK.max ? PIGGYBANK.max : balanceTarget;
+		}, PIGGYBANK.interval * 1000);
+		return () => clearInterval(piggybankInterval);
 	});
 </script>
 
