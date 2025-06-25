@@ -7,14 +7,12 @@
 	import { Button } from "$lib/components/ui/button";
 	import { PIGGYBANK, RARITIES } from "./constants";
 	import { cn } from "$lib/utils";
-	import { storage } from "$lib/utils/storage";
-	import { writable } from "svelte/store";
 	import { readyInDays } from "$lib/utils/date";
 	import { m } from "$lib/paraglide/messages";
 	import { giveCoins } from "./utils";
 	import { Progress } from "$lib/components/ui/progress";
 	import { PiggyBank } from "@lucide/svelte";
-	import { PIGGYBANK_BALANCE } from "./stores";
+	import { GAME_DATA, PIGGYBANK_BALANCE } from "./stores";
 
 	const DAILY_REWARDS = [
 		{
@@ -47,17 +45,9 @@
 		},
 	] as const;
 
-	const dailyStreak = storage(
-		writable<{ startedAt: string; claimed: number[] }>({
-			startedAt: new Date().toString(),
-			claimed: [],
-		}),
-		"gachapon_daily_streak",
-	);
-
 	const claimReward = (idx: number) => {
-		if ($dailyStreak.claimed.includes(idx)) return;
-		$dailyStreak.claimed = [...$dailyStreak.claimed, idx];
+		if ($GAME_DATA.dailyRewards.streak !== idx - 1) return;
+		$GAME_DATA.dailyRewards.streak += 1;
 
 		const reward = DAILY_REWARDS[idx];
 		if (reward.type === "coins") {
@@ -66,13 +56,13 @@
 	};
 
 	const getRewardReadyDate = (idx: number) => {
-		const readyDate = new Date($dailyStreak.startedAt);
+		const readyDate = new Date($GAME_DATA.dailyRewards.startedAt);
 		readyDate.setDate(readyDate.getDate() + idx);
 		return readyDate;
 	};
 
 	const getRewardStatus = (idx: number): "claimed" | "soon" | "ready" => {
-		if ($dailyStreak.claimed.includes(idx)) {
+		if ($GAME_DATA.dailyRewards.streak >= idx) {
 			return "claimed";
 		}
 
@@ -106,7 +96,8 @@
 
 				<div
 					class={cn(
-						"ease-elastic flex h-fit items-center justify-between rounded border p-3 pr-4 transition-all hover:-translate-y-1.5 lg:h-36 lg:flex-col lg:items-center lg:justify-center lg:pr-3 lg:text-center",
+						"ease-elastic flex h-fit items-center justify-between rounded border p-3 pr-4 transition-all hover:-translate-y-1.5 lg:h-48 lg:flex-col lg:items-center lg:justify-center lg:pr-3 lg:text-center",
+						status !== "ready" && !isLastReward && "opacity-50",
 						isLastReward &&
 							`${lastRewardRarity.borderColor} ${lastRewardRarity.badgeColor} lg:col-span-3`,
 					)}
@@ -155,13 +146,14 @@
 						</div>
 					</div>
 					{#if status === "ready"}
-						<Button onclick={() => claimReward(i)}>{m.claim()}</Button>
+						<Button size="sm" onclick={() => claimReward(i)}>{m.claim()}</Button
+						>
 					{:else if status === "claimed"}
-						<div class="flex size-9 shrink-0 items-center justify-center">
+						<div class="flex size-8 shrink-0 items-center justify-center">
 							<CheckLineSystem class="text-primary size-6" />
 						</div>
 					{:else if status === "soon"}
-						<div class="flex h-9 shrink-0 items-center">
+						<div class="flex h-8 shrink-0 items-center">
 							<p
 								class={cn(
 									"text-muted-foreground bg-muted dark:bg-muted/50 rounded px-1.5 py-0.5 text-xs",

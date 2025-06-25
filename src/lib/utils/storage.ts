@@ -2,7 +2,12 @@ import { browser } from "$app/environment";
 import { compressSync, decompressSync, strFromU8, strToU8 } from "fflate";
 import { get, type Updater, type Writable } from "svelte/store";
 
-export function storage<T>(store: Writable<T>, key: string, gzip = false) {
+export function storage<T>(
+	store: Writable<T>,
+	key: string,
+	gzip = false,
+	defaultData?: T,
+) {
 	if (!key || typeof key !== "string" || key.trim() === "") {
 		console.warn("Local storage key not provided or invalid!");
 	}
@@ -18,7 +23,10 @@ export function storage<T>(store: Writable<T>, key: string, gzip = false) {
 						valueStr = strFromU8(decompressed, true);
 					}
 					const json = JSON.parse(valueStr);
-					store.set(json);
+					store.set({
+						...defaultData,
+						...json,
+					});
 				}
 			} catch (_e) {
 				if (valueStr === "") {

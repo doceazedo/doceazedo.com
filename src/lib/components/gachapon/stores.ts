@@ -8,21 +8,38 @@ export const GAME_STATE = writable<
 	"idle" | "drawing" | "prize" | "play_request"
 >("idle");
 
+type GameData = {
+	balance: number;
+	inventory: {
+		item: string;
+		quantity: number;
+		firstAt: string;
+		lastAt: string;
+	}[];
+	dailyRewards: {
+		startedAt: string;
+		streak: number;
+	};
+};
+
+const EMPTY_GAME_DATA: GameData = {
+	balance: 500,
+	inventory: [],
+	dailyRewards: {
+		startedAt: (() => {
+			const now = new Date();
+			now.setHours(0, 0, 0, 0);
+			return `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}`;
+		})(),
+		streak: -1,
+	},
+};
+
 export const GAME_DATA = storage(
-	writable<{
-		balance: number;
-		inventory: {
-			item: string;
-			quantity: number;
-			firstAt: string;
-			lastAt: string;
-		}[];
-	}>({
-		balance: 500,
-		inventory: [],
-	}),
+	writable<GameData>({ ...EMPTY_GAME_DATA }),
 	"gachapon_data",
 	true,
+	{ ...EMPTY_GAME_DATA },
 );
 
 export const TWEENED_BALANCE = new Tween(get(GAME_DATA).balance, {

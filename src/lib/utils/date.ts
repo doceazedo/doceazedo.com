@@ -33,6 +33,7 @@ export const daysAgo = (date: Date) => {
 
 export const readyInDays = (date: Date) => {
 	const today = new Date();
+	today.setHours(0, 0, 0, 0);
 	const days = Math.floor(
 		(date.getTime() - today.getTime()) / (1000 * 60 * 60 * 24),
 	);
