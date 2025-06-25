@@ -18,11 +18,11 @@
 	const DAILY_REWARDS = [
 		{
 			type: "coins",
-			quantity: 100,
+			quantity: 150,
 		},
 		{
 			type: "coins",
-			quantity: 200,
+			quantity: 250,
 		},
 		{
 			type: "gift",
@@ -30,11 +30,11 @@
 		},
 		{
 			type: "coins",
-			quantity: 300,
+			quantity: 350,
 		},
 		{
 			type: "coins",
-			quantity: 600,
+			quantity: 450,
 		},
 		{
 			type: "gift",

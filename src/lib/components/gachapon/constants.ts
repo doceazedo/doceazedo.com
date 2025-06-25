@@ -361,5 +361,5 @@ type AuthorId = keyof typeof AUTHORS;
 
 export const PIGGYBANK = {
 	quantityEvery6Seconds: 5,
-	max: 200,
+	max: 250,
 };
