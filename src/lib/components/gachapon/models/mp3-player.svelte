@@ -41,6 +41,8 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/mp3-player.glb
 				geometry={gltf.nodes.Text001_1_3.geometry}
 				material={gltf.materials["01___Default"]}
 				material.color="#EC5298"
+				material.metalness={0.3}
+				material.roughness={0.4}
 			/>
 		</T.Group>
 	{:catch err}
