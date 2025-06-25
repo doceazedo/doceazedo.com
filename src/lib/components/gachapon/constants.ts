@@ -30,6 +30,7 @@ import Keys from "./models/keys.svelte";
 import Bhbus from "./models/bhbus.svelte";
 import Earbud from "./models/earbud.svelte";
 import Bottlecap from "./models/bottlecap.svelte";
+import Fork from "./models/fork.svelte";
 
 export const RARITIES = [
 	{
@@ -174,6 +175,15 @@ export const ITEMS: Item[] = [
 		mesh: Bottlecap as Component,
 		collection: "pocket",
 		rarity: "uncommon",
+		author: "poly",
+	},
+	{
+		id: "fork",
+		label: m.gachapon_item_fork(),
+		description: m.gachapon_item_description_fork(),
+		mesh: Fork as Component,
+		collection: "pocket",
+		rarity: "epic",
 		author: "poly",
 	},
 
