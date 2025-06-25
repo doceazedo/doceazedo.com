@@ -29,6 +29,7 @@ import Receipt from "./models/receipt.svelte";
 import Keys from "./models/keys.svelte";
 import Bhbus from "./models/bhbus.svelte";
 import Earbud from "./models/earbud.svelte";
+import Bottlecap from "./models/bottlecap.svelte";
 
 export const RARITIES = [
 	{
@@ -165,6 +166,15 @@ export const ITEMS: Item[] = [
 		collection: "pocket",
 		rarity: "uncommon",
 		author: "jyjy",
+	},
+	{
+		id: "bottlecap",
+		label: m.gachapon_item_bottlecap(),
+		description: m.gachapon_item_description_bottlecap(),
+		mesh: Bottlecap as Component,
+		collection: "pocket",
+		rarity: "uncommon",
+		author: "poly",
 	},
 
 	// y2k

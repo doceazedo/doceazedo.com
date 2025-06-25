@@ -301,7 +301,7 @@
 											"relative z-20",
 											owned
 												? "ease-elastic transition-all group-hover:scale-125"
-												: "opacity-10 brightness-0 dark:brightness-999999",
+												: "opacity-20 brightness-0 contrast-0 dark:brightness-999999",
 										)}
 									/>
 									{#if owned}
