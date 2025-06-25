@@ -26,6 +26,7 @@ import BloodRing from "./models/blood-ring.svelte";
 import CoinBag from "./models/coin-bag.svelte";
 import { m } from "$lib/paraglide/messages";
 import Receipt from "./models/receipt.svelte";
+import Keys from "./models/keys.svelte";
 
 export const RARITIES = [
 	{
@@ -136,6 +137,15 @@ export const ITEMS: Item[] = [
 		rarity: "common",
 		author: "doce",
 	},
+	{
+		id: "keys",
+		label: m.gachapon_item_keys(),
+		description: m.gachapon_item_description_keys(),
+		mesh: Keys as Component,
+		collection: "pocket",
+		rarity: "common",
+		author: "multipleArtistsKeys",
+	},
 
 	// y2k
 	{
@@ -229,7 +239,7 @@ const LICENSES = {
 	ccby: {
 		icon: CreativeCommonsByLineBusiness,
 		label: "CC-BY",
-		url: "https://creativecommons.org/licenses/by/3.0",
+		url: "https://creativecommons.org/licenses/by/4.0",
 	},
 	cc0: {
 		icon: CreativeCommonsZeroLineBusiness,
@@ -269,6 +279,11 @@ export const AUTHORS = {
 		license: LICENSES.cc0,
 		name: "Doce Fernandes",
 		url: "/",
+	},
+	multipleArtistsKeys: {
+		license: LICENSES.ccby,
+		name: "stfuaahil, AxonDesigns, combine_soldier",
+		url: "https://sketchfab.com/3d-models/keys-with-tag-game-ready-mobile-friendly-a9bced5ac95f49ff849ae3377d391e47",
 	},
 } as const;
 

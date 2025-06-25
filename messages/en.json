@@ -372,5 +372,7 @@
 	"piggybank_title_full": "Piggybank is full. Capitalism wins again.",
 	"gachapon_item_receipt": "Old receipt",
 	"gachapon_item_description_receipt": "I should have thrown this away long ago.",
-	"gachapon_collection_pocket": "Pocket Findings"
+	"gachapon_collection_pocket": "Pocket Findings",
+	"gachapon_item_keys": "Keychain",
+	"gachapon_item_description_keys": "Hey, I was looking for those!"
 }

@@ -160,7 +160,7 @@
 							</p>
 							{#if detail.isAuthor}
 								<div
-									class="-mt-0.5 ml-auto flex flex-col items-end text-right md:mt-0"
+									class="-mt-0.5 ml-auto flex flex-col items-end text-right leading-5 md:mt-0"
 								>
 									<a
 										href={detail.url}
