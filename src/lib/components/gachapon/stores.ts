@@ -4,9 +4,7 @@ import { Tween } from "svelte/motion";
 import { get, writable } from "svelte/store";
 import type { Item } from "./constants";
 
-export const GAME_STATE = writable<
-	"idle" | "drawing" | "prize" | "play_request"
->("idle");
+export const GAME_STATE = writable<"idle" | "drawing" | "prize">("idle");
 
 type GameData = {
 	balance: number;

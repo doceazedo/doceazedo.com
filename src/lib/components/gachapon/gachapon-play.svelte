@@ -18,11 +18,11 @@
 	import { WebGLRenderer } from "three";
 	import PlayScene from "./scenes/play-scene.svelte";
 
+	let playScene = $state<PlayScene>();
+
 	let prizeRarity = $derived(
 		RARITIES.find((x) => x.id === $PRIZE_ITEM?.rarity) || RARITIES[0],
 	);
-
-	const play = () => ($GAME_STATE = "play_request");
 
 	const claimReward = () => ($GAME_STATE = "idle");
 </script>
@@ -38,7 +38,7 @@
 		}}
 		shadows
 	>
-		<PlayScene />
+		<PlayScene bind:this={playScene} />
 	</Canvas>
 
 	{#if $GAME_STATE === "idle"}
@@ -70,7 +70,7 @@
 			<Button
 				size="lg"
 				class="h-12"
-				onclick={play}
+				onclick={() => playScene?.dispense()}
 				disabled={$GAME_DATA.balance < 100}
 			>
 				<div class="flex items-center gap-1">

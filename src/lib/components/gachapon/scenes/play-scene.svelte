@@ -41,7 +41,7 @@
 		return [x, y, z];
 	};
 
-	let capsules: RigidBody[] = [];
+	let capsules = $state<RigidBody[]>([]);
 	let gravity = $state<[number, number, number]>([0, -9.81, 0]);
 
 	const INITIAL_PRIZE_POSITION = [0.4, 0.7, 0] as const;
@@ -151,7 +151,7 @@
 		return filteredItems[Math.floor(Math.random() * filteredItems.length)];
 	};
 
-	const dispense = async () => {
+	export const dispense = async () => {
 		if ($GAME_DATA.balance < 100) return;
 		if ($GAME_STATE !== "idle") return;
 
@@ -159,14 +159,12 @@
 		$GAME_STATE = "drawing";
 
 		$PRIZE_ITEM = getRandomItem();
+		if (!$PRIZE_ITEM) return;
 
 		if (!$GUMBALL_DISPENSE_AUDIO.paused) {
 			$GUMBALL_DISPENSE_AUDIO.currentTime = 0;
 		}
 		$GUMBALL_DISPENSE_AUDIO.play();
-
-		await tick();
-		if (!$PRIZE_ITEM) return;
 
 		resetPositions();
 		await sleep(100);
@@ -265,18 +263,9 @@
 
 	onMount(() => ($IS_GUMBALL_LOADED = false));
 
-	GAME_STATE.subscribe(async (state) => {
-		if (state === "idle") {
-			resetPositions();
-			return;
-		}
-
-		if (state === "play_request") {
-			$GAME_STATE = "idle";
-			await tick();
-			dispense();
-			return;
-		}
+	GAME_STATE.subscribe((state) => {
+		if (state !== "idle") return;
+		resetPositions();
 	});
 </script>
 
