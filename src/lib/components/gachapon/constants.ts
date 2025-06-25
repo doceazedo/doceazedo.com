@@ -326,7 +326,7 @@ export const AUTHORS = {
 		url: "https://poly.pizza/u/Georg%20Bossenz",
 	},
 	doce: {
-		license: LICENSES.cc0,
+		license: LICENSES.ccby,
 		name: "Doce Fernandes",
 		url: "/",
 	},
