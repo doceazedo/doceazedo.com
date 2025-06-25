@@ -23,6 +23,7 @@
 	import { Slider } from "$lib/components/ui/slider";
 	import { giveCoins } from "./utils";
 	import { WebGLRenderer } from "three";
+	import { dev } from "$app/environment";
 
 	let { item = $bindable() }: { item: Item | null } = $props();
 
@@ -124,7 +125,9 @@
 				</span>
 			</Dialog.Header>
 			<Dialog.Body class="overflow-y-auto">
-				<div class="-mt-12 aspect-square w-full shrink-0">
+				<div
+					class="relative -mt-12 flex aspect-square w-full shrink-0 items-center justify-center"
+				>
 					<Canvas
 						createRenderer={(canvas) => {
 							return new WebGLRenderer({
@@ -136,6 +139,17 @@
 					>
 						<ItemViewerScene {item} />
 					</Canvas>
+					{#if dev}
+						<div
+							class="pointer-events-none absolute size-48 border border-purple-500/20"
+						></div>
+						<div
+							class="pointer-events-none absolute h-px w-full border border-purple-500/20"
+						></div>
+						<div
+							class="pointer-events-none absolute h-full w-px border border-purple-500/20"
+						></div>
+					{/if}
 				</div>
 				<ul class="flex w-full flex-col gap-2 lg:gap-3">
 					{#each details as detail, i}

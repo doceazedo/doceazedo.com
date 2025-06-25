@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { dev } from "$app/environment";
 	import { cubicOut } from "svelte/easing";
 	import { cn } from "$lib/utils";
 	import { CopperCoinLineFinance, Swap2LineFinance } from "svelte-remix";
@@ -29,12 +28,6 @@
 </script>
 
 <div class="relative z-10 flex size-full items-center justify-center">
-	{#if dev}
-		<div class="absolute size-48 border border-purple-500/20"></div>
-		<div class="absolute h-px w-full border border-purple-500/20"></div>
-		<div class="absolute h-full w-px border border-purple-500/20"></div>
-	{/if}
-
 	<Canvas
 		createRenderer={(canvas) => {
 			return new WebGLRenderer({

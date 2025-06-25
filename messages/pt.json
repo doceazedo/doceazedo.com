@@ -369,5 +369,8 @@
 	"piggybank_description": "Esse cofrinho guarda <span>{quantity} moedas</span> a cada <span>{interval}s</span>, até o <span>máximo de {max}</span>. Você pode resgatar quando quiser, mas se encher, perde o que sobrar!",
 	"cash_out": "Sacar",
 	"coins": "moedas",
-	"piggybank_title_full": "O porquinho já tá lotado..."
+	"piggybank_title_full": "O porquinho já tá lotado...",
+	"gachapon_item_receipt": "Cupom fiscal",
+	"gachapon_item_description_receipt": "Eu aceitei no automático e nunca joguei fora.",
+	"gachapon_collection_pocket": "Achados de Bolso"
 }

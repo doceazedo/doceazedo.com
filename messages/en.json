@@ -369,5 +369,8 @@
 	"piggybank_description": "This piggybank saves up <span>{quantity} coins</span> every <span>{interval}s</span>, up to <span>{max} max</span>. You can collect anytime, but if it's full, extra coins won't be saved!",
 	"cash_out": "Cash out",
 	"coins": "coins",
-	"piggybank_title_full": "Piggybank is full. Capitalism wins again."
+	"piggybank_title_full": "Piggybank is full. Capitalism wins again.",
+	"gachapon_item_receipt": "Old receipt",
+	"gachapon_item_description_receipt": "I should have thrown this away long ago.",
+	"gachapon_collection_pocket": "Pocket Findings"
 }

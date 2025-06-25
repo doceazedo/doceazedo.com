@@ -12,6 +12,8 @@ import {
 	SwordLineOthers,
 	TriangleFillDesign,
 	VipDiamondFillFinance,
+	WalletFillFinance,
+	WalletLineFinance,
 } from "svelte-remix";
 import Mp3Player from "./models/mp3-player.svelte";
 import Nds from "./models/nds.svelte";
@@ -23,6 +25,7 @@ import Crystal from "./models/crystal.svelte";
 import BloodRing from "./models/blood-ring.svelte";
 import CoinBag from "./models/coin-bag.svelte";
 import { m } from "$lib/paraglide/messages";
+import Receipt from "./models/receipt.svelte";
 
 export const RARITIES = [
 	{
@@ -91,6 +94,12 @@ export type RarityId = (typeof RARITIES)[number]["id"];
 
 export const COLLECTIONS = [
 	{
+		id: "pocket",
+		label: m.gachapon_collection_pocket(),
+		icon: WalletFillFinance,
+		iconLine: WalletLineFinance,
+	},
+	{
 		id: "y2k",
 		label: m.gachapon_collection_y2k(),
 		icon: AliensFillUserFaces,
@@ -117,6 +126,17 @@ export type Item = {
 };
 
 export const ITEMS: Item[] = [
+	// pocket
+	{
+		id: "receipt",
+		label: m.gachapon_item_receipt(),
+		description: m.gachapon_item_description_receipt(),
+		mesh: Receipt as Component,
+		collection: "pocket",
+		rarity: "common",
+		author: "doce",
+	},
+
 	// y2k
 	{
 		id: "cd",
@@ -244,6 +264,11 @@ export const AUTHORS = {
 		license: LICENSES.ccby,
 		name: "Georg Bossenz",
 		url: "https://poly.pizza/u/Georg%20Bossenz",
+	},
+	doce: {
+		license: LICENSES.cc0,
+		name: "Doce Fernandes",
+		url: "/",
 	},
 } as const;
 
