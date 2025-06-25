@@ -384,5 +384,7 @@
 	"gachapon_item_fork": "A fork(???)",
 	"gachapon_item_description_fork": "Why is it here? What was the plan?",
 	"gachapon_item_mustache": "Fake mustache",
-	"gachapon_item_description_mustache": "Don't worry about it."
+	"gachapon_item_description_mustache": "Don't worry about it.",
+	"gachapon_item_note": "A note from your future self",
+	"gachapon_item_description_note": "Despite everything, it's still you."
 }

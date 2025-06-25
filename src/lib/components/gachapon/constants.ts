@@ -32,6 +32,7 @@ import Earbud from "./models/earbud.svelte";
 import Bottlecap from "./models/bottlecap.svelte";
 import Fork from "./models/fork.svelte";
 import Mustache from "./models/mustache.svelte";
+import Note from "./models/note.svelte";
 
 export const RARITIES = [
 	{
@@ -195,6 +196,15 @@ export const ITEMS: Item[] = [
 		collection: "pocket",
 		rarity: "epic",
 		author: "enriquepoppe",
+	},
+	{
+		id: "note",
+		label: m.gachapon_item_note(),
+		description: m.gachapon_item_description_note(),
+		mesh: Note as Component,
+		collection: "pocket",
+		rarity: "legendary",
+		author: "doce",
 	},
 
 	// y2k
