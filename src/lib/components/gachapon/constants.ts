@@ -28,6 +28,7 @@ import { m } from "$lib/paraglide/messages";
 import Receipt from "./models/receipt.svelte";
 import Keys from "./models/keys.svelte";
 import Bhbus from "./models/bhbus.svelte";
+import Earbud from "./models/earbud.svelte";
 
 export const RARITIES = [
 	{
@@ -155,6 +156,15 @@ export const ITEMS: Item[] = [
 		collection: "pocket",
 		rarity: "common",
 		author: "doce",
+	},
+	{
+		id: "earbud",
+		label: m.gachapon_item_earbud(),
+		description: m.gachapon_item_description_earbud(),
+		mesh: Earbud as Component,
+		collection: "pocket",
+		rarity: "uncommon",
+		author: "jyjy",
 	},
 
 	// y2k
@@ -294,6 +304,11 @@ export const AUTHORS = {
 		license: LICENSES.ccby,
 		name: "stfuaahil, AxonDesigns, combine_soldier",
 		url: "https://sketchfab.com/3d-models/keys-with-tag-game-ready-mobile-friendly-a9bced5ac95f49ff849ae3377d391e47",
+	},
+	jyjy: {
+		license: LICENSES.ccby,
+		name: "JY_JY_",
+		url: "https://sketchfab.com/JY_JY_",
 	},
 } as const;
 
