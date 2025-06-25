@@ -13,6 +13,7 @@
 	import { Progress } from "$lib/components/ui/progress";
 	import { PiggyBank } from "@lucide/svelte";
 	import { GAME_DATA, PIGGYBANK_BALANCE } from "./stores";
+	import { onMount } from "svelte";
 
 	const DAILY_REWARDS = [
 		{
@@ -78,6 +79,25 @@
 		giveCoins(PIGGYBANK_BALANCE.target);
 		PIGGYBANK_BALANCE.target = 0;
 	};
+
+	onMount(() => {
+		const nextClaimDate = new Date($GAME_DATA.dailyRewards.startedAt);
+		nextClaimDate.setDate(
+			nextClaimDate.getDate() + $GAME_DATA.dailyRewards.streak + 1,
+		);
+
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+
+		const nextClaimInDays =
+			(nextClaimDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);
+		if (nextClaimInDays >= 2) {
+			$GAME_DATA.dailyRewards = {
+				startedAt: `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`,
+				streak: -1,
+			};
+		}
+	});
 </script>
 
 <div
