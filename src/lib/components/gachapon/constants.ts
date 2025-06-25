@@ -265,6 +265,15 @@ export const ITEMS: Item[] = [
 		author: "quaternius",
 	},
 	{
+		id: "crystal",
+		label: m.gachapon_item_blue_crystal(),
+		description: m.gachapon_item_description_blue_crystal(),
+		mesh: Crystal as Component,
+		collection: "loot",
+		rarity: "rare",
+		author: "quaternius",
+	},
+	{
 		id: "spellbook",
 		label: m.gachapon_item_spellbook(),
 		description: m.gachapon_item_description_spellbook(),
@@ -272,15 +281,6 @@ export const ITEMS: Item[] = [
 		collection: "loot",
 		rarity: "epic",
 		author: "georgbossenz",
-	},
-	{
-		id: "crystal",
-		label: m.gachapon_item_blue_crystal(),
-		description: m.gachapon_item_description_blue_crystal(),
-		mesh: Crystal as Component,
-		collection: "loot",
-		rarity: "legendary",
-		author: "quaternius",
 	},
 	{
 		id: "blood-ring",
