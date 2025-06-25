@@ -275,7 +275,6 @@ export const AUTHORS = {
 type AuthorId = keyof typeof AUTHORS;
 
 export const PIGGYBANK = {
-	quantity: 2,
-	interval: 3,
-	max: 500,
+	quantityEvery6Seconds: 5,
+	max: 200,
 };

@@ -210,8 +210,7 @@
 				</h3>
 				<p class="[&>span]:text-foreground text-sm md:text-base">
 					{@html m.piggybank_description({
-						quantity: PIGGYBANK.quantity * 10,
-						interval: PIGGYBANK.interval * 10,
+						quantity: PIGGYBANK.quantityEvery6Seconds * 10,
 						max: PIGGYBANK.max,
 					})}
 				</p>
@@ -231,12 +230,16 @@
 					<span class="text-foreground">{PIGGYBANK.max}</span>
 					{m.coins()}
 				</p>
-				<Progress value={PIGGYBANK_BALANCE.current} max={PIGGYBANK.max} />
+				<Progress
+					class="[&_div]:transition-none"
+					value={PIGGYBANK_BALANCE.current}
+					max={PIGGYBANK.max}
+				/>
 			</div>
 			<Button
 				variant="outline"
-				disabled={PIGGYBANK_BALANCE.current < PIGGYBANK.quantity ||
-					PIGGYBANK_BALANCE.target < PIGGYBANK.quantity}
+				disabled={PIGGYBANK_BALANCE.current < PIGGYBANK.quantityEvery6Seconds ||
+					PIGGYBANK_BALANCE.target < PIGGYBANK.quantityEvery6Seconds}
 				onclick={cashOutPiggyBank}
 			>
 				<CopperCoinLineFinance class="size-5" />

@@ -77,10 +77,11 @@
 
 		const piggybankInterval = setInterval(() => {
 			if (PIGGYBANK_BALANCE.target >= PIGGYBANK.max) return;
-			const balanceTarget = PIGGYBANK_BALANCE.target + PIGGYBANK.quantity;
+			const balanceTarget =
+				PIGGYBANK_BALANCE.target + PIGGYBANK.quantityEvery6Seconds;
 			PIGGYBANK_BALANCE.target =
 				balanceTarget >= PIGGYBANK.max ? PIGGYBANK.max : balanceTarget;
-		}, PIGGYBANK.interval * 1000);
+		}, 6000);
 		return () => clearInterval(piggybankInterval);
 	});
 </script>

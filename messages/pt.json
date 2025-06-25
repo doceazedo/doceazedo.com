@@ -366,7 +366,7 @@
 	"nevermind": "Deixa pra lá",
 	"piggybank_title": "Tá pagando mais que o tigrinho, viu?",
 	"piggybank": "Cofrinho",
-	"piggybank_description": "Esse cofrinho guarda <span>{quantity} moedas</span> a cada <span>{interval}s</span>, até o <span>máximo de {max}</span>. Você pode resgatar quando quiser, mas se encher, perde o que sobrar!",
+	"piggybank_description": "Esse cofrinho guarda <span>{quantity} moedas</span> a cada <span>1min</span>, até o <span>máximo de {max}</span>. Você pode resgatar quando quiser, mas se encher, perde o que sobrar!",
 	"cash_out": "Sacar",
 	"coins": "moedas",
 	"piggybank_title_full": "O porquinho já tá lotado...",
