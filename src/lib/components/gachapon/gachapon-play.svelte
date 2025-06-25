@@ -52,22 +52,6 @@
 			}}
 			class="absolute bottom-6 flex gap-3"
 		>
-			<DropdownMenu.Root>
-				<DropdownMenu.Trigger>
-					<Button variant="outline" size="lg" class="h-12" aria-readonly>
-						<Swap2LineFinance class="size-5" />
-						{m.gachapon_gamemode()}
-					</Button>
-				</DropdownMenu.Trigger>
-				<DropdownMenu.Content side="top">
-					<DropdownMenu.Group>
-						<DropdownMenu.CheckboxItem checked>
-							Standard
-						</DropdownMenu.CheckboxItem>
-					</DropdownMenu.Group>
-				</DropdownMenu.Content>
-			</DropdownMenu.Root>
-
 			<Button
 				size="lg"
 				class="h-12"
