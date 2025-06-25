@@ -374,5 +374,7 @@
 	"gachapon_item_description_receipt": "Eu aceitei no automático e nunca joguei fora.",
 	"gachapon_collection_pocket": "Achados de Bolso",
 	"gachapon_item_keys": "Molho de chaves",
-	"gachapon_item_description_keys": "Ei, eu tava procurando elas!"
+	"gachapon_item_description_keys": "Ei, eu tava procurando elas!",
+	"gachapon_item_bus_card": "Vale transporte",
+	"gachapon_item_description_bus_card": "Zerado. Vai ter que pular a catraca."
 }

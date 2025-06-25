@@ -27,6 +27,7 @@ import CoinBag from "./models/coin-bag.svelte";
 import { m } from "$lib/paraglide/messages";
 import Receipt from "./models/receipt.svelte";
 import Keys from "./models/keys.svelte";
+import Bhbus from "./models/bhbus.svelte";
 
 export const RARITIES = [
 	{
@@ -145,6 +146,15 @@ export const ITEMS: Item[] = [
 		collection: "pocket",
 		rarity: "common",
 		author: "multipleArtistsKeys",
+	},
+	{
+		id: "bus-card",
+		label: m.gachapon_item_bus_card(),
+		description: m.gachapon_item_description_bus_card(),
+		mesh: Bhbus as Component,
+		collection: "pocket",
+		rarity: "common",
+		author: "doce",
 	},
 
 	// y2k
