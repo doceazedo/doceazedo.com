@@ -31,6 +31,7 @@ import Bhbus from "./models/bhbus.svelte";
 import Earbud from "./models/earbud.svelte";
 import Bottlecap from "./models/bottlecap.svelte";
 import Fork from "./models/fork.svelte";
+import Mustache from "./models/mustache.svelte";
 
 export const RARITIES = [
 	{
@@ -186,6 +187,15 @@ export const ITEMS: Item[] = [
 		rarity: "epic",
 		author: "poly",
 	},
+	{
+		id: "mustache",
+		label: m.gachapon_item_mustache(),
+		description: m.gachapon_item_description_mustache(),
+		mesh: Mustache as Component,
+		collection: "pocket",
+		rarity: "epic",
+		author: "enriquepoppe",
+	},
 
 	// y2k
 	{
@@ -329,6 +339,11 @@ export const AUTHORS = {
 		license: LICENSES.ccby,
 		name: "JY_JY_",
 		url: "https://sketchfab.com/JY_JY_",
+	},
+	enriquepoppe: {
+		license: LICENSES.ccby,
+		name: "Enrique Poppe",
+		url: "https://sketchfab.com/depa_96",
 	},
 } as const;
 
