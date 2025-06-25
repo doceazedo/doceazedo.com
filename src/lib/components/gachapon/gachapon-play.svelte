@@ -17,6 +17,7 @@
 	import { Canvas } from "@threlte/core";
 	import { WebGLRenderer } from "three";
 	import PlayScene from "./scenes/play-scene.svelte";
+	import Sunburst from "$lib/components/icons/sunburst.svg?component";
 
 	let playScene = $state<PlayScene>();
 
@@ -104,16 +105,27 @@
 </div>
 
 <div
-	class="bg-primary absolute h-96 w-2xl rounded-full opacity-15 blur-3xl dark:opacity-5"
-></div>
-<img
-	src="/img/sunray.webp"
-	alt=""
 	class={cn(
-		"animation-duration-10000 absolute size-[32rem] animate-spin opacity-3 invert-50 transition-all dark:invert-0",
+		"absolute flex size-[24rem] scale-200 items-center justify-center opacity-15 transition-all lg:scale-400",
 		$GAME_STATE !== "prize" && "scale-50 opacity-0",
 	)}
-/>
+>
+	<div class="size-[24rem] overflow-hidden">
+		<Sunburst
+			class={cn("animation-duration-10000 animate-spin", prizeRarity.textColor)}
+		/>
+	</div>
+	<div
+		class="from-background/80 to-background absolute size-full bg-radial to-50%"
+	></div>
+</div>
+<div
+	class={cn(
+		"absolute h-96 w-2xl rounded-full opacity-15 blur-3xl transition-all dark:opacity-5",
+		$GAME_STATE === "prize" ? prizeRarity.bgColor : "bg-primary",
+	)}
+></div>
+
 <hgroup
 	class={cn(
 		"ease-elastic absolute top-6 text-center transition-all",

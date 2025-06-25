@@ -117,7 +117,7 @@
 				duration: 200,
 			}}
 			class={cn(
-				"absolute top-6 flex items-center gap-1.5 rounded border px-3 py-1.5",
+				"bg-background absolute top-6 z-10 flex items-center gap-1.5 rounded border px-3 py-1.5",
 				activeTab === "rewards" &&
 					"top-0 w-full justify-center rounded-none border-0 border-b lg:top-6 lg:w-fit lg:rounded lg:border",
 			)}
