@@ -15,7 +15,7 @@
 	import { Button } from "$lib/components/ui/button";
 	import * as Select from "$lib/components/ui/select";
 	import { Label } from "$lib/components/ui/label";
-	import type { Component } from "svelte";
+	import { onMount, type Component } from "svelte";
 	import { fade } from "svelte/transition";
 	import { flip } from "svelte/animate";
 	import GachaponItemViewer from "./gachapon-item-viewer.svelte";
@@ -108,6 +108,13 @@
 	let scrollEl: HTMLElement;
 
 	let viewItem: Item | null = $state(null);
+
+	onMount(() => {
+		// remove non-existing items
+		$GAME_DATA.inventory = $GAME_DATA.inventory.filter((invItem) =>
+			ITEMS.find((item) => item.id === invItem.item),
+		);
+	});
 </script>
 
 <div
