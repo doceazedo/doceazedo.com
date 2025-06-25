@@ -159,13 +159,14 @@
 		$GAME_STATE = "drawing";
 
 		$PRIZE_ITEM = getRandomItem();
-		await tick();
-		if (!$PRIZE_ITEM) return;
 
 		if (!$GUMBALL_DISPENSE_AUDIO.paused) {
 			$GUMBALL_DISPENSE_AUDIO.currentTime = 0;
 		}
 		$GUMBALL_DISPENSE_AUDIO.play();
+
+		await tick();
+		if (!$PRIZE_ITEM) return;
 
 		resetPositions();
 		await sleep(100);
