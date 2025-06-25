@@ -23,8 +23,8 @@
 		GAME_DATA,
 		GAME_STATE,
 		GUMBALL_DISPENSE_AUDIO,
-		PIGGYBANK_BALANCE,
 		TWEENED_BALANCE,
+		TWEENED_PIGGYBANK_BALANCE,
 	} from "./stores";
 	import { onMount } from "svelte";
 	import { getLocale } from "$lib/paraglide/runtime";
@@ -60,9 +60,12 @@
 	let activeTab = $state<(typeof TABS)[number]["id"]>("play");
 
 	onMount(() => {
-		GAME_DATA.subscribe(({ balance }) => {
+		GAME_DATA.subscribe(({ balance, piggybank }) => {
 			if (!TWEENED_BALANCE) return;
 			TWEENED_BALANCE.target = balance;
+
+			if (!TWEENED_PIGGYBANK_BALANCE) return;
+			TWEENED_PIGGYBANK_BALANCE.target = piggybank.balance;
 		});
 
 		// cheats >:3
@@ -75,12 +78,28 @@
 			};
 		}
 
-		const piggybankInterval = setInterval(() => {
-			if (PIGGYBANK_BALANCE.target >= PIGGYBANK.max) return;
-			const balanceTarget =
-				PIGGYBANK_BALANCE.target + PIGGYBANK.quantityEvery6Seconds;
-			PIGGYBANK_BALANCE.target =
+		const piggybankAfk =
+			parseInt(
+				(
+					(new Date().getTime() -
+						new Date($GAME_DATA.piggybank.updatedAt).getTime()) /
+					1000 /
+					6
+				).toString(),
+			) & PIGGYBANK.quantityEvery6Seconds;
+		if (piggybankAfk > 0) {
+			const balanceTarget = $GAME_DATA.piggybank.balance + piggybankAfk;
+			$GAME_DATA.piggybank.balance =
 				balanceTarget >= PIGGYBANK.max ? PIGGYBANK.max : balanceTarget;
+		}
+
+		const piggybankInterval = setInterval(() => {
+			if ($GAME_DATA.piggybank.balance >= PIGGYBANK.max) return;
+			const balanceTarget =
+				$GAME_DATA.piggybank.balance + PIGGYBANK.quantityEvery6Seconds;
+			$GAME_DATA.piggybank.balance =
+				balanceTarget >= PIGGYBANK.max ? PIGGYBANK.max : balanceTarget;
+			$GAME_DATA.piggybank.updatedAt = new Date().toString();
 		}, 6000);
 		return () => clearInterval(piggybankInterval);
 	});

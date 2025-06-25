@@ -8,6 +8,10 @@ export const GAME_STATE = writable<"idle" | "drawing" | "prize">("idle");
 
 type GameData = {
 	balance: number;
+	piggybank: {
+		balance: number;
+		updatedAt: string;
+	};
 	inventory: {
 		item: string;
 		quantity: number;
@@ -22,6 +26,10 @@ type GameData = {
 
 const EMPTY_GAME_DATA: GameData = {
 	balance: 500,
+	piggybank: {
+		balance: 0,
+		updatedAt: new Date().toString(),
+	},
 	inventory: [],
 	dailyRewards: {
 		startedAt: (() => {
@@ -51,10 +59,13 @@ export const CHA_CHING_AUDIO = writable<HTMLAudioElement>();
 
 export const GUMBALL_DISPENSE_AUDIO = writable<HTMLAudioElement>();
 
-export const PIGGYBANK_BALANCE = new Tween(0, {
-	duration: 800,
-	easing: cubicOut,
-});
+export const TWEENED_PIGGYBANK_BALANCE = new Tween(
+	get(GAME_DATA).piggybank.balance,
+	{
+		duration: 800,
+		easing: cubicOut,
+	},
+);
 
 export const PRIZE_ITEM = writable<Item | null>(null);
 

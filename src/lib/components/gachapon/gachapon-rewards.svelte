@@ -12,7 +12,7 @@
 	import { giveCoins } from "./utils";
 	import { Progress } from "$lib/components/ui/progress";
 	import { PiggyBank } from "@lucide/svelte";
-	import { GAME_DATA, PIGGYBANK_BALANCE } from "./stores";
+	import { GAME_DATA, TWEENED_PIGGYBANK_BALANCE } from "./stores";
 	import { onMount } from "svelte";
 
 	const DAILY_REWARDS = [
@@ -76,8 +76,8 @@
 	};
 
 	const cashOutPiggyBank = () => {
-		giveCoins(PIGGYBANK_BALANCE.target);
-		PIGGYBANK_BALANCE.target = 0;
+		giveCoins($GAME_DATA.piggybank.balance);
+		$GAME_DATA.piggybank.balance = 0;
 	};
 
 	onMount(() => {
@@ -194,7 +194,7 @@
 		<hr />
 
 		<h2 class="text-center text-lg font-semibold md:text-xl">
-			{#if PIGGYBANK_BALANCE.target >= PIGGYBANK.max}
+			{#if $GAME_DATA.piggybank.balance >= PIGGYBANK.max}
 				{m.piggybank_title_full()}
 			{:else}
 				{m.piggybank_title()}
@@ -219,12 +219,12 @@
 				<p
 					class={cn(
 						"text-body [&>span]:text-foreground [&>span]:transition-all",
-						PIGGYBANK_BALANCE.current >= PIGGYBANK.max &&
+						TWEENED_PIGGYBANK_BALANCE.current >= PIGGYBANK.max &&
 							"[&>span]:text-primary",
 					)}
 				>
 					<span class="text-foreground"
-						>{Math.floor(PIGGYBANK_BALANCE.current)}</span
+						>{Math.floor(TWEENED_PIGGYBANK_BALANCE.current)}</span
 					>
 					/
 					<span class="text-foreground">{PIGGYBANK.max}</span>
@@ -232,14 +232,15 @@
 				</p>
 				<Progress
 					class="[&_div]:transition-none"
-					value={PIGGYBANK_BALANCE.current}
+					value={TWEENED_PIGGYBANK_BALANCE.current}
 					max={PIGGYBANK.max}
 				/>
 			</div>
 			<Button
 				variant="outline"
-				disabled={PIGGYBANK_BALANCE.current < PIGGYBANK.quantityEvery6Seconds ||
-					PIGGYBANK_BALANCE.target < PIGGYBANK.quantityEvery6Seconds}
+				disabled={TWEENED_PIGGYBANK_BALANCE.current <
+					PIGGYBANK.quantityEvery6Seconds ||
+					$GAME_DATA.piggybank.balance < PIGGYBANK.quantityEvery6Seconds}
 				onclick={cashOutPiggyBank}
 			>
 				<CopperCoinLineFinance class="size-5" />
