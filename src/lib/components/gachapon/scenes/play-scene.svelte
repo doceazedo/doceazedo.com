@@ -263,7 +263,7 @@
 
 	onMount(() => ($IS_GUMBALL_LOADED = false));
 
-	GAME_STATE.subscribe((state) => {
+	GAME_STATE.subscribe(async (state) => {
 		if (state === "idle") {
 			resetPositions();
 			return;
@@ -271,6 +271,7 @@
 
 		if (state === "play_request") {
 			$GAME_STATE = "idle";
+			await tick();
 			dispense();
 			return;
 		}
