@@ -17,6 +17,7 @@
 		PlugFillOthers,
 		RemixiconLineLogos,
 		ServerLineDevice,
+		Translate2Editor,
 	} from "svelte-remix";
 	import List from "./list.svelte";
 	import {
@@ -87,6 +88,12 @@
 					description: m.brand_icons_library_description(),
 					icon: siSimpleicons.svg,
 					url: "https://simpleicons.org",
+				},
+				{
+					label: "Paraglide JS",
+					description: m.i18n_library_description(),
+					icon: Translate2Editor,
+					url: "https://mdsvex.pngwn.io",
 				},
 				{
 					label: "MDsveX",

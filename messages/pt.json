@@ -386,5 +386,6 @@
 	"gachapon_item_mustache": "Bigode falso",
 	"gachapon_item_description_mustache": "Nada demais.",
 	"gachapon_item_note": "Um bilhete do seu futuro eu",
-	"gachapon_item_description_note": "Apesar de tudo, ainda é você."
+	"gachapon_item_description_note": "Apesar de tudo, ainda é você.",
+	"i18n_library_description": "Internacionalização e tradução."
 }

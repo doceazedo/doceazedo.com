@@ -386,5 +386,6 @@
 	"gachapon_item_mustache": "Fake mustache",
 	"gachapon_item_description_mustache": "Don't worry about it.",
 	"gachapon_item_note": "A note from your future self",
-	"gachapon_item_description_note": "Despite everything, it's still you."
+	"gachapon_item_description_note": "Despite everything, it's still you.",
+	"i18n_library_description": "Internationalization and localization."
 }
