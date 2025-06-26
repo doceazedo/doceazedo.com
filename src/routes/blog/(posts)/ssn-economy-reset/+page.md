@@ -12,7 +12,7 @@ icon: "/img/grass-block.webp"
 
 People duped a lot of items during the server lifespan... which is fine, that is what anarchy is for. But at some point, the numbers got silly. New players had no reason to grind, as they could instantly get everything from other players or they wouldn't even stand a chance against older players.
 
-Some players came to me with a pitch. Coffofin and his friends from Mrrow Gang made a literal presentation with slides, sources, and everything. They asked for a soft reset. Not a map wipe. Just a way to make rare items rare again.
+Some players came to me with a pitch. Coffi, Cherosin and Gugibra (members of the Mrrow Gang) made a [literal presentation](https://www.youtube.com/watch?v=f5LOpbFgnX0) with slides, sources, and everything. They asked for a soft reset. Not a map wipe. Just a way to make rare items rare again.
 
 ## I've played these games before!!!
 
