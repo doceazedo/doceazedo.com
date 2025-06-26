@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pushState } from "$app/navigation";
 	import Prose from "$lib/components/parts/prose.svelte";
 	import Seo from "$lib/components/seo.svelte";
 	import { m } from "$lib/paraglide/messages.js";
@@ -17,46 +18,49 @@
 		tag: string;
 	};
 
+	const NAVBAR_OFFSET = 80;
 	const WPM = 250;
 
 	let { children, data } = $props();
 
-	let headings = $state<Heading[]>([]);
+	let headingEls = $state<HTMLHeadingElement[]>([]);
+	let headings = $derived<Heading[]>(
+		headingEls.map((x) => ({
+			label: x.innerText,
+			id: x.id,
+			tag: x.tagName.toLowerCase(),
+		})),
+	);
 	let activeHeading = $state("");
 	let activeHeadingIdx = $derived(
 		headings.findIndex((x) => x.id === activeHeading),
 	);
 	let readTime = $state(1);
+	let scrollY = $state(0);
+	let innerHeight = $state(0);
+
+	const onscroll = () => {
+		const topVisibleTitle = headingEls.find(
+			(x) => x.getBoundingClientRect().top >= NAVBAR_OFFSET,
+		);
+		if (!topVisibleTitle) return;
+		activeHeading = topVisibleTitle.id;
+	};
 
 	onMount(() => {
-		const headingEls = document.querySelectorAll<HTMLHeadingElement>(
-			".prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6",
-		);
-
-		headings = [...headingEls].map((x) => ({
-			label: x.innerText,
-			id: x.id,
-			tag: x.tagName.toLowerCase(),
-		}));
-
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach((entry) => {
-				const id = entry.target.getAttribute("id") || "";
-				if (entry.intersectionRatio > 0) {
-					activeHeading = id;
-				}
-			});
-		});
-
-		headingEls.forEach((section) => {
-			observer.observe(section);
-		});
+		headingEls = [
+			...document.querySelectorAll<HTMLHeadingElement>(
+				".prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6",
+			),
+		];
 
 		const prose = document.querySelector(".prose") as HTMLElement;
 		const words = prose.innerText.split(" ").length;
 		readTime = Math.round(words / WPM);
 	});
 </script>
+
+<svelte:window bind:scrollY bind:innerHeight {onscroll} />
 
 <Seo title="{data.metadata.title} • Doce Fernandes" />
 
@@ -109,12 +113,28 @@
 	>
 		<h1 class="ml-6 font-medium">{m.toc()}</h1>
 		<div class="relative flex flex-col gap-1.5">
-			{#each headings as heading}
+			{#each headings as heading, i}
+				{@const isActive =
+					activeHeading === heading.id || (activeHeading === "" && i === 0)}
 				<a
 					href="#{heading.id}"
+					onclick={(e) => {
+						e.preventDefault();
+						const top =
+							headingEls[i].getBoundingClientRect().top +
+							scrollY -
+							NAVBAR_OFFSET -
+							24;
+						pushState(`/blog/${data.slug}#${heading.id}`, {});
+						window.scrollTo({
+							top,
+							left: 0,
+							behavior: "smooth",
+						});
+					}}
 					class={cn(
 						"text-body hover:text-foreground relative flex h-6 items-center transition-all",
-						activeHeading === heading.id && "text-foreground",
+						isActive && "text-foreground",
 						heading.tag === "h2" && "pl-6",
 						heading.tag === "h3" && "pl-10",
 						heading.tag === "h4" && "pl-14",

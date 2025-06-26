@@ -4,5 +4,6 @@ export const load = async ({ route }) => {
 
 	return {
 		metadata: post.metadata,
+		slug,
 	};
 };
