@@ -35,7 +35,7 @@
 	"now_playing": "Now playing",
 	"licensed_under": "Website licensed under {license}.",
 	"last_played": "Last played",
-	"published_at": "Published at {date}",
+	"published_at": "Published at <span>{date}</span>",
 	"published_this_week": "This week",
 	"pinned": "Pinned",
 	"toc": "On this article",
@@ -387,5 +387,6 @@
 	"gachapon_item_description_mustache": "Don't worry about it.",
 	"gachapon_item_note": "A note from your future self",
 	"gachapon_item_description_note": "Despite everything, it's still you.",
-	"i18n_library_description": "Internationalization and localization."
+	"i18n_library_description": "Internationalization and localization.",
+	"read_time": "{min} min read"
 }

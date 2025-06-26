@@ -61,7 +61,7 @@
 	"portfolio_ssn_role": "Admin & Desenvolvedor",
 	"portfolio_ssn_details": "O servidor anárquico de Minecraft mais antigo do Brasil ainda em atividade, com mais de 5 anos de história de um mundo persistente. Zero regras, mundo infinito e um ecossistema de plugins totalmente open-source.\n\n&bull; Sistema de autenticação customizado permitindo acesso de jogadores pirata.\n&bull; Mundo persistente com 317GB+ de conteúdo gerado por jogadores desde 2020.\n&bull; Plugins open-source com contribuições da comunidade.\n&bull; Otimizações suportando 4.400+ jogadores únicos.",
 	"portfolio_powershift_media_devlog": "Eu mando videos de update de desenvolvimento como esse regularmente pros meus clientes de freela pra que eles possam ver o projeto tomando forma.",
-	"published_at": "Publicado em {date}",
+	"published_at": "Publicado em <span>{date}</span>",
 	"published_this_week": "Dessa semana",
 	"pinned": "Fixado",
 	"ready_when_you_are": "Pronto quando você estiver.",
@@ -387,5 +387,6 @@
 	"gachapon_item_description_mustache": "Nada demais.",
 	"gachapon_item_note": "Um bilhete do seu futuro eu",
 	"gachapon_item_description_note": "Apesar de tudo, ainda é você.",
-	"i18n_library_description": "Internacionalização e tradução."
+	"i18n_library_description": "Internacionalização e tradução.",
+	"read_time": "<span>{min} min</span> de leitura"
 }

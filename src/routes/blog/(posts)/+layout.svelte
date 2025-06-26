@@ -6,6 +6,7 @@
 	import { cn } from "$lib/utils.js";
 	import { onMount } from "svelte";
 	import {
+		BookReadLineDocument,
 		CalendarLineBusiness,
 		VerifiedBadgeFillBusiness,
 	} from "svelte-remix";
@@ -16,6 +17,8 @@
 		tag: string;
 	};
 
+	const WPM = 250;
+
 	let { children, data } = $props();
 
 	let headings = $state<Heading[]>([]);
@@ -23,6 +26,7 @@
 	let activeHeadingIdx = $derived(
 		headings.findIndex((x) => x.id === activeHeading),
 	);
+	let readTime = $state(1);
 
 	onMount(() => {
 		const headingEls = document.querySelectorAll<HTMLHeadingElement>(
@@ -47,6 +51,10 @@
 		headingEls.forEach((section) => {
 			observer.observe(section);
 		});
+
+		const prose = document.querySelector(".prose") as HTMLElement;
+		const words = prose.innerText.split(" ").length;
+		readTime = Math.round(words / WPM);
 	});
 </script>
 
@@ -56,19 +64,32 @@
 	<main class="mx-auto flex w-full max-w-2xl shrink-0 flex-col gap-12">
 		<header class="flex gap-3">
 			<img src={data.metadata.icon} alt="" class="size-12" />
-			<hgroup>
-				<h1 class="mb-3 text-3xl font-semibold lg:text-4xl">
+			<div class="flex flex-col gap-3">
+				<h1 class="text-3xl font-semibold lg:text-4xl">
 					{data.metadata.title}
 				</h1>
-				<p class="text-body flex items-center gap-1.5">
-					<CalendarLineBusiness class="size-4" />
-					{m.published_at({
-						date: new Date(`${data.metadata.date} GMT-3`).toLocaleDateString(
-							getLocale(),
-						),
-					})}
-				</p>
-			</hgroup>
+				<div class="flex flex-col gap-1.5 md:flex-row md:items-center md:gap-3">
+					<div class="text-body flex items-center gap-1.5">
+						<CalendarLineBusiness class="size-4" />
+						<p class="[&>span]:text-foreground">
+							{@html m.published_at({
+								date: new Date(
+									`${data.metadata.date} GMT-3`,
+								).toLocaleDateString(getLocale()),
+							})}
+						</p>
+					</div>
+					<span class="text-body/70 hidden md:block">&bull;</span>
+					<div class="text-body flex items-center gap-1.5">
+						<BookReadLineDocument class="size-4" />
+						<p class="[&>span]:text-foreground">
+							{@html m.read_time({
+								min: readTime,
+							})}
+						</p>
+					</div>
+				</div>
+			</div>
 		</header>
 		<Prose class="xl:prose-lg">
 			{@render children()}
@@ -84,7 +105,7 @@
 		</footer>
 	</main>
 	<aside
-		class="sticky top-32 hidden h-fit w-full flex-col gap-3 border-l lg:flex"
+		class="sticky top-32 hidden h-fit w-full max-w-[19rem] flex-col gap-3 border-l lg:flex"
 	>
 		<h1 class="ml-6 font-medium">{m.toc()}</h1>
 		<div class="relative flex flex-col gap-1.5">
@@ -100,7 +121,7 @@
 						heading.tag === "h5" && "pl-18",
 					)}
 				>
-					{heading.label}
+					<p class="truncate">{heading.label}</p>
 				</a>
 			{/each}
 			<span
