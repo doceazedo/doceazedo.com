@@ -51,6 +51,7 @@
 	"dependencies": {
 		"@dimforge/rapier3d-compat": "^0.17.3",
 		"@inlang/paraglide-js": "^2.0.0",
+		"@resvg/resvg-js": "^2.6.2",
 		"@threlte/core": "^8.0.5",
 		"@threlte/extras": "^9.4.0",
 		"@threlte/rapier": "^3.1.4",
@@ -64,7 +65,10 @@
 		"remark-code-title": "^0.2.5",
 		"remark-table-of-content": "^0.5.2",
 		"remark-table-of-contents": "^2.1.0",
-		"three": "^0.177.0"
+		"satori": "^0.15.2",
+		"satori-html": "^0.3.2",
+		"three": "^0.177.0",
+		"vite-plugin-arraybuffer": "^0.1.0"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [

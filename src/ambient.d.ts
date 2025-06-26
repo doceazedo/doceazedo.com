@@ -4,3 +4,8 @@ declare module "*.svg?component" {
 	const content: Component & { class?: string };
 	export default content;
 }
+
+declare module "*.ttf?arraybuffer" {
+	const content: ArrayBuffer;
+	export default content;
+}

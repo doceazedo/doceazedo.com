@@ -62,7 +62,10 @@
 
 <svelte:window bind:scrollY bind:innerHeight {onscroll} />
 
-<Seo title="{data.metadata.title} • Doce Fernandes" />
+<Seo
+	title="{data.metadata.title} • Doce Fernandes"
+	thumbnail="/blog/{data.slug}.png"
+/>
 
 <div class="flex w-full gap-12 py-12">
 	<main class="mx-auto flex w-full max-w-2xl shrink-0 flex-col gap-12">
