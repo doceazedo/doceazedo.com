@@ -86,11 +86,12 @@
 					1000 /
 					6
 				).toString(),
-			) & PIGGYBANK.quantityEvery6Seconds;
+			) * PIGGYBANK.quantityEvery6Seconds;
 		if (piggybankAfk > 0) {
 			const balanceTarget = $GAME_DATA.piggybank.balance + piggybankAfk;
 			$GAME_DATA.piggybank.balance =
 				balanceTarget >= PIGGYBANK.max ? PIGGYBANK.max : balanceTarget;
+			$GAME_DATA.piggybank.updatedAt = new Date().toString();
 		}
 
 		const piggybankInterval = setInterval(() => {
