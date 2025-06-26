@@ -32,6 +32,7 @@
 		siSimpleicons,
 		siSteam,
 		siSvelte,
+		siSvg,
 		siTailwindcss,
 		siVercel,
 	} from "simple-icons";
@@ -100,6 +101,12 @@
 					description: m.mdx_description(),
 					icon: MarkdownLineDocument,
 					url: "https://mdsvex.pngwn.io",
+				},
+				{
+					label: "Satori",
+					description: m.satori_description(),
+					icon: siSvg.svg,
+					url: "https://github.com/vercel/satori",
 				},
 				{
 					label: "Mapbox",

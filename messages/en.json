@@ -388,5 +388,6 @@
 	"gachapon_item_note": "A note from your future self",
 	"gachapon_item_description_note": "Despite everything, it's still you.",
 	"i18n_library_description": "Internationalization and localization.",
-	"read_time": "{min} min read"
+	"read_time": "{min} min read",
+	"satori_description": "Dynamic blog post thumbnails with HTML."
 }
