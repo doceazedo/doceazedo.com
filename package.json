@@ -24,6 +24,7 @@
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
 		"@tailwindcss/typography": "^0.5.16",
 		"@tailwindcss/vite": "^4.0.0",
+		"@types/steam-user": "^5.0.5",
 		"bits-ui": "^2.8.8",
 		"clsx": "^2.1.1",
 		"eslint": "^9.18.0",
@@ -67,6 +68,7 @@
 		"remark-table-of-contents": "^2.1.0",
 		"satori": "^0.15.2",
 		"satori-html": "^0.3.2",
+		"steam-user": "^5.2.3",
 		"three": "^0.177.0",
 		"vite-plugin-arraybuffer": "^0.1.0"
 	},
