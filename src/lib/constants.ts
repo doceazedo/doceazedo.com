@@ -4,7 +4,6 @@ import {
 	GithubLineLogos,
 	InstagramLineLogos,
 	LinkedinBoxLineLogos,
-	Music2FillMedia,
 	SoundcloudLineLogos,
 	SteamLineLogos,
 	TwitchLineLogos,
@@ -90,3 +89,5 @@ export const WORK = {
 };
 
 export const EMAIL = "doce@doceazedo.com";
+
+export const MEMOJI_HOVER_ACHIEVEMENT_THRESHOLD = 5;

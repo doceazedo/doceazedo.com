@@ -26,6 +26,9 @@
 	import { onMount } from "svelte";
 	import { Toaster } from "$lib/components/ui/sonner";
 	import Global from "$lib/components/global.svelte";
+	import { MEMOJI_BLINK_COUNT } from "$lib/stores";
+	import { fly } from "svelte/transition";
+	import { bounceOut } from "svelte/easing";
 
 	let { children } = $props();
 
@@ -42,8 +45,20 @@
 	let scrollY = $state(0);
 	let isDrawerOpen = $state(false);
 	let mounted = $state(false);
+	let showAchievement = $state(false);
+	let achievementAudio = $state<HTMLAudioElement>();
 
-	onMount(() => (mounted = true));
+	MEMOJI_BLINK_COUNT.subscribe((count) => {
+		if (count !== 5) return;
+		achievementAudio?.play();
+		showAchievement = true;
+		setTimeout(() => (showAchievement = false), 5000);
+	});
+
+	onMount(() => {
+		mounted = true;
+		showAchievement = false;
+	});
 </script>
 
 <svelte:window bind:scrollY />
@@ -128,6 +143,29 @@
 	{@render children()}
 	<Footer />
 </div>
+
+{#if showAchievement}
+	<div
+		transition:fly={{ duration: 800, y: -88, opacity: 1 }}
+		class="crisp fixed top-6 right-6 z-110 flex h-16 w-80 flex-col justify-center bg-[url(/img/achievement.webp)] py-2 pr-2 pl-15"
+		style="image-rendering:crisp-edges;"
+	>
+		<p class="font-minecraft font-book -mb-1.5 text-xl text-[#ffff00]">
+			{m.achievement_get()}
+		</p>
+		<p class="font-minecraft font-book text-xl text-white [word-spacing:2px]">
+			{m.achievement_memoji_blink({ quantity: 5 })}
+		</p>
+	</div>
+{/if}
+<audio
+	src="/audio/minecraft-xp.ogg"
+	preload="auto"
+	controls={false}
+	volume={0.5}
+	bind:this={achievementAudio}
+	class="hidden"
+></audio>
 
 <div
 	class={cn(
