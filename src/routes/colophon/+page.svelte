@@ -38,6 +38,7 @@
 	} from "simple-icons";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { Button } from "$lib/components/ui/button";
+	import Threlte from "$lib/components/icons/threlte.svg?component";
 </script>
 
 <Seo title={m.colophon_seo_title()} />
@@ -95,6 +96,12 @@
 					description: m.i18n_library_description(),
 					icon: Translate2Editor,
 					url: "https://mdsvex.pngwn.io",
+				},
+				{
+					label: "Threlte",
+					description: m.threejs_description(),
+					icon: Threlte,
+					url: "https://www.mapbox.com",
 				},
 				{
 					label: "MDsveX",

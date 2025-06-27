@@ -388,6 +388,7 @@
 	"gachapon_item_note": "A note from your future self",
 	"gachapon_item_description_note": "Despite everything, it's still you.",
 	"i18n_library_description": "Internationalization and localization.",
-	"read_time": "{min} min read",
-	"satori_description": "Dynamic blog post thumbnails with HTML."
+	"read_time": "<span>{min}</span> min read",
+	"satori_description": "Dynamic blog post thumbnails with HTML.",
+	"threejs_description": "3D framework for Svelte powered by <a href=\"https://threejs.org\" target=\"_blank\" rel=\"noopener noreferrer\">Three.js</a> and <a href=\"https://rapier.rs\" target=\"_blank\" rel=\"noopener noreferrer\">Rapier</a>."
 }

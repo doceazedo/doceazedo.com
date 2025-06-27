@@ -389,5 +389,6 @@
 	"gachapon_item_description_note": "Apesar de tudo, ainda é você.",
 	"i18n_library_description": "Internacionalização e tradução.",
 	"read_time": "<span>{min} min</span> de leitura",
-	"satori_description": "Capas de post dinâmicas feitas com HTML."
+	"satori_description": "Capas de post dinâmicas feitas com HTML.",
+	"threejs_description": "Framework 3D para Svelte com base no <a href=\"https://threejs.org\" target=\"_blank\" rel=\"noopener noreferrer\">Three.js</a> e <a href=\"https://rapier.rs\" target=\"_blank\" rel=\"noopener noreferrer\">Rapier</a>."
 }
