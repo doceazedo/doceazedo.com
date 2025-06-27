@@ -3,13 +3,21 @@
 	import { m } from "$lib/paraglide/messages";
 	import { WORK } from "$lib/constants";
 	import HeroDecorations from "./hero-decorations.svelte";
-	import { browser } from "$app/environment";
+	import { browser, dev } from "$app/environment";
 	import { onMount } from "svelte";
 	import { elasticFly } from "$lib/utils/transitions";
 	import { cn } from "$lib/utils";
 
+	const PET_OFFSET = -48;
+
+	let isPetting = $state(false);
+	let mouseX = $state(0);
+	let mouseY = $state(0);
+	let scrollY = $state(0);
+
 	let mounted = $state(!browser);
 	let finishedAnimations = $state(false);
+
 	onMount(() => {
 		mounted = true;
 		setTimeout(() => {
@@ -17,6 +25,14 @@
 		}, 800);
 	});
 </script>
+
+<svelte:window
+	bind:scrollY
+	onmousemove={(e) => {
+		mouseX = e.clientX;
+		mouseY = e.clientY - scrollY;
+	}}
+/>
 
 {#if mounted}
 	<section
@@ -94,7 +110,25 @@
 					delay: 200,
 				}}
 			></span>
+			<div
+				class={cn(
+					"ease-elastic absolute top-8 left-14 z-30 h-12 w-32 rounded-t-full transition-all group-hover:-translate-x-3 group-hover:translate-y-3 hover:cursor-none",
+					dev && "border border-red-500/50",
+				)}
+				aria-hidden="true"
+				onfocus={() => null}
+				onmouseover={() => (isPetting = true)}
+				onmouseleave={() => (isPetting = false)}
+			></div>
 		</figure>
+		{#if isPetting}
+			<img
+				src="/img/pet.gif"
+				alt=""
+				class="pointer-events-none fixed z-20 size-24"
+				style="left:{mouseX + PET_OFFSET}px;top:{mouseY + PET_OFFSET}px"
+			/>
+		{/if}
 		<p
 			class="text-body [&>span]:text-foreground [&>a]:text-foreground [&>a]:hover:text-primary relative z-0 mt-auto max-w-[27ch] translate-y-6 [&>a]:underline [&>a]:transition-all"
 			in:elasticFly={{
