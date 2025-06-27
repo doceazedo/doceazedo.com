@@ -20,7 +20,6 @@
 	import GachaponPrize from "../gachapon-prize.svelte";
 	import World from "./world.svelte";
 	import { giveItem } from "../utils";
-	import type { Group, Object3DEventMap } from "three";
 
 	const getSpherePosition = (
 		index: number,

@@ -73,6 +73,14 @@
 			window.rosebud = () => giveCoins(1000);
 			window.kaching = () => giveCoins(1000);
 			window.motherlode = () => giveCoins(50000);
+			window.giveItem = (id: string, quantity = 1) => {
+				const item = ITEMS.find((x) => x.id === id);
+				if (!item) {
+					console.error(`No such item: ${id}`);
+					return;
+				}
+				giveItem(item, quantity);
+			};
 			window.giveAll = () => {
 				ITEMS.forEach((item) => giveItem(item));
 			};
