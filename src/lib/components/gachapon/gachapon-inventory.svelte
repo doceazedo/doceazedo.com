@@ -298,7 +298,7 @@
 										src="/img/gachapon/{item.id}.webp"
 										alt=""
 										class={cn(
-											"relative z-20",
+											"pointer-events-none relative z-20 select-none",
 											owned
 												? "ease-elastic transition-all group-hover:scale-125"
 												: "opacity-20 brightness-0 contrast-0 dark:brightness-999999",
