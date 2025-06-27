@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ArrowRightUpLineArrows } from "svelte-remix";
 	import { m } from "$lib/paraglide/messages";
-	import { WORK } from "$lib/constants";
+	import { SOCIALS, WORK } from "$lib/constants";
 	import HeroDecorations from "./hero-decorations.svelte";
 	import { browser, dev } from "$app/environment";
 	import { onMount } from "svelte";
@@ -69,6 +69,10 @@
 				"relative z-0 mb-12 aspect-[4/5] w-full md:mb-0 md:w-60 md:scale-90 lg:scale-100",
 				finishedAnimations && "group",
 			)}
+			oncontextmenu={(e) => {
+				e.preventDefault();
+				window.open(SOCIALS.instagram.url, "_blank");
+			}}
 		>
 			<img
 				src="/img/selfie.webp"
