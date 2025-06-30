@@ -318,7 +318,7 @@ export const ITEMS: Item[] = [
 		description: m.gachapon_item_description_blood_ring(),
 		mesh: BloodRing as Component,
 		collection: "loot",
-		rarity: "exotic",
+		rarity: "legendary",
 		author: "quaternius",
 	},
 ];
