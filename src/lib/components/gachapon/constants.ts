@@ -38,7 +38,7 @@ export const RARITIES = [
 	{
 		id: "common",
 		label: m.common(),
-		odds: 0.5,
+		odds: 0.4,
 		textColor: "text-slate-500",
 		bgColor: "bg-slate-500!",
 		badgeColor: "bg-slate-500/20",
@@ -48,7 +48,7 @@ export const RARITIES = [
 	{
 		id: "uncommon",
 		label: m.uncommon(),
-		odds: 0.25,
+		odds: 0.35,
 		textColor: "text-emerald-500",
 		bgColor: "bg-emerald-500!",
 		badgeColor: "bg-emerald-500/20",
@@ -58,7 +58,7 @@ export const RARITIES = [
 	{
 		id: "rare",
 		label: m.rare(),
-		odds: 0.12,
+		odds: 0.15,
 		textColor: "text-blue-500",
 		bgColor: "bg-blue-500!",
 		badgeColor: "bg-blue-500/20",
@@ -68,7 +68,7 @@ export const RARITIES = [
 	{
 		id: "epic",
 		label: m.epic(),
-		odds: 0.07,
+		odds: 0.05,
 		textColor: "text-violet-500",
 		bgColor: "bg-violet-500!",
 		badgeColor: "bg-violet-500/20",
@@ -78,7 +78,7 @@ export const RARITIES = [
 	{
 		id: "legendary",
 		label: m.legendary(),
-		odds: 0.04,
+		odds: 0.03,
 		textColor: "text-amber-400",
 		bgColor: "bg-amber-400!",
 		badgeColor: "bg-amber-400/20",
@@ -361,5 +361,5 @@ type AuthorId = keyof typeof AUTHORS;
 
 export const PIGGYBANK = {
 	quantityEvery6Seconds: 5,
-	max: 250,
+	max: 150,
 };
