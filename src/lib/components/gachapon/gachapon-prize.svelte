@@ -17,20 +17,18 @@
 		rotationY?: number;
 	} = $props();
 
+	let dragging = $state(false);
+	let lastX = $state(0);
+	let enableIdleRotation = $derived(item.id !== "fidget-spinner");
+
 	const orbitRotation = new Spring(0, {
 		stiffness: 0.1,
 		damping: 0.5,
 	});
-	useTask((delta) => {
-		if (!dragging) {
-			orbitRotation.target += delta;
-		}
-	});
-
-	let dragging = $state(false);
-	let lastX = $state(0);
 
 	const onPointerDown = (e: IntersectionEvent<MouseEvent | TouchEvent>) => {
+		if (!enableIdleRotation) return;
+
 		dragging = true;
 		// @ts-ignore: already handled with `?.`
 		lastX = e.nativeEvent?.clientX || e.nativeEvent.touches?.[0]?.clientX || 0;
@@ -49,6 +47,11 @@
 		lastX = 0;
 		dragging = false;
 	};
+
+	useTask((delta) => {
+		if (dragging || !enableIdleRotation) return;
+		orbitRotation.target += delta;
+	});
 </script>
 
 <svelte:window

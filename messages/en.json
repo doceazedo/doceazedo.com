@@ -465,5 +465,7 @@
 	"gachapon_item_snack": "Half-eaten snack",
 	"gachapon_item_description_snack": "Just one bite in, there's plenty left still.",
 	"gachapon_item_pin_button": "Pride pin",
-	"gachapon_item_description_pin_button": "Small, loud, and packed with love."
+	"gachapon_item_description_pin_button": "Small, loud, and packed with love.",
+	"gachapon_item_fidget_spinner": "Fidget spinner",
+	"gachapon_item_description_fidget_spinner": "Yes, you can spin it. That's literally the whole point."
 }

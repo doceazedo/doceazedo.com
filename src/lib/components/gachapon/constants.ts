@@ -35,6 +35,7 @@ import Mustache from "./models/mustache.svelte";
 import Note from "./models/note.svelte";
 import Snack from "./models/snack.svelte";
 import PinButton from "./models/pin-button.svelte";
+import FidgetSpinner from "./models/fidget-spinner.svelte";
 
 export const RARITIES = [
 	{
@@ -224,6 +225,15 @@ export const ITEMS: Item[] = [
 		mesh: Note as Component,
 		collection: "pocket",
 		rarity: "legendary",
+		author: "doce",
+	},
+	{
+		id: "fidget-spinner",
+		label: m.gachapon_item_fidget_spinner(),
+		description: m.gachapon_item_description_fidget_spinner(),
+		mesh: FidgetSpinner as Component,
+		collection: "pocket",
+		rarity: "exotic",
 		author: "doce",
 	},
 
