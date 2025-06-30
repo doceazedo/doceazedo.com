@@ -460,5 +460,6 @@
 	"status_505_description": "I don't speak that HTTP version, what browser are you even using?",
 	"status_506_description": "This request tried to negotiate with itself and got stuck in a loop.",
 	"status_unknown_culprit": "Yup, that's 100% on <span>you</span>.",
-	"status_unknown_description": "You typed in an HTTP response that doesn't even exist, what were you expecting???"
+	"status_unknown_description": "You typed in an HTTP response that doesn't even exist, what were you expecting???",
+	"thanks_bus_driver": "You thanked the bus driver!"
 }

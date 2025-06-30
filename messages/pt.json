@@ -388,5 +388,6 @@
 	"gachapon_item_note": "Um bilhete do seu futuro eu",
 	"gachapon_item_description_note": "Apesar de tudo, ainda é você.",
 	"i18n_library_description": "Internacionalização e tradução.",
-	"read_time": "<span>{min} min</span> de leitura"
+	"read_time": "<span>{min} min</span> de leitura",
+	"thanks_bus_driver": "Você agradeceu ao motorista do ônibus!"
 }

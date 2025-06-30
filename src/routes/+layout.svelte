@@ -28,7 +28,7 @@
 	import Global from "$lib/components/global.svelte";
 	import { MEMOJI_BLINK_COUNT } from "$lib/stores";
 	import { fly } from "svelte/transition";
-	import { bounceOut } from "svelte/easing";
+	import { toast } from "svelte-sonner";
 
 	let { children } = $props();
 
@@ -47,6 +47,7 @@
 	let mounted = $state(false);
 	let showAchievement = $state(false);
 	let achievementAudio = $state<HTMLAudioElement>();
+	let busHornAudio = $state<HTMLAudioElement>();
 
 	MEMOJI_BLINK_COUNT.subscribe((count) => {
 		if (count !== 5) return;
@@ -55,13 +56,21 @@
 		setTimeout(() => (showAchievement = false), 5000);
 	});
 
+	const handleKeyPress = (event: KeyboardEvent) => {
+		if (event.key.toLowerCase() !== "b") return;
+		if (document.querySelector("input:focus")) return;
+
+		busHornAudio?.play();
+		toast.success(m.thanks_bus_driver());
+	};
+
 	onMount(() => {
 		mounted = true;
 		showAchievement = false;
 	});
 </script>
 
-<svelte:window bind:scrollY />
+<svelte:window bind:scrollY onkeydown={handleKeyPress} />
 
 <ModeWatcher defaultMode="dark" disableTransitions={false} />
 <Toaster richColors position="top-right" />
@@ -176,3 +185,12 @@
 	<Loader2LineSystem class="text-primary size-6 animate-spin" />
 	{m.loading()}
 </div>
+
+<audio
+	src="/audio/fortnite-bus-horn.ogg"
+	preload="auto"
+	controls={false}
+	volume={0.5}
+	bind:this={busHornAudio}
+	class="hidden"
+></audio>
