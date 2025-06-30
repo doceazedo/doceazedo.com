@@ -7,6 +7,7 @@
 	import { LAST_PLAYED_TRACKS } from "$lib/stores";
 	import { SOCIALS } from "$lib/constants";
 	import { getLocale } from "$lib/paraglide/runtime";
+	import { sineOut } from "svelte/easing";
 
 	const FOOTER_SOCIALS = [
 		SOCIALS.github,
@@ -22,18 +23,51 @@
 		pt: "https://www.gnu.org/licenses/copyleft.pt-br.html",
 	};
 
+	const ELEVATOR_SPEED = 800;
+
 	let scrollY = $state(0);
 	let innerHeight = $state(0);
 	let clientHeight = $state(1080);
+	let elevatorMusicAudio = $state<HTMLAudioElement>();
+	let elevatorChimeAudio = $state<HTMLAudioElement>();
 
 	let scrolledTo = $derived(scrollY + innerHeight);
 	let scrolledToBottom = $derived(scrolledTo >= clientHeight - 24);
 
 	const scrollToTop = () => {
-		if (scrollY > 0) {
-			window.requestAnimationFrame(scrollToTop);
-			window.scrollTo(0, scrollY - scrollY / 48);
+		if (elevatorMusicAudio) {
+			elevatorMusicAudio.currentTime = 0;
+			elevatorMusicAudio.play();
 		}
+
+		const startPosition = window.pageYOffset;
+		const distance = startPosition;
+		const duration = Math.max((distance / ELEVATOR_SPEED) * 1000, 300);
+		let startTime: number | null = null;
+
+		const animation = (currentTime: number) => {
+			if (startTime === null) startTime = currentTime;
+
+			const timeElapsed = currentTime - startTime;
+			const progress = Math.min(timeElapsed / duration, 1);
+			const easeProgress = sineOut(progress);
+
+			const currentPosition: number = startPosition - distance * easeProgress;
+			window.scrollTo(0, currentPosition);
+
+			if (progress < 1) {
+				requestAnimationFrame(animation);
+				return;
+			}
+
+			if (elevatorMusicAudio && elevatorChimeAudio) {
+				elevatorMusicAudio.pause();
+				elevatorChimeAudio.currentTime = 0;
+				elevatorChimeAudio.play();
+			}
+		};
+
+		requestAnimationFrame(animation);
 	};
 
 	let currentTrack = $derived<NowPlayingTrack | null>(
@@ -116,3 +150,19 @@
 >
 	<ElevatorUp class="transition-all" />
 </button>
+
+<audio
+	src="/audio/toby-fox-hotel.ogg"
+	preload="auto"
+	controls={false}
+	bind:this={elevatorMusicAudio}
+	class="hidden"
+></audio>
+<audio
+	src="/audio/chime.ogg"
+	preload="auto"
+	controls={false}
+	volume={0.5}
+	bind:this={elevatorChimeAudio}
+	class="hidden"
+></audio>
