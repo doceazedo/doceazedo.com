@@ -188,7 +188,7 @@
 		await sleep(1500);
 		capsulePosition.target = [0.9, 0.7, 0];
 
-		await sleep(20000);
+		await sleep(2000);
 		capsuleScale.target = [5, 5, 5];
 		capsulePosition.set([1.1, 2.15, 1.1], {
 			easing: cubicOut,
