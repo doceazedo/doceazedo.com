@@ -43,7 +43,7 @@
 					{@const publishDate = new Date(`${post.date} GMT-3`)}
 					<a
 						href="/blog/{post.slug}"
-						class="ease-elastic flex items-center gap-3 rounded border p-6 transition-all hover:-translate-y-1"
+						class="ease-elastic hover:before:bg-primary/5 dark:hover:before:bg-primary/10 hover:before:border-primary relative flex items-center gap-3 rounded border p-6 transition-all before:absolute before:top-0 before:left-0 before:-z-10 before:size-full before:rounded before:border before:border-transparent before:transition-all hover:-translate-y-1.5"
 						in:elasticFly|global={{
 							opacity: 0,
 							y: 24,
