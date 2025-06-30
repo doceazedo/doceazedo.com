@@ -245,7 +245,9 @@
 			<div class="flex flex-col gap-6 md:gap-12">
 				{#each orderByOption.orderedItems as group, i}
 					{@const isLastGroup = i >= orderByOption.orderedItems.length - 1}
-					<h2 class="text-foreground flex gap-3 text-xl md:text-2xl">
+					<h2
+						class="text-foreground flex items-center gap-3 text-xl md:text-2xl"
+					>
 						{#if group.icon}
 							<div
 								class={cn(
@@ -264,6 +266,15 @@
 							</div>
 						{/if}
 						{group.title}
+						{#if $ORDER_BY === "collection" || $ORDER_BY === "rarity"}
+							<span class="text-body/70 ml-auto text-sm"
+								>{group.items.filter((item) =>
+									$GAME_DATA.inventory.find(
+										(invItem) => invItem.item === item.id,
+									),
+								).length}/{group.items.length}</span
+							>
+						{/if}
 					</h2>
 					<div class="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-6">
 						{#each group.items as item (item.id)}
