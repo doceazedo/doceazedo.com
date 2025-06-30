@@ -116,7 +116,7 @@
 			></span>
 			<div
 				class={cn(
-					"ease-elastic absolute top-8 left-14 z-30 h-12 w-32 rounded-t-full transition-all group-hover:-translate-x-3 group-hover:translate-y-3 hover:cursor-none",
+					"ease-elastic absolute top-8 left-14 z-30 hidden h-12 w-32 rounded-t-full transition-all group-hover:-translate-x-3 group-hover:translate-y-3 hover:cursor-none md:block",
 					dev && "border border-red-500/50",
 				)}
 				aria-hidden="true"
