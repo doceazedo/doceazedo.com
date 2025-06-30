@@ -41,7 +41,7 @@ export const RARITIES = [
 	{
 		id: "common",
 		label: m.common(),
-		odds: 0.4,
+		odds: 0.38,
 		textColor: "text-slate-500",
 		bgColor: "bg-slate-500!",
 		badgeColor: "bg-slate-500/20",
@@ -51,7 +51,7 @@ export const RARITIES = [
 	{
 		id: "uncommon",
 		label: m.uncommon(),
-		odds: 0.35,
+		odds: 0.38,
 		textColor: "text-emerald-500",
 		bgColor: "bg-emerald-500!",
 		badgeColor: "bg-emerald-500/20",
@@ -71,7 +71,7 @@ export const RARITIES = [
 	{
 		id: "epic",
 		label: m.epic(),
-		odds: 0.05,
+		odds: 0.06,
 		textColor: "text-violet-500",
 		bgColor: "bg-violet-500!",
 		badgeColor: "bg-violet-500/20",
@@ -81,7 +81,7 @@ export const RARITIES = [
 	{
 		id: "legendary",
 		label: m.legendary(),
-		odds: 0.03,
+		odds: 0.025,
 		textColor: "text-amber-400",
 		bgColor: "bg-amber-400!",
 		badgeColor: "bg-amber-400/20",
@@ -91,7 +91,7 @@ export const RARITIES = [
 	{
 		id: "exotic",
 		label: m.exotic(),
-		odds: 0.02,
+		odds: 0.005,
 		textColor: "text-sky-300",
 		bgColor: "bg-sky-300!",
 		badgeColor: "bg-sky-300/20",
