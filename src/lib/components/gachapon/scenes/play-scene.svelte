@@ -170,8 +170,7 @@
 
 		coinMeshRotation.target = coinMeshRotation.current - degToRad(360 * 2);
 		gumballPosition.target = [0, 2.5, 0];
-		capsuleColor =
-			CAPSULE_COLORS[Math.floor(Math.random() * CAPSULE_COLORS.length)];
+		capsuleColor = "#eab308";
 
 		gravity = [0, 0, 0];
 		isShakingGumball = true;
@@ -189,7 +188,7 @@
 		await sleep(1500);
 		capsulePosition.target = [0.9, 0.7, 0];
 
-		await sleep(2000);
+		await sleep(20000);
 		capsuleScale.target = [5, 5, 5];
 		capsulePosition.set([1.1, 2.15, 1.1], {
 			easing: cubicOut,

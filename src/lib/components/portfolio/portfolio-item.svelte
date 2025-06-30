@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { cn } from "$lib/utils";
 	import GumballSpoiler from "$lib/components/icons/gumball-spoiler.svg?component";
+	import GumballOutline from "$lib/components/icons/gumball-outline.svg?component";
 	import type { Project } from "$lib/types";
 	import * as Dialog from "$lib/components/ui/dialog";
-	import { GAME_STATE } from "$lib/components/gachapon/stores";
+	import { GAME_DATA, GAME_STATE } from "$lib/components/gachapon/stores";
 	import GachaponDialog from "$lib/components/gachapon/gachapon-dialog.svelte";
 	import { m } from "$lib/paraglide/messages";
 	import { Button } from "$lib/components/ui/button";
@@ -14,6 +15,7 @@
 	import { elasticFly, elasticScale } from "$lib/utils/transitions";
 	import { fade } from "svelte/transition";
 	import { IS_DESKTOP } from "$lib/stores";
+	import Sunburst from "$lib/components/icons/sunburst.svg?component";
 
 	let visible = $state(!browser);
 	let hasLoadedVideo = $state(false);
@@ -35,6 +37,11 @@
 		// autoplay may not fire "onplay"
 		video?.play();
 	});
+
+	let hasPlayedGachapon = $derived($GAME_DATA.inventory.length !== 0);
+	let GumballIcon = $derived(
+		hasPlayedGachapon ? GumballOutline : GumballSpoiler,
+	);
 </script>
 
 <Dialog.Root onOpenChange={() => type === "gachapon" && ($GAME_STATE = "idle")}>
@@ -58,7 +65,7 @@
 						delay,
 					}}
 				>
-					<hgroup class="flex flex-col">
+					<hgroup class="z-10 flex flex-col">
 						<p
 							class="text-primary -mb-1 text-sm font-semibold uppercase"
 							in:elasticFly={{
@@ -103,12 +110,24 @@
 								delay: delay + 300,
 							}}
 						>
-							<GumballSpoiler
-								class="ease-elastic dark:text-muted text-border h-48 opacity-50 transition-all group-hover:scale-110 md:h-64 lg:h-auto"
+							<GumballIcon
+								class={cn(
+									"ease-elastic dark:text-muted text-border h-48 transition-all group-hover:scale-110 md:h-64 lg:h-auto",
+									!hasPlayedGachapon && "opacity-50",
+								)}
 							/>
-							<QuestionMarkEditor
-								class="text-primary dark:text-foreground absolute size-12 transition-all group-hover:scale-110"
-							/>
+							{#if hasPlayedGachapon}
+								<Sunburst
+									class="animation-duration-10000 text-primary/40 absolute -z-20 size-[48rem] animate-spin"
+								/>
+								<div
+									class="animation-duration-10000 from-background/80 to-background absolute -z-10 size-[64rem] animate-spin bg-radial to-30% md:to-50%"
+								></div>
+							{:else}
+								<QuestionMarkEditor
+									class="text-primary dark:text-foreground absolute size-6 transition-all group-hover:scale-110 md:size-12"
+								/>
+							{/if}
 						</div>
 
 						<!--
