@@ -463,5 +463,7 @@
 	"status_unknown_description": "You typed in an HTTP response that doesn't even exist, what were you expecting???",
 	"thanks_bus_driver": "You thanked the bus driver!",
 	"gachapon_item_snack": "Half-eaten snack",
-	"gachapon_item_description_snack": "Just one bite in, there's plenty left still."
+	"gachapon_item_description_snack": "Just one bite in, there's plenty left still.",
+	"gachapon_item_pin_button": "Pride pin",
+	"gachapon_item_description_pin_button": "Small, loud, and packed with love."
 }

@@ -391,5 +391,7 @@
 	"read_time": "<span>{min} min</span> de leitura",
 	"thanks_bus_driver": "Você agradeceu ao motorista do ônibus!",
 	"gachapon_item_snack": "Barrinha mordida",
-	"gachapon_item_description_snack": "Foi só uma mordidinha, ainda tem bastante."
+	"gachapon_item_description_snack": "Foi só uma mordidinha, ainda tem bastante.",
+	"gachapon_item_pin_button": "Botton do orgulho",
+	"gachapon_item_description_pin_button": "Pequeno, mas diz muito e transborda amor."
 }

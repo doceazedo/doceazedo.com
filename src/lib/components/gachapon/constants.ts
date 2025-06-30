@@ -34,6 +34,7 @@ import Fork from "./models/fork.svelte";
 import Mustache from "./models/mustache.svelte";
 import Note from "./models/note.svelte";
 import Snack from "./models/snack.svelte";
+import PinButton from "./models/pin-button.svelte";
 
 export const RARITIES = [
 	{
@@ -188,6 +189,15 @@ export const ITEMS: Item[] = [
 		collection: "pocket",
 		rarity: "rare",
 		author: "doce",
+	},
+	{
+		id: "pin-button",
+		label: m.gachapon_item_pin_button(),
+		description: m.gachapon_item_description_pin_button(),
+		mesh: PinButton as Component,
+		collection: "pocket",
+		rarity: "rare",
+		author: "drheartsuccess",
 	},
 	{
 		id: "fork",
@@ -364,6 +374,11 @@ export const AUTHORS = {
 		license: LICENSES.ccby,
 		name: "Enrique Poppe",
 		url: "https://sketchfab.com/depa_96",
+	},
+	drheartsuccess: {
+		license: LICENSES.ccby,
+		name: "Dr Heart Success",
+		url: "https://sketchfab.com/drheartsuccess",
 	},
 } as const;
 
