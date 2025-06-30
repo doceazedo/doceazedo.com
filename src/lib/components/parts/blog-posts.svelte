@@ -20,7 +20,7 @@
 		class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between"
 	>
 		<hgroup>
-			<h2 class="text-3xl">{m.articles()}</h2>
+			<h2 class="text-4xl">{m.articles()}</h2>
 			<p class="text-body">{m.articles_subtitle()}</p>
 		</hgroup>
 		<Button href="/blog" variant="link" class="w-fit">
