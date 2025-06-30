@@ -331,14 +331,14 @@
 	"gachapon_collection_y2k": "Y2K Starter Pack",
 	"gachapon_collection_loot": "Dungeon Loot",
 	"gachapon_item_cd": "CD",
-	"gachapon_item_mp3_player": "MP3 Player",
-	"gachapon_item_nds": "Handheld Console",
-	"gachapon_item_coin_bag": "Coin Bag",
+	"gachapon_item_mp3_player": "MP3 player",
+	"gachapon_item_nds": "Handheld console",
+	"gachapon_item_coin_bag": "Coin bag",
 	"gachapon_item_potion": "Potion",
 	"gachapon_item_sword": "Flimsy sword",
 	"gachapon_item_spellbook": "Spellbook",
-	"gachapon_item_blue_crystal": "Blue Crystal",
-	"gachapon_item_blood_ring": "Blood Ring",
+	"gachapon_item_blue_crystal": "Blue crystal",
+	"gachapon_item_blood_ring": "Blood ring",
 	"quantity": "Quantity",
 	"first_acquired": "First acquired",
 	"attribution": "Attribution",
@@ -461,5 +461,7 @@
 	"status_506_description": "This request tried to negotiate with itself and got stuck in a loop.",
 	"status_unknown_culprit": "Yup, that's 100% on <span>you</span>.",
 	"status_unknown_description": "You typed in an HTTP response that doesn't even exist, what were you expecting???",
-	"thanks_bus_driver": "You thanked the bus driver!"
+	"thanks_bus_driver": "You thanked the bus driver!",
+	"gachapon_item_snack": "Half-eaten snack",
+	"gachapon_item_description_snack": "Just one bite in, there's plenty left still."
 }

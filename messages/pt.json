@@ -389,5 +389,7 @@
 	"gachapon_item_description_note": "Apesar de tudo, ainda é você.",
 	"i18n_library_description": "Internacionalização e tradução.",
 	"read_time": "<span>{min} min</span> de leitura",
-	"thanks_bus_driver": "Você agradeceu ao motorista do ônibus!"
+	"thanks_bus_driver": "Você agradeceu ao motorista do ônibus!",
+	"gachapon_item_snack": "Barrinha mordida",
+	"gachapon_item_description_snack": "Foi só uma mordidinha, ainda tem bastante."
 }

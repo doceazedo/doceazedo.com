@@ -33,6 +33,7 @@ import Bottlecap from "./models/bottlecap.svelte";
 import Fork from "./models/fork.svelte";
 import Mustache from "./models/mustache.svelte";
 import Note from "./models/note.svelte";
+import Snack from "./models/snack.svelte";
 
 export const RARITIES = [
 	{
@@ -178,6 +179,15 @@ export const ITEMS: Item[] = [
 		collection: "pocket",
 		rarity: "uncommon",
 		author: "poly",
+	},
+	{
+		id: "snack",
+		label: m.gachapon_item_snack(),
+		description: m.gachapon_item_description_snack(),
+		mesh: Snack as Component,
+		collection: "pocket",
+		rarity: "rare",
+		author: "doce",
 	},
 	{
 		id: "fork",
