@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils";
+	import { cn, sleep } from "$lib/utils";
 	import GumballSpoiler from "$lib/components/icons/gumball-spoiler.svg?component";
 	import GumballOutline from "$lib/components/icons/gumball-outline.svg?component";
 	import type { Project } from "$lib/types";
@@ -8,7 +8,6 @@
 	import GachaponDialog from "$lib/components/gachapon/gachapon-dialog.svelte";
 	import { m } from "$lib/paraglide/messages";
 	import { Button } from "$lib/components/ui/button";
-	import { onMount } from "svelte";
 	import { QuestionMarkEditor } from "svelte-remix";
 	import { onVisible } from "$lib/utils/actions";
 	import { browser } from "$app/environment";
@@ -16,10 +15,6 @@
 	import { fade } from "svelte/transition";
 	import { IS_DESKTOP } from "$lib/stores";
 	import Sunburst from "$lib/components/icons/sunburst.svg?component";
-
-	let visible = $state(!browser);
-	let hasLoadedVideo = $state(false);
-	let video = $state<HTMLVideoElement | null>(null);
 
 	let {
 		project,
@@ -31,17 +26,21 @@
 		direction?: "column" | "row";
 	} = $props();
 
+	let visible = $state(!browser);
+	let showVideo = $state(false);
 	let delay = type === "gachapon" && $IS_DESKTOP ? 300 : 0;
-
-	onMount(() => {
-		// autoplay may not fire "onplay"
-		video?.play();
-	});
-
 	let hasPlayedGachapon = $derived($GAME_DATA.inventory.length !== 0);
 	let GumballIcon = $derived(
 		hasPlayedGachapon ? GumballOutline : GumballSpoiler,
 	);
+
+	const handleVisibilityChange = async () => {
+		visible = true;
+
+		if (!project.video) return;
+		await sleep(800);
+		showVideo = true;
+	};
 </script>
 
 <Dialog.Root onOpenChange={() => type === "gachapon" && ($GAME_STATE = "idle")}>
@@ -51,7 +50,7 @@
 			type === "desktop" ? "md:aspect-video" : "md:aspect-[4/5]",
 		)}
 	>
-		<div class="flex size-full" use:onVisible={() => (visible = true)}>
+		<div class="flex size-full" use:onVisible={handleVisibilityChange}>
 			{#if visible}
 				<div
 					class={cn(
@@ -184,14 +183,13 @@
 								{/if}
 								{#if project.video}
 									<video
-										bind:this={video}
 										class="size-full"
 										src={project.video}
 										muted
+										autoplay
 										controls={false}
 										playsinline
 										loop
-										onplay={() => (hasLoadedVideo = true)}
 									></video>
 								{/if}
 								<img
@@ -199,7 +197,7 @@
 									alt=""
 									class={cn(
 										"absolute size-full object-cover object-top transition-all",
-										hasLoadedVideo && "opacity-0",
+										showVideo && "opacity-0",
 									)}
 								/>
 							</figure>
