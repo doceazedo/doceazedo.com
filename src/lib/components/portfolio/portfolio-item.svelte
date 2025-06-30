@@ -213,6 +213,7 @@
 		class="h-[calc(100%-3rem)] max-w-[calc(100%-3rem)] sm:h-[calc(100%-6rem)] sm:max-w-[calc(100%-6rem)] 2xl:max-w-[96rem]"
 		disableCloseButton={$GAME_STATE === "drawing"}
 		escapeKeydownBehavior={$GAME_STATE === "drawing" ? "ignore" : "close"}
+		onOpenAutoFocus={() => null}
 	>
 		<Dialog.Header>
 			<Dialog.Description class="-mb-1.5 text-sm uppercase"
