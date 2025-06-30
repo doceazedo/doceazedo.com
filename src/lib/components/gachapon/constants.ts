@@ -234,7 +234,7 @@ export const ITEMS: Item[] = [
 		mesh: FidgetSpinner as Component,
 		collection: "pocket",
 		rarity: "exotic",
-		author: "doce",
+		author: "terrazicaio",
 	},
 
 	// y2k
@@ -389,6 +389,11 @@ export const AUTHORS = {
 		license: LICENSES.ccby,
 		name: "Dr Heart Success",
 		url: "https://sketchfab.com/drheartsuccess",
+	},
+	terrazicaio: {
+		license: LICENSES.ccby,
+		name: "Caio Lima",
+		url: "https://sketchfab.com/TerraziCaio",
 	},
 } as const;
 
