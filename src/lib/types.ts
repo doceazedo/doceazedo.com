@@ -1,3 +1,5 @@
+import type { SimpleIcon } from "simple-icons";
+
 export type Post = {
 	metadata: object;
 	date: string;
@@ -13,4 +15,21 @@ export type NowPlayingTrack = {
 	cover: string | null;
 	nowPlaying: boolean;
 	playedAt: string | null;
+};
+
+export type Project = {
+	pretitle: string;
+	title: string;
+	description: string;
+	thumbnail: string;
+	video?: string;
+	stack: (SimpleIcon | string)[];
+	role: string;
+	details: string;
+	links: { label: string; url: string }[];
+	media: {
+		url: string;
+		label: string;
+	}[];
+	visible?: boolean;
 };

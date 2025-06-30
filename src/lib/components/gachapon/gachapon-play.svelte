@@ -12,7 +12,7 @@
 		PRIZE_ITEM,
 	} from "./stores";
 	import { RARITIES } from "./constants";
-	import GumballSkeleton from "$lib/components/icons/gumball.svg?component";
+	import GumballSkeleton from "$lib/components/icons/gumball-skeleton.svg?component";
 	import { m } from "$lib/paraglide/messages";
 	import { Canvas } from "@threlte/core";
 	import { WebGLRenderer } from "three";
@@ -84,7 +84,7 @@
 	{/if}
 
 	{#if !$IS_GUMBALL_LOADED}
-		<GumballSkeleton class="absolute h-[22rem] animate-pulse" />
+		<GumballSkeleton class="text-muted/50 absolute h-[22rem] animate-pulse" />
 	{/if}
 </div>
 
