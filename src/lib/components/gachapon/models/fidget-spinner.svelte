@@ -61,7 +61,10 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/fidget-spinner.glb
 	useTask((delta) => {
 		rotationX += (velocity + idleSpeed) * delta;
 		velocity *= friction;
-		spinAudioVolume = Math.min(0.5, Math.max(0, ((velocity - 1) / 9) * 0.5));
+		spinAudioVolume = Math.min(
+			0.5,
+			Math.max(0, ((Math.abs(velocity) - 1) / 9) * 0.5),
+		);
 	});
 
 	onMount(() => {
