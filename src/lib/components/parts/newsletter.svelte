@@ -3,6 +3,10 @@
 	import { m } from "$lib/paraglide/messages";
 	import { Input } from "$lib/components/ui/input";
 	import { Label } from "$lib/components/ui/label";
+
+	const onSubscribe = () => {
+		window.open("https://buttondown.com/doce", "popupwindow");
+	};
 </script>
 
 <section
@@ -14,15 +18,23 @@
 			{m.newsletter_subtitle()}
 		</p>
 	</hgroup>
-	<div class="flex w-full flex-col gap-1.5 md:w-fit">
-		<Label>{m.your_email()}</Label>
+	<form
+		action="https://buttondown.com/api/emails/embed-subscribe/doce"
+		method="post"
+		target="popupwindow"
+		onsubmit={onSubscribe}
+		class="flex w-full flex-col gap-1.5 md:w-fit"
+	>
+		<Label for="bd-email">{m.your_email()}</Label>
 		<div class="flex">
 			<Input
 				type="email"
+				name="email"
+				id="bd-email"
 				placeholder={m.email_placeholder()}
 				class="w-full rounded-r-none md:w-64"
 			/>
 			<Button class="rounded-l-none">{m.subscribe()}</Button>
 		</div>
-	</div>
+	</form>
 </section>
