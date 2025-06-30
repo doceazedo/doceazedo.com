@@ -58,6 +58,19 @@
 	] as const;
 
 	let activeTab = $state<(typeof TABS)[number]["id"]>("play");
+	let hasAvailableRewards = $derived(
+		(() => {
+			const nextClaimDate = new Date($GAME_DATA.dailyRewards.startedAt);
+			nextClaimDate.setDate(
+				nextClaimDate.getDate() + $GAME_DATA.dailyRewards.streak + 1,
+			);
+			const today = new Date();
+			today.setHours(0, 0, 0, 0);
+			const canClaimDailyReward = nextClaimDate.getTime() === today.getTime();
+			const isPiggybankFull = $GAME_DATA.piggybank.balance >= PIGGYBANK.max;
+			return canClaimDailyReward || isPiggybankFull;
+		})(),
+	);
 
 	onMount(() => {
 		GAME_DATA.subscribe(({ balance, piggybank }) => {
@@ -175,7 +188,17 @@
 					</span>
 				{/key}
 			</span>
-			{tab.label}
+			<p class="flex items-center gap-1.5">
+				{tab.label}
+				{#if tab.id === "rewards" && hasAvailableRewards}
+					<span
+						class="bg-primary relative mt-px flex size-1.5 items-center justify-center rounded-full"
+					>
+						<span class="bg-primary absolute size-1.5 animate-ping rounded-full"
+						></span>
+					</span>
+				{/if}
+			</p>
 		</Button>
 	{/each}
 </Dialog.Footer>
