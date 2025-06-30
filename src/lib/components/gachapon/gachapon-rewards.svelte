@@ -91,10 +91,11 @@
 
 		const nextClaimInDays =
 			(nextClaimDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);
-		if (
-			nextClaimInDays >= 2 ||
-			(nextClaimInDays >= 1 && $GAME_DATA.dailyRewards.streak >= 6)
-		) {
+
+		const hasntClaimedYesterday = nextClaimInDays <= -1;
+		const hasClaimedAllYerterday =
+			$GAME_DATA.dailyRewards.streak >= 6 && nextClaimInDays === 0;
+		if (hasntClaimedYesterday || hasClaimedAllYerterday) {
 			$GAME_DATA.dailyRewards = {
 				startedAt: `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`,
 				streak: -1,
