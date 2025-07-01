@@ -467,5 +467,8 @@
 	"gachapon_item_pin_button": "Pride pin",
 	"gachapon_item_description_pin_button": "Small, loud, and packed with love.",
 	"gachapon_item_fidget_spinner": "Fidget spinner",
-	"gachapon_item_description_fidget_spinner": "Yes, you can spin it. That's literally the whole point."
+	"gachapon_item_description_fidget_spinner": "Yes, you can spin it. That's literally the whole point.",
+	"1_comment": "1 comment",
+	"x_comments": "{count} comments",
+	"comment_on_bluesky": "Join the conversation on BlueSky!"
 }

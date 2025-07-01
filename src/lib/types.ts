@@ -1,3 +1,9 @@
+import {
+	AppBskyFeedDefs,
+	AppBskyFeedGetLikes,
+	AppBskyFeedGetPostThread,
+	type $Typed,
+} from "@atproto/api";
 import type { SimpleIcon } from "simple-icons";
 
 export type Post = {
@@ -32,4 +38,11 @@ export type Project = {
 		label: string;
 	}[];
 	visible?: boolean;
+};
+
+export type PostActivity = {
+	bluesky: {
+		thread: $Typed<AppBskyFeedDefs.ThreadViewPost>;
+		likes: AppBskyFeedGetLikes.Like[];
+	};
 };
