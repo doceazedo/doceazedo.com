@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SectionTitleWithIcon from "$lib/components/parts/section-title-with-icon.svelte";
+	import SectionTitleWithIcon from "$lib/components/common/section-title-with-icon.svelte";
 	import { Button } from "$lib/components/ui/button";
 	import { m } from "$lib/paraglide/messages";
 	import { getLocale } from "$lib/paraglide/runtime";

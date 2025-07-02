@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Seo from "$lib/components/seo.svelte";
+	import Seo from "$lib/components/common/seo.svelte";
 	import { DOMAIN, SOCIALS, WORK } from "$lib/constants";
 	import { m } from "$lib/paraglide/messages";
 	import { getLocale } from "$lib/paraglide/runtime";

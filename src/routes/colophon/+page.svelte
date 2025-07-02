@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Prose from "$lib/components/parts/prose.svelte";
-	import SectionTitleWithIcon from "$lib/components/parts/section-title-with-icon.svelte";
-	import Seo from "$lib/components/seo.svelte";
+	import Prose from "$lib/components/common/prose.svelte";
+	import SectionTitleWithIcon from "$lib/components/common/section-title-with-icon.svelte";
+	import Seo from "$lib/components/common/seo.svelte";
 	import { m } from "$lib/paraglide/messages";
 	import {
 		CodeLineDevelopment,

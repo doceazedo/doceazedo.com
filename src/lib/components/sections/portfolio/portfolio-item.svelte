@@ -4,8 +4,8 @@
 	import GumballOutline from "$lib/components/icons/gumball-outline.svg?component";
 	import type { Project } from "$lib/types";
 	import * as Dialog from "$lib/components/ui/dialog";
-	import { GAME_DATA, GAME_STATE } from "$lib/components/gachapon/stores";
-	import GachaponDialog from "$lib/components/gachapon/gachapon-dialog.svelte";
+	import { GAME_DATA, GAME_STATE } from "$lib/components/misc/gachapon/stores";
+	import GachaponDialog from "$lib/components/misc/gachapon/gachapon-dialog.svelte";
 	import { m } from "$lib/paraglide/messages";
 	import { Button } from "$lib/components/ui/button";
 	import { QuestionMarkEditor } from "svelte-remix";

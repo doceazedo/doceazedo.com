@@ -3,7 +3,7 @@
 	import "../prism-theme-github-light.css";
 	import "../prism-theme-github-dark.css";
 	import { cn } from "$lib/utils";
-	import LanguagePicker from "$lib/components/settings/language-picker.svelte";
+	import LanguagSelector from "$lib/components/controls/language-selector.svelte";
 	import { Button } from "$lib/components/ui/button";
 	import {
 		Chat1LineCommunication,
@@ -17,15 +17,15 @@
 		User5LineUserFaces,
 	} from "svelte-remix";
 	import * as Drawer from "$lib/components/ui/drawer";
-	import Footer from "$lib/components/parts/footer.svelte";
-	import Memoji from "$lib/components/memoji.svelte";
+	import Footer from "$lib/components/layout/footer.svelte";
+	import Memoji from "$lib/components/misc/memoji.svelte";
 	import { page } from "$app/state";
 	import { m } from "$lib/paraglide/messages";
 	import { ModeWatcher } from "mode-watcher";
-	import DarkModeSwitch from "$lib/components/settings/dark-mode-switch.svelte";
+	import DarkModeToggle from "$lib/components/controls/dark-mode-toggle.svelte";
 	import { onMount } from "svelte";
 	import { Toaster } from "$lib/components/ui/sonner";
-	import Global from "$lib/components/global.svelte";
+	import GlobalState from "$lib/components/misc/global-state.svelte";
 	import { MEMOJI_BLINK_COUNT } from "$lib/stores";
 	import { fly } from "svelte/transition";
 	import { toast } from "svelte-sonner";
@@ -74,7 +74,7 @@
 
 <ModeWatcher defaultMode="dark" disableTransitions={false} />
 <Toaster richColors position="top-right" />
-<Global />
+<GlobalState />
 
 <nav
 	class={cn(
@@ -105,8 +105,8 @@
 				</a>
 			{/each}
 
-			<DarkModeSwitch class="-mr-1.5" />
-			<LanguagePicker />
+			<DarkModeToggle class="-mr-1.5" />
+			<LanguagSelector />
 		</div>
 
 		<Drawer.Root bind:open={isDrawerOpen}>
@@ -140,8 +140,8 @@
 				</nav>
 				<hr />
 				<div class="flex">
-					<LanguagePicker />
-					<DarkModeSwitch />
+					<LanguagSelector />
+					<DarkModeToggle />
 				</div>
 			</Drawer.Content>
 		</Drawer.Root>

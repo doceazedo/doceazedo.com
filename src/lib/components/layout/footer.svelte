@@ -3,7 +3,7 @@
 	import ElevatorUp from "$lib/components/icons/elevator-up.svg?component";
 	import { cn } from "$lib/utils";
 	import type { NowPlayingTrack } from "$lib/types";
-	import Memoji from "$lib/components/memoji.svelte";
+	import Memoji from "$lib/components/misc/memoji.svelte";
 	import { LAST_PLAYED_TRACKS } from "$lib/stores";
 	import { SOCIALS } from "$lib/constants";
 	import { getLocale } from "$lib/paraglide/runtime";

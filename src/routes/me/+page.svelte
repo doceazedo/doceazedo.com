@@ -20,7 +20,7 @@
 	import { MY_LOCATION, SOCIALS, WORK } from "$lib/constants";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import * as Tooltip from "$lib/components/ui/tooltip";
-	import Seo from "$lib/components/seo.svelte";
+	import Seo from "$lib/components/common/seo.svelte";
 	import { onMount } from "svelte";
 	import { browser } from "$app/environment";
 	import { elasticFly } from "$lib/utils/transitions";

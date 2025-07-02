@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { pushState } from "$app/navigation";
-	import Prose from "$lib/components/parts/prose.svelte";
-	import Seo from "$lib/components/seo.svelte";
+	import Prose from "$lib/components/common/prose.svelte";
+	import Seo from "$lib/components/common/seo.svelte";
 	import { m } from "$lib/paraglide/messages.js";
 	import { getLocale } from "$lib/paraglide/runtime.js";
 	import type { PostActivity } from "$lib/types.js";

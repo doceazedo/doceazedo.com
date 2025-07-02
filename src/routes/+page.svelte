@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Hero from "$lib/components/parts/hero.svelte";
-	import Portfolio from "$lib/components/parts/portfolio.svelte";
-	import BlogPosts from "$lib/components/parts/blog-posts.svelte";
-	import Newsletter from "$lib/components/parts/newsletter.svelte";
-	import Seo from "$lib/components/seo.svelte";
+	import Hero from "$lib/components/sections/hero/hero.svelte";
+	import Portfolio from "$lib/components/sections/portfolio/portfolio.svelte";
+	import BlogPosts from "$lib/components/sections/blog-posts.svelte";
+	import Newsletter from "$lib/components/sections/newsletter.svelte";
+	import Seo from "$lib/components/common/seo.svelte";
 </script>
 
 <Seo title="Doce Fernandes • Unicorn Developer, Designer & DJ" />

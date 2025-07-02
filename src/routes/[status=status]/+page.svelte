@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/state";
-	import ErrorPage from "$lib/components/parts/error-page.svelte";
-	import Seo from "$lib/components/seo.svelte";
+	import ErrorPage from "$lib/components/views/error-page.svelte";
+	import Seo from "$lib/components/common/seo.svelte";
 </script>
 
 <Seo />

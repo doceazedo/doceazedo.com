@@ -19,14 +19,14 @@
 		HeadphoneFillMedia,
 		UserLineUserFaces,
 	} from "svelte-remix";
-	import SectionTitleWithIcon from "$lib/components/parts/section-title-with-icon.svelte";
+	import SectionTitleWithIcon from "$lib/components/common/section-title-with-icon.svelte";
 	import { Button } from "$lib/components/ui/button";
 	import { IS_DESKTOP, LAST_PLAYED_TRACKS } from "$lib/stores";
 	import { Progress } from "$lib/components/ui/progress";
 	import { SOCIALS, WORK } from "$lib/constants";
 	import { cn } from "$lib/utils";
 	import { daysAgo } from "$lib/utils/date";
-	import Seo from "$lib/components/seo.svelte";
+	import Seo from "$lib/components/common/seo.svelte";
 	import { onMount } from "svelte";
 	import { browser } from "$app/environment";
 	import { elasticFly } from "$lib/utils/transitions";

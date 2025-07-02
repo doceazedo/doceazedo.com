@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { m } from "$lib/paraglide/messages";
-	import Seo from "$lib/components/seo.svelte";
+	import Seo from "$lib/components/common/seo.svelte";
 	import { Button } from "$lib/components/ui/button";
 	import { EMAIL, SOCIALS } from "$lib/constants";
 	import {

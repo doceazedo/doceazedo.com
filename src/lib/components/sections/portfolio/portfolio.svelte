@@ -11,7 +11,7 @@
 		siBackblaze,
 	} from "simple-icons";
 	import { m } from "$lib/paraglide/messages";
-	import PortfolioItem from "../portfolio/portfolio-item.svelte";
+	import PortfolioItem from "./portfolio-item.svelte";
 	import type { Project } from "$lib/types";
 	import { browser } from "$app/environment";
 	import { onMount } from "svelte";
