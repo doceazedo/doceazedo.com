@@ -8,7 +8,7 @@
 		Progress5LineSystem,
 		VipDiamondLineFinance,
 	} from "svelte-remix";
-	import { COLLECTIONS, ITEMS, RARITIES, type Item } from "../../constants";
+	import { COLLECTIONS, ITEMS, RARITIES } from "../../constants";
 	import { cn } from "$lib/utils";
 	import {
 		GAME_DATA,
@@ -25,6 +25,7 @@
 	import { flip } from "svelte/animate";
 	import InventoryItem from "./inventory-item.svelte";
 	import { m } from "$lib/paraglide/messages";
+	import type { Item } from "../../types";
 
 	type OrderBy = {
 		value: string;

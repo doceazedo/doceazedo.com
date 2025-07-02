@@ -1,6 +1,6 @@
 <script lang="ts">
+	import type { Item } from "../types";
 	import Prize from "./prize.svelte";
-	import type { Item } from "../constants";
 	import World from "./world.svelte";
 
 	let { item }: { item: Item } = $props();

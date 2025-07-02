@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cubicOut } from "svelte/easing";
 	import { cn } from "$lib/utils";
-	import { CopperCoinLineFinance, Swap2LineFinance } from "svelte-remix";
+	import { CopperCoinLineFinance } from "svelte-remix";
 	import Button from "$lib/components/ui/button/button.svelte";
 	import { scale } from "svelte/transition";
 	import {

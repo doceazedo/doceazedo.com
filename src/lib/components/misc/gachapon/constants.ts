@@ -45,6 +45,7 @@ import FidgetSpinner from "./models/pocket/fidget-spinner.svelte";
 import Rewards from "./views/rewards.svelte";
 import Play from "./views/play.svelte";
 import Inventory from "./views/inventory/inventory.svelte";
+import type { Item } from "./types";
 
 export const RARITIES = [
 	{
@@ -109,8 +110,6 @@ export const RARITIES = [
 	},
 ] as const;
 
-export type RarityId = (typeof RARITIES)[number]["id"];
-
 export const COLLECTIONS = [
 	{
 		id: "pocket",
@@ -131,18 +130,6 @@ export const COLLECTIONS = [
 		iconLine: SwordLineOthers,
 	},
 ] as const;
-
-export type CollectionId = (typeof COLLECTIONS)[number]["id"];
-
-export type Item = {
-	id: string;
-	label: string;
-	description: string;
-	mesh: Component;
-	collection: CollectionId;
-	rarity: RarityId;
-	author: AuthorId;
-};
 
 export const ITEMS: Item[] = [
 	// pocket
@@ -405,8 +392,6 @@ export const AUTHORS = {
 		url: "https://sketchfab.com/TerraziCaio",
 	},
 } as const;
-
-type AuthorId = keyof typeof AUTHORS;
 
 export const PIGGYBANK = {
 	quantityEvery6Seconds: 5,

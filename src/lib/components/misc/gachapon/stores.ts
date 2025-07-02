@@ -2,8 +2,7 @@ import { storage } from "$lib/utils/storage";
 import { cubicOut } from "svelte/easing";
 import { Tween } from "svelte/motion";
 import { get, writable } from "svelte/store";
-import type { Item } from "./constants";
-import type { GameData } from "./types";
+import type { GameData, Item } from "./types";
 
 export const GAME_STATE = writable<"idle" | "drawing" | "prize">("idle");
 

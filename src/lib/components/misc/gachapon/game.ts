@@ -5,8 +5,9 @@ import {
 	TWEENED_BALANCE,
 	TWEENED_PIGGYBANK_BALANCE,
 } from "./stores";
-import { ITEMS, PIGGYBANK, type Item } from "./constants";
+import { ITEMS, PIGGYBANK } from "./constants";
 import { dev } from "$app/environment";
+import type { Item } from "./types";
 
 export const giveCoins = (quantity: number) => {
 	const $GAME_DATA = get(GAME_DATA);

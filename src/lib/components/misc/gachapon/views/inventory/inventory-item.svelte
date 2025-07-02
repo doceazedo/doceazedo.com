@@ -6,7 +6,6 @@
 		COLLECTIONS,
 		PRICE_MULTIPLIER,
 		RARITIES,
-		type Item,
 	} from "../../constants";
 	import ItemViewerScene from "../../scenes/item-viewer-scene.svelte";
 	import Button from "$lib/components/ui/button/button.svelte";
@@ -24,6 +23,7 @@
 	import { giveCoins } from "../../game";
 	import { WebGLRenderer } from "three";
 	import { dev } from "$app/environment";
+	import type { Item } from "../../types";
 
 	let { item = $bindable() }: { item: Item | null } = $props();
 
