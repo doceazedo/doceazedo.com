@@ -137,6 +137,11 @@
 			label: m.uses_password_manager(),
 		},
 		{
+			icon: "/img/uses-mullvad.webp",
+			name: "Mullvad",
+			label: m.uses_vpn(),
+		},
+		{
 			icon: "/img/uses-docs.webp",
 			name: "Google Docs",
 			label: m.uses_documents(),
@@ -196,6 +201,19 @@
 		},
 	];
 
+	const MUSIC_SOFTWARE = [
+		{
+			icon: "/img/uses-flstudio.webp",
+			name: "FL Studio 21",
+			label: m.uses_daw(),
+		},
+		{
+			icon: "/img/uses-rekordbox.webp",
+			name: "Rekordbox",
+			label: m.uses_djing(),
+		},
+	];
+
 	let mounted = $state(!browser);
 
 	onMount(() => (mounted = true));
@@ -243,4 +261,6 @@
 	<AppsGrid label={m.uses_general_software()} items={GENERAL_SOFTWARE} />
 	<hr />
 	<AppsGrid label={m.uses_design_software()} items={DESIGN_SOFTWARE} />
+	<hr />
+	<AppsGrid label={m.uses_music_software()} items={MUSIC_SOFTWARE} />
 </div>

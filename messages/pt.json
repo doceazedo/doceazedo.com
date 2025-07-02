@@ -467,5 +467,9 @@
 	"gachapon_item_pin_button": "Botton do orgulho",
 	"gachapon_item_description_pin_button": "Pequeno, mas diz muito e transborda amor.",
 	"gachapon_item_fidget_spinner": "Fidget spinner",
-	"gachapon_item_description_fidget_spinner": "Sim, dá pra girar. É pra isso que serve, basicamente."
+	"gachapon_item_description_fidget_spinner": "Sim, dá pra girar. É pra isso que serve, basicamente.",
+	"uses_music_software": "Música",
+	"uses_daw": "DAW",
+	"uses_djing": "Discotecagem",
+	"uses_vpn": "VPN"
 }
