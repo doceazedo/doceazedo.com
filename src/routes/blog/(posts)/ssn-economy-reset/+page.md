@@ -1,7 +1,7 @@
 ---
 title: "How I used Rust to soft reset the economy of my 300 GB anarchy Minecraft server"
 date: "2025/06/26"
-icon: "/img/grass-block.webp"
+icon: "/img/icons/grass-block.webp"
 bskyPostId: "3lsk23dqwks2c"
 ---
 

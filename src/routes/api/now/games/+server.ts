@@ -3,8 +3,8 @@ import { json } from "@sveltejs/kit";
 import SteamUser from "steam-user";
 
 const GAME_COVER_OVERRIDES = {
-	fortnite: "/img/games/fortnite.webp",
-	480: "/img/games/spacewar.webp",
+	fortnite: "/img/now/games/fortnite.webp",
+	480: "/img/now/games/spacewar.webp",
 } as { [appid: number | string]: string };
 const STEAM_BASE_URL = "http://api.steampowered.com";
 const STEAM_ID = "76561198111145117";

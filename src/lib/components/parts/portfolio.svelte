@@ -28,15 +28,15 @@
 			links: [{ label: m.website(), url: "https://afterparty.fm" }],
 			media: [
 				{
-					url: "/img/afterparty-dashboard.webp",
+					url: "/img/portfolio/afterparty-dashboard.webp",
 					label: m.portfolio_afterparty_media_dashboard(),
 				},
 				{
-					url: "/img/afterparty-lp-mockup.webp",
+					url: "/img/portfolio/afterparty-lp-mockup.webp",
 					label: m.portfolio_afterparty_media_lp(),
 				},
 				{
-					url: "/img/afterparty-mobile.webp",
+					url: "/img/portfolio/afterparty-mobile.webp",
 					label: m.portfolio_afterparty_media_mobile(),
 				},
 				{
@@ -63,11 +63,11 @@
 			],
 			media: [
 				{
-					url: "/img/godot-wry-docs.webp",
+					url: "/img/portfolio/godot-wry-docs.webp",
 					label: m.portfolio_godot_wry_media_docs(),
 				},
 				{
-					url: "/img/godot-wry-transparent-webview.webp",
+					url: "/img/portfolio/godot-wry-transparent-webview.webp",
 					label: m.portfolio_godot_wry_media_simple_demo(),
 				},
 				{
@@ -87,15 +87,15 @@
 			links: [],
 			media: [
 				{
-					url: "/img/powershift-mobile-shift.webp",
+					url: "/img/portfolio/powershift-mobile-shift.webp",
 					label: m.portfolio_powershift_media_mobile(),
 				},
 				{
-					url: "/img/powershift-mobile-data.webp",
+					url: "/img/portfolio/powershift-mobile-data.webp",
 					label: m.portfolio_powershift_media_mobile_data(),
 				},
 				{
-					url: "/img/powershift-dashboard.webp",
+					url: "/img/portfolio/powershift-dashboard.webp",
 					label: m.portfolio_powershift_media_dashboard(),
 				},
 				{

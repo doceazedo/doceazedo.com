@@ -1,14 +1,14 @@
 ---
 title: "Photopea made me ditch Photoshop forever"
 date: "2022/05/03"
-icon: "/img/artist-emoji.svg"
+icon: "/img/icons/artist-emoji.svg"
 ---
 
 Pretty frequently I need to do some image editing. Usually nothing too complex and, following my roots of always having had a crappy computer, whenever I needed to make these quick edits, instead of opening Photoshop I preferred to use **[Photopea](https://photopea.com)**, an online image editor very similar to Adobe's program.
 
 Actually, in the last post about using [WordPress as a headless CMS](/blog/wordpress-headless-cms), all the images I used were made in Photopea. All the thumbnails so far were also made there:
 
-![](/img/wordpress-headless-cms.webp)
+![](/img/blog/photopea-vs-photoshop/wordpress-headless-cms.webp)
 
 For context, Photopea is basically a web-based clone of Photoshop that runs entirely in your browser. It looks almost identical to Photoshop, has most of the same tools, and supports PSD files. The crazy part is that it's completely free and you don't need to install anything.
 
@@ -57,7 +57,7 @@ The Spot Healing Brush automatically samples from around the area you're trying 
 I'll leave here an example of what my process looks like:
 
 <p align="center">
-  <img src="/img/photopea-workflow.gif">
+  <img src="/img/photopea-vs-photoshop/photopea-workflow.gif">
 </p>
 
 The workflow is super simple: open the photo, use spot healing to remove any blemishes, maybe do some color correction, crop to the right aspect ratio, and export. Takes maybe 2-3 minutes total.

@@ -1,7 +1,7 @@
 ---
 title: "How to create a Spigot plugin in Kotlin"
 date: "2021/12/15"
-icon: "/img/kotlin.svg"
+icon: "/img/icons/kotlin.svg"
 ---
 
 > 💡 **Hey, [this article is also available as a video in PT-BR](https://youtube.com/watch?v=yBa03w6Nk08)!**
@@ -24,7 +24,7 @@ As for the JDK (Java Development Kit), this choice will depend on which Java ver
 The JDK is basically the toolkit that contains everything you need to develop Java applications. Since Minecraft runs on Java and Kotlin compiles to Java bytecode, you need the appropriate JDK version installed.
 
 <p align="center">
-  <img src="/img/spigot-plugin-new-project.webp">
+  <img src="/img/blog/kotlin-spigot-plugin/new-project.webp">
 </p>
 
 With that, proceed to the next step. In **GroupId**, you should put your website domain in reverse, in my case it could be `com.doceazedo`. If you don't have one, you can use your GitHub username in the format `com.github.doceazedo`.
@@ -38,7 +38,7 @@ In **Version**, you can leave the default or change it however you want. This va
 Below, leave **Maven** selected.
 
 <p align="center">
-  <img src="/img/spigot-plugin-build-settings.webp">
+  <img src="/img/blog/kotlin-spigot-plugin/build-settings.webp">
 </p>
 
 In the Spigot settings, the **Plugin Name** and **Main Class Name** fields should already be filled as you wish, ~~but I prefer to change the main class, in the second field, to **Main**.~~
@@ -52,13 +52,13 @@ The version you choose determines which Spigot API features you'll have access t
 The fields below are optional. In **Load Prefix** you can repeat the plugin name, it will be used when printing messages to the console. **Load Before**, **Depend**, and **Soft Depend** can be left empty, as they refer to the list of plugins that are necessary for ours to work, and at this moment there aren't any. The other fields are self-explanatory.
 
 <p align="center">
-  <img src="/img/spigot-plugin-spigot-settings.webp">
+  <img src="/img/blog/kotlin-spigot-plugin/spigot-settings.webp">
 </p>
 
 Finally, define the project name and where it will be saved on your machine. You can repeat the plugin name here again.
 
 <p align="center">
-  <img src="/img/spigot-plugin-project-name.webp">
+  <img src="/img/blog/kotlin-spigot-plugin/project-name.webp">
 </p>
 
 ## Configuring Kotlin
@@ -66,7 +66,7 @@ Finally, define the project name and where it will be saved on your machine. You
 Now you already have the skeleton of a Spigot plugin in Java. To use Kotlin, the first step is to open the project until you reach the main class, right-click and then select **Convert Java File to Kotlin File**. Click **OK** to configure Kotlin in the project and **OK** again.
 
 <p align="center">
-  <img src="/img/spigot-plugin-convert.webp">
+  <img src="/img/blog/kotlin-spigot-plugin/convert.webp">
 </p>
 
 The **pom.xml** file will open. In it we need to change the Java version from "1.8" to the one we chose earlier (in my case, 16). You can use `CTRL + H` (or `CTRL + R`, at least on my machine) to find all occurrences of "1.8" and replace with the correct version. Or if you prefer to do the replacement manually, look for the `<java.version>` and `<jvmTarget>` tags.
@@ -74,17 +74,17 @@ The **pom.xml** file will open. In it we need to change the Java version from "1
 The pom.xml file is Maven's configuration file. It's like a recipe that tells Maven what dependencies to download, what Java version to use, and how to build your project. When we change the Java version here, we're telling Maven to compile our code for that specific Java version.
 
 <p align="center">
-  <img src="/img/spigot-plugin-java-version.gif">
+  <img src="/img/blog/kotlin-spigot-plugin/java-version.gif">
 </p>
 
 Now at the end of the file, look for the **kotlin-stdlib-jdk8** dependency and simply replace it with **kotlin-stdlib**.
 
 The Kotlin standard library (stdlib) contains all the core Kotlin functions and classes. The jdk8 version was specific to Java 8, but the regular stdlib works across different Java versions, making it more flexible.
 
-Then click the <img src="/img/spigot-plugin-maven-icon.webp" style="display:inline;margin:0"> icon to update the changes we made. Wait a few seconds and notice that the **pom.xml** will no longer have any errors.
+Then click the <img src="/img/blog/kotlin-spigot-plugin/maven-icon.webp" style="display:inline;margin:0"> icon to update the changes we made. Wait a few seconds and notice that the **pom.xml** will no longer have any errors.
 
 <p align="center">
-  <img src="/img/spigot-plugin-kotlin-stdlib.gif">
+  <img src="/img/blog/kotlin-spigot-plugin/kotlin-stdlib.gif">
 </p>
 
 Now right-click again on the main class, and then select **Convert Java File to Kotlin File**. Then click **Yes** and you're done, we can now write Spigot plugins in Kotlin! 🥳
@@ -123,7 +123,7 @@ There's no secret here. Although the focus of this post is explaining how to cre
 For this, I'll create a package called **commands** and an object called **HelloWorldCmd**. This is a structure I like and it looks something like this:
 
 <p align="center">
-  <img src="/img/spigot-plugin-structure.webp">
+  <img src="/img/blog/kotlin-spigot-plugin/structure.webp">
 </p>
 
 In Kotlin, an `object` is a singleton class, meaning there's only ever one instance of it. This is perfect for command handlers since we don't need multiple instances of the same command logic.
@@ -174,5 +174,5 @@ class Main : JavaPlugin() {
 **Done!** At this point you've created a Spigot project, configured Kotlin, learned how to generate the JAR file, and used the Spigot API and Kotlin features to develop your first command. Take a look at how it looks when we take the compiled file and put it inside a server:
 
 <p align="center">
-  <img src="/img/spigot-plugin-result.gif">
+  <img src="/img/blog/kotlin-spigot-plugin/result.gif">
 </p>

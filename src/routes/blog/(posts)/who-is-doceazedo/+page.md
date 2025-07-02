@@ -1,7 +1,7 @@
 ---
 title: "So, who the f*ck is DoceAzedo?"
 date: "2022/07/19"
-icon: "/img/raising-hand-emoji.svg"
+icon: "/img/icons/raising-hand-emoji.svg"
 ---
 
 > 👋 Hey, Doce from 2025 here! I changed even more since I originally wrote this, but I thought it would be good to keep this post online for the ages.
@@ -23,7 +23,7 @@ Especially because in a three-year window, nobody is the same person at the end,
 So gradually I started perceiving and understanding that the depreciation of my old name in favor of the name "Doce" was more than a visual identity change of a brand, but rather a change in the way to better represent who I am.
 
 <p align="center">
-  <img src="/img/old-taylor.gif">
+  <img src="/img/blog/who-is-doceazedo/old-taylor.gif">
 </p>
 
 Non-binary identity, for those who might not be familiar, means I don't exclusively identify as male or female. It's part of the broader transgender umbrella, and using different names or pronouns is a common way for non-binary people to express their authentic selves. The fact that "Doce" feels more aligned with who I really am isn't just about branding, it's about gender expression and personal authenticity.

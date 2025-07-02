@@ -1,7 +1,7 @@
 ---
 title: "Getting started with Svelte 4: overview & first steps"
 date: "2023/02/15"
-icon: "/img/svelte.svg"
+icon: "/img/icons/svelte.svg"
 ---
 
 When I started learning JavaScript and all the frontend tooling around it, I felt kind of overwhelmed by React and Vue. After trying and failing to understand React, I found Svelte, and honestly...? That changed everything.
@@ -34,7 +34,7 @@ Before installing anything, go to the [REPL](https://svelte.dev/repl). It’s an
 
 When you open it, you’ll see something like this:
 
-![](/img/svelte-overview-repl-hello-world.webp)
+![](/img/blog/getting-started-with-svelte-4/repl-hello-world.webp)
 
 On the left, your code. On the right, the output.
 
@@ -63,7 +63,7 @@ That’s a full component. You have the logic (`<script>`), the markup (`<button
 Here’s how it looks when you run it:
 
 <p align="center">
-  <img src="/img/svelte-overview-counter.gif" />
+  <img src="/img/blog/getting-started-with-svelte-4/counter.gif" />
 </p>
 
 Now let’s add some style:
@@ -86,7 +86,7 @@ Now let’s add some style:
 The styles are scoped. That means they don’t affect anything outside of this file.
 
 <p align="center">
-  <img src="/img/svelte-overview-counter-style.webp" style="height:203px" />
+  <img src="/img/blog/getting-started-with-svelte-4/counter-style.webp" style="height:203px" />
 </p>
 
 A Svelte component usually has up to three parts: script, markup, and style. All optional, all scoped.
@@ -137,7 +137,7 @@ Now put it all together in **App.svelte**:
 ```
 
 <p align="center">
-  <img src="/img/svelte-overview-counter-button.webp" style="height:217px" />
+  <img src="/img/blog/getting-started-with-svelte-4/counter-button.webp" style="height:217px" />
 </p>
 
 ### Props
@@ -184,7 +184,7 @@ Let’s say you want to show the current count outside the component:
 That won’t work. The variable inside `Counter` updates, but `App`’s `count` stays the same:
 
 <p align="center">
-  <img src="/img/svelte-overview-data-binding-fail.gif" />
+  <img src="/img/blog/getting-started-with-svelte-4/data-binding-fail.gif" />
 </p>
 
 To sync them, use `bind:`:
@@ -194,7 +194,7 @@ To sync them, use `bind:`:
 ```
 
 <p align="center">
-  <img src="/img/svelte-overview-data-binding.gif" />
+  <img src="/img/blog/getting-started-with-svelte-4/data-binding.gif" />
 </p>
 
 ## Setting up Svelte locally
@@ -210,7 +210,7 @@ npm run dev
 
 <p>
   <video autoplay loop controls playsinline>
-    <source src="/video/svelte-overview-scaffold.mp4" type="video/mp4">
+    <source src="/video/blog/getting-started-with-svelte-4/scaffold.mp4" type="video/mp4">
   </video>
 </p>
 
@@ -268,7 +268,7 @@ Now create a list in **UsersGrid.svelte** and use `#each`:
 ```
 
 <p align="center">
-  <img src="/img/svelte-overview-users-grid.webp" style="height:222px" />
+  <img src="/img/blog/getting-started-with-svelte-4/users-grid.webp" style="height:222px" />
 </p>
 
 ## Conditional rendering with #if
@@ -288,7 +288,7 @@ And dynamic classes:
 ```
 
 <p align="center">
-  <img src="/img/svelte-overview-users-grid-admin.webp" style="height:257px" />
+  <img src="/img/blog/getting-started-with-svelte-4/users-grid-admin.webp" style="height:257px" />
 </p>
 
 ## Lifecycle: onMount
@@ -308,7 +308,7 @@ Use `onMount()` to run code when a component is rendered.
 ```
 
 <p align="center">
-  <img src="/img/svelte-overview-fetch.webp" />
+  <img src="/img/blog/getting-started-with-svelte-4/fetch.webp" />
 </p>
 
 ## Next steps

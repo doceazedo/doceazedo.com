@@ -229,7 +229,7 @@
 		</p>
 		<h3>{m.overall_design()}</h3>
 		<p>{m.overall_design_description()}</p>
-		<img src="/img/figma-zoomed-out-screenshot.webp" alt="" />
+		<img src="/img/colophon/figma-zoomed-out-screenshot.webp" alt="" />
 		{@html m.overall_design_details()}
 		<h3>{m.key_principles()}</h3>
 		{@html m.key_principles_description()}
@@ -303,11 +303,11 @@
 
 		<h3>2022-2024</h3>
 		<p>{m.previous_versions_v2022()}</p>
-		<img src="/img/lp-2024.webp" alt="" />
+		<img src="/img/colophon/lp-2024.webp" alt="" />
 
 		<h3>2021</h3>
 		<p>{m.previous_versions_v2021()}</p>
-		<img src="/img/lp-2021.webp" alt="" />
+		<img src="/img/colophon/lp-2021.webp" alt="" />
 	</Prose>
 
 	<hr />

@@ -1,7 +1,7 @@
 ---
 title: "Old school: Using WordPress as a headless CMS"
 date: "2022/01/11"
-icon: "/img/wordpress.svg"
+icon: "/img/icons/wordpress.svg"
 ---
 
 Before we dive in, let me warn you that this is one of those messy posts where we're gonna chat more than follow a strict tutorial. So if you want to skip all the rambling, [click here](#turning-wordpress-into-a-headless-cms).
@@ -29,7 +29,7 @@ I even considered testing Strapi, since I always hear a lot about it, but to hos
 I've used WordPress for many years. I know and love this bastard better than I'd like to, and despite the countless disadvantages it brings as a complete CMS, it provides an API out of the box that would allow me to use it as a ✨ _headless CMS_ ✨ very easily.
 
 <p align="center">
-  <img src="/img/embrace-wp.webp">
+  <img src="/img/blog/wordpress-headless-cms/embrace-wp.webp">
 </p>
 
 But what about hosting? Well, even without having any active projects on Hostinger, I've been renting shared hosting with them for many years that always saves me when I need to upload a file via FTP or run a PHP script. And that's also where all my emails are, and imagine having to migrate all of them 🥶 I won't stop paying for my plan there anytime soon.
@@ -57,7 +57,7 @@ header('location: https://doceazedo.com');
 In a proper headless CMS, we can create our own content types and what fields they carry. In WordPress, everything is considered a post (posts, pages, comments) and there are several plugins that help us create different types of posts and extend existing ones. Since we're making a blog, we're just going to add a few extra things to the post. And this is when I reunite with an old love: [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields) 💖
 
 <p align="center">
-  <img src="/img/its-all-posts.webp">
+  <img src="/img/blog/wordpress-headless-cms/its-all-posts.webp">
 </p>
 
 ACF allows you to create custom fields for our posts. In my case, I needed to create a field to upload an icon (which I place next to the title) and another that serves as a hashtag list. I could even use the categories that WordPress itself provides, but it's not exactly the way I wanted, and that's the beauty of this whole thing, it's very easy to do whatever I want with WordPress plus ACF! 😍

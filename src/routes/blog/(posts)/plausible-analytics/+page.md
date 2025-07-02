@@ -1,7 +1,7 @@
 ---
 title: "Track your site traffic with privacy using Plausible"
 date: "2023/04/03"
-icon: "/img/detective-emoji.svg"
+icon: "/img/icons/detective-emoji.svg"
 ---
 
 I always wanted to know how many people visit my site, where they come from, which pages they care about and how they navigate it. The problem was that tools like Google Analytics felt way too invasive for me.
@@ -12,21 +12,21 @@ A little over a month ago I found [Plausible](https://plausible.io/). It is an *
 
 The setup is chill. Go to the site and click **Start free trial**. You do not need a credit card and the trial lasts 30 days with full access to the platform.
 
-![](/img/plausible-register-button.webp)
+![](/img/blog/plausible-analytics/register-button.webp)
 
 The sign up form is clean and simple. You will fill in your name, email and a password. After that you will get a confirmation code by email to activate your account.
 
-![](/img/plausible-register-form.webp)
+![](/img/blog/plausible-analytics/register-form.webp)
 
 Next you will enter your site’s domain. In my case that was **doceazedo.com**. You also choose your timezone so your traffic reports are shown using the correct time reference.
 
-![](/img/plausible-register-domain.webp)
+![](/img/blog/plausible-analytics/register-domain.webp)
 
 ## Adding the script to your site
 
 Once you finish setting up your account and site, Plausible gives you a script tag to include in your website. This script goes into your `<head>` tag.
 
-![](/img/plausible-snippet.webp)
+![](/img/blog/plausible-analytics/snippet.webp)
 
 How you add this script depends on how your site is built. My site uses [SvelteKit](https://kit.svelte.dev) so I just added the script inside `src/app.html`, right above `%sveltekit.head%`.
 
@@ -52,14 +52,14 @@ Once the script is on your site, you can hit the **Start collecting data** butto
 
 You should now see a dashboard like this:
 
-![](/img/plausible-dashboard.webp)
+![](/img/blog/plausible-analytics/dashboard.webp)
 
 If your dashboard is blank, it may be because no one has accessed your site yet. Try visiting it yourself to trigger the first hit.
 
 If you still see nothing, open your browser DevTools (press `F12`) and check if the script is actually present inside the `<head>`.
 
 <p align="center">
-  <img src="/img/plausible-script.webp">
+  <img src="/img/blog/plausible-analytics/script.webp">
 </p>
 
 If it is missing, go back and verify the installation steps. It could also be a caching issue. Try forcing a refresh with `Ctrl + F5` on Windows or Linux, or `Cmd + Shift + R` on Mac.
@@ -91,7 +91,7 @@ You can also enable weekly or monthly email reports. Plausible will email you an
 
 <p>
   <video autoplay loop controls playsinline>
-    <source src="/video/plausible-email-reports.mp4" type="video/mp4">
+    <source src="/video/blog/plausible-analytics/email-reports.mp4" type="video/mp4">
   </video>
 </p>
 

@@ -49,7 +49,7 @@
 			pt: "A Crônica do Matador do Rei: Primeiro Dia",
 		},
 		author: "Patrick Rothfuss",
-		cover: "/img/o-nome-do-vento.webp",
+		cover: "/img/now/books/o-nome-do-vento.webp",
 		url: "https://www.goodreads.com/book/show/8480575-o-nome-do-vento",
 		pages: {
 			read: 108,

@@ -29,10 +29,10 @@
 	let { data } = $props();
 
 	const PHOTOS = [
-		"/img/me-haircut.webp",
-		"/img/me-lhamaday.webp",
-		"/img/me-copacabana.webp",
-		"/img/me-wicked.webp",
+		"/img/me/haircut.webp",
+		"/img/me/lhamaday.webp",
+		"/img/me/copacabana.webp",
+		"/img/me/wicked.webp",
 	];
 
 	const TLDR = [

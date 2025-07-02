@@ -1,7 +1,7 @@
 ---
 title: "How I hacked a CouchDB database and ended up compromising a machine"
 date: "2023/05/07"
-icon: "/img/technologist-emoji.svg"
+icon: "/img/icons/technologist-emoji.svg"
 ---
 
 My friend [Leozinho](https://github.com/leoggo) called me to play capture the flag. I innocently accepted without knowing it was actually a CTF (**C**apture **t**he **F**lag), an information security challenge where you have to hack a system to get a secret key.
@@ -62,7 +62,7 @@ CouchDB is a NoSQL database that stores data as JSON documents. Unlike tradition
 
 The challenge also asks for the routes to the database's admin panel and to list all databases. A quick Google search gives us `_utils` and `_all_dbs`, respectively. We can access these routes in the browser to confirm the answer and get full access to the database:
 
-![](/img/tryhackme-couch-utils.webp)
+![](/img/blog/tryhackme-couch/utils.webp)
 
 No password or anything? This is too good to be true... 🤨
 
@@ -70,7 +70,7 @@ This is a classic example of a misconfigured service. CouchDB, like many databas
 
 Anyway... the "secret" database catches our attention right away. Opening it, we can see a "passwordbackup" field with a username and password in plain text without any encryption:
 
-![](/img/tryhackme-couch-secret.webp)
+![](/img/blog/tryhackme-couch/secret.webp)
 
 Storing passwords in plain text is one of the biggest security no-nos. Passwords should always be hashed (run through a one-way mathematical function) so that even if someone gets access to the database, they can't see the actual passwords.
 
@@ -88,12 +88,12 @@ SSH (Secure Shell) is a protocol that allows secure remote access to computers. 
 
 The password is requested right after and indeed, the username and password are correct. We got access to the machine. We hacked the mainframe. 😎
 
-![](/img/tryhackme-couch-ssh.webp)
+![](/img/blog/tryhackme-couch/ssh.webp)
 
 Now let's find the "user.txt" file. We can start by using `ls` to list the files in the current directory and... it's here. The file is already here. And we can get the key by printing the file contents with the `cat user.txt` command and _voilà_: `THM{1ns3cure_couchdb}` ✨
 
 <p align="center">
-  <img src="/img/cat-we-do-a-little-hacking.gif" />
+  <img src="/img/blog/tryhackme-couch/cat-we-do-a-little-hacking.gif" />
 </p>
 
 The `ls` command lists directory contents (like `dir` on Windows), and `cat` displays file contents. These are some of the most basic Linux commands, but they're super useful for navigating and exploring systems.
@@ -148,7 +148,7 @@ The `chmod +x` command makes a file executable. In Linux, files need explicit ex
 After a few minutes, I got an extensive list full of system information and possible vulnerabilities:
 
 <p align="center">
-  <img src="/img/tryhackme-couch-linenum.webp" style="height:310px" />
+  <img src="/img/blog/tryhackme-couch/linenum.webp" style="height:310px" />
 </p>
 
 At this stage, I had to analyze all the information presented to me, which is pretty difficult when you're not sure what you're looking for. I tried to follow the post's tips on how to analyze the information, but without much success. After a good while, Leozinho pointed out that what I needed was right in front of me, that is, right at the end of the LinEnum results.
@@ -174,7 +174,7 @@ The `docker ps` command lists currently running containers, similar to how `ps` 
 After burning through a few more brain cells, Leozinho repeated the hint he had given me earlier. And analyzing the LinEnum results once more, we can see the user's command history and one of these commands is Docker-related.
 
 <p align="center">
-  <img src="/img/tryhackme-couch-docker-rce.webp" style="height:310px" />
+  <img src="/img/blog/tryhackme-couch/docker-rce.webp" style="height:310px" />
 </p>
 
 I won't lie, I have no idea what this command is, but it's very similar to what I saw in the resources I found and indeed can be used for the same purpose! Reading the command, we can see that it mounts local files in the `/mnt` directory of the container.
@@ -183,7 +183,7 @@ This command is creating a Docker container that mounts the entire root filesyst
 
 And precisely in `/mnt` we have another `root` directory with the `root.txt` file storing our so desired flag: `THM{RCE_us1ng_Docker_API}` 🥳🏁
 
-![](/img/tryhackme-couch-fin.webp)
+![](/img/blog/tryhackme-couch/fin.webp)
 
 RCE stands for Remote Code Execution, which is what we achieved by exploiting the Docker configuration to run commands with elevated privileges.
 

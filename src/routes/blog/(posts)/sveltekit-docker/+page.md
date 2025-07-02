@@ -1,7 +1,7 @@
 ---
 title: "How to use SvelteKit with Docker"
 date: "2023/07/27"
-icon: "/img/docker-moby.svg"
+icon: "/img/icons/docker-moby.svg"
 ---
 
 Want to dockerize your SvelteKit project? It's super easy, I'll show you! ☺️
@@ -129,4 +129,4 @@ There are tons of optimizations you can make, like multi-stage builds (where you
 
 > 💡 Depending on each project's dependencies, configurations can get more complex, for example, with monorepos or when using Prisma (which needs specific setup for database connections and migrations in containers).
 
-If you have any questions, drop them in the comments! If I can't answer, I'll get [Leozinho](/blog/tryhackme-couch#:~:text=Leozinho) to help out! 💜
+If you have any questions, drop them in the comments! If I can't answer, I'll get [Leozinho](/blog/blog/tryhackme-couch#:~:text=Leozinho) to help out! 💜
