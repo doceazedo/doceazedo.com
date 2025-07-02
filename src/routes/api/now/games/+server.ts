@@ -81,7 +81,7 @@ const _gameSteamAppCover = async (appid: number) => {
 		libraryCapsule?.image2x?.english || libraryCapsule?.image?.english;
 	return cover
 		? `https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/${appid}/${cover}`
-		: null;
+		: `https://placehold.co/600x900?text=${encodeURIComponent(appInfo.common.name)}`;
 };
 
 const getGameCover = async (appid: number | string) => {
