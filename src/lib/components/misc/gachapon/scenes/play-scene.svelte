@@ -170,7 +170,8 @@
 
 		coinMeshRotation.target = coinMeshRotation.current - degToRad(360 * 2);
 		gumballPosition.target = [0, 2.5, 0];
-		capsuleColor = "#eab308";
+		capsuleColor =
+			CAPSULE_COLORS[Math.floor(Math.random() * CAPSULE_COLORS.length)];
 
 		gravity = [0, 0, 0];
 		isShakingGumball = true;
