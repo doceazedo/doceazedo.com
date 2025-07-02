@@ -1,4 +1,5 @@
 import type { Component } from "svelte";
+import { m } from "$lib/paraglide/messages";
 import {
 	AliensFillUserFaces,
 	AliensLineUserFaces,
@@ -21,27 +22,26 @@ import {
 	WalletFillFinance,
 	WalletLineFinance,
 } from "svelte-remix";
-import Mp3Player from "./models/mp3-player.svelte";
-import Nds from "./models/nds.svelte";
-import Cd from "./models/cd.svelte";
-import Potion from "./models/potion.svelte";
-import Spellbook from "./models/spellbook.svelte";
-import Sword from "./models/sword.svelte";
-import Crystal from "./models/crystal.svelte";
-import BloodRing from "./models/blood-ring.svelte";
-import CoinBag from "./models/coin-bag.svelte";
-import { m } from "$lib/paraglide/messages";
-import Receipt from "./models/receipt.svelte";
-import Keys from "./models/keys.svelte";
-import Bhbus from "./models/bhbus.svelte";
-import Earbud from "./models/earbud.svelte";
-import Bottlecap from "./models/bottlecap.svelte";
-import Fork from "./models/fork.svelte";
-import Mustache from "./models/mustache.svelte";
-import Note from "./models/note.svelte";
-import Snack from "./models/snack.svelte";
-import PinButton from "./models/pin-button.svelte";
-import FidgetSpinner from "./models/fidget-spinner.svelte";
+import Mp3Player from "./models/y2k/mp3-player.svelte";
+import Nds from "./models/y2k/nds.svelte";
+import Cd from "./models/y2k/cd.svelte";
+import Potion from "./models/loot/potion.svelte";
+import Spellbook from "./models/loot/spellbook.svelte";
+import Sword from "./models/loot/sword.svelte";
+import Crystal from "./models/loot/crystal.svelte";
+import BloodRing from "./models/loot/blood-ring.svelte";
+import CoinBag from "./models/loot/coin-bag.svelte";
+import Receipt from "./models/pocket/receipt.svelte";
+import Keys from "./models/pocket/keys.svelte";
+import Bhbus from "./models/pocket/bhbus.svelte";
+import Earbud from "./models/pocket/earbud.svelte";
+import Bottlecap from "./models/pocket/bottlecap.svelte";
+import Fork from "./models/pocket/fork.svelte";
+import Mustache from "./models/pocket/mustache.svelte";
+import Note from "./models/pocket/note.svelte";
+import Snack from "./models/pocket/snack.svelte";
+import PinButton from "./models/pocket/pin-button.svelte";
+import FidgetSpinner from "./models/pocket/fidget-spinner.svelte";
 import Rewards from "./views/rewards.svelte";
 import Play from "./views/play.svelte";
 import Inventory from "./views/inventory/inventory.svelte";
