@@ -76,13 +76,9 @@ const _gameSteamAppCover = async (appid: number) => {
 
 	const app = await steam.getProductInfo([appid], [], true);
 	const appInfo = app.apps[appid].appinfo;
+	const libraryCapsule = appInfo?.common?.library_assets_full?.library_capsule;
 	const cover =
-		appInfo?.common?.library_assets_full?.library_capsule?.image2x?.english;
-	console.log(
-		cover
-			? `https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/${appid}/${cover}`
-			: null,
-	);
+		libraryCapsule?.image2x?.english || libraryCapsule?.image?.english;
 	return cover
 		? `https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/${appid}/${cover}`
 		: null;
