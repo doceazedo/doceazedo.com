@@ -192,7 +192,7 @@
 				{tab.label}
 				{#if tab.id === "rewards" && hasAvailableRewards}
 					<span
-						class="bg-primary relative mt-px flex size-1.5 items-center justify-center rounded-full"
+						class="bg-primary relative mt-px flex size-1.5 shrink-0 items-center justify-center rounded-full"
 					>
 						<span class="bg-primary absolute size-1.5 animate-ping rounded-full"
 						></span>

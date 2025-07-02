@@ -42,7 +42,9 @@
 					}}
 					closeOnSelect={false}
 				>
-					<lang.flag class="size-4" />
+					<i class="size-4 overflow-hidden rounded-full">
+						<lang.flag class="size-4" />
+					</i>
 					{lang.label}
 				</DropdownMenu.CheckboxItem>
 			{/each}
