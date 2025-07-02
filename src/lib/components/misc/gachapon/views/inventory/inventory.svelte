@@ -8,9 +8,14 @@
 		Progress5LineSystem,
 		VipDiamondLineFinance,
 	} from "svelte-remix";
-	import { COLLECTIONS, ITEMS, RARITIES, type Item } from "./constants";
+	import { COLLECTIONS, ITEMS, RARITIES, type Item } from "../../constants";
 	import { cn } from "$lib/utils";
-	import { GAME_DATA, ORDER_BY, TWEENED_BALANCE } from "./stores";
+	import {
+		GAME_DATA,
+		IS_INVENTORY_BALANCE_VISIBLE,
+		ORDER_BY,
+		TWEENED_BALANCE,
+	} from "../../stores";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { Button } from "$lib/components/ui/button";
 	import * as Select from "$lib/components/ui/select";
@@ -18,7 +23,7 @@
 	import { onMount, type Component } from "svelte";
 	import { fade } from "svelte/transition";
 	import { flip } from "svelte/animate";
-	import GachaponInventoryItem from "./gachapon-inventory-item.svelte";
+	import InventoryItem from "./inventory-item.svelte";
 	import { m } from "$lib/paraglide/messages";
 
 	type OrderBy = {
@@ -106,6 +111,7 @@
 	);
 
 	let scrollEl: HTMLElement;
+	let balanceEl: HTMLElement;
 
 	let viewItem: Item | null = $state(null);
 
@@ -114,11 +120,20 @@
 		$GAME_DATA.inventory = $GAME_DATA.inventory.filter((invItem) =>
 			ITEMS.find((item) => item.id === invItem.item),
 		);
+
+		$IS_INVENTORY_BALANCE_VISIBLE = true;
 	});
+
+	const BALANCE_TOP_OFFSET = 96;
+	const updateBalanceVisibilityStatus = () => {
+		const rect = balanceEl.getBoundingClientRect();
+		$IS_INVENTORY_BALANCE_VISIBLE = rect.top - BALANCE_TOP_OFFSET >= 0;
+	};
 </script>
 
 <div
 	class="relative flex size-full flex-col overflow-y-scroll lg:flex-row lg:overflow-y-hidden"
+	onscroll={updateBalanceVisibilityStatus}
 >
 	<div
 		class="pointer-events-none top-0 left-0 flex size-full flex-col gap-6 p-6 pb-0 md:gap-12 md:p-12 md:pb-0 lg:absolute lg:grid lg:grid-cols-12 lg:pb-12"
@@ -146,7 +161,7 @@
 					<div
 						class="col-span-6 flex items-center justify-center gap-6 lg:col-span-3 lg:flex-col lg:gap-3 xl:flex-row xl:gap-6"
 					>
-						<div class="flex items-center gap-1.5">
+						<div class="flex items-center gap-1.5" bind:this={balanceEl}>
 							<CopperCoinLineFinance class="size-5 text-amber-500" />
 							{Math.floor(TWEENED_BALANCE.current).toLocaleString(getLocale())}
 						</div>
@@ -351,4 +366,4 @@
 	</div>
 </div>
 
-<GachaponInventoryItem bind:item={viewItem} />
+<InventoryItem bind:item={viewItem} />

@@ -7,6 +7,8 @@ import type { GameData } from "./types";
 
 export const GAME_STATE = writable<"idle" | "drawing" | "prize">("idle");
 
+export const ACTIVE_TAB = writable<"rewards" | "play" | "inventory">("play");
+
 const EMPTY_GAME_DATA: GameData = {
 	balance: 500,
 	piggybank: {
@@ -53,3 +55,5 @@ export const TWEENED_PIGGYBANK_BALANCE = new Tween(
 export const PRIZE_ITEM = writable<Item | null>(null);
 
 export const IS_GUMBALL_LOADED = writable(false);
+
+export const IS_INVENTORY_BALANCE_VISIBLE = writable(true);

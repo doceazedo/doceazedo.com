@@ -1,5 +1,5 @@
 <script lang="ts">
-	import GachaponPrize from "../gachapon-prize.svelte";
+	import Prize from "./prize.svelte";
 	import type { Item } from "../constants";
 	import World from "./world.svelte";
 
@@ -7,5 +7,5 @@
 </script>
 
 <World>
-	<GachaponPrize {item} />
+	<Prize {item} />
 </World>

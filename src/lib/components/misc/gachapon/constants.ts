@@ -2,11 +2,17 @@ import type { Component } from "svelte";
 import {
 	AliensFillUserFaces,
 	AliensLineUserFaces,
+	ArchiveStackFillBusiness,
+	ArchiveStackLineBusiness,
 	CircleFillDesign,
 	CreativeCommonsByLineBusiness,
 	CreativeCommonsZeroLineBusiness,
+	GiftFillFinance,
+	GiftLineFinance,
 	HexagonFillDesign,
 	PentagonFillDesign,
+	SparklingFillWeather,
+	SparklingLineWeather,
 	SquareFillDesign,
 	SwordFillOthers,
 	SwordLineOthers,
@@ -36,6 +42,9 @@ import Note from "./models/note.svelte";
 import Snack from "./models/snack.svelte";
 import PinButton from "./models/pin-button.svelte";
 import FidgetSpinner from "./models/fidget-spinner.svelte";
+import Rewards from "./views/rewards.svelte";
+import Play from "./views/play.svelte";
+import Inventory from "./views/inventory/inventory.svelte";
 
 export const RARITIES = [
 	{
@@ -403,3 +412,27 @@ export const PIGGYBANK = {
 	quantityEvery6Seconds: 5,
 	max: 150,
 };
+
+export const TABS = [
+	{
+		id: "rewards" as const,
+		label: m.rewards(),
+		icon: GiftLineFinance,
+		iconActive: GiftFillFinance,
+		content: Rewards,
+	},
+	{
+		id: "play" as const,
+		label: m.play_tab(),
+		icon: SparklingLineWeather,
+		iconActive: SparklingFillWeather,
+		content: Play,
+	},
+	{
+		id: "inventory" as const,
+		label: m.inventory(),
+		icon: ArchiveStackLineBusiness,
+		iconActive: ArchiveStackFillBusiness,
+		content: Inventory,
+	},
+];

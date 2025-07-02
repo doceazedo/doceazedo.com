@@ -7,8 +7,8 @@
 		PRICE_MULTIPLIER,
 		RARITIES,
 		type Item,
-	} from "./constants";
-	import ItemViewerScene from "./scenes/item-viewer-scene.svelte";
+	} from "../../constants";
+	import ItemViewerScene from "../../scenes/item-viewer-scene.svelte";
 	import Button from "$lib/components/ui/button/button.svelte";
 	import {
 		CalendarLineBusiness,
@@ -17,11 +17,11 @@
 		FileCopyLineDocument,
 	} from "svelte-remix";
 	import { cn } from "$lib/utils";
-	import { GAME_DATA } from "./stores";
+	import { GAME_DATA } from "../../stores";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { m } from "$lib/paraglide/messages";
 	import { Slider } from "$lib/components/ui/slider";
-	import { giveCoins } from "./game";
+	import { giveCoins } from "../../game";
 	import { WebGLRenderer } from "three";
 	import { dev } from "$app/environment";
 

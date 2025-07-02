@@ -5,14 +5,14 @@
 		GiftLineFinance,
 	} from "svelte-remix";
 	import { Button } from "$lib/components/ui/button";
-	import { PIGGYBANK, RARITIES } from "./constants";
+	import { PIGGYBANK, RARITIES } from "../constants";
 	import { cn } from "$lib/utils";
 	import { readyInDays } from "$lib/utils/date";
 	import { m } from "$lib/paraglide/messages";
-	import { giveCoins } from "./game";
+	import { giveCoins } from "../game";
 	import { Progress } from "$lib/components/ui/progress";
 	import { PiggyBank } from "@lucide/svelte";
-	import { GAME_DATA, TWEENED_PIGGYBANK_BALANCE } from "./stores";
+	import { GAME_DATA, TWEENED_PIGGYBANK_BALANCE } from "../stores";
 	import { onMount } from "svelte";
 
 	const DAILY_REWARDS = [

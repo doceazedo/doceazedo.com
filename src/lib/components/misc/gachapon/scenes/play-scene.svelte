@@ -16,8 +16,8 @@
 		IS_GUMBALL_LOADED,
 		PRIZE_ITEM,
 	} from "../stores";
-	import { ITEMS, RARITIES, type Item } from "../constants";
-	import GachaponPrize from "../gachapon-prize.svelte";
+	import { ITEMS, RARITIES } from "../constants";
+	import Prize from "./prize.svelte";
 	import World from "./world.svelte";
 	import { giveItem } from "../game";
 
@@ -273,7 +273,7 @@
 		{#await import('@threlte/rapier') then rapier}
 			<rapier.World {gravity}>
 				{#if $PRIZE_ITEM}
-					<GachaponPrize
+					<Prize
 						item={$PRIZE_ITEM}
 						scale={prizeScale.current}
 						rotationY={prizeRotation.current}

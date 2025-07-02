@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { T, useTask } from "@threlte/core";
-	import type { Item } from "./constants";
+	import type { Item } from "../constants";
 	import { interactivity, type IntersectionEvent } from "@threlte/extras";
 	import { Spring } from "svelte/motion";
 	import { IS_DESKTOP } from "$lib/stores";

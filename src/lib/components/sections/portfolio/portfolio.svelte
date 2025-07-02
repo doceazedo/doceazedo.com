@@ -49,7 +49,7 @@
 			pretitle: m.portfolio_godot_wry_pretitle(),
 			title: m.portfolio_godot_wry_title(),
 			description: m.portfolio_godot_wry_description(),
-			thumbnail: "/img/godot-wry-cas.webp",
+			thumbnail: "/img/portfolio/godot-wry-cas.webp",
 			video: "/video/portfolio/godot-wry-demo.mp4",
 			stack: [siRust, siGodotengine],
 			role: m.portfolio_godot_wry_role(),

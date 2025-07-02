@@ -4,19 +4,18 @@
 	import { CopperCoinLineFinance, Swap2LineFinance } from "svelte-remix";
 	import Button from "$lib/components/ui/button/button.svelte";
 	import { scale } from "svelte/transition";
-	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import {
 		GAME_DATA,
 		GAME_STATE,
 		IS_GUMBALL_LOADED,
 		PRIZE_ITEM,
-	} from "./stores";
-	import { RARITIES } from "./constants";
+	} from "../stores";
+	import { RARITIES } from "../constants";
 	import GumballSkeleton from "$lib/components/icons/gumball-skeleton.svg?component";
 	import { m } from "$lib/paraglide/messages";
 	import { Canvas } from "@threlte/core";
 	import { WebGLRenderer } from "three";
-	import PlayScene from "./scenes/play-scene.svelte";
+	import PlayScene from "../scenes/play-scene.svelte";
 	import Sunburst from "$lib/components/icons/sunburst.svg?component";
 
 	let playScene = $state<PlayScene>();
