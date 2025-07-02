@@ -19,7 +19,7 @@
 	import { ITEMS, RARITIES, type Item } from "../constants";
 	import GachaponPrize from "../gachapon-prize.svelte";
 	import World from "./world.svelte";
-	import { giveItem } from "../utils";
+	import { giveItem } from "../game";
 
 	const getSpherePosition = (
 		index: number,

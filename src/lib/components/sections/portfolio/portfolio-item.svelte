@@ -5,7 +5,7 @@
 	import type { Project } from "$lib/types";
 	import * as Dialog from "$lib/components/ui/dialog";
 	import { GAME_DATA, GAME_STATE } from "$lib/components/misc/gachapon/stores";
-	import GachaponDialog from "$lib/components/misc/gachapon/gachapon-dialog.svelte";
+	import Gachapon from "$lib/components/misc/gachapon/index";
 	import { m } from "$lib/paraglide/messages";
 	import { Button } from "$lib/components/ui/button";
 	import { QuestionMarkEditor } from "svelte-remix";
@@ -220,7 +220,7 @@
 			<Dialog.Title>{project.title}</Dialog.Title>
 		</Dialog.Header>
 		{#if type === "gachapon"}
-			<GachaponDialog />
+			<Gachapon />
 		{:else}
 			<Dialog.Body class="gap-6 overflow-y-scroll lg:flex-row">
 				<aside

@@ -3,26 +3,9 @@ import { cubicOut } from "svelte/easing";
 import { Tween } from "svelte/motion";
 import { get, writable } from "svelte/store";
 import type { Item } from "./constants";
+import type { GameData } from "./types";
 
 export const GAME_STATE = writable<"idle" | "drawing" | "prize">("idle");
-
-type GameData = {
-	balance: number;
-	piggybank: {
-		balance: number;
-		updatedAt: string;
-	};
-	inventory: {
-		item: string;
-		quantity: number;
-		firstAt: string;
-		lastAt: string;
-	}[];
-	dailyRewards: {
-		startedAt: string;
-		streak: number;
-	};
-};
 
 const EMPTY_GAME_DATA: GameData = {
 	balance: 500,

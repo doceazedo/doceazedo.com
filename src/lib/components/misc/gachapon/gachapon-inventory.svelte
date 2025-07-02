@@ -18,7 +18,7 @@
 	import { onMount, type Component } from "svelte";
 	import { fade } from "svelte/transition";
 	import { flip } from "svelte/animate";
-	import GachaponItemViewer from "./gachapon-item-viewer.svelte";
+	import GachaponInventoryItem from "./gachapon-inventory-item.svelte";
 	import { m } from "$lib/paraglide/messages";
 
 	type OrderBy = {
@@ -351,4 +351,4 @@
 	</div>
 </div>
 
-<GachaponItemViewer bind:item={viewItem} />
+<GachaponInventoryItem bind:item={viewItem} />

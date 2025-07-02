@@ -14,9 +14,9 @@
 	import { IS_DESKTOP } from "$lib/stores";
 	import { fade, fly } from "svelte/transition";
 	import { elasticScale } from "$lib/utils/transitions";
-	import GachaponPlay from "./gachapon-play.svelte";
-	import GachaponRewards from "./gachapon-rewards.svelte";
-	import GachaponInventory from "./gachapon-inventory.svelte";
+	import GachaponPlay from "../gachapon-play.svelte";
+	import GachaponRewards from "../gachapon-rewards.svelte";
+	import GachaponInventory from "../gachapon-inventory.svelte";
 	import { cubicOut, elasticOut } from "svelte/easing";
 	import {
 		CHA_CHING_AUDIO,
@@ -25,12 +25,12 @@
 		GUMBALL_DISPENSE_AUDIO,
 		TWEENED_BALANCE,
 		TWEENED_PIGGYBANK_BALANCE,
-	} from "./stores";
+	} from "../stores";
 	import { onMount } from "svelte";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { m } from "$lib/paraglide/messages";
-	import { giveCoins, giveItem } from "./utils";
-	import { ITEMS, PIGGYBANK } from "./constants";
+	import { giveCoins, giveItem } from "../game";
+	import { ITEMS, PIGGYBANK } from "../constants";
 	import { dev } from "$app/environment";
 
 	const TABS = [

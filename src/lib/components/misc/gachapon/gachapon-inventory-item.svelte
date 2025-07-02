@@ -21,7 +21,7 @@
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { m } from "$lib/paraglide/messages";
 	import { Slider } from "$lib/components/ui/slider";
-	import { giveCoins } from "./utils";
+	import { giveCoins } from "./game";
 	import { WebGLRenderer } from "three";
 	import { dev } from "$app/environment";
 
