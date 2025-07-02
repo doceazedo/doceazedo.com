@@ -1,5 +1,6 @@
 import type { Component } from "svelte";
 import type { RARITIES, COLLECTIONS, AUTHORS } from "./constants";
+import type { RigidBody } from "@dimforge/rapier3d-compat";
 
 export type GameData = {
 	balance: number;
@@ -19,6 +20,8 @@ export type GameData = {
 	};
 };
 
+export type Vector3 = [number, number, number];
+
 export type RarityId = (typeof RARITIES)[number]["id"];
 
 export type CollectionId = (typeof COLLECTIONS)[number]["id"];
@@ -34,3 +37,12 @@ export type Item = {
 };
 
 export type AuthorId = keyof typeof AUTHORS;
+
+export type DispenseOptions = {
+	capsules: RigidBody[];
+	gravity: [number, number, number];
+	setRestitution: (value: number) => void;
+	scatterCapsules: () => void;
+	updateCapsuleColor: () => void;
+	resetScene: () => void;
+};

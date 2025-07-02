@@ -20,83 +20,58 @@
 	import Prize from "./prize.svelte";
 	import World from "./world.svelte";
 	import { giveItem } from "../game";
+	import type { RarityId, Vector3 } from "../types";
 
-	const getSpherePosition = (
-		index: number,
-		radius: number,
-	): [number, number, number] => {
-		const center: [number, number, number] = [-0.1, 2.4, 0.2];
-		if (index === 0) return center;
+	const DISPENSE_COST = 100;
 
-		const phi = Math.acos(1 - (2 * index) / (radius + 1)); // vertical angle
-		const theta = Math.PI * (1 + Math.sqrt(5)) * index; // golden angle
+	const PHYSICS_CONFIG = {
+		gravityEnabled: [0, -9.81, 0] as Vector3,
+		gravityDisabled: [0, 0, 0] as Vector3,
+		capsuleRestitution: 0.7,
+		shakeStrength: 0.2,
+		shakeFrequency: 8,
+	} as const;
 
-		const r = (index / radius) * radius * 0.025;
+	const SPAWN_CONFIG = {
+		machineCenter: [-0.1, 2.4, 0.2] as Vector3,
+		capsulesMultiplier: 2,
+		capsuleShape: { height: 0.1, radius: 0.15 } as const,
+	} as const;
 
-		const x = r * Math.sin(phi) * Math.cos(theta) + center[0];
-		const y = r * Math.sin(phi) * Math.sin(theta) + center[1];
-		const z = r * Math.cos(phi) + center[2];
+	const GOLDEN_RATIO = (1 + Math.sqrt(5)) / 2;
 
-		return [x, y, z];
-	};
+	const ANIMATION_TIMING = {
+		coinMechSpn: 1500,
+		gravityDelay: 1500,
+		capsuleDrop: 2000,
+		scaleTransition: 800,
+		prizeReveal: 1500,
+		shakeCycle: 950,
+	} as const;
 
-	let capsules = $state<RigidBody[]>([]);
-	let gravity = $state<[number, number, number]>([0, -9.81, 0]);
-
-	const INITIAL_PRIZE_POSITION = [0.4, 0.7, 0] as const;
-	const INITIAL_PRIZE_UP_POSITION = [0, 0, 0] as const;
-	const INITIAL_PRIZE_DOWN_POSITION = [0, 0.2, 0] as const;
-	const capsulePosition = new Tween<[number, number, number]>(
-		[...INITIAL_PRIZE_POSITION],
-		{
-			easing: bounceOut,
-			duration: 1600,
+	const INITIAL_TRANSFORMS = {
+		capsule: {
+			position: [0.4, 0.7, 0] as Vector3,
+			scale: [1, 1, 1] as Vector3,
 		},
-	);
-	const capUpPosition = new Tween<[number, number, number]>(
-		[...INITIAL_PRIZE_UP_POSITION],
-		{
-			easing: expoOut,
-			duration: 600,
+		capsuleCap: {
+			up: [0, 0, 0] as Vector3,
+			down: [0, 0.2, 0] as Vector3,
 		},
-	);
-	const capDownPosition = new Tween<[number, number, number]>(
-		[...INITIAL_PRIZE_DOWN_POSITION],
-		{
-			easing: expoOut,
-			duration: 600,
+		gumball: {
+			position: [0, 2.5, 0] as Vector3,
+			scale: [1, 1, 1] as Vector3,
 		},
-	);
-	const capsuleScale = new Tween<[number, number, number]>([1, 1, 1], {
-		easing: cubicOut,
-		duration: 800,
-	});
-	let capsuleColor = $state("#000000");
+		prize: {
+			scale: [0, 0, 0] as Vector3,
+			rotation: 0,
+		},
+		coin: {
+			rotation: 0,
+		},
+	} as const;
 
-	const prizeScale = new Tween<[number, number, number]>([0, 0, 0], {
-		easing: cubicOut,
-		duration: 800,
-	});
-	const prizeRotation = new Tween(0, {
-		easing: cubicOut,
-		duration: 1600,
-	});
-
-	const gumballPosition = new Tween<[number, number, number]>([0, 2.5, 0], {
-		easing: elasticOut,
-		duration: 800,
-	});
-	const gumballScale = new Tween<[number, number, number]>([1, 1, 1], {
-		easing: cubicOut,
-		duration: 300,
-	});
-
-	const coinMeshRotation = new Tween(0, {
-		easing: elasticOut,
-		duration: 5000,
-	});
-
-	const CAPSULE_COLORS = shuffleArray([
+	const CAPSULE_PALETTE = shuffleArray([
 		"#ef4444",
 		"#f97316",
 		"#f59e0b",
@@ -115,175 +90,303 @@
 		"#ec4899",
 		"#f43f5e",
 	]);
-	const CAPSULES_MULTIPLIER = 2;
 
-	const resetPositions = () => {
-		capsulePosition.set([...INITIAL_PRIZE_POSITION], { duration: 0 });
-		capUpPosition.set([...INITIAL_PRIZE_UP_POSITION], {
-			duration: 0,
-		});
-		capDownPosition.set([...INITIAL_PRIZE_DOWN_POSITION], {
-			duration: 0,
-		});
-		capsuleScale.set([1, 1, 1], { duration: 0 });
-		gumballPosition.set([0, 2.5, 0], { duration: 0 });
-		coinMeshRotation.set(0, { duration: 0 });
-		prizeScale.target = [0, 0, 0];
-		prizeRotation.target = 0;
-		gumballScale.target = [1, 1, 1];
+	const capsuleTweener = {
+		position: new Tween<Vector3>([...INITIAL_TRANSFORMS.capsule.position], {
+			easing: bounceOut,
+			duration: 1600,
+		}),
+		scale: new Tween<Vector3>([...INITIAL_TRANSFORMS.capsule.scale], {
+			easing: cubicOut,
+			duration: ANIMATION_TIMING.scaleTransition,
+		}),
 	};
 
-	const getRandomRarity = () => {
-		const rand = Math.random();
-		let sum = 0;
-		return (
-			RARITIES.find((rarity) => {
-				sum += rarity.odds;
-				return rand < sum;
-			})?.id || RARITIES[RARITIES.length - 1].id
-		);
+	const capsuleCapTweener = {
+		up: new Tween<Vector3>([...INITIAL_TRANSFORMS.capsuleCap.up], {
+			easing: expoOut,
+			duration: 600,
+		}),
+		down: new Tween<Vector3>([...INITIAL_TRANSFORMS.capsuleCap.down], {
+			easing: expoOut,
+			duration: 600,
+		}),
 	};
 
-	const getRandomItem = () => {
+	const gumballTweener = {
+		position: new Tween<Vector3>([...INITIAL_TRANSFORMS.gumball.position], {
+			easing: elasticOut,
+			duration: ANIMATION_TIMING.scaleTransition,
+		}),
+		scale: new Tween<Vector3>([...INITIAL_TRANSFORMS.gumball.scale], {
+			easing: cubicOut,
+			duration: 300,
+		}),
+	};
+
+	const prizeTweener = {
+		scale: new Tween<Vector3>([...INITIAL_TRANSFORMS.prize.scale], {
+			easing: cubicOut,
+			duration: ANIMATION_TIMING.scaleTransition,
+		}),
+		rotation: new Tween<number>(INITIAL_TRANSFORMS.prize.rotation, {
+			easing: cubicOut,
+			duration: 1600,
+		}),
+	};
+
+	const coinMechTweener = new Tween<number>(INITIAL_TRANSFORMS.coin.rotation, {
+		easing: elasticOut,
+		duration: 5000,
+	});
+
+	let capsuleRigidBodies = $state<RigidBody[]>([]);
+	let worldGravity = $state<Vector3>([...PHYSICS_CONFIG.gravityEnabled]);
+	let isShaking = $state(false);
+	let selectedCapsuleColor = $state(CAPSULE_PALETTE[0]);
+
+	const calculateSpherePosition = (
+		index: number,
+		totalSpheres: number,
+	): Vector3 => {
+		if (index === 0) return [...SPAWN_CONFIG.machineCenter];
+
+		const phi = Math.acos(1 - (2 * index) / (totalSpheres + 1));
+		const theta = Math.PI * GOLDEN_RATIO * index;
+		const radius = (index / totalSpheres) * totalSpheres * 0.025;
+
+		const [centerX, centerY, centerZ] = SPAWN_CONFIG.machineCenter;
+
+		const x = radius * Math.sin(phi) * Math.cos(theta) + centerX;
+		const y = radius * Math.sin(phi) * Math.sin(theta) + centerY;
+		const z = radius * Math.cos(phi) + centerZ;
+
+		return [x, y, z];
+	};
+
+	const resetAllAnimations = () => {
+		capsuleTweener.position.set([...INITIAL_TRANSFORMS.capsule.position], {
+			duration: 0,
+		});
+		capsuleTweener.scale.set([...INITIAL_TRANSFORMS.capsule.scale], {
+			duration: 0,
+		});
+
+		capsuleCapTweener.up.set([...INITIAL_TRANSFORMS.capsuleCap.up], {
+			duration: 0,
+		});
+		capsuleCapTweener.down.set([...INITIAL_TRANSFORMS.capsuleCap.down], {
+			duration: 0,
+		});
+
+		gumballTweener.position.set([...INITIAL_TRANSFORMS.gumball.position], {
+			duration: 0,
+		});
+		gumballTweener.scale.target = [...INITIAL_TRANSFORMS.gumball.scale];
+
+		coinMechTweener.set(INITIAL_TRANSFORMS.coin.rotation, { duration: 0 });
+
+		prizeTweener.scale.target = [...INITIAL_TRANSFORMS.prize.scale];
+		prizeTweener.rotation.target = INITIAL_TRANSFORMS.prize.rotation;
+	};
+
+	const getRandomRarity = (): RarityId => {
+		const roll = Math.random();
+		let cumulativeOdds = 0;
+
+		const selectedRarity = RARITIES.find((rarity) => {
+			cumulativeOdds += rarity.odds;
+			return roll < cumulativeOdds;
+		});
+
+		return selectedRarity?.id ?? RARITIES[RARITIES.length - 1].id;
+	};
+
+	const getRandomPrize = () => {
 		const rarity = getRandomRarity();
-		const filteredItems = ITEMS.filter((x) => x.rarity === rarity);
-		return filteredItems[Math.floor(Math.random() * filteredItems.length)];
+		const lootPool = ITEMS.filter((item) => item.rarity === rarity);
+		return lootPool[Math.floor(Math.random() * lootPool.length)];
 	};
 
-	export const dispense = async () => {
-		if ($GAME_DATA.balance < 100) return;
-		if ($GAME_STATE !== "idle") return;
+	const togglePhysics = (enabled: boolean) => {
+		worldGravity = enabled
+			? [...PHYSICS_CONFIG.gravityEnabled]
+			: [...PHYSICS_CONFIG.gravityDisabled];
 
-		$GAME_DATA.balance -= 100;
-		$GAME_STATE = "drawing";
+		capsuleRigidBodies.forEach((body) => {
+			body
+				.collider(0)
+				.setRestitution(enabled ? 0 : PHYSICS_CONFIG.capsuleRestitution);
+		});
+	};
 
-		$PRIZE_ITEM = getRandomItem();
-		if (!$PRIZE_ITEM) return;
+	const repositionCapsules = () => {
+		const totalCapsules =
+			CAPSULE_PALETTE.length * SPAWN_CONFIG.capsulesMultiplier;
 
+		capsuleRigidBodies.forEach((body, index) => {
+			const position = calculateSpherePosition(index, totalCapsules);
+			body.setRotation({ x: 0, y: 0, z: 0, w: 0 }, true);
+			body.setTranslation(
+				{ x: position[0], y: position[1], z: position[2] },
+				true,
+			);
+		});
+	};
+
+	const playDispenseAudio = () => {
 		if (!$GUMBALL_DISPENSE_AUDIO.paused) {
 			$GUMBALL_DISPENSE_AUDIO.currentTime = 0;
 		}
 		$GUMBALL_DISPENSE_AUDIO.play();
+	};
 
-		resetPositions();
-		await sleep(100);
+	const initializeCoinSpinAndShake = () => {
+		coinMechTweener.target = coinMechTweener.current - degToRad(360 * 2);
+		gumballTweener.position.target = [0, 2.5, 0];
+		selectedCapsuleColor =
+			CAPSULE_PALETTE[Math.floor(Math.random() * CAPSULE_PALETTE.length)];
+		togglePhysics(false);
+		isShaking = true;
+	};
 
-		coinMeshRotation.target = coinMeshRotation.current - degToRad(360 * 2);
-		gumballPosition.target = [0, 2.5, 0];
-		capsuleColor =
-			CAPSULE_COLORS[Math.floor(Math.random() * CAPSULE_COLORS.length)];
+	const enableGravityAndStopShaking = () => {
+		togglePhysics(true);
+		isShaking = false;
+	};
 
-		gravity = [0, 0, 0];
-		isShakingGumball = true;
-		capsules.forEach((body, i) => {
-			body.collider(0).setRestitution(0.7);
-		});
+	const emergeCapsuleFromMachine = () => {
+		capsuleTweener.position.target = [0.9, 0.7, 0];
+	};
 
-		await sleep(1500);
-		gravity = [0, -9.81, 0];
-		isShakingGumball = false;
-		capsules.forEach((body, i) => {
-			body.collider(0).setRestitution(0);
-		});
-
-		await sleep(1500);
-		capsulePosition.target = [0.9, 0.7, 0];
-
-		await sleep(2000);
-		capsuleScale.target = [5, 5, 5];
-		capsulePosition.set([1.1, 2.15, 1.1], {
+	const scaleCapsuleAndMoveToViewport = () => {
+		capsuleTweener.scale.target = [5, 5, 5];
+		capsuleTweener.position.set([1.1, 2.15, 1.1], {
 			easing: cubicOut,
-			duration: 800,
+			duration: ANIMATION_TIMING.scaleTransition,
 		});
+	};
 
-		await sleep(50);
-		gumballScale.target = [0.001, 0.001, 0.001];
-		capsules.forEach((body, i) => {
-			const [x, y, z] = getSpherePosition(
-				i,
-				CAPSULE_COLORS.length * CAPSULES_MULTIPLIER,
-			);
-			body.setRotation(
-				{
-					x: 0,
-					y: 0,
-					z: 0,
-					w: 0,
-				},
-				true,
-			);
-			body.setTranslation({ x, y, z }, true);
-		});
+	const hideGumballsAndRepositionCapsules = () => {
+		gumballTweener.scale.target = [0.001, 0.001, 0.001];
+		repositionCapsules();
+	};
 
-		await sleep(950);
-		capsulePosition.set([0.9, 2.15, 1.1], {
-			duration: 0,
-		});
+	const performCapsuleShakeLeft = async () => {
+		capsuleTweener.position.set([0.9, 2.15, 1.1], { duration: 0 });
 		await tick();
-		capsulePosition.set([1.1, 2.15, 1.1], {
+		capsuleTweener.position.set([1.1, 2.15, 1.1], {
 			easing: elasticOut,
 			duration: 600,
 		});
+	};
 
-		await sleep(1500);
-		capsulePosition.set([1.1, 2.15, 0.9], {
-			duration: 0,
-		});
+	const performCapsuleShakeForward = async () => {
+		capsuleTweener.position.set([1.1, 2.15, 0.9], { duration: 0 });
 		await tick();
-		capsulePosition.set([1.1, 2.15, 1.1], {
+		capsuleTweener.position.set([1.1, 2.15, 1.1], {
 			easing: elasticOut,
 			duration: 600,
 		});
+	};
 
-		await sleep(1500);
+	const revealPrizeFromCapsule = () => {
 		$GAME_STATE = "prize";
-		capUpPosition.target = [0, capUpPosition.current[1] + 1.5, 0];
-		capDownPosition.target = [0, capDownPosition.current[1] - 1.5, 0];
-
-		prizeScale.target = [1, 1, 1];
-		prizeRotation.target = degToRad(360 * 2);
-
+		capsuleCapTweener.up.target = [0, capsuleCapTweener.up.current[1] + 1.5, 0];
+		capsuleCapTweener.down.target = [
+			0,
+			capsuleCapTweener.down.current[1] - 1.5,
+			0,
+		];
+		prizeTweener.scale.target = [1, 1, 1];
+		prizeTweener.rotation.target = degToRad(360 * 2);
+		if (!$PRIZE_ITEM) return;
 		giveItem($PRIZE_ITEM);
 	};
 
-	let isShakingGumball = $state(false);
-	useTask((delta) => {
-		if (!isShakingGumball) return;
-		const shakeStrength = Math.sin(delta * 8) * 0.2;
-		for (const body of capsules) {
+	const dispenseAnimationSequence = async () => {
+		playDispenseAudio();
+		resetAllAnimations();
+		await sleep(100);
+
+		initializeCoinSpinAndShake();
+		await sleep(ANIMATION_TIMING.coinMechSpn);
+
+		enableGravityAndStopShaking();
+		await sleep(ANIMATION_TIMING.gravityDelay);
+
+		emergeCapsuleFromMachine();
+		await sleep(ANIMATION_TIMING.capsuleDrop);
+
+		scaleCapsuleAndMoveToViewport();
+		await sleep(50);
+
+		hideGumballsAndRepositionCapsules();
+		await sleep(ANIMATION_TIMING.shakeCycle);
+
+		await performCapsuleShakeLeft();
+		await sleep(ANIMATION_TIMING.prizeReveal);
+
+		await performCapsuleShakeForward();
+		await sleep(ANIMATION_TIMING.prizeReveal);
+	};
+
+	export const dispense = async () => {
+		if ($GAME_DATA.balance < DISPENSE_COST || $GAME_STATE !== "idle") return;
+
+		$GAME_DATA.balance -= DISPENSE_COST;
+		$GAME_STATE = "drawing";
+		$PRIZE_ITEM = getRandomPrize();
+
+		await dispenseAnimationSequence();
+
+		revealPrizeFromCapsule();
+	};
+
+	useTask((delta: number) => {
+		if (!isShaking) return;
+
+		const shakeIntensity =
+			Math.sin(delta * PHYSICS_CONFIG.shakeFrequency) *
+			PHYSICS_CONFIG.shakeStrength;
+
+		capsuleRigidBodies.forEach((body) => {
 			const impulse = {
-				x: (Math.random() - 0.5) * shakeStrength,
-				y: (Math.random() - 0.5) * shakeStrength,
-				z: (Math.random() - 0.5) * shakeStrength,
+				x: (Math.random() - 0.5) * shakeIntensity,
+				y: (Math.random() - 0.5) * shakeIntensity,
+				z: (Math.random() - 0.5) * shakeIntensity,
 			};
 			body.applyImpulse(impulse, true);
-		}
+		});
 	});
 
-	onMount(() => ($IS_GUMBALL_LOADED = false));
+	onMount(() => {
+		$IS_GUMBALL_LOADED = false;
+	});
 
 	GAME_STATE.subscribe((state) => {
-		if (state !== "idle") return;
-		resetPositions();
+		if (state === "idle") {
+			resetAllAnimations();
+		}
 	});
 </script>
 
 <World>
 	{#if browser}
 		{#await import('@threlte/rapier') then rapier}
-			<rapier.World {gravity}>
+			<rapier.World gravity={worldGravity}>
 				{#if $PRIZE_ITEM}
 					<Prize
 						item={$PRIZE_ITEM}
-						scale={prizeScale.current}
-						rotationY={prizeRotation.current}
+						scale={prizeTweener.scale.current}
+						rotationY={prizeTweener.rotation.current}
 					/>
 				{/if}
 
 				<Gumball
-					scale={gumballScale.current}
-					position={gumballPosition.current}
-					coinMeshRotation={coinMeshRotation.current}
+					scale={gumballTweener.scale.current}
+					position={gumballTweener.position.current}
+					coinMeshRotation={coinMechTweener.current}
 					rotation.y={degToRad(90)}
 					oncreate={() => {
 						$IS_GUMBALL_LOADED = true;
@@ -292,17 +395,23 @@
 				/>
 
 				{#if $IS_GUMBALL_LOADED}
-					{#each Array(2).fill(CAPSULE_COLORS).flat() as color, i}
+					{#each Array(2).fill(CAPSULE_PALETTE).flat() as color, index}
 						<T.Group
-							position={getSpherePosition(
-								i,
-								CAPSULE_COLORS.length * CAPSULES_MULTIPLIER,
+							position={calculateSpherePosition(
+								index,
+								CAPSULE_PALETTE.length * SPAWN_CONFIG.capsulesMultiplier,
 							)}
 						>
-							<rapier.RigidBody bind:rigidBody={capsules[i]}>
-								<rapier.Collider shape="capsule" args={[0.1, 0.15]}>
+							<rapier.RigidBody bind:rigidBody={capsuleRigidBodies[index]}>
+								<rapier.Collider
+									shape="capsule"
+									args={[
+										SPAWN_CONFIG.capsuleShape.height,
+										SPAWN_CONFIG.capsuleShape.radius,
+									]}
+								>
 									<Capsule
-										scale={gumballScale.current}
+										scale={gumballTweener.scale.current}
 										position.y={-0.1}
 										{color}
 									/>
@@ -312,11 +421,11 @@
 					{/each}
 
 					<Capsule
-						position={capsulePosition.current}
-						positionUp={capUpPosition.current}
-						positionDown={capDownPosition.current}
-						scale={capsuleScale.current}
-						color={capsuleColor}
+						position={capsuleTweener.position.current}
+						positionUp={capsuleCapTweener.up.current}
+						positionDown={capsuleCapTweener.down.current}
+						scale={capsuleTweener.scale.current}
+						color={selectedCapsuleColor}
 					/>
 				{/if}
 			</rapier.World>
