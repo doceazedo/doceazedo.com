@@ -128,14 +128,6 @@
 								/>
 							{/if}
 						</div>
-
-						<!--
-			<img
-				src="/img/portfolio/gumball.webp"
-				alt=""
-				class="absolute bottom-12 w-[231px]"
-			/>
-			-->
 					{:else}
 						<div
 							class={cn(
@@ -196,7 +188,7 @@
 									src={project.thumbnail}
 									alt=""
 									class={cn(
-										"absolute size-full object-cover object-top transition-all",
+										"absolute size-full object-cover object-top transition-all duration-800",
 										showVideo && "opacity-0",
 									)}
 								/>

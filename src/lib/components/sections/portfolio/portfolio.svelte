@@ -159,7 +159,7 @@
 			<li class="md:col-span-2 xl:-ml-32 xl:w-7xl">
 				<PortfolioItem project={workProjects.godotWry} direction="row" />
 			</li>
-			<li class="">
+			<li>
 				<PortfolioItem project={workProjects.powershift} type="mobile" />
 			</li>
 			<li class="">
