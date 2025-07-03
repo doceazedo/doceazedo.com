@@ -34,6 +34,7 @@ export const GET = async ({ url, params }) => {
         </div>
       </div>
     </div>
+		<img src="${BASE_URL}/img/thumbnail-foreground.png" width="1200" height="630" class="absolute top-0 left-0" />
   `);
 
 	const svg = await satori(reactLike, {
