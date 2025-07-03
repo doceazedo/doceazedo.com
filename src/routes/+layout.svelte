@@ -3,7 +3,7 @@
 	import "../prism-theme-github-light.css";
 	import "../prism-theme-github-dark.css";
 	import { cn } from "$lib/utils";
-	import LanguagSelector from "$lib/components/controls/language-selector.svelte";
+	import LanguageSelector from "$lib/components/controls/language-selector.svelte";
 	import { Button } from "$lib/components/ui/button";
 	import {
 		Chat1LineCommunication,
@@ -29,6 +29,7 @@
 	import { MEMOJI_BLINK_COUNT } from "$lib/stores";
 	import { fly } from "svelte/transition";
 	import { toast } from "svelte-sonner";
+	import Settings from "$lib/components/controls/settings.svelte";
 
 	let { children } = $props();
 
@@ -105,8 +106,8 @@
 				</a>
 			{/each}
 
-			<DarkModeToggle class="-mr-1.5" />
-			<LanguagSelector />
+			<Settings class="-mr-1.5" />
+			<LanguageSelector />
 		</div>
 
 		<Drawer.Root bind:open={isDrawerOpen}>
@@ -140,8 +141,8 @@
 				</nav>
 				<hr />
 				<div class="flex">
-					<LanguagSelector />
-					<DarkModeToggle />
+					<LanguageSelector />
+					<Settings class="-mr-1.5" />
 				</div>
 			</Drawer.Content>
 		</Drawer.Root>

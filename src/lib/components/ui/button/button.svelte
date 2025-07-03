@@ -21,6 +21,7 @@
 				ghost:
 					"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
 				link: "text-primary border-b border-b-primary rounded-none px-0! h-8! hover:text-foreground hover:border-b-foreground hover:[&_svg]:translate-x-0.75 [&_svg]:ease-elastic",
+				"primary-ghost": "hover:bg-primary/10 text-primary",
 			},
 			size: {
 				default: "h-9 px-4 py-2 has-[>svg]:px-3",
