@@ -22,14 +22,13 @@
 	import { page } from "$app/state";
 	import { m } from "$lib/paraglide/messages";
 	import { ModeWatcher } from "mode-watcher";
-	import DarkModeToggle from "$lib/components/controls/dark-mode-toggle.svelte";
 	import { onMount } from "svelte";
 	import { Toaster } from "$lib/components/ui/sonner";
 	import GlobalState from "$lib/components/misc/global-state.svelte";
 	import { MEMOJI_BLINK_COUNT } from "$lib/stores";
 	import { fly } from "svelte/transition";
 	import { toast } from "svelte-sonner";
-	import Settings from "$lib/components/controls/settings.svelte";
+	import Settings from "$lib/components/controls/settings/settings.svelte";
 
 	let { children } = $props();
 
