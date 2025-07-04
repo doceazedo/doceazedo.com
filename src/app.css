@@ -153,6 +153,38 @@
   font-display: swap;
 }
 
+@font-face {
+	font-family: 'SylexiadSansSpacedMed';
+	src: url('/fonts/SylexiadSansSpacedMed.ttf') format('opentype'),
+       url('/fonts/SylexiadSansSpacedMed.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SylexiadSansSpacedMed';
+	src: url('/fonts/SylexiadSansSpacedMed-Ita.ttf') format('opentype'),
+       url('/fonts/SylexiadSansSpacedMed-Ita.woff') format('woff');
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'SylexiadSansSpacedMed';
+	src: url('/fonts/SylexiadSansSpacedMed-Bold.ttf') format('opentype'),
+       url('/fonts/SylexiadSansSpacedMed-Bold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SylexiadSansSpacedMed';
+	src: url('/fonts/SylexiadSansSpacedMed-BIta.ttf') format('opentype'),
+       url('/fonts/SylexiadSansSpacedMed-BIta.woff') format('woff');
+	font-weight: 700;
+	font-style: italic;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -195,6 +227,10 @@ body[data-noise="animated"]::before {
 
 body[data-noise="off"]::before {
   opacity: 0 !important;
+}
+
+body[data-dyslexia-font] {
+  font-family: 'SylexiadSansSpacedMed';
 }
 
 @media screen and (min-width: 96rem /* 2xl */) {

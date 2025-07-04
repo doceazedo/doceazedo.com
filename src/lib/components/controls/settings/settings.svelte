@@ -5,7 +5,6 @@
 	import { cn } from "$lib/utils";
 	import {
 		Settings4LineSystem,
-		BrainLineHealthMedical,
 		VolumeUpLineMedia,
 		SpeedLineMedia,
 		LightbulbFlashLineOthers,
@@ -23,6 +22,7 @@
 		PROSE_SIZE,
 	} from "$lib/settings";
 	import { setMode } from "mode-watcher";
+	import SettingsDyslexiaFont from "./settings-dyslexia-font.svelte";
 
 	let { class: className }: { class?: string } = $props();
 
@@ -54,12 +54,7 @@
 			<DropdownMenu.Separator />
 			<SettingsModeToggle />
 			<SettingsProse />
-			<SettingsItem
-				icon={BrainLineHealthMedical}
-				label={m.settings_dyslexia_font()}
-			>
-				<Switch disabled />
-			</SettingsItem>
+			<SettingsDyslexiaFont />
 			<SettingsItem icon={VolumeUpLineMedia} label={m.settings_sound()}>
 				<Switch bind:checked={$SOUND_ENABLED} />
 			</SettingsItem>

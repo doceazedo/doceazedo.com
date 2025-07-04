@@ -83,7 +83,7 @@
 	)}
 >
 	<div class="mx-auto flex size-full max-w-5xl items-center">
-		<a href="/" class="flex items-center gap-1.5 text-2xl">
+		<a href="/" class="flex items-center gap-1.5 font-sans! text-2xl">
 			<Memoji />
 			<span>
 				doce<span class="text-body">.sh</span>

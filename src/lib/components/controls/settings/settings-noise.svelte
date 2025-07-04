@@ -2,8 +2,6 @@
 	import { StackLineBusiness } from "svelte-remix";
 	import * as Select from "$lib/components/ui/select";
 	import SettingsItem from "./settings-item.svelte";
-	import { storage } from "$lib/utils/storage";
-	import { writable } from "svelte/store";
 	import { m } from "$lib/paraglide/messages";
 	import { NOISE_SETTING } from "$lib/settings";
 

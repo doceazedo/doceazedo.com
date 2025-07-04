@@ -28,7 +28,7 @@
 		MODE_OPTIONS.findIndex((x) => x.value === userPrefersMode.current),
 	);
 
-	const MODE_SELECTOR_BUTTON_WIDTH = 45.55;
+	const MODE_SELECTOR_BUTTON_WIDTH = 46;
 	const MODE_SELECTOR_PADDING = 4;
 	const getSelectedThemePosition = (idx: number) =>
 		(MODE_SELECTOR_BUTTON_WIDTH + MODE_SELECTOR_PADDING) * idx +
@@ -36,18 +36,16 @@
 </script>
 
 <SettingsItem icon={PaletteLineDesign} label={m.settings_mode()}>
-	<div
-		class="text-body relative grid grid-cols-3 gap-1 rounded border p-1 transition-all"
-	>
+	<div class="text-body relative flex gap-1 rounded border p-1 transition-all">
 		<span
-			class="ease-elastic bg-primary absolute top-1 left-1 h-7 w-[45.55px] rounded-xs transition-all duration-300"
+			class="ease-elastic bg-primary absolute top-1 left-1 h-7 w-11.5 rounded-xs transition-all duration-300"
 			style="left:{getSelectedThemePosition(selectedModeIdx)}px"
 		></span>
 		{#each MODE_OPTIONS as option, i}
 			{@const isActive = selectedModeIdx === i}
 			<button
 				class={cn(
-					"z-10 flex cursor-pointer items-center justify-center rounded-xs px-2 py-1 text-sm transition-all",
+					"z-10 flex h-7 w-11.5 cursor-pointer items-center justify-center rounded-xs text-sm transition-all",
 					isActive
 						? "text-primary-foreground"
 						: "hover:bg-muted hover:text-foreground",
