@@ -5,6 +5,7 @@
 	import { storage } from "$lib/utils/storage";
 	import { writable } from "svelte/store";
 	import { m } from "$lib/paraglide/messages";
+	import { NOISE_SETTING } from "$lib/settings";
 
 	const OPTIONS = [
 		{ value: "animated", label: m.animated() },
@@ -12,7 +13,6 @@
 		{ value: "off", label: m.off() },
 	];
 
-	const NOISE_SETTING = storage(writable("animated"), "noise");
 	NOISE_SETTING.subscribe((setting) => {
 		document.body.dataset.noise = setting;
 	});

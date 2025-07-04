@@ -17,9 +17,22 @@
 	import SettingsProse from "./settings-prose.svelte";
 	import { SOUND_ENABLED } from "$lib/audio";
 	import SettingsNoise from "./settings-noise.svelte";
-	import { MAKE_ELEVATOR_FASTER } from "$lib/settings";
+	import {
+		MAKE_ELEVATOR_FASTER,
+		NOISE_SETTING,
+		PROSE_SIZE,
+	} from "$lib/settings";
+	import { setMode } from "mode-watcher";
 
 	let { class: className }: { class?: string } = $props();
+
+	const resetSettings = () => {
+		setMode("dark");
+		$PROSE_SIZE = { base: "16px", xl: "18px" };
+		$SOUND_ENABLED = true;
+		$NOISE_SETTING = "animated";
+		$MAKE_ELEVATOR_FASTER = false;
+	};
 </script>
 
 <DropdownMenu.Root>
@@ -62,7 +75,7 @@
 			</SettingsItem>
 			<DropdownMenu.Separator class="mt-1.5" />
 			<div class="flex justify-end px-2 py-1.5">
-				<Button variant="primary-ghost" size="sm">
+				<Button variant="primary-ghost" size="sm" onclick={resetSettings}>
 					{m.reset_settings()}
 				</Button>
 			</div>
