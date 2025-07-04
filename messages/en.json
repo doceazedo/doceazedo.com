@@ -474,5 +474,18 @@
 	"uses_music_software": "Music",
 	"uses_daw": "DAW",
 	"uses_djing": "DJing",
-	"uses_vpn": "VPN"
+	"uses_vpn": "VPN",
+	"settings": "Preferences",
+	"settings_mode": "Theme",
+	"settings_text_size": "Text size",
+	"settings_text_size_description": "For blog posts & text-heavy pages",
+	"settings_dyslexia_font": "Use font for dyslexia",
+	"settings_sound": "Sound effects",
+	"settings_noise": "Noise overlay",
+	"animated": "Animated",
+	"static": "Static",
+	"off": "Off",
+	"settings_elevator_speed": "Make elevator faster",
+	"settings_adhd_mode": "Low attention span mode",
+	"reset_settings": "Reset to default settings"
 }

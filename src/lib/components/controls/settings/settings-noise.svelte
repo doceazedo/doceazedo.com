@@ -4,11 +4,12 @@
 	import SettingsItem from "./settings-item.svelte";
 	import { storage } from "$lib/utils/storage";
 	import { writable } from "svelte/store";
+	import { m } from "$lib/paraglide/messages";
 
 	const OPTIONS = [
-		{ value: "animated", label: "Animated" },
-		{ value: "static", label: "Static" },
-		{ value: "off", label: "Off" },
+		{ value: "animated", label: m.animated() },
+		{ value: "static", label: m.static() },
+		{ value: "off", label: m.off() },
 	];
 
 	const NOISE_SETTING = storage(writable("animated"), "noise");
@@ -17,7 +18,7 @@
 	});
 </script>
 
-<SettingsItem icon={StackLineBusiness} label="Noise overlay">
+<SettingsItem icon={StackLineBusiness} label={m.settings_noise()}>
 	<Select.Root type="single" bind:value={$NOISE_SETTING}>
 		<Select.Trigger class="w-36">
 			{OPTIONS.find((x) => x.value === $NOISE_SETTING)?.label}

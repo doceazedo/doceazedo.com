@@ -7,6 +7,7 @@
 	} from "svelte-remix";
 	import { setMode, userPrefersMode } from "mode-watcher";
 	import SettingsItem from "./settings-item.svelte";
+	import { m } from "$lib/paraglide/messages";
 
 	const MODE_OPTIONS = [
 		{
@@ -34,7 +35,7 @@
 		MODE_SELECTOR_PADDING;
 </script>
 
-<SettingsItem icon={PaletteLineDesign} label="Theme">
+<SettingsItem icon={PaletteLineDesign} label={m.settings_mode()}>
 	<div
 		class="text-body relative grid grid-cols-3 gap-1 rounded border p-1 transition-all"
 	>

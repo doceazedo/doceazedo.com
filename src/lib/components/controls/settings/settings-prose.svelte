@@ -8,6 +8,7 @@
 	import SettingsItem from "./settings-item.svelte";
 	import { PROSE_SIZE } from "$lib/settings";
 	import { IS_XL } from "$lib/stores";
+	import { m } from "$lib/paraglide/messages";
 
 	const PROSE_SIZES = ["14px", "16px", "18px", "20px", "24px"];
 
@@ -18,8 +19,8 @@
 
 <SettingsItem
 	icon={FontSizeEditor}
-	label="Text size"
-	description="For blog posts & text-heavy pages"
+	label={m.settings_text_size()}
+	description={m.settings_text_size_description()}
 >
 	<div class="text-body flex">
 		<Button

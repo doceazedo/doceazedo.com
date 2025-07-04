@@ -37,30 +37,33 @@
 		alignOffset={!$IS_DESKTOP ? -30 : 0}
 	>
 		<DropdownMenu.Group>
-			<DropdownMenu.Label class="text-lg">Preferences</DropdownMenu.Label>
+			<DropdownMenu.Label class="text-lg">{m.settings()}</DropdownMenu.Label>
 			<DropdownMenu.Separator />
 			<SettingsModeToggle />
 			<SettingsProse />
-			<SettingsItem icon={BrainLineHealthMedical} label="Use font for dyslexia">
+			<SettingsItem
+				icon={BrainLineHealthMedical}
+				label={m.settings_dyslexia_font()}
+			>
 				<Switch disabled />
 			</SettingsItem>
-			<SettingsItem icon={VolumeUpLineMedia} label="Sound effects">
+			<SettingsItem icon={VolumeUpLineMedia} label={m.settings_sound()}>
 				<Switch bind:checked={$SOUND_ENABLED} />
 			</SettingsItem>
 			<SettingsNoise />
-			<SettingsItem icon={SpeedLineMedia} label="Make elevator faster">
+			<SettingsItem icon={SpeedLineMedia} label={m.settings_elevator_speed()}>
 				<Switch bind:checked={$MAKE_ELEVATOR_FASTER} />
 			</SettingsItem>
 			<SettingsItem
 				icon={LightbulbFlashLineOthers}
-				label="Low attention span mode"
+				label={m.settings_adhd_mode()}
 			>
 				<Switch disabled />
 			</SettingsItem>
 			<DropdownMenu.Separator class="mt-1.5" />
 			<div class="flex justify-end px-2 py-1.5">
 				<Button variant="primary-ghost" size="sm">
-					Reset default settings
+					{m.reset_settings()}
 				</Button>
 			</div>
 		</DropdownMenu.Group>
