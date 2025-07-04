@@ -7,17 +7,16 @@
 		Settings4LineSystem,
 		BrainLineHealthMedical,
 		VolumeUpLineMedia,
-		StackLineBusiness,
 		SpeedLineMedia,
 		LightbulbFlashLineOthers,
 	} from "svelte-remix";
 	import { Switch } from "$lib/components/ui/switch";
-	import * as Select from "$lib/components/ui/select";
 	import { Button } from "$lib/components/ui/button";
 	import SettingsItem from "./settings-item.svelte";
 	import SettingsModeToggle from "./settings-mode-toggle.svelte";
 	import SettingsProse from "./settings-prose.svelte";
 	import { SOUND_ENABLED } from "$lib/audio";
+	import SettingsNoise from "./settings-noise.svelte";
 
 	let { class: className }: { class?: string } = $props();
 </script>
@@ -47,16 +46,7 @@
 			<SettingsItem icon={VolumeUpLineMedia} label="Sound effects">
 				<Switch bind:checked={$SOUND_ENABLED} />
 			</SettingsItem>
-			<SettingsItem icon={StackLineBusiness} label="Noise overlay">
-				<Select.Root type="single" value="animated">
-					<Select.Trigger class="w-36">Animated</Select.Trigger>
-					<Select.Content>
-						<Select.Item value="animated">Animated</Select.Item>
-						<Select.Item value="static">Static</Select.Item>
-						<Select.Item value="off">Off</Select.Item>
-					</Select.Content>
-				</Select.Root>
-			</SettingsItem>
+			<SettingsNoise />
 			<SettingsItem icon={SpeedLineMedia} label="Make elevator faster">
 				<Switch />
 			</SettingsItem>

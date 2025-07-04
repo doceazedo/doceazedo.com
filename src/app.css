@@ -3,6 +3,7 @@
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant noise (&:not([data-noise="off"] *));
 
 :root {
   --radius: 0.625rem;
@@ -180,13 +181,20 @@ body::before {
   z-index: 100;
   pointer-events: none;
   opacity: .07;
-	animation: noise 0.5s steps(4, jump-both) infinite;
   transition: all .3s ease;
 }
 
 .dark body::before {
   filter: invert(1);
   opacity: .08;
+}
+
+body[data-noise="animated"]::before {
+	animation: noise 0.5s steps(4, jump-both) infinite;
+}
+
+body[data-noise="off"]::before {
+  opacity: 0 !important;
 }
 
 @media screen and (min-width: 96rem /* 2xl */) {
