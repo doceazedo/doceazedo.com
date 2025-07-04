@@ -39,10 +39,6 @@ export const TWEENED_BALANCE = new Tween(get(GAME_DATA).balance, {
 
 export const ORDER_BY = storage(writable("collection"), "gachapon_order_by");
 
-export const CHA_CHING_AUDIO = writable<HTMLAudioElement>();
-
-export const GUMBALL_DISPENSE_AUDIO = writable<HTMLAudioElement>();
-
 export const TWEENED_PIGGYBANK_BALANCE = new Tween(
 	get(GAME_DATA).piggybank.balance,
 	{

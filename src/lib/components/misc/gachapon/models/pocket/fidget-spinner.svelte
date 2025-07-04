@@ -8,15 +8,17 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/fidget-spinner.glb
 	import { useGltf } from "@threlte/extras";
 	import { degToRad } from "three/src/math/MathUtils.js";
 	import { onMount } from "svelte";
+	import { AUDIO_ELEMENTS, DEFAULT_VOLUME, playAudio } from "$lib/audio";
 
 	let { fallback, error, children, ref = $bindable(), ...props } = $props();
 
 	const gltf = useGltf("/models/fidget-spinner.glb");
 
-	const spinAudio = new Audio("/audio/fidget-spinner.ogg");
+	let spinAudio = $state<HTMLAudioElement>();
 	let spinAudioVolume = $state(0);
 
 	$effect(() => {
+		if (!spinAudio) return;
 		spinAudio.volume = spinAudioVolume;
 	});
 
@@ -29,15 +31,15 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/fidget-spinner.glb
 	const idleSpeed = 0.3;
 	const friction = 0.99;
 
-	function onPointerDown(e: MouseEvent | TouchEvent) {
+	const onPointerDown = (e: MouseEvent | TouchEvent) => {
 		isDragging = true;
 		// @ts-ignore: already handled with `?.`
 		lastX = e?.clientX || e?.touches?.[0]?.clientX || 0;
 		// @ts-ignore: already handled with `?.`
 		lastY = e?.clientY || e?.touches?.[0]?.clientY || 0;
-	}
+	};
 
-	function onPointerMove(e: MouseEvent | TouchEvent) {
+	const onPointerMove = (e: MouseEvent | TouchEvent) => {
 		if (!isDragging) return;
 
 		// @ts-ignore: already handled with `?.`
@@ -52,24 +54,26 @@ Command: npx @threlte/gltf@3.0.1 ../../../../../static/models/fidget-spinner.glb
 		velocity = drag * 0.1;
 		lastX = clientX;
 		lastY = clientY;
-	}
+	};
 
-	function onPointerUp() {
+	const onPointerUp = () => {
 		isDragging = false;
-	}
+	};
 
 	useTask((delta) => {
 		rotationX += (velocity + idleSpeed) * delta;
 		velocity *= friction;
 		spinAudioVolume = Math.min(
 			0.5,
-			Math.max(0, ((Math.abs(velocity) - 1) / 9) * 0.5),
+			Math.max(0, ((Math.abs(velocity) - 1) / 9) * DEFAULT_VOLUME),
 		);
 	});
 
 	onMount(() => {
+		spinAudio = AUDIO_ELEMENTS.get("fidget-spinner")!;
+		spinAudio.volume = 0;
 		spinAudio.loop = true;
-		spinAudio.play();
+		playAudio("fidget-spinner");
 		return () => spinAudio?.pause();
 	});
 </script>

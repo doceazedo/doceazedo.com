@@ -4,7 +4,6 @@
 	import { elasticOut } from "svelte/easing";
 	import Tabs from "./tabs.svelte";
 	import Balance from "./balance.svelte";
-	import GachaponAudio from "./audio.svelte";
 	import { ACTIVE_TAB } from "../stores";
 	import { initializeGame } from "../game";
 	import { onMount } from "svelte";
@@ -40,5 +39,3 @@
 >
 	<Tabs />
 </Dialog.Footer>
-
-<GachaponAudio />

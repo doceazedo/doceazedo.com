@@ -1,6 +1,5 @@
 import { get } from "svelte/store";
 import {
-	CHA_CHING_AUDIO,
 	GAME_DATA,
 	TWEENED_BALANCE,
 	TWEENED_PIGGYBANK_BALANCE,
@@ -8,6 +7,7 @@ import {
 import { ITEMS, PIGGYBANK } from "./constants";
 import { dev } from "$app/environment";
 import type { Item } from "./types";
+import { playAudio } from "$lib/audio";
 
 export const giveCoins = (quantity: number) => {
 	const $GAME_DATA = get(GAME_DATA);
@@ -16,8 +16,7 @@ export const giveCoins = (quantity: number) => {
 		balance: $GAME_DATA.balance + quantity,
 	});
 
-	const $CHA_CHING_AUDIO = get(CHA_CHING_AUDIO);
-	$CHA_CHING_AUDIO.play();
+	playAudio("cha-ching");
 };
 
 export const giveItem = (item: Item, quantity = 1) => {

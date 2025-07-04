@@ -8,6 +8,7 @@
 	import { SOCIALS } from "$lib/constants";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { sineOut } from "svelte/easing";
+	import { pauseAudio, playAudio } from "$lib/audio";
 
 	const FOOTER_SOCIALS = [
 		SOCIALS.github,
@@ -28,17 +29,12 @@
 	let scrollY = $state(0);
 	let innerHeight = $state(0);
 	let clientHeight = $state(1080);
-	let elevatorMusicAudio = $state<HTMLAudioElement>();
-	let elevatorChimeAudio = $state<HTMLAudioElement>();
 
 	let scrolledTo = $derived(scrollY + innerHeight);
 	let scrolledToBottom = $derived(scrolledTo >= clientHeight - 24);
 
 	const scrollToTop = () => {
-		if (elevatorMusicAudio) {
-			elevatorMusicAudio.currentTime = 0;
-			elevatorMusicAudio.play();
-		}
+		playAudio("hotel");
 
 		const startPosition = window.pageYOffset;
 		const distance = startPosition;
@@ -60,11 +56,8 @@
 				return;
 			}
 
-			if (elevatorMusicAudio && elevatorChimeAudio) {
-				elevatorMusicAudio.pause();
-				elevatorChimeAudio.currentTime = 0;
-				elevatorChimeAudio.play();
-			}
+			pauseAudio("hotel");
+			playAudio("chime");
 		};
 
 		requestAnimationFrame(animation);
@@ -150,19 +143,3 @@
 >
 	<ElevatorUp class="transition-all" />
 </button>
-
-<audio
-	src="/audio/toby-fox-hotel.ogg"
-	preload="auto"
-	controls={false}
-	bind:this={elevatorMusicAudio}
-	class="hidden"
-></audio>
-<audio
-	src="/audio/chime.ogg"
-	preload="auto"
-	controls={false}
-	volume={0.5}
-	bind:this={elevatorChimeAudio}
-	class="hidden"
-></audio>

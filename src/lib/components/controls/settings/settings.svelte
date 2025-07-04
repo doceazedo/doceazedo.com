@@ -17,6 +17,7 @@
 	import SettingsItem from "./settings-item.svelte";
 	import SettingsModeToggle from "./settings-mode-toggle.svelte";
 	import SettingsProse from "./settings-prose.svelte";
+	import { SOUND_ENABLED } from "$lib/audio";
 
 	let { class: className }: { class?: string } = $props();
 </script>
@@ -44,7 +45,7 @@
 				<Switch />
 			</SettingsItem>
 			<SettingsItem icon={VolumeUpLineMedia} label="Sound effects">
-				<Switch />
+				<Switch bind:checked={$SOUND_ENABLED} />
 			</SettingsItem>
 			<SettingsItem icon={StackLineBusiness} label="Noise overlay">
 				<Select.Root type="single" value="animated">

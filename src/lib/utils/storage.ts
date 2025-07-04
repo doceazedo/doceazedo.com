@@ -23,10 +23,14 @@ export function storage<T>(
 						valueStr = strFromU8(decompressed, true);
 					}
 					const json = JSON.parse(valueStr);
-					store.set({
-						...defaultData,
-						...json,
-					});
+					store.set(
+						typeof json === "object"
+							? {
+									...defaultData,
+									...json,
+								}
+							: json,
+					);
 				}
 			} catch (_e) {
 				if (valueStr === "") {

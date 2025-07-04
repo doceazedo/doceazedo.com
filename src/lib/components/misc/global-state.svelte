@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { createAndPreloadAudio } from "$lib/audio";
 	import { IS_DESKTOP, LAST_PLAYED_TRACKS } from "$lib/stores";
 	import { onMount } from "svelte";
 
@@ -13,6 +14,7 @@
 	};
 
 	onMount(() => {
+		createAndPreloadAudio();
 		updateLastPlayedTracks();
 		const lastPlayedInterval = setInterval(updateLastPlayedTracks, 10000);
 		return () => clearInterval(lastPlayedInterval);

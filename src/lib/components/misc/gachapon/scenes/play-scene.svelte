@@ -12,7 +12,6 @@
 	import {
 		GAME_DATA,
 		GAME_STATE,
-		GUMBALL_DISPENSE_AUDIO,
 		IS_GUMBALL_LOADED,
 		PRIZE_ITEM,
 	} from "../stores";
@@ -21,6 +20,7 @@
 	import World from "./world.svelte";
 	import { giveItem } from "../game";
 	import type { RarityId, Vector3 } from "../types";
+	import { playAudio } from "$lib/audio";
 
 	const DISPENSE_COST = 100;
 
@@ -234,13 +234,6 @@
 		});
 	};
 
-	const playDispenseAudio = () => {
-		if (!$GUMBALL_DISPENSE_AUDIO.paused) {
-			$GUMBALL_DISPENSE_AUDIO.currentTime = 0;
-		}
-		$GUMBALL_DISPENSE_AUDIO.play();
-	};
-
 	const initializeCoinSpinAndShake = () => {
 		coinMechTweener.target = coinMechTweener.current - degToRad(360 * 2);
 		gumballTweener.position.target = [0, 2.5, 0];
@@ -305,7 +298,7 @@
 	};
 
 	const dispenseAnimationSequence = async () => {
-		playDispenseAudio();
+		playAudio("gumball-dispense");
 		resetAllAnimations();
 		await sleep(100);
 
