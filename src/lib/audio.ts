@@ -3,6 +3,10 @@ import { storage } from "./utils/storage";
 
 const AUDIO_URLS = new Map([
 	["hotel", "/audio/toby-fox-hotel.ogg"],
+	[
+		"can-you-really-call-this-a-hotel",
+		"/audio/toby-fox-can-you-really-call-this-a-hotel-i-didn-t-receive-a-mint-on-my-pillow-or-anything.ogg",
+	],
 	["chime", "/audio/chime.ogg"],
 	["fidget-spinner", "/audio/fidget-spinner.ogg"],
 	["cha-ching", "/audio/cha-ching.ogg"],

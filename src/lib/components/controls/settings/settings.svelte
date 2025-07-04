@@ -17,6 +17,7 @@
 	import SettingsProse from "./settings-prose.svelte";
 	import { SOUND_ENABLED } from "$lib/audio";
 	import SettingsNoise from "./settings-noise.svelte";
+	import { MAKE_ELEVATOR_FASTER } from "$lib/settings";
 
 	let { class: className }: { class?: string } = $props();
 </script>
@@ -48,7 +49,7 @@
 			</SettingsItem>
 			<SettingsNoise />
 			<SettingsItem icon={SpeedLineMedia} label="Make elevator faster">
-				<Switch />
+				<Switch bind:checked={$MAKE_ELEVATOR_FASTER} />
 			</SettingsItem>
 			<SettingsItem
 				icon={LightbulbFlashLineOthers}

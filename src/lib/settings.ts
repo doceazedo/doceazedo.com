@@ -8,3 +8,5 @@ export const PROSE_SIZE = storage(
 	}),
 	"prose_size",
 );
+
+export const MAKE_ELEVATOR_FASTER = storage(writable(false), "elevator_speed");

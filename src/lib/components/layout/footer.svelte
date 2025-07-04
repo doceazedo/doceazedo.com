@@ -9,6 +9,7 @@
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { sineOut } from "svelte/easing";
 	import { pauseAudio, playAudio } from "$lib/audio";
+	import { MAKE_ELEVATOR_FASTER } from "$lib/settings";
 
 	const FOOTER_SOCIALS = [
 		SOCIALS.github,
@@ -24,21 +25,22 @@
 		pt: "https://www.gnu.org/licenses/copyleft.pt-br.html",
 	};
 
-	const ELEVATOR_SPEED = 800;
-
 	let scrollY = $state(0);
 	let innerHeight = $state(0);
 	let clientHeight = $state(1080);
 
 	let scrolledTo = $derived(scrollY + innerHeight);
 	let scrolledToBottom = $derived(scrolledTo >= clientHeight - 24);
+	let scrollSpeed = $derived($MAKE_ELEVATOR_FASTER ? 1000 : 600);
 
 	const scrollToTop = () => {
-		playAudio("hotel");
+		playAudio(
+			$MAKE_ELEVATOR_FASTER ? "can-you-really-call-this-a-hotel" : "hotel",
+		);
 
 		const startPosition = window.pageYOffset;
 		const distance = startPosition;
-		const duration = Math.max((distance / ELEVATOR_SPEED) * 1000, 300);
+		const duration = Math.max((distance / scrollSpeed) * 1000, 300);
 		let startTime: number | null = null;
 
 		const animation = (currentTime: number) => {
@@ -56,7 +58,9 @@
 				return;
 			}
 
+			pauseAudio("can-you-really-call-this-a-hotel");
 			pauseAudio("hotel");
+
 			playAudio("chime");
 		};
 
