@@ -42,7 +42,7 @@
 			<SettingsModeToggle />
 			<SettingsProse />
 			<SettingsItem icon={BrainLineHealthMedical} label="Use font for dyslexia">
-				<Switch />
+				<Switch disabled />
 			</SettingsItem>
 			<SettingsItem icon={VolumeUpLineMedia} label="Sound effects">
 				<Switch bind:checked={$SOUND_ENABLED} />
@@ -55,7 +55,7 @@
 				icon={LightbulbFlashLineOthers}
 				label="Low attention span mode"
 			>
-				<Switch />
+				<Switch disabled />
 			</SettingsItem>
 			<DropdownMenu.Separator class="mt-1.5" />
 			<div class="flex justify-end px-2 py-1.5">
