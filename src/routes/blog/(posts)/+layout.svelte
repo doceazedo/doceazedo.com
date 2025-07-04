@@ -118,7 +118,7 @@
 					</div>
 				</div>
 			</header>
-			<Prose class="xl:prose-lg">
+			<Prose>
 				{@render children()}
 			</Prose>
 			<footer class="flex justify-center">

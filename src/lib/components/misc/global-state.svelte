@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createAndPreloadAudio } from "$lib/audio";
-	import { IS_DESKTOP, LAST_PLAYED_TRACKS } from "$lib/stores";
+	import { IS_DESKTOP, IS_XL, LAST_PLAYED_TRACKS } from "$lib/stores";
 	import { onMount } from "svelte";
 
 	const updateLastPlayedTracks = async () => {
@@ -23,6 +23,7 @@
 	let innerWidth = $state(0);
 	$effect(() => {
 		$IS_DESKTOP = innerWidth >= 768;
+		$IS_XL = innerWidth >= 1280;
 	});
 </script>
 

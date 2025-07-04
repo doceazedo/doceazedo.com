@@ -5,4 +5,6 @@ export const LAST_PLAYED_TRACKS = writable<NowPlayingTrack[] | null>(null);
 
 export const IS_DESKTOP = writable(false);
 
+export const IS_XL = writable(false);
+
 export const MEMOJI_BLINK_COUNT = writable(0);

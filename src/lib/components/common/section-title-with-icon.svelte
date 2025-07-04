@@ -29,7 +29,7 @@
 			<p class="text-body">{subtitle}</p>
 		{/if}
 		{#if updatedAt}
-			<p class="text-body mt-1.5 flex items-center gap-1.5">
+			<p class="text-body mt-1.5 flex items-center gap-1.5 xl:text-lg">
 				<CalendarCheckLineBusiness class="text-foreground size-4" />
 				<span class="[&>span]:text-foreground">
 					{@html m.updated_at({
