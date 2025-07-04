@@ -20,6 +20,7 @@
 		MAKE_ELEVATOR_FASTER,
 		NOISE_SETTING,
 		PROSE_SIZE,
+		USE_DYSLEXIA_FONT,
 	} from "$lib/settings";
 	import { setMode } from "mode-watcher";
 	import SettingsDyslexiaFont from "./settings-dyslexia-font.svelte";
@@ -29,6 +30,7 @@
 	const resetSettings = () => {
 		setMode("dark");
 		$PROSE_SIZE = { base: "16px", xl: "18px" };
+		$USE_DYSLEXIA_FONT = false;
 		$SOUND_ENABLED = true;
 		$NOISE_SETTING = "animated";
 		$MAKE_ELEVATOR_FASTER = false;
