@@ -309,7 +309,7 @@
 													<img
 														src={comment.embed.thumbnail}
 														alt="Link preview"
-														class="w-full rounded-t object-cover"
+														class="aspect-[120/63] w-full rounded-t object-cover"
 													/>
 												{/if}
 												<hgroup class="p-3">

@@ -2,6 +2,7 @@
 title: "How to create a Spigot plugin in Kotlin"
 date: "2021/12/15"
 icon: "/img/icons/kotlin.svg"
+blueskyPostId: "3ltanzm3utk2c"
 ---
 
 > 💡 **Hey, [this article is also available as a video in PT-BR](https://youtube.com/watch?v=yBa03w6Nk08)!**
