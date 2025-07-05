@@ -111,6 +111,8 @@ const getBlueskyData = async (
 				.replaceAll("&", "&amp;")
 				.replaceAll("<", "&lt;")
 				.replaceAll(">", "&gt;")
+				.replaceAll("(", "&lpar;")
+				.replaceAll(")", "&rpar;")
 				.replaceAll('"', "&quot;")
 				.replaceAll("'", "&#039;");
 
@@ -147,10 +149,16 @@ const getBlueskyData = async (
 						`<a href="https://bsky.app/tag/${encodeURIComponent(feature.tag)}" target="_blank" rel="noopener noreferrer">#${escapeHTML(feature.tag)}</a>`,
 					);
 				} else if (feature.$type === "app.bsky.richtext.facet#link") {
-					parts.push(
+					try {
 						// @ts-expect-error: already checked
-						`<a href="${feature.uri}" target="_blank" rel="noopener noreferrer">${escapeHTML(facetText)}</a>`,
-					);
+						const url = new URL(feature.uri);
+						if (url.protocol !== "https:") throw Error();
+						parts.push(
+							`<a href="${url}" target="_blank" rel="noopener noreferrer">${escapeHTML(facetText)}</a>`,
+						);
+					} catch (_error) {
+						parts.push(escapeHTML(facetText));
+					}
 				} else {
 					parts.push(escapeHTML(facetText));
 				}
