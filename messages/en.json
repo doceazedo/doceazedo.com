@@ -488,5 +488,7 @@
 	"settings_adhd_mode": "Low attention span mode",
 	"reset_settings": "Reset to default settings",
 	"comment_on": "Join the conversation on",
-	"or": "or"
+	"or": "or",
+	"be_the_first_to_comment": "Start the conversation on",
+	"no_comments": "No comments yet"
 }

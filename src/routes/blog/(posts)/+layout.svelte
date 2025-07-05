@@ -72,7 +72,13 @@
 	};
 
 	const getCommentsSectionTitle = (count: number) => {
-		return count === 1 ? m["1_comment"]() : m.x_comments({ count });
+		if (count === 0) return m.no_comments();
+		if (count === 1) return m["1_comment"]();
+		return m.x_comments({ count });
+	};
+
+	const getJoinConversationLabel = (count: number) => {
+		return count === 0 ? m.be_the_first_to_comment() : m.comment_on();
 	};
 
 	const isEmojiOnly = (str: string) =>
@@ -165,7 +171,7 @@
 					{getCommentsSectionTitle(activity?.comments?.length || 0)}
 				</h1>
 				<div class="text-body flex items-center gap-1.5">
-					{m.comment_on()}
+					{getJoinConversationLabel(activity?.comments?.length || 0)}
 					<Button
 						href="https://bsky.app/profile/{SOCIALS.bluesky.handle}/post/{data
 							.metadata.blueskyPostId}"

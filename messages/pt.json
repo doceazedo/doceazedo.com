@@ -488,5 +488,7 @@
 	"comment_on": "Participe da conversa no",
 	"or": "ou",
 	"1_comment": "1 comentários",
-	"x_comments": "{count} comentários"
+	"x_comments": "{count} comentários",
+	"be_the_first_to_comment": "Inicie a conversa no",
+	"no_comments": "Sem comentários ainda"
 }
