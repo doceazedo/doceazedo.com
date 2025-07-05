@@ -1,4 +1,8 @@
-import { ATP_IDENTIFIER, ATP_PASSWORD } from "$env/static/private";
+import {
+	ATP_IDENTIFIER,
+	ATP_PASSWORD,
+	PLAUSIBLE_API_KEY,
+} from "$env/static/private";
 import { SOCIALS } from "$lib/constants.js";
 import type {
 	BlueskyRawEmbed,
@@ -16,11 +20,15 @@ export const GET = async ({ params }) => {
 	const post = await import(`../../(posts)/${params.slug}/+page.md`);
 	if (!post) return error(404);
 
-	const blueskyData = await getBlueskyData(post.metadata?.blueskyPostId);
+	const [viewsCount, blueskyData] = await Promise.all([
+		getPageViews(`/blog/${params.slug}`),
+		getBlueskyData(post.metadata?.blueskyPostId),
+	]);
 
 	return json({
 		likesCount: 0,
-		viewsCount: 0,
+		viewsCount,
+		comments: [],
 		...blueskyData,
 	} as PostActivity);
 };
@@ -194,4 +202,41 @@ const getBlueskyData = async (
 					source: "bluesky",
 				})) || [],
 	};
+};
+
+// manually extracted from old doceazedo.com plausible data
+const OLD_PAGE_VIEWS = {
+	"/blog/sveltekit-docker": 349,
+	"/blog/tryhackme-couch": 231,
+	"/blog/plausible-analytics": 201,
+	"/blog/getting-started-with-svelte-4": 583,
+	"/blog/who-is-doceazedo": 183,
+	"/blog/photopea-vs-photoshop": 226,
+	"/blog/wordpress-headless-cms": 129,
+	"/blog/kotlin-spigot-plugin": 224,
+} as { [page: string]: number };
+
+const getPageViews = async (page: string) => {
+	try {
+		const res = await fetch("https://plausible.io/api/v2/query", {
+			method: "POST",
+			headers: {
+				Authorization: `Bearer ${PLAUSIBLE_API_KEY}`,
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				site_id: "doce.sh",
+				metrics: ["pageviews"],
+				date_range: "all",
+				filters: [["contains", "event:page", [page]]],
+			}),
+		});
+
+		const data = await res.json();
+		const livePageViews = data?.results?.[0]?.metrics?.["0"] || 0;
+		const oldPageViews = OLD_PAGE_VIEWS?.[page] || 0;
+		return livePageViews + oldPageViews;
+	} catch (_error) {
+		return 0;
+	}
 };
