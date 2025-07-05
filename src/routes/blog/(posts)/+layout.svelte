@@ -15,6 +15,7 @@
 		BookReadLineDocument,
 		CalendarLineBusiness,
 		Chat3LineCommunication,
+		EarthFillMap,
 		EyeLineSystem,
 		Heart3LineHealthMedical,
 		MastodonLineLogos,
@@ -327,6 +328,13 @@
 															{comment.embed.description}
 														</p>
 													{/if}
+													<hr class="my-1.5" />
+													<div
+														class="text-body/70 flex items-center gap-1 text-xs"
+													>
+														<EarthFillMap class="size-3" />
+														{new URL(comment.embed.url).host}
+													</div>
 												</hgroup>
 											</a>
 										{/if}

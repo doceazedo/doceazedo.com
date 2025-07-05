@@ -60,6 +60,32 @@ const getBlueskyData = async (
 		embed?: BlueskyRawEmbed,
 	): PostCommentEmbed | undefined => {
 		if (!embed) return undefined;
+
+		if (
+			![
+				// @ts-expect-error: ?.
+				embed?.thumb,
+				// @ts-expect-error: ?.
+				embed?.fullsize,
+				// @ts-expect-error: ?.
+				embed?.playlist,
+				// @ts-expect-error: ?.
+				embed?.thumbnail,
+				// @ts-expect-error: ?.
+				embed?.external?.uri,
+			]
+				.filter((x) => !!x)
+				.every((x) => {
+					try {
+						const url = new URL(x);
+						return url.protocol === "https:";
+					} catch (_error) {
+						return false;
+					}
+				})
+		)
+			return undefined;
+
 		switch (embed.$type) {
 			case "app.bsky.embed.images#view":
 				return {
