@@ -36,7 +36,7 @@
 	let headingEls = $state<HTMLHeadingElement[]>([]);
 	let headings = $derived<Heading[]>(
 		headingEls.map((x) => ({
-			label: x.innerText,
+			label: x.id === "comments" ? m.comments() : x.innerText,
 			id: x.id,
 			tag: x.tagName.toLowerCase(),
 		})),
@@ -87,7 +87,7 @@
 	onMount(() => {
 		headingEls = [
 			...document.querySelectorAll<HTMLHeadingElement>(
-				".prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6",
+				".prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6, #comments",
 			),
 		];
 
@@ -167,7 +167,7 @@
 				<hr class="w-full" />
 			</div>
 			<div class="flex flex-col gap-3">
-				<h1 class="text-3xl font-semibold lg:text-4xl">
+				<h1 id="comments" class="text-3xl font-semibold lg:text-4xl">
 					{getCommentsSectionTitle(activity?.comments?.length || 0)}
 				</h1>
 				<div class="text-body flex items-center gap-1.5">
@@ -375,13 +375,19 @@
 						class={cn(
 							"text-body hover:text-foreground relative flex h-6 items-center transition-all",
 							isActive && "text-foreground",
+							heading.tag === "h1" && "pl-6",
 							heading.tag === "h2" && "pl-6",
 							heading.tag === "h3" && "pl-10",
 							heading.tag === "h4" && "pl-14",
 							heading.tag === "h5" && "pl-18",
 						)}
 					>
-						<p class="truncate">{heading.label}</p>
+						<p class="truncate">
+							{heading.label}
+							{#if heading.id === "comments" && activity?.comments}
+								({activity.comments.length})
+							{/if}
+						</p>
 					</a>
 				{/each}
 				<span
