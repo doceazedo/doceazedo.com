@@ -23,6 +23,7 @@ export const SOCIALS = {
 		icon: GithubLineLogos,
 		url: "https://github.com/doceazedo",
 		label: "GitHub",
+		handle: "doceazedo",
 	},
 	linkedin: {
 		icon: LinkedinBoxLineLogos,
@@ -33,6 +34,8 @@ export const SOCIALS = {
 		icon: BlueskyLineLogos,
 		url: "https://bsky.app/profile/doceazedo.com",
 		label: "Bluesky",
+		handle: "doceazedo.com",
+		id: "did:plc:uthii4i7zrmqnbxex5esjxzp",
 	},
 	instagram: {
 		icon: InstagramLineLogos,

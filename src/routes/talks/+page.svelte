@@ -51,7 +51,7 @@
 		},
 		{
 			key: "GitHub",
-			value: `@${SOCIALS.github.url.split(".com/")[1]}`,
+			value: `@${SOCIALS.github.handle}`,
 			href: SOCIALS.github.url,
 		},
 	];

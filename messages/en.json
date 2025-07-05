@@ -470,7 +470,6 @@
 	"gachapon_item_description_fidget_spinner": "Yes, you can spin it. That's literally the whole point.",
 	"1_comment": "1 comment",
 	"x_comments": "{count} comments",
-	"comment_on_bluesky": "Join the conversation on BlueSky!",
 	"uses_music_software": "Music",
 	"uses_daw": "DAW",
 	"uses_djing": "DJing",
@@ -487,5 +486,7 @@
 	"off": "Off",
 	"settings_elevator_speed": "Make elevator faster",
 	"settings_adhd_mode": "Low attention span mode",
-	"reset_settings": "Reset to default settings"
+	"reset_settings": "Reset to default settings",
+	"comment_on": "Join the conversation on",
+	"or": "or"
 }

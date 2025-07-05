@@ -484,5 +484,9 @@
 	"off": "Desligado",
 	"settings_elevator_speed": "Deixar elevador mais rápido",
 	"settings_adhd_mode": "Modo baixo nível de atenção",
-	"reset_settings": "Redefinir preferências"
+	"reset_settings": "Redefinir preferências",
+	"comment_on": "Participe da conversa no",
+	"or": "ou",
+	"1_comment": "1 comentários",
+	"x_comments": "{count} comentários"
 }

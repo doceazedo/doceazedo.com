@@ -1,14 +1,12 @@
 import { ATP_IDENTIFIER, ATP_PASSWORD } from "$env/static/private";
 import { SOCIALS } from "$lib/constants.js";
-import type { PostActivity } from "$lib/types.js";
-import {
-	AppBskyFeedGetLikes,
-	AppBskyFeedGetPostThread,
-	AtpAgent,
-} from "@atproto/api";
+import type {
+	BlueskyRawEmbed,
+	PostActivity,
+	PostCommentEmbed,
+} from "$lib/types.js";
+import { AppBskyFeedGetPostThread, AtpAgent, type Facet } from "@atproto/api";
 import { error, json } from "@sveltejs/kit";
-
-const BLUESKY_USER = SOCIALS.bluesky.url.split("profile/")[1];
 
 const agent = new AtpAgent({
 	service: "https://bsky.social",
@@ -18,48 +16,182 @@ export const GET = async ({ params }) => {
 	const post = await import(`../../(posts)/${params.slug}/+page.md`);
 	if (!post) return error(404);
 
+	const blueskyData = await getBlueskyData(post.metadata?.blueskyPostId);
+
 	return json({
-		bluesky: await getBlueskyData(post.metadata?.bskyPostId),
+		likesCount: 0,
+		viewsCount: 0,
+		...blueskyData,
 	} as PostActivity);
 };
 
 const getBlueskyData = async (
-	postId?: string,
-): Promise<PostActivity["bluesky"] | null> => {
-	if (!postId) return null;
-
+	postId: string,
+): Promise<Partial<PostActivity>> => {
 	try {
 		await agent.login({
 			identifier: ATP_IDENTIFIER,
 			password: ATP_PASSWORD,
 		});
 	} catch (_error) {
-		return null;
+		return {};
 	}
 
-	let postThread: AppBskyFeedGetPostThread.OutputSchema;
+	let data: AppBskyFeedGetPostThread.OutputSchema;
 	try {
 		const resp = await agent.getPostThread({
-			uri: `at://${BLUESKY_USER}/app.bsky.feed.post/${postId}`,
+			uri: `at://${SOCIALS.bluesky.handle}/app.bsky.feed.post/${postId}`,
 		});
-		postThread = resp.data;
+		data = resp.data;
 	} catch (_error) {
-		return null;
+		return {};
 	}
-	if (!("post" in postThread.thread)) return null;
+	if (!("post" in data.thread)) return {};
 
-	const likes: AppBskyFeedGetLikes.Like[] = [];
-	/*
-		try {
-			const resp = await agent.getLikes({
-				uri: postThread.thread.post.uri,
-			});
-			likes = resp.data?.likes || null;
-		} catch (_error) {}
-	*/
+	const parseEmbed = (
+		embed?: BlueskyRawEmbed,
+	): PostCommentEmbed | undefined => {
+		if (!embed) return undefined;
+		switch (embed.$type) {
+			case "app.bsky.embed.images#view":
+				return {
+					type: "image",
+					images: embed.images.map((img) => ({
+						thumbnail: img.thumb,
+						fullsize: img.fullsize,
+						alt: img.alt,
+						aspectRatio: img.aspectRatio,
+					})),
+				};
+			case "app.bsky.embed.video#view":
+				return {
+					type: "video",
+					playlist: embed.playlist,
+					thumbnail: embed.thumbnail,
+					aspectRatio: embed.aspectRatio,
+				};
+			case "app.bsky.embed.external#view": {
+				const url = new URL(embed.external.uri);
+				if (url.host === "media.tenor.com") {
+					return {
+						type: "image",
+						images: [
+							{
+								thumbnail: embed.external.uri,
+								fullsize: embed.external.uri,
+								alt: embed.external.title,
+							},
+						],
+					};
+				}
+				return {
+					type: "link",
+					url: embed.external.uri,
+					title: embed.external.title,
+					description: embed.external.description,
+					thumbnail: embed.external.thumb,
+				};
+			}
+			default:
+				return undefined;
+		}
+	};
+
+	const parseMessageFacets = (content: string, facets: Facet[]): string => {
+		const escapeHTML = (str: string) =>
+			str
+				.replaceAll("&", "&amp;")
+				.replaceAll("<", "&lt;")
+				.replaceAll(">", "&gt;")
+				.replaceAll('"', "&quot;")
+				.replaceAll("'", "&#039;");
+
+		const encoder = new TextEncoder();
+		const decoder = new TextDecoder();
+
+		const bytes = encoder.encode(content);
+		const parts: string[] = [];
+
+		let lastByteIndex = 0;
+
+		for (const facet of facets.sort(
+			(a, b) => a.index.byteStart - b.index.byteStart,
+		)) {
+			const { byteStart, byteEnd } = facet.index;
+
+			if (byteStart > lastByteIndex) {
+				const plainBytes = bytes.slice(lastByteIndex, byteStart);
+				parts.push(escapeHTML(decoder.decode(plainBytes)));
+			}
+
+			const facetBytes = bytes.slice(byteStart, byteEnd);
+			const facetText = decoder.decode(facetBytes);
+
+			for (const feature of facet.features) {
+				if (feature.$type === "app.bsky.richtext.facet#mention") {
+					const handle = escapeHTML(facetText);
+					parts.push(
+						`<a href="https://bsky.app/profile/${handle.split("@")?.[1]}" target="_blank" rel="noopener noreferrer">${handle}</a>`,
+					);
+				} else if (feature.$type === "app.bsky.richtext.facet#tag") {
+					parts.push(
+						// @ts-expect-error: already checked
+						`<a href="https://bsky.app/tag/${encodeURIComponent(feature.tag)}" target="_blank" rel="noopener noreferrer">#${escapeHTML(feature.tag)}</a>`,
+					);
+				} else if (feature.$type === "app.bsky.richtext.facet#link") {
+					parts.push(
+						// @ts-expect-error: already checked
+						`<a href="${feature.uri}" target="_blank" rel="noopener noreferrer">${escapeHTML(facetText)}</a>`,
+					);
+				} else {
+					parts.push(escapeHTML(facetText));
+				}
+			}
+
+			lastByteIndex = byteEnd;
+		}
+
+		// add remaining text
+		if (lastByteIndex < bytes.length) {
+			const remainingBytes = bytes.slice(lastByteIndex);
+			parts.push(escapeHTML(decoder.decode(remainingBytes)));
+		}
+
+		return parts.join("");
+	};
 
 	return {
-		thread: postThread.thread,
-		likes,
+		likesCount: data.thread.post.likeCount,
+		comments:
+			data.thread.replies
+				?.filter((x) => "post" in x)
+				.sort(
+					(a, b) =>
+						new Date((a.post.record?.createdAt as string) || 0).getTime() -
+						new Date((b.post.record?.createdAt as string) || 0).getTime(),
+				)
+				.map((x) => ({
+					author: {
+						id: x.post.author.did,
+						displayName:
+							x.post.author.displayName || `@${x.post.author.handle}`,
+						url: `https://bsky.app/profile/${x.post.author.handle}`,
+						avatar: x.post.author.avatar || `/img/avatar-fallback.webp`,
+					},
+					raw: {
+						text: x.post.record?.text,
+						facets: x.post.record.facets,
+					},
+					content: parseMessageFacets(
+						(x.post.record?.text as string) || "",
+						(x.post.record.facets as Facet[]) || [],
+					),
+					embed: parseEmbed(x.post.embed as BlueskyRawEmbed),
+					likesCount: x.post.likeCount || 0,
+					url: `https://bsky.app/profile/${x.post.author.handle}/post/${x.post.uri.split("app.bsky.feed.post/")[1]}`,
+					postedAt:
+						(x.post.record?.createdAt as string) || new Date(0).toString(),
+					source: "bluesky",
+				})) || [],
 	};
 };

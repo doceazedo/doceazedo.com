@@ -2,21 +2,23 @@
 	import { pushState } from "$app/navigation";
 	import Prose from "$lib/components/common/prose.svelte";
 	import Seo from "$lib/components/common/seo.svelte";
+	import { Button } from "$lib/components/ui/button";
+	import { Skeleton } from "$lib/components/ui/skeleton";
+	import { SOCIALS } from "$lib/constants.js";
 	import { m } from "$lib/paraglide/messages.js";
 	import { getLocale } from "$lib/paraglide/runtime.js";
 	import type { PostActivity } from "$lib/types.js";
 	import { cn } from "$lib/utils.js";
 	import { onMount } from "svelte";
 	import {
-		BlueskyFillLogos,
 		BlueskyLineLogos,
 		BookReadLineDocument,
 		CalendarLineBusiness,
-		Chat1LineCommunication,
-		Chat2LineCommunication,
+		Chat3LineCommunication,
+		EyeLineSystem,
 		Heart3LineHealthMedical,
-		Loader2LineSystem,
-		RepeatLineMedia,
+		MastodonLineLogos,
+		PlayFillMedia,
 		VerifiedBadgeFillBusiness,
 	} from "svelte-remix";
 
@@ -55,14 +57,26 @@
 		activeHeading = topVisibleTitle.id;
 	};
 
-	const fetchSocialActivity = async (): Promise<PostActivity | null> => {
+	let activity = $state<PostActivity>();
+	const fetchSocialActivity = async () => {
 		try {
 			const resp = await fetch(`/blog/${data.slug}/activity.json`);
-			return await resp.json();
+			activity = await resp.json();
 		} catch (_error) {
-			return null;
+			activity = {
+				likesCount: 0,
+				viewsCount: 0,
+				comments: [],
+			};
 		}
 	};
+
+	const getCommentsSectionTitle = (count: number) => {
+		return count === 1 ? m["1_comment"]() : m.x_comments({ count });
+	};
+
+	const isEmojiOnly = (str: string) =>
+		str.split(" ").every((x) => /\p{Extended_Pictographic}/u.test(x));
 
 	onMount(() => {
 		headingEls = [
@@ -74,6 +88,8 @@
 		const prose = document.querySelector(".prose") as HTMLElement;
 		const words = prose.innerText.split(" ").length;
 		readTime = Math.round(words / WPM);
+
+		fetchSocialActivity();
 	});
 </script>
 
@@ -121,15 +137,210 @@
 			<Prose>
 				{@render children()}
 			</Prose>
-			<footer class="flex justify-center">
-				<a
-					href="/ai"
-					class="ease-elastic hover:bg-muted hover:text-foreground text-body flex w-fit items-center gap-1.5 rounded border px-2 py-1.5 text-sm transition-all hover:scale-105"
-				>
-					<VerifiedBadgeFillBusiness class="text-primary size-5" />
-					<p>{@html m.blog_footnote()}</p>
-				</a>
-			</footer>
+			<a
+				href="/ai"
+				class="ease-elastic hover:bg-primary/10 hover:border-primary hover:text-foreground text-body [&_u]:text-foreground hover:[&_u]:text-primary mx-auto flex w-fit items-center gap-1.5 rounded border px-2 py-1.5 text-sm transition-all hover:scale-105 [&_u]:transition-all"
+			>
+				<VerifiedBadgeFillBusiness class="text-primary size-5" />
+				<p>{@html m.blog_footnote()}</p>
+			</a>
+			<div class="flex items-center gap-6">
+				<hr class="w-full" />
+				<div class="text-body flex items-center gap-1.5">
+					<Heart3LineHealthMedical class="size-5" />
+					{activity ? activity.likesCount : "—"}
+				</div>
+				<div class="text-body flex items-center gap-1.5">
+					<Chat3LineCommunication class="size-5" />
+					{activity ? activity.comments.length : "—"}
+				</div>
+				<div class="text-body flex items-center gap-1.5">
+					<EyeLineSystem class="size-5" />
+					{activity ? activity.viewsCount : "—"}
+				</div>
+				<hr class="w-full" />
+			</div>
+			<div class="flex flex-col gap-3">
+				<h1 class="text-3xl font-semibold lg:text-4xl">
+					{getCommentsSectionTitle(activity?.comments?.length || 0)}
+				</h1>
+				<div class="text-body flex items-center gap-1.5">
+					{m.comment_on()}
+					<Button
+						href="https://bsky.app/profile/{SOCIALS.bluesky.handle}/post/{data
+							.metadata.blueskyPostId}"
+						target="_blank"
+						rel="noopener noreferrer"
+						variant="outline"
+						size="sm"
+					>
+						<BlueskyLineLogos class="size-5" />
+						Bluesky
+					</Button>
+					<!--
+							{m.or()}
+							<Button variant="outline" size="sm">
+								<MastodonLineLogos class="size-5" />
+								Mastodon
+							</Button>
+						-->
+				</div>
+			</div>
+			<ul class="flex flex-col gap-6 md:gap-12">
+				{#if activity}
+					{#each activity.comments as comment}
+						<li
+							class="ease-elastic hover:before:bg-muted/50 before:border-border relative flex gap-4 p-4 transition-all before:absolute before:top-0 before:left-0 before:-z-10 before:size-full before:rounded before:border before:transition-all hover:scale-105 md:gap-6 md:p-6"
+						>
+							<a
+								href={comment.author.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="relative size-12 shrink-0 rounded-full before:absolute before:size-12 before:rounded-full before:border before:border-white/15 md:size-14 md:before:size-14"
+							>
+								<img
+									src={comment.author.avatar}
+									alt=""
+									class="size-full rounded-full"
+								/>
+							</a>
+							<div class="flex w-full flex-col">
+								<p
+									class="text-foreground flex items-center gap-1.5 font-medium"
+								>
+									<a
+										href={comment.author.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="hover:text-primary text-lg transition-all"
+									>
+										{comment.author.displayName}
+									</a>
+									{#if comment.author.id === SOCIALS.bluesky.id}
+										<VerifiedBadgeFillBusiness class="text-primary size-4" />
+									{/if}
+									<span class="dark:text-muted text-border scale-90">
+										&bull;
+									</span>
+									<a
+										href={comment.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="text-body text-sm hover:underline"
+									>
+										{new Date(comment.postedAt).toLocaleDateString(
+											getLocale(),
+											{
+												month: "short",
+												day: "numeric",
+											},
+										)}
+									</a>
+								</p>
+								{#if !comment.embed && isEmojiOnly(comment.content) && !comment.content.includes("\n")}
+									{@const emojiCount = comment.content.split("").length}
+									<p class={emojiCount <= 3 ? "text-6xl" : "text-3xl"}>
+										{comment.content}
+									</p>
+								{:else}
+									<Prose class="w-full whitespace-pre-line">
+										{@html comment.content}
+									</Prose>
+								{/if}
+								{#if comment.embed}
+									<div class="mt-3 w-full">
+										{#if comment.embed.type === "image"}
+											{@const qty = comment.embed.images.length}
+											{#if qty === 1}
+												{@const img = comment.embed.images[0]}
+												<img
+													src={img.thumbnail}
+													alt={img.alt || "Image"}
+													class="size-full max-h-[48rem] w-full rounded md:w-[calc(50%-6px)]"
+												/>
+											{:else}
+												<div class="grid grid-cols-2 gap-1.5">
+													{#each comment.embed.images as img, i}
+														<figure
+															class={cn(
+																"relative overflow-hidden rounded before:absolute before:size-full before:rounded before:border before:border-white/15",
+																qty === 1 && "aspect-square",
+																qty === 3 &&
+																	i === 0 &&
+																	"row-span-2 aspect-auto! h-full",
+																qty >= 3 && "aspect-video",
+															)}
+														>
+															<img
+																src={img.thumbnail}
+																alt={img.alt || "Image"}
+																class="size-full rounded object-cover"
+															/>
+														</figure>
+													{/each}
+												</div>
+											{/if}
+										{:else if comment.embed.type === "video" && comment.embed.thumbnail}
+											<a
+												href={comment.url}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded before:absolute before:size-full before:rounded before:border before:border-white/15"
+											>
+												<img
+													src={comment.embed.thumbnail}
+													alt="Video thumbnail"
+													class="size-full object-cover"
+												/>
+												<div
+													class="bg-primary/20 hover:bg-primary/40 border-primary absolute flex size-12 items-center justify-center rounded-full border transition-all"
+												>
+													<PlayFillMedia class="text-primary size-6" />
+												</div>
+											</a>
+										{:else if comment.embed.type === "link"}
+											<a
+												href={comment.embed.url}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="hover:bg-primary/15 hover:border-primary flex flex-col rounded border transition-all"
+											>
+												{#if comment.embed.thumbnail}
+													<img
+														src={comment.embed.thumbnail}
+														alt="Link preview"
+														class="w-full rounded-t object-cover"
+													/>
+												{/if}
+												<hgroup class="p-3">
+													<p class="line-clamp-1 font-medium">
+														{comment.embed.title}
+													</p>
+													{#if comment.embed.description}
+														<p class="text-body line-clamp-2 text-sm">
+															{comment.embed.description}
+														</p>
+													{/if}
+												</hgroup>
+											</a>
+										{/if}
+									</div>
+								{/if}
+								{#if comment.likesCount > 0}
+									<div class="text-body mt-3 flex items-center gap-1.5">
+										<Heart3LineHealthMedical class="size-5" />
+										{comment.likesCount}
+									</div>
+								{/if}
+							</div>
+						</li>
+					{/each}
+				{:else}
+					<Skeleton class="h-24 w-full" />
+					<Skeleton class="h-24 w-full" />
+					<Skeleton class="h-24 w-full" />
+				{/if}
+			</ul>
 		</main>
 		<aside
 			class="sticky top-32 hidden h-fit w-full max-w-[19rem] flex-col gap-3 border-l lg:flex"
@@ -174,142 +385,4 @@
 			</div>
 		</aside>
 	</div>
-	{#await fetchSocialActivity()}
-		<p class="flex items-center justify-center gap-1.5">
-			<Loader2LineSystem class="text-primary size-6 animate-spin" />
-			Loading social activity...
-		</p>
-	{:then activity}
-		{#if activity?.bluesky}
-			{@const postUrl = `https://bsky.app/profile/doceazedo.com/post/${data.metadata.bskyPostId}`}
-			{@const replyCount = activity.bluesky.thread.post.replyCount || 0}
-			<hr />
-			<div class="mx-auto flex w-full max-w-xl flex-col gap-12">
-				<div class="mx-auto -my-6 flex gap-3 md:my-0">
-					<a
-						href={postUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="hover:bg-primary/15 hover:text-primary group flex items-center justify-center gap-1.5 rounded px-3 py-2 transition-all"
-					>
-						<Chat1LineCommunication
-							class="text-body group-hover:text-primary size-6 transition-all"
-						/>
-						{activity.bluesky.thread.post.replyCount}
-					</a>
-					<a
-						href={postUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="hover:bg-primary/15 hover:text-primary group flex items-center justify-center gap-1.5 rounded px-3 py-2 transition-all"
-					>
-						<RepeatLineMedia
-							class="text-body group-hover:text-primary size-6 transition-all"
-						/>
-						{(activity.bluesky.thread.post.repostCount || 0) +
-							(activity.bluesky.thread.post.quoteCount || 0)}
-					</a>
-					<a
-						href={postUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="group flex items-center justify-center gap-1.5 rounded px-3 py-1.5 transition-all hover:bg-rose-500/15 hover:text-rose-500"
-					>
-						<Heart3LineHealthMedical
-							class="text-body size-6 transition-all group-hover:text-rose-500"
-						/>
-						{activity.bluesky.thread.post.likeCount}
-					</a>
-				</div>
-				<hgroup>
-					<h1 class="mb-1.5 text-3xl font-semibold md:text-center lg:text-4xl">
-						{replyCount === 1
-							? m["1_comment"]()
-							: m.x_comments({
-									count: replyCount,
-								})}
-					</h1>
-					<a
-						href={postUrl}
-						target="_blank"
-						class="text-body hover:text-primary flex items-center gap-1.5 underline transition-all md:justify-center"
-					>
-						<BlueskyLineLogos class="size-5" />
-						{m.comment_on_bluesky()}
-					</a>
-				</hgroup>
-
-				<ul class="flex w-full flex-col gap-6 md:gap-12">
-					{#each (activity.bluesky.thread.replies || []).reverse() as reply}
-						{#if "post" in reply}
-							{@const postedAt = new Date(
-								reply.post.record.createdAt as string,
-							)}
-							<li class="flex gap-6">
-								<a
-									href="https://bsky.app/profile/{reply.post.author.handle}"
-									target="_blank"
-									rel="noopener noreferrer"
-									class="hover:text-primary ease-elastic size-12 shrink-0 rounded leading-4 font-medium transition-all hover:scale-115"
-								>
-									<img
-										src={reply.post.author.avatar}
-										alt=""
-										class="size-full rounded border"
-									/>
-								</a>
-								<div class="relative flex w-full flex-col gap-3">
-									<span
-										class="bg-background absolute top-4.5 -left-1.5 size-3 -rotate-45 rounded-tl-xs border-t border-l"
-									></span>
-									<div class="flex flex-col gap-1.5 rounded border p-4.5">
-										<div class="-my-1.5 flex items-center gap-1.5">
-											<a
-												href="https://bsky.app/profile/{reply.post.author
-													.handle}"
-												target="_blank"
-												rel="noopener noreferrer"
-												class="hover:text-primary leading-4 font-medium transition-all hover:underline"
-											>
-												{reply.post.author.displayName}
-											</a>
-											<span class="text-body/70">&bull;</span>
-											<a
-												href="https://bsky.app/profile/{reply.post.author
-													.handle}/post/{reply.post.uri.split(
-													'app.bsky.feed.post/',
-												)[1]}"
-												target="_blank"
-												rel="noopener noreferrer"
-												class="text-body/70 hover:text-primary text-sm leading-4 transition-all hover:underline"
-											>
-												{new Date(postedAt).toLocaleDateString(getLocale(), {
-													day: "2-digit",
-													month: "long",
-													year:
-														postedAt.getFullYear() !== new Date().getFullYear()
-															? "numeric"
-															: undefined,
-												})}
-											</a>
-										</div>
-										<p class="text-body">{reply.post.record.text}</p>
-										{#if reply.post.embed}
-											{#if "external" in reply.post.embed}
-												<img
-													src={reply.post.embed.external.uri}
-													alt=""
-													class="mt-1.5 rounded border"
-												/>
-											{/if}
-										{/if}
-									</div>
-								</div>
-							</li>
-						{/if}
-					{/each}
-				</ul>
-			</div>
-		{/if}
-	{/await}
 </div>
