@@ -175,7 +175,7 @@
 					{getJoinConversationLabel(activity?.comments?.length || 0)}
 					<Button
 						href="https://bsky.app/profile/{SOCIALS.bluesky.handle}/post/{data
-							.metadata.blueskyPostId}"
+							.metadata?.blueskyPostId || ''}"
 						target="_blank"
 						rel="noopener noreferrer"
 						variant="outline"
@@ -184,13 +184,17 @@
 						<BlueskyLineLogos class="size-5" />
 						Bluesky
 					</Button>
-					<!--
-							{m.or()}
-							<Button variant="outline" size="sm">
-								<MastodonLineLogos class="size-5" />
-								Mastodon
-							</Button>
-						-->
+					{m.or()}
+					<Button
+						href="{SOCIALS.mastodon.url}/{data.metadata?.mastodonPostId || ''}"
+						target="_blank"
+						rel="noopener noreferrer"
+						variant="outline"
+						size="sm"
+					>
+						<MastodonLineLogos class="size-5" />
+						Mastodon
+					</Button>
 				</div>
 			</div>
 			<ul class="flex flex-col gap-6 md:gap-12">
@@ -223,7 +227,7 @@
 									>
 										{comment.author.displayName}
 									</a>
-									{#if comment.author.id === SOCIALS.bluesky.id}
+									{#if comment.author.id === SOCIALS.bluesky.id || comment.author.id === SOCIALS.mastodon.id}
 										<VerifiedBadgeFillBusiness class="text-primary size-4" />
 									{/if}
 									<span class="dark:text-muted text-border scale-90">
@@ -233,7 +237,7 @@
 										href={comment.url}
 										target="_blank"
 										rel="noopener noreferrer"
-										class="text-body text-sm hover:underline"
+										class="text-body flex items-center gap-1.5 text-sm hover:underline"
 									>
 										{new Date(comment.postedAt).toLocaleDateString(
 											getLocale(),
@@ -242,15 +246,23 @@
 												day: "numeric",
 											},
 										)}
+										<span class="text-body/70 flex items-center gap-1">
+											<span>via</span>
+											{#if comment.source === "bluesky"}
+												<BlueskyLineLogos class="size-4" />
+											{:else if comment.source === "mastodon"}
+												<MastodonLineLogos class="size-4" />
+											{/if}
+										</span>
 									</a>
 								</p>
 								{#if !comment.embed && isEmojiOnly(comment.content) && !comment.content.includes("\n")}
 									{@const emojiCount = comment.content.split("").length}
 									<p class={emojiCount <= 3 ? "text-6xl" : "text-3xl"}>
-										{comment.content}
+										{@html comment.content}
 									</p>
 								{:else}
-									<Prose class="w-full whitespace-pre-line">
+									<Prose class="line-clamp-6 w-full whitespace-pre-line">
 										{@html comment.content}
 									</Prose>
 								{/if}

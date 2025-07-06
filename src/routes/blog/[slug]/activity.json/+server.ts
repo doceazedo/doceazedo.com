@@ -9,6 +9,7 @@ import type {
 	PostActivity,
 	PostCommentEmbed,
 } from "$lib/types.js";
+import { escapeHTML, removeEmojiCodes } from "$lib/utils/string";
 import { AppBskyFeedGetPostThread, AtpAgent, type Facet } from "@atproto/api";
 import { error, json } from "@sveltejs/kit";
 
@@ -20,16 +21,24 @@ export const GET = async ({ params }) => {
 	const post = await import(`../../(posts)/${params.slug}/+page.md`);
 	if (!post) return error(404);
 
-	const [viewsCount, blueskyData] = await Promise.all([
+	const [viewsCount, blueskyData, mastodonData] = await Promise.all([
 		getPageViews(`/blog/${params.slug}`),
 		getBlueskyData(post.metadata?.blueskyPostId),
+		getMastodonData(post.metadata?.mastodonPostId),
 	]);
 
+	const blueskyLikes = blueskyData?.likesCount || 0;
+	const mastodonLikes = mastodonData?.likesCount || 0;
+
 	return json({
-		likesCount: 0,
 		viewsCount,
-		comments: [],
-		...blueskyData,
+		likesCount: blueskyLikes + mastodonLikes,
+		comments: [
+			...(blueskyData?.comments || []),
+			...(mastodonData?.comments || []),
+		].sort(
+			(a, b) => new Date(a.postedAt).getTime() - new Date(b.postedAt).getTime(),
+		),
 	} as PostActivity);
 };
 
@@ -132,16 +141,6 @@ const getBlueskyData = async (
 	};
 
 	const parseMessageFacets = (content: string, facets: Facet[]): string => {
-		const escapeHTML = (str: string) =>
-			str
-				.replaceAll("&", "&amp;")
-				.replaceAll("<", "&lt;")
-				.replaceAll(">", "&gt;")
-				.replaceAll("(", "&lpar;")
-				.replaceAll(")", "&rpar;")
-				.replaceAll('"', "&quot;")
-				.replaceAll("'", "&#039;");
-
 		const encoder = new TextEncoder();
 		const decoder = new TextDecoder();
 
@@ -207,11 +206,6 @@ const getBlueskyData = async (
 		comments:
 			data.thread.replies
 				?.filter((x) => "post" in x)
-				.sort(
-					(a, b) =>
-						new Date((a.post.record?.createdAt as string) || 0).getTime() -
-						new Date((b.post.record?.createdAt as string) || 0).getTime(),
-				)
 				.map((x) => ({
 					author: {
 						id: x.post.author.did,
@@ -219,10 +213,6 @@ const getBlueskyData = async (
 							x.post.author.displayName || `@${x.post.author.handle}`,
 						url: `https://bsky.app/profile/${x.post.author.handle}`,
 						avatar: x.post.author.avatar || `/img/avatar-fallback.webp`,
-					},
-					raw: {
-						text: x.post.record?.text,
-						facets: x.post.record.facets,
 					},
 					content: parseMessageFacets(
 						(x.post.record?.text as string) || "",
@@ -273,4 +263,110 @@ const getPageViews = async (page: string) => {
 	} catch (_error) {
 		return 0;
 	}
+};
+
+const getMastodonData = async (
+	postId?: string,
+): Promise<Partial<PostActivity>> => {
+	if (!postId) return {};
+
+	const postRes = await fetch(
+		`${SOCIALS.mastodon.instance}/api/v1/statuses/${postId}`,
+	);
+	const post = await postRes.json();
+
+	const contextRes = await fetch(
+		`${SOCIALS.mastodon.instance}/api/v1/statuses/${postId}/context`,
+	);
+	const context = await contextRes.json();
+	const descendants: {
+		account: {
+			id: string;
+			display_name: string;
+			username: string;
+			url: string;
+			avatar_static: string;
+		};
+		content: string;
+		favourites_count: number;
+		url: string;
+		created_at: string;
+		media_attachments: {
+			type: string;
+			preview_url: string;
+			url: string;
+			description: string;
+		}[];
+		card: { url: string; title: string; description: string; image: string };
+	}[] = context.descendants || [];
+
+	const parseEmbed = (status: {
+		media_attachments: {
+			type: string;
+			preview_url: string;
+			url: string;
+			description: string;
+		}[];
+		card: { url: string; title: string; description: string; image: string };
+	}) => {
+		if (
+			(!status.media_attachments || status.media_attachments.length === 0) &&
+			!status.card
+		) {
+			return undefined;
+		}
+
+		const first = status.media_attachments[0];
+		if (first?.type === "image") {
+			return {
+				type: "image" as const,
+				images: status.media_attachments.map((img) => ({
+					thumbnail: img.preview_url,
+					fullsize: img.url,
+					alt: img.description,
+				})),
+			};
+		} else if (first?.type === "video" || first?.type === "gifv") {
+			return {
+				type: "video" as const,
+				playlist: first.url,
+				thumbnail: first.preview_url,
+			};
+		} else if (status.card) {
+			return {
+				type: "link" as const,
+				url: status.card.url,
+				title: status.card.title,
+				description: status.card.description,
+				thumbnail: status.card.image,
+			};
+		}
+
+		return undefined;
+	};
+
+	const comments = descendants.map((reply) => ({
+		author: {
+			id: reply.account.id,
+			displayName: reply.account.display_name
+				? removeEmojiCodes(reply.account.display_name)
+				: reply.account.username,
+			url: reply.account.url,
+			avatar: reply.account.avatar_static,
+		},
+		content: reply.content.replaceAll(
+			"<a",
+			'<a target="_blank" rel="noopener noreferrer"',
+		),
+		embed: parseEmbed(reply),
+		likesCount: reply.favourites_count,
+		url: reply.url,
+		postedAt: reply.created_at,
+		source: "mastodon" as const,
+	}));
+
+	return {
+		likesCount: post.favourites_count,
+		comments,
+	};
 };

@@ -4,6 +4,7 @@ import {
 	GithubLineLogos,
 	InstagramLineLogos,
 	LinkedinBoxLineLogos,
+	MastodonLineLogos,
 	SoundcloudLineLogos,
 	SteamLineLogos,
 	TwitchLineLogos,
@@ -36,6 +37,14 @@ export const SOCIALS = {
 		label: "Bluesky",
 		handle: "doceazedo.com",
 		id: "did:plc:uthii4i7zrmqnbxex5esjxzp",
+	},
+	mastodon: {
+		icon: MastodonLineLogos,
+		instance: "https://bolha.us",
+		url: "https://bolha.us/@doceazedo",
+		label: "Mastodon",
+		handle: "doceazedo",
+		id: "110323544038456583",
 	},
 	instagram: {
 		icon: InstagramLineLogos,

@@ -3,6 +3,7 @@ title: "How to use SvelteKit with Docker"
 date: "2023/07/27"
 icon: "/img/icons/docker-moby.svg"
 blueskyPostId: "3ltackw6asc2q"
+mastodonPostId: "114803101942060670"
 ---
 
 Want to dockerize your SvelteKit project? It's super easy, I'll show you! ☺️
