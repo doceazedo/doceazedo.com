@@ -326,11 +326,16 @@ const getMastodonData = async (
 					alt: img.description,
 				})),
 			};
-		} else if (first?.type === "video" || first?.type === "gifv") {
+		} else if (first?.type === "video") {
 			return {
 				type: "video" as const,
 				playlist: first.url,
 				thumbnail: first.preview_url,
+			};
+		} else if (first?.type === "gifv") {
+			return {
+				type: "gifv" as const,
+				url: first.url,
 			};
 		} else if (status.card) {
 			return {

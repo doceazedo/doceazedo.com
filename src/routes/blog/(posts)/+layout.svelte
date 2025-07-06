@@ -349,6 +349,15 @@
 													</div>
 												</hgroup>
 											</a>
+										{:else if comment.embed.type === "gifv"}
+											<video
+												src={comment.embed.url}
+												muted
+												autoplay
+												loop
+												playsinline
+												class="size-full max-h-[48rem] w-full rounded md:w-[calc(50%-6px)]"
+											></video>
 										{/if}
 									</div>
 								{/if}

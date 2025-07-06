@@ -86,6 +86,11 @@ export type PostCommentEmbed =
 			title: string;
 			description?: string;
 			thumbnail?: string;
+	  }
+	| {
+			type: "gifv";
+			url: string;
+			alt?: string;
 	  };
 
 export type BlueskyRawEmbed =
