@@ -2,6 +2,8 @@
 title: "Backfeeding comments from Bluesky & Mastodon to steal engagement for my blog"
 date: "2025/07/06"
 icon: "/img/icons/bluesky-app.webp"
+blueskyPostId: "3ltcrhk2pms2w"
+mastodonPostId: "114807410630609319"
 ---
 
 I love having my own website! Unfortunately, most people aren't checking my website as often as I'ld like them to, so if I want them to actually see what I post here, I have to repost it where they already are.
@@ -27,8 +29,8 @@ Here's what the top of the Markdown file for this post looks like:
 title: "Backfeeding comments from Bluesky & Mastodon to steal engagement for my blog"
 date: "2025/07/06"
 icon: "/img/icons/bluesky-app.webp"
-blueskyPostId: "3lsk23dqwks2c"       // 👈
-mastodonPostId: "114797956354613326" // i come back & add these
+blueskyPostId: "3ltcrhk2pms2w"       // 👈
+mastodonPostId: "114807410630609319" // i come back & add these
 ---
 
 I love having my own website! [...]
