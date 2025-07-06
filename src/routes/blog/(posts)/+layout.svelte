@@ -211,6 +211,7 @@
 				<ul class="flex flex-col gap-6 md:gap-12">
 					{#if activity}
 						{#each activity.comments as comment}
+							{@const postedAt = new Date(comment.postedAt)}
 							<li
 								class="ease-elastic hover:before:bg-muted/50 before:border-border relative flex gap-4 p-4 transition-all before:absolute before:top-0 before:left-0 before:-z-10 before:size-full before:rounded before:border before:transition-all hover:scale-105 md:gap-6 md:p-6"
 							>
@@ -250,13 +251,14 @@
 											rel="noopener noreferrer"
 											class="text-body flex items-center gap-1.5 text-sm hover:underline"
 										>
-											{new Date(comment.postedAt).toLocaleDateString(
-												getLocale(),
-												{
-													month: "short",
-													day: "numeric",
-												},
-											)}
+											{postedAt.toLocaleDateString(getLocale(), {
+												year:
+													postedAt.getFullYear() !== new Date().getFullYear()
+														? "numeric"
+														: undefined,
+												month: "short",
+												day: "numeric",
+											})}
 											<span class="text-body/70 flex items-center gap-1">
 												<span>via</span>
 												{#if comment.source === "bluesky"}
