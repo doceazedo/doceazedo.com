@@ -413,7 +413,7 @@
 					>
 						<p class="truncate">
 							{heading.label}
-							{#if heading.id === "comments" && activity?.comments}
+							{#if heading.id === "comments" && activity?.comments?.length}
 								({activity.comments.length})
 							{/if}
 						</p>
