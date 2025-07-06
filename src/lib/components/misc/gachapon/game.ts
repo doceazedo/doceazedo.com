@@ -4,16 +4,16 @@ import {
 	TWEENED_BALANCE,
 	TWEENED_PIGGYBANK_BALANCE,
 } from "./stores";
-import { ITEMS, PIGGYBANK } from "./constants";
+import { ITEMS, PIGGYBANK, RARITIES } from "./constants";
 import { dev } from "$app/environment";
-import type { Item } from "./types";
+import type { Item, RarityId } from "./types";
 import { playAudio } from "$lib/audio";
 
-export const giveCoins = (quantity: number) => {
+export const giveCoins = (amount: number) => {
 	const $GAME_DATA = get(GAME_DATA);
 	GAME_DATA.set({
 		...$GAME_DATA,
-		balance: $GAME_DATA.balance + quantity,
+		balance: $GAME_DATA.balance + amount,
 	});
 
 	playAudio("cha-ching");
@@ -106,4 +106,22 @@ const updatePiggybank = () => {
 	$GAME_DATA.piggybank.balance =
 		balanceTarget >= PIGGYBANK.max ? PIGGYBANK.max : balanceTarget;
 	$GAME_DATA.piggybank.updatedAt = new Date().toString();
+};
+
+export const getRandomRarity = (): RarityId => {
+	const roll = Math.random();
+	let cumulativeOdds = 0;
+
+	const selectedRarity = RARITIES.find((rarity) => {
+		cumulativeOdds += rarity.odds;
+		return roll < cumulativeOdds;
+	});
+
+	return selectedRarity?.id ?? RARITIES[RARITIES.length - 1].id;
+};
+
+export const getRandomPrize = (rarityId?: RarityId) => {
+	const rarity = rarityId || getRandomRarity();
+	const lootPool = ITEMS.filter((item) => item.rarity === rarity);
+	return lootPool[Math.floor(Math.random() * lootPool.length)];
 };

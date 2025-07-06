@@ -15,10 +15,10 @@
 		IS_GUMBALL_LOADED,
 		PRIZE_ITEM,
 	} from "../stores";
-	import { ITEMS, RARITIES } from "../constants";
+	import { CAPSULE_PALETTE, ITEMS, RARITIES } from "../constants";
 	import Prize from "./prize.svelte";
 	import World from "./world.svelte";
-	import { giveItem } from "../game";
+	import { getRandomPrize, giveItem } from "../game";
 	import type { RarityId, Vector3 } from "../types";
 	import { playAudio } from "$lib/audio";
 
@@ -63,33 +63,13 @@
 			scale: [1, 1, 1] as Vector3,
 		},
 		prize: {
-			scale: [0, 0, 0] as Vector3,
+			scale: 0,
 			rotation: 0,
 		},
 		coin: {
 			rotation: 0,
 		},
 	} as const;
-
-	const CAPSULE_PALETTE = shuffleArray([
-		"#ef4444",
-		"#f97316",
-		"#f59e0b",
-		"#eab308",
-		"#84cc16",
-		"#22c55e",
-		"#10b981",
-		"#14b8a6",
-		"#06b6d4",
-		"#0ea5e9",
-		"#3b82f6",
-		"#6366f1",
-		"#8b5cf6",
-		"#a855f7",
-		"#d946ef",
-		"#ec4899",
-		"#f43f5e",
-	]);
 
 	const capsuleTweener = {
 		position: new Tween<Vector3>([...INITIAL_TRANSFORMS.capsule.position], {
@@ -125,7 +105,7 @@
 	};
 
 	const prizeTweener = {
-		scale: new Tween<Vector3>([...INITIAL_TRANSFORMS.prize.scale], {
+		scale: new Tween<number>(INITIAL_TRANSFORMS.prize.scale, {
 			easing: cubicOut,
 			duration: ANIMATION_TIMING.scaleTransition,
 		}),
@@ -186,26 +166,8 @@
 
 		coinMechTweener.set(INITIAL_TRANSFORMS.coin.rotation, { duration: 0 });
 
-		prizeTweener.scale.target = [...INITIAL_TRANSFORMS.prize.scale];
+		prizeTweener.scale.target = INITIAL_TRANSFORMS.prize.scale;
 		prizeTweener.rotation.target = INITIAL_TRANSFORMS.prize.rotation;
-	};
-
-	const getRandomRarity = (): RarityId => {
-		const roll = Math.random();
-		let cumulativeOdds = 0;
-
-		const selectedRarity = RARITIES.find((rarity) => {
-			cumulativeOdds += rarity.odds;
-			return roll < cumulativeOdds;
-		});
-
-		return selectedRarity?.id ?? RARITIES[RARITIES.length - 1].id;
-	};
-
-	const getRandomPrize = () => {
-		const rarity = getRandomRarity();
-		const lootPool = ITEMS.filter((item) => item.rarity === rarity);
-		return lootPool[Math.floor(Math.random() * lootPool.length)];
 	};
 
 	const togglePhysics = (enabled: boolean) => {
@@ -291,7 +253,7 @@
 			capsuleCapTweener.down.current[1] - 1.5,
 			0,
 		];
-		prizeTweener.scale.target = [1, 1, 1];
+		prizeTweener.scale.target = 1;
 		prizeTweener.rotation.target = degToRad(360 * 2);
 		if (!$PRIZE_ITEM) return;
 		giveItem($PRIZE_ITEM);
@@ -388,7 +350,9 @@
 				/>
 
 				{#if $IS_GUMBALL_LOADED}
-					{#each Array(2).fill(CAPSULE_PALETTE).flat() as color, index}
+					{#each Array(2)
+						.fill(shuffleArray(CAPSULE_PALETTE))
+						.flat() as color, index}
 						<T.Group
 							position={calculateSpherePosition(
 								index,

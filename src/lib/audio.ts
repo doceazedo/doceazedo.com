@@ -11,6 +11,7 @@ const AUDIO_URLS = new Map([
 	["fidget-spinner", "/audio/fidget-spinner.ogg"],
 	["cha-ching", "/audio/cha-ching.ogg"],
 	["gumball-dispense", "/audio/gumball-dispense.ogg"],
+	["gift-open", "/audio/gift-open.ogg"],
 	["minecraft-xp", "/audio/minecraft-xp.ogg"],
 	["bus-horn", "/audio/fortnite-bus-horn.ogg"],
 ] as const);

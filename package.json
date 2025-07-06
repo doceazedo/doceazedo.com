@@ -53,6 +53,7 @@
 		"@atproto/api": "^0.15.20",
 		"@dimforge/rapier3d-compat": "^0.17.3",
 		"@inlang/paraglide-js": "^2.0.0",
+		"@neoconfetti/svelte": "^2.2.2",
 		"@resvg/resvg-js": "^2.6.2",
 		"@threlte/core": "^8.0.5",
 		"@threlte/extras": "^9.4.0",

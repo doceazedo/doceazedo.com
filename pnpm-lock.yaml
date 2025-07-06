@@ -17,6 +17,9 @@ importers:
       '@inlang/paraglide-js':
         specifier: ^2.0.0
         version: 2.0.13
+      '@neoconfetti/svelte':
+        specifier: ^2.2.2
+        version: 2.2.2(svelte@5.33.14)
       '@resvg/resvg-js':
         specifier: ^2.6.2
         version: 2.6.2
@@ -581,6 +584,11 @@ packages:
 
   '@mdi/js@7.4.47':
     resolution: {integrity: sha512-KPnNOtm5i2pMabqZxpUz7iQf+mfrYZyKCZ8QNz85czgEt7cuHcGorWfdzUMWYA0SD+a6Hn4FmJ+YhzzzjkTZrQ==}
+
+  '@neoconfetti/svelte@2.2.2':
+    resolution: {integrity: sha512-E7xCFVEEm5Ctnj2udTJy1b9oaTvjz1zi1mYdEtE8rB5BVwq6kHisosDS+zdWN5PMfEMjtbsOV9Cl6tsNSAD1sA==}
+    peerDependencies:
+      svelte: ^3.0.0 || ^4.0.0 || ^5.0.0
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -3700,6 +3708,10 @@ snapshots:
   '@mapbox/whoots-js@3.1.0': {}
 
   '@mdi/js@7.4.47': {}
+
+  '@neoconfetti/svelte@2.2.2(svelte@5.33.14)':
+    dependencies:
+      svelte: 5.33.14
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

@@ -9,11 +9,11 @@
 
 	let {
 		item,
-		scale = [1, 1, 1],
+		scale = 1,
 		rotationY = 0,
 	}: {
 		item: Item;
-		scale?: [number, number, number];
+		scale?: number;
 		rotationY?: number;
 	} = $props();
 

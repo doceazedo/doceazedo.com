@@ -4,7 +4,11 @@
 	import GumballOutline from "$lib/components/icons/gumball-outline.svg?component";
 	import type { Project } from "$lib/types";
 	import * as Dialog from "$lib/components/ui/dialog";
-	import { GAME_DATA, GAME_STATE } from "$lib/components/misc/gachapon/stores";
+	import {
+		GAME_DATA,
+		GAME_STATE,
+		GIFT_ITEM,
+	} from "$lib/components/misc/gachapon/stores";
 	import Gachapon from "$lib/components/misc/gachapon/index";
 	import { m } from "$lib/paraglide/messages";
 	import { Button } from "$lib/components/ui/button";
@@ -41,9 +45,14 @@
 		await sleep(800);
 		showVideo = true;
 	};
+
+	const resetGachaponState = () => {
+		$GAME_STATE = "idle";
+		$GIFT_ITEM = null;
+	};
 </script>
 
-<Dialog.Root onOpenChange={() => type === "gachapon" && ($GAME_STATE = "idle")}>
+<Dialog.Root onOpenChange={() => type === "gachapon" && resetGachaponState()}>
 	<Dialog.Trigger
 		class={cn(
 			"group hover:bg-primary/5 dark:hover:bg-primary/10 aspect-square w-full cursor-pointer overflow-hidden rounded transition-all",

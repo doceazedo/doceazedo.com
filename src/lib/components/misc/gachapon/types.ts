@@ -46,3 +46,7 @@ export type DispenseOptions = {
 	updateCapsuleColor: () => void;
 	resetScene: () => void;
 };
+
+export type Gift =
+	| { type: "item"; item: Item }
+	| { type: "coins"; amount: number };

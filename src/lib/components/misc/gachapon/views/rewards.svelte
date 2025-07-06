@@ -9,11 +9,20 @@
 	import { cn } from "$lib/utils";
 	import { readyInDays } from "$lib/utils/date";
 	import { m } from "$lib/paraglide/messages";
-	import { giveCoins } from "../game";
+	import { getRandomPrize, giveCoins } from "../game";
 	import { Progress } from "$lib/components/ui/progress";
 	import { PiggyBank } from "@lucide/svelte";
-	import { GAME_DATA, TWEENED_PIGGYBANK_BALANCE } from "../stores";
+	import {
+		GAME_DATA,
+		GAME_STATE,
+		GIFT_ITEM,
+		TWEENED_PIGGYBANK_BALANCE,
+	} from "../stores";
 	import { onMount } from "svelte";
+	import Gift from "./gift.svelte";
+	import type { Gift as GiftItem } from "../types";
+	import { scale } from "svelte/transition";
+	import { cubicOut } from "svelte/easing";
 
 	const DAILY_REWARDS = [
 		{
@@ -52,7 +61,12 @@
 
 		const reward = DAILY_REWARDS[idx];
 		if (reward.type === "coins") {
-			giveCoins(reward.quantity);
+			giveGift({ type: "coins", amount: reward.quantity });
+			return;
+		}
+
+		if (reward.type === "gift") {
+			giveGift({ type: "item", item: getRandomPrize(reward.rarity.id) });
 		}
 	};
 
@@ -78,6 +92,11 @@
 	const cashOutPiggyBank = () => {
 		giveCoins($GAME_DATA.piggybank.balance);
 		$GAME_DATA.piggybank.balance = 0;
+	};
+
+	const giveGift = (gift: GiftItem) => {
+		$GAME_STATE = "gift-idle";
+		$GIFT_ITEM = gift;
 	};
 
 	onMount(() => {
@@ -250,3 +269,16 @@
 		</div>
 	</div>
 </div>
+
+{#if $GIFT_ITEM}
+	<div
+		class="absolute flex size-full items-center justify-center"
+		transition:scale={{
+			easing: cubicOut,
+			start: 0.9,
+			duration: 200,
+		}}
+	>
+		<Gift />
+	</div>
+{/if}
