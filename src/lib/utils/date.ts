@@ -3,9 +3,8 @@ import { getLocale } from "$lib/paraglide/runtime";
 
 export const wasPostedThisWeek = (date: Date) => {
 	const now = new Date();
-	// straight up lie saying a 2 weeks old post was posted this week idc
-	const twoWeeksAgo = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
-	return date >= twoWeeksAgo;
+	const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+	return date >= oneWeekAgo;
 };
 
 export const postedAt = (date: Date) => {
