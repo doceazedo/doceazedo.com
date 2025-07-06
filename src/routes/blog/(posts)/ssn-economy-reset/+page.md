@@ -3,6 +3,7 @@ title: "How I used Rust to soft reset the economy of my 300 GB anarchy Minecra
 date: "2025/06/26"
 icon: "/img/icons/grass-block.webp"
 blueskyPostId: "3lsk23dqwks2c"
+mastodonPostId: "114797956354613326"
 ---
 
 <script>
