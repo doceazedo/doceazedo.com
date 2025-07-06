@@ -53,7 +53,7 @@ export const initializeGame = () => {
 	handlePiggybankAfk();
 	const piggybankInterval = setInterval(updatePiggybank, 6000);
 
-	// fcleanup function
+	// cleanup function
 	return () => {
 		unsubscribeGameData();
 		clearInterval(piggybankInterval);
@@ -94,6 +94,7 @@ const handlePiggybankAfk = () => {
 		$GAME_DATA.piggybank.balance =
 			balanceTarget >= PIGGYBANK.max ? PIGGYBANK.max : balanceTarget;
 		$GAME_DATA.piggybank.updatedAt = new Date().toString();
+		GAME_DATA.set($GAME_DATA);
 	}
 };
 
@@ -106,6 +107,7 @@ const updatePiggybank = () => {
 	$GAME_DATA.piggybank.balance =
 		balanceTarget >= PIGGYBANK.max ? PIGGYBANK.max : balanceTarget;
 	$GAME_DATA.piggybank.updatedAt = new Date().toString();
+	GAME_DATA.set($GAME_DATA);
 };
 
 export const getRandomRarity = (): RarityId => {
