@@ -90,7 +90,7 @@
 		}}
 		class="absolute top-6 z-50 text-xl md:text-2xl"
 	>
-		A little something for you...
+		{m.gachapon_gift_title()}
 	</h1>
 	<div
 		class="absolute bottom-6 z-50 flex"
@@ -103,7 +103,7 @@
 	>
 		<Button size="lg" class="h-12" onclick={() => giftScene?.unwrap()}>
 			<GiftLineFinance class="size-5" />
-			Unwrap it!
+			{m.gachapon_open_gift()}
 		</Button>
 	</div>
 {/if}
