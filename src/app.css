@@ -3,7 +3,6 @@
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
-@custom-variant noise (&:not([data-noise="off"] *));
 
 :root {
   --radius: 0.625rem;
@@ -207,22 +206,22 @@ body::before {
   left: 0;
   right: 0;
   image-rendering: crisp-edges;
-  background-image: url("/img/noise.webp");
-  background-size: 640px 360px;
+  background-image: url("/img/noise-v3.webp");
+  background-size: 128px 128px;
   background-repeat: repeat;
   z-index: 100;
   pointer-events: none;
-  opacity: .07;
+  opacity: .15;
   transition: all .3s ease;
 }
 
-.dark body::before {
+html:not(.dark) body::before {
   filter: invert(1);
-  opacity: .08;
+  opacity: .12;
 }
 
 body[data-noise="animated"]::before {
-	animation: noise 0.5s steps(4, jump-both) infinite;
+	animation: noise 1s steps(4, jump-both) infinite;
 }
 
 body[data-noise="off"]::before {
@@ -234,6 +233,10 @@ body[data-dyslexia-font] {
 }
 
 @media screen and (min-width: 96rem /* 2xl */) {
+  body::before {
+    opacity: .3;
+  }
+
   body::after {
     content: "";
     position: fixed;
@@ -263,8 +266,11 @@ body[data-dyslexia-font] {
 	50% {
 		background-position: top left;
 	}
-	100% {
+	75% {
 		background-position: bottom left;
+	}
+	100% {
+		background-position: top right;
 	}
 }
 

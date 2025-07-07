@@ -237,7 +237,7 @@
 			<img
 				src="/img/uses/setup.webp"
 				alt=""
-				class="dark:noise:contrast-125 aspect-video w-full rounded object-cover"
+				class="aspect-video w-full rounded object-cover"
 			/>
 		</figure>
 	{/if}

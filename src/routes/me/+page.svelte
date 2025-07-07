@@ -151,7 +151,7 @@
 					<img
 						src={photo}
 						alt=""
-						class="dark:noise:brightness-85 dark:noise:contrast-125 size-full rounded object-fill transition-all"
+						class="size-full rounded object-fill transition-all"
 					/>
 				</figure>
 			{/each}
