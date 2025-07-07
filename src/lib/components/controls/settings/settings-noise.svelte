@@ -10,10 +10,6 @@
 		{ value: "static", label: m.static() },
 		{ value: "off", label: m.off() },
 	];
-
-	NOISE_SETTING.subscribe((setting) => {
-		document.body.dataset.noise = setting;
-	});
 </script>
 
 <SettingsItem icon={StackLineBusiness} label={m.settings_noise()}>
