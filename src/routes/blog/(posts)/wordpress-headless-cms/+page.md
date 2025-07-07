@@ -2,6 +2,8 @@
 title: "Old school: Using WordPress as a headless CMS"
 date: "2022/01/11"
 icon: "/img/icons/wordpress.svg"
+blueskyPostId: "3ltfdkyzab22m"
+mastodonPostId: "114813188246522117"
 ---
 
 Before we dive in, let me warn you that this is one of those messy posts where we're gonna chat more than follow a strict tutorial. So if you want to skip all the rambling, [click here](#turning-wordpress-into-a-headless-cms).
