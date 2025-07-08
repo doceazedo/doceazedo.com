@@ -2,6 +2,8 @@
 title: "Photopea made me ditch Photoshop forever"
 date: "2022/05/03"
 icon: "/img/icons/artist-emoji.svg"
+blueskyPostId: "3lthkfdxo7k2d"
+mastodonPostId: "114818178394279636"
 ---
 
 Pretty frequently I need to do some image editing. Usually nothing too complex and, following my roots of always having had a crappy computer, whenever I needed to make these quick edits, instead of opening Photoshop I preferred to use **[Photopea](https://photopea.com)**, an online image editor very similar to Adobe's program.
