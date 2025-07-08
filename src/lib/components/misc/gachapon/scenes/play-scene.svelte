@@ -13,6 +13,7 @@
 		GAME_DATA,
 		GAME_STATE,
 		IS_GUMBALL_LOADED,
+		LAST_PRIZE_ID,
 		PRIZE_ITEM,
 	} from "../stores";
 	import { CAPSULE_PALETTE, ITEMS, RARITIES } from "../constants";
@@ -292,6 +293,7 @@
 		$GAME_DATA.balance -= DISPENSE_COST;
 		$GAME_STATE = "drawing";
 		$PRIZE_ITEM = getRandomPrize();
+		$LAST_PRIZE_ID = $PRIZE_ITEM.id;
 
 		await dispenseAnimationSequence();
 

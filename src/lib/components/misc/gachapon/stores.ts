@@ -51,6 +51,8 @@ export const TWEENED_PIGGYBANK_BALANCE = new Tween(
 
 export const PRIZE_ITEM = writable<Item | null>(null);
 
+export const LAST_PRIZE_ID = writable<string | null>(null);
+
 export const GIFT_ITEM = writable<Gift | null>(null);
 
 export const IS_GUMBALL_LOADED = writable(false);

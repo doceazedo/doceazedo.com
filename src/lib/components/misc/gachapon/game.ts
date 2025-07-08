@@ -1,6 +1,7 @@
 import { get } from "svelte/store";
 import {
 	GAME_DATA,
+	LAST_PRIZE_ID,
 	TWEENED_BALANCE,
 	TWEENED_PIGGYBANK_BALANCE,
 } from "./stores";
@@ -124,6 +125,9 @@ export const getRandomRarity = (): RarityId => {
 
 export const getRandomPrize = (rarityId?: RarityId) => {
 	const rarity = rarityId || getRandomRarity();
-	const lootPool = ITEMS.filter((item) => item.rarity === rarity);
+	const $LAST_PRIZE_ID = get(LAST_PRIZE_ID);
+	const lootPool = ITEMS.filter((item) => item.rarity === rarity).filter(
+		(item) => item.id !== $LAST_PRIZE_ID,
+	);
 	return lootPool[Math.floor(Math.random() * lootPool.length)];
 };
