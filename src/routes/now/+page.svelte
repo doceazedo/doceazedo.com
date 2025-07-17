@@ -52,9 +52,9 @@
 		cover: "/img/now/books/o-nome-do-vento.webp",
 		url: "https://www.goodreads.com/book/show/8480575-o-nome-do-vento",
 		pages: {
-			read: 108,
+			read: 153,
 			total: 656,
-			updatedAt: new Date("2025/06/27 GMT-3"),
+			updatedAt: new Date("2025/07/17 GMT-3"),
 		},
 		startedAt: new Date("2025/06/13 GMT-3"),
 	};
@@ -178,16 +178,16 @@
 					en: "Logic and computational mathematics",
 					pt: "Lógica e matemática computacional",
 				},
-				classPeriodStartsAt: new Date("2025/07/01"),
-				examPeriodStartsAt: new Date("2025/08/01"),
+				classPeriodStartsAt: new Date("2025/08/04"),
+				examPeriodStartsAt: new Date("2025/10/04"),
 			},
 			{
 				name: {
 					en: "Extension Project I - Computer Science",
 					pt: "Projeto de Extensão I - Ciência da Computação",
 				},
-				classPeriodStartsAt: new Date("2025/07/01"),
-				examPeriodStartsAt: new Date("2025/08/01"),
+				classPeriodStartsAt: new Date("2025/08/04"),
+				examPeriodStartsAt: new Date("2025/10/04"),
 			},
 		],
 	};
